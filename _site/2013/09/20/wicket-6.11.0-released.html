@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apache Wicket - Apache Wicket 6.11.0 released</title>
+
+	<link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen" />
+
+    <!--[if lt ie 7]>
+	<link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen" />
+    <![endif]-->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+	<link rel="alternate" type="application/atom+xml" href="/atom.xml" />
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <div id="header"><a href="/"><h1 id="logo"><span>Apache Wicket</span></h1></a></div>
+		<div id="navigation">
+	<h5><a name="Navigation-Wicket"></a>Meet Wicket</h5>
+	<ul>
+		<li>
+			<a href="/" title="Index">Home</a>
+		</li>
+		<li>
+			<a href="/meet/introduction.html" title="Introduction">Introduction</a>
+		</li>
+		<li>
+			<a href="/meet/features.html" title="Features">Features</a>
+		</li>
+		<li>
+			<a href="/meet/buzz.html" title="Buzz">Buzz</a>
+		</li>
+		<li>
+			<a href="/meet/vision.html" title="Vision">Vision</a>
+		</li>
+		<li>
+			<a href="/meet/blogs.html" title="Blogs">Blogs</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-GettingStarted" id="Navigation-GettingStarted"></a>Get Started
+	</h5>
+	<ul>
+		<li>
+			<a href="/start/download.html" title="Download Wicket">Download Wicket</a>
+		</li>
+		<li>
+			<a href="/start/quickstart.html" title="Getting started via a Maven Archetype">Quickstart</a>
+		</li>
+		<li>
+			<a href="http://www.jweekend.com/dev/LegUp" rel="nofollow">More archetypes</a>
+		</li>
+		<li>
+			<a href="/help" title="Get help">Get help</a>
+		</li>
+		<li>
+			<a href="/help/email.html" title="Wicket Mailing Lists">Mailing Lists</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Documentation" id="Navigation-Documentation"></a>Learn
+	</h5>
+	<ul>
+		<li>
+			<a href="/start/userguide.html" title="User Guide">User Guide</a>
+		</li>
+		<li>
+			<a href="/learn/examples" title="Examples">Examples</a>
+		</li>
+		<li>
+			<a href="http://www.wicket-library.com/wicket-examples/compref/">Components</a>
+		</li>
+		<li>
+			<a href="/learn/projects/" title="Projects extending basic Wicket">Projects</a>
+		</li>
+		<li>
+			<a href="https://cwiki.apache.org/confluence/display/WICKET">Wiki</a>
+		</li>
+		<li>
+			<a href="https://cwiki.apache.org/confluence/display/WICKET/Reference+library">Reference guide</a>
+		</li>
+		<li>
+			<a href="/learn/books" title="Books">Books</a>
+		</li>
+		<li>
+			<a href="/learn/ides.html" title="IDEs">IDEs</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Releases" id="Navigation-Releases"></a>Releases
+	</h5>
+	<ul>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/6.19.0">Wicket 6.19</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.13">Wicket 1.5</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.4.23">Wicket 1.4</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.3.7">Wicket 1.3</a>
+		</li>
+		<li>
+			<a href="http://wicket.sf.net/wicket-1.2" class="external-link" rel="nofollow">Wicket 1.2</a>
+		</li>
+		<li>
+			<a href="http://wicket.sf.net/wicket-1.1" class="external-link" rel="nofollow">Wicket 1.1</a>
+		</li>
+		<li>
+			<a href="http://wicket.sf.net/wicket-1.0" class="external-link" rel="nofollow">Wicket 1.0</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Docs" id="Navigation-Docs"></a>API Docs
+	</h5>
+	<ul>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/6.x/" title="JavaDocs of Apache Wicket 6.x">Wicket 6.x</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/1.5.x/" title="JavaDocs of Apache Wicket 1.5.x">Wicket 1.5</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/1.4.x" title="JavaDocs of Apache Wicket 1.4.x">Wicket 1.4</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/1.3.x" title="JavaDocs of Apache Wicket 1.3.x">Wicket 1.3</a>
+		</li>
+	</ul>
+	<h5>Wicket 7.x</h5>
+	<ul>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/7.0.0-M5">Download M5</a>
+		</li>
+		<li>
+			<a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+7.0">Migration guide</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/7.x/" title="JavaDocs of Apache Wicket 7.x">API Docs 7.x</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Developers" id="Navigation-Developers"></a>Contribute
+	</h5>
+	<ul>
+		<li>
+			<a href="/contribute/write.html" title="Writing documentation">Writing docs</a>
+		</li>
+		<li>
+			<a href="/contribute/build.html" title="Building from SVN">Build Wicket</a>
+		</li>
+		<li>
+			<a href="/contribute/patch.html" title="Provide a patch">Provide a patch</a>
+		</li>
+		<li>
+			<a href="/contribute/release.html" title="Release Wicket">Release Wicket</a>
+		</li>
+		<li>
+			<a href="https://fisheye6.atlassian.com/browse/wicket-git" title="Git Overview" class="external-link" rel="nofollow">Fisheye</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Apache" id="Navigation-Apache"></a>Apache
+	</h5>
+	<ul>
+		<li>
+			<a href="http://www.apache.org/" class="external-link" rel="nofollow">Apache</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/licenses/" class="external-link" rel="nofollow">License</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/foundation/sponsorship.html" class="external-link" rel="nofollow">Sponsorship</a>
+		</li>
+		<li>
+			<a href="http://apache.org/foundation/thanks.html" class="external-link" rel="nofollow">Thanks</a>
+		</li>
+		<li>
+			<a href="/apache/friends.html" title="Apache projects using Wicket">Friends</a>
+		</li>
+	</ul>
+</div>
+
+		<div id="contentbody">
+			<h1>Apache Wicket 6.11.0 released</h1>
+			<p>The Apache Wicket PMC is proud to announce Apache Wicket 6.11.0!</p>
+
+<p>This release marks the eleventh minor release of Wicket 6. Starting
+with Wicket 6 we use semantic versioning for the future development
+of Wicket, and as such no API breaks are present in this release
+compared to 6.0.0.</p>
+
+<h3 id="new-and-noteworthy">New and noteworthy</h3>
+
+<h4 id="new-html5attributes-behavior">New HTML5Attributes behavior</h4>
+
+<p>HTML5 attribute support in Wicket continues to be improved upon. Add
+the new HTML5Attributes behavior to your text fields or buttons and
+Wicket will add the relevant HTML5 attributes based on the state of
+your components:</p>
+
+<ul>
+  <li>adds “required” if your form component is required</li>
+  <li>adds “placeholder” for the label of your form component</li>
+  <li>adds “pattern” if your form component has a PatternValidator 
+attached</li>
+  <li>adds “formnovalidate” if your button has default form processing 
+set to false</li>
+</ul>
+
+<p>This behavior replaces the functionality from 6.10 where HTML5
+attributes were added automatically (see
+<a href="https://issues.apache.org/jira/browse/WICKET-5289">WICKET-5289</a> and
+<a href="https://issues.apache.org/jira/browse/WICKET-5331">WICKET-5331</a>)</p>
+
+<h4 id="beanvalidation-receives-french-translation">BeanValidation receives french translation</h4>
+
+<p>The BeanValidation project now has a french translation for
+validation errors:</p>
+
+<ul>
+  <li>Le champ ‘${label}’ ne doit pas être null</li>
+  <li>Le champ ‘${label}’ pourrait contenir du contenu HTML dangereux</li>
+</ul>
+
+<p>Bonne chance!</p>
+
+<h3 id="jquery-update-in-690">JQuery update in 6.9.0</h3>
+
+<p>As of Wicket 6.9 we ship JQuery 1.10.1. The JQuery project has
+decided to remove deprecated APIs from their codebase from JQuery 1.9
+and up. This means that JQuery plugins using these deprecated APIs no
+longer work. See the JQuery migration guide for more information,
+available from http://jquery.com/upgrade-guide/1.9/</p>
+
+<p>If your application depends on these deprecated APIs you can easily
+downgrade to JQuery 1.8.3-the previously provided JQuery that still
+contains these APIs. Download the 1.8.3 release of jquery and add it
+to your project in its application’s init method:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">getJavaScriptLibrarySettings</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">setJQueryReference</span><span class="o">(</span><span class="n">yourJquery183ResourceReference</span><span class="o">);</span>
+    <span class="o">}</span></code></pre></div>
+
+<h3 id="cdi-injection-issue">CDI injection issue</h3>
+
+<p>In the CDI releases of Weld 2.0.1 and prior, it was assumed that
+injection in anonymous inner classes was not legal and when
+attempted, it resulted in an exception:</p>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">Caused by: org.jboss.weld.exceptions.DefinitionException:
+WELD-000070 Simple bean [EnhancedAnnotatedTypeImpl] private class
+com.example.HomePage$AForm cannot be a non-static inner class</code></pre></div>
+
+<p>This was reported as
+<a href="https://issues.apache.org/jira/browse/WICKET-5226">WICKET-5226</a>, as
+it became an issue in Glassfish 4, which ships with Weld 2.0.1 (or
+earlier). We implemented a fix for this particular issue by not
+injecting into anonymous inner classes.</p>
+
+<p>Unfortunately this was not a bug that needed fixing on our part, but
+rather in the Weld framework (see
+<a href="https://issues.jboss.org/browse/WELD-1441">WELD-1441</a>)</p>
+
+<p>Therefore we reverted the commits done for WICKET-5226 and hope that
+Glassfish will upgrade their Weld implementation soon. For the whole
+story read
+<a href="https://issues.apache.org/jira/browse/WICKET-5264">WICKET-5264</a></p>
+
+<p>Glassfish has fixed this in trunk according to
+<a href="https://java.net/jira/browse/GLASSFISH-20619">GLASSFISH-20619</a> but
+the fix has yet to be integrated into a release.</p>
+
+<h3 id="using-this-release">Using this release</h3>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>6.11.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.11.0">http://www.apache.org/dyn/closer.cgi/wicket/6.11.0</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.11.0/binaries">http://www.apache.org/dyn/closer.cgi/wicket/6.11.0/binaries</a></li>
+</ul>
+
+<h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
+
+<p>If you upgrade from 6.y.z this release is a drop in replacement. If
+you come from a version prior to 6.0.0, please read our Wicket 6
+migration guide found at</p>
+
+<ul>
+  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0">Migration to Wicket 6.0</a></li>
+</ul>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<h3 id="release-notes---wicket---version-6110">Release Notes - Wicket - Version 6.11.0</h3>
+
+<h4 id="bug">Bug</h4>
+
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5313">WICKET-5313</a> - Wrong HTML attribute used in SizeTagModifier (wicket-bean-validation)</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5315">WICKET-5315</a> - PriorityHeaderItem+OnDomReadyHeaderItem has no priority in Ajax response</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5316">WICKET-5316</a> - Wicket Atmosphere CouldNotLockPageException</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5319">WICKET-5319</a> - CryptoMapper encrypts external URLs in ResourceReferences making the resources inaccessible</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5322">WICKET-5322</a> - “Source code” link doesn’t work at wicket-library.com</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5325">WICKET-5325</a> - ComponentRenderer.renderComponent does not render markup for ListView</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5329">WICKET-5329</a> - “Required” flag initialized too early in  PropertyValidator</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5332">WICKET-5332</a> - Autocomplete throws error when initialized in an AjaxLazyLoadPanel</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5334">WICKET-5334</a> - KittenCaptcha example is broken in IE10</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5335">WICKET-5335</a> - After selecting a file MultiFileUploadField does not render properly input field</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5339">WICKET-5339</a> - Broadcast.EXACT does not notify Behaviors of target Component</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5343">WICKET-5343</a> - AutoCompleteTextField suggestions popup position is wrong when its container has scrollbar</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5345">WICKET-5345</a> - Url.canonical() breaks when there are two consecutive “parent” segments followed by a normal segment</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5348">WICKET-5348</a> - JavaDoc for IColumn#getSortProperty() in misleading</li>
+</ul>
+
+<h4 id="improvement">Improvement</h4>
+
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5327">WICKET-5327</a> - CryptoMapper: insecure default encryption provider</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5331">WICKET-5331</a> - Make html5 form validation configurable</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5333">WICKET-5333</a> - wicket-bean-validation french translation</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5341">WICKET-5341</a> - JavaDoc for IFormValidator</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5354">WICKET-5354</a> - Make ResourceBundles and related classes easier for extension</li>
+</ul>
+
+		</div>
+        <div id="clearer"></div>
+		<div id="footer"><span>
+Copyright &copy; 2015 &mdash; The Apache Software Foundation. Apache Wicket,
+Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo
+are trademarks of The Apache Software Foundation. All other marks mentioned
+may be trademarks or registered trademarks of their respective owners.
+</span></div>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apache Wicket - Build a release</title>
+
+	<link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen" />
+
+    <!--[if lt ie 7]>
+	<link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen" />
+    <![endif]-->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+	<link rel="alternate" type="application/atom+xml" href="/atom.xml" />
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <div id="header"><a href="/"><h1 id="logo"><span>Apache Wicket</span></h1></a></div>
+		<div id="navigation">
+	<h5><a name="Navigation-Wicket"></a>Meet Wicket</h5>
+	<ul>
+		<li>
+			<a href="/" title="Index">Home</a>
+		</li>
+		<li>
+			<a href="/meet/introduction.html" title="Introduction">Introduction</a>
+		</li>
+		<li>
+			<a href="/meet/features.html" title="Features">Features</a>
+		</li>
+		<li>
+			<a href="/meet/buzz.html" title="Buzz">Buzz</a>
+		</li>
+		<li>
+			<a href="/meet/vision.html" title="Vision">Vision</a>
+		</li>
+		<li>
+			<a href="/meet/blogs.html" title="Blogs">Blogs</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-GettingStarted" id="Navigation-GettingStarted"></a>Get Started
+	</h5>
+	<ul>
+		<li>
+			<a href="/start/download.html" title="Download Wicket">Download Wicket</a>
+		</li>
+		<li>
+			<a href="/start/quickstart.html" title="Getting started via a Maven Archetype">Quickstart</a>
+		</li>
+		<li>
+			<a href="http://www.jweekend.com/dev/LegUp" rel="nofollow">More archetypes</a>
+		</li>
+		<li>
+			<a href="/help" title="Get help">Get help</a>
+		</li>
+		<li>
+			<a href="/help/email.html" title="Wicket Mailing Lists">Mailing Lists</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Documentation" id="Navigation-Documentation"></a>Learn
+	</h5>
+	<ul>
+		<li>
+			<a href="/start/userguide.html" title="User Guide">User Guide</a>
+		</li>
+		<li>
+			<a href="/learn/examples" title="Examples">Examples</a>
+		</li>
+		<li>
+			<a href="http://www.wicket-library.com/wicket-examples/compref/">Components</a>
+		</li>
+		<li>
+			<a href="/learn/projects/" title="Projects extending basic Wicket">Projects</a>
+		</li>
+		<li>
+			<a href="https://cwiki.apache.org/confluence/display/WICKET">Wiki</a>
+		</li>
+		<li>
+			<a href="https://cwiki.apache.org/confluence/display/WICKET/Reference+library">Reference guide</a>
+		</li>
+		<li>
+			<a href="/learn/books" title="Books">Books</a>
+		</li>
+		<li>
+			<a href="/learn/ides.html" title="IDEs">IDEs</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Releases" id="Navigation-Releases"></a>Releases
+	</h5>
+	<ul>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/6.19.0">Wicket 6.19</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.13">Wicket 1.5</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.4.23">Wicket 1.4</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.3.7">Wicket 1.3</a>
+		</li>
+		<li>
+			<a href="http://wicket.sf.net/wicket-1.2" class="external-link" rel="nofollow">Wicket 1.2</a>
+		</li>
+		<li>
+			<a href="http://wicket.sf.net/wicket-1.1" class="external-link" rel="nofollow">Wicket 1.1</a>
+		</li>
+		<li>
+			<a href="http://wicket.sf.net/wicket-1.0" class="external-link" rel="nofollow">Wicket 1.0</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Docs" id="Navigation-Docs"></a>API Docs
+	</h5>
+	<ul>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/6.x/" title="JavaDocs of Apache Wicket 6.x">Wicket 6.x</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/1.5.x/" title="JavaDocs of Apache Wicket 1.5.x">Wicket 1.5</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/1.4.x" title="JavaDocs of Apache Wicket 1.4.x">Wicket 1.4</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/1.3.x" title="JavaDocs of Apache Wicket 1.3.x">Wicket 1.3</a>
+		</li>
+	</ul>
+	<h5>Wicket 7.x</h5>
+	<ul>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/7.0.0-M5">Download M5</a>
+		</li>
+		<li>
+			<a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+7.0">Migration guide</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/7.x/" title="JavaDocs of Apache Wicket 7.x">API Docs 7.x</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Developers" id="Navigation-Developers"></a>Contribute
+	</h5>
+	<ul>
+		<li>
+			<a href="/contribute/write.html" title="Writing documentation">Writing docs</a>
+		</li>
+		<li>
+			<a href="/contribute/build.html" title="Building from SVN">Build Wicket</a>
+		</li>
+		<li>
+			<a href="/contribute/patch.html" title="Provide a patch">Provide a patch</a>
+		</li>
+		<li>
+			<a href="/contribute/release.html" title="Release Wicket">Release Wicket</a>
+		</li>
+		<li>
+			<a href="https://fisheye6.atlassian.com/browse/wicket-git" title="Git Overview" class="external-link" rel="nofollow">Fisheye</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Apache" id="Navigation-Apache"></a>Apache
+	</h5>
+	<ul>
+		<li>
+			<a href="http://www.apache.org/" class="external-link" rel="nofollow">Apache</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/licenses/" class="external-link" rel="nofollow">License</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/foundation/sponsorship.html" class="external-link" rel="nofollow">Sponsorship</a>
+		</li>
+		<li>
+			<a href="http://apache.org/foundation/thanks.html" class="external-link" rel="nofollow">Thanks</a>
+		</li>
+		<li>
+			<a href="/apache/friends.html" title="Apache projects using Wicket">Friends</a>
+		</li>
+	</ul>
+</div>
+
+		<div id="contentbody">
+			<h1>Build a release</h1>
+			<h2 id="contents">Contents</h2>
+<ul>
+  <li><a href="#release-60">Releasing Apache Wicket 6.x</a></li>
+  <li><a href="#release-14">Releasing Apache Wicket 1.4.x+</a></li>
+  <li><a href="#release-13">Releasing Apache Wicket 1.3.x</a></li>
+  <li><a href="#nexus">Staging Releases using the Apache Nexus Repository</a></li>
+  <li><a href="#announcing">Announcing the release</a></li>
+  <li><a href="#additional">Additional tasks</a></li>
+</ul>
+
+<h2 id="release-60">Releasing Apache Wicket 6.x</h2>
+
+<p>Per <a href="http://apache.org/dev/release.html">Apache release policy</a> we need to build, vote on and release a source distribution. As a convenience to our users, we can also provide binary packages, that are uploaded to Maven Central, and a binary archive for folks that for whatever reason don’t use Maven.</p>
+
+<h3 id="building-the-release">Building the Release</h3>
+
+<h4 id="required-software">Required software</h4>
+
+<p>This assumes running a unix-y environment (i.e. OS X, Linux) and that you have the necessary tools installed, such as recent Maven, Java 6, gpg (-agent).</p>
+
+<h4 id="preparing">Preparing</h4>
+
+<ul>
+  <li>Pull changes</li>
+  <li>Checkout master</li>
+  <li>Update changelog and commit them</li>
+</ul>
+
+<h4 id="building">Building</h4>
+
+<ul>
+  <li>Start gpg-agent as a daemon (OS X, using homebrew installation of gpg, gpg-agent, pinentry):</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">eval `gpg-agent --daemon --pinentry-program /usr/local/bin/pinentry`</span></code></pre></div>
+
+<ul>
+  <li>Create an environment variable such that you can copy/paste several of the following commands (substitute 6.0.0 with the number you’re actually going to release)</li>
+  <li>And create an environment variable for your Apache username for uploading the release:</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">export NEWVERSION=6.0.0</span>
+<span class="go">export APACHEID=apacheid</span></code></pre></div>
+
+<ul>
+  <li>Sign pom.xml such that gpg-agent has enabled your key (and remove the .asc file). This triggers the pinentry program and sets the stage for gpg-agent:</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">gpg --armor --detach-sign --use-agent --sign pom.xml</span>
+<span class="go">rm pom.xml.asc</span></code></pre></div>
+
+<ul>
+  <li>Create release branch: </li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn release:branch -DbranchName=build/wicket-$NEWVERSION</span></code></pre></div>
+
+<ul>
+  <li>Checkout the release branch: </li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">git checkout build/wicket-$NEWVERSION</span></code></pre></div>
+
+<ul>
+  <li>
+    <p>Update archetypes/quickstart/src/main/archetype-resources/pom.xml to use NEWVERSION of Wicket and commit</p>
+  </li>
+  <li>
+    <p>Use Maven to do the first steps of the release process by</p>
+    <ul>
+      <li>Fill in NEWVERSION for all but the experimental submodules</li>
+      <li>New development version doesn’t matter–just press enter, see next step</li>
+      <li>And running the following command:</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn release:prepare</span></code></pre></div>
+
+<ul>
+  <li>Remove last commit such that HEAD points to the NEWVERSION release, not the new development version</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">git reset HEAD^ --hard</span></code></pre></div>
+
+<ul>
+  <li>Create source archive:</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">git archive --format=tar.gz --prefix=apache-wicket-$NEWVERSION/ -o apache-wicket-$NEWVERSION.tar.gz wicket-$NEWVERSION</span>
+<span class="go">git archive --format=zip --prefix=apache-wicket-$NEWVERSION/ -o apache-wicket-$NEWVERSION.zip wicket-$NEWVERSION</span></code></pre></div>
+
+<ul>
+  <li><strong>NOTE 1</strong> the trailing ‘/’ after –prefix=NEWVERSION is vital for the tarball</li>
+  <li><strong>NOTE 2</strong> you can ignore the gpg generated messages telling ‘You need a passphrase to unlock the secret key for’, unless an error occurred—these messages are not error messages</li>
+  <li>Sign the packages, the git tag and create the digests:</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">gpg --armor --detach-sign --use-agent --sign apache-wicket-$NEWVERSION.tar.gz</span>
+<span class="go">gpg --armor --detach-sign --use-agent --sign apache-wicket-$NEWVERSION.zip</span>
+<span class="go">gpg --print-md SHA1 apache-wicket-$NEWVERSION.tar.gz &gt; apache-wicket-$NEWVERSION.tar.gz.sha</span>
+<span class="go">gpg --print-md MD5  apache-wicket-$NEWVERSION.tar.gz &gt; apache-wicket-$NEWVERSION.tar.gz.md5</span>
+<span class="go">gpg --print-md SHA1 apache-wicket-$NEWVERSION.zip &gt; apache-wicket-$NEWVERSION.zip.sha</span>
+<span class="go">gpg --print-md MD5  apache-wicket-$NEWVERSION.zip &gt; apache-wicket-$NEWVERSION.zip.md5</span></code></pre></div>
+
+<p>To sign the tag (overwrites the maven generated tag), execute:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">git tag -s --force wicket-$NEWVERSION</span></code></pre></div>
+
+<h4 id="staging-the-build">Staging the build</h4>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">ssh $APACHEID@people.apache.org mkdir public_html/wicket-$NEWVERSION</span>
+<span class="go">scp apache-wicket-* $APACHEID@people.apache.org:public_html/wicket-$NEWVERSION</span></code></pre></div>
+
+<p>The step below uploads the artifacts to a staging area for Maven.
+* assumes you have an Apache nexus account
+* will checkout a fresh copy and build it (ask Maven for why)
+* artifacts will have different signature than in previous release:prepare build (due to times changing)</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn release:perform</span></code></pre></div>
+
+<p>This will upload artifacts and signatures to Apache nexus in a staging repository.</p>
+
+<h4 id="create-a-binary-release">Create a binary release</h4>
+
+<p>As we don’t vote on binary packages, but do want to cater to developers not using Maven, it is very convenient to create a download for non-Maven users.</p>
+
+<p>The binary distribution should contain the same jar files that are uploaded to Maven Central. Unfortunately the Maven build creates duplicate jar files, but with different manifests (due to the inclusion of date/time of build), and the jar files have different signatures. Therefore it is necessary to create a distribution of the artifacts generated by the <code>mvn release:perform</code> command.</p>
+
+<p>Perform the following commands in the root of your Wicket checkout to create the binary release files.</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mkdir apache-wicket-$NEWVERSION</span>
+<span class="go">cd apache-wicket-$NEWVERSION</span>
+<span class="go">find ../target/checkout ! \( -type d -name &quot;WEB-INF&quot; -prune \) -regex &quot;.*wicket-.*.[jw]ar&quot; ! -name &quot;*-sources*&quot; ! -name &quot;*-javadoc*&quot; ! -name &quot;*wicket-archetype-quickstart*&quot; ! -name &quot;wicket-common-tests*&quot;  -type f -exec cp {} . \;</span>
+<span class="go">find ../target/checkout ! \( -type d -name &quot;WEB-INF&quot; -prune \) -regex &quot;.*wicket-.*.[jw]ar\.asc&quot; ! -name &quot;*-sources*&quot; ! -name &quot;*-javadoc*&quot; ! -name &quot;*wicket-archetype-quickstart*&quot; ! -name &quot;wicket-common-tests*&quot;  -type f -exec cp {} . \;</span>
+<span class="go">cp ../LICENSE .</span>
+<span class="go">cp ../README .</span>
+<span class="go">cp ../NOTICE .</span>
+<span class="go">cd ..</span>
+<span class="go">tar cfz apache-wicket-$NEWVERSION-bin.tar.gz apache-wicket-$NEWVERSION</span>
+<span class="go">zip -r apache-wicket-$NEWVERSION-bin.zip apache-wicket-$NEWVERSION</span>
+<span class="go">gpg --armor --detach-sign --use-agent --sign apache-wicket-$NEWVERSION-bin.tar.gz</span>
+<span class="go">gpg --armor --detach-sign --use-agent --sign apache-wicket-$NEWVERSION-bin.zip</span>
+<span class="go">gpg --print-md SHA1 apache-wicket-$NEWVERSION-bin.tar.gz &gt; apache-wicket-$NEWVERSION-bin.tar.gz.sha</span>
+<span class="go">gpg --print-md MD5  apache-wicket-$NEWVERSION-bin.tar.gz &gt; apache-wicket-$NEWVERSION-bin.tar.gz.md5</span>
+<span class="go">gpg --print-md SHA1 apache-wicket-$NEWVERSION-bin.zip &gt; apache-wicket-$NEWVERSION-bin.zip.sha</span>
+<span class="go">gpg --print-md MD5  apache-wicket-$NEWVERSION-bin.zip &gt; apache-wicket-$NEWVERSION-bin.zip.md5</span>
+<span class="go">ssh $APACHEID@people.apache.org mkdir public_html/wicket-$NEWVERSION/bin</span>
+<span class="go">scp apache-wicket-*bin.* $APACHEID@people.apache.org:public_html/wicket-$NEWVERSION/bin</span></code></pre></div>
+
+<p>This binary release contains all required files to comply with the release policy, and the binary artefacts generated by our Maven release build, including the experimental modules and examples.</p>
+
+<h4 id="vote-the-build">Vote the build</h4>
+
+<p>Start a vote on dev@ for this release. Allow for at least 72 hours, and ensure you take into account weekends.</p>
+
+<h4 id="promoting-the-build">Promoting the build</h4>
+
+<p>When the vote has passed successfully (at least 3 binding +1’s) push the branch and the tag to Apache git:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">git push origin build/wicket-$NEWVERSION:refs/heads/build/wicket-$NEWVERSION</span>
+<span class="go">git push -tags origin</span></code></pre></div>
+
+<p>You only need to do them if you haven’t done so yet.</p>
+
+<p>See also <a href="#nexus">managing nexus</a> for the steps needed to publish the artifacts to Maven Central. And don’t forget to announce the release!</p>
+
+<h2 id="release-14">Releasing Apache Wicket 1.4.x+</h2>
+
+<h3 id="building-the-release-1">Building the Release</h3>
+
+<h4 id="preparing-1">Preparing</h4>
+
+<ul>
+  <li>Ask the dev@ mailing list if there are any issues that still need to be in the release (looking at JIRA is a good start)</li>
+  <li><a href="https://issues.apache.org/jira/plugins/servlet/project-config/WICKET/versions">Release</a> the version in JIRA</li>
+  <li>Assuming there are none, and you are now in build mode, update the CHANGELOG-x.y file
+(you can use JIRA for this list: go to “releases”, and under “unreleased”, next to your version, there’s a release notes link)</li>
+</ul>
+
+<p>Make sure your <code>~/.m2/settings.xml</code> contains the following definition</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="go">&lt;settings&gt;</span>
+<span class="go">&lt;servers&gt;</span>
+<span class="go">        &lt;server&gt;</span>
+<span class="go">            &lt;id&gt;apache.releases.https&lt;/id&gt;</span>
+<span class="go">            &lt;username&gt;$your_apache_username&lt;/username&gt;</span>
+<span class="go">            &lt;password&gt;$your_apache_password&lt;/password&gt;</span>
+<span class="go">        &lt;/server&gt;</span>
+<span class="go">&lt;/servers&gt;</span>
+<span class="go">&lt;/settings&gt;</span></code></pre></div>
+
+<ul>
+  <li>Make sure you have a GnuPG key which is added to <a href="https://svn.apache.org/repos/asf/wicket/common/KEYS">KEYS</a>.
+Read the header of KEYS file to see how to add it.</li>
+  <li>Copy release-igor.sh script and modify any commands which don’t match your environment (e.g. mvn5)</li>
+  <li>Run ./release-mine.sh and enter the required input (new version, gpg passphrase, etc.). The script
+will create the build branch in Git, will upload the artifacts at Apache Nexus Staging repository and
+will copy the assemblies to your people.apache.org account.</li>
+  <li>Send vote message to dev@ mailing list.  Include link to the closed repository for testing against.</li>
+  <li>Wait requisite 72 hours for the vote to pass (we hope)</li>
+  <li>Copy release to apache mirrors</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">ssh people.apache.org</span>
+<span class="go">mkdir /www/www.apache.org/dist/wicket/x.y.z</span>
+<span class="go">mv ~/public_html/wicket-x.y.z/dist/* /www/www.apache.org/dist/wicket/x.y.z</span>
+<span class="go">chown -R :wicket /www/www.apache.org/dist/wicket/x.y.z</span></code></pre></div>
+
+<ul>
+  <li>Login to <a href="https://repository.apache.org">Apache Nexus Staging repo</a>, select the closed repository and click <strong>Release</strong>.  It will be accessible immediately through the apache release repo and then within 1-2 hours through maven central.</li>
+  <li>If the release is voted down you can <strong>Drop</strong> the staged release and then restage later after incorporating the necessary changes.</li>
+  <li>Tag the release in Git:</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">git checkout build/wicket-x.y.z</span>
+<span class="go">git tag release/wicket-x.y.z</span>
+<span class="go">git push --tags</span></code></pre></div>
+
+<ul>
+  <li>Wait until repo1.maven.org has picked up the release artifacts.</li>
+  <li>Wait 24 hours until mirrors picked up release artifacts</li>
+  <li>Announce (see <a href="#announcing">below</a>)</li>
+</ul>
+
+<h2 id="nexus">Staging Releases using the Apache Nexus Staging Repository</h2>
+
+<p>The key to stage and manage repositories on <a href="https://repository.apache.org">Apache Nexus Staging repo</a> are your Apache Commiter credentials.</p>
+
+<h3 id="staging-artifacts">Staging Artifacts</h3>
+
+<p><strong>Note</strong>: The steps below are part of release-igor.sh script!</p>
+
+<p>When you run <strong>mvn -P release deploy</strong> the generated artifacts will be uploaded into a Nexus staging repository.</p>
+
+<p>Maven sends a username/password when attempting to upload the artifacts.</p>
+
+<p>The <code>&lt;id&gt;</code> of the staging repository is: <strong>apache.releases.https</strong>.</p>
+
+<p>Place a <code>&lt;server&gt;</code> definition in your <code>~/.m2/settings.xml</code> file like this:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="go">&lt;settings&gt;</span>
+<span class="go">&lt;servers&gt;</span>
+<span class="go">        &lt;server&gt;</span>
+<span class="go">            &lt;id&gt;apache.releases.https&lt;/id&gt;</span>
+<span class="go">            &lt;username&gt;$username&lt;/username&gt;</span>
+<span class="go">            &lt;password&gt;$password&lt;/password&gt;</span>
+<span class="go">        &lt;/server&gt;</span>
+<span class="go">&lt;/servers&gt;</span>
+<span class="go">&lt;/settings&gt;</span></code></pre></div>
+
+<p>This works if you can deploy artifacts into the repository.apache.org properly (i.e. you don’t see failures mentioning 401 errors).</p>
+
+<h3 id="managing-staged-artifacts">Managing Staged Artifacts</h3>
+
+<p>By logging in with your Apache committer credentials to <a href="https://repository.apache.org">Apache Nexus Staging repo</a> you can access the management interface for the staged artifacts.</p>
+
+<p>The interface will allow you to:
+* View the staging repositories.
+* Close staging repositories.
+* Release closed repository artifacts (into the release repo and after 1-2 hours into central as well).
+* Drop open and closed staging repositories.</p>
+
+<p>More information is available at: <a href="http://www.apache.org/dev/publishing-maven-artifacts.html#staging-maven">Publishing Maven Artifacts</a></p>
+
+<h2 id="announcing">Announcing the release</h2>
+
+<p>Edit the _config.yaml file. This file contains a site wide configuration
+section specific to Wicket:</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="l-Scalar-Plain">wicket</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">version</span><span class="p-Indicator">:</span>    <span class="l-Scalar-Plain">1.4.10</span>
+    <span class="l-Scalar-Plain">released</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">2010-08-11</span>
+    <span class="l-Scalar-Plain">versions</span><span class="p-Indicator">:</span>   <span class="p-Indicator">[</span><span class="nv">1.3.7</span><span class="p-Indicator">,</span> <span class="nv">1.3-SNAPSHOT</span><span class="p-Indicator">,</span> <span class="nv">1.4.9</span><span class="p-Indicator">,</span> <span class="nv">1.4.10</span><span class="p-Indicator">,</span> <span class="nv">1.4-SNAPSHOT</span><span class="p-Indicator">,</span> <span class="nv">1.5-M1</span><span class="p-Indicator">,</span> <span class="nv">1.5-SNAPSHOT</span><span class="p-Indicator">]</span></code></pre></div>
+
+<p>You’ll need to edit this part: modify the version, update the released date,
+and add the new version to the versions list (remove any stale releases,
+typically just leave the previous release as well).</p>
+
+<ul>
+  <li>Write an announcement in the _posts directory</li>
+  <li>Restart jekyll to regenerate the pages: it will automatically generate the
+correct links in the navigation menu, quickstart and downloads page. It will
+update the doap.rdf file, atom.xml rss feed and index.html file so that it
+contains your announcement.</li>
+  <li>Send email to: users@wicket.apache.org, dev@wicket.apache.org, announce@wicket.apache.org, announce@apache.org</li>
+  <li>Misc. websites like javalobby, serverside, onjava etc.</li>
+</ul>
+
+<h2 id="additional-tasks---additional-">Additional tasks ## { #additional }</h2>
+
+<ul>
+  <li>Commit the JavaDocs to
+<a href="https://svn.apache.org/repos/asf/wicket/common/site/apidocs/1.4">https://svn.apache.org/repos/asf/wicket/common/site/apidocs/1.4</a>
+svnpubsub will push this directly to our website. (example script below)</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">#</span> <span class="k">do</span> this in your locally-checked-out release branch <span class="o">(</span>i.e. svn.../releases/wicket-1.4.13<span class="o">)</span>
+<span class="go">mvn javadoc:aggregate</span>
+<span class="gp">#</span> note that you may need to tweak these paths to fit your configuration:
+<span class="go">cp -r target/site/apidocs/* ../wicket-common/site/apidocs/1.4/</span>
+<span class="go">cd ../wicket-common/</span>
+<span class="gp">#</span> call <span class="s2">&quot;svn add&quot;</span> <span class="k">for</span> files that are new <span class="o">(</span>there<span class="err">&#39;</span>s probably an easier way to <span class="k">do</span> this<span class="o">)</span>
+<span class="go">svn stat | grep -e &#39;^?&#39; | sed &#39;s/\?\W*//&#39; | xargs svn add</span>
+<span class="go">svn commit -m &quot;changes to update javadocs to latest release&quot;</span></code></pre></div>
+
+
+		</div>
+        <div id="clearer"></div>
+		<div id="footer"><span>
+Copyright &copy; 2015 &mdash; The Apache Software Foundation. Apache Wicket,
+Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo
+are trademarks of The Apache Software Foundation. All other marks mentioned
+may be trademarks or registered trademarks of their respective owners.
+</span></div>
+
+    </div>
+</div>
+</body>
+</html>

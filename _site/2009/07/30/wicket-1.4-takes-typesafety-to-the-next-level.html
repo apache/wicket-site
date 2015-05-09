@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apache Wicket - Apache Wicket 1.4 takes typesafety to the next level</title>
+
+	<link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen" />
+
+    <!--[if lt ie 7]>
+	<link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen" />
+    <![endif]-->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+	<link rel="alternate" type="application/atom+xml" href="/atom.xml" />
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <div id="header"><a href="/"><h1 id="logo"><span>Apache Wicket</span></h1></a></div>
+		<div id="navigation">
+	<h5><a name="Navigation-Wicket"></a>Meet Wicket</h5>
+	<ul>
+		<li>
+			<a href="/" title="Index">Home</a>
+		</li>
+		<li>
+			<a href="/meet/introduction.html" title="Introduction">Introduction</a>
+		</li>
+		<li>
+			<a href="/meet/features.html" title="Features">Features</a>
+		</li>
+		<li>
+			<a href="/meet/buzz.html" title="Buzz">Buzz</a>
+		</li>
+		<li>
+			<a href="/meet/vision.html" title="Vision">Vision</a>
+		</li>
+		<li>
+			<a href="/meet/blogs.html" title="Blogs">Blogs</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-GettingStarted" id="Navigation-GettingStarted"></a>Get Started
+	</h5>
+	<ul>
+		<li>
+			<a href="/start/download.html" title="Download Wicket">Download Wicket</a>
+		</li>
+		<li>
+			<a href="/start/quickstart.html" title="Getting started via a Maven Archetype">Quickstart</a>
+		</li>
+		<li>
+			<a href="http://www.jweekend.com/dev/LegUp" rel="nofollow">More archetypes</a>
+		</li>
+		<li>
+			<a href="/help" title="Get help">Get help</a>
+		</li>
+		<li>
+			<a href="/help/email.html" title="Wicket Mailing Lists">Mailing Lists</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Documentation" id="Navigation-Documentation"></a>Learn
+	</h5>
+	<ul>
+		<li>
+			<a href="/start/userguide.html" title="User Guide">User Guide</a>
+		</li>
+		<li>
+			<a href="/learn/examples" title="Examples">Examples</a>
+		</li>
+		<li>
+			<a href="http://www.wicket-library.com/wicket-examples/compref/">Components</a>
+		</li>
+		<li>
+			<a href="/learn/projects/" title="Projects extending basic Wicket">Projects</a>
+		</li>
+		<li>
+			<a href="https://cwiki.apache.org/confluence/display/WICKET">Wiki</a>
+		</li>
+		<li>
+			<a href="https://cwiki.apache.org/confluence/display/WICKET/Reference+library">Reference guide</a>
+		</li>
+		<li>
+			<a href="/learn/books" title="Books">Books</a>
+		</li>
+		<li>
+			<a href="/learn/ides.html" title="IDEs">IDEs</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Releases" id="Navigation-Releases"></a>Releases
+	</h5>
+	<ul>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/6.19.0">Wicket 6.19</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.13">Wicket 1.5</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.4.23">Wicket 1.4</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.3.7">Wicket 1.3</a>
+		</li>
+		<li>
+			<a href="http://wicket.sf.net/wicket-1.2" class="external-link" rel="nofollow">Wicket 1.2</a>
+		</li>
+		<li>
+			<a href="http://wicket.sf.net/wicket-1.1" class="external-link" rel="nofollow">Wicket 1.1</a>
+		</li>
+		<li>
+			<a href="http://wicket.sf.net/wicket-1.0" class="external-link" rel="nofollow">Wicket 1.0</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Docs" id="Navigation-Docs"></a>API Docs
+	</h5>
+	<ul>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/6.x/" title="JavaDocs of Apache Wicket 6.x">Wicket 6.x</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/1.5.x/" title="JavaDocs of Apache Wicket 1.5.x">Wicket 1.5</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/1.4.x" title="JavaDocs of Apache Wicket 1.4.x">Wicket 1.4</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/1.3.x" title="JavaDocs of Apache Wicket 1.3.x">Wicket 1.3</a>
+		</li>
+	</ul>
+	<h5>Wicket 7.x</h5>
+	<ul>
+		<li>
+			<a href="http://www.apache.org/dyn/closer.cgi/wicket/7.0.0-M5">Download M5</a>
+		</li>
+		<li>
+			<a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+7.0">Migration guide</a>
+		</li>
+		<li>
+			<a href="http://ci.apache.org/projects/wicket/apidocs/7.x/" title="JavaDocs of Apache Wicket 7.x">API Docs 7.x</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Developers" id="Navigation-Developers"></a>Contribute
+	</h5>
+	<ul>
+		<li>
+			<a href="/contribute/write.html" title="Writing documentation">Writing docs</a>
+		</li>
+		<li>
+			<a href="/contribute/build.html" title="Building from SVN">Build Wicket</a>
+		</li>
+		<li>
+			<a href="/contribute/patch.html" title="Provide a patch">Provide a patch</a>
+		</li>
+		<li>
+			<a href="/contribute/release.html" title="Release Wicket">Release Wicket</a>
+		</li>
+		<li>
+			<a href="https://fisheye6.atlassian.com/browse/wicket-git" title="Git Overview" class="external-link" rel="nofollow">Fisheye</a>
+		</li>
+	</ul>
+	<h5>
+		<a name="Navigation-Apache" id="Navigation-Apache"></a>Apache
+	</h5>
+	<ul>
+		<li>
+			<a href="http://www.apache.org/" class="external-link" rel="nofollow">Apache</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/licenses/" class="external-link" rel="nofollow">License</a>
+		</li>
+		<li>
+			<a href="http://www.apache.org/foundation/sponsorship.html" class="external-link" rel="nofollow">Sponsorship</a>
+		</li>
+		<li>
+			<a href="http://apache.org/foundation/thanks.html" class="external-link" rel="nofollow">Thanks</a>
+		</li>
+		<li>
+			<a href="/apache/friends.html" title="Apache projects using Wicket">Friends</a>
+		</li>
+	</ul>
+</div>
+
+		<div id="contentbody">
+			<h1>Apache Wicket 1.4 takes typesafety to the next level</h1>
+			<p>The Apache Wicket project is proud to announce the release of Apache Wicket
+1.4. Apache Wicket is an open source, component oriented Java web application
+framework. With overwhelming support from the user community, this release
+marks a departure from the past where we leave Java 1.4 behind and we require
+Java 5 as the minimum JDK version. By moving to Java 5 as the required
+minimum platform, we were able to utilize Java 5 idioms and increase the type
+safety of our APIs. Using Java generics you can now write typesafe web
+applications and create typesafe, self documenting, reusable custom
+components.</p>
+
+<h2 id="download-apache-wicket-14">Download Apache Wicket 1.4</h2>
+
+<p>You can download the release here:
+http://www.apache.org/dyn/closer.cgi/wicket/1.4.0</p>
+
+<p>Or use this in your Maven pom’s to upgrade to the new version:</p>
+
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>wicket<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.4.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
+
+<p>You will need to upgrade all modules (i.e. wicket, wicket-extensions) to
+their 1.4 counterparts. It is not possible to mix Wicket 1.3 libraries with
+1.4 libraries due to API changes.</p>
+
+<h2 id="most-notable-changes">Most notable changes</h2>
+
+<p>From all the changes that went into this release, the following are the most
+important ones:</p>
+
+<ul>
+  <li>Generified <code>IModel</code> interface and implementations increases type safety in your Wicket applications</li>
+  <li><code>Component#getModel()</code> and <code>Component#setModel()</code> have been renamed to <code>getDefaultModel()</code> and <code>setDefaultModel()</code> to better support generified models</li>
+  <li>The Spring modules have been merged (wicket-spring-annot is now obsolete, all you need is wicket-spring)</li>
+  <li>Many API’s have been altered to better work with Java 5’s idioms</li>
+  <li>Wicket jars are now packaged with metadata that makes them OSGI bundles</li>
+</ul>
+
+<p>Apart from these changes, the release is mostly compatible with Wicket 1.3
+and upgrading shouldn’t take too long. Early adopters report about a days
+work to upgrade medium to large applications to Wicket 1.4. Read the
+migration guide to learn more about the changes in our APIs. To learn more
+about all the improvements and new features that went into this release,
+check the solved issue list in our JIRA instance.</p>
+
+<h2 id="increased-type-safety">Increased type safety</h2>
+
+<p>Moving towards Java 5 has given us the opportunity to utilize generics and
+clarify our API’s. For example, take a look at <code>DropDownChoice</code>—one of the
+components with the most questions on our list prior to 1.4. A
+<code>DropDownChoice</code> component is a form component that displays a list of
+available choices in a drop down box, and allows one selection to be made.
+DropDownChoice components are typically used to display a list of countries,
+nationalities, credit card processors, etc.</p>
+
+<p>The signature of a constructor for the <code>DropDownChoice</code> component in Wicket
+1.3 was:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DropDownChoice</span> <span class="kd">extends</span> <span class="o">...</span>
+    <span class="kd">public</span> <span class="nf">DropDownChoice</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">IModel</span> <span class="n">model</span><span class="o">,</span> <span class="n">IModel</span> <span class="n">choices</span><span class="o">)</span>
+<span class="o">}</span></code></pre></div>
+
+<p>As you can see, this constructor doesn’t give much insight into what goes
+where (other than the names of the parameters). The first parameter is the
+component identifier, the second parameter is the model that contains the
+selection, and the third parameter is a model that contains the list of
+choices from which the user can select one. You’ll have to read the JavaDoc
+to assign the right IModel values to the right parameters. Now take a look at
+the same constructor, but now in Wicket 1.4. The signature for our generified
+constructor looks like the following example.</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">DropDownChoice</span> <span class="kd">extends</span> <span class="o">...</span>
+    <span class="kd">public</span> <span class="nf">DropDownChoice</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">IModel</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">model</span><span class="o">,</span> <span class="n">IModel</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">List</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">T</span><span class="o">&gt;&gt;</span> <span class="n">choices</span><span class="o">)</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Here we communicate that the first <code>IModel</code> parameter is a <code>T</code>, which is the
+single value that will be provided when the <code>DropDownChoice</code> selects one
+value. The second parameter provides a <code>List</code> of objects that extend <code>T</code>, the
+choices from which to select one value. This was not apparent in the Wicket
+1.3 API, and the type safety brought by generics make this much more clear,
+albeit much more verbose.</p>
+
+<h2 id="removal-of-default-model-from-component">Removal of default model from component</h2>
+
+<p>In Wicket 1.3 each component had by default a model: a <code>Label</code> had a model, a
+<code>Link</code> and even <code>WebMarkupContainer</code> had a model property (all because they
+extend <code>Component</code> which has a model property). When we generified <code>IModel</code>,
+this had averse effects on <code>Component</code>: suddenly all components had to be
+generified and had to take the type parameter of the model that was
+associated with it. But that poses problems for components that either do not
+use a model or use two different model types: which one should be in the
+lead? We chose to generify only the components that clearly benefited from
+the extra type information, leading to clean code like this:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">ListView</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">peopleListView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;(</span><span class="s">&quot;people&quot;</span><span class="o">,</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Link</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;(</span><span class="s">&quot;editPerson&quot;</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">()){</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+                    <span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="n">getModelObject</span><span class="o">();</span>
+                    <span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="nf">EditPersonPage</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
+                <span class="o">}</span>
+            <span class="o">});</span>
+        <span class="o">}</span>
+    <span class="o">};</span></code></pre></div>
+
+
+		</div>
+        <div id="clearer"></div>
+		<div id="footer"><span>
+Copyright &copy; 2015 &mdash; The Apache Software Foundation. Apache Wicket,
+Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo
+are trademarks of The Apache Software Foundation. All other marks mentioned
+may be trademarks or registered trademarks of their respective owners.
+</span></div>
+
+    </div>
+</div>
+</body>
+</html>

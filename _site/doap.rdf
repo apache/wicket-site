@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl"?>
+<rdf:RDF xmlns="http://usefulinc.com/ns/doap#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:asfext="http://projects.apache.org/ns/asfext#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xml:lang="en">
+<!--
+  =======================================================================
+
+   Copyright (c) 2010 The Apache Software Foundation.  
+   All rights reserved.
+
+  =======================================================================
+-->
+	<Project rdf:about="http://wicket.apache.org/">
+		<created>2010-06-21</created>
+		<license rdf:resource="http://usefulinc.com/doap/licenses/asl20"/>
+		<name>Apache Wicket</name>
+		<homepage rdf:resource="http://wicket.apache.org"/>
+		<asfext:pmc rdf:resource="http://wicket.apache.org/"/>
+		<shortdesc>Apache Wicket is an open source Java component oriented web application framework.</shortdesc>
+		<description>With proper mark-up/logic separation, a POJO data model, and a refreshing lack of XML, Apache Wicket makes developing web-apps simple and enjoyable again. Swap the boilerplate, complex debugging and brittle code for powerful, reusable components written with plain Java and HTML.</description>
+		<bug-database rdf:resource="http://issues.apache.org/jira/browse/WICKET"/>
+		<mailing-list rdf:resource="http://wicket.apache.org"/>
+		<download-page rdf:resource="http://wicket.apache.org"/>
+		<programming-language>Java</programming-language>
+		<category rdf:resource="http://projects.apache.org/category/web-framework"/>
+		<release>
+			<Version>
+				<name>Latest Stable Release</name>
+				<created>2015-02-02</created>
+				<revision>6.19.0</revision>
+			</Version>
+		</release>
+		<repository>
+			<SVNRepository>
+				<location rdf:resource="http://svn.apache.org/repos/asf/wicket/trunk"/>
+				<browse rdf:resource="http://svn.apache.org/viewvc/wicket/trunk"/>
+			</SVNRepository>
+		</repository>
+	</Project>
+</rdf:RDF>
