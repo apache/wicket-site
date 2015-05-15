@@ -1,4 +1,4 @@
-destination: ./_site
+destination: ./content
 lsi:         false
 port: 4000
 highlighter:    pygments
