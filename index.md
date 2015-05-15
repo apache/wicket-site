@@ -47,4 +47,4 @@ learn more about the book):
 <a href="/learn/books/wicket-jp.html"><img src="/learn/books/wicket-jp.png" height="200px" /></a>
 <a href="/learn/books/koda.html"><img src="/learn/books/koda.jpg" height="200px" /></a>
 
-<strong>Testing gitpubsub!</strong>
+<strong>Testing gitpubsub 2!</strong>
