@@ -1,49 +1,33 @@
 ---
 layout: default
 title: Create a Wicket Quickstart 
+subtitle: With the quickstart you’ll be up and running in seconds
+preamble: Use the following wizard to generate a Quick Start Project using Maven. Paste the generated command line into a shell (DOS prompt or unix shell) and create a project with Wicket in a jiffy.
+pageclasses: quickstart
+atitlePicture:
+  - title: Ready, set, go!
+    src: ../img/getstarted.png
+    alt: .oO
 ---
-
-There are two really good reasons to create a Wicket quickstart.  The first is if 
-you just want to get started using Wicket quickly.  The quickstart will set up a
-ready-to-use project in under a minute (depending on your bandwidth).  Another 
-great reason to create a quickstart is to accompany a bug report.  If you report
-a bug in JIRA or on the mailing list, the core developers may not be able to 
-recreate it easily.  In most cases, you'll be told "please create a quickstart and
-attach it to a JIRA issue".  If you don't know how to do that, don't worry - just
-follow the instructions below.  (If you are submitting a quickstart for an issue 
-report, please be sure to read the subheading below - "Submitting a quickstart 
-for an issue report"
-
-Quickstarts are made from a Maven archetype.  So, you will need to have
-[Maven 2](http://maven.apache.org) installed and working (from the command line)
-before following this.
-
-Creating a quickstart provides only a very basic starting point for your Wicket
-project.  If you are looking for examples of how to use Wicket and its various 
-features, please refer to the *wicket-example* projects instead!
-
-## Creating the project - with Maven
-
-To create your project, copy and paste the command line generated after
-typing in the groupId, artifactId and version.
-
-<style>	
-	#mvncmd {
-		padding-left: 25px;
-	}
-	#mvncmd label {
-		font-weight: bold;
-		width: 100px;
-		display: inline-block;
-	}
-	#mvncmd input, #mvncmd select, #mvncm span { width: 180px; margin-bottom: 5px;}
-	#mvncmd textarea { width: 400px; height: 100px; }
-	#mvncmd br { clear: left; }	
-	#mvncmd div { clear:both; padding-left: 25px; vertical-align:top;}
-</style>
+<script type="text/javascript" charset="utf-8" src="{{ site.baseurl }}/javascript/ZeroClipboard-1.1.7.min.js"></script>
 <script type="text/javascript">
-	function changeIt()
-	{
+    $(document).ready(function(){
+      
+      ZeroClipboard.setDefaults( { moviePath: '{{ site.baseurl }}/javascript/ZeroClipboard-1.1.7.swf' } );
+      var clip = new ZeroClipboard(document.getElementById("cmdLineCopy"));
+      clip.on( 'noflash', function ( client, args ) {
+        document.getElementById("cmdLineCopy").style.display = 'none';
+      });
+      clip.on( 'wrongflash', function ( client, args ) {
+        document.getElementById("cmdLineCopy").style.display = 'none';
+      });
+      $(document).resize(function() {
+        clip.reposition();
+      });
+    });
+
+    function changeIt()
+    {
 		var groupId = document.getElementById("groupId").value;
 		var artifactId = document.getElementById("artifactId").value;
 		var version = document.getElementById("version").value;
@@ -64,51 +48,85 @@ typing in the groupId, artifactId and version.
 
 		cmd += ' -DinteractiveMode=false'; 
 		document.getElementById("cmdLine").value = cmd;
-	}
-</script>
-<div id="mvncmd">
-	<div>
-		<label for="groupId" title="Base Package">GroupId:</label>
-		<input type="text" id="groupId" value="com.mycompany" onkeyup="changeIt();" /><span title="Base Package">&nbsp;(?)</span><br/>
-	</div>
-	<div>
-		<label for="artifactId" title="Project Name">ArtifactId:</label> 
-		<input type="text" id="artifactId" value="myproject" onkeyup="changeIt();" /><span title="Project Name">&nbsp;(?)</span><br/>
-	</div>
-	<div>
-		<label for="version" title="Wicket Version">Version:</label>
-		<select id="version" onchange="changeIt();">
+    }
+  </script>
+
+## Before you start
+
+The Quick Start Wizard uses [Apache Maven](http://maven.apache.org) to
+make it really fast to get started. You should have Maven installed and
+working before you can use the Quick Start wizard.
+
+## 5 small steps to a web application
+
+Use the following steps to quickly generate a project to get you
+started:
+
+1.  Fill in the Maven coordinates for your project in the wizard and 
+    select the appropriate Wicket version
+2.  Copy the generated commandline to your clipboard and paste it in a 
+    terminal (or a DOS box)
+3.  Open the project in your IDE of choice
+4.  Start the `Start` class in the *src/test/java* folder
+5.  Open your browser to <a target="_blank" href="http://localhost:8080">http://localhost:8080</a>
+
+And you're done!
+
+## Quick Start Wizard
+
+Fill in your project details in the wizard below and copy the generated
+command line to your clipboard.
+
+<div class="quickstart-wizard">
+  <div>
+    <label title="Base Package" for="groupId">Group ID</label>
+    <input type="text" value="com.mycompany.myproject" onkeyup="changeIt();" id="groupId">
+  </div>
+  <div>
+    <label title="Project Name" for="artifactId">Artifact ID</label>
+    <input type="text" value="myproject" onkeyup="changeIt();" id="artifactId">
+  </div>
+  <div>
+    <label title="Wicket Version" for="version">Wicket Version</label>
+    <select onchange="changeIt();" id="version">
 {% for version in site.wicket.versions reversed %}
-		{% if version == site.wicket.version %}
-			<option value="{{version}}" selected="selected">{{version}}</option>
-		{% else %}
-			<option value="{{version}}">{{version}}</option>
-		{% endif %}
+{% if version == site.wicket.version %}
+	<option value="{{version}}" selected="selected">{{version}}</option>
+{% else %}
+	<option value="{{version}}">{{version}}</option>
+{% endif %}
 {% endfor %}
-		</select><span title="Wicket Version">&nbsp;(?)</span>
-	</div>
-	<div>
-		<label for="appserver" title="Server to deploy on">Server:</label>
-		<select id="appserver" onchange="changeIt();">
-			<option value="any" selected="selected">Any but Wild Fly</option>
-			<option value="wildfly" >Wild Fly (JBoss 8.x)</option>
-		</select><span title="Web/App Server">&nbsp;(?)</span>
-	</div>
-	<div>
-		<label for="cmdLine" id="cmdLabel">Command Line:</label>
-		<textarea id="cmdLine" onfocus="this.select();">
-		</textarea>
-		<script>changeIt();</script>
-	</div>
-	<br />
+    </select>
+  </div>
+  <div>
+<label for="appserver" title="Server to deploy on">Server to deploy on</label>
+<select id="appserver" onchange="changeIt();">
+	<option value="any" selected="selected">Any but Wild Fly</option>
+	<option value="wildfly" >Wild Fly (JBoss 8.x)</option>
+</select>
 </div>
+  <div>
+    <label id="cmdLabel" for="cmdLine">generated command line</label>
+    <textarea onfocus="this.select();" id="cmdLine"></textarea>
+    <script>changeIt();</script>
+  </div>
+  <div>
+    <button data-clipboard-target="cmdLine" class="clip_button" id="cmdLineCopy">copy to clipboard</button>
+  </div>
+</div>
+<br/>
 
-### Results
+With the generated command line on your clipboard open up a terminal
+window (or DOS box) and navigate to where you want the project to be
+generated (e.g. for Eclipse users this would be your workspace folder).
+Paste the command line into your terminal window and press «enter» to
+execute the command.
 
-This will produce the following project structure/files:
+#### Result of the Maven command
 
-<div style="margin-left: 3em; border: 1px solid black">
-<pre>
+Executing the Maven command line will result the following directory
+structure:
+
     .\myproject
         |   pom.xml
         |
@@ -133,75 +151,34 @@ This will produce the following project structure/files:
                     \---com
                         \---mycompany
                                 Start.java
-</pre>
-</div>
 
-### Using Maven quickstart with a specific IDE
+It might be different depending on your settings (and version of
+Wicket), but this is basically the standard layout for web projects.
 
-Maven has an integration with many IDEs.  If you want to use your new Maven-based
-Wicket quickstart with your favorite IDE, see one of these instructions:
+## Import the Quick Start in your IDE
 
-#### Eclipse
+The Wicket Quick Start uses Apache Maven to make it really fast to get
+started. You should have Maven installed and working before you can use
+the Quick Start wizard.
 
-Change directory into the project that you just created.  Now, run 
-`mvn eclipse:eclipse`.  This will set up the .project, .settings, and .classpath
-files that Eclipse requires.  
+### Eclipse
 
-Note that your workspace will have to have the classpath variable M2_REPO set to point to the directory where your local Maven repository exists.  You can see this page for how to do that with Eclipse: <http://maven.apache.org/plugins/maven-eclipse-plugin/usage.html>
+For Eclipse you should generate the Quick Start project within your
+workspace folder. You also need to ensure that you have m2eclipse
+installed in order to import the project. To import the project you
+select "Import existing project" from the File menu, and select the
+folder of your generated Quick Start project.
 
-Now, in Eclipse, you can choose "File" (menu), then "Import", then "Existing project".
-Navigate to the folder where your project exists and let Eclipse import it.  The classpath should
-be fully configured.
+### IntelliJ IDEA
 
-Alternatively install the [m2eclipse](http://m2eclipse.codehaus.org/) or
-[Eclipse IAM](http://www.eclipse.org/iam/) plugin and add the project
-directly.
+IntelliJ IDEA has native support for Maven projects. You just point the
+open project dialog to the place where you generated the Quick Start
+project and open the pom.xml file. IDEA will then open the project as
+any other Java project.
 
-#### IDEA ####
+### Netbeans
 
-From within IDEA, just use "File/Import Project", choose the project directory and specify that this is a Maven project.
-
-#### NetBeans ####
-
-To create a NetBeans project, just open the pom.xml directly.
-
-### More examples
-
-Many more information and examples can be found on our Wiki or
-[here](http://www.ralfebert.de/blog/wicket/wicket_eclipse_setup/)
-
-## Using your new project
-
-Wicket quickstart projects include a file named Start.java.  If you open this file in
-your IDE (after configuring the project in your IDE), you can run it as a Java application.
-It will run an embedded Jetty instance that will run your app on <http://localhost:8080>
-Navigate your browser to that address to see your app running.
-
-### Using the Jetty Plugin
-
-The Jetty plugin is also enabled by default in the quickstart.  If you are using Maven,
-you can change directory into the project and run the "mvn jetty:run" command.  This will
-compile the project and deploy it to an embeded instance of the Jetty servlet engine, 
-which will run on port 8080, by default. As a result, once running, your application will be available at <http://localhost:8080>.
-
-See the [Jetty plugin](http://www.mortbay.org/maven-plugin/index.html)
-documentation for configuration options, etc.
-
-## Submitting a quickstart for an issue report
-
-### Reproduce the problem
-
-Assuming you have followed the instructions above, the quickstart is now created and ready for you to develop.  Now comes the "duplicate the problem" part.  Try to create pages or components that reproduce the problem you were trying to report.  You can run the Start.java class from your
-IDE and go to <http://localhost:8080> to see your test application.  If you run the Start.java class
-in your IDE's debug mode, you should be able to attach breakpoints and have automatic class and 
-markup reloading.
-
-If you can't reproduce the problem - start looking at your own code.  Keep adding pieces from
-your code until either you reproduce the problem, or else you've found the bug in your own code.
-A lot of times, you will find the bug in your code just by trying to create a quickstart that
-demonstrates the bug in ours.  
-
-### Clean up the quickstart and submit it
-
-Once you have reproduced the desired behavior in your quickstart, it would be best to make it as small as possible before submitting.  The best way to do this is to run the "mvn clean" command from the project directory.  Then zip (or tar and gzip) the whole directory up and submit the zip (or tgz) file.  (The mvn clean command removes all of the compiled classes and generated artifacts, generally in your "target" directory, leaving only the actual source.)
-
+Netbeans has native support for Maven projects. You just point the open
+project dialog to the place where you generated the Quick Start project
+and open the pom.xml file. Netbeans will then open the project as any
+other Java project.

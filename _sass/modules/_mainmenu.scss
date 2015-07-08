@@ -1,0 +1,25 @@
+nav.mainmenu {
+    display:block;
+    margin:0 auto 2rem auto;
+    text-align:center;
+    ul {
+        list-style:none;
+    }
+    li {
+        display:inline-block;
+        font-size:12px;
+        text-transform: uppercase;
+        
+        &.active { border-bottom: 2px solid white;}
+    }
+    li+li {
+        margin-left:1*$grid-column;
+    }
+
+    a, a:active, a:hover {
+        border:none;
+        color:#fff;
+        font-weight:400;
+        text-decoration: none;
+    }
+}

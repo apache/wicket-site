@@ -1,0 +1,14 @@
+---
+layout: base
+---
+{% include jumbotron.html %}
+<div class="l-container">
+    <section>
+        {{ content }}
+    </section>
+{% for item in page.additionalContents %}
+    <section id="{{item.sectionId}}" class="{{item.cssClass}}">
+	   	{% include {{item.path}} %}
+    </section>
+{% endfor %}
+</div>

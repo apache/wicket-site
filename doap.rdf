@@ -13,7 +13,7 @@ layout: null
   =======================================================================
 -->
 	<Project rdf:about="http://wicket.apache.org/">
-		<created>2010-06-21</created>
+		<created>2004-04-01</created>
 		<license rdf:resource="http://usefulinc.com/doap/licenses/asl20"/>
 		<name>Apache Wicket</name>
 		<homepage rdf:resource="http://wicket.apache.org"/>
@@ -33,10 +33,11 @@ layout: null
 			</Version>
 		</release>
 		<repository>
-			<SVNRepository>
-				<location rdf:resource="http://svn.apache.org/repos/asf/wicket/trunk"/>
-				<browse rdf:resource="http://svn.apache.org/viewvc/wicket/trunk"/>
-			</SVNRepository>
+            <repository>
+                <GITRepository>
+                    <location rdf:resource="http://git-wip-us.apache.org/repos/asf?p=wicket.git"/>
+                    <browse rdf:resource="http://git-wip-us.apache.org/repos/asf?p=wicket.git"/>
+                </GITRepository>
 		</repository>
 	</Project>
 </rdf:RDF>

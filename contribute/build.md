@@ -25,7 +25,7 @@ Mergere website.
 Clone the master branch from Apache Git Wicket repository
 
 {% highlight console %}
-$ git clone https://git-wip-us.apache.org/repos/asf/wicket.git
+$ git clone http://git-wip-us.apache.org/repos/asf/wicket.git
 {% endhighlight %}
 
 This will give you a directory structure like the following directory tree:
@@ -83,7 +83,6 @@ source, but without the javadoc jars (this is a Wicket specific configuration,
 because build javadoc takes a long time).
 
 The following commands are useful:
-
 <table>
 <tr><th>Commandline</th><th>Description</th></tr>
 <tr><td>`mvn clean`</td><td>cleans up build artifacts</td></tr>
@@ -123,4 +122,24 @@ version. So in your pom.xml you can use:
 </dependency>
 {% endhighlight %}
 
-Read [IDE support](../learn/ides.html) to learn how to continue from here with an IDE.
+And adding this to your Eclipse, NetBeans or IntelliJ IDEA project classpath
+is then as simple as:
+
+{% highlight console %}
+mvn eclipse:eclipse
+{% endhighlight %}
+
+or opening the project using Netbeans or IDEAs Maven integration.
+
+Maven will then add all the necessary JAR files to the project's classpath.
+
+One thing you need to make sure is that you have set the `M2_REPO` classpath
+variable in Eclipse (or a similar construct in Netbeans), and point it to your
+local repository, typically found in `C:\Documents and Settings\username\.m2\repo`
+or (for unix buffs) `~/.m2/repo`
+
+You can add this setting using maven:
+
+{% highlight console %}
+mvn -Declipse.workspace=<path-to-eclipse-workspace> eclipse:add-maven-repo
+{% endhighlight %}

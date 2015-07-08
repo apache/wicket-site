@@ -10,7 +10,7 @@ component-oriented structure and its "low touch" approach to HTML is quite
 inviting.
 
 You can see these examples and many more in [live
-action](http://www.wicket-library.com/wicket-examples-6.0.x) without having to install anything.
+action](http://www.wicket-library.com) without having to install anything.
 
 * [Hello World!](helloworld.html) - Everybody's favorite example
 * [Navomatic](navomatic.html) - Automatic navigation using Borders and Links

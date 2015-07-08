@@ -1,236 +1,86 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Apache Wicket - Navomatic</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Navomatic | Apache Wicket</title>
+        <meta charset="utf8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 
-    <!--[if lt ie 7]>
-	<link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen" />
-    <![endif]-->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
-	<link rel="alternate" type="application/atom+xml" href="/atom.xml" />
-	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-</head>
-<body>
-<div id="container">
-    <div id="content">
-        <div id="header"><a href="/"><h1 id="logo"><span>Apache Wicket</span></h1></a></div>
-		<div id="navigation">
-	<h5><a name="Navigation-Wicket"></a>Meet Wicket</h5>
-	<ul>
-		<li>
-			<a href="/" title="Index">Home</a>
-		</li>
-		<li>
-			<a href="/meet/introduction.html" title="Introduction">Introduction</a>
-		</li>
-		<li>
-			<a href="/meet/features.html" title="Features">Features</a>
-		</li>
-		<li>
-			<a href="/meet/buzz.html" title="Buzz">Buzz</a>
-		</li>
-		<li>
-			<a href="/meet/vision.html" title="Vision">Vision</a>
-		</li>
-		<li>
-			<a href="/meet/blogs.html" title="Blogs">Blogs</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-GettingStarted" id="Navigation-GettingStarted"></a>Get Started
-	</h5>
-	<ul>
-		<li>
-			<a href="/start/download.html" title="Download Wicket">Download Wicket</a>
-		</li>
-		<li>
-			<a href="/start/quickstart.html" title="Getting started via a Maven Archetype">Quickstart</a>
-		</li>
-		<li>
-			<a href="http://www.jweekend.com/dev/LegUp" rel="nofollow">More archetypes</a>
-		</li>
-		<li>
-			<a href="/help" title="Get help">Get help</a>
-		</li>
-		<li>
-			<a href="/help/email.html" title="Wicket Mailing Lists">Mailing Lists</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-Documentation" id="Navigation-Documentation"></a>Learn
-	</h5>
-	<ul>
-		<li>
-			<a href="/start/userguide.html" title="User Guide">User Guide</a>
-		</li>
-		<li>
-			<a href="/learn/examples" title="Examples">Examples</a>
-		</li>
-		<li>
-			<a href="http://www.wicket-library.com/wicket-examples/compref/">Components</a>
-		</li>
-		<li>
-			<a href="/learn/projects/" title="Projects extending basic Wicket">Projects</a>
-		</li>
-		<li>
-			<a href="https://cwiki.apache.org/confluence/display/WICKET">Wiki</a>
-		</li>
-		<li>
-			<a href="https://cwiki.apache.org/confluence/display/WICKET/Reference+library">Reference guide</a>
-		</li>
-		<li>
-			<a href="/learn/books" title="Books">Books</a>
-		</li>
-		<li>
-			<a href="/learn/ides.html" title="IDEs">IDEs</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-Releases" id="Navigation-Releases"></a>Releases
-	</h5>
-	<ul>
-		<li>
-			<a href="http://www.apache.org/dyn/closer.cgi/wicket/6.20.0">Wicket 6.20</a>
-		</li>
-		<li>
-			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.13">Wicket 1.5</a>
-		</li>
-		<li>
-			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.4.23">Wicket 1.4</a>
-		</li>
-		<li>
-			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.3.7">Wicket 1.3</a>
-		</li>
-		<li>
-			<a href="http://wicket.sf.net/wicket-1.2" class="external-link" rel="nofollow">Wicket 1.2</a>
-		</li>
-		<li>
-			<a href="http://wicket.sf.net/wicket-1.1" class="external-link" rel="nofollow">Wicket 1.1</a>
-		</li>
-		<li>
-			<a href="http://wicket.sf.net/wicket-1.0" class="external-link" rel="nofollow">Wicket 1.0</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-Docs" id="Navigation-Docs"></a>API Docs
-	</h5>
-	<ul>
-		<li>
-			<a href="http://ci.apache.org/projects/wicket/apidocs/6.x/" title="JavaDocs of Apache Wicket 6.x">Wicket 6.x</a>
-		</li>
-		<li>
-			<a href="http://ci.apache.org/projects/wicket/apidocs/1.5.x/" title="JavaDocs of Apache Wicket 1.5.x">Wicket 1.5</a>
-		</li>
-		<li>
-			<a href="http://ci.apache.org/projects/wicket/apidocs/1.4.x" title="JavaDocs of Apache Wicket 1.4.x">Wicket 1.4</a>
-		</li>
-		<li>
-			<a href="http://ci.apache.org/projects/wicket/apidocs/1.3.x" title="JavaDocs of Apache Wicket 1.3.x">Wicket 1.3</a>
-		</li>
-	</ul>
-	<h5>Wicket 7.x</h5>
-	<ul>
-		<li>
-			<a href="http://www.apache.org/dyn/closer.cgi/wicket/7.0.0-M6">Download M6</a>
-		</li>
-		<li>
-			<a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+7.0">Migration guide</a>
-		</li>
-		<li>
-			<a href="http://ci.apache.org/projects/wicket/apidocs/7.x/" title="JavaDocs of Apache Wicket 7.x">API Docs 7.x</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-Developers" id="Navigation-Developers"></a>Contribute
-	</h5>
-	<ul>
-		<li>
-			<a href="/contribute/write.html" title="Writing documentation">Writing docs</a>
-		</li>
-		<li>
-			<a href="/contribute/build.html" title="Building from SVN">Build Wicket</a>
-		</li>
-		<li>
-			<a href="/contribute/patch.html" title="Provide a patch">Provide a patch</a>
-		</li>
-		<li>
-			<a href="/contribute/release.html" title="Release Wicket">Release Wicket</a>
-		</li>
-		<li>
-			<a href="https://fisheye6.atlassian.com/browse/wicket-git" title="Git Overview" class="external-link" rel="nofollow">Fisheye</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-Apache" id="Navigation-Apache"></a>Apache
-	</h5>
-	<ul>
-		<li>
-			<a href="http://www.apache.org/" class="external-link" rel="nofollow">Apache</a>
-		</li>
-		<li>
-			<a href="http://www.apache.org/licenses/" class="external-link" rel="nofollow">License</a>
-		</li>
-		<li>
-			<a href="http://www.apache.org/foundation/sponsorship.html" class="external-link" rel="nofollow">Sponsorship</a>
-		</li>
-		<li>
-			<a href="http://apache.org/foundation/thanks.html" class="external-link" rel="nofollow">Thanks</a>
-		</li>
-		<li>
-			<a href="/apache/friends.html" title="Apache projects using Wicket">Friends</a>
-		</li>
-	</ul>
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    </head>
+
+    <body class="">
+        <div class="header default">
+    <div class="l-container">
+<nav class="mainmenu">
+    <ul>
+		<!-- /start/quickstart.html || /learn/examples/navomatic.html -->
+    	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+		<!-- /start/download.html || /learn/examples/navomatic.html -->
+    	<li class=""><a href="/start/download.html">Download</a></li>
+		<!-- /learn || /learn/examples/navomatic.html -->
+    	<li class=""><a href="/learn">Documentation</a></li>
+		<!-- /help || /learn/examples/navomatic.html -->
+    	<li class=""><a href="/help">Support</a></li>
+		<!-- /contribute || /learn/examples/navomatic.html -->
+    	<li class=""><a href="/contribute">Contribute</a></li>
+		<!-- /apache || /learn/examples/navomatic.html -->
+    	<li class=""><a href="/apache">Apache</a></li>
+    </ul>
+</nav>
+        <div class="logo">
+    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
 </div>
-
-		<div id="contentbody">
-			<h1>Navomatic</h1>
-			<p>The Navomatic application shows the use of border components and links to
+    </div>
+</div>
+<main>
+    <div class="l-container">
+        <header class="l-full preamble">
+            <h1>Navomatic</h1>
+        </header>
+        <section class="l-one-third right">
+            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#navigation-component"><span class="toc-number">1</span> <span class="toc-text">Navigation component</span></a><ul><li class="toc--level-2 toc--section-2"><a href="#border-markup"><span class="toc-number">1.1</span> <span class="toc-text">Border markup</span></a></li><li class="toc--level-2 toc--section-3"><a href="#border-usage"><span class="toc-number">1.2</span> <span class="toc-text">Border usage</span></a></li><li class="toc--level-2 toc--section-4"><a href="#rendered-markup"><span class="toc-number">1.3</span> <span class="toc-text">Rendered markup</span></a></li><li class="toc--level-2 toc--section-5"><a href="#navomaticapplicationjava"><span class="toc-number">1.4</span> <span class="toc-text">NavomaticApplication.java</span></a></li><li class="toc--level-2 toc--section-6"><a href="#page1java"><span class="toc-number">1.5</span> <span class="toc-text">Page1.java</span></a></li><li class="toc--level-2 toc--section-7"><a href="#page1html"><span class="toc-number">1.6</span> <span class="toc-text">Page1.html</span></a></li><li class="toc--level-2 toc--section-8"><a href="#page2java"><span class="toc-number">1.7</span> <span class="toc-text">Page2.java</span></a></li><li class="toc--level-2 toc--section-9"><a href="#page2html"><span class="toc-number">1.8</span> <span class="toc-text">Page2.html</span></a></li><li class="toc--level-2 toc--section-10"><a href="#navomaticborderjava"><span class="toc-number">1.9</span> <span class="toc-text">NavomaticBorder.java</span></a></li><li class="toc--level-2 toc--section-11"><a href="#navomaticborderhtml"><span class="toc-number">1.10</span> <span class="toc-text">NavomaticBorder.html</span></a></li><li class="toc--level-2 toc--section-12"><a href="#webxml"><span class="toc-number">1.11</span> <span class="toc-text">web.xml</span></a></li></ul></li></ul></div>
+        </section>
+        <section class="l-two-third left">
+            <p>The Navomatic application shows the use of border components and links to
 create a navigation component that can easily be dropped into any web page.</p>
-
 <p>In all the Wicket examples, you have to put all files in the same package
 directory. This means putting the markup files and the java files next to one
 another. It is possible to alter this behavior, but that is beyond the scope
 of this example. The only exception is the obligatory web.xml file which
 should reside in the WEB-INF/ directory of your web application root folder.</p>
-
 <p>The link in the navigation to the current page is automatically turned into
 italic text to indicate to the user what page they are on. The first screen
 capture shows the Page1 page with the Page1 link in italics.</p>
-
 <p><img src="navomatic1.png" alt="Figure 1" /></p>
-
 <p>When you click on the Page2 link, you get the following screen.</p>
-
 <p><img src="navomatic2.png" alt="Figure 2" /></p>
-
 <p>As you can see, Page1 has no special style anymore, and Page2 is now displayed
 in italics. Also the message box shows that we are viewing Page2 instead of
 Page1.</p>
-
 <h2 id="navigation-component">Navigation component</h2>
-
 <p>To create a reusable navigation component we are going to use a
 <code>org.apache.wicket.markup.html.border.Border</code> component. From the Border
 Javadoc:</p>
-
 <blockquote>
   <p>A border component has associated markup which is drawn and determines
 placement of any markup and/or components nested within the border 
 component.</p>
 </blockquote>
-
 <p>The portion of the border’s associated markup file which is to be used in
 rendering the border is denoted by a <code>&lt;wicket:border&gt;</code> tag. The children of the
 border component instance are then inserted into this markup, replacing the
 first <code>&lt;wicket:body/&gt;</code> tag in the border’s associated markup.</p>
-
 <p>For example, here is markup for a simple Border subclass, a usage of that
 border, and the markup which would be output on rendering:</p>
-
 <h3 id="border-markup">Border markup</h3>
-
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;wicket:border&gt;</span>
@@ -238,9 +88,7 @@ border, and the markup which would be output on rendering:</p>
     <span class="nt">&lt;/wicket:border&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
-
 <h3 id="border-usage">Border usage</h3>
-
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">&quot;myBorder&quot;</span><span class="nt">&gt;</span>
@@ -248,56 +96,40 @@ border, and the markup which would be output on rendering:</p>
   <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
-
 <h3 id="rendered-markup">Rendered markup</h3>
-
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
       First Middle Last
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
-
 <p>In other words, the markup around the <code>&lt;wicket:body/&gt;</code> tag in the border
 component is sort of “wrapped around” the body of the <code>&lt;span&gt;</code> tag where the
 border is used. This seems simple in this example, but keep in mind that
 nested components and even nested borders can appear anywhere in either markup
 file. This can be used to create quite complex effects with relatively little
 code.</p>
-
 <h3 id="navomaticapplicationjava">NavomaticApplication.java</h3>
-
 <p>Just as in the Hello World! example, we need to define our application. In
 this case, we set Page1 to be our home page.</p>
-
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">navomatic</span><span class="o">;</span>
-
 <span class="kn">import</span> <span class="nn">org.apache.wicket.protocol.http.WebApplication</span><span class="o">;</span>
-
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavomaticApplication</span> <span class="kd">extends</span> <span class="n">WebApplication</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">NavomaticApplication</span><span class="o">()</span> <span class="o">{</span>
     <span class="o">}</span>
-   
     <span class="kd">public</span> <span class="n">Class</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">Page1</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></div>
-
 <h3 id="page1java">Page1.java</h3>
-
 <p>The Page1 Java and HTML files look like this:</p>
-
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">navomatic</span><span class="o">;</span>
-
 <span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebPage</span><span class="o">;</span>
-
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Page1</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">Page1</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">NavomaticBorder</span><span class="o">(</span><span class="s">&quot;navomaticBorder&quot;</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></div>
-
 <h3 id="page1html">Page1.html</h3>
-
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span> 
     <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">&quot;navomaticBorder&quot;</span><span class="nt">&gt;</span>
@@ -305,26 +137,20 @@ this case, we set Page1 to be our home page.</p>
     <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
-
 <p>Notice that the NavomaticBorder component is attached to the <code>&lt;span&gt;</code> tag
 because the name of the component in the Java code is “navomaticBorder” and
 the <code>&lt;span&gt;</code> tag’s wicket:id attribute is set to “navomaticBorder”. Because the
 two names match, Wicket associates the NavomaticBorder Java component with the
 <code>&lt;span&gt;</code> tag.</p>
-
 <h3 id="page2java">Page2.java</h3>
-
 <p>The Page2 Java and HTML files look almost identical (and we’ll omit the
 sources for Page3 altogether because it follows the same pattern):</p>
-
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Page2</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">Page2</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">NavomaticBorder</span><span class="o">(</span><span class="s">&quot;navomaticBorder&quot;</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></div>
-
 <h3 id="page2html">Page2.html</h3>
-
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">&quot;navomaticBorder&quot;</span><span class="nt">&gt;</span>
@@ -332,30 +158,22 @@ sources for Page3 altogether because it follows the same pattern):</p>
     <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
-
 <h3 id="navomaticborderjava">NavomaticBorder.java</h3>
-
 <p>So how does NavomaticBorder work? Glad you asked. The Java code below simply
 adds the two BoxBorder components you see. These components are nested borders
 which each draw a thin black line around their contents. The rest of the magic
 is in the NavomaticBorder markup.</p>
-
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">navomatic</span><span class="o">;</span>
-
 <span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.border.Border</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.border.BoxBorder</span><span class="o">;</span>
-
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavomaticBorder</span> <span class="kd">extends</span> <span class="n">Border</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">NavomaticBorder</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">componentName</span><span class="o">)</span> <span class="o">{</span>
         <span class="kd">super</span><span class="o">(</span><span class="n">componentName</span><span class="o">);</span>
-
         <span class="n">addToBorder</span><span class="o">(</span><span class="k">new</span> <span class="nf">BoxBorder</span><span class="o">(</span><span class="s">&quot;navigationBorder&quot;</span><span class="o">));</span>
         <span class="n">addToBorder</span><span class="o">(</span><span class="k">new</span> <span class="nf">BoxBorder</span><span class="o">(</span><span class="s">&quot;bodyBorder&quot;</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></div>
-
 <h3 id="navomaticborderhtml">NavomaticBorder.html</h3>
-
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;wicket:border&gt;</span> 
@@ -385,20 +203,17 @@ is in the NavomaticBorder markup.</p>
     <span class="nt">&lt;/wicket:border&gt;</span>
  <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
-
 <p>Notice that the markup above encloses the entire contents of the markup file’s
 <code>&lt;body&gt;</code> with a <code>&lt;wicket:border&gt;</code> tag, as we described earlier. This lets the
 NavomaticBorder know how much of its markup to use when it wraps itself around
 the markup it finds in the context where it is used. Notice also the
 <code>&lt;wicket:body/&gt;</code> marker which designates where to put whatever is found inside
 the tag at the use context.</p>
-
 <p>Next, notice that the navigation links and the border’s <code>&lt;wicket:body/&gt;</code> are
 both enclosed in <code>&lt;span&gt;</code> tags which have wicket:id attributes that associate
 those tags with the BoxBorder components added in the NavomaticBorder
 constructor. These nested border components will each draw a thin black line
 around their contents.</p>
-
 <p>Finally, the <code>&lt;wicket:link&gt;</code> tag is used to mark the links in the navigation
 as automatic links. Ordinarily, you would need to create link components and
 attach them to your page manually, but anchor links that are marked as
@@ -406,13 +221,10 @@ automatic are parsed and hooked up to link components for you, as appropriate.
 The italicizing behavior is also automatic. Since Wicket knows which page is
 current, it removes the anchor link tag for any link that points to the
 current page (since the link would be useless) and italicizes the link text.</p>
-
 <h3 id="webxml">web.xml</h3>
-
 <p>In order to get this application up and running, we need to register the
 application with the Wicket servlet in the web.xml file. The following
 sections need to be added to the web.xml in the WEB-INF folder.</p>
-
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;servlet&gt;</span>
     <span class="nt">&lt;servlet-name&gt;</span>NavomaticApplication<span class="nt">&lt;/servlet-name&gt;</span>
     <span class="nt">&lt;servlet-class&gt;</span>org.apache.wicket.protocol.http.WicketServlet<span class="nt">&lt;/servlet-class&gt;</span>
@@ -426,18 +238,19 @@ sections need to be added to the web.xml in the WEB-INF folder.</p>
     <span class="nt">&lt;servlet-name&gt;</span>NavomaticApplication<span class="nt">&lt;/servlet-name&gt;</span>
     <span class="nt">&lt;url-pattern&gt;</span>/app/*<span class="nt">&lt;/url-pattern&gt;</span>
 <span class="nt">&lt;/servlet-mapping&gt;</span></code></pre></div>
-
-
-		</div>
-        <div id="clearer"></div>
-		<div id="footer"><span>
-Copyright &copy; 2015 &mdash; The Apache Software Foundation. Apache Wicket,
-Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo
-are trademarks of The Apache Software Foundation. All other marks mentioned
-may be trademarks or registered trademarks of their respective owners.
-</span></div>
-
+        </section>
     </div>
+</main>
+        <footer class="l-container">
+            <div class="l-full">
+    <img height="60px" src="/img/asf_logo.gif" style="float:left">
+    Copyright © 2014 — The Apache Software Foundation. Apache Wicket,
+    Wicket, Apache, the Apache feather logo, and the Apache Wicket
+    project logo are trademarks of The Apache Software Foundation. All
+    other marks mentioned may be trademarks or registered trademarks of
+    their respective owners.
 </div>
-</body>
+        </footer>
+    </body>
+
 </html>

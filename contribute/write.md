@@ -77,14 +77,46 @@ Each page needs to have a YAML preamble that specifies the rendered template
 and other variables. If it doesn't include the YAML preamble, it won't be
 rendered correctly.
 
-Example preamble (includes the `---`):
+The default layout supports a property to specify the main title for the page and 
+another property for an additional subtitle.
+
+For example: (the `---` must be included):
 
 {% highlight yaml %}
 ---
 layout: default
-title: Write documentation
+title: Main title
+subtitle: Subtitle
 ---
 {% endhighlight %}
+
+A more advanced feature for the default layout is the ability to specify more files to include
+in the final page. This can be done with property `additionalContents` where we can list additional files
+with an id for their section tag and a value for the CSS class:
+
+{% highlight yaml %}
+---
+layout: default
+title: Welcome to Apache Wicket
+subtitle: Discover why developers love Wicket!
+additionalContents:
+  -
+   path: anotherPage.html
+   sectionId: anotherPage
+   cssClass: sectionClass
+  -
+   path: yetAnotherPage.html
+   sectionId: yetAnotherPage
+   cssClass: yetAnotherSectionClass
+---
+{% endhighlight %}
+
+#### Additional conventions ####
+
+The following conventions have been adopted for the templeates of the site pages:
+
+* Any link to static resources (css, js, pictures, etc.) is prefixed with `site.baseurl` to support [GitHub free hosting](http://jekyllrb.com/docs/github-pages/#project-page-url-structure). However, to run the project locally you don't need to specify any baseurl.
+* Site posts use custom tag `<!--more-->` as `excerpt_separator`.
 
 ### Syntax highlighting ###
 
@@ -95,7 +127,7 @@ with the language you want highlighted.)
 ### Menu ###
 
 If you want your page linked from every page, include the link in
-`_includes/navigation.html`.
+`_includes/header.html`.
 
 ### Blog posts ###
 
@@ -122,6 +154,6 @@ When you're done with making your changes, please check the following:
   publish? (Use `svn diff` to check)
 * Did you restart Jekyll to generate the site?
 
-If these things are OK, you can either [generate a patch](patch.html) when
+If these things are OK, you can either [generate a patch](http://svnbook.red-bean.com/en/1.7/svn.ref.svn.c.diff.html) when
 you're not a committer, or just commit the changes. In the latter case, the
 modifications are pushed immediately to the site and are live within a minute.

@@ -1,270 +1,111 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Apache Wicket - Guestbook</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Guestbook | Apache Wicket</title>
+        <meta charset="utf8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 
-    <!--[if lt ie 7]>
-	<link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen" />
-    <![endif]-->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
-	<link rel="alternate" type="application/atom+xml" href="/atom.xml" />
-	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-</head>
-<body>
-<div id="container">
-    <div id="content">
-        <div id="header"><a href="/"><h1 id="logo"><span>Apache Wicket</span></h1></a></div>
-		<div id="navigation">
-	<h5><a name="Navigation-Wicket"></a>Meet Wicket</h5>
-	<ul>
-		<li>
-			<a href="/" title="Index">Home</a>
-		</li>
-		<li>
-			<a href="/meet/introduction.html" title="Introduction">Introduction</a>
-		</li>
-		<li>
-			<a href="/meet/features.html" title="Features">Features</a>
-		</li>
-		<li>
-			<a href="/meet/buzz.html" title="Buzz">Buzz</a>
-		</li>
-		<li>
-			<a href="/meet/vision.html" title="Vision">Vision</a>
-		</li>
-		<li>
-			<a href="/meet/blogs.html" title="Blogs">Blogs</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-GettingStarted" id="Navigation-GettingStarted"></a>Get Started
-	</h5>
-	<ul>
-		<li>
-			<a href="/start/download.html" title="Download Wicket">Download Wicket</a>
-		</li>
-		<li>
-			<a href="/start/quickstart.html" title="Getting started via a Maven Archetype">Quickstart</a>
-		</li>
-		<li>
-			<a href="http://www.jweekend.com/dev/LegUp" rel="nofollow">More archetypes</a>
-		</li>
-		<li>
-			<a href="/help" title="Get help">Get help</a>
-		</li>
-		<li>
-			<a href="/help/email.html" title="Wicket Mailing Lists">Mailing Lists</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-Documentation" id="Navigation-Documentation"></a>Learn
-	</h5>
-	<ul>
-		<li>
-			<a href="/start/userguide.html" title="User Guide">User Guide</a>
-		</li>
-		<li>
-			<a href="/learn/examples" title="Examples">Examples</a>
-		</li>
-		<li>
-			<a href="http://www.wicket-library.com/wicket-examples/compref/">Components</a>
-		</li>
-		<li>
-			<a href="/learn/projects/" title="Projects extending basic Wicket">Projects</a>
-		</li>
-		<li>
-			<a href="https://cwiki.apache.org/confluence/display/WICKET">Wiki</a>
-		</li>
-		<li>
-			<a href="https://cwiki.apache.org/confluence/display/WICKET/Reference+library">Reference guide</a>
-		</li>
-		<li>
-			<a href="/learn/books" title="Books">Books</a>
-		</li>
-		<li>
-			<a href="/learn/ides.html" title="IDEs">IDEs</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-Releases" id="Navigation-Releases"></a>Releases
-	</h5>
-	<ul>
-		<li>
-			<a href="http://www.apache.org/dyn/closer.cgi/wicket/6.20.0">Wicket 6.20</a>
-		</li>
-		<li>
-			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.13">Wicket 1.5</a>
-		</li>
-		<li>
-			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.4.23">Wicket 1.4</a>
-		</li>
-		<li>
-			<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.3.7">Wicket 1.3</a>
-		</li>
-		<li>
-			<a href="http://wicket.sf.net/wicket-1.2" class="external-link" rel="nofollow">Wicket 1.2</a>
-		</li>
-		<li>
-			<a href="http://wicket.sf.net/wicket-1.1" class="external-link" rel="nofollow">Wicket 1.1</a>
-		</li>
-		<li>
-			<a href="http://wicket.sf.net/wicket-1.0" class="external-link" rel="nofollow">Wicket 1.0</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-Docs" id="Navigation-Docs"></a>API Docs
-	</h5>
-	<ul>
-		<li>
-			<a href="http://ci.apache.org/projects/wicket/apidocs/6.x/" title="JavaDocs of Apache Wicket 6.x">Wicket 6.x</a>
-		</li>
-		<li>
-			<a href="http://ci.apache.org/projects/wicket/apidocs/1.5.x/" title="JavaDocs of Apache Wicket 1.5.x">Wicket 1.5</a>
-		</li>
-		<li>
-			<a href="http://ci.apache.org/projects/wicket/apidocs/1.4.x" title="JavaDocs of Apache Wicket 1.4.x">Wicket 1.4</a>
-		</li>
-		<li>
-			<a href="http://ci.apache.org/projects/wicket/apidocs/1.3.x" title="JavaDocs of Apache Wicket 1.3.x">Wicket 1.3</a>
-		</li>
-	</ul>
-	<h5>Wicket 7.x</h5>
-	<ul>
-		<li>
-			<a href="http://www.apache.org/dyn/closer.cgi/wicket/7.0.0-M6">Download M6</a>
-		</li>
-		<li>
-			<a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+7.0">Migration guide</a>
-		</li>
-		<li>
-			<a href="http://ci.apache.org/projects/wicket/apidocs/7.x/" title="JavaDocs of Apache Wicket 7.x">API Docs 7.x</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-Developers" id="Navigation-Developers"></a>Contribute
-	</h5>
-	<ul>
-		<li>
-			<a href="/contribute/write.html" title="Writing documentation">Writing docs</a>
-		</li>
-		<li>
-			<a href="/contribute/build.html" title="Building from SVN">Build Wicket</a>
-		</li>
-		<li>
-			<a href="/contribute/patch.html" title="Provide a patch">Provide a patch</a>
-		</li>
-		<li>
-			<a href="/contribute/release.html" title="Release Wicket">Release Wicket</a>
-		</li>
-		<li>
-			<a href="https://fisheye6.atlassian.com/browse/wicket-git" title="Git Overview" class="external-link" rel="nofollow">Fisheye</a>
-		</li>
-	</ul>
-	<h5>
-		<a name="Navigation-Apache" id="Navigation-Apache"></a>Apache
-	</h5>
-	<ul>
-		<li>
-			<a href="http://www.apache.org/" class="external-link" rel="nofollow">Apache</a>
-		</li>
-		<li>
-			<a href="http://www.apache.org/licenses/" class="external-link" rel="nofollow">License</a>
-		</li>
-		<li>
-			<a href="http://www.apache.org/foundation/sponsorship.html" class="external-link" rel="nofollow">Sponsorship</a>
-		</li>
-		<li>
-			<a href="http://apache.org/foundation/thanks.html" class="external-link" rel="nofollow">Thanks</a>
-		</li>
-		<li>
-			<a href="/apache/friends.html" title="Apache projects using Wicket">Friends</a>
-		</li>
-	</ul>
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    </head>
+
+    <body class="">
+        <div class="header default">
+    <div class="l-container">
+<nav class="mainmenu">
+    <ul>
+		<!-- /start/quickstart.html || /learn/examples/guestbook.html -->
+    	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+		<!-- /start/download.html || /learn/examples/guestbook.html -->
+    	<li class=""><a href="/start/download.html">Download</a></li>
+		<!-- /learn || /learn/examples/guestbook.html -->
+    	<li class=""><a href="/learn">Documentation</a></li>
+		<!-- /help || /learn/examples/guestbook.html -->
+    	<li class=""><a href="/help">Support</a></li>
+		<!-- /contribute || /learn/examples/guestbook.html -->
+    	<li class=""><a href="/contribute">Contribute</a></li>
+		<!-- /apache || /learn/examples/guestbook.html -->
+    	<li class=""><a href="/apache">Apache</a></li>
+    </ul>
+</nav>
+        <div class="logo">
+    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
 </div>
-
-		<div id="contentbody">
-			<h1>Guestbook</h1>
-			<p>The GuestBook application allows users to enter comments that appear on a
+    </div>
+</div>
+<main>
+    <div class="l-container">
+        <header class="l-full preamble">
+            <h1>Guestbook</h1>
+        </header>
+        <section class="l-one-third right">
+            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#commentjava"><span class="toc-number">1</span> <span class="toc-text">Comment.java</span></a></li><li class="toc--level-1 toc--section-2"><a href="#guestbookjava"><span class="toc-number">2</span> <span class="toc-text">GuestBook.java</span></a></li><li class="toc--level-1 toc--section-3"><a href="#guestbookhtml"><span class="toc-number">3</span> <span class="toc-text">GuestBook.html</span></a></li><li class="toc--level-1 toc--section-4"><a href="#guestbookapplicationjava"><span class="toc-number">4</span> <span class="toc-text">GuestBookApplication.java</span></a></li><li class="toc--level-1 toc--section-5"><a href="#webxml"><span class="toc-number">5</span> <span class="toc-text">web.xml</span></a></li></ul></div>
+        </section>
+        <section class="l-two-third left">
+            <p>The GuestBook application allows users to enter comments that appear on a
 page like a weblog. Drawing the list of comments is very easy with the Wicket
 <code>ListView</code> component. This example also gives an impression of what form
 handling is like.</p>
-
 <p><img src="guestbook.png" alt="Guestbook screenshot" /></p>
-
 <p>As with all examples, you have to put all files in the same package
 directory. This means putting the markup files and the java files next to one
 another. It is possible to alter this behavior, but that is beyond the scope
 of this example.</p>
-
 <h2 id="commentjava">Comment.java</h2>
-
 <p>The Comment POJO model is very straightforward:</p>
-
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
-
 <span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>  
 <span class="kn">import</span> <span class="nn">org.apache.wicket.IClusterable</span><span class="o">;</span>
-
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Comment</span> <span class="kd">implements</span> <span class="n">IClusterable</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">text</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">();</span>
-
     <span class="kd">public</span> <span class="nf">Comment</span><span class="o">()</span> <span class="o">{</span>
     <span class="o">}</span>
-
     <span class="kd">public</span> <span class="nf">Comment</span><span class="o">(</span><span class="kd">final</span> <span class="n">Comment</span> <span class="n">comment</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">text</span> <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="na">text</span><span class="o">;</span>
         <span class="k">this</span><span class="o">.</span><span class="na">date</span> <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="na">date</span><span class="o">;</span>
     <span class="o">}</span>
-
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">getText</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">text</span><span class="o">;</span>
     <span class="o">}</span>
-
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setText</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">;</span>
     <span class="o">}</span>
-
     <span class="kd">public</span> <span class="n">Date</span> <span class="nf">getDate</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">date</span><span class="o">;</span>
     <span class="o">}</span>
-
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDate</span><span class="o">(</span><span class="n">Date</span> <span class="n">date</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">date</span> <span class="o">=</span> <span class="n">date</span><span class="o">;</span>
     <span class="o">}</span>
-
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="s">&quot;[Comment date = &quot;</span> <span class="o">+</span> <span class="n">date</span> <span class="o">+</span> <span class="s">&quot;, text = &quot;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></div>
-
 <h2 id="guestbookjava">GuestBook.java</h2>
-
 <p>In the file <code>GuestBook.java</code> we have put the Java component code for the
 guestbook page. This is the homepage for the guestbook application. The page
 consists of a form for entering new items to the guestbook and a list of
 repeating markup for showing the guestbook entries.</p>
-
 <p>The <code>GuestBook</code> constructor adds a <code>CommentForm</code> and a <code>ListView</code> of
 the comments. Notice how the model is passed in as the second argument to the
 <code>ListView</code> constructor.</p>
-
 <p>Then as the view renders, the <code>populateItem</code> method is called passing in a
 <code>ListItem</code> container for the current row in the list.</p>
-
 <p>The implementation below obtains the <code>Comment</code> POJO from the list item and
 adds label components for the date and text of the <code>Comment</code>. This is all
 accomplished in just a few lines of code.</p>
-
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
-
 <span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-
 <span class="kn">import</span> <span class="nn">org.apache.commons.lang.StringUtils</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.examples.WicketExamplePage</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.basic.Label</span><span class="o">;</span>
@@ -276,19 +117,15 @@ accomplished in just a few lines of code.</p>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.list.PropertyListView</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.model.CompoundPropertyModel</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.util.value.ValueMap</span><span class="o">;</span>
-
-
 <span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">GuestBook</span> <span class="kd">extends</span> <span class="n">WicketExamplePage</span> <span class="o">{</span>
     <span class="cm">/** A global list of all comments from all users across all sessions */</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span> <span class="n">commentList</span> <span class="o">=</span> <span class="n">Collections</span><span class="o">.</span><span class="na">synchronizedList</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;());</span>
-
     <span class="cm">/**</span>
 <span class="cm">     * Constructor that is invoked when page is invoked without a session.</span>
 <span class="cm">     */</span>
     <span class="kd">public</span> <span class="nf">GuestBook</span><span class="o">()</span> <span class="o">{</span>
         <span class="c1">// Add comment form</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">CommentForm</span><span class="o">(</span><span class="s">&quot;commentForm&quot;</span><span class="o">));</span>
-
         <span class="c1">// Add commentListView of existing comments</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">PropertyListView</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;(</span><span class="s">&quot;comments&quot;</span><span class="o">,</span> <span class="n">commentList</span><span class="o">)</span> <span class="o">{</span>
             <span class="nd">@Override</span>
@@ -298,7 +135,6 @@ accomplished in just a few lines of code.</p>
             <span class="o">}</span>
         <span class="o">}).</span><span class="na">setVersioned</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
     <span class="o">}</span>
-
     <span class="cm">/**</span>
 <span class="cm">     * A form that allows a user to add a comment.</span>
 <span class="cm">     */</span>
@@ -306,24 +142,19 @@ accomplished in just a few lines of code.</p>
         <span class="kd">public</span> <span class="nf">CommentForm</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
             <span class="c1">// Construct form with no validation listener</span>
             <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="k">new</span> <span class="n">CompoundPropertyModel</span><span class="o">&lt;</span><span class="n">ValueMap</span><span class="o">&gt;(</span><span class="k">new</span> <span class="nf">ValueMap</span><span class="o">()));</span>
-
             <span class="c1">// this is just to make the unit test happy</span>
             <span class="n">setMarkupId</span><span class="o">(</span><span class="s">&quot;commentForm&quot;</span><span class="o">);</span>
-
             <span class="c1">// Add text entry widget</span>
             <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">TextArea</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;text&quot;</span><span class="o">).</span><span class="na">setType</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
-
             <span class="c1">// Add simple automated spam prevention measure.</span>
             <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">TextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;comment&quot;</span><span class="o">).</span><span class="na">setType</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
         <span class="o">}</span>
-
         <span class="cm">/**</span>
 <span class="cm">         * Show the resulting valid edit</span>
 <span class="cm">         */</span>
         <span class="nd">@Override</span>
         <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
             <span class="n">ValueMap</span> <span class="n">values</span> <span class="o">=</span> <span class="n">getModelObject</span><span class="o">();</span>
-
             <span class="c1">// check if the honey pot is filled</span>
             <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">isNotBlank</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">values</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;comment&quot;</span><span class="o">)))</span> <span class="o">{</span>
                 <span class="n">error</span><span class="o">(</span><span class="s">&quot;Caught a spammer!!!&quot;</span><span class="o">);</span>
@@ -331,17 +162,14 @@ accomplished in just a few lines of code.</p>
             <span class="o">}</span>
             <span class="c1">// Construct a copy of the edited comment</span>
             <span class="n">Comment</span> <span class="n">comment</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Comment</span><span class="o">();</span>
-
             <span class="c1">// Set date of comment to add</span>
             <span class="n">comment</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="k">new</span> <span class="nf">Date</span><span class="o">());</span>
             <span class="n">comment</span><span class="o">.</span><span class="na">setText</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">values</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;text&quot;</span><span class="o">));</span>
             <span class="n">commentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">comment</span><span class="o">);</span>
-
             <span class="c1">// Clear out the text component</span>
             <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;text&quot;</span><span class="o">,</span> <span class="s">&quot;&quot;</span><span class="o">);</span>
         <span class="o">}</span>
     <span class="o">}</span>
-
     <span class="cm">/**</span>
 <span class="cm">     * Clears the comments.</span>
 <span class="cm">     */</span>
@@ -349,7 +177,6 @@ accomplished in just a few lines of code.</p>
         <span class="n">commentList</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></div>
-
 <p>When the <code>CommentForm</code> is submitted, the <code>onSubmit()</code> method is called.
 Notice that nothing gets the value of the <code>TextArea</code> that was added in the
 <code>CommentForm</code> constructor. This is because the comment is the model and the
@@ -357,27 +184,21 @@ third parameter to the <code>TextArea</code> constructor specified the property 
 model to update. So all <code>onSubmit()</code> has to do is create a new comment from
 the model that was updated and add it to the comment list. When the page
 redraws, the new list will be rendered.</p>
-
 <p>We use a synchronized list as our shared static model used by <code>commentListView</code>
 (<code>commentList</code>) to ensure that it is only updated by one thread at a time.
 Remember, this is a multi-user application with a shared model!</p>
-
 <p>Finally, you may notice the call to <code>commentListView.modelChanged()</code>. This
 informs the list view that its model has been modified. In more advanced
 usage scenarios, this would allow Wicket to expire stale pages accessed with
 the browser’s back button.</p>
-
 <h2 id="guestbookhtml">GuestBook.html</h2>
-
 <p>In the HTML below, notice the way that the <code>TextArea</code> component is being
 nested inside the <code>CommentForm</code>. Wicket is able to keep everything straight
 because the Java <code>Component.add()</code> calls have to result in the same nesting
 structure as the HTML.</p>
-
 <p>Finally, notice the <code>&lt;wicket:remove&gt;</code> block. This is simply markup that is
 there for previewing purposes only. When the page renders, it is stripped
 out.</p>
-
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">&quot;http://wicket.apache.org/&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;title&gt;</span>Wicket Examples - guestbook<span class="nt">&lt;/title&gt;</span>
@@ -385,7 +206,6 @@ out.</p>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;mainNavigation&quot;</span><span class="nt">/&gt;</span>
-
   <span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">&quot;commentForm&quot;</span><span class="nt">&gt;</span>
     Add your comment here:
     <span class="nt">&lt;p&gt;</span>
@@ -409,32 +229,23 @@ out.</p>
   <span class="nt">&lt;/wicket:remove&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
-
 <h2 id="guestbookapplicationjava">GuestBookApplication.java</h2>
-
 <p>For completeness, we’ve included the <code>GuestBookApplication</code> class, and as a
 final treat the modifications to the <code>web.xml</code> file.</p>
-
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
-
 <span class="kn">import</span> <span class="nn">org.apache.wicket.Page</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.examples.WicketExampleApplication</span><span class="o">;</span>
-
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">GuestBookApplication</span> <span class="kd">extends</span> <span class="n">WicketExampleApplication</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">GuestBookApplication</span><span class="o">()</span> <span class="o">{</span>
     <span class="o">}</span>
-
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">Page</span><span class="o">&gt;</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">GuestBook</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></div>
-
 <h2 id="webxml">web.xml</h2>
-
 <p>Add the following two sections (servlet and servlet-mapping) to your web.xml
 file for running this application.</p>
-
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;filter&gt;</span>
     <span class="nt">&lt;filter-name&gt;</span>GuestBookApplication<span class="nt">&lt;/filter-name&gt;</span>
     <span class="nt">&lt;filter-class&gt;</span>org.apache.wicket.protocol.http.WicketFilter<span class="nt">&lt;/filter-class&gt;</span>
@@ -443,18 +254,19 @@ file for running this application.</p>
       <span class="nt">&lt;param-value&gt;</span>org.apache.wicket.examples.guestbook.GuestBookApplication<span class="nt">&lt;/param-value&gt;</span>
     <span class="nt">&lt;/init-param&gt;</span>
 <span class="nt">&lt;/filter&gt;</span></code></pre></div>
-
-
-		</div>
-        <div id="clearer"></div>
-		<div id="footer"><span>
-Copyright &copy; 2015 &mdash; The Apache Software Foundation. Apache Wicket,
-Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo
-are trademarks of The Apache Software Foundation. All other marks mentioned
-may be trademarks or registered trademarks of their respective owners.
-</span></div>
-
+        </section>
     </div>
+</main>
+        <footer class="l-container">
+            <div class="l-full">
+    <img height="60px" src="/img/asf_logo.gif" style="float:left">
+    Copyright © 2014 — The Apache Software Foundation. Apache Wicket,
+    Wicket, Apache, the Apache feather logo, and the Apache Wicket
+    project logo are trademarks of The Apache Software Foundation. All
+    other marks mentioned may be trademarks or registered trademarks of
+    their respective owners.
 </div>
-</body>
+        </footer>
+    </body>
+
 </html>

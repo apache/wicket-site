@@ -1,0 +1,14 @@
+.logo {
+    text-align:center;
+
+    @include breakpoint($breakpoint-20) {
+        display:inline-block;
+        float:left;
+        margin:0;
+        @include prepend(1);
+    }
+    img {
+        display:inline-block;
+        width:240px;
+    }
+}

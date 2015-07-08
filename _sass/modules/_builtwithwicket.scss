@@ -1,0 +1,30 @@
+.builtwithwicket {    
+    background-color: #eee;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
+    .slick-prev::before,
+    .slick-next::before {
+        color: $color-brand-50;
+    }
+}
+
+.builtwithwicket + hr {
+    display:none;
+}
+
+.builtwithwicket-post {
+    padding: 1rem 1rem 0 1rem;
+}
+
+.builtwithwicket-screenshot {
+    margin: 0 auto;
+    max-height: 20rem;
+    min-height: 15rem;
+    max-width: 100%;
+    min-width: 50%;
+    padding-bottom: 1rem;
+}

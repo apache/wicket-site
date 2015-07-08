@@ -1,0 +1,59 @@
+.jumbotron {
+    &.header{
+/*        background: radial-gradient(ellipse closest-side, rgba(0,0,0,0), rgba(0,0,0,0.6)), url('../img/background-1.jpg');*/
+        background-color:#111;
+        background-image: url('../img/background-2.jpg');
+        background-repeat: no-repeat;
+        background-position: center 25%;
+        background-size: cover;
+        box-shadow: inset 0 0 40px rgba(0, 0, 0, 1);
+    }
+
+    .mainmenu {
+        @include breakpoint($breakpoint-20) {
+            padding-top:1rem;
+            margin-bottom:7rem;
+        }
+    }
+    .jumbotron-mission {
+        font-size: $font-size-50;
+        font-weight:400;
+        line-height:2;
+        margin-top:2rem;
+        margin-bottom:2rem;
+        text-align:center;
+        text-transform:uppercase;
+        @include grid(48,2);
+
+        @include breakpoint($breakpoint-10) {
+            @include grid(48,6);
+            margin-top:2rem;
+            margin-bottom:3rem;
+        }
+        @include breakpoint($breakpoint-20) {
+            @include grid(48,12);
+        }
+    }
+
+    .jumbotron-download {
+        margin:2rem auto;
+        text-align:center;
+        text-transform:uppercase;
+    }
+
+    .jumbotron-logo {
+        margin-top:2rem;
+        margin-bottom:2rem;
+
+        @include breakpoint($breakpoint-20) {
+            display:block;
+            float:none;
+        }
+        img {
+            display:block;
+            width:50%;
+            min-width:320px;
+            margin:0 auto;
+        }
+    }
+}

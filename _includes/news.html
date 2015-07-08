@@ -1,0 +1,40 @@
+<div class="l-full l-first preamble">
+    <h1>News about Apache Wicket</h1>
+    <p>Get the latest updates to releases, security bulletins, community 
+    news and more.</p>
+</div>
+
+<div class="l-two-third">
+{% for post in site.posts limit:1 %}
+    <article>
+        <h2>{{post.title}}</h2>
+        <small>{{post.date|date_to_string}}</small>
+        {{post.excerpt}}
+        <a href="{{ site.baseurl }}{{post.url}}">Read more...</a> 
+    </article>
+{% endfor %}
+</div>
+
+<div class="l-one-third news">
+
+<h2>Older news</h2>
+
+<p>See the <a href="{{site.baseurl}}/news">archives</a> for all news
+articles concerning release, security and community updates.</p>
+
+<p>Note that you can subscribe to our <a type="application/atom+xml"
+title="Atom 1.0 feed" href="{{site.baseurl}}/atom.xml">RSS feed</a> to
+get updates in your favorite RSS reader the moment they happen.</p>
+
+<ul>
+{% for post in site.posts limit:5 offset:1 %}
+<li>
+    <h3>{{post.title}}</h3>
+    <small>{{post.date | date_to_string}}</small>
+    {{ post.content | strip_html | truncatewords:25 }}
+    <a href="{{ site.baseurl }}{{post.url}}">more</a>
+</li>
+{% endfor %}
+</ul>
+</div>
+<div class="l-first"></div>

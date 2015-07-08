@@ -1,0 +1,68 @@
+div.quickstart-wizard {
+  background-color: $color-brand-50;
+  border-radius: 3px;
+  color: #ffffff;
+  line-height: 2em;
+  padding: 1rem 2rem 2rem 2rem; 
+
+  label {
+    display: block;
+    font-weight:bold;
+    margin-top: 0.5rem;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem;
+    color: #606060;
+    height: 2rem; 
+  }
+
+  textarea {
+    height: 5rem; 
+  }
+
+  button {
+    background-color: #E68A00;
+    color: white;
+    height: 3em;
+    margin-top: 1em;
+    font-size: 1em;
+    font-weight: 200; 
+  }
+}
+
+.quickstart {
+  ol {
+    margin-left:0;
+    padding-left:0; 
+    counter-reset:item;
+  }
+  ol>li {
+    margin-left:2.5rem; 
+    padding-left:0; 
+    counter-increment:item; 
+    list-style:none inside;
+    margin-bottom:10px
+  }
+  ol>li:before {
+    background: $color-brand-50;
+    border-radius: 50%; 
+    color:#fff;
+    content: counter(item);
+    display:inline-block;
+    height:2rem;
+    margin-left:-2.5rem; 
+    margin-right:0.5rem;
+    padding-top:0.3333rem;
+    text-align:center;
+    vertical-align: baseline;
+    font-weight:bold;
+    width:2rem;
+  }
+}
