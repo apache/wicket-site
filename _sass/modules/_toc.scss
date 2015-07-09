@@ -1,0 +1,9 @@
+.toc {
+    ul { list-style: none; }
+    &>ul {
+        margin-left: 0;
+    }
+    &>ul > li+li {
+        margin-top: 1rem;
+    }
+}

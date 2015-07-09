@@ -1,0 +1,70 @@
+<header class="preamble">
+    <h1>Projects Using Apache Wicket</h1>
+    <p>
+        Many projects use Wicket but are not known for it. Below you 
+        find a list of projects that are "Powered by Wicket".
+    </p>
+</header>
+<article class="l-full">
+    <div class="builtwithwicket-slider"></div>
+    <br><br>
+    <p>
+        This list is generated from our Tumblr feed 'Built with Wicket'. 
+        You can submit your own project to this list through 
+        <a href="http://builtwithwicket.tumblr.com/submit" rel="nofollow">this form</a>.
+    </p>
+</article>
+<div class="l-first"></div>
+<!-- Only display the blog image, title and post URL -->   
+<script type="text/javascript"> 
+    function randomIntFromInterval(min,max)
+    {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
+
+    $.getJSON('http://builtwithwicket.tumblr.com/api/read/json?callback=?',
+        function(response) {   
+            var posts = response.posts;  
+
+            for(var postIndex in posts) {
+                var post = posts[postIndex];
+                var caption = jQuery('<div>' + post['photo-caption'] + '</div>').text().substring(0,150) + "...";
+                var newSlide = $('.builtwithwicket-slider').append(
+                    '<div class="builtwithwicket-post">\n' +
+                    '  <img class="builtwithwicket-screenshot" data-lazy="' + post['photo-url-500'] + '">\n' +
+                    '  <p class="builtwithwicket-caption">' + caption + '</p>\n' +
+                    '  <a href="' + post['url'] + '" rel="nofollow">More</a>\n' + 
+                    '</div>');
+            }
+
+            $('.builtwithwicket-slider').slick({
+                arrows: true,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                dots: true,
+                draggable: true,
+                infinite: true,
+                initialSlide: randomIntFromInterval(0, posts.length),
+                lazyLoad: 'ondemand',
+                pauseOnDotsHover: true,
+                responsive: [    {
+                        breakpoint: 590,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 960,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                ],
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                swipe: true,
+            });
+        });
+</script>

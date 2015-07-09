@@ -1,0 +1,38 @@
+{% assign activeMenu = nil %}
+<nav class="mainmenu">
+    <ul>
+    {% for link in site.navigation %}
+		{% assign url = page.url|remove:'/index.html' %}
+    	{% assign active = nil %}
+        {% assign linkurl = link.url|remove:'/index.html' %}
+        {% assign linkurl = link.url|remove:'/index.md' %}
+		<!-- {{ linkurl }} || {{ url }} -->
+    	{% if url == "" and link.url == "/" %}
+    		{% assign active = 'active' %}
+    	{% elsif url == link.url or page.url == link.url %}
+    		{% assign active = 'active' %}
+        {% elsif url == linkurl %}
+    		{% assign active = 'active' %}
+    	{% elsif page.layout == link.layout %}
+    		{% assign active = 'active' %}
+    	{% elsif page.post == true and link.layout == 'post' %}
+    		{% assign active = 'active' %}
+    	{% else %}
+    		{% for sublink in link.subnavigation %}
+    			{% if url == sublink.url %}
+    				{% assign active = 'active' %}
+    			{% endif %}
+    		{% endfor %}
+    	{% endif %}
+    	{% if active == "active" %}
+    		{% assign activeMenu = link %}
+    	{% endif %}
+        {% unless link.url contains "http://" %}
+            {% capture url %}{{ site.baseurl }}{{ link.url}}{% endcapture %}
+        {% else %}
+            {% assign url = link.url %}
+        {% endunless %}
+    	<li class="{{ active }}"><a href="{{ url }}">{{ link.text }}</a></li>
+    {% endfor %}
+    </ul>
+</nav>

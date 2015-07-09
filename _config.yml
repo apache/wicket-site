@@ -1,10 +1,19 @@
+name: Apache Wicket
 destination: ./content
 lsi:         false
 port: 4000
 highlighter:    pygments
 markdown:    Kramdown
-permalink:   date
+monthly_archive:
+    path:   news
+    layout: news_archive
+yearly_archive:
+    layout: news_archive
+permalink:   news/:year/:month/:day/:title.html
 exclude:      [readme.md]
+excerpt_separator: <!--more-->
+sass:
+    sass_dir: _sass
 wicket:
   version:    6.20.0
   version_70: 7.0.0-M6
@@ -13,3 +22,17 @@ wicket:
   version_14: 1.4.23
   released:   2015-06-14
   versions:   [6.20.0, 1.5.13, 1.4.23, 7.0.0-M6, 1.5-SNAPSHOT, 6.21.0-SNAPSHOT, 7.0.0-SNAPSHOT]
+
+navigation:
+- text: Quick Start
+  url: /start/quickstart.html
+- text: Download
+  url: /start/download.html
+- text: Documentation
+  url: /learn
+- text: Support
+  url: /help
+- text: Contribute
+  url: /contribute
+- text: Apache
+  url: /apache

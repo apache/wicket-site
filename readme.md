@@ -1,28 +1,17 @@
-Wicket Site
-===========
+# Wicket new site
 
-This is a project for tracking a new design for the Apache Wicket website. The
-site is generated to static html using
-[jekyll](http://github.com/mojombo/jekyll).
+This repository contains the site of [Apache Wicket
+framework](http://wicket.apache.org).
 
-If you want to see how it might look in the future, see the file
-[wicketsite5.pdf](http://github.com/apache/wicket-site/blob/asf-site/_design/wicketsite5.pdf
- "Design document")
+## Project info
 
-If you want to see how it looks now, see the [generated
-markup](http://github.com/dashorst/wicket-site/raw/master/_site/index.html).
+The site is based on [Jekyll](http://jekyllrb.com/). So you have to be
+familiar with Markdown template language and have Jekyll (ver. 2+)
+installed to contribute to the project.
 
-Running the site
-----------------
+## Run the project
 
-Use (after installing jekyll) the following command to run jekyll in a server
-mode:
-
-    $ ./regenerate.sh
-
-This instructs jekyll to generate new output whenever something changes on
-the filesystem, and serve those files to the default port (4000) on your box.
-
-Note that this script restores Subversion (`.svn`) subfolders
-inside `_site`, which are erased when Jekyll is generating the content.
-
+Just go on project root folder and execute `jekyll serve -w` to generate
+the static HTML and start the local server. The project comes with all
+the dependencies you need (css, js, pictures, etc.) so you don't need
+any preliminary operation before running Jekyll.

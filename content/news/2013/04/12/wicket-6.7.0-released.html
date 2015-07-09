@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Apache Wicket 6.7.0 released | Apache Wicket</title>
+        <meta charset="utf8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    </head>
+
+    <body class="">
+        <div class="header default">
+    <div class="l-container">
+<nav class="mainmenu">
+    <ul>
+		<!-- /start/quickstart.html || /news/2013/04/12/wicket-6.7.0-released.html -->
+    	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+		<!-- /start/download.html || /news/2013/04/12/wicket-6.7.0-released.html -->
+    	<li class=""><a href="/start/download.html">Download</a></li>
+		<!-- /learn || /news/2013/04/12/wicket-6.7.0-released.html -->
+    	<li class=""><a href="/learn">Documentation</a></li>
+		<!-- /help || /news/2013/04/12/wicket-6.7.0-released.html -->
+    	<li class=""><a href="/help">Support</a></li>
+		<!-- /contribute || /news/2013/04/12/wicket-6.7.0-released.html -->
+    	<li class=""><a href="/contribute">Contribute</a></li>
+		<!-- /apache || /news/2013/04/12/wicket-6.7.0-released.html -->
+    	<li class=""><a href="/apache">Apache</a></li>
+    </ul>
+</nav>
+        <div class="logo">
+    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+</div>
+    </div>
+</div>
+<main>
+    <div class="l-container">
+        <header class="l-full preamble">
+            <h1>Apache Wicket 6.7.0 released</h1>
+        </header>
+        <section class="l-one-third right">
+        </section>
+        <section class="l-two-third left">
+            <div class="l-full">
+    <p class="meta">12 Apr 2013</p>
+    <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.7.0!</p>
+<p>This release marks the seventh minor release of Wicket 6. Starting
+with Wicket 6 we use semantic versioning for the future development
+of Wicket, and as such no API breaks are present in this release
+compared to 6.0.0.</p>
+<h3 id="new-and-noteworthy">New and noteworthy</h3>
+<h4 id="webfonts-are-now-supported">webfonts are now supported</h4>
+<p>Our resource guard that prevents access to classpath resources that
+are not intended to be shared through the web server is a whitelist
+of permissable resource extensions. Typically images, JavaScript
+files, stylesheets are on the whitelist, but the file types for
+webfonts were blocked. From Wicket 6.7 and onward you can now embed
+webfonts with your components and link to them from your stylesheets.</p>
+<h4 id="render-a-page-or-component-to-a-string">Render a page or component to a String</h4>
+<p>One of the issues that keeps propping up on the user lists is the
+ability to render a page or component to a String so that you can use
+Wicket to render HTML email messages. Now you can use
+<a href="http://ci.apache.org/projects/wicket/apidocs/6.0.x/org/apache/wicket/core/util/string/ComponentRenderer.html">ComponentRenderer</a> to
+actually do so without having to resort to other less obvious methods.</p>
+<p>ComponentRenderer exposes two methods: <code>renderComponent</code> and
+<code>renderPage</code> and they do exactly what their names suggest. Happy
+emailing!</p>
+<h3 id="using-this-release">Using this release</h3>
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>6.7.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.7.0">http://www.apache.org/dyn/closer.cgi/wicket/6.7.0</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.7.0/binaries">http://www.apache.org/dyn/closer.cgi/wicket/6.7.0/binaries</a></li>
+</ul>
+<h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
+<p>If you upgrade from 6.y.z this release is a drop in replacement. If
+you come from a version prior to 6.0.0, please read our Wicket 6
+migration guide found at</p>
+<ul>
+  <li><a href="http://s.apache.org/wicket-6.0-migration">http://s.apache.org/wicket-6.0-migration</a></li>
+</ul>
+<p>Have fun!</p>
+<p>— The Wicket team</p>
+<h3 id="release-notes---wicket---version-670">Release Notes - Wicket - Version 6.7.0</h3>
+<h4 id="bug">Bug</h4>
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4658">WICKET-4658</a> - TabbedPanel CSS “last” is wrong if last step is not visible</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4803">WICKET-4803</a> - UrlDecoder should log a message when invalid input is provided</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4871">WICKET-4871</a> - wicket-atmosphere version mismatch with wicket-example-jar</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4893">WICKET-4893</a> - AutoCompleteTextField removes DropDownChoice from Page</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4903">WICKET-4903</a> - relativeUrl’s begins with ./</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4907">WICKET-4907</a> - UrlResourceReference generates broken relative URLs</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4942">WICKET-4942</a> - Double slash ‘//’ in starting url makes Url.parse output a relative Url</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4989">WICKET-4989</a> - WicketTester should send copies of its cookies </li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4995">WICKET-4995</a> - Using CryptoMapper causes page to render twice</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5039">WICKET-5039</a> - Manual invocation of FunctionsExecutor#notify() is broken</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5041">WICKET-5041</a> - DefaultCssAutoCompleteTextField should have Constructor (String id)</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5044">WICKET-5044</a> - Atmosphere + DateLabel</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5045">WICKET-5045</a> - Upgrade Atmosphere to 1.0.10</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5047">WICKET-5047</a> - Wicket Ajax: Inline script header contribution issue</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5048">WICKET-5048</a> - Inline enclosures don’t work with different namespace</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5049">WICKET-5049</a> - Wicket Session may be null in SessionBindingListener after deserialization</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5052">WICKET-5052</a> - @SpringBean fails to invoke methods on bean with non-public methods</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5053">WICKET-5053</a> - “random” parameters is now “_” with jQuery Ajax</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5054">WICKET-5054</a> - Possible bug in org.apache.wicket.util.lang.Packages when building path with repeating names</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5055">WICKET-5055</a> - AutoComplete still triggers redundant events to registered change listener</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5061">WICKET-5061</a> - EnclosureHandler ignores wicket:xyz elements as children</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5067">WICKET-5067</a> - SelectOptions fails to render text on openClose tag</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5072">WICKET-5072</a> - Cookies#isEqual(Cookie, Cookie) may fail with NullPointerException</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5073">WICKET-5073</a> - UrlRenderer#removeCommonPrefixes() fails when contextPath+filterPrefix has more segments than the argument</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5075">WICKET-5075</a> - When modal window is closed page scrolls to top</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5076">WICKET-5076</a> - form#onSubmit() is called on just replaced nested forms</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5078">WICKET-5078</a> - RestartResponseException broken with page instance and bookmarkable page</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5080">WICKET-5080</a> - FilterToolbar.html contains javascript that is used elsewhere</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5082">WICKET-5082</a> - Ajax update renders parent/child JS in different order than initial Page render</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5085">WICKET-5085</a> - InlineEnclosure are piling up on each render</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5086">WICKET-5086</a> - FormTester throws an exception when a Palette component is added to a Form associated with a compound property model</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5093">WICKET-5093</a> - The event listener in Wicket.Ajax.ajax() should not return the value of attrs.ad (allowDefault)</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5094">WICKET-5094</a> - ISecuritySettings#getEnforceMounts(true) prevents access to <em>all</em> non-mounted bookmarkable pages</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5098">WICKET-5098</a> - PackageResourceBlockedException under Windows for *.js files in web app’s own packages, not in jars</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5102">WICKET-5102</a> - wicket-bean-validation: Bean validation PropertyValidator only works with direct field access</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5103">WICKET-5103</a> - Wicket session id not up to date when container changes session id</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5104">WICKET-5104</a> - AjaxSelfUpdatingTimerBehavior in hidden component in ModalWindow causes Ajax Response Error</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5112">WICKET-5112</a> - Parantheses problem with UrlValidator</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5114">WICKET-5114</a> - Url#toString(StringMode.FULL) throws exception if a segment contains two dots</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5116">WICKET-5116</a> - TabbedPanel.setSelectedTab() does not behave as specified in JavaDoc</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5117">WICKET-5117</a> - Wicket ignores allowDefault:false attribute in multipart ajax requests</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5123">WICKET-5123</a> - Component.continueToOriginalDestination() can redirect to ./.</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5125">WICKET-5125</a> - IE8 error in wicket-date.js when used in a modalwindow</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5126">WICKET-5126</a> - SecurePackageResourceGuard is blocking access to web fonts</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5131">WICKET-5131</a> - Problems with cookies disabled when using 301/302 and also 303 (even with cookies)</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5132">WICKET-5132</a> - Evaluation of returned data (which includes alot of javascript) very slow after ajax call in IE10.</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5134">WICKET-5134</a> - java.lang.NullPointerException at org.apache.wicket.markup.html.form.Form.onComponentTag(Form.java:1520) during Atmosphere eventbus.post() if using WebSockets</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5136">WICKET-5136</a> - CheckingObjectOutputStream#check(Object) swallows Exception without logging the cause</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5138">WICKET-5138</a> - Wicket does not correctly handle http OPTIONS requests</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5141">WICKET-5141</a> - Exception while rendering absolute URL with UrlResourceReference</li>
+</ul>
+<h4 id="improvement">Improvement</h4>
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4115">WICKET-4115</a> - SignInPanel should not always redirect to the Home page when the user is signed-in automaticaly with the remember-me feature.</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5005">WICKET-5005</a> - Add Utility to allow conversion from Panel (or Component) to html String</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5038">WICKET-5038</a> - Add equals() and hashcode() implementation to INamedParameters.NamedPair</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5046">WICKET-5046</a> - NumberTextField should use appropriate validator</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5050">WICKET-5050</a> - AutoComplete should not request suggestions if input is no longer active element</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5057">WICKET-5057</a> - FilteringHeaderResponse requires a usage of FilteringHeaderResponse.IHeaderResponseFilter for no reason when FilteredHeaderItem is used</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5062">WICKET-5062</a> - Update the list of HTML void elements with the latest HTML5 ones</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5065">WICKET-5065</a> - Improve UrlRenderer to be able to render urls without scheme and/or host </li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5066">WICKET-5066</a> - Allow PackageResource to decide itself whether it could be accepted or not</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5074">WICKET-5074</a> - Improvement for MockHttpServletRequest and FormTester to support ‘multiple’ input type of fileUpload</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5079">WICKET-5079</a> - Allow WebApplication-specific Spring configuration</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5088">WICKET-5088</a> - The Bootstrap class does not provide a handle for the CSSResourceReferences.</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5089">WICKET-5089</a> - Make MultiFileUploadField’s ResourceReference JS public to be able to include in Application’s getResourceBundles.</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5090">WICKET-5090</a> - Add path syntax to MarkupContainer#get( String )</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5091">WICKET-5091</a> - Extract the short names of the ajax attributes as a constants</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5095">WICKET-5095</a> - Upgrade Wicket Native WebSocket to Jetty 9.0.0</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5096">WICKET-5096</a> - Add setStep method to NumberTextField</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5105">WICKET-5105</a> - JavaDoc of IHeaderContributor is outdated</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5111">WICKET-5111</a> - Upgrade bootstrap to 2.3.1</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5113">WICKET-5113</a> - Set a different TimeZone for the RequestLogger</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5121">WICKET-5121</a> - Log warning message if a component that is not on the page associated with the AjaxRequestTarget is added</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5122">WICKET-5122</a> - Add the free Wicket guide in the books page on the official site.</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5127">WICKET-5127</a> - Dont use sun-internal packages to allow easy jdk7 compilation</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5137">WICKET-5137</a> - Improve TagTester support for Ajax responses</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5139">WICKET-5139</a> - Missing French translations</li>
+</ul>
+<h4 id="task">Task</h4>
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5097">WICKET-5097</a> - Deprecate BaseWicketTester#startComponent(Component)</li>
+</ul>
+<h4 id="test">Test</h4>
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5042">WICKET-5042</a> - Cleanup FilteringHeaderResponseTest to make it more readable</li>
+</ul>
+</div>
+        </section>
+    </div>
+</main>
+        <footer class="l-container">
+            <div class="l-full">
+    <img height="60px" src="/img/asf_logo.gif" style="float:left">
+    Copyright © 2014 — The Apache Software Foundation. Apache Wicket,
+    Wicket, Apache, the Apache feather logo, and the Apache Wicket
+    project logo are trademarks of The Apache Software Foundation. All
+    other marks mentioned may be trademarks or registered trademarks of
+    their respective owners.
+</div>
+        </footer>
+    </body>
+
+</html>

@@ -1,24 +1,81 @@
 ---
 layout: default
-title: Download Wicket releases
+title: Download Apache Wicket
+subtitle: Get the most recent version of Wicket in one source package
+preamble: Wicket is released as a source archive, convenience binaries and through the Maven Central Repository. The most convenient way of getting Wicket is through the Maven dependency management system.
 ---
+## Get the Production Release
+
+The current stable, production ready release of Wicket is version
+**{{site.wicket.version}}**. To see what changed in this release (and
+prior releases) you can read the [change
+log](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/CHANG
+ELOG-6.x)
+
+All projects intended for production use should use this version. These
+releases follow semantic versioning so upgrades between minor releases
+will not break compatibility.
+
+You can get the release using Maven or download it manually.
+
+### Get the Production Release Using Maven
+
+Use the following Maven dependency to use Wicket in your project:
+
+{% highlight xml %}
+<dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-core</artifactId>
+    <version>{{site.wicket.version}}</version>
+</dependency>
+{% endhighlight xml %}
+
+Add the snippet above to your project's POM in the dependency
+(management) section.
+
+If you are not a Maven user, you can obtain the Wicket release manually.
+
+### Download the Production Release 
+
+Use the following links to download Wicket manually to build Wicket
+from source:
+
+- Download source [apache-wicket-{{site.wicket.version}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version}}/apache-wicket-{{site.wicket.version}}.tar.gz)
+([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/apache-wicket-{{site.wicket.version}}.tar.gz.asc),
+[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/apache-wicket-{{site.wicket.version}}.tar.gz.md5),
+[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/apache-wicket-{{site.wicket.version}}.tar.gz.sha)
+)
+- Download source [apache-wicket-{{site.wicket.version}}.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version}}/apache-wicket-{{site.wicket.version}}.zip)
+([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/apache-wicket-{{site.wicket.version}}.zip.asc),
+[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/apache-wicket-{{site.wicket.version}}.zip.md5),
+[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/apache-wicket-{{site.wicket.version}}.zip.sha)
+)
+
+Or use the following links to get the pre-packaged binaries instead:
+
+- Download binaries [apache-wicket-{{site.wicket.version}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version}}/binaries/apache-wicket-{{site.wicket.version}}-bin.tar.gz)
+([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/binaries/apache-wicket-{{site.wicket.version}}-bin.tar.gz.asc),
+[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/binaries/apache-wicket-{{site.wicket.version}}-bin.tar.gz.md5),
+[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/binaries/apache-wicket-{{site.wicket.version}}-bin.tar.gz.sha)
+)
+- Download binaries [apache-wicket-{{site.wicket.version}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version}}/binaries/apache-wicket-{{site.wicket.version}}-bin.zip)
+([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/binaries/apache-wicket-{{site.wicket.version}}-bin.zip.asc),
+[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/binaries/apache-wicket-{{site.wicket.version}}-bin.zip.md5),
+[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/binaries/apache-wicket-{{site.wicket.version}}-bin.zip.sha)
+)
+
+### Don't mix Wicket versions
+
+You cannot mix different Wicket versions in your project. You should
+always use the artifacts from a particular release. For example it is
+**not** possible to use Wicket Extensions 1.5 in a Wicket 6 project.
+The same goes for 3rd party libraries: make sure you always use a
+compatible version of your 3rd party library.
 
 Apache Wicket {{site.wicket.version}} is the current stable release.
 Most users get Apache Wicket using [Apache Maven's dependency
 management](#maven), which incidentally is the most convenient way of
 obtaining the latest and greatest Wicket.
-
-## Download
-
-New projects should use [Wicket {{site.wicket.version}}](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version}}) as their base.
-
- * **Latest stable release**: [{{site.wicket.version}}](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version}})
- * **Latest 6.x release**: [{{site.wicket.version_60}}](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_60}})
- * **Latest 1.5.x release**: [{{site.wicket.version_15}}](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_15}})
- * **Latest 1.4.x release** (security updates only): [{{site.wicket.version_14}}](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_14}})
- * **Archived releases**: <http://archive.apache.org/dist/wicket>
-
-We recommend you [start](quickstart.html) with our latest stable release. 
 
 ### Developer releases
 
@@ -40,15 +97,6 @@ versions. API changes will occur between releases.
  * Apache Wicket 6.x requires JDK 6.0 or newer
  * Apache Wicket 1.5.x requires JDK 1.5 or newer
  * Apache Wicket 1.4.x requires JDK 1.5 or newer
-
-#### Mixing Wicket versions
-
-You cannot mix different Wicket versions in your project. You should
-always use the artifacts from a particular release train.
-
-For example it is **NOT** possible to use Wicket Extensions 1.5 in a
-Wicket 6 project. The same goes for 3rd party libraries: make sure you
-always use a compatible version of your 3rd party library.
 
 #### Logging
 
@@ -127,3 +175,13 @@ There's also a Maven 2 repository providing SNAPSHOTs available here:
     </repository>
 </repositories>
 {% endhighlight %}
+
+## Looking for older releases?
+
+If you are looking for older releases of Wicket (1.5 or 1.4), please
+see the [download archive](<http://archive.apache.org/dist/wicket>) for
+more informations on our older releases.
+
+- **Latest 6.x release**: [{{site.wicket.version_60}}](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_60}})
+- **Latest 1.5.x release**: [{{site.wicket.version_15}}](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_15}})
+- **Latest 1.4.x release** (security updates only): [{{site.wicket.version_14}}](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_14}})

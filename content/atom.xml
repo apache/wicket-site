@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="http://www.w3.org/2005/Atom"> 
+    <title>Apache Wicket</title>
+    <link href="http://wicket.apache.org/atom.xml" rel="self"/>
+    <link href="http://wicket.apache.org/"/>
+    <updated>2015-07-09T16:58:02+02:00</updated>
+    <id>http://wicket.apache.org/</id>
+    <author>
+        <name>Apache Wicket</name>
+        <email>dev@wicket.apache.org</email>
+    </author>
  
- <title>Apache Wicket</title>
- <link href="http://wicket.apache.org/atom.xml" rel="self"/>
- <link href="http://wicket.apache.org/"/>
- <updated>2015-06-28T17:57:00+03:00</updated>
- <id>http://wicket.apache.org/</id>
- <author>
-   <name>Apache Wicket</name>
-   <email>dev@wicket.apache.org</email>
- </author>
- 
- 
- <entry>
-   <title>Apache Wicket 7.0.0-M6 released</title>
-   <link href="http://wicket.apache.org/2015/06/21/wicket-7.0.0-M6-released.html"/>
-   <updated>2015-06-21T00:00:00+03:00</updated>
-   <id>http://wicket.apache.org/2015/06/21/wicket-7.0.0-M6-released</id>
-   <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.0.0-M6!&lt;/p&gt;
+
+    <entry>
+        <title>Apache Wicket 7.0.0-M6 released</title>
+        <link href="http://wicket.apache.org/news/2015/06/21/wicket-7.0.0-M6-released.html"/>
+        <updated>2015-06-21T00:00:00+02:00</updated>
+        <id>http://wicket.apache.org/news/2015/06/21/wicket-7.0.0-M6-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.0.0-M6!&lt;/p&gt;
 
 &lt;p&gt;We have released another milestone release for Apache Wicket 7. We aim
 to finalise Wicket 7 over the coming months and request your help in
@@ -231,14 +230,14 @@ yPIAoMU7z9Go0pn5ZFKZwq+VDA0cvoh4
 
 &lt;p&gt;— The Wicket team&lt;/p&gt;
 </content>
- </entry>
- 
- <entry>
-   <title>Apache Wicket 6.20.0 released</title>
-   <link href="http://wicket.apache.org/2015/06/14/wicket-6.20.0-released.html"/>
-   <updated>2015-06-14T00:00:00+03:00</updated>
-   <id>http://wicket.apache.org/2015/06/14/wicket-6.20.0-released</id>
-   <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.20.0!&lt;/p&gt;
+    </entry>
+
+    <entry>
+        <title>Apache Wicket 6.20.0 released</title>
+        <link href="http://wicket.apache.org/news/2015/06/14/wicket-6.20.0-released.html"/>
+        <updated>2015-06-14T00:00:00+02:00</updated>
+        <id>http://wicket.apache.org/news/2015/06/14/wicket-6.20.0-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.20.0!&lt;/p&gt;
 
 &lt;p&gt;This release marks another minor release of Wicket 6. Starting
 with Wicket 6 we use semantic versioning for the future development
@@ -358,14 +357,14 @@ migration guide found at&lt;/p&gt;
 
 &lt;p&gt;— The Wicket team&lt;/p&gt;
 </content>
- </entry>
- 
- <entry>
-   <title>Wicket 1.5.13 released</title>
-   <link href="http://wicket.apache.org/2015/02/13/wicket-1.5.13-released.html"/>
-   <updated>2015-02-13T00:00:00+02:00</updated>
-   <id>http://wicket.apache.org/2015/02/13/wicket-1.5.13-released</id>
-   <content type="html">&lt;p&gt;This is the thirteenth maintenance release of the Wicket 1.5.x series. This release brings over 1 bug fix and 1 improvement.&lt;/p&gt;
+    </entry>
+
+    <entry>
+        <title>Wicket 1.5.13 released</title>
+        <link href="http://wicket.apache.org/news/2015/02/13/wicket-1.5.13-released.html"/>
+        <updated>2015-02-13T00:00:00+01:00</updated>
+        <id>http://wicket.apache.org/news/2015/02/13/wicket-1.5.13-released</id>
+        <content type="html">&lt;p&gt;This is the thirteenth maintenance release of the Wicket 1.5.x series. This release brings over 1 bug fix and 1 improvement.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=shortlog;h=refs/tags/wicket-1.5.13&quot;&gt;Git tag&lt;/a&gt;&lt;/li&gt;
@@ -383,14 +382,14 @@ migration guide found at&lt;/p&gt;
   &lt;li&gt;Download the &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/1.5.13&quot;&gt;full distribution&lt;/a&gt; (including sources)&lt;/li&gt;
 &lt;/ul&gt;
 </content>
- </entry>
- 
- <entry>
-   <title>New committer - Sebastien Briquet</title>
-   <link href="http://wicket.apache.org/2015/02/13/new-committer-Sebastien-Briquet.html"/>
-   <updated>2015-02-13T00:00:00+02:00</updated>
-   <id>http://wicket.apache.org/2015/02/13/new-committer-Sebastien-Briquet</id>
-   <content type="html">&lt;p&gt;The Project Management Committee (PMC) for Apache Wicket 
+    </entry>
+
+    <entry>
+        <title>New committer - Sebastien Briquet</title>
+        <link href="http://wicket.apache.org/news/2015/02/13/new-committer-Sebastien-Briquet.html"/>
+        <updated>2015-02-13T00:00:00+01:00</updated>
+        <id>http://wicket.apache.org/news/2015/02/13/new-committer-Sebastien-Briquet</id>
+        <content type="html">&lt;p&gt;The Project Management Committee (PMC) for Apache Wicket 
 has asked Sebastien Briquet to become a committer and we are pleased 
 to announce that he has accepted. &lt;/p&gt;
 
@@ -402,14 +401,14 @@ to announce that he has accepted. &lt;/p&gt;
 
 &lt;p&gt;Bienvenue Sebastien! &lt;/p&gt;
 </content>
- </entry>
- 
- <entry>
-   <title>Apache Wicket 7.0.0-M5 released</title>
-   <link href="http://wicket.apache.org/2015/02/02/wicket-7.0.0-M5-released.html"/>
-   <updated>2015-02-02T00:00:00+02:00</updated>
-   <id>http://wicket.apache.org/2015/02/02/wicket-7.0.0-M5-released</id>
-   <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.0.0-M5!&lt;/p&gt;
+    </entry>
+
+    <entry>
+        <title>Apache Wicket 7.0.0-M5 released</title>
+        <link href="http://wicket.apache.org/news/2015/02/02/wicket-7.0.0-M5-released.html"/>
+        <updated>2015-02-02T00:00:00+01:00</updated>
+        <id>http://wicket.apache.org/news/2015/02/02/wicket-7.0.0-M5-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.0.0-M5!&lt;/p&gt;
 
 &lt;p&gt;We have released another milestone release for Apache Wicket 7. We aim
 to finalise Wicket 7 over the coming months and request your help in
@@ -582,14 +581,14 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
 
 &lt;p&gt;— The Wicket team&lt;/p&gt;
 </content>
- </entry>
- 
- <entry>
-   <title>Apache Wicket 6.19.0 released</title>
-   <link href="http://wicket.apache.org/2015/02/02/wicket-6.19.0-released.html"/>
-   <updated>2015-02-02T00:00:00+02:00</updated>
-   <id>http://wicket.apache.org/2015/02/02/wicket-6.19.0-released</id>
-   <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.19.0!&lt;/p&gt;
+    </entry>
+
+    <entry>
+        <title>Apache Wicket 6.19.0 released</title>
+        <link href="http://wicket.apache.org/news/2015/02/02/wicket-6.19.0-released.html"/>
+        <updated>2015-02-02T00:00:00+01:00</updated>
+        <id>http://wicket.apache.org/news/2015/02/02/wicket-6.19.0-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.19.0!&lt;/p&gt;
 
 &lt;p&gt;This release marks another minor release of Wicket 6. Starting
 with Wicket 6 we use semantic versioning for the future development
@@ -720,14 +719,14 @@ i6UAn25gHcC0w8QWiNJXV7u99iTHssaP
 
 &lt;p&gt;— The Wicket team&lt;/p&gt;
 </content>
- </entry>
- 
- <entry>
-   <title>Apache Wicket 7.0.0-M4 released</title>
-   <link href="http://wicket.apache.org/2014/11/05/wicket-7.0.0-M4-released.html"/>
-   <updated>2014-11-05T00:00:00+02:00</updated>
-   <id>http://wicket.apache.org/2014/11/05/wicket-7.0.0-M4-released</id>
-   <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.0.0-M4!&lt;/p&gt;
+    </entry>
+
+    <entry>
+        <title>Apache Wicket 7.0.0-M4 released</title>
+        <link href="http://wicket.apache.org/news/2014/11/05/wicket-7.0.0-M4-released.html"/>
+        <updated>2014-11-05T00:00:00+01:00</updated>
+        <id>http://wicket.apache.org/news/2014/11/05/wicket-7.0.0-M4-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.0.0-M4!&lt;/p&gt;
 
 &lt;p&gt;We have released another milestone release for Apache Wicket 7. We aim
 to finalise Wicket 7 over the coming months and request your help in
@@ -896,14 +895,14 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
 
 &lt;p&gt;— The Wicket team&lt;/p&gt;
 </content>
- </entry>
- 
- <entry>
-   <title>Apache Wicket 6.18.0 released</title>
-   <link href="http://wicket.apache.org/2014/11/05/wicket-6.18.0-released.html"/>
-   <updated>2014-11-05T00:00:00+02:00</updated>
-   <id>http://wicket.apache.org/2014/11/05/wicket-6.18.0-released</id>
-   <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.18.0!&lt;/p&gt;
+    </entry>
+
+    <entry>
+        <title>Apache Wicket 6.18.0 released</title>
+        <link href="http://wicket.apache.org/news/2014/11/05/wicket-6.18.0-released.html"/>
+        <updated>2014-11-05T00:00:00+01:00</updated>
+        <id>http://wicket.apache.org/news/2014/11/05/wicket-6.18.0-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.18.0!&lt;/p&gt;
 
 &lt;p&gt;This release marks another minor release of Wicket 6. Starting
 with Wicket 6 we use semantic versioning for the future development
@@ -1025,14 +1024,14 @@ i6UAn25gHcC0w8QWiNJXV7u99iTHssaP
 &lt;/ul&gt;
 
 </content>
- </entry>
- 
- <entry>
-   <title>CVE-2014-3526 - Apache Wicket Information disclosure vulnerability</title>
-   <link href="http://wicket.apache.org/2014/09/22/cve-2014-3526.html"/>
-   <updated>2014-09-22T00:00:00+03:00</updated>
-   <id>http://wicket.apache.org/2014/09/22/cve-2014-3526</id>
-   <content type="html">&lt;p&gt;Severity: Important&lt;/p&gt;
+    </entry>
+
+    <entry>
+        <title>CVE-2014-3526 - Apache Wicket Information disclosure vulnerability</title>
+        <link href="http://wicket.apache.org/news/2014/09/22/cve-2014-3526.html"/>
+        <updated>2014-09-22T00:00:00+02:00</updated>
+        <id>http://wicket.apache.org/news/2014/09/22/cve-2014-3526</id>
+        <content type="html">&lt;p&gt;Severity: Important&lt;/p&gt;
 
 &lt;p&gt;Vendor:
 The Apache Software Foundation&lt;/p&gt;
@@ -1056,14 +1055,14 @@ This issue was reported by Andrea Del Bene and Martin Grigorov!&lt;/p&gt;
 
 &lt;p&gt;Apache Wicket Team&lt;/p&gt;
 </content>
- </entry>
- 
- <entry>
-   <title>Wicket 1.5.12 released</title>
-   <link href="http://wicket.apache.org/2014/09/15/wicket-1.5.12-released.html"/>
-   <updated>2014-09-15T00:00:00+03:00</updated>
-   <id>http://wicket.apache.org/2014/09/15/wicket-1.5.12-released</id>
-   <content type="html">&lt;p&gt;This is the twelfth maintenance release of the Wicket 1.5.x series. This release brings over 5 bug fixes and improvements.&lt;/p&gt;
+    </entry>
+
+    <entry>
+        <title>Wicket 1.5.12 released</title>
+        <link href="http://wicket.apache.org/news/2014/09/15/wicket-1.5.12-released.html"/>
+        <updated>2014-09-15T00:00:00+02:00</updated>
+        <id>http://wicket.apache.org/news/2014/09/15/wicket-1.5.12-released</id>
+        <content type="html">&lt;p&gt;This is the twelfth maintenance release of the Wicket 1.5.x series. This release brings over 5 bug fixes and improvements.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=shortlog;h=refs/tags/wicket-1.5.12&quot;&gt;Git tag&lt;/a&gt;&lt;/li&gt;
@@ -1081,6 +1080,6 @@ This issue was reported by Andrea Del Bene and Martin Grigorov!&lt;/p&gt;
   &lt;li&gt;Download the &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/1.5.12&quot;&gt;full distribution&lt;/a&gt; (including sources)&lt;/li&gt;
 &lt;/ul&gt;
 </content>
- </entry>
- 
+    </entry>
+
 </feed>

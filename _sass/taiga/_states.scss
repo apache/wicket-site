@@ -1,0 +1,25 @@
+// =========== States
+
+.is-hidden { display: none !important; }
+
+.is-hidden, .is-invisible { visibility: hidden !important; }
+
+.is-active, .is-visible { display: block; }
+
+.left { @include breakpoint($breakpoint-10) { float: left; } }
+
+.right { @include breakpoint($breakpoint-10) { float: right; } }
+
+.text-left { text-align: left; }
+
+.text-right { text-align: right; }
+
+.text-center { text-align: center; }
+
+.nowrap { white-space: nowrap; }
+
+img.desaturated {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
