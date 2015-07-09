@@ -32,10 +32,17 @@ features of the framework with many real-world examples. It covers
 subjects such as models, behaviours, testing and integration with other
 projects.
 
-The guide is available as:
+The guide is available as PDF or html file for the following versions:
 
-- [HTML]({{ site.baseurl }}/guide/guide/index.html)
-- [HTML (single page)]({{ site.baseurl }}/guide/guide/single.html)
+1.  Wicket 7.x 
+* [HTML](http://ci.apache.org/projects/wicket/guide/7.x/)
+* [HTML (single page)](http://ci.apache.org/projects/wicket/guide/7.x/guide/single.html)
+* [PDF](http://ci.apache.org/projects/wicket/guide/7.x/guide/single.pdf)
+
+2.  Wicket 6.x 
+* [HTML](http://ci.apache.org/projects/wicket/guide/6.x/)
+* [HTML (single page)](http://ci.apache.org/projects/wicket/guide/6.x/guide/single.html)
+* [PDF](http://ci.apache.org/projects/wicket/guide/6.x/guide/single.pdf)
 
 You can use the guide for older releases even though there will be
 differences. We urge you however to upgrade your project to the latest
@@ -78,6 +85,7 @@ method, show you the corresponding documentation.
 For reference we also publish the API documentation online so you can
 link to it from emails or websites:
 
+- [JavaDoc 7.x](http://ci.apache.org/projects/wicket/apidocs/7.x/index.html)
 - [JavaDoc 6.x](http://ci.apache.org/projects/wicket/apidocs/6.x/index.html)
 - [JavaDoc 1.5.x](http://ci.apache.org/projects/wicket/apidocs/1.5.x/index.html)
 - [JavaDoc 1.4.x](http://ci.apache.org/projects/wicket/apidocs/1.4.x/index.html)
@@ -86,7 +94,7 @@ link to it from emails or websites:
 We also publish the JavaDocs for our next version which is still under
 development:
 
-- [JavaDoc 7.x](http://ci.apache.org/projects/wicket/apidocs/7.x/index.html) (still under development)
+- [JavaDoc 8.x](http://ci.apache.org/projects/wicket/apidocs/8.x/index.html) (still under development)
 
 ---
 
