@@ -6,8 +6,8 @@ site is generated to static html using
 [jekyll](http://github.com/mojombo/jekyll).
 
 If you want to see how it might look in the future, see the file
-[wicketsite5.pdf](http://github.com/dashorst/wicket-site/raw/master/_design/wicketsite5.pdf
-"Design document")
+[wicketsite5.pdf](http://github.com/apache/wicket-site/blob/asf-site/_design/wicketsite5.pdf
+ "Design document")
 
 If you want to see how it looks now, see the [generated
 markup](http://github.com/dashorst/wicket-site/raw/master/_site/index.html).
