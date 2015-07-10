@@ -48,7 +48,8 @@ way](http://www.catb.org/esr/faqs/smart-questions.html).
 
 ## Report A Security Problem {#security}
 
-{% markdown help/security.md %}
+{% capture security %}{% include security.md %}{% endcapture %}
+{{ security | markdownify }}
 
 ---
 
