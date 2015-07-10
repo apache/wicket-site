@@ -34,8 +34,9 @@ projects.
 
 The guide is available as:
 
-- [HTML]({{ site.baseurl }}/guide/guide/index.html)
-- [HTML (single page)]({{ site.baseurl }}/guide/guide/single.html)
+* [HTML](http://ci.apache.org/projects/wicket/guide/6.x/)
+* [HTML (single page)](http://ci.apache.org/projects/wicket/guide/6.x/guide/single.html)
+* [PDF](http://ci.apache.org/projects/wicket/guide/6.x/guide/single.pdf)
 
 You can use the guide for older releases even though there will be
 differences. We urge you however to upgrade your project to the latest

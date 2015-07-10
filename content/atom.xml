@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2015-07-10T10:46:29+02:00</updated>
+    <updated>2015-07-10T18:59:07+02:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -136,16 +136,16 @@ yPIAoMU7z9Go0pn5ZFKZwq+VDA0cvoh4
 
 &lt;pre&gt;&lt;code&gt;* [WICKET-5790] - VariableInterpolator &amp;amp; #getThrowExceptionOnMissingResource
 * [WICKET-5814] - CryptoMapper clears feedback messages
-* [WICKET-5816] - Apps can&#39;t use Application.setName instead of WicketFilter for e.g. JMX names
+* [WICKET-5816] - Apps can't use Application.setName instead of WicketFilter for e.g. JMX names
 * [WICKET-5822] - AjaxSelfUpdatingTimer stops working after ajax download
 * [WICKET-5825] - Deployment of wicket-examples.war fails in Tomcat
 * [WICKET-5828] - PageProvider not serializable
 * [WICKET-5834] - NPE in DefaultPropertyResolver
-* [WICKET-5835] - InlineEnclosure doesn&#39;t call child.configure() before updating its visilbity
+* [WICKET-5835] - InlineEnclosure doesn't call child.configure() before updating its visilbity
 * [WICKET-5837] - JUnit tests may fail because of AbstractDefaultAjaxBehavior
 * [WICKET-5838] - Last-modified header of external markup is ignored
 * [WICKET-5841] - continueToOriginalDestination() discards new cookies
-* [WICKET-5843] - CryptoMapper doesn&#39;t work with context relative UrlResourceReferences
+* [WICKET-5843] - CryptoMapper doesn't work with context relative UrlResourceReferences
 * [WICKET-5845] - AuthenticatedWebSession.get() returns a new session with signedIn false
 * [WICKET-5850] - LazyInitProxyFactory causes NoClassDefFound org/apache/wicket/proxy/ILazyInitProxy in case of multimodule deployment
 * [WICKET-5851] - PackageResourceTest#packageResourceGuard test fails under Windows
@@ -157,7 +157,7 @@ yPIAoMU7z9Go0pn5ZFKZwq+VDA0cvoh4
 * [WICKET-5861] - BigDecimalConverter does not allow parsing of values great than Double.MAX_VALUE
 * [WICKET-5862] - Wicket Container visibility bug
 * [WICKET-5864] - Multipart Ajax form submit does not release the channel in case of connection failure
-* [WICKET-5869] - Kittencaptcha doesn&#39;t calculate click y-coordinate correctly
+* [WICKET-5869] - Kittencaptcha doesn't calculate click y-coordinate correctly
 * [WICKET-5870] - wicket-event-jquery.js: Wicket.Browser.isIE11() does not return boolean
 * [WICKET-5874] - WicketTester TagTester does not work as expected when using non self closing tags
 * [WICKET-5879] - Using an AjaxSubmitLink to hide its form results in an exception
@@ -178,7 +178,7 @@ yPIAoMU7z9Go0pn5ZFKZwq+VDA0cvoh4
 * [WICKET-5912] - NPE in Page#hasInvisibleTransparentChild
 * [WICKET-5915] - The application can not find /META-INF/wicket/**.properties on Windows systems
 * [WICKET-5916] - StackOverflowError when calling getObject() from load() in LDM
-* [WICKET-5917] - Do not use jQuery&#39;s $ in String snippets in Java code
+* [WICKET-5917] - Do not use jQuery's $ in String snippets in Java code
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&quot;improvement&quot;&gt;Improvement&lt;/h4&gt;
@@ -187,12 +187,12 @@ yPIAoMU7z9Go0pn5ZFKZwq+VDA0cvoh4
 * [WICKET-5749] - Wicket-auth-roles should deal with resource authorization
 * [WICKET-5789] - Make org.apache.wicket.protocol.ws.javax.WicketServerEndpointConfig publicly visible
 * [WICKET-5801] - Responsive Images
-* [WICKET-5823] - DefaultAuthenticationStrategy should be modified to reduce copy/paste while extending it&#39;s functionality
+* [WICKET-5823] - DefaultAuthenticationStrategy should be modified to reduce copy/paste while extending it's functionality
 * [WICKET-5829] - rename PageSettings#recreateMountedPagesAfterExpiry
 * [WICKET-5831] - Improve unsafe Id reporting in the AbstractRepeater
-* [WICKET-5832] - Do not fail at CDI&#39;s ConversationPropagator when running in non-http thread
+* [WICKET-5832] - Do not fail at CDI's ConversationPropagator when running in non-http thread
 * [WICKET-5833] - Add a way to get all opened web socket connections per user session
-* [WICKET-5840] - WicketTester doesn&#39;t support #clickLink() for ExternalLink component
+* [WICKET-5840] - WicketTester doesn't support #clickLink() for ExternalLink component
 * [WICKET-5859] - Add Hebrew and Arabic translations
 * [WICKET-5860] - Cross-Site Websocket Hijacking protection
 * [WICKET-5863] - Overiding disableCaching in ServletWebResponse is ignored when responce is buffered
@@ -391,15 +391,15 @@ migration guide found at&lt;/p&gt;
         <id>http://wicket.apache.org/news/2015/02/13/new-committer-Sebastien-Briquet</id>
         <content type="html">&lt;p&gt;The Project Management Committee (PMC) for Apache Wicket 
 has asked Sebastien Briquet to become a committer and we are pleased 
-to announce that he has accepted.&lt;/p&gt;
+to announce that he has accepted. &lt;/p&gt;
 
 &lt;p&gt;Sebastien has been involved with Wicket for several years now by developing one of the most successful integrations with JavaScript libraries, namely Wicket jQuery UI, reporting bugs, contributing fixes and participating in discussions.&lt;/p&gt;
 
 &lt;p&gt;Being a committer will enable him to help us even easier in the future.&lt;/p&gt;
 
-&lt;p&gt;Please welcome Sebastien Briquet to our team!&lt;/p&gt;
+&lt;p&gt;Please welcome Sebastien Briquet to our team! &lt;/p&gt;
 
-&lt;p&gt;Bienvenue Sebastien!&lt;/p&gt;
+&lt;p&gt;Bienvenue Sebastien! &lt;/p&gt;
 </content>
     </entry>
 
@@ -513,18 +513,18 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5748&quot;&gt;WICKET-5748&lt;/a&gt; - StackOverflowError while trying to get the Markup of WicketHeadContainer&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5751&quot;&gt;WICKET-5751&lt;/a&gt; - NullPointerException in IntHashMap&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5752&quot;&gt;WICKET-5752&lt;/a&gt; - ReplacementResourceBundleReference should return the dependencies for the replacing resource ref&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5759&quot;&gt;WICKET-5759&lt;/a&gt; - AjaxRequestAttributes extra parameters aren&#39;t properly handled in getCallbackFunction()&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5759&quot;&gt;WICKET-5759&lt;/a&gt; - AjaxRequestAttributes extra parameters aren't properly handled in getCallbackFunction()&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5770&quot;&gt;WICKET-5770&lt;/a&gt; - PageParametersEncoder should not decode parameters with no name&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5772&quot;&gt;WICKET-5772&lt;/a&gt; - LoadableDetachableModel caches null value if load() fails, bug in getObject() {attached = true;}&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5777&quot;&gt;WICKET-5777&lt;/a&gt; - Reload of page leads to WicketRuntimeException&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5782&quot;&gt;WICKET-5782&lt;/a&gt; - Missing escaping in MultiFileUploadField.js - sort of XSS&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5783&quot;&gt;WICKET-5783&lt;/a&gt; - Multiple events in AjaxEventBehavior with prefix &#39;on&#39;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5783&quot;&gt;WICKET-5783&lt;/a&gt; - Multiple events in AjaxEventBehavior with prefix 'on'&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5784&quot;&gt;WICKET-5784&lt;/a&gt; - arraycopy with bad length in AbstractRequestLogger:172&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5793&quot;&gt;WICKET-5793&lt;/a&gt; - Request for static resource creating a session in 6.13.0+&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5800&quot;&gt;WICKET-5800&lt;/a&gt; - wicket:enclosure within FormComponentPanel causes exception related to dequeueing&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5809&quot;&gt;WICKET-5809&lt;/a&gt; - URL IPv6 parsing&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5811&quot;&gt;WICKET-5811&lt;/a&gt; - Infinite loop issue in PropertyValidator#createUnresolvablePropertyMessage(FormComponent&amp;lt;&amp;gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5812&quot;&gt;WICKET-5812&lt;/a&gt; - AtmosphereBehavior wrongly sets Ajax base url to &#39;.&#39;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5812&quot;&gt;WICKET-5812&lt;/a&gt; - AtmosphereBehavior wrongly sets Ajax base url to '.'&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5817&quot;&gt;WICKET-5817&lt;/a&gt; - Wicket-JMX should depend on asm-util&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -533,8 +533,8 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-4703&quot;&gt;WICKET-4703&lt;/a&gt; - StringResourceModel should provide an overridable getString(Component) method&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5746&quot;&gt;WICKET-5746&lt;/a&gt; - Fire an event once all JS event listeners are registered&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5753&quot;&gt;WICKET-5753&lt;/a&gt; - It is impossible to determine the form submitting component&#39;s inputName when AjaxFormSubmitBehavior is used&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5754&quot;&gt;WICKET-5754&lt;/a&gt; - (String)ResourceModel&#39;s defaultValue could be an IModel&amp;lt;String&amp;gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5753&quot;&gt;WICKET-5753&lt;/a&gt; - It is impossible to determine the form submitting component's inputName when AjaxFormSubmitBehavior is used&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5754&quot;&gt;WICKET-5754&lt;/a&gt; - (String)ResourceModel's defaultValue could be an IModel&amp;lt;String&amp;gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5756&quot;&gt;WICKET-5756&lt;/a&gt; - Allow to use custom ciphers when using SunJceCrypt class&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5758&quot;&gt;WICKET-5758&lt;/a&gt; - Portuguese translation&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5760&quot;&gt;WICKET-5760&lt;/a&gt; - Add constructor (String, Serializable, String) to AttributeAppender&lt;/li&gt;
@@ -561,7 +561,7 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5806&quot;&gt;WICKET-5806&lt;/a&gt; - Wicket.Log should log (at least errors) in the browser console even when Wicket Ajax Debug window is disabled&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5808&quot;&gt;WICKET-5808&lt;/a&gt; - SpringBean, support generic beans&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5818&quot;&gt;WICKET-5818&lt;/a&gt; - Add support for httpOnly cookies to CookieDefaults&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5820&quot;&gt;WICKET-5820&lt;/a&gt; - improve StringResourceModel&#39;s resource key interpolation for null&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5820&quot;&gt;WICKET-5820&lt;/a&gt; - improve StringResourceModel's resource key interpolation for null&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;new-features&quot;&gt;New Features&lt;/h4&gt;
@@ -671,15 +671,15 @@ i6UAn25gHcC0w8QWiNJXV7u99iTHssaP
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5747&quot;&gt;WICKET-5747&lt;/a&gt; - Wicket Ajax Click handling gets requeued in OnDomReady so fire out of order&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5752&quot;&gt;WICKET-5752&lt;/a&gt; - ReplacementResourceBundleReference should return the dependencies for the replacing resource ref&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5755&quot;&gt;WICKET-5755&lt;/a&gt; - Restoring focus after Ajax replace no longer works in IE8&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5759&quot;&gt;WICKET-5759&lt;/a&gt; - AjaxRequestAttributes extra parameters aren&#39;t properly handled in getCallbackFunction()&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5759&quot;&gt;WICKET-5759&lt;/a&gt; - AjaxRequestAttributes extra parameters aren't properly handled in getCallbackFunction()&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5770&quot;&gt;WICKET-5770&lt;/a&gt; - PageParametersEncoder should not decode parameters with no name&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5782&quot;&gt;WICKET-5782&lt;/a&gt; - Missing escaping in MultiFileUploadField.js - sort of XSS&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5783&quot;&gt;WICKET-5783&lt;/a&gt; - Multiple events in AjaxEventBehavior with prefix &#39;on&#39;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5783&quot;&gt;WICKET-5783&lt;/a&gt; - Multiple events in AjaxEventBehavior with prefix 'on'&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5784&quot;&gt;WICKET-5784&lt;/a&gt; - arraycopy with bad length in AbstractRequestLogger:172&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5793&quot;&gt;WICKET-5793&lt;/a&gt; - Request for static resource creating a session in 6.13.0+&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5809&quot;&gt;WICKET-5809&lt;/a&gt; - URL IPv6 parsing&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5811&quot;&gt;WICKET-5811&lt;/a&gt; - Infinite loop issue in PropertyValidator#createUnresolvablePropertyMessage(FormComponent&amp;lt;&amp;gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5812&quot;&gt;WICKET-5812&lt;/a&gt; - AtmosphereBehavior wrongly sets Ajax base url to &#39;.&#39;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5812&quot;&gt;WICKET-5812&lt;/a&gt; - AtmosphereBehavior wrongly sets Ajax base url to '.'&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;improvement&quot;&gt;Improvement&lt;/h4&gt;
@@ -687,8 +687,8 @@ i6UAn25gHcC0w8QWiNJXV7u99iTHssaP
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-4703&quot;&gt;WICKET-4703&lt;/a&gt; - StringResourceModel should provide an overridable getString(Component) method&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5746&quot;&gt;WICKET-5746&lt;/a&gt; - Fire an event once all JS event listeners are registered&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5753&quot;&gt;WICKET-5753&lt;/a&gt; - It is impossible to determine the form submitting component&#39;s inputName when AjaxFormSubmitBehavior is used&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5754&quot;&gt;WICKET-5754&lt;/a&gt; - (String)ResourceModel&#39;s defaultValue could be an IModel&amp;lt;String&amp;gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5753&quot;&gt;WICKET-5753&lt;/a&gt; - It is impossible to determine the form submitting component's inputName when AjaxFormSubmitBehavior is used&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5754&quot;&gt;WICKET-5754&lt;/a&gt; - (String)ResourceModel's defaultValue could be an IModel&amp;lt;String&amp;gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5756&quot;&gt;WICKET-5756&lt;/a&gt; - Allow to use custom ciphers when using SunJceCrypt class&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5758&quot;&gt;WICKET-5758&lt;/a&gt; - Portuguese translation&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5760&quot;&gt;WICKET-5760&lt;/a&gt; - Add constructor (String, Serializable, String) to AttributeAppender&lt;/li&gt;
@@ -830,7 +830,7 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5326&quot;&gt;WICKET-5326&lt;/a&gt; - Wicket doesn’t encrypt links and Ajax URLs for mounted pages when CryptoMapper is used&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5689&quot;&gt;WICKET-5689&lt;/a&gt; - Nested Redirects and REDIRECT_TO_BUFFER&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5698&quot;&gt;WICKET-5698&lt;/a&gt; - WebApplication#unmount() unmounts the whole compound mapper if some of its inner ones matches&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5701&quot;&gt;WICKET-5701&lt;/a&gt; - WebSocketRequestHandler is not set as a scheduled and thus RequestCycle#find(AjaxRequestTarget.class) doesn’t work&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5701&quot;&gt;WICKET-5701&lt;/a&gt; - WebSocketRequestHandler is not set as a scheduled and thus RequestCycle#find(AjaxRequestTarget.class) doesn’t work &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5704&quot;&gt;WICKET-5704&lt;/a&gt; - IllegalArgument exception with wicket:child in ajaxrequest&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5706&quot;&gt;WICKET-5706&lt;/a&gt; - ResourceUtils.getLocaleFromFilename cannot handle filenames with classifiers&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5711&quot;&gt;WICKET-5711&lt;/a&gt; - OnChangeAjaxBehavior should listen for both ‘inputchange’ and ‘change’ events for TextField and TextArea&lt;/li&gt;
@@ -857,7 +857,7 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5350&quot;&gt;WICKET-5350&lt;/a&gt; - Enhancement for AbstractChoice and WildcardListModel API&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5691&quot;&gt;WICKET-5691&lt;/a&gt; - Wicket FileUploadField.getFileUploads() should never return null.&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5692&quot;&gt;WICKET-5692&lt;/a&gt; - Misleading message in PropertyValidator&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5694&quot;&gt;WICKET-5694&lt;/a&gt; - Add WicketTester assertion methods for component’s markup style, variation and locale&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5694&quot;&gt;WICKET-5694&lt;/a&gt; - Add WicketTester assertion methods for component’s markup style, variation and locale &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5695&quot;&gt;WICKET-5695&lt;/a&gt; - Use Log4j 2.x for the archetype&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5697&quot;&gt;WICKET-5697&lt;/a&gt; - Rework Spring application to use annotations based configuration&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5708&quot;&gt;WICKET-5708&lt;/a&gt; - Making FormComponent.convertInput() public&lt;/li&gt;
@@ -987,7 +987,7 @@ i6UAn25gHcC0w8QWiNJXV7u99iTHssaP
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5689&quot;&gt;WICKET-5689&lt;/a&gt; - Nested Redirects and REDIRECT_TO_BUFFER&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5698&quot;&gt;WICKET-5698&lt;/a&gt; - WebApplication#unmount() unmounts the whole compound mapper if some of its inner ones matches&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5699&quot;&gt;WICKET-5699&lt;/a&gt; - wicket-atmosphere 0.20 should use wicket-webjars 0.4.3&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5701&quot;&gt;WICKET-5701&lt;/a&gt; - WebSocketRequestHandler is not set as a scheduled and thus RequestCycle#find(AjaxRequestTarget.class) doesn’t work&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5701&quot;&gt;WICKET-5701&lt;/a&gt; - WebSocketRequestHandler is not set as a scheduled and thus RequestCycle#find(AjaxRequestTarget.class) doesn’t work &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5704&quot;&gt;WICKET-5704&lt;/a&gt; - IllegalArgument exception with wicket:child in ajaxrequest&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5706&quot;&gt;WICKET-5706&lt;/a&gt; - ResourceUtils.getLocaleFromFilename cannot handle filenames with classifiers&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5711&quot;&gt;WICKET-5711&lt;/a&gt; - OnChangeAjaxBehavior should listen for both ‘inputchange’ and ‘change’ events for TextField and TextArea&lt;/li&gt;
@@ -1007,7 +1007,7 @@ i6UAn25gHcC0w8QWiNJXV7u99iTHssaP
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5691&quot;&gt;WICKET-5691&lt;/a&gt; - Wicket FileUploadField.getFileUploads() should never return null.&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5692&quot;&gt;WICKET-5692&lt;/a&gt; - Misleading message in PropertyValidator&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5694&quot;&gt;WICKET-5694&lt;/a&gt; - Add WicketTester assertion methods for component’s markup style, variation and locale&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5694&quot;&gt;WICKET-5694&lt;/a&gt; - Add WicketTester assertion methods for component’s markup style, variation and locale &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5710&quot;&gt;WICKET-5710&lt;/a&gt; - StringValidator should set ‘minlength’ attribute to input and textarea&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5715&quot;&gt;WICKET-5715&lt;/a&gt; - Allow setting ‘async’ attribute on reference &lt;script&gt; elements&lt;/script&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-5718&quot;&gt;WICKET-5718&lt;/a&gt; - Upgrade Atmosphere to 2.2.2&lt;/li&gt;
