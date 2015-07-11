@@ -32,11 +32,17 @@ features of the framework with many real-world examples. It covers
 subjects such as models, behaviours, testing and integration with other
 projects.
 
-The guide is available as:
+The guide is available as PDF or html file for the following versions:
 
+1.  Wicket 6.x 
 * [HTML](http://ci.apache.org/projects/wicket/guide/6.x/)
 * [HTML (single page)](http://ci.apache.org/projects/wicket/guide/6.x/guide/single.html)
 * [PDF](http://ci.apache.org/projects/wicket/guide/6.x/guide/single.pdf)
+
+2.  Wicket 7.x (under development) 
+* [HTML](http://ci.apache.org/projects/wicket/guide/7.x/)
+* [HTML (single page)](http://ci.apache.org/projects/wicket/guide/7.x/guide/single.html)
+* [PDF](http://ci.apache.org/projects/wicket/guide/7.x/guide/single.pdf)
 
 You can use the guide for older releases even though there will be
 differences. We urge you however to upgrade your project to the latest
