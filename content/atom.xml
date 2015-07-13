@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2015-07-11T19:39:12+02:00</updated>
+    <updated>2015-07-13T00:49:09+03:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -14,7 +14,7 @@
     <entry>
         <title>Apache Wicket 7.0.0-M6 released</title>
         <link href="http://wicket.apache.org/news/2015/06/21/wicket-7.0.0-M6-released.html"/>
-        <updated>2015-06-21T00:00:00+02:00</updated>
+        <updated>2015-06-21T00:00:00+03:00</updated>
         <id>http://wicket.apache.org/news/2015/06/21/wicket-7.0.0-M6-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.0.0-M6!&lt;/p&gt;
 
@@ -235,7 +235,7 @@ yPIAoMU7z9Go0pn5ZFKZwq+VDA0cvoh4
     <entry>
         <title>Apache Wicket 6.20.0 released</title>
         <link href="http://wicket.apache.org/news/2015/06/14/wicket-6.20.0-released.html"/>
-        <updated>2015-06-14T00:00:00+02:00</updated>
+        <updated>2015-06-14T00:00:00+03:00</updated>
         <id>http://wicket.apache.org/news/2015/06/14/wicket-6.20.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.20.0!&lt;/p&gt;
 
@@ -362,7 +362,7 @@ migration guide found at&lt;/p&gt;
     <entry>
         <title>Wicket 1.5.13 released</title>
         <link href="http://wicket.apache.org/news/2015/02/13/wicket-1.5.13-released.html"/>
-        <updated>2015-02-13T00:00:00+01:00</updated>
+        <updated>2015-02-13T00:00:00+02:00</updated>
         <id>http://wicket.apache.org/news/2015/02/13/wicket-1.5.13-released</id>
         <content type="html">&lt;p&gt;This is the thirteenth maintenance release of the Wicket 1.5.x series. This release brings over 1 bug fix and 1 improvement.&lt;/p&gt;
 
@@ -387,7 +387,7 @@ migration guide found at&lt;/p&gt;
     <entry>
         <title>New committer - Sebastien Briquet</title>
         <link href="http://wicket.apache.org/news/2015/02/13/new-committer-Sebastien-Briquet.html"/>
-        <updated>2015-02-13T00:00:00+01:00</updated>
+        <updated>2015-02-13T00:00:00+02:00</updated>
         <id>http://wicket.apache.org/news/2015/02/13/new-committer-Sebastien-Briquet</id>
         <content type="html">&lt;p&gt;The Project Management Committee (PMC) for Apache Wicket 
 has asked Sebastien Briquet to become a committer and we are pleased 
@@ -406,7 +406,7 @@ to announce that he has accepted. &lt;/p&gt;
     <entry>
         <title>Apache Wicket 7.0.0-M5 released</title>
         <link href="http://wicket.apache.org/news/2015/02/02/wicket-7.0.0-M5-released.html"/>
-        <updated>2015-02-02T00:00:00+01:00</updated>
+        <updated>2015-02-02T00:00:00+02:00</updated>
         <id>http://wicket.apache.org/news/2015/02/02/wicket-7.0.0-M5-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.0.0-M5!&lt;/p&gt;
 
@@ -586,7 +586,7 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
     <entry>
         <title>Apache Wicket 6.19.0 released</title>
         <link href="http://wicket.apache.org/news/2015/02/02/wicket-6.19.0-released.html"/>
-        <updated>2015-02-02T00:00:00+01:00</updated>
+        <updated>2015-02-02T00:00:00+02:00</updated>
         <id>http://wicket.apache.org/news/2015/02/02/wicket-6.19.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.19.0!&lt;/p&gt;
 
@@ -724,7 +724,7 @@ i6UAn25gHcC0w8QWiNJXV7u99iTHssaP
     <entry>
         <title>Apache Wicket 7.0.0-M4 released</title>
         <link href="http://wicket.apache.org/news/2014/11/05/wicket-7.0.0-M4-released.html"/>
-        <updated>2014-11-05T00:00:00+01:00</updated>
+        <updated>2014-11-05T00:00:00+02:00</updated>
         <id>http://wicket.apache.org/news/2014/11/05/wicket-7.0.0-M4-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.0.0-M4!&lt;/p&gt;
 
@@ -900,7 +900,7 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
     <entry>
         <title>Apache Wicket 6.18.0 released</title>
         <link href="http://wicket.apache.org/news/2014/11/05/wicket-6.18.0-released.html"/>
-        <updated>2014-11-05T00:00:00+01:00</updated>
+        <updated>2014-11-05T00:00:00+02:00</updated>
         <id>http://wicket.apache.org/news/2014/11/05/wicket-6.18.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.18.0!&lt;/p&gt;
 
@@ -1029,7 +1029,7 @@ i6UAn25gHcC0w8QWiNJXV7u99iTHssaP
     <entry>
         <title>CVE-2014-3526 - Apache Wicket Information disclosure vulnerability</title>
         <link href="http://wicket.apache.org/news/2014/09/22/cve-2014-3526.html"/>
-        <updated>2014-09-22T00:00:00+02:00</updated>
+        <updated>2014-09-22T00:00:00+03:00</updated>
         <id>http://wicket.apache.org/news/2014/09/22/cve-2014-3526</id>
         <content type="html">&lt;p&gt;Severity: Important&lt;/p&gt;
 
@@ -1060,7 +1060,7 @@ This issue was reported by Andrea Del Bene and Martin Grigorov!&lt;/p&gt;
     <entry>
         <title>Wicket 1.5.12 released</title>
         <link href="http://wicket.apache.org/news/2014/09/15/wicket-1.5.12-released.html"/>
-        <updated>2014-09-15T00:00:00+02:00</updated>
+        <updated>2014-09-15T00:00:00+03:00</updated>
         <id>http://wicket.apache.org/news/2014/09/15/wicket-1.5.12-released</id>
         <content type="html">&lt;p&gt;This is the twelfth maintenance release of the Wicket 1.5.x series. This release brings over 5 bug fixes and improvements.&lt;/p&gt;
 
