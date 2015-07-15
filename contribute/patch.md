@@ -2,7 +2,6 @@
 layout: default
 title: Improve Wicket with fixes and new features!
 ---
-<section class="l-two-third" markdown="1">
 
 # So you have found a bug... {#reportbug}
 
@@ -76,10 +75,3 @@ git diff --cached > /tmp/WICKET-NNNN.patch
 where NNNN is the issue number. Finally, attach that file
 (/tmp/WICKET-NNNN.patch) to the
 [JIRA](https://issues.apache.org/jira/browse/WICKET)
-
-</section>
-<section class="l-one-third" markdown="1">
-
-# Table of Contents
-
-</section>
