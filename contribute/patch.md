@@ -53,6 +53,10 @@ format rules. You can find them [inside wicket-core
 module](https://github.com/apache/wicket/blob/master/wicket-core/Eclipse
 CodeFormat.xml) as Eclipse code formatter profile.
 
+**NOTE:** when you are using Eclipse IDE, please ensure that you have
+installed "M2E Settings" from the Eclipse Marketplace in addition to
+the format rules.
+
 ### Create a pull request {#github}
 
 To create a pull request on GitHub follow the instructions you can find
