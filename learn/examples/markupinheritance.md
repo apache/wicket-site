@@ -6,8 +6,6 @@ title: Creating layouts using markup inheritance
 This markup inheritance example show you how to create reusable page layouts
 and panel layouts.
 
-[Watch the Screencast](http://wicket.apache.org/screencasts/ApacheWicket_MarkupInheritence.avi)
-
 In all the Wicket examples, you have to put all files in the same package
 directory. This means putting the markup files and the java files next to one
 another. It is possible to alter this behavior, but that is beyond the scope
@@ -92,7 +90,8 @@ Here you can see that the `<wicket:child />` tag has been expanded, and its
 contents filled with exactly the markup between the `<wicket:extend>` tags.
 If you want to get rid of the special Wicket tags, you can disable that on
 the markup settings
-([IMarkupSettings](http://wicketframework.org/api/wicket/settings/IMarkupSettings)).
+(see [IMarkupSettings](https://ci.apache.org/projects/wicket/apidocs/6.x/org/apache/wicket/settings/IMarkupSettings.html) for Wikcet6
+or [MarkupSettings](https://ci.apache.org/projects/wicket/apidocs/7.x/org/apache/wicket/settings/MarkupSettings.html) for Wicket 7 or newer).
 
 ## Implementing the BasePage
 
