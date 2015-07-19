@@ -33,7 +33,7 @@ You have to subscribe to this list if you want to ask a question and
 see the replies.
 
 * Traffic: medium
-* [Browse](http://mail-archives.apache.org/mod_mbox/wicket-user) the archives
+* [Browse](http://mail-archives.apache.org/mod_mbox/wicket-users/) the archives
 * [Search](http://wicket-user.markmail.org) the list
 * [Subscribe](mailto:user-subscribe@wicket.apache.org?subject=Subscribe+to+Apache+Wicket+User+list) to the list
 * [Unsubscribe](mailto:user-unsubscribe@wicket.apache.org?subject=Unsubscribe+from+Apache+Wicket+User+list) from the list

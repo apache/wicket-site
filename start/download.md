@@ -5,12 +5,11 @@ subtitle: Get the most recent version of Wicket in one source package
 preamble: Wicket is released as a source archive, convenience binaries and through the Maven Central Repository. The most convenient way of getting Wicket is through the Maven dependency management system.
 ---
 ## Get the Production Release
-
+change
 The current stable, production ready release of Wicket is version
 **{{site.wicket.version}}**. To see what changed in this release (and
 prior releases) you can read the [change
-log](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/CHANG
-ELOG-6.x)
+log](http://archive.apache.org/dist/wicket/{{site.wicket.version}}/CHANGELOG-6.x)
 
 All projects intended for production use should use this version. These
 releases follow semantic versioning so upgrades between minor releases

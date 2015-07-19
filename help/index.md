@@ -85,7 +85,7 @@ anyway, so you might as well get them out of the way.
 A lot of developers use Wicket, and chances are someone already
 encountered your issue. So please search for some keywords of your
 problem using a search engine,
-[stackoverflow](http://stackoverflow.com/questions/wicket) and our
+[stackoverflow](http://stackoverflow.com/questions/tagged/wicket) and our
 [issue tracker](https://issues.apache.org/jira/browse/WICKET).
 
 If someone already found your bug, look at how the bug was resolved. If

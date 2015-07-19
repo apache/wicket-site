@@ -18,7 +18,7 @@ driven apps and RESTful APIs in Java. It uses Wicket
 
 [Apache OODT][oodt-1] is a data grid framework for transparent search
 and discovery of disparate science resources. It uses Apache Wicket for
-its [CAS File Manager][oodt-2] and [CAS Workflow monitor][oodt-3].
+its CAS File Manager and CAS Workflow monitor.
 
 ### Apache Openmeetings
 
