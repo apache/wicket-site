@@ -3,13 +3,53 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2015-07-28T11:31:08+02:00</updated>
+    <updated>2015-07-28T16:35:39+02:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
         <email>dev@wicket.apache.org</email>
     </author>
  
+
+    <entry>
+        <title>Apache Wicket v7.0 released</title>
+        <link href="http://wicket.apache.org/news/2015/07/28/wicket-7.0-released.html"/>
+        <updated>2015-07-28T00:00:00+02:00</updated>
+        <id>http://wicket.apache.org/news/2015/07/28/wicket-7.0-released</id>
+        <content type="html">&lt;p&gt;The Apache Software Foundation announces Apache Wicket™ v7.0 Open Source Java web framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more.&lt;/p&gt;
+
+&lt;p&gt;The Apache Software Foundation (ASF), the all-volunteer developers, stewards, and incubators of nearly 150 Open Source projects and initiatives, today announced Apache™ Wicket™ v7.0, the Open Source Java web framework for high performance, scalable, component oriented web applications. 
+This marks the seventh major release of the project that celebrated its 10 year anniversary last year.&lt;/p&gt;
+
+&lt;p&gt;This framework allows Java developers to write web applications using components. 
+This way developers can reason about the user interface in user interface building blocks, making it easier to link specific user interactions to server-side code. 
+Wicket is a high performance framework processing billions of requests daily across the world.&lt;/p&gt;
+
+&lt;p&gt;“With this release we have added a major improvement to our framework, making development with Wicket even easier.”, said Martijn Dashorst, Vice President of Apache Wicket.
+“By adding ‘Component Queuing’ we have divorced the strict relationship between the Java component classes and the markup. This has been a headache for many users and sparked one of the longest discussions on our community lists. We finally put this issue to bed.”&lt;/p&gt;
+
+&lt;p&gt;“Other major improvements are the move towards Java 7, newer Java EE standards, security features and the addition of new components. Wicket now bundles a cross site request forgery (CSRF) prevention measure, and provides support for inline images using the data: protocol,” continued Martijn Dashorst.&lt;/p&gt;
+
+&lt;p&gt;Apache Wicket v7.0 reflects over 2 years of development, testing and feedback from hundreds of knowledgable users, bringing a highly stable, production ready release of the popular web framework.
+The release consist of almost 300 features, improvements and fixes. In accordance with Semantic Versioning, this major release contains &lt;a href=&quot;https://s.apache.org/wicket7migrate&quot;&gt;several documented API breaks&lt;/a&gt;. Following the Semantic Versioning standard, future minor releases of Wicket v7 will remain API compatible.&lt;/p&gt;
+
+&lt;h3 id=&quot;availability-and-oversight&quot;&gt;Availability and Oversight&lt;/h3&gt;
+
+&lt;p&gt;As with all Apache products, Apache Wicket software is released under the Apache License v2.0, and is overseen by a self-selected team of active contributors to the project.
+A Project Management Committee (PMC) guides the Project’s day-to-day operations, including community development and product releases.
+Apache Wicket release notes, source code, documentation, and related resources are available at &lt;a href=&quot;https://wicket.apache.org&quot;&gt;https://wicket.apache.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;about-the-apache-software-foundation-asf&quot;&gt;About The Apache Software Foundation (ASF)&lt;/h3&gt;
+
+&lt;p&gt;Established in 1999, the all-volunteer Foundation oversees nearly one hundred fifty leading Open Source projects, including Apache HTTP Server — the world’s most popular Web server software.
+Through the ASF’s meritocratic process known as “The Apache Way,” more than 350 individual Members and 3,000 Committers successfully collaborate to develop freely available enterprise-grade software, benefiting millions of users worldwide: thousands of software solutions are distributed under the Apache License; and the community actively participates in ASF mailing lists, mentoring initiatives, and ApacheCon, the Foundation’s official user conference, trainings, and expo.
+The ASF is a US 501(3)(c) not-for-profit charity, funded by individual donations and corporate sponsors including AMD, Basis Technology, Cloudera, Facebook, Google, IBM, HP, Hortonworks, Matt Mullenweg, Microsoft, PSW Group, SpringSource/VMware, and Yahoo!.
+For more information, visit &lt;a href=&quot;https://www.apache.org/&quot;&gt;https://www.apache.org/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;“Apache”, “Apache Wicket”, and “ApacheCon” are trademarks of The Apache Software Foundation.
+All other brands and trademarks are the property of their respective owners.&lt;/p&gt;
+</content>
+    </entry>
 
     <entry>
         <title>Apache Wicket 7.0.0-M6 released</title>
@@ -1054,31 +1094,6 @@ This could lead to a security issue if two or more users with a temporary sessio
 This issue was reported by Andrea Del Bene and Martin Grigorov!&lt;/p&gt;
 
 &lt;p&gt;Apache Wicket Team&lt;/p&gt;
-</content>
-    </entry>
-
-    <entry>
-        <title>Wicket 1.5.12 released</title>
-        <link href="http://wicket.apache.org/news/2014/09/15/wicket-1.5.12-released.html"/>
-        <updated>2014-09-15T00:00:00+02:00</updated>
-        <id>http://wicket.apache.org/news/2014/09/15/wicket-1.5.12-released</id>
-        <content type="html">&lt;p&gt;This is the twelfth maintenance release of the Wicket 1.5.x series. This release brings over 5 bug fixes and improvements.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=shortlog;h=refs/tags/wicket-1.5.12&quot;&gt;Git tag&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;amp;version=12326154&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;To use in Maven:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.5.12&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Download the &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/1.5.12&quot;&gt;full distribution&lt;/a&gt; (including sources)&lt;/li&gt;
-&lt;/ul&gt;
 </content>
     </entry>
 

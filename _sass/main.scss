@@ -170,3 +170,11 @@ th {
 		}
 	}
 }
+
+.wicket7.header {
+	margin-bottom : 0; background-image:none; background-color: $color-brand-50;
+	
+	a { border:none; margin:0; padding:0; height:0; }
+	img { width:100%; margin:0; padding:0; }
+	nav.mainmenu { height: 32px; vertical-align: middle; margin-top:0; }
+}

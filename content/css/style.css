@@ -944,3 +944,21 @@ th {
     border: none; }
     .media-bar a > img {
       width: 100%; }
+
+.wicket7.header {
+  margin-bottom: 0;
+  background-image: none;
+  background-color: #FF9925; }
+  .wicket7.header a {
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: 0; }
+  .wicket7.header img {
+    width: 100%;
+    margin: 0;
+    padding: 0; }
+  .wicket7.header nav.mainmenu {
+    height: 32px;
+    vertical-align: middle;
+    margin-top: 0; }
