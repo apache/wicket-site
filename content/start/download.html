@@ -48,152 +48,96 @@
             <p>Wicket is released as a source archive, convenience binaries and through the Maven Central Repository. The most convenient way of getting Wicket is through the Maven dependency management system.</p>
         </header>
         <section class="l-one-third right">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#get-the-production-release"><span class="toc-number">1</span> <span class="toc-text">Get the Production Release</span></a><ul><li class="toc--level-2 toc--section-2"><a href="#get-the-production-release-using-maven"><span class="toc-number">1.1</span> <span class="toc-text">Get the Production Release Using Maven</span></a></li><li class="toc--level-2 toc--section-3"><a href="#download-the-production-release"><span class="toc-number">1.2</span> <span class="toc-text">Download the Production Release</span></a></li><li class="toc--level-2 toc--section-4"><a href="#dont-mix-wicket-versions"><span class="toc-number">1.3</span> <span class="toc-text">Don’t mix Wicket versions</span></a></li><li class="toc--level-2 toc--section-5"><a href="#developer-releases"><span class="toc-number">1.4</span> <span class="toc-text">Developer releases</span></a></li><li class="toc--level-2 toc--section-6"><a href="#requirements"><span class="toc-number">1.5</span> <span class="toc-text">Requirements</span></a></li></ul></li><li class="toc--level-1 toc--section-7"><a href="#migrating-from-earlier-versions"><span class="toc-number">2</span> <span class="toc-text">Migrating from earlier versions</span></a></li><li class="toc--level-1 toc--section-8"><a href="#maven"><span class="toc-number">3</span> <span class="toc-text">Maven</span></a></li><li class="toc--level-1 toc--section-9"><a href="#snapshots-and-latest-bleeding-edge-code"><span class="toc-number">4</span> <span class="toc-text">SNAPSHOTs and latest bleeding-edge code</span></a></li><li class="toc--level-1 toc--section-10"><a href="#looking-for-older-releases"><span class="toc-number">5</span> <span class="toc-text">Looking for older releases?</span></a></li></ul></div>
+            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#supported-versions"><span class="toc-number">1</span> <span class="toc-text">Supported Versions</span></a></li><li class="toc--level-1 toc--section-2"><a href="#unsupported-releases"><span class="toc-number">2</span> <span class="toc-text">Unsupported Releases</span></a></li></ul></div>
         </section>
         <section class="l-two-third left">
-            <h2 id="get-the-production-release">Get the Production Release</h2>
-<p>change
-The current stable, production ready release of Wicket is version
-<strong>6.20.0</strong>. To see what changed in this release (and
-prior releases) you can read the <a href="http://archive.apache.org/dist/wicket/6.20.0/CHANGELOG-6.x">change
-log</a></p>
-<p>All projects intended for production use should use this version. These
-releases follow semantic versioning so upgrades between minor releases
-will not break compatibility.</p>
-<p>You can get the release using Maven or download it manually.</p>
-<h3 id="get-the-production-release-using-maven">Get the Production Release Using Maven</h3>
-<p>Use the following Maven dependency to use Wicket in your project:</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>6.20.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
-<p>Add the snippet above to your project’s POM in the dependency
-(management) section.</p>
-<p>If you are not a Maven user, you can obtain the Wicket release manually.</p>
-<h3 id="download-the-production-release">Download the Production Release</h3>
-<p>Use the following links to download Wicket manually to build Wicket
-from source:</p>
-<ul>
-  <li>Download source <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.20.0/apache-wicket-6.20.0.tar.gz">apache-wicket-6.20.0.tar.gz</a>
-(<a href="http://archive.apache.org/dist/wicket/6.20.0/apache-wicket-6.20.0.tar.gz.asc">PGP</a>,
-<a href="http://archive.apache.org/dist/wicket/6.20.0/apache-wicket-6.20.0.tar.gz.md5">MD5</a>,
-<a href="http://archive.apache.org/dist/wicket/6.20.0/apache-wicket-6.20.0.tar.gz.sha">SHA</a>
-)</li>
-  <li>Download source <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.20.0/apache-wicket-6.20.0.zip">apache-wicket-6.20.0.zip</a>
-(<a href="http://archive.apache.org/dist/wicket/6.20.0/apache-wicket-6.20.0.zip.asc">PGP</a>,
-<a href="http://archive.apache.org/dist/wicket/6.20.0/apache-wicket-6.20.0.zip.md5">MD5</a>,
-<a href="http://archive.apache.org/dist/wicket/6.20.0/apache-wicket-6.20.0.zip.sha">SHA</a>
-)</li>
-</ul>
-<p>Or use the following links to get the pre-packaged binaries instead:</p>
-<ul>
-  <li>Download binaries <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.20.0/binaries/apache-wicket-6.20.0-bin.tar.gz">apache-wicket-6.20.0-bin.tar.gz</a>
-(<a href="http://archive.apache.org/dist/wicket/6.20.0/binaries/apache-wicket-6.20.0-bin.tar.gz.asc">PGP</a>,
-<a href="http://archive.apache.org/dist/wicket/6.20.0/binaries/apache-wicket-6.20.0-bin.tar.gz.md5">MD5</a>,
-<a href="http://archive.apache.org/dist/wicket/6.20.0/binaries/apache-wicket-6.20.0-bin.tar.gz.sha">SHA</a>
-)</li>
-  <li>Download binaries <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.20.0/binaries/apache-wicket-6.20.0-bin.zip">apache-wicket-6.20.0-bin.zip</a>
-(<a href="http://archive.apache.org/dist/wicket/6.20.0/binaries/apache-wicket-6.20.0-bin.zip.asc">PGP</a>,
-<a href="http://archive.apache.org/dist/wicket/6.20.0/binaries/apache-wicket-6.20.0-bin.zip.md5">MD5</a>,
-<a href="http://archive.apache.org/dist/wicket/6.20.0/binaries/apache-wicket-6.20.0-bin.zip.sha">SHA</a>
-)</li>
-</ul>
-<h3 id="dont-mix-wicket-versions">Don’t mix Wicket versions</h3>
-<p>You cannot mix different Wicket versions in your project. You should
-always use the artifacts from a particular release. For example it is
-<strong>not</strong> possible to use Wicket Extensions 1.5 in a Wicket 6 project.
-The same goes for 3rd party libraries: make sure you always use a
-compatible version of your 3rd party library.</p>
-<p>Apache Wicket 6.20.0 is the current stable release.
-Most users get Apache Wicket using <a href="#maven">Apache Maven’s dependency
-management</a>, which incidentally is the most convenient way of
-obtaining the latest and greatest Wicket.</p>
-<h3 id="developer-releases">Developer releases</h3>
-<p>If you like to live on the cutting edge and help development of Wicket
-further along, you can try out the development milestone releases:</p>
-<ul>
-  <li>Latest <strong>development milestone</strong> release for 7.x: 
-<a href="http://www.apache.org/dyn/closer.cgi/wicket/7.0.0-M6">7.0.0-M6</a></li>
-</ul>
-<p>This release is not fit for production use yet: it is only intended for
-developers of Wicket, or for people trying out our development
-versions. API changes will occur between releases.</p>
-<h3 id="requirements">Requirements</h3>
-<h4 id="java-version">Java version</h4>
-<ul>
-  <li>Apache Wicket 7.x requires JDK 7.0 or newer</li>
-  <li>Apache Wicket 6.x requires JDK 6.0 or newer</li>
-  <li>Apache Wicket 1.5.x requires JDK 1.5 or newer</li>
-  <li>Apache Wicket 1.4.x requires JDK 1.5 or newer</li>
-</ul>
-<h4 id="logging">Logging</h4>
-<p>You cannot use Wicket without adding an SLF4J logging implementation to
-your classpath. Most people use
-<a href="http://logging.apache.org/log4j">log4j</a>.</p>
-<p>If you do, just include <strong>slf4j-log4j12.jar</strong> on your classpath to get
-Wicket to use log4j too. If you want to use commons-logging or JDK14
-logging or something else, please see the <a href="http://www.slf4j.org/faq.html">SLF4J
-site</a> for more information.</p>
-<h2 id="migrating-from-earlier-versions">Migrating from earlier versions</h2>
-<p>If you are migrating an existing application from earlier versions of
-Wicket you may find our migration guides invaluable:</p>
-<ul>
-  <li>Migrating from <a href="https://cwiki.apache.org/confluence/display/WICKET/Migrating+to+Wicket+1.3">Wicket 1.2 to Wicket 1.3</a></li>
-  <li>Migrating from <a href="https://cwiki.apache.org/confluence/display/WICKET/Migrating+to+Wicket+1.4">Wicket 1.3 to Wicket 1.4</a></li>
-  <li>Migrating from <a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+1.5">Wicket 1.4 to Wicket 1.5</a></li>
-  <li>Migrating from <a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0">Wicket 1.5 to Wicket 6.x</a></li>
-  <li>Migrating from <a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+7.0">Wicket 6.x to Wicket 7.x</a></li>
-</ul>
-<h2 id="maven">Maven</h2>
-<p>Add the following snippet to your Maven project descriptor (<code>pom.xml</code>):</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>6.20.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
-<p>For the SLF4J log4j binding:</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.slf4j<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>slf4j-log4j12<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.6.4<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
-<h2 id="snapshots-and-latest-bleeding-edge-code">SNAPSHOTs and latest bleeding-edge code</h2>
-<p>If you wish to build the latest code from scratch, master and branches
-live in the Git repository: https://git-wip-us.apache.org/repos/asf/wicket.git</p>
-<p>Branches:</p>
-<ul>
-  <li><strong>7.x</strong>: master</li>
-  <li><strong>6.x</strong>: wicket-6.x</li>
-  <li><strong>1.5.x</strong>: wicket-1.5.x</li>
-  <li><strong>1.4.x</strong>: wicket-1.4.x</li>
-  <li><strong>1.3.x</strong>: wicket-1.3.x</li>
-  <li><strong>1.2.x</strong>: wicket-1.2.x</li>
-</ul>
-<p>There’s also a Maven 2 repository providing SNAPSHOTs available here:</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;repositories&gt;</span>
-    <span class="nt">&lt;repository&gt;</span>
-        <span class="nt">&lt;releases&gt;</span>
-            <span class="nt">&lt;enabled&gt;</span>false<span class="nt">&lt;/enabled&gt;</span>
-        <span class="nt">&lt;/releases&gt;</span>
-        <span class="nt">&lt;snapshots&gt;</span>
-            <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
-        <span class="nt">&lt;/snapshots&gt;</span>
-        <span class="nt">&lt;id&gt;</span>apache.snapshots<span class="nt">&lt;/id&gt;</span>
-        <span class="nt">&lt;name&gt;</span>Apache Snapshot Repository<span class="nt">&lt;/name&gt;</span>
-        <span class="nt">&lt;url&gt;</span>https://repository.apache.org/content/groups/snapshots<span class="nt">&lt;/url&gt;</span>
-        <span class="nt">&lt;layout&gt;</span>default<span class="nt">&lt;/layout&gt;</span>
-    <span class="nt">&lt;/repository&gt;</span>
-<span class="nt">&lt;/repositories&gt;</span></code></pre></div>
-<h2 id="looking-for-older-releases">Looking for older releases?</h2>
-<p>If you are looking for older releases of Wicket (1.5 or 1.4), please
-see the <a href="http://archive.apache.org/dist/wicket">download archive</a> for
-more informations on our older releases.</p>
-<ul>
-  <li><strong>Latest 6.x release</strong>: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.20.0">6.20.0</a></li>
-  <li><strong>Latest 1.5.x release</strong>: <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.13">1.5.13</a></li>
-  <li><strong>Latest 1.4.x release</strong> (security updates only): <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.4.23">1.4.23</a></li>
-</ul>
+            <div class="button-bar">
+	<a class="button" href="wicket-7.x.html">
+		<i class="fa fa-cloud-download"></i><br />
+		Apache Wicket 7.x
+	</a>
+	<a class="button" href="wicket-6.x.html">
+		<i class="fa fa-cloud-download"></i><br />
+		Apache Wicket 6.x
+	</a>
+	<a class="button" href="wicket-1.5.x.html">
+		<i class="fa fa-cloud-download"></i><br />
+		Apache Wicket 1.5.x
+	</a>
+</div>
+<h2 id="supported-versions">Supported Versions</h2>
+<p>The following releases are supported by the Wicket team.</p>
+<table style="width:100%">
+	<tr>
+		<th>&nbsp;</th>
+		<th>Latest release</th>
+		<th>Status</th>
+		<th>More info</th>
+	</tr>
+	<tr>
+		<td>Wicket 7.x</td>
+		<td>7.0.0</td>
+		<td>current, supported</td>
+		<td><a href="wicket-7.x.html">overview</a></td>
+	</tr>
+	<tr>
+		<td>Wicket 6.x</td>
+		<td>6.20.0</td>
+		<td>supported</td>
+		<td><a href="wicket-6.x.html">overview</a></td>
+	</tr>
+	<tr>
+		<td>Wicket 1.5.x</td>
+		<td>1.5.13</td>
+		<td>security fixes only, upgrade to 6.x or 7.x</td>
+		<td><a href="wicket-1.5.x.html">overview</a></td>
+	</tr>
+</table>
+<p>However, if your application is not on the current branch, you should
+consider upgrading at your earliest convenience.</p>
+<hr />
+<h2 id="unsupported-releases">Unsupported Releases</h2>
+<p>The following releases are no longer supported by the Wicket team. You
+should upgrade your project if it still depends on any of these
+versions.</p>
+<table style="width:100%">
+	<tr>
+		<th>&nbsp;</th>
+		<th>Latest release</th>
+		<th>Status</th>
+		<th>More info</th>
+	</tr>
+	<tr>
+		<td>Wicket 1.4.x</td>
+		<td>1.4.23</td>
+		<td>discontinued, upgrade to 6.x or 7.x</td>
+		<td><a href="wicket-1.4.x.html">overview</a></td>
+	</tr>
+	<tr>
+		<td>Wicket 1.3.x</td>
+		<td>1.3.7</td>
+		<td>discontinued, upgrade to 6.x or 7.x</td>
+		<td><a href="wicket-1.3.x.html">overview</a></td>
+	</tr>
+	<tr>
+		<td>Wicket 1.2.x</td>
+		<td>1.2.5</td>
+		<td>discontinued, upgrade to 6.x or 7.x</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Wicket 1.1.x</td>
+		<td>1.1.0</td>
+		<td>discontinued, upgrade to 6.x or 7.x</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Wicket 1.0.x</td>
+		<td>1.0.0</td>
+		<td>discontinued, upgrade to 6.x or 7.x</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
         </section>
     </div>
 </main>

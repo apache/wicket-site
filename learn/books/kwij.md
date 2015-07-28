@@ -1,32 +1,23 @@
 ---
 layout: default
 title: Books — Wicket - Komponentenbasierte Webanwendungen in Java
+active_link: documentation
 lang: de
 ---
 
-The book was written by Roland Förther, Carl-Eric Menzel and Olaf Siefart. It
-was published by dpunkt.verlag in December 2009.
+The book was written by Roland Förther, Carl-Eric Menzel and Olaf Siefart.
+It was published by dpunkt.verlag in December 2009.
 
 ## Description ##
 
-Wicket ist ein neuer Typ Webframework für die Java-Welt: Java als Sprache
-rückt hier wieder in den Mittelpunkt und an die Stelle von deklarativer,
-XML-lastiger Programmierung tritt natürliche objektorientierte Entwicklung.
-Typische Probleme wie Codeduplizierung, aufwendige Ajax-Integration und
-kompliziertes Testen werden durch leicht zu erstellende und wiederverwendbare
-Komponenten radikal vereinfacht. Dieses Buch bietet Java-Entwicklern eine
-praxisorientierte Einführung in Wicket und zeigt, wie die Entwicklung von
-Webanwendungen in Java beschleunigt werden kann und wieder Spaß macht. Dazu
-werden die zugrunde liegenden Konzepte umfassend erklärt und anhand einer
-konkreten Beispielanwendung veranschaulicht, die im Laufe der Kapitel Schritt
-für Schritt entwickelt wird. Nach der Lektüre des Buches sind Sie in der Lage,
-professionelle Webanwendungen mit Wicket zu schreiben, Komponenten für die
-eigenen Bedürfnisse anzupassen oder sie in neue Komponenten zusammenzufassen.
-Sie erfahren zudem, wie Webanwendungen unter Einsatz von Wicket
-architektonisch sauber aufgebaut werden können. Umsteiger von anderen
-Webframeworks wie JSF und Struts lernen die wichtigsten Unterschiede zu Wicket
-kennen und werden in die Lage versetzt, bestehende Java-Webanwendungen
-schrittweise nach Wicket zu migrieren.
+Wicket ist ein neuer Typ Webframework für die Java-Welt: Java als Sprache rückt hier wieder in den Mittelpunkt und an die Stelle von deklarativer, XML-lastiger Programmierung tritt natürliche objektorientierte Entwicklung.
+Typische Probleme wie Codeduplizierung, aufwendige Ajax-Integration und kompliziertes Testen werden durch leicht zu erstellende und wiederverwendbare Komponenten radikal vereinfacht.
+
+Dieses Buch bietet Java-Entwicklern eine praxisorientierte Einführung in Wicket und zeigt, wie die Entwicklung von Webanwendungen in Java beschleunigt werden kann und wieder Spaß macht.
+Dazu werden die zugrunde liegenden Konzepte umfassend erklärt und anhand einer konkreten Beispielanwendung veranschaulicht, die im Laufe der Kapitel Schritt für Schritt entwickelt wird.
+Nach der Lektüre des Buches sind Sie in der Lage, professionelle Webanwendungen mit Wicket zu schreiben, Komponenten für die eigenen Bedürfnisse anzupassen oder sie in neue Komponenten zusammenzufassen.
+Sie erfahren zudem, wie Webanwendungen unter Einsatz von Wicket architektonisch sauber aufgebaut werden können.
+Umsteiger von anderen Webframeworks wie JSF und Struts lernen die wichtigsten Unterschiede zu Wicket kennen und werden in die Lage versetzt, bestehende Java-Webanwendungen schrittweise nach Wicket zu migrieren.
 
 Aus dem Inhalt:
 

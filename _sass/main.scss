@@ -155,3 +155,18 @@ article+article {
         }
     }
 }
+
+th { 
+	text-align: left; 
+}
+
+.media-bar {
+	clear: both;
+	a {
+		border: none;
+
+		> img {
+			width: 100%;
+		}
+	}
+}

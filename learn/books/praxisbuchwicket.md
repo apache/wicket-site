@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Books — Praxisbuch Wicket
+title: Books — Praxisbuch Wicket
+active_link: documentation
 lang: de
 ---
 

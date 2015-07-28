@@ -52,7 +52,9 @@ organisation at Github:
 On this page you will find a button with the caption "Fork". Click it
 or use the button below.
 
-<a class="button" rel="nofollow" href="https://github.com/apache/wicket/fork">Fork us on Github</a>
+<a class="button" rel="nofollow" href="https://github.com/apache/wicket/fork">
+	<i class="fa fa-github"></i> Fork us on github
+</a>
 
 Now you have your own copy of Wicket to hack on. You can edit directly
 in the Github web interface--good for minor fixes like documentation
@@ -84,24 +86,57 @@ shows the corresponding branch for each Wicket version.
         <tr>
             <th>Wicket version</th>
             <th>Branch name</th>
+			<th>Status</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>6.x</td>
-            <td>wicket-6.x</td>
-        </tr>
-        <tr>
             <td>7.x</td>
             <td>master</td>
+			<td>active</td>
+        </tr>
+        <tr>
+            <td>6.x</td>
+            <td>wicket-6.x</td>
+			<td>supported</td>
+        </tr>
+        <tr>
+            <td>1.5.x</td>
+            <td>wicket-1.5.x</td>
+			<td>security fixes only</td>
+        </tr>
+        <tr>
+            <td><s>1.4.x</s></td>
+            <td><s>wicket-1.4.x</s></td>
+			<td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>1.3.x</s></td>
+            <td><s>wicket-1.3.x</s></td>
+			<td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>1.2.x</s></td>
+            <td><s>wicket-1.2.x</s></td>
+			<td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>1.1.x</s></td>
+            <td><s>wicket-1.1.x</s></td>
+			<td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>1.0.x</s></td>
+            <td><s>wicket-1.0.x</s></td>
+			<td><s>discontinued</s></td>
         </tr>
     </tbody>
 </table>    
-            
-If you want to work on an issue for Wicket 6, you need to check out the
-_wicket-6.x_ branch.
 
-If you want to work on Wicket 7, then you need to check out _master_.
+If you want to work on Wicket 7, you need to check out _master_.
+
+If you want to work on an issue for Wicket 6, you'll need to check out
+the _wicket-6.x_ branch.
 
 When you are ready with your change you can ask us to review your
 changes and to integrate it into Wicket by creating a Pull Request.
@@ -136,9 +171,6 @@ Here's a list of documents that explain how you can best help the Wicket team:
 Here's a list of tasks that only committers can do:
 
 - <a href="{{ site.baseurl }}/contribute/release.html">Build a release</a>
-
-
-
 
 ### Subscribing and unsubscribing ##
 

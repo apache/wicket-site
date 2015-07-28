@@ -1,12 +1,11 @@
 ---
 layout: default
 title: Wicket in Action
+active_link: documentation
 ---
 
 Wicket in Action is written by Martijn Dashorst and Eelco Hillenius and is
-published by Manning. The book is currently in the final stages of production
-and will soon be available as a hard copy. Early access to the manuscript is
-available from the publishers site.
+published by Manning.
 
 ### Description ###
 

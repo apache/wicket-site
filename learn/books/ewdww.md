@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Books — Enjoying Web Development with Wicket
+title: Books — Enjoying Web Development with Wicket
+active_link: documentation
 ---
 
 Enjoying Web Development with Wicket is written by Kent Tong and is self

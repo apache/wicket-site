@@ -15,24 +15,31 @@ excerpt_separator: <!--more-->
 sass:
     sass_dir: _sass
 wicket:
-  version:    6.20.0
-  version_70: 7.0.0-M6
+  version:    7.0.0
+  version_70: 7.0.0
   version_60: 6.20.0
   version_15: 1.5.13
   version_14: 1.4.23
-  released:   2015-06-14
-  versions:   [6.20.0, 1.5.13, 1.4.23, 7.0.0-M6, 1.5-SNAPSHOT, 6.21.0-SNAPSHOT, 7.0.0-SNAPSHOT]
+  version_13: 1.3.7
+  released:   2015-07-10
+  versions:   [6.20.0, 1.5.13, 1.4.23, 7.0.0, 1.5-SNAPSHOT, 6.21.0-SNAPSHOT, 7.0.0-SNAPSHOT]
 
 navigation:
-- text: Quick Start
+- id: start
+  text: Quick Start
   url: /start/quickstart.html
-- text: Download
+- id: download
+  text: Download
   url: /start/download.html
-- text: Documentation
+- id: documentation
+  text: Documentation
   url: /learn
-- text: Support
+- id: support
+  text: Support
   url: /help
-- text: Contribute
+- id: contribute
+  text: Contribute
   url: /contribute
-- text: Apache
+- id: apache
+  text: Apache
   url: /apache

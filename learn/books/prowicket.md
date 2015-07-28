@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Books — Pro Wicket
+active_link: documentation
 ---
 
 Pro Wicket, written by by Karthik Gurumurthy, is the first book about Wicket,

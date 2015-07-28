@@ -934,3 +934,13 @@ article + article {
       margin-left: 0.5rem; }
     .button-bar .button i {
       font-size: 3rem; }
+
+th {
+  text-align: left; }
+
+.media-bar {
+  clear: both; }
+  .media-bar a {
+    border: none; }
+    .media-bar a > img {
+      width: 100%; }
