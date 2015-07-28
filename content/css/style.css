@@ -735,6 +735,9 @@ nav.mainmenu {
     color: #fff;
     font-weight: 400;
     text-decoration: none; }
+  @media screen and (orientation: portrait) {
+    nav.mainmenu {
+      padding-bottom: 50px; } }
 
 .toc ul {
   list-style: none; }

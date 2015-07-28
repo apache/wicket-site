@@ -22,4 +22,8 @@ nav.mainmenu {
         font-weight:400;
         text-decoration: none;
     }
+    
+    @media screen and (orientation: portrait) {
+    	padding-bottom:50px;
+    }
 }
