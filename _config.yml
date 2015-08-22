@@ -40,6 +40,9 @@ navigation:
 - id: contribute
   text: Contribute
   url: /contribute
+- id: community
+  text: Community
+  url: /community
 - id: apache
   text: Apache
   url: /apache
