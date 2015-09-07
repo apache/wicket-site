@@ -35,9 +35,9 @@ see the replies.
 * Traffic: medium
 * [Browse](http://mail-archives.apache.org/mod_mbox/wicket-users/) the archives
 * [Search](http://wicket-user.markmail.org) the list
-* [Subscribe](mailto:user-subscribe@wicket.apache.org?subject=Subscribe+to+Apache+Wicket+User+list) to the list
-* [Unsubscribe](mailto:user-unsubscribe@wicket.apache.org?subject=Unsubscribe+from+Apache+Wicket+User+list) from the list
-* [Help for subscriptions](mailto:user-help@wicket.apache.org?subject=Get+help+for+Apache+Wicket+User+list)
+* [Subscribe](mailto:users-subscribe@wicket.apache.org?subject=Subscribe+to+Apache+Wicket+User+list) to the list
+* [Unsubscribe](mailto:users-unsubscribe@wicket.apache.org?subject=Unsubscribe+from+Apache+Wicket+User+list) from the list
+* [Help for subscriptions](mailto:users-help@wicket.apache.org?subject=Get+help+for+Apache+Wicket+User+list)
 
 Only subscribers can post to this list.
 
