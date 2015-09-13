@@ -65,28 +65,23 @@ If you are not a Maven user, you can download the Wicket release manually.
 Use the following links to download Wicket manually to build Wicket
 from source:
 
-- Download source [apache-wicket-{{site.wicket.version_15}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.tar.gz)
-([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.tar.gz.asc),
-[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.tar.gz.md5),
-[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.tar.gz.sha)
-)
-- Download source [apache-wicket-{{site.wicket.version_15}}.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.zip)
-([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.zip.asc),
-[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.zip.md5),
-[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.zip.sha)
+- Download source [apache-wicket-{{site.wicket.version_15}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.tgz)
+([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.tgz.asc),
+[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.tgz.md5),
+[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/apache-wicket-{{site.wicket.version_15}}.tgz.sha)
 )
 
 Or use the following links to get the pre-packaged binaries instead:
 
-- Download binaries [apache-wicket-{{site.wicket.version_15}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}-bin.tar.gz)
-([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}-bin.tar.gz.asc),
-[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}-bin.tar.gz.md5),
-[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}-bin.tar.gz.sha)
+- Download binaries [apache-wicket-{{site.wicket.version_15}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}.tar.gz)
+([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}.tar.gz.asc),
+[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}.tar.gz.md5),
+[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}.tar.gz.sha)
 )
-- Download binaries [apache-wicket-{{site.wicket.version_15}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}-bin.zip)
-([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}-bin.zip.asc),
-[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}-bin.zip.md5),
-[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}-bin.zip.sha)
+- Download binaries [apache-wicket-{{site.wicket.version_15}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}.zip)
+([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}.zip.asc),
+[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}.zip.md5),
+[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_15}}/binaries/apache-wicket-{{site.wicket.version_15}}.zip.sha)
 )
 
 Note that the binary packages and the source packages don't contain any
