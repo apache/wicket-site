@@ -100,3 +100,12 @@ versions.
 		<td>&nbsp;</td>
 	</tr>
 </table>
+
+---
+
+## Release Archives
+
+The Apache mirroring system only hosts the latest version of each actively supported branch.
+When you need to download an older release you can find them in the archives.
+
+Go to [the Apache archives](https://archive.apache.org/dist/wicket) to find your specific version.
