@@ -105,5 +105,6 @@ This list is read only, and only Apache build systems can publish to it.
 
 ## Report a security issue {#security}
 
-{% markdown help/security.md %}
+{% capture security %}{% include security.md %}{% endcapture %}
+{{ security | markdownify }}
 
