@@ -58,28 +58,15 @@ If you are not a Maven user, you can download the Wicket release manually.
 Use the following links to download Wicket manually to build Wicket
 from source:
 
-- Download source [apache-wicket-{{site.wicket.version_13}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.tar.gz)
-([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.tar.gz.asc),
-[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.tar.gz.md5),
-[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.tar.gz.sha)
+- Download source+bin [apache-wicket-{{site.wicket.version_13}}.tar.gz](https://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.tar.gz)
+([PGP](https://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.tar.gz.asc),
+[MD5](https://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.tar.gz.md5),
+[SHA](https://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.tar.gz.sha)
 )
-- Download source [apache-wicket-{{site.wicket.version_13}}.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.zip)
+- Download source+bin [apache-wicket-{{site.wicket.version_13}}.zip](https://archive.apache.org/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.zip)
 ([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.zip.asc),
 [MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.zip.md5),
 [SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/apache-wicket-{{site.wicket.version_13}}.zip.sha)
-)
-
-Or use the following links to get the pre-packaged binaries instead:
-
-- Download binaries [apache-wicket-{{site.wicket.version_13}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_13}}/binaries/apache-wicket-{{site.wicket.version_13}}-bin.tar.gz)
-([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/binaries/apache-wicket-{{site.wicket.version}}-bin.tar.gz.asc),
-[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/binaries/apache-wicket-{{site.wicket.version}}-bin.tar.gz.md5),
-[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/binaries/apache-wicket-{{site.wicket.version}}-bin.tar.gz.sha)
-)
-- Download binaries [apache-wicket-{{site.wicket.version_13}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_13}}/binaries/apache-wicket-{{site.wicket.version_13}}-bin.zip)
-([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/binaries/apache-wicket-{{site.wicket.version_13}}-bin.zip.asc),
-[MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/binaries/apache-wicket-{{site.wicket.version_13}}-bin.zip.md5),
-[SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_13}}/binaries/apache-wicket-{{site.wicket.version_13}}-bin.zip.sha)
 )
 
 Note that the binary packages and the source packages don't contain any

@@ -96,6 +96,13 @@ dependencies necessary to have your project working out of the box. We
 strongly urge you to use Maven (or Buildr, or Gradle) as your
 dependency management system.
 
+### Older releases
+
+The Apache mirroring system only hosts the latest version of each actively supported branch.
+When you need to download an older release you can find them in the archives.
+
+Go to [the Apache archives](https://archive.apache.org/dist/wicket) to find your specific version.
+
 ## Requirements
 
 Apache Wicket has few requirements in order to work properly. In this
