@@ -13,7 +13,7 @@ additionalContents:
    sectionId: news
 ---
 <div class="l-full l-first preamble" markdown="1">
-# Apache&nbsp;Wicket v7.0 released
+<h1 id="wicket7">Apache&nbsp;Wicket v7.0 released</h1>
 
 The Apache Software Foundation announces Apache Wicket™ v7.0 Open Source Java web framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more.
 </div>
@@ -48,7 +48,7 @@ Have fun!
 ---
 
 <div class="l-full l-first preamble">
-    <h1>Introducing Apache&nbsp;Wicket</h1>
+    <h1 id="introduction">Introducing Apache&nbsp;Wicket</h1>
     <p>Invented in 2004, Wicket is one of the few survivors of the Java
     serverside web framework wars of the mid 2000's. Wicket is an open
     source, component oriented, serverside, Java web application framework.

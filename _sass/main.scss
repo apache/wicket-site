@@ -172,9 +172,52 @@ th {
 }
 
 .wicket7.header {
-	margin-bottom : 0; background-image:none; background-color: $color-brand-50;
-	
+    background-color: $color-brand-50;
+    background-image: url(/img/wicket-7-bg.jpg);
+	margin-bottom : 0;
+    text-align:center;
 	a { border:none; margin:0; padding:0; height:0; }
-	img { width:100%; margin:0; padding:0; }
-	nav.mainmenu { height: 32px; vertical-align: middle; margin-top:0; }
+	img { min-width: 240px; width:33%; margin: 0 auto; padding: 6rem 0 4rem; }
+
+	nav.mainmenu { 
+        background-color: $color-brand-50; 
+        line-height:3em;
+        margin-top:1rem; 
+        margin-bottom:0;
+        ul {
+            margin-bottom:0;
+        }
+        @media screen and (orientation: portrait) {
+        	padding-bottom:0.25rem;
+        }
+    }
+    .submenu {
+        background-color: white;
+        color: black;
+        display:block;
+        font-size:10pt;
+        margin:0 auto 0rem auto;
+        padding-top: 0.5rem; 
+        text-align:center;
+
+        ul {
+            list-style:none;
+        }
+        li {
+            display:inline-block;
+            font-size:12px;
+
+            &.active { border-bottom: 2px solid;}
+        }
+        li+li {
+            margin-left:1*$grid-column;
+        }
+
+        a, a:active, a:hover {
+            border:none;
+            font-weight:400;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+    }
 }
