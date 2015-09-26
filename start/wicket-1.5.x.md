@@ -9,7 +9,7 @@ preamble: Here you can learn about the status of Wicket 1.5.x, find links to dow
 	<a class="button" href="#status"><i class="fa fa-info-circle"></i><br>Status</a>
 	<a class="button" href="#download"><i class="fa fa-download"></i><br>Download</a>
 	<a class="button" href="#requirements"><i class="fa fa-exclamation-triangle"></i><br>Requirements</a>
-	<a class="button" href="#migrate"><i class="fa fa-history"></i><br>Migrate</a>
+	<a class="button" href="#migrating-from-earlier-versions"><i class="fa fa-history"></i><br>Migrate</a>
 </div>
 
 ## Status
