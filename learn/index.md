@@ -95,7 +95,7 @@ provide migration paths between the different Wicket versions.
 Here's a list of the migration guides:
 
 <div class="button-bar">
-    <a class="button" href="http://s.apache.org/wicket8migrate">
+    <a class="button" href="http://s.apache.org/wicket8migration">
         Wicket 8<br>
 		migration guide
     </a>
