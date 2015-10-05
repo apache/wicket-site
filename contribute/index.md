@@ -91,9 +91,14 @@ shows the corresponding branch for each Wicket version.
     </thead>
     <tbody>
         <tr>
-            <td>7.x</td>
+            <td>8.x</td>
             <td>master</td>
 			<td>active</td>
+        </tr>
+        <tr>
+            <td>7.x</td>
+            <td>wicket-7.x</td>
+			<td>supported</td>
         </tr>
         <tr>
             <td>6.x</td>
@@ -133,10 +138,11 @@ shows the corresponding branch for each Wicket version.
     </tbody>
 </table>    
 
-If you want to work on Wicket 7, you need to check out _master_.
+If you want to work on Wicket 8, you need to check out the _master_ branch.
 
-If you want to work on an issue for Wicket 6, you'll need to check out
-the _wicket-6.x_ branch.
+If you want to work on Wicket 7, you need to check out the _wicket-7.x_ branch.
+
+If you want to work on an issue for Wicket 6, you'll need to check out the _wicket-6.x_ branch.
 
 When you are ready with your change you can ask us to review your
 changes and to integrate it into Wicket by creating a Pull Request.

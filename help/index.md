@@ -114,7 +114,7 @@ If you are using a supporting library from either the Wicket project,
 Wicket Stuff or another project, please ensure that the version you use
 is compatible with your Wicket version.
 
-You can't use Wicket 1.5.x libraries with Wicket 6.x or Wicket 7.x. It
+You can't use Wicket 1.5.x libraries with Wicket 6.x, Wicket 7.x or Wicket 8.x. It
 should be safe to use a library compatible with Wicket 6.0 with
 {{site.wicket.version_60}}
 
