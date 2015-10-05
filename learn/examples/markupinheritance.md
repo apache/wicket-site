@@ -91,7 +91,7 @@ contents filled with exactly the markup between the `<wicket:extend>` tags.
 If you want to get rid of the special Wicket tags, you can disable that on
 the markup settings
 (see [IMarkupSettings](https://ci.apache.org/projects/wicket/apidocs/6.x/org/apache/wicket/settings/IMarkupSettings.html) for Wikcet6
-or [MarkupSettings](https://ci.apache.org/projects/wicket/apidocs/7.x/org/apache/wicket/settings/MarkupSettings.html) for Wicket 7 or newer).
+or [MarkupSettings](https://ci.apache.org/projects/wicket/apidocs/7.x/org/apache/wicket/settings/MarkupSettings.html) for Wicket 7 or [MarkupSettings](https://ci.apache.org/projects/wicket/apidocs/8.x/org/apache/wicket/settings/MarkupSettings.html) for Wicket 8).
 
 ## Implementing the BasePage
 

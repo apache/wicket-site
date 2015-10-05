@@ -45,12 +45,17 @@ projects.
 
 The guide is available as PDF or html file for the following versions:
 
-1.  Wicket 7.x
+1.  Wicket 8.x
+* [HTML](http://ci.apache.org/projects/wicket/guide/8.x/)
+* [HTML (single page)](http://ci.apache.org/projects/wicket/guide/8.x/guide/single.html)
+* [PDF](http://ci.apache.org/projects/wicket/guide/8.x/guide/single.pdf)
+
+2.  Wicket 7.x
 * [HTML](http://ci.apache.org/projects/wicket/guide/7.x/)
 * [HTML (single page)](http://ci.apache.org/projects/wicket/guide/7.x/guide/single.html)
 * [PDF](http://ci.apache.org/projects/wicket/guide/7.x/guide/single.pdf)
 
-2.  Wicket 6.x 
+3.  Wicket 6.x 
 * [HTML](http://ci.apache.org/projects/wicket/guide/6.x/)
 * [HTML (single page)](http://ci.apache.org/projects/wicket/guide/6.x/guide/single.html)
 * [PDF](http://ci.apache.org/projects/wicket/guide/6.x/guide/single.pdf)
@@ -71,6 +76,7 @@ method, show you the corresponding documentation.
 For reference we also publish the API documentation online so you can
 link to it from emails or websites:
 
+- [JavaDoc 8.x](http://ci.apache.org/projects/wicket/apidocs/8.x/index.html)
 - [JavaDoc 7.x](http://ci.apache.org/projects/wicket/apidocs/7.x/index.html)
 - [JavaDoc 6.x](http://ci.apache.org/projects/wicket/apidocs/6.x/index.html)
 - [JavaDoc 1.5.x](http://ci.apache.org/projects/wicket/apidocs/1.5.x/index.html)
@@ -89,6 +95,10 @@ provide migration paths between the different Wicket versions.
 Here's a list of the migration guides:
 
 <div class="button-bar">
+    <a class="button" href="http://s.apache.org/wicket8migration">
+        Wicket 8<br>
+		migration guide
+    </a>
     <a class="button" href="http://s.apache.org/wicket7migrate">
         Wicket 7<br>
 		migration guide
