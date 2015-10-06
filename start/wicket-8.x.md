@@ -27,7 +27,7 @@ The change log is not available at the current state of the development process.
 ## Download
 
 The most recent test version in this branch is: **{{site.wicket.version_80}}**. 
-You can get test the current state of development using [Maven](#maven).
+You can test the current state of development using [Maven](#maven).
 
 ### Using Apache Maven {#maven}
 
