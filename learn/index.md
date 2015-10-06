@@ -7,17 +7,18 @@ preamble: No matter how you want to learn about Wicket, there's something availa
 
 <div class="button-bar">
 	<a class="button" href="#news"><i class="fa fa-newspaper-o"></i><br>News</a>
+	<a class="button" href="blogs.html"><i class="fa fa-rss"></i><br>Blogs</a>
+	<a class="button" href="https://cwiki.apache.org/WICKET"><i class="fa fa-users"></i><br>Wiki</a>
+</div>
+<div class="button-bar">
 	<a class="button" href="#guide"><i class="fa fa-file-text-o"></i><br>Guide</a>
 	<a class="button" href="#javadoc"><i class="fa fa-code"></i><br>API docs</a>
-	<a class="button" href="https://cwiki.apache.org/WICKET"><i class="fa fa-users"></i><br>Wiki</a>
 	<a class="button" href="books/index.html"><i class="fa fa-book"></i><br>Books</a>
 </div>
 <div class="button-bar">
-	<a class="button" href="blogs.html"><i class="fa fa-rss"></i><br>Blogs</a>
 	<a class="button" href="#migrations"><i class="fa fa-history"></i><br>Migrations</a>
-		<a class="button" href="#examples"><i class="fa fa-life-ring"></i><br>Support</a>
+	<a class="button" href="#examples"><i class="fa fa-life-ring"></i><br>Support &amp; Examples</a>
 	<a class="button" href="#ides"><i class="fa fa-terminal"></i><br>IDEs</a>
-	<a class="button" href="#examples"><i class="fa fa-laptop"></i><br>Examples</a>
 </div>
 
 ## News Archive {#news}
@@ -93,7 +94,6 @@ Wicket's API. We have done our best to document all the changes and
 provide migration paths between the different Wicket versions.
 
 Here's a list of the migration guides:
-
 <div class="button-bar">
     <a class="button" href="http://s.apache.org/wicket8migration">
         Wicket 8<br>
@@ -107,6 +107,8 @@ Here's a list of the migration guides:
         Wicket 6<br>
 		migration guide
     </a>
+</div>
+<div class="button-bar">
     <a class="button" href="http://s.apache.org/wicket5migrate">
         Wicket 1.5<br>
 		migration guide
