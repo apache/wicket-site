@@ -51,6 +51,7 @@ div.header {
 .default {
     nav.mainmenu {
         margin:0;
+        padding-right:1em;
         @include breakpoint($breakpoint-20) {
             display:inline-block;
             margin:0;
@@ -184,6 +185,7 @@ th {
         line-height:3em;
         margin-top:1rem; 
         margin-bottom:0;
+        padding-right:1em;
         ul {
             margin-bottom:0;
         }
@@ -198,6 +200,7 @@ th {
         font-size:10pt;
         margin:0 auto 0rem auto;
         padding-top: 0.5rem; 
+        padding-right:1em;
         text-align:center;
 
         ul {
