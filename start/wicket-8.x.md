@@ -4,9 +4,10 @@ title: Apache Wicket 8.x
 active_link: download
 preamble: Here you can learn about the status of Wicket 8.x, find links to download it, learn how to configure your Maven POM to use Wicket, find the minimal requirements, and migrate your existing application to this Wicket version.
 ---
-
 <div class="button-bar">
 	<a class="button" href="#status"><i class="fa fa-info-circle"></i><br>Status</a>
+</div>
+<div class="button-bar">
 	<a class="button" href="#requirements"><i class="fa fa-exclamation-triangle"></i><br>Requirements</a>
 	<a class="button" href="#migrate"><i class="fa fa-history"></i><br>Migrate</a>
 </div>
