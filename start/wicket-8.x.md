@@ -69,7 +69,7 @@ access to specific APIs.
 ### Servlet API
 
 This Wicket version requires at least the following Servlet API
-version: **Servlet API 3.0 or newer**. This is provided by your
+version: **Servlet API 3.1 or newer**. This is provided by your
 container, please see the documentation of your container to see which
 version of the Servlet specification is supported.
 
