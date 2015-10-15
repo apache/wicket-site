@@ -103,7 +103,7 @@ Here's a list of the migration guides:
         Wicket 7<br>
 		migration guide
     </a>
-    <a class="button" href="http://s.apache.org/wicket6migrate">
+    <a class="button" href="http://s.apache.org/wicket6migration">
         Wicket 6<br>
 		migration guide
     </a>
