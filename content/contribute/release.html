@@ -86,11 +86,11 @@
 <div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">gpg --armor --detach-sign --use-agent --sign pom.xml</span>
 <span class="go">rm pom.xml.asc</span></code></pre></div>
 <ul>
-  <li>Create release branch:</li>
+  <li>Create release branch: </li>
 </ul>
 <div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn release:branch -DbranchName=build/wicket-$NEWVERSION</span></code></pre></div>
 <ul>
-  <li>Checkout the release branch:</li>
+  <li>Checkout the release branch: </li>
 </ul>
 <div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">git checkout build/wicket-$NEWVERSION</span></code></pre></div>
 <ul>
@@ -132,7 +132,7 @@
 <h4 id="staging-the-build">Staging the build</h4>
 <div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">ssh APACHE_ID@people.apache.org mkdir public_html/wicket-$NEWVERSION</span>
 <span class="go">scp apache-wicket-* APACHE_ID@people.apache.org:public_html/wicket-$NEWVERSION</span></code></pre></div>
-<p><strong>TODO</strong> figure out how to let <code>release:perform</code> work from a local checkout, such that we can actually <em>stage</em> the build instead of having to push the tag to our git repo.</p>
+<p><strong>TODO</strong> figure out how to let <code>release:perform</code> work from a local checkout, such that we can actually <em>stage</em> the build instead of having to push the tag to our git repo. </p>
 <p>The following steps are ONLY necessary as long as the above TODO has not been resolved.</p>
 <div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">git push origin build/wicket-$NEWVERSION:refs/heads/build/wicket-$NEWVERSION</span>
 <span class="go">git push -tags origin</span></code></pre></div>

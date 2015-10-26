@@ -244,31 +244,109 @@ The release consist of almost 300 features, improvements and fixes. In accordanc
 </div>
 <div class="l-two-third">
     <article>
-        <h2>Apache Wicket v7.0 released</h2>
-        <small>28 Jul 2015</small>
-        <p>The Apache Software Foundation announces Apache Wicket™ v7.0 Open Source Java web framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more.</p>
-<p>The Apache Software Foundation (ASF), the all-volunteer developers, stewards, and incubators of nearly 150 Open Source projects and initiatives, today announced Apache™ Wicket™ v7.0, the Open Source Java web framework for high performance, scalable, component oriented web applications. 
-This marks the seventh major release of the project that celebrated its 10 year anniversary last year.</p>
-<p>This framework allows Java developers to write web applications using components. 
-This way developers can reason about the user interface in user interface building blocks, making it easier to link specific user interactions to server-side code. 
-Wicket is a high performance framework processing billions of requests daily across the world.</p>
-<p>“With this release we have added a major improvement to our framework, making development with Wicket even easier.”, said Martijn Dashorst, Vice President of Apache Wicket.
-“By adding ‘Component Queuing’ we have divorced the strict relationship between the Java component classes and the markup. This has been a headache for many users and sparked one of the longest discussions on our community lists. We finally put this issue to bed.”</p>
-<p>“Other major improvements are the move towards Java 7, newer Java EE standards, security features and the addition of new components. Wicket now bundles a cross site request forgery (CSRF) prevention measure, and provides support for inline images using the data: protocol,” continued Martijn Dashorst.</p>
-<p>Apache Wicket v7.0 reflects over 2 years of development, testing and feedback from hundreds of knowledgable users, bringing a highly stable, production ready release of the popular web framework.
-The release consist of almost 300 features, improvements and fixes. In accordance with Semantic Versioning, this major release contains <a href="https://s.apache.org/wicket7migrate">several documented API breaks</a>. Following the Semantic Versioning standard, future minor releases of Wicket v7 will remain API compatible.</p>
-<h3 id="availability-and-oversight">Availability and Oversight</h3>
-<p>As with all Apache products, Apache Wicket software is released under the Apache License v2.0, and is overseen by a self-selected team of active contributors to the project.
-A Project Management Committee (PMC) guides the Project’s day-to-day operations, including community development and product releases.
-Apache Wicket release notes, source code, documentation, and related resources are available at <a href="https://wicket.apache.org">https://wicket.apache.org</a>.</p>
-<h3 id="about-the-apache-software-foundation-asf">About The Apache Software Foundation (ASF)</h3>
-<p>Established in 1999, the all-volunteer Foundation oversees nearly one hundred fifty leading Open Source projects, including Apache HTTP Server — the world’s most popular Web server software.
-Through the ASF’s meritocratic process known as “The Apache Way,” more than 350 individual Members and 3,000 Committers successfully collaborate to develop freely available enterprise-grade software, benefiting millions of users worldwide: thousands of software solutions are distributed under the Apache License; and the community actively participates in ASF mailing lists, mentoring initiatives, and ApacheCon, the Foundation’s official user conference, trainings, and expo.
-The ASF is a US 501(3)(c) not-for-profit charity, funded by individual donations and corporate sponsors including AMD, Basis Technology, Cloudera, Facebook, Google, IBM, HP, Hortonworks, Matt Mullenweg, Microsoft, PSW Group, SpringSource/VMware, and Yahoo!.
-For more information, visit <a href="https://www.apache.org/">https://www.apache.org/</a>.</p>
-<p>“Apache”, “Apache Wicket”, and “ApacheCon” are trademarks of The Apache Software Foundation.
-All other brands and trademarks are the property of their respective owners.</p>
-        <a href="/news/2015/07/28/wicket-7.0-released.html">Read more...</a> 
+        <h2>Wicket 7.1.0 Released</h2>
+        <small>25 Oct 2015</small>
+        <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.1.0!</p>
+<p>This release marks another minor release of Wicket 7. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+7.0.0.</p>
+<h2 id="new-and-noteworthy">New and noteworthy</h2>
+<p>Significant improvement in performance while adding components to
+the component hierarchy. There was a regression in performance
+introduced by component queuing. The algorithm checked if there were
+any components to be dequeued, but did so in a O(n^2) way. This was
+fixed.</p>
+<p>Upon further investigation we found that adding components is O(n^2)
+since 1.3 (when memory was scarce and expensive). We fixed that and
+made it roughly O(1).</p>
+<p>This means that when you have a page with 10k components on it, the
+adding won’t slow you down any more, and the new way of adding
+components will scrape a few ms off your overall average response time.</p>
+<p>This release also fixes several bugs where head sections were not rendered,
+i18n JavaScript resources could not be loaded, Range: header parsing and
+a couple of component queuing issues.</p>
+<h2 id="using-this-release">Using this release</h2>
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+<dependency>
+    <groupid>org.apache.wicket</groupid>
+    <artifactid>wicket-core</artifactid>
+    <version>7.1.0</version>
+</dependency>
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+<ul>
+  <li>Source: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0</li>
+  <li>Binary: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0/binaries</li>
+</ul>
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+<p>If you upgrade from 7.y.z this release is a drop in replacement. If
+you come from a version prior to 7.0.0, please read our Wicket 7
+migration guide found at</p>
+<ul>
+  <li>http://s.apache.org/wicket7migrate</li>
+</ul>
+<p>Have fun!</p>
+<p>— The Wicket team</p>
+<p>========================================================================</p>
+<p>The signatures for the source release artefacts:</p>
+<p>Signature for apache-wicket-7.1.0.zip:</p>
+<pre><code>-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
+</code></pre>
+<p>iEYEABECAAYFAlYldl4ACgkQJBX8W/xy/UWlUgCbBKvmDioyZceDBykv52eWYNai
+b9AAn2AUlg5FotVMaQtOdtQsQfuy4X/D
+=Vuhh
+—–END PGP SIGNATURE—–</p>
+<p>Signature for apache-wicket-7.1.0.tar.gz:</p>
+<pre><code>-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
+</code></pre>
+<p>iEYEABECAAYFAlYldl4ACgkQJBX8W/xy/UXNzgCgtL4H8bRjZewltF1BX7H3F+Ph
+6KUAnA0k2BVi5E//uw9RLm7MklYJOdV+
+=Za2v
+—–END PGP SIGNATURE—–</p>
+<p>========================================================================</p>
+<pre><code>CHANGELOG for 7.1.0:
+</code></pre>
+<p>** Bug</p>
+<pre><code>* [WICKET-5882] - AutoComplete suggestion list disappear when I click on autoComplete scrollbar in IE
+* [WICKET-5941] - Headers not rendered for components inside TransparentWebMarkupContainer on ajax update
+* [WICKET-5959] - HTML input placeholder text breaks AutoCompleteTextField in IE11
+* [WICKET-5960] - Page header isn't rendered for pages where URL has changed during render
+* [WICKET-5964] - Queuing a component within an enclosure
+* [WICKET-5965] - Queuing a component in head
+* [WICKET-5966] - ResourceUtils.getLocaleFromFilename can't handle minimized resources well
+* [WICKET-5967] - Unable to load i18n minified js
+* [WICKET-5968] - CachingResourceLocator lookup key doesn't take strict into account
+* [WICKET-5970] - UrlRenderer does not render fragments
+* [WICKET-5973] - IllegalArgumentException 'bytes' cannot be negative. on opening Inspector
+* [WICKET-5975] - AjaxFallbackOrderByBorder wicketOrder[Up|Down|None] class missing
+* [WICKET-5978] - LazyInitProxyFactory fills permgen space
+* [WICKET-5980] - When using Servlet 3.0 filter Wicket calculates filter path wrong
+* [WICKET-5981] - Significant Performance Degradation From Wicket 6.20.0 to Wicket 7.0.0
+* [WICKET-5983] - O(n^2) complexity in MarkupContainer.add
+* [WICKET-5988] - WICKET-5981 breaks forms inside borders
+* [WICKET-5989] - BaseWicketTester#startComponentInPage fails for pages with &lt;wicket:header-items&gt;&lt;/wicket:header&gt; placeholder
+* [WICKET-5993] - AjaxButton - image is not shown even though type="image" is in html-template 
+* [WICKET-5994] - Mounted TemplateResourceReference throws  org.apache.wicket.WicketRuntimeException when https is used
+* [WICKET-5995] - "Range" header parsing is broken
+* [WICKET-5996] - Mounted packages throw IllegalArgumentException when visiting base package url.
+* [WICKET-5997] - Compatibility problem with Websphere liberty profile
+* [WICKET-5999] - AjaxFormValidatingBehavior not updates initially hidden feedback component
+* [WICKET-6005] - WicketRuntimeException from AjaxPagingNavigator#onAjaxEvent
+</code></pre>
+<p>** Improvement</p>
+<pre><code>* [WICKET-5948] - wicket-ajax.js probably doesn't traverse the children of &lt;div&gt; or &lt;span&gt;
+* [WICKET-5971] - Code cleanup in ServletWebResponse
+* [WICKET-5974] - Change AjaxPagingNavigator#onAjaxEvent() to only consider parent components that have setOutputMarkupId(true)
+* [WICKET-5976] - Improve the documentation of FeedbackMessages first(int level)
+* [WICKET-5984] - ReplaceHandlerException lacks an accessor for the replacement RequestHandler
+* [WICKET-5986] - NumberTextField&lt;N&gt; should use Models for minimum, maximum and step
+</code></pre>
+<p>** Task</p>
+<pre><code>* [WICKET-5951] - Upgrade Atmosphere to 2.2.8
+</code></pre>
+        <a href="/news/2015/10/25/wicket-7.1.0-released.html">Read more...</a> 
     </article>
 </div>
 <div class="l-one-third news">
@@ -279,6 +357,18 @@ articles concerning release, security and community updates.</p>
 title="Atom 1.0 feed" href="/atom.xml">RSS feed</a> to
 get updates in your favorite RSS reader the moment they happen.</p>
 <ul>
+<li>
+    <h3>Wicket 1.5.14 released</h3>
+    <small>24 Oct 2015</small>
+    This is the fourteenth maintenance release of the Wicket 1.5.x series. This release brings over 4 bug fixes and 1 improvement. CHANGELOG for 1.5.14: **...
+    <a href="/news/2015/10/24/wicket-1.5.14-released.html">more</a>
+</li>
+<li>
+    <h3>Apache Wicket v7.0 released</h3>
+    <small>28 Jul 2015</small>
+    The Apache Software Foundation announces Apache Wicket™ v7.0 Open Source Java web framework that powers thousands of web applications and web sites for governments, stores,...
+    <a href="/news/2015/07/28/wicket-7.0-released.html">more</a>
+</li>
 <li>
     <h3>Apache Wicket 7.0.0-M6 released</h3>
     <small>21 Jun 2015</small>
@@ -296,18 +386,6 @@ get updates in your favorite RSS reader the moment they happen.</p>
     <small>13 Feb 2015</small>
     This is the thirteenth maintenance release of the Wicket 1.5.x series. This release brings over 1 bug fix and 1 improvement. Git tag Changelog To...
     <a href="/news/2015/02/13/wicket-1.5.13-released.html">more</a>
-</li>
-<li>
-    <h3>New committer - Sebastien Briquet</h3>
-    <small>13 Feb 2015</small>
-    The Project Management Committee (PMC) for Apache Wicket has asked Sebastien Briquet to become a committer and we are pleased to announce that he has...
-    <a href="/news/2015/02/13/new-committer-Sebastien-Briquet.html">more</a>
-</li>
-<li>
-    <h3>Apache Wicket 7.0.0-M5 released</h3>
-    <small>02 Feb 2015</small>
-    The Apache Wicket PMC is proud to announce Apache Wicket 7.0.0-M5! We have released another milestone release for Apache Wicket 7. We aim to finalise...
-    <a href="/news/2015/02/02/wicket-7.0.0-M5-released.html">more</a>
 </li>
 </ul>
 </div>

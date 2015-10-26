@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta charset="utf-8">
-        <title>Wicket 1.5-M3 released | Apache Wicket</title>
+        <title>Wicket 1.5.14 released | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /news/2010/11/05/wicket-1.5-M3-released.html -->
+		<!-- /start/quickstart.html || /news/2015/10/24/wicket-1.5.14-released.html -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /news/2010/11/05/wicket-1.5-M3-released.html -->
+		<!-- /start/download.html || /news/2015/10/24/wicket-1.5.14-released.html -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /news/2010/11/05/wicket-1.5-M3-released.html -->
+		<!-- /learn || /news/2015/10/24/wicket-1.5.14-released.html -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /news/2010/11/05/wicket-1.5-M3-released.html -->
+		<!-- /help || /news/2015/10/24/wicket-1.5.14-released.html -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /news/2010/11/05/wicket-1.5-M3-released.html -->
+		<!-- /contribute || /news/2015/10/24/wicket-1.5.14-released.html -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /news/2010/11/05/wicket-1.5-M3-released.html -->
+		<!-- /community || /news/2015/10/24/wicket-1.5.14-released.html -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /news/2010/11/05/wicket-1.5-M3-released.html -->
+		<!-- /apache || /news/2015/10/24/wicket-1.5.14-released.html -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -43,26 +43,35 @@
 <main>
     <div class="l-container">
         <header class="l-full preamble">
-            <h1>Wicket 1.5-M3 released</h1>
+            <h1>Wicket 1.5.14 released</h1>
         </header>
         <section class="l-one-third right">
         </section>
         <section class="l-two-third left">
             <div class="l-full">
-    <p class="meta">05 Nov 2010</p>
-    <p>This is another milestone release from trunk (in-development branch).  This release includes several enhancments and fixes, which can be seen in the changelog (linked below).</p>
+    <p class="meta">24 Oct 2015</p>
+    <p>This is the fourteenth maintenance release of the Wicket 1.5.x series. This release brings over 4 bug fixes and 1 improvement.</p>
+<pre><code>CHANGELOG for 1.5.14:
+</code></pre>
+<p>** Bug</p>
+<pre><code>* [WICKET-5838] - Last-modified header of external markup is ignored
+* [WICKET-5927] - Velocity remote code execution
+* [WICKET-6000] - Wicket 1.5 DTD link on website does not point to valid location
+* [WICKET-6005] - WicketRuntimeException from AjaxPagingNavigator#onAjaxEvent
+</code></pre>
+<p>** Improvement</p>
+<pre><code>* [WICKET-5974] - Change AjaxPagingNavigator#onAjaxEvent() to only consider parent components that have setOutputMarkupId(true)
+</code></pre>
 <ul>
-  <li><a href="http://svn.apache.org/repos/asf/wicket/releases/wicket-1.5-M3">Subversion tag</a> </li>
-  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;styleName=Html&amp;version=12315329">Changelog</a></li>
-  <li>To use in Maven: </li>
+  <li>To use in Maven:</li>
 </ul>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>wicket<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.5-M3<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.5.14<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></div>
 <ul>
-  <li>Download the <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5-M3">full distribution</a> (including source)</li>
+  <li>Download the <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.14">full distribution</a> (including sources)</li>
 </ul>
 </div>
         </section>
