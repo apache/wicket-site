@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2015-10-26T22:39:43+01:00</updated>
+    <updated>2015-10-27T11:29:44+01:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -12,7 +12,7 @@
  
 
     <entry>
-        <title>Wicket 7.1.0 Released</title>
+        <title>Apache Wicket 7.1.0 released</title>
         <link href="http://wicket.apache.org/news/2015/10/25/wicket-7.1.0-released.html"/>
         <updated>2015-10-25T00:00:00+02:00</updated>
         <id>http://wicket.apache.org/news/2015/10/25/wicket-7.1.0-released</id>
