@@ -276,10 +276,10 @@ update any other dependencies on Wicket projects to the same version):</p>
 </dependency>
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
-<ul>
-  <li>Source: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0</li>
-  <li>Binary: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0/binaries</li>
-</ul>
+<div class="highlight"><pre>
+ * Source: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0
+ * Binary: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0/binaries
+</pre></div>
 <h4 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h4>
 <p>If you upgrade from 7.y.z this release is a drop in replacement. If
 you come from a version prior to 7.0.0, please read our Wicket 7
@@ -289,21 +289,25 @@ migration guide found at</p>
 </ul>
 <h4 id="the-signatures-for-the-source-release-artefacts">The signatures for the source release artefacts:</h4>
 <p>Signature for apache-wicket-7.1.0.zip:</p>
-<pre><code>-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-</code></pre>
-<p>iEYEABECAAYFAlYldl4ACgkQJBX8W/xy/UWlUgCbBKvmDioyZceDBykv52eWYNai
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+iEYEABECAAYFAlYldl4ACgkQJBX8W/xy/UWlUgCbBKvmDioyZceDBykv52eWYNai
 b9AAn2AUlg5FotVMaQtOdtQsQfuy4X/D
 =Vuhh
-—–END PGP SIGNATURE—–</p>
+-----END PGP SIGNATURE-----
+</pre></div>
 <p>Signature for apache-wicket-7.1.0.tar.gz:</p>
-<pre><code>-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-</code></pre>
-<p>iEYEABECAAYFAlYldl4ACgkQJBX8W/xy/UXNzgCgtL4H8bRjZewltF1BX7H3F+Ph
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+iEYEABECAAYFAlYldl4ACgkQJBX8W/xy/UXNzgCgtL4H8bRjZewltF1BX7H3F+Ph
 6KUAnA0k2BVi5E//uw9RLm7MklYJOdV+
 =Za2v
-—–END PGP SIGNATURE—–</p>
+-----END PGP SIGNATURE-----
+</pre></div>
 <h4 id="changelog-for-710">CHANGELOG for 7.1.0:</h4>
-<p>** Bug</p>
+<h4 id="bug">Bug</h4>
 <pre><code>* [WICKET-5882] - AutoComplete suggestion list disappear when I click on autoComplete scrollbar in IE
 * [WICKET-5941] - Headers not rendered for components inside TransparentWebMarkupContainer on ajax update
 * [WICKET-5959] - HTML input placeholder text breaks AutoCompleteTextField in IE11
@@ -330,7 +334,7 @@ b9AAn2AUlg5FotVMaQtOdtQsQfuy4X/D
 * [WICKET-5999] - AjaxFormValidatingBehavior not updates initially hidden feedback component
 * [WICKET-6005] - WicketRuntimeException from AjaxPagingNavigator#onAjaxEvent
 </code></pre>
-<p>** Improvement</p>
+<h4 id="improvement">Improvement</h4>
 <pre><code>* [WICKET-5948] - wicket-ajax.js probably doesn't traverse the children of &lt;div&gt; or &lt;span&gt;
 * [WICKET-5971] - Code cleanup in ServletWebResponse
 * [WICKET-5974] - Change AjaxPagingNavigator#onAjaxEvent() to only consider parent components that have setOutputMarkupId(true)
@@ -338,7 +342,7 @@ b9AAn2AUlg5FotVMaQtOdtQsQfuy4X/D
 * [WICKET-5984] - ReplaceHandlerException lacks an accessor for the replacement RequestHandler
 * [WICKET-5986] - NumberTextField&lt;N&gt; should use Models for minimum, maximum and step
 </code></pre>
-<p>** Task</p>
+<h4 id="task">Task</h4>
 <pre><code>* [WICKET-5951] - Upgrade Atmosphere to 2.2.8
 </code></pre>
 <p>Have fun!</p>

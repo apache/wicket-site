@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2015-10-27T13:25:19+01:00</updated>
+    <updated>2015-10-27T13:51:40+01:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -57,10 +57,10 @@ update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 &lt;p&gt;Or download and build the distribution yourself, or use our
 convenience binary package&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Source: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0&lt;/li&gt;
-  &lt;li&gt;Binary: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0/binaries&lt;/li&gt;
-&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
+ * Source: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0
+ * Binary: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0/binaries
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h4&gt;
 
@@ -76,27 +76,31 @@ migration guide found at&lt;/p&gt;
 
 &lt;p&gt;Signature for apache-wicket-7.1.0.zip:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
 
-&lt;p&gt;iEYEABECAAYFAlYldl4ACgkQJBX8W/xy/UWlUgCbBKvmDioyZceDBykv52eWYNai
+iEYEABECAAYFAlYldl4ACgkQJBX8W/xy/UWlUgCbBKvmDioyZceDBykv52eWYNai
 b9AAn2AUlg5FotVMaQtOdtQsQfuy4X/D
 =Vuhh
-—–END PGP SIGNATURE—–&lt;/p&gt;
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Signature for apache-wicket-7.1.0.tar.gz:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
 
-&lt;p&gt;iEYEABECAAYFAlYldl4ACgkQJBX8W/xy/UXNzgCgtL4H8bRjZewltF1BX7H3F+Ph
+iEYEABECAAYFAlYldl4ACgkQJBX8W/xy/UXNzgCgtL4H8bRjZewltF1BX7H3F+Ph
 6KUAnA0k2BVi5E//uw9RLm7MklYJOdV+
 =Za2v
-—–END PGP SIGNATURE—–&lt;/p&gt;
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;changelog-for-710&quot;&gt;CHANGELOG for 7.1.0:&lt;/h4&gt;
 
-&lt;p&gt;** Bug&lt;/p&gt;
+&lt;h4 id=&quot;bug&quot;&gt;Bug&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;* [WICKET-5882] - AutoComplete suggestion list disappear when I click on autoComplete scrollbar in IE
 * [WICKET-5941] - Headers not rendered for components inside TransparentWebMarkupContainer on ajax update
@@ -125,7 +129,7 @@ b9AAn2AUlg5FotVMaQtOdtQsQfuy4X/D
 * [WICKET-6005] - WicketRuntimeException from AjaxPagingNavigator#onAjaxEvent
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;** Improvement&lt;/p&gt;
+&lt;h4 id=&quot;improvement&quot;&gt;Improvement&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;* [WICKET-5948] - wicket-ajax.js probably doesn&#39;t traverse the children of &amp;lt;div&amp;gt; or &amp;lt;span&amp;gt;
 * [WICKET-5971] - Code cleanup in ServletWebResponse
@@ -135,7 +139,7 @@ b9AAn2AUlg5FotVMaQtOdtQsQfuy4X/D
 * [WICKET-5986] - NumberTextField&amp;lt;N&amp;gt; should use Models for minimum, maximum and step
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;** Task&lt;/p&gt;
+&lt;h4 id=&quot;task&quot;&gt;Task&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;* [WICKET-5951] - Upgrade Atmosphere to 2.2.8
 &lt;/code&gt;&lt;/pre&gt;
