@@ -46,7 +46,6 @@
             <h1>Apache Wicket 7.1.0 released</h1>
         </header>
         <section class="l-one-third right">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a></li></ul></div>
         </section>
         <section class="l-two-third left">
             <div class="l-full">
@@ -56,7 +55,7 @@
 use semantic versioning for the development of Wicket, and as such no
 API breaks are present breaks are present in this release compared to
 7.0.0.</p>
-<h2 id="new-and-noteworthy">New and noteworthy</h2>
+<h4 id="new-and-noteworthy">New and noteworthy</h4>
 <p>Significant improvement in performance while adding components to
 the component hierarchy. There was a regression in performance
 introduced by component queuing. The algorithm checked if there were
@@ -71,7 +70,7 @@ components will scrape a few ms off your overall average response time.</p>
 <p>This release also fixes several bugs where head sections were not rendered,
 i18n JavaScript resources could not be loaded, Range: header parsing and
 a couple of component queuing issues.</p>
-<h2 id="using-this-release">Using this release</h2>
+<h4 id="using-this-release">Using this release</h4>
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
 <dependency>
@@ -85,17 +84,14 @@ convenience binary package</p>
   <li>Source: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0</li>
   <li>Binary: http://www.apache.org/dyn/closer.cgi/wicket/7.1.0/binaries</li>
 </ul>
-<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+<h4 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h4>
 <p>If you upgrade from 7.y.z this release is a drop in replacement. If
 you come from a version prior to 7.0.0, please read our Wicket 7
 migration guide found at</p>
 <ul>
   <li>http://s.apache.org/wicket7migrate</li>
 </ul>
-<p>Have fun!</p>
-<p>— The Wicket team</p>
-<p>========================================================================</p>
-<p>The signatures for the source release artefacts:</p>
+<h4 id="the-signatures-for-the-source-release-artefacts">The signatures for the source release artefacts:</h4>
 <p>Signature for apache-wicket-7.1.0.zip:</p>
 <pre><code>-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
 </code></pre>
@@ -110,9 +106,7 @@ b9AAn2AUlg5FotVMaQtOdtQsQfuy4X/D
 6KUAnA0k2BVi5E//uw9RLm7MklYJOdV+
 =Za2v
 —–END PGP SIGNATURE—–</p>
-<p>========================================================================</p>
-<pre><code>CHANGELOG for 7.1.0:
-</code></pre>
+<h4 id="changelog-for-710">CHANGELOG for 7.1.0:</h4>
 <p>** Bug</p>
 <pre><code>* [WICKET-5882] - AutoComplete suggestion list disappear when I click on autoComplete scrollbar in IE
 * [WICKET-5941] - Headers not rendered for components inside TransparentWebMarkupContainer on ajax update
@@ -151,6 +145,8 @@ b9AAn2AUlg5FotVMaQtOdtQsQfuy4X/D
 <p>** Task</p>
 <pre><code>* [WICKET-5951] - Upgrade Atmosphere to 2.2.8
 </code></pre>
+<p>Have fun!</p>
+<p>— The Wicket team</p>
 </div>
         </section>
     </div>
