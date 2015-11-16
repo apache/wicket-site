@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /learn/examples/markupinheritance.html -->
+		<!-- /start/quickstart.html || /learn/examples/markupinheritance -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /learn/examples/markupinheritance.html -->
+		<!-- /start/download.html || /learn/examples/markupinheritance -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /learn/examples/markupinheritance.html -->
+		<!-- /learn || /learn/examples/markupinheritance -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /learn/examples/markupinheritance.html -->
+		<!-- /help || /learn/examples/markupinheritance -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /learn/examples/markupinheritance.html -->
+		<!-- /contribute || /learn/examples/markupinheritance -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /learn/examples/markupinheritance.html -->
+		<!-- /community || /learn/examples/markupinheritance -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /learn/examples/markupinheritance.html -->
+		<!-- /apache || /learn/examples/markupinheritance -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -75,19 +75,19 @@ and panels) can inherit the markup of their super containers.</p>
 <code>&lt;wicket:extend&gt;</code>. In the super markup you define where the child markup
 should be put, and in the sub markup you delineate where the child markup
 starts and ends.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
     <span class="nt">&lt;head&gt;&lt;/head&gt;</span>
     <span class="nt">&lt;body&gt;</span>
         This is in the super markup.<span class="nt">&lt;br&gt;</span>
         <span class="nt">&lt;wicket:child</span> <span class="nt">/&gt;</span>
         This is in the super markup.<span class="nt">&lt;br&gt;</span>
     <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 <p>In this markup you see two sentences that surround the <code>&lt;wicket:child&gt;</code> tag.
 All markup in this file will remain when a sub class of this page is created,
 only the <code>&lt;wicket:child&gt;</code> tag will be replaced with the child markup. So if we
 look at the following markup:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
     This is in de child markup.<span class="nt">&lt;br&gt;</span>
@@ -96,12 +96,12 @@ look at the following markup:</p>
     <span class="nt">&lt;/wicket:extend&gt;</span>
     This is in the child markup.<span class="nt">&lt;br&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 <p>we can see the markup that should be included in the parent. Only the markup
 between the <code>&lt;wicket:extend&gt;</code> tags is included in the final page. Take a look
 at the following markup which is the final markup when you would use this in
 a Wicket application.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
     This is in the super markup.<span class="nt">&lt;br&gt;</span>
@@ -110,7 +110,7 @@ a Wicket application.</p>
     <span class="nt">&lt;/wicket:extend&gt;&lt;/wicket:child&gt;</span>
     This is in the super markup.<span class="nt">&lt;br&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 <p>Here you can see that the <code>&lt;wicket:child /&gt;</code> tag has been expanded, and its
 contents filled with exactly the markup between the <code>&lt;wicket:extend&gt;</code> tags.
 If you want to get rid of the special Wicket tags, you can disable that on
@@ -120,35 +120,35 @@ or <a href="https://ci.apache.org/projects/wicket/apidocs/7.x/org/apache/wicket/
 <h2 id="implementing-the-basepage">Implementing the BasePage</h2>
 <p>Now that we have seen the basics for markup inheritance, we can take a
 look at the example at hand. Let’s first create the base page.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.WebPage</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.link.BookmarkablePageLink</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BasePage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="nf">BasePage</span><span class="o">()</span> <span class="o">{</span>
-		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">BookmarkablePageLink</span><span class="o">(</span><span class="s">&quot;page1&quot;</span><span class="o">,</span> <span class="n">Page1</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
-		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">BookmarkablePageLink</span><span class="o">(</span><span class="s">&quot;page2&quot;</span><span class="o">,</span> <span class="n">Page2</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
-		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">Label</span><span class="o">(</span><span class="s">&quot;footer&quot;</span><span class="o">,</span> <span class="s">&quot;This is in the footer&quot;</span><span class="o">));</span>
+	<span class="kd">public</span> <span class="n">BasePage</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BookmarkablePageLink</span><span class="o">(</span><span class="s">"page1"</span><span class="o">,</span> <span class="n">Page1</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BookmarkablePageLink</span><span class="o">(</span><span class="s">"page2"</span><span class="o">,</span> <span class="n">Page2</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"footer"</span><span class="o">,</span> <span class="s">"This is in the footer"</span><span class="o">));</span>
 	<span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 <p>The two links should go into the header, and the footer in the footer of the
 page. Note that the abstract keyword isn’t required, but considered a good
 practise. Now let’s take a look at the markup for the BasePage</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;page1&quot;</span><span class="nt">&gt;</span>Page1<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;page2&quot;</span><span class="nt">&gt;</span>Page2<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"header"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">wicket:id=</span><span class="s">"page1"</span><span class="nt">&gt;</span>Page1<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">wicket:id=</span><span class="s">"page2"</span><span class="nt">&gt;</span>Page2<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;body&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"body"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;wicket:child</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"footer"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"footer"</span><span class="nt">&gt;&lt;/span&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 <p>In this markup file you see the specific basic layout: we have 3 div
 elements:</p>
 <ol>
@@ -163,46 +163,46 @@ to finish this example.</p>
 <h2 id="implementing-the-sub-pages">Implementing the sub pages</h2>
 <p>We need to build two pages: <code>Page1</code> and <code>Page2</code>. Each page needs its own
 markup file and Java class. Let’s first implement <code>Page1</code>.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Page1</span> <span class="kd">extends</span> <span class="n">BasePage</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="nf">Page1</span><span class="o">()</span> <span class="o">{</span>
-		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">Label</span><span class="o">(</span><span class="s">&quot;label1&quot;</span><span class="o">,</span> <span class="s">&quot;This is in the subclass Page1&quot;</span><span class="o">));</span>
+	<span class="kd">public</span> <span class="n">Page1</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"label1"</span><span class="o">,</span> <span class="s">"This is in the subclass Page1"</span><span class="o">));</span>
 	<span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 <p>In this example you see that we add a new label component to the page:
 <code>label1</code>. This component is only available for <code>Page1</code>, as such <code>Page2</code> can
 define its own component hierarchy. Let’s take a look at the markup for
 <code>Page1</code>:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nl">wicket:</span><span class="n">extend</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Page1</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">span</span> <span class="nl">wicket:</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;label1&quot;</span><span class="o">&gt;&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">span</span> <span class="nl">wicket:</span><span class="n">id</span><span class="o">=</span><span class="s">"label1"</span><span class="o">&gt;&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="nl">wicket:</span><span class="n">extend</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span></code></pre></div>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span></code></pre></figure>
 <p>Here you see that we added the <code>Label</code> component in the markup between the
 <code>&lt;wicket:extend&gt;</code> tags. If we were to add the component outside those tags,
 Wicket will not be able to render the component in the final page.</p>
 <p>Now, let’s do the same for <code>Page2</code>.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Page2</span> <span class="kd">extends</span> <span class="n">BasePage</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="nf">Page2</span><span class="o">()</span> <span class="o">{</span>
-		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">Label</span><span class="o">(</span><span class="s">&quot;label2&quot;</span><span class="o">,</span> <span class="s">&quot;This is in the subclass Page2&quot;</span><span class="o">));</span>
+	<span class="kd">public</span> <span class="n">Page2</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"label2"</span><span class="o">,</span> <span class="s">"This is in the subclass Page2"</span><span class="o">));</span>
 	<span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<span class="o">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
 <span class="nt">&lt;wicket:extend&gt;</span>
     <span class="nt">&lt;h1&gt;</span>Page2<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;label2&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"label2"</span><span class="nt">&gt;&lt;/span&gt;</span>
 <span class="nt">&lt;/wicket:extend&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 <p>In <code>Page2</code> you see that we have a different component structure (<code>label2</code>
 instead of <code>label1</code>), and as such that the pages are quite different.</p>
 <p>If you paste this code into a Wicket quickstart application, you can see it

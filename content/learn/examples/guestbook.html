@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /learn/examples/guestbook.html -->
+		<!-- /start/quickstart.html || /learn/examples/guestbook -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /learn/examples/guestbook.html -->
+		<!-- /start/download.html || /learn/examples/guestbook -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /learn/examples/guestbook.html -->
+		<!-- /learn || /learn/examples/guestbook -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /learn/examples/guestbook.html -->
+		<!-- /help || /learn/examples/guestbook -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /learn/examples/guestbook.html -->
+		<!-- /contribute || /learn/examples/guestbook -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /learn/examples/guestbook.html -->
+		<!-- /community || /learn/examples/guestbook -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /learn/examples/guestbook.html -->
+		<!-- /apache || /learn/examples/guestbook -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -60,34 +60,34 @@ another. It is possible to alter this behavior, but that is beyond the scope
 of this example.</p>
 <h2 id="commentjava">Comment.java</h2>
 <p>The Comment POJO model is very straightforward:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>  
 <span class="kn">import</span> <span class="nn">org.apache.wicket.IClusterable</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Comment</span> <span class="kd">implements</span> <span class="n">IClusterable</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">text</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">();</span>
-    <span class="kd">public</span> <span class="nf">Comment</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="n">Comment</span><span class="o">()</span> <span class="o">{</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="nf">Comment</span><span class="o">(</span><span class="kd">final</span> <span class="n">Comment</span> <span class="n">comment</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Comment</span><span class="o">(</span><span class="kd">final</span> <span class="n">Comment</span> <span class="n">comment</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">text</span> <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="na">text</span><span class="o">;</span>
         <span class="k">this</span><span class="o">.</span><span class="na">date</span> <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="na">date</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getText</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getText</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">text</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setText</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setText</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">getDate</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="n">getDate</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">date</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDate</span><span class="o">(</span><span class="n">Date</span> <span class="n">date</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setDate</span><span class="o">(</span><span class="n">Date</span> <span class="n">date</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">date</span> <span class="o">=</span> <span class="n">date</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">&quot;[Comment date = &quot;</span> <span class="o">+</span> <span class="n">date</span> <span class="o">+</span> <span class="s">&quot;, text = &quot;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"[Comment date = "</span> <span class="o">+</span> <span class="n">date</span> <span class="o">+</span> <span class="s">", text = "</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s">"]"</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 <h2 id="guestbookjava">GuestBook.java</h2>
 <p>In the file <code>GuestBook.java</code> we have put the Java component code for the
 guestbook page. This is the homepage for the guestbook application. The page
@@ -101,7 +101,7 @@ the comments. Notice how the model is passed in as the second argument to the
 <p>The implementation below obtains the <code>Comment</code> POJO from the list item and
 adds label components for the date and text of the <code>Comment</code>. This is all
 accomplished in just a few lines of code.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
@@ -120,63 +120,63 @@ accomplished in just a few lines of code.</p>
 <span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">GuestBook</span> <span class="kd">extends</span> <span class="n">WicketExamplePage</span> <span class="o">{</span>
     <span class="cm">/** A global list of all comments from all users across all sessions */</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span> <span class="n">commentList</span> <span class="o">=</span> <span class="n">Collections</span><span class="o">.</span><span class="na">synchronizedList</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;());</span>
-    <span class="cm">/**</span>
-<span class="cm">     * Constructor that is invoked when page is invoked without a session.</span>
-<span class="cm">     */</span>
-    <span class="kd">public</span> <span class="nf">GuestBook</span><span class="o">()</span> <span class="o">{</span>
+    <span class="cm">/**
+     * Constructor that is invoked when page is invoked without a session.
+     */</span>
+    <span class="kd">public</span> <span class="n">GuestBook</span><span class="o">()</span> <span class="o">{</span>
         <span class="c1">// Add comment form</span>
-        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">CommentForm</span><span class="o">(</span><span class="s">&quot;commentForm&quot;</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">CommentForm</span><span class="o">(</span><span class="s">"commentForm"</span><span class="o">));</span>
         <span class="c1">// Add commentListView of existing comments</span>
-        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">PropertyListView</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;(</span><span class="s">&quot;comments&quot;</span><span class="o">,</span> <span class="n">commentList</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">PropertyListView</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;(</span><span class="s">"comments"</span><span class="o">,</span> <span class="n">commentList</span><span class="o">)</span> <span class="o">{</span>
             <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="kd">final</span> <span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span> <span class="n">listItem</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">listItem</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">Label</span><span class="o">(</span><span class="s">&quot;date&quot;</span><span class="o">));</span>
-                <span class="n">listItem</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">MultiLineLabel</span><span class="o">(</span><span class="s">&quot;text&quot;</span><span class="o">));</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">populateItem</span><span class="o">(</span><span class="kd">final</span> <span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span> <span class="n">listItem</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">listItem</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"date"</span><span class="o">));</span>
+                <span class="n">listItem</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">MultiLineLabel</span><span class="o">(</span><span class="s">"text"</span><span class="o">));</span>
             <span class="o">}</span>
         <span class="o">}).</span><span class="na">setVersioned</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
     <span class="o">}</span>
-    <span class="cm">/**</span>
-<span class="cm">     * A form that allows a user to add a comment.</span>
-<span class="cm">     */</span>
+    <span class="cm">/**
+     * A form that allows a user to add a comment.
+     */</span>
     <span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">CommentForm</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">ValueMap</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="kd">public</span> <span class="nf">CommentForm</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">CommentForm</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
             <span class="c1">// Construct form with no validation listener</span>
-            <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="k">new</span> <span class="n">CompoundPropertyModel</span><span class="o">&lt;</span><span class="n">ValueMap</span><span class="o">&gt;(</span><span class="k">new</span> <span class="nf">ValueMap</span><span class="o">()));</span>
+            <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="k">new</span> <span class="n">CompoundPropertyModel</span><span class="o">&lt;</span><span class="n">ValueMap</span><span class="o">&gt;(</span><span class="k">new</span> <span class="n">ValueMap</span><span class="o">()));</span>
             <span class="c1">// this is just to make the unit test happy</span>
-            <span class="n">setMarkupId</span><span class="o">(</span><span class="s">&quot;commentForm&quot;</span><span class="o">);</span>
+            <span class="n">setMarkupId</span><span class="o">(</span><span class="s">"commentForm"</span><span class="o">);</span>
             <span class="c1">// Add text entry widget</span>
-            <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">TextArea</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;text&quot;</span><span class="o">).</span><span class="na">setType</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+            <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">TextArea</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">"text"</span><span class="o">).</span><span class="na">setType</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
             <span class="c1">// Add simple automated spam prevention measure.</span>
-            <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">TextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;comment&quot;</span><span class="o">).</span><span class="na">setType</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+            <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">TextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">"comment"</span><span class="o">).</span><span class="na">setType</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
         <span class="o">}</span>
-        <span class="cm">/**</span>
-<span class="cm">         * Show the resulting valid edit</span>
-<span class="cm">         */</span>
+        <span class="cm">/**
+         * Show the resulting valid edit
+         */</span>
         <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="n">onSubmit</span><span class="o">()</span> <span class="o">{</span>
             <span class="n">ValueMap</span> <span class="n">values</span> <span class="o">=</span> <span class="n">getModelObject</span><span class="o">();</span>
             <span class="c1">// check if the honey pot is filled</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">isNotBlank</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">values</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;comment&quot;</span><span class="o">)))</span> <span class="o">{</span>
-                <span class="n">error</span><span class="o">(</span><span class="s">&quot;Caught a spammer!!!&quot;</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">isNotBlank</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">values</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"comment"</span><span class="o">)))</span> <span class="o">{</span>
+                <span class="n">error</span><span class="o">(</span><span class="s">"Caught a spammer!!!"</span><span class="o">);</span>
                 <span class="k">return</span><span class="o">;</span>
             <span class="o">}</span>
             <span class="c1">// Construct a copy of the edited comment</span>
-            <span class="n">Comment</span> <span class="n">comment</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Comment</span><span class="o">();</span>
+            <span class="n">Comment</span> <span class="n">comment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Comment</span><span class="o">();</span>
             <span class="c1">// Set date of comment to add</span>
-            <span class="n">comment</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="k">new</span> <span class="nf">Date</span><span class="o">());</span>
-            <span class="n">comment</span><span class="o">.</span><span class="na">setText</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">values</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;text&quot;</span><span class="o">));</span>
+            <span class="n">comment</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
+            <span class="n">comment</span><span class="o">.</span><span class="na">setText</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">values</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"text"</span><span class="o">));</span>
             <span class="n">commentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">comment</span><span class="o">);</span>
             <span class="c1">// Clear out the text component</span>
-            <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;text&quot;</span><span class="o">,</span> <span class="s">&quot;&quot;</span><span class="o">);</span>
+            <span class="n">values</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
         <span class="o">}</span>
     <span class="o">}</span>
-    <span class="cm">/**</span>
-<span class="cm">     * Clears the comments.</span>
-<span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">clear</span><span class="o">()</span> <span class="o">{</span>
+    <span class="cm">/**
+     * Clears the comments.
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">clear</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">commentList</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 <p>When the <code>CommentForm</code> is submitted, the <code>onSubmit()</code> method is called.
 Notice that nothing gets the value of the <code>TextArea</code> that was added in the
 <code>CommentForm</code> constructor. This is because the comment is the model and the
@@ -199,26 +199,26 @@ structure as the HTML.</p>
 <p>Finally, notice the <code>&lt;wicket:remove&gt;</code> block. This is simply markup that is
 there for previewing purposes only. When the page renders, it is stripped
 out.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">&quot;http://wicket.apache.org/&quot;</span><span class="nt">&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">"http://wicket.apache.org/"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;title&gt;</span>Wicket Examples - guestbook<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"style.css"</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;mainNavigation&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">&quot;commentForm&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"mainNavigation"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">"commentForm"</span><span class="nt">&gt;</span>
     Add your comment here:
     <span class="nt">&lt;p&gt;</span>
-    <span class="nt">&lt;textarea</span> <span class="na">wicket:id=</span><span class="s">&quot;text&quot;</span><span class="nt">&gt;</span>This is a comment<span class="nt">&lt;/textarea&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;comment&quot;</span> <span class="na">class=</span><span class="s">&quot;nospam&quot;</span> <span class="na">onfocus=</span><span class="s">&quot;getElementById(&#39;formsubmit&#39;).focus();&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;textarea</span> <span class="na">wicket:id=</span><span class="s">"text"</span><span class="nt">&gt;</span>This is a comment<span class="nt">&lt;/textarea&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">wicket:id=</span><span class="s">"comment"</span> <span class="na">class=</span><span class="s">"nospam"</span> <span class="na">onfocus=</span><span class="s">"getElementById('formsubmit').focus();"</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;p&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span> <span class="na">id=</span><span class="s">&quot;formsubmit&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Submit"</span> <span class="na">id=</span><span class="s">"formsubmit"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/form&gt;</span>
   <span class="nt">&lt;p/&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;comments&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"comments"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;p&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;date&quot;</span><span class="nt">&gt;</span>1/1/2004<span class="nt">&lt;/span&gt;&lt;br&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;text&quot;</span><span class="nt">&gt;</span>Comment text goes here.<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"date"</span><span class="nt">&gt;</span>1/1/2004<span class="nt">&lt;/span&gt;&lt;br&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"text"</span><span class="nt">&gt;</span>Comment text goes here.<span class="nt">&lt;/span&gt;</span>
     <span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;wicket:remove&gt;</span>
@@ -228,32 +228,32 @@ out.</p>
     <span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/wicket:remove&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 <h2 id="guestbookapplicationjava">GuestBookApplication.java</h2>
 <p>For completeness, we’ve included the <code>GuestBookApplication</code> class, and as a
 final treat the modifications to the <code>web.xml</code> file.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.Page</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.examples.WicketExampleApplication</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">GuestBookApplication</span> <span class="kd">extends</span> <span class="n">WicketExampleApplication</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="nf">GuestBookApplication</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">GuestBookApplication</span><span class="o">()</span> <span class="o">{</span>
     <span class="o">}</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">Page</span><span class="o">&gt;</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">Page</span><span class="o">&gt;</span> <span class="n">getHomePage</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">GuestBook</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 <h2 id="webxml">web.xml</h2>
 <p>Add the following two sections (servlet and servlet-mapping) to your web.xml
 file for running this application.</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;filter&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;filter&gt;</span>
     <span class="nt">&lt;filter-name&gt;</span>GuestBookApplication<span class="nt">&lt;/filter-name&gt;</span>
     <span class="nt">&lt;filter-class&gt;</span>org.apache.wicket.protocol.http.WicketFilter<span class="nt">&lt;/filter-class&gt;</span>
     <span class="nt">&lt;init-param&gt;</span>
       <span class="nt">&lt;param-name&gt;</span>applicationClassName<span class="nt">&lt;/param-name&gt;</span>
       <span class="nt">&lt;param-value&gt;</span>org.apache.wicket.examples.guestbook.GuestBookApplication<span class="nt">&lt;/param-value&gt;</span>
     <span class="nt">&lt;/init-param&gt;</span>
-<span class="nt">&lt;/filter&gt;</span></code></pre></div>
+<span class="nt">&lt;/filter&gt;</span></code></pre></figure>
         </section>
     </div>
 </main>

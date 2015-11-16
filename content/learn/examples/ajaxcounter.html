@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /learn/examples/ajaxcounter.html -->
+		<!-- /start/quickstart.html || /learn/examples/ajaxcounter -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /learn/examples/ajaxcounter.html -->
+		<!-- /start/download.html || /learn/examples/ajaxcounter -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /learn/examples/ajaxcounter.html -->
+		<!-- /learn || /learn/examples/ajaxcounter -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /learn/examples/ajaxcounter.html -->
+		<!-- /help || /learn/examples/ajaxcounter -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /learn/examples/ajaxcounter.html -->
+		<!-- /contribute || /learn/examples/ajaxcounter -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /learn/examples/ajaxcounter.html -->
+		<!-- /community || /learn/examples/ajaxcounter -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /learn/examples/ajaxcounter.html -->
+		<!-- /apache || /learn/examples/ajaxcounter -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -63,39 +63,39 @@ applications. Specifically read and understand the <a href="helloworld.html">Hel
 example</a>.</p>
 <h2 id="counter-page">Counter page</h2>
 <p>First we’ll create a page that just counts the number of times a link has been clicked. In the following markup you’ll see a link and a label.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;link&quot;</span><span class="nt">&gt;</span>click me<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">wicket:id=</span><span class="s">"link"</span><span class="nt">&gt;</span>click me<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;p&gt;</span>
-        Counter: <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;counter&quot;</span><span class="nt">&gt;</span>nr of times<span class="nt">&lt;/span&gt;</span>
+        Counter: <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"counter"</span><span class="nt">&gt;</span>nr of times<span class="nt">&lt;/span&gt;</span>
     <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 <p>The link component will refresh the page and the label will replace the text
 ‘nr of times’ with the count. Take a look at the following Java file to see
 how it works on the Java side:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.Component</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.link.Link</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.model.Model</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="n">QuickStartPage</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="nf">Index</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Index</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
             <span class="kd">private</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getObject</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="n">Integer</span> <span class="n">getObject</span><span class="o">()</span> <span class="o">{</span>
                 <span class="k">return</span> <span class="n">counter</span><span class="o">++;</span>
             <span class="o">}</span>
         <span class="o">};</span>
-        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">Link</span><span class="o">(</span><span class="s">&quot;link&quot;</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Link</span><span class="o">(</span><span class="s">"link"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">()</span> <span class="o">{</span>
                 <span class="c1">// do nothing.</span>
             <span class="o">}</span>
         <span class="o">});</span>
-        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">&quot;counter&quot;</span><span class="o">,</span> <span class="n">model</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">"counter"</span><span class="o">,</span> <span class="n">model</span><span class="o">));</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 <p>In this class we created a <code>Model</code> subclass that increases its counter
 everytime the <code>getObject</code> method gets called, and returns its value. We set
 this model on the label component, so that each time the label gets rendered
@@ -110,52 +110,52 @@ so let’s make it more modern by adding some Ajax stuff.</p>
 we need to make the link an Ajax link. Wicket provides several types of Ajax
 links, but the best one for our purposes is the <code>AjaxFallbackLink</code>, as it
 provides a fallback to a normal request in case no Ajax is available.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.Component</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.AjaxRequestTarget</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.markup.html.AjaxFallbackLink</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.model.Model</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="n">QuickStartPage</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="nf">Index</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Index</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
             <span class="kd">private</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getObject</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="n">Integer</span> <span class="n">getObject</span><span class="o">()</span> <span class="o">{</span>
                 <span class="k">return</span> <span class="n">counter</span><span class="o">++;</span>
             <span class="o">}</span>
         <span class="o">};</span>
-        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">AjaxFallbackLink</span><span class="o">(</span><span class="s">&quot;link&quot;</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxFallbackLink</span><span class="o">(</span><span class="s">"link"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
                 <span class="c1">// add the components that need to be updated to </span>
                 <span class="c1">// the target</span>
             <span class="o">}</span>
         <span class="o">});</span>
-        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">&quot;counter&quot;</span><span class="o">,</span> <span class="n">model</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">"counter"</span><span class="o">,</span> <span class="n">model</span><span class="o">));</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 <p>As you can see, the <code>Link</code> has been replaced with the <code>AjaxFallbackLink</code>, and the
 <code>onClick</code> method now takes a new argument: the <code>AjaxRequestTarget</code>. If you want a
 component to be updated in the Ajax request, you’ll have to add them to the
 target. So let’s alter the file to make it possible to add the label to the
 request target.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.Component</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.AjaxRequestTarget</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.markup.html.AjaxFallbackLink</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.model.Model</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="n">QuickStartPage</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="nf">Index</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Index</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
             <span class="kd">private</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getObject</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="n">Integer</span> <span class="n">getObject</span><span class="o">()</span> <span class="o">{</span>
                 <span class="k">return</span> <span class="n">counter</span><span class="o">++;</span>
             <span class="o">}</span>
         <span class="o">};</span>
-        <span class="kd">final</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">&quot;counter&quot;</span><span class="o">,</span> <span class="n">model</span><span class="o">);</span>
+        <span class="kd">final</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">"counter"</span><span class="o">,</span> <span class="n">model</span><span class="o">);</span>
         <span class="n">label</span><span class="o">.</span><span class="na">setOutputMarkupId</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">AjaxFallbackLink</span><span class="o">(</span><span class="s">&quot;link&quot;</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxFallbackLink</span><span class="o">(</span><span class="s">"link"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
                     <span class="c1">// target is only available in an Ajax request</span>
                     <span class="n">target</span><span class="o">.</span><span class="na">addComponent</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
@@ -164,7 +164,7 @@ request target.</p>
         <span class="o">});</span>
         <span class="n">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 <p>We’ve moved the instantiation of the label to the beginning of the page
 constructor and made a local, final variable. This way we can reference the
 label in the event handler of the link component.</p>

@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /contribute/write.html -->
+		<!-- /start/quickstart.html || /contribute/write -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /contribute/write.html -->
+		<!-- /start/download.html || /contribute/write -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /contribute/write.html -->
+		<!-- /learn || /contribute/write -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /contribute/write.html -->
+		<!-- /help || /contribute/write -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /contribute/write.html -->
+		<!-- /contribute || /contribute/write -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /contribute/write.html -->
+		<!-- /community || /contribute/write -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /contribute/write.html -->
+		<!-- /apache || /contribute/write -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -69,19 +69,19 @@ announcements, adding new committers and other important Wicket related news.</p
 <h2 id="install">Install Jekyll</h2>
 <p>Follow the instructions available on the <a href="http://github.com/mojombo/jekyll">Jekyll
 website</a>. Basically it boils down to:</p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">gem install jekyll</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-console" data-lang="console">gem install jekyll</code></pre></figure>
 <p>You also need to install the Pygments Python module.</p>
 <h2 id="checkout">Check out from SVN</h2>
 <p>Before you can edit the site, you need to check it out from SVN:</p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">svn co https://svn.apache.org/repos/asf/wicket/common/site/trunk wicket-site</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-console" data-lang="console">svn co https://svn.apache.org/repos/asf/wicket/common/site/trunk wicket-site</code></pre></figure>
 <h2 id="generate">Generating the site</h2>
 <p>You can regenerate the site in the checked out directory:</p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">./regenerate.sh</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-console" data-lang="console">./regenerate.sh</code></pre></figure>
 <p>Note that this script restores Subversion (<code>.svn</code>) subfolders
 inside <code>_site</code>, which are erased when Jekyll is generating the content.</p>
 <h2 id="run">Run the site</h2>
 <p>You can run the website and edit it live:</p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">./liveedit.sh</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-console" data-lang="console">./liveedit.sh</code></pre></figure>
 <p>This not only runs the server, but watches for modifications and regenerates
 any modified files.</p>
 <p>You can check out the website running at <a href="http://localhost:4000">localhost, port 4000</a>.</p>
@@ -95,28 +95,28 @@ rendered correctly.</p>
 <p>The default layout supports a property to specify the main title for the page and 
 another property for an additional subtitle.</p>
 <p>For example: (the <code>---</code> must be included):</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
-<span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">default</span>
-<span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Main title</span>
-<span class="l-Scalar-Plain">subtitle</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Subtitle</span>
-<span class="nn">---</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="s">layout</span><span class="pi">:</span> <span class="s">default</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">Main title</span>
+<span class="s">subtitle</span><span class="pi">:</span> <span class="s">Subtitle</span>
+<span class="nn">---</span></code></pre></figure>
 <p>A more advanced feature for the default layout is the ability to specify more files to include
 in the final page. This can be done with property <code>additionalContents</code> where we can list additional files
 with an id for their section tag and a value for the CSS class:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
-<span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">default</span>
-<span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Welcome to Apache Wicket</span>
-<span class="l-Scalar-Plain">subtitle</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Discover why developers love Wicket!</span>
-<span class="l-Scalar-Plain">additionalContents</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span>
-   <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">anotherPage.html</span>
-   <span class="l-Scalar-Plain">sectionId</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">anotherPage</span>
-   <span class="l-Scalar-Plain">cssClass</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">sectionClass</span>
-  <span class="p-Indicator">-</span>
-   <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">yetAnotherPage.html</span>
-   <span class="l-Scalar-Plain">sectionId</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">yetAnotherPage</span>
-   <span class="l-Scalar-Plain">cssClass</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">yetAnotherSectionClass</span>
-<span class="nn">---</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="s">layout</span><span class="pi">:</span> <span class="s">default</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">Welcome to Apache Wicket</span>
+<span class="s">subtitle</span><span class="pi">:</span> <span class="s">Discover why developers love Wicket!</span>
+<span class="s">additionalContents</span><span class="pi">:</span>
+  <span class="pi">-</span>
+   <span class="s">path</span><span class="pi">:</span> <span class="s">anotherPage.html</span>
+   <span class="s">sectionId</span><span class="pi">:</span> <span class="s">anotherPage</span>
+   <span class="s">cssClass</span><span class="pi">:</span> <span class="s">sectionClass</span>
+  <span class="pi">-</span>
+   <span class="s">path</span><span class="pi">:</span> <span class="s">yetAnotherPage.html</span>
+   <span class="s">sectionId</span><span class="pi">:</span> <span class="s">yetAnotherPage</span>
+   <span class="s">cssClass</span><span class="pi">:</span> <span class="s">yetAnotherSectionClass</span>
+<span class="nn">---</span></code></pre></figure>
 <h4 id="additional-conventions">Additional conventions</h4>
 <p>The following conventions have been adopted for the templeates of the site pages:</p>
 <ul>
@@ -137,10 +137,10 @@ automatically added to the front page and the RSS feed.</p>
 <p>The blog items are written using the normal Jekyll syntax. The filename needs
 to be formatted as <code>yyyy-mm-dd-title.md</code> and the blog item should start with a
 YAML preamble, similar to normal pages:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
-<span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">post</span>
-<span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Wicket 1.4.7 released</span>
-<span class="nn">---</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="s">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">Wicket 1.4.7 released</span>
+<span class="nn">---</span></code></pre></figure>
 <h2 id="update">Update the site</h2>
 <p>When you’re done with making your changes, please check the following:</p>
 <ul>
