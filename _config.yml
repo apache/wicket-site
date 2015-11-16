@@ -2,7 +2,7 @@ name: Apache Wicket
 destination: ./content
 lsi:         false
 port: 4000
-highlighter:    pygments
+highlighter:    rouge
 markdown:    Kramdown
 monthly_archive:
     path:   news
