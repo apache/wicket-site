@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'rubygems'
 require 'nokogiri'
-require 'iconv'
+#require 'iconv'
 
 module Jekyll
   module TruncateHTMLFilter
