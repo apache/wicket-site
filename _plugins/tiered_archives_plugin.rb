@@ -22,7 +22,7 @@ class Jekyll::Site
 
   def site_payload
     data = site_payload_without_tiered_archives
-    data['site']['years'] = TieredArchives::find_years(self.posts.reverse)
+    data['site']['years'] = TieredArchives::find_years(self.posts.docs.reverse)
     data
   end
 end

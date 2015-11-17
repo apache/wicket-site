@@ -35,7 +35,7 @@ module Jekyll
     end
 
     def posts_group_by_year(site)
-      site.posts.each.group_by { |post| [post.date.year] }
+      site.posts.docs.each.group_by { |post| [post.date.year] }
     end
 
   end
