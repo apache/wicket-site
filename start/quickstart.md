@@ -80,7 +80,7 @@ command line to your clipboard.
 <div class="quickstart-wizard">
   <div>
     <label title="Base Package" for="groupId">Group ID</label>
-    <input type="text" value="com.mycompany.myproject" onkeyup="changeIt();" id="groupId">
+    <input type="text" value="com.mycompany" onkeyup="changeIt();" id="groupId">
   </div>
   <div>
     <label title="Project Name" for="artifactId">Artifact ID</label>
