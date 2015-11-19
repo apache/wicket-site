@@ -11,7 +11,7 @@ regenerating the site and committing the changed files.
 
 * [Introduction](#introduction)
 * [Install Jekyll](#install)
-* [Check out from SVN](#checkout)
+* [Clone wicket-site](#clone)
 * [Run the site](#run)
 * [Write some documentation](#write)
 * [Update the site](#update)
@@ -34,31 +34,20 @@ gem install jekyll
 
 You also need to install the Pygments Python module.
 
-## Check out from SVN ## {#checkout}
+## Clone wicket-site ## {#clone}
 
-Before you can edit the site, you need to check it out from SVN:
+Before you can edit the site, you need to clone it:
 
-{% highlight console %}
-svn co https://svn.apache.org/repos/asf/wicket/common/site/trunk wicket-site
+{% highlight bash %}
+git clone git@github.com:apache/wicket-site.git
 {% endhighlight %}
-
-## Generating the site ## {#generate}
-
-You can regenerate the site in the checked out directory:
-
-{% highlight console %}
-./regenerate.sh
-{% endhighlight %}
-
-Note that this script restores Subversion (`.svn`) subfolders
-inside `_site`, which are erased when Jekyll is generating the content.
 
 ## Run the site ## {#run}
 
 You can run the website and edit it live:
 
 {% highlight console %}
-./liveedit.sh
+jekyll serve -w
 {% endhighlight %}
 
 This not only runs the server, but watches for modifications and regenerates
@@ -151,9 +140,9 @@ title: Wicket 1.4.7 released
 When you're done with making your changes, please check the following:
 
 * Do the modified files contain only those changes that you actually want to
-  publish? (Use `svn diff` to check)
-* Did you restart Jekyll to generate the site?
+  publish? (Use `git status` to check)
+* Did you start Jekyll to generate the site?
 
-If these things are OK, you can either [generate a patch](http://svnbook.red-bean.com/en/1.7/svn.ref.svn.c.diff.html) when
+If these things are OK, you can either create a pull request when
 you're not a committer, or just commit the changes. In the latter case, the
 modifications are pushed immediately to the site and are live within a minute.
