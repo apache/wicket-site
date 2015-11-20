@@ -46,7 +46,7 @@
             <h1>Write documentation</h1>
         </header>
         <section class="l-one-third right">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#contents"><span class="toc-number">1</span> <span class="toc-text">Contents</span></a></li><li class="toc--level-1 toc--section-2"><a href="#introduction"><span class="toc-number">2</span> <span class="toc-text">Introduction</span></a></li><li class="toc--level-1 toc--section-3"><a href="#install"><span class="toc-number">3</span> <span class="toc-text">Install Jekyll</span></a></li><li class="toc--level-1 toc--section-4"><a href="#checkout"><span class="toc-number">4</span> <span class="toc-text">Check out from SVN</span></a></li><li class="toc--level-1 toc--section-5"><a href="#generate"><span class="toc-number">5</span> <span class="toc-text">Generating the site</span></a></li><li class="toc--level-1 toc--section-6"><a href="#run"><span class="toc-number">6</span> <span class="toc-text">Run the site</span></a></li><li class="toc--level-1 toc--section-7"><a href="#write"><span class="toc-number">7</span> <span class="toc-text">Write some documentation</span></a><ul><li class="toc--level-2 toc--section-8"><a href="#page-template"><span class="toc-number">7.1</span> <span class="toc-text">Page template</span></a></li><li class="toc--level-2 toc--section-9"><a href="#syntax-highlighting"><span class="toc-number">7.2</span> <span class="toc-text">Syntax highlighting</span></a></li><li class="toc--level-2 toc--section-10"><a href="#menu"><span class="toc-number">7.3</span> <span class="toc-text">Menu</span></a></li><li class="toc--level-2 toc--section-11"><a href="#blog-posts"><span class="toc-number">7.4</span> <span class="toc-text">Blog posts</span></a></li></ul></li><li class="toc--level-1 toc--section-12"><a href="#update"><span class="toc-number">8</span> <span class="toc-text">Update the site</span></a></li></ul></div>
+            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#contents"><span class="toc-number">1</span> <span class="toc-text">Contents</span></a></li><li class="toc--level-1 toc--section-2"><a href="#introduction"><span class="toc-number">2</span> <span class="toc-text">Introduction</span></a></li><li class="toc--level-1 toc--section-3"><a href="#install"><span class="toc-number">3</span> <span class="toc-text">Install Jekyll</span></a></li><li class="toc--level-1 toc--section-4"><a href="#clone"><span class="toc-number">4</span> <span class="toc-text">Clone wicket-site</span></a></li><li class="toc--level-1 toc--section-5"><a href="#run"><span class="toc-number">5</span> <span class="toc-text">Run the site</span></a></li><li class="toc--level-1 toc--section-6"><a href="#write"><span class="toc-number">6</span> <span class="toc-text">Write some documentation</span></a><ul><li class="toc--level-2 toc--section-7"><a href="#page-template"><span class="toc-number">6.1</span> <span class="toc-text">Page template</span></a></li><li class="toc--level-2 toc--section-8"><a href="#syntax-highlighting"><span class="toc-number">6.2</span> <span class="toc-text">Syntax highlighting</span></a></li><li class="toc--level-2 toc--section-9"><a href="#menu"><span class="toc-number">6.3</span> <span class="toc-text">Menu</span></a></li><li class="toc--level-2 toc--section-10"><a href="#blog-posts"><span class="toc-number">6.4</span> <span class="toc-text">Blog posts</span></a></li></ul></li><li class="toc--level-1 toc--section-11"><a href="#update"><span class="toc-number">7</span> <span class="toc-text">Update the site</span></a></li></ul></div>
         </section>
         <section class="l-two-third left">
             <p>We use <a href="http://github.com/mojombo/jekyll">Jekyll</a> for writing our
@@ -56,7 +56,7 @@ regenerating the site and committing the changed files.</p>
 <ul>
   <li><a href="#introduction">Introduction</a></li>
   <li><a href="#install">Install Jekyll</a></li>
-  <li><a href="#checkout">Check out from SVN</a></li>
+  <li><a href="#clone">Clone wicket-site</a></li>
   <li><a href="#run">Run the site</a></li>
   <li><a href="#write">Write some documentation</a></li>
   <li><a href="#update">Update the site</a></li>
@@ -71,17 +71,12 @@ announcements, adding new committers and other important Wicket related news.</p
 website</a>. Basically it boils down to:</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">gem install jekyll</code></pre></figure>
 <p>You also need to install the Pygments Python module.</p>
-<h2 id="checkout">Check out from SVN</h2>
-<p>Before you can edit the site, you need to check it out from SVN:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">svn co https://svn.apache.org/repos/asf/wicket/common/site/trunk wicket-site</code></pre></figure>
-<h2 id="generate">Generating the site</h2>
-<p>You can regenerate the site in the checked out directory:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">./regenerate.sh</code></pre></figure>
-<p>Note that this script restores Subversion (<code>.svn</code>) subfolders
-inside <code>_site</code>, which are erased when Jekyll is generating the content.</p>
+<h2 id="clone">Clone wicket-site</h2>
+<p>Before you can edit the site, you need to clone it:</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone git@github.com:apache/wicket-site.git</code></pre></figure>
 <h2 id="run">Run the site</h2>
 <p>You can run the website and edit it live:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">./liveedit.sh</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console">jekyll serve -w</code></pre></figure>
 <p>This not only runs the server, but watches for modifications and regenerates
 any modified files.</p>
 <p>You can check out the website running at <a href="http://localhost:4000">localhost, port 4000</a>.</p>
@@ -94,14 +89,14 @@ and other variables. If it doesn’t include the YAML preamble, it won’t be
 rendered correctly.</p>
 <p>The default layout supports a property to specify the main title for the page and 
 another property for an additional subtitle.</p>
-<p>For example: (the <code>---</code> must be included):</p>
+<p>For example: (the <code class="highlighter-rouge">---</code> must be included):</p>
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
 <span class="s">layout</span><span class="pi">:</span> <span class="s">default</span>
 <span class="s">title</span><span class="pi">:</span> <span class="s">Main title</span>
 <span class="s">subtitle</span><span class="pi">:</span> <span class="s">Subtitle</span>
 <span class="nn">---</span></code></pre></figure>
 <p>A more advanced feature for the default layout is the ability to specify more files to include
-in the final page. This can be done with property <code>additionalContents</code> where we can list additional files
+in the final page. This can be done with property <code class="highlighter-rouge">additionalContents</code> where we can list additional files
 with an id for their section tag and a value for the CSS class:</p>
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
 <span class="s">layout</span><span class="pi">:</span> <span class="s">default</span>
@@ -120,8 +115,8 @@ with an id for their section tag and a value for the CSS class:</p>
 <h4 id="additional-conventions">Additional conventions</h4>
 <p>The following conventions have been adopted for the templeates of the site pages:</p>
 <ul>
-  <li>Any link to static resources (css, js, pictures, etc.) is prefixed with <code>site.baseurl</code> to support <a href="http://jekyllrb.com/docs/github-pages/#project-page-url-structure">GitHub free hosting</a>. However, to run the project locally you don’t need to specify any baseurl.</li>
-  <li>Site posts use custom tag <code>&lt;!--more--&gt;</code> as <code>excerpt_separator</code>.</li>
+  <li>Any link to static resources (css, js, pictures, etc.) is prefixed with <code class="highlighter-rouge">site.baseurl</code> to support <a href="http://jekyllrb.com/docs/github-pages/#project-page-url-structure">GitHub free hosting</a>. However, to run the project locally you don’t need to specify any baseurl.</li>
+  <li>Site posts use custom tag <code class="highlighter-rouge">&lt;!--more--&gt;</code> as <code class="highlighter-rouge">excerpt_separator</code>.</li>
 </ul>
 <h3 id="syntax-highlighting">Syntax highlighting</h3>
 <p>If you have a need to render code in your templates and have it syntax
@@ -129,13 +124,13 @@ highlighted, surround the code with {\% highlight java \%} (substitute java
 with the language you want highlighted.)</p>
 <h3 id="menu">Menu</h3>
 <p>If you want your page linked from every page, include the link in
-<code>_includes/header.html</code>.</p>
+<code class="highlighter-rouge">_includes/header.html</code>.</p>
 <h3 id="blog-posts">Blog posts</h3>
 <p>For news items such as release announcements, new committers and other
 happenings, it is appriorate to create a blog post. The blog post is
 automatically added to the front page and the RSS feed.</p>
 <p>The blog items are written using the normal Jekyll syntax. The filename needs
-to be formatted as <code>yyyy-mm-dd-title.md</code> and the blog item should start with a
+to be formatted as <code class="highlighter-rouge">yyyy-mm-dd-title.md</code> and the blog item should start with a
 YAML preamble, similar to normal pages:</p>
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
 <span class="s">layout</span><span class="pi">:</span> <span class="s">post</span>
@@ -145,10 +140,10 @@ YAML preamble, similar to normal pages:</p>
 <p>When you’re done with making your changes, please check the following:</p>
 <ul>
   <li>Do the modified files contain only those changes that you actually want to
-publish? (Use <code>svn diff</code> to check)</li>
-  <li>Did you restart Jekyll to generate the site?</li>
+publish? (Use <code class="highlighter-rouge">git status</code> to check)</li>
+  <li>Did you start Jekyll to generate the site?</li>
 </ul>
-<p>If these things are OK, you can either <a href="http://svnbook.red-bean.com/en/1.7/svn.ref.svn.c.diff.html">generate a patch</a> when
+<p>If these things are OK, you can either create a pull request when
 you’re not a committer, or just commit the changes. In the latter case, the
 modifications are pushed immediately to the site and are live within a minute.</p>
         </section>

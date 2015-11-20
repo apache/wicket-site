@@ -65,8 +65,8 @@ by their respective development teams.</p>
 <p>Alternatively, you can generate an Eclipse project typing the following command on project’s root:</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">mvn eclipse:eclipse</code></pre></figure>
 <p>Maven will add all the necessary JAR files to the project’s classpath. Now the sources can be imported in Eclipse using the “Existing Projects into Workspace” wizard.</p>
-<p>If not already present the <code>M2_REPO</code> classpath variable has to point to your local Maven repository.
-The repository is typically found in <code>C:\Documents and Settings\&lt;username&gt;\.m2\repo</code> or (for unix buffs) <code>~/.m2/repo</code>. It can be set within Eclipse (Preferences-&gt;Java-&gt;Build Path-&gt;Classpath Variables) or with the help of Maven:</p>
+<p>If not already present the <code class="highlighter-rouge">M2_REPO</code> classpath variable has to point to your local Maven repository.
+The repository is typically found in <code class="highlighter-rouge">C:\Documents and Settings\&lt;username&gt;\.m2\repo</code> or (for unix buffs) <code class="highlighter-rouge">~/.m2/repo</code>. It can be set within Eclipse (Preferences-&gt;Java-&gt;Build Path-&gt;Classpath Variables) or with the help of Maven:</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt; eclipse:add-maven-repo</code></pre></figure>
 <p>If you want to go along with the Wicket way of code formatting you should import the Wicket code format profile into your workspace (Preferences-&gt;Java-&gt;Code Style-&gt;Formatter), found in:</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">&lt;path-to-eclipse-workspace&gt;/wicket-core/EclipseCodeFormat.xml</code></pre></figure>
