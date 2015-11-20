@@ -35,7 +35,12 @@ module Jekyll
     end
 
     def posts_group_by_year_and_month(site)
-      site.posts.docs.each.group_by { |post| [post.date.year, post.date.month] }
+      if Jekyll::VERSION < '3.0.0'
+        posts = site.posts
+      else
+        posts = site.posts.docs
+      end
+      posts.each.group_by { |post| [post.date.year, post.date.month] }
     end
 
   end

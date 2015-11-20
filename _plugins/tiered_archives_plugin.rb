@@ -21,8 +21,13 @@ class Jekyll::Site
   alias :site_payload_without_tiered_archives :site_payload
 
   def site_payload
+	if Jekyll::VERSION < '3.0.0'
+      posts = self.posts
+    else
+      posts = self.posts.docs
+    end
     data = site_payload_without_tiered_archives
-    data['site']['years'] = TieredArchives::find_years(self.posts.docs.reverse)
+    data['site']['years'] = TieredArchives::find_years(posts.reverse)
     data
   end
 end
