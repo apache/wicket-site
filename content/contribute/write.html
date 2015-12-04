@@ -89,14 +89,14 @@ and other variables. If it doesn’t include the YAML preamble, it won’t be
 rendered correctly.</p>
 <p>The default layout supports a property to specify the main title for the page and 
 another property for an additional subtitle.</p>
-<p>For example: (the <code>---</code> must be included):</p>
+<p>For example: (the <code class="highlighter-rouge">---</code> must be included):</p>
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
 <span class="s">layout</span><span class="pi">:</span> <span class="s">default</span>
 <span class="s">title</span><span class="pi">:</span> <span class="s">Main title</span>
 <span class="s">subtitle</span><span class="pi">:</span> <span class="s">Subtitle</span>
 <span class="nn">---</span></code></pre></figure>
 <p>A more advanced feature for the default layout is the ability to specify more files to include
-in the final page. This can be done with property <code>additionalContents</code> where we can list additional files
+in the final page. This can be done with property <code class="highlighter-rouge">additionalContents</code> where we can list additional files
 with an id for their section tag and a value for the CSS class:</p>
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
 <span class="s">layout</span><span class="pi">:</span> <span class="s">default</span>
@@ -115,8 +115,8 @@ with an id for their section tag and a value for the CSS class:</p>
 <h4 id="additional-conventions">Additional conventions</h4>
 <p>The following conventions have been adopted for the templeates of the site pages:</p>
 <ul>
-  <li>Any link to static resources (css, js, pictures, etc.) is prefixed with <code>site.baseurl</code> to support <a href="http://jekyllrb.com/docs/github-pages/#project-page-url-structure">GitHub free hosting</a>. However, to run the project locally you don’t need to specify any baseurl.</li>
-  <li>Site posts use custom tag <code>&lt;!--more--&gt;</code> as <code>excerpt_separator</code>.</li>
+  <li>Any link to static resources (css, js, pictures, etc.) is prefixed with <code class="highlighter-rouge">site.baseurl</code> to support <a href="http://jekyllrb.com/docs/github-pages/#project-page-url-structure">GitHub free hosting</a>. However, to run the project locally you don’t need to specify any baseurl.</li>
+  <li>Site posts use custom tag <code class="highlighter-rouge">&lt;!--more--&gt;</code> as <code class="highlighter-rouge">excerpt_separator</code>.</li>
 </ul>
 <h3 id="syntax-highlighting">Syntax highlighting</h3>
 <p>If you have a need to render code in your templates and have it syntax
@@ -124,13 +124,13 @@ highlighted, surround the code with {\% highlight java \%} (substitute java
 with the language you want highlighted.)</p>
 <h3 id="menu">Menu</h3>
 <p>If you want your page linked from every page, include the link in
-<code>_includes/header.html</code>.</p>
+<code class="highlighter-rouge">_includes/header.html</code>.</p>
 <h3 id="blog-posts">Blog posts</h3>
 <p>For news items such as release announcements, new committers and other
 happenings, it is appriorate to create a blog post. The blog post is
 automatically added to the front page and the RSS feed.</p>
 <p>The blog items are written using the normal Jekyll syntax. The filename needs
-to be formatted as <code>yyyy-mm-dd-title.md</code> and the blog item should start with a
+to be formatted as <code class="highlighter-rouge">yyyy-mm-dd-title.md</code> and the blog item should start with a
 YAML preamble, similar to normal pages:</p>
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
 <span class="s">layout</span><span class="pi">:</span> <span class="s">post</span>
@@ -140,7 +140,7 @@ YAML preamble, similar to normal pages:</p>
 <p>When you’re done with making your changes, please check the following:</p>
 <ul>
   <li>Do the modified files contain only those changes that you actually want to
-publish? (Use <code>git status</code> to check)</li>
+publish? (Use <code class="highlighter-rouge">git status</code> to check)</li>
   <li>Did you start Jekyll to generate the site?</li>
 </ul>
 <p>If these things are OK, you can either create a pull request when

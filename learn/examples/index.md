@@ -9,8 +9,8 @@ in Wicket when compared to other frameworks. You will discover that Wicket's
 component-oriented structure and its "low touch" approach to HTML is quite
 inviting.
 
-You can see these examples and many more in [live
-action](http://www.wicket-library.com) without having to install anything.
+You can see these examples and many more in live
+action (available for version [7.x](http://examples7x.wicket.apache.org/index.html) and [6.x](http://examples6x.wicket.apache.org/index.html)) without having to install anything.
 
 * [Hello World!](helloworld.html) - Everybody's favorite example
 * [Navomatic](navomatic.html) - Automatic navigation using Borders and Links
