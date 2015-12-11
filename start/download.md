@@ -110,3 +110,25 @@ The Apache mirroring system only hosts the latest version of each actively suppo
 When you need to download an older release you can find them in the archives.
 
 Go to [the Apache archives](https://archive.apache.org/dist/wicket) to find your specific version.
+
+---
+
+## SNAPSHOT Repository
+
+In order to use any SNAPSHOT versions mentioned in each download section of a specific Wicket version you have to configure the SNAPSHOT repository in your pom.xml.
+
+{% highlight xml %}
+<repository>
+    <id>apache.snapshots</id>
+    <name>Apache Development Snapshot Repository</name>
+    <url>https://repository.apache.org/content/repositories/snapshots/</url>
+    <releases>
+        <enabled>false</enabled>
+    </releases>
+    <snapshots>
+        <enabled>true</enabled>
+    </snapshots>
+</repository>
+{% endhighlight xml %}
+
+Beware that SNAPSHOT versions might be deleted after a while and that you should **not use** any of them to go live with.
