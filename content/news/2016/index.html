@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta charset="utf-8">
-        <title>Monthly archive for September 2014 | Apache Wicket</title>
+        <title>Yearly archive for 2016 | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /news/2014/09 -->
+		<!-- /start/quickstart.html || /news/2016 -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /news/2014/09 -->
+		<!-- /start/download.html || /news/2016 -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /news/2014/09 -->
+		<!-- /learn || /news/2016 -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /news/2014/09 -->
+		<!-- /help || /news/2016 -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /news/2014/09 -->
+		<!-- /contribute || /news/2016 -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /news/2014/09 -->
+		<!-- /community || /news/2016 -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /news/2014/09 -->
+		<!-- /apache || /news/2016 -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -43,36 +43,23 @@
 <main>
     <div class="l-container">
         <header class="l-full preamble">
-            <h1>Monthly archive for September 2014</h1>
+            <h1>Yearly archive for 2016</h1>
         </header>
         <div class="l-two-third">
-<div class="news">
-	<h3>Wicket 1.5.12 released</h3>
-  <p><small>15 Sep 2014</small></p>
-	<p>This is the twelfth maintenance release of the Wicket 1.5.x series. This release brings over 5 bug fixes and improvements.</p>
-<ul>
-  <li><a href="https://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=shortlog;h=refs/tags/wicket-1.5.12">Git tag</a></li>
-  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;version=12326154">Changelog</a></li>
-  <li>To use in Maven:</li>
-</ul>
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apache.wi...</code></pre></figure>
-	<a href="/news/2014/09/15/wicket-1.5.12-released.html">more</a></li>
-</div>
-<div class="news">
-	<h3>CVE-2014-3526 - Apache Wicket Information disclosure vulnerability</h3>
-  <p><small>22 Sep 2014</small></p>
-	<p>Severity: Important</p>
-<p>Vendor:
-The Apache Software Foundation</p>
-<p>Versions Affected:
-Apache Wicket 1.5.11, 6.16.0 and 7.0.0-M2</p>
-<p>Description:</p>
-<p>When rendering a web page Wicket checks the request url against the one at the render time. It is possible the application to change the page parameters (this includes both the query parameters and parameters encoded into the request path). When the requested url differs with the one at the rendering time Wicket stores the response (i.e. the page markup) at the server side and issues an HTTP redirect to the new url. When the second request comes Wicket just flushes the stored response from the first request into the http output stream. This way the browser address bar shows the updated page parameters.
-When storing the page markup at the server side Wicket uses as an identifier a pair of the current session id plus the new url. However, Wicket does not check if user session is temporary (i.e. sessionId is null).
-This could lead to a security issue if two or more users with a temporary session are redirected to the same url at the same time. Then user1 might see the markup for user2 which has overridden the markup for user1 while user1 was following the HTTP redirect. In thi...</p>
-	<a href="/news/2014/09/22/cve-2014-3526.html">more</a></li>
-</div>
+      <div class="l-first">
+              <div  class="l-full">
+                  <h1>All News for January 2016</h1>
+                  <p>This section contains all news items published in <a href="/news/2016/01">January 2016</a>.</p>
+              </div>
+                  <div class="l-full">
+              		<h3 id="/news/2016/01/20/wicket-7.2.0-released.html">Apache Wicket 7.2.0 released</h3>
+                      <small>20 Jan 2016</small>
+              		<p>The Apache Wicket PMC is proud to announce Apache Wicket 7.2.0! This release marks another minor release of Wicket 7. We use semantic versioning for...
+              		<a href="/news/2016/01/20/wicket-7.2.0-released.html">more</a></li></p>
+                  </div>
+              <hr>
+              <div class="l-first"></div>
+      </div>
         </div>
         <div class="l-one-third">
             <h2>2016</h2>
