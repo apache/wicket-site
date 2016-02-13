@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /learn/examples/dropdownchoice -->
+		<!-- /start/quickstart.html || /learn/examples/dropdownchoice.html -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /learn/examples/dropdownchoice -->
+		<!-- /start/download.html || /learn/examples/dropdownchoice.html -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /learn/examples/dropdownchoice -->
+		<!-- /learn || /learn/examples/dropdownchoice.html -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /learn/examples/dropdownchoice -->
+		<!-- /help || /learn/examples/dropdownchoice.html -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /learn/examples/dropdownchoice -->
+		<!-- /contribute || /learn/examples/dropdownchoice.html -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /learn/examples/dropdownchoice -->
+		<!-- /community || /learn/examples/dropdownchoice.html -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /learn/examples/dropdownchoice -->
+		<!-- /apache || /learn/examples/dropdownchoice.html -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -50,18 +50,18 @@
         </section>
         <section class="l-two-third left">
             <p>One of the most problematic components for beginners of Wicket is the
-<code class="highlighter-rouge">DropDownChoice</code> component. In this example we will work the component to
+<code>DropDownChoice</code> component. In this example we will work the component to
 give a little more insight into its workings. This example requires that you
 have some understanding of the Wicket component model (nothing fancy though,
 but you might want to read the other examples first), and the Model concept
 used in Wicket (you can read more on models
 <a href="https://cwiki.apache.org/confluence/display/WICKET/Working+with+Wicket+models">here</a>).</p>
 <h2 id="the-example-domain">The example domain</h2>
-<p>The <code class="highlighter-rouge">DropDownChoice</code> component is typically used <em>inside</em> a form. This
+<p>The <code>DropDownChoice</code> component is typically used <em>inside</em> a form. This
 example will expand on that usage. The component is particularly designed to
 work with objects. So let’s say we have a list of people and we want to
 select the manager of an employee.</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">Person</span> <span class="n">managedBy</span><span class="o">;</span>
@@ -78,11 +78,11 @@ select the manager of an employee.</p>
     <span class="kd">public</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">getManagers</span><span class="o">()</span> <span class="o">{</span>
         <span class="c1">// gets the managers from the database</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
+<span class="o">}</span></code></pre></div>
 <h2 id="the-assign-manager-page">The assign manager page</h2>
 <p>Next we want to create a page where we assign a manager to an employee. This
 is how the page would look like in HTML:</p>
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
 <span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">"form"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;h1&gt;</span>Assign manager<span class="nt">&lt;/h1&gt;</span>
@@ -103,18 +103,18 @@ is how the page would look like in HTML:</p>
 <span class="nt">&lt;/table&gt;</span>
 <span class="nt">&lt;/form&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
 <p>This page has three components:</p>
 <ul>
   <li>a form (needed to process the input),</li>
-  <li>a label (to show the name of the employee) and</li>
+  <li>a label (to show the name of the employee) and </li>
   <li>a select box for picking the manager.</li>
 </ul>
-<p>We will focus on the select box, because that will be our <code class="highlighter-rouge">DropDownChoice</code>.
-The <code class="highlighter-rouge">&lt;option&gt;</code> tags are there for preview, our component will replace them
+<p>We will focus on the select box, because that will be our <code>DropDownChoice</code>.
+The <code>&lt;option&gt;</code> tags are there for preview, our component will replace them
 with the generated choices.</p>
 <p>Let’s see how the page looks like from the Java side:</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AssignManagerPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AssignManagerPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">AssignManagerPage</span><span class="o">(</span><span class="n">Person</span> <span class="n">employee</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">Form</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Form</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
         <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
@@ -131,17 +131,17 @@ with the generated choices.</p>
                 <span class="o">);</span>
         <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">ddc</span><span class="o">));</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
-<p>In this example you see that we add the <code class="highlighter-rouge">DropDownChoice</code> to the form, and
+<span class="o">}</span></code></pre></div>
+<p>In this example you see that we add the <code>DropDownChoice</code> to the form, and
 provide it with 3 parameters. The first is the component identifier. The
-second is the item that needs to be updated, in this case the <code class="highlighter-rouge">managedBy</code>
-field of the <code class="highlighter-rouge">employee</code>. The third parameter is a <code class="highlighter-rouge">LoadableDetachableModel</code>
+second is the item that needs to be updated, in this case the <code>managedBy</code>
+field of the <code>employee</code>. The third parameter is a <code>LoadableDetachableModel</code>
 that retrieves the list of available choices.</p>
-<p>Note that the <code class="highlighter-rouge">DropDownChoice</code> component has many constructors, and that you
+<p>Note that the <code>DropDownChoice</code> component has many constructors, and that you
 need to read the JavaDoc documentation to pick the right one for you.</p>
 <p>This generates (basically) the following markup when the list of managers is
 Kyle Brovlovski, Stan Marsh, Eric Cartman, and Kenny McCormick:</p>
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;tr&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;tr&gt;</span>
     <span class="nt">&lt;th&gt;</span>Managed by<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;td&gt;</span>
         <span class="nt">&lt;select</span> <span class="na">wicket:id=</span><span class="s">"managedBy"</span> <span class="na">name=</span><span class="s">"managedBy"</span><span class="nt">&gt;</span>
@@ -152,22 +152,22 @@ Kyle Brovlovski, Stan Marsh, Eric Cartman, and Kenny McCormick:</p>
             <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>Kenny McCormick<span class="nt">&lt;/option&gt;</span>
         <span class="nt">&lt;/select&gt;</span>
     <span class="nt">&lt;/td&gt;</span>
-<span class="nt">&lt;/tr&gt;</span></code></pre></figure>
+<span class="nt">&lt;/tr&gt;</span></code></pre></div>
 <p>As you can see from this markup is that Wicket added the items of the
 managers list and numbered the values of the options. These are the indices
 of the items in the list. If the order of the list can change between
 requests, <em>or</em> if the list itself can change, then please use an
-<code class="highlighter-rouge">IChoiceRenderer</code>.</p>
+<code>IChoiceRenderer</code>.</p>
 <h2 id="selecting-a-choice">Selecting a choice</h2>
 <p>Now if a user selects a value and submits the form, Wicket will assign the
-manager to the employee (the <code class="highlighter-rouge">PropertyModel</code> takes care of that). The
+manager to the employee (the <code>PropertyModel</code> takes care of that). The
 following list shows what basically happens:</p>
 <ol>
-  <li>create new Employee, with <code class="highlighter-rouge">null</code> for its manager</li>
+  <li>create new Employee, with <code>null</code> for its manager</li>
   <li>create AssignManagerPage with the employee</li>
-  <li>render page, selected value is <code class="highlighter-rouge">"Choose one"</code></li>
+  <li>render page, selected value is <code>"Choose one"</code></li>
   <li>user selects “Eric Cartman” and submits form</li>
-  <li>Wicket assigns manager “Eric Cartman” to <code class="highlighter-rouge">managedBy</code> field of the employee</li>
+  <li>Wicket assigns manager “Eric Cartman” to <code>managedBy</code> field of the employee</li>
 </ol>
 <p>So there is no need for getting or setting the value from the drop down
 component: Wicket binds directly to your domain objects if you use the
@@ -176,13 +176,13 @@ correct models.</p>
 <p>If you want to select a default value for the manager, then all you need to
 do is assign the default manager to the employee and Wicket will take care of
 the rest:</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// some add new employee code</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// some add new employee code</span>
 <span class="n">Employee</span> <span class="n">manager</span> <span class="o">=</span> <span class="n">Employee</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"Eric Cartman"</span><span class="o">);</span> <span class="c1">// gets a manager</span>
 <span class="n">Employee</span> <span class="n">newEmployee</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">();</span>
 <span class="n">newEmployee</span><span class="o">.</span><span class="na">setManagedBy</span><span class="o">(</span><span class="n">manager</span><span class="o">);</span>
-<span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="n">AssignManagerPage</span><span class="o">(</span><span class="n">newEmployee</span><span class="o">));</span></code></pre></figure>
+<span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="n">AssignManagerPage</span><span class="o">(</span><span class="n">newEmployee</span><span class="o">));</span></code></pre></div>
 <h2 id="summary">Summary</h2>
-<p>This concludes the (small) example of using a <code class="highlighter-rouge">DropDownChoice</code> component
+<p>This concludes the (small) example of using a <code>DropDownChoice</code> component
 correctly. The ideas behind Wicket are perfectly reflected in this component:
 work with your domain objects, bind them to your components and get on with
 the rest of your application.</p>

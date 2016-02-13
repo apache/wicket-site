@@ -63,23 +63,23 @@ release compared to 6.0.0.</p>
 decided to remove deprecated APIs from their codebase from JQuery 1.9
 and up. This means that JQuery plugins using these deprecated APIs no
 longer work. See the JQuery migration guide for more information,
-available from http://jquery.com/upgrade-guide/1.9/</p>
+available from http://jquery.com/upgrade-guide/1.9/ </p>
 <p>If your application depends on these deprecated APIs you can easily
 downgrade to JQuery 1.8.3-the previously provided JQuery that still
 contains these APIs. Download the 1.8.3 release of jquery and add it
 to your project in its application’s init method:</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span> 
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span> 
 <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">getJavaScriptLibrarySettings</span><span class="o">()</span>
         <span class="o">.</span><span class="na">setJQueryReference</span><span class="o">(</span><span class="n">yourJquery183ResourceReference</span><span class="o">);</span>
-<span class="o">}</span></code></pre></figure>
+<span class="o">}</span></code></pre></div>
 <h3 id="cdi-injection-issue">CDI injection issue</h3>
 <p>In the CDI releases of Weld 2.0.1 and prior, it was assumed that
 injection in anonymous inner classes was not legal and when
 attempted, it resulted in an exception:</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">Caused by: org.jboss.weld.exceptions.DefinitionException: WELD-000070
+<div class="highlight"><pre><code class="language-text" data-lang="text">Caused by: org.jboss.weld.exceptions.DefinitionException: WELD-000070
 Simple bean [EnhancedAnnotatedTypeImpl] private class
-com.example.HomePage$AForm cannot be a non-static inner class</code></pre></figure>
+com.example.HomePage$AForm cannot be a non-static inner class</code></pre></div>
 <p>This was reported as
 <a href="https://issues.apache.org/jira/browse/WICKET-5226">WICKET-5226</a>, as
 it became an issue in Glassfish 4, which ships with Weld 2.0.1 (or
@@ -95,11 +95,11 @@ story read
 <h3 id="using-this-release">Using this release</h3>
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>6.9.1<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
 <ul>

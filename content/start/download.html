@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /start/download -->
+		<!-- /start/quickstart.html || /start/download.html -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /start/download -->
-    	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /start/download -->
+		<!-- /start/download.html || /start/download.html -->
+    	<li class="active"><a href="/start/download.html">Download</a></li>
+		<!-- /learn || /start/download.html -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /start/download -->
+		<!-- /help || /start/download.html -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /start/download -->
+		<!-- /contribute || /start/download.html -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /start/download -->
+		<!-- /community || /start/download.html -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /start/download -->
+		<!-- /apache || /start/download.html -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -86,7 +86,7 @@
 	</tr>
 	<tr>
 		<td><a href="wicket-7.x.html">Wicket 7.x</a></td>
-		<td>7.1.0</td>
+		<td>7.2.0</td>
 		<td>current, supported</td>
 	</tr>
 	<tr>
@@ -147,7 +147,7 @@ When you need to download an older release you can find them in the archives.</p
 <hr />
 <h2 id="snapshot-repository">SNAPSHOT Repository</h2>
 <p>In order to use any SNAPSHOT versions mentioned in each download section of a specific Wicket version you have to configure the SNAPSHOT repository in your pom.xml.</p>
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;repository&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;repository&gt;</span>
     <span class="nt">&lt;id&gt;</span>apache.snapshots<span class="nt">&lt;/id&gt;</span>
     <span class="nt">&lt;name&gt;</span>Apache Development Snapshot Repository<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;url&gt;</span>https://repository.apache.org/content/repositories/snapshots/<span class="nt">&lt;/url&gt;</span>
@@ -157,7 +157,7 @@ When you need to download an older release you can find them in the archives.</p
     <span class="nt">&lt;snapshots&gt;</span>
         <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
     <span class="nt">&lt;/snapshots&gt;</span>
-<span class="nt">&lt;/repository&gt;</span></code></pre></figure>
+<span class="nt">&lt;/repository&gt;</span></code></pre></div>
 <p>Beware that SNAPSHOT versions might be deleted after a while and that you should <strong>not use</strong> any of them to go live with.</p>
         </section>
     </div>

@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /learn/examples/ajaxcounter -->
+		<!-- /start/quickstart.html || /learn/examples/ajaxcounter.html -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /learn/examples/ajaxcounter -->
+		<!-- /start/download.html || /learn/examples/ajaxcounter.html -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /learn/examples/ajaxcounter -->
+		<!-- /learn || /learn/examples/ajaxcounter.html -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /learn/examples/ajaxcounter -->
+		<!-- /help || /learn/examples/ajaxcounter.html -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /learn/examples/ajaxcounter -->
+		<!-- /contribute || /learn/examples/ajaxcounter.html -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /learn/examples/ajaxcounter -->
+		<!-- /community || /learn/examples/ajaxcounter.html -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /learn/examples/ajaxcounter -->
+		<!-- /apache || /learn/examples/ajaxcounter.html -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -54,8 +54,8 @@ building a simple counter that updates through Ajax link clicks.</p>
 <p>In all the Wicket examples, you have to put all files in the same package
 directory. This means putting the markup files and the java files next to one
 another. It is possible to alter this behavior, but that is beyond the scope
-of this example. The only exception is the obligatory <code class="highlighter-rouge">web.xml</code> file which
-should reside in the <code class="highlighter-rouge">WEB-INF/</code> directory of your web application root
+of this example. The only exception is the obligatory <code>web.xml</code> file which
+should reside in the <code>WEB-INF/</code> directory of your web application root
 folder.</p>
 <p>In this example we assume you already have read and understood the other
 examples which give you information on the structure and nature of Wicket
@@ -63,7 +63,7 @@ applications. Specifically read and understand the <a href="helloworld.html">Hel
 example</a>.</p>
 <h2 id="counter-page">Counter page</h2>
 <p>First we’ll create a page that just counts the number of times a link has been clicked. In the following markup you’ll see a link and a label.</p>
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">wicket:id=</span><span class="s">"link"</span><span class="nt">&gt;</span>click me<span class="nt">&lt;/a&gt;</span>
@@ -71,11 +71,11 @@ example</a>.</p>
         Counter: <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"counter"</span><span class="nt">&gt;</span>nr of times<span class="nt">&lt;/span&gt;</span>
     <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
 <p>The link component will refresh the page and the label will replace the text
 ‘nr of times’ with the count. Take a look at the following Java file to see
 how it works on the Java side:</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.Component</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.link.Link</span><span class="o">;</span>
@@ -95,9 +95,9 @@ how it works on the Java side:</p>
         <span class="o">});</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">"counter"</span><span class="o">,</span> <span class="n">model</span><span class="o">));</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
-<p>In this class we created a <code class="highlighter-rouge">Model</code> subclass that increases its counter
-everytime the <code class="highlighter-rouge">getObject</code> method gets called, and returns its value. We set
+<span class="o">}</span></code></pre></div>
+<p>In this class we created a <code>Model</code> subclass that increases its counter
+everytime the <code>getObject</code> method gets called, and returns its value. We set
 this model on the label component, so that each time the label gets rendered
 the counter gets increased.</p>
 <p>The link doesn’t do anything, just listen to the requests and update the
@@ -108,9 +108,9 @@ so let’s make it more modern by adding some Ajax stuff.</p>
 <h2 id="adding-ajax">Adding Ajax</h2>
 <p>To make this a more modern UI we’ll have to change a couple of things. First
 we need to make the link an Ajax link. Wicket provides several types of Ajax
-links, but the best one for our purposes is the <code class="highlighter-rouge">AjaxFallbackLink</code>, as it
+links, but the best one for our purposes is the <code>AjaxFallbackLink</code>, as it
 provides a fallback to a normal request in case no Ajax is available.</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.Component</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.AjaxRequestTarget</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.markup.html.AjaxFallbackLink</span><span class="o">;</span>
@@ -132,13 +132,13 @@ provides a fallback to a normal request in case no Ajax is available.</p>
         <span class="o">});</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">"counter"</span><span class="o">,</span> <span class="n">model</span><span class="o">));</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
-<p>As you can see, the <code class="highlighter-rouge">Link</code> has been replaced with the <code class="highlighter-rouge">AjaxFallbackLink</code>, and the
-<code class="highlighter-rouge">onClick</code> method now takes a new argument: the <code class="highlighter-rouge">AjaxRequestTarget</code>. If you want a
+<span class="o">}</span></code></pre></div>
+<p>As you can see, the <code>Link</code> has been replaced with the <code>AjaxFallbackLink</code>, and the
+<code>onClick</code> method now takes a new argument: the <code>AjaxRequestTarget</code>. If you want a
 component to be updated in the Ajax request, you’ll have to add them to the
 target. So let’s alter the file to make it possible to add the label to the
 request target.</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.Component</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.AjaxRequestTarget</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.markup.html.AjaxFallbackLink</span><span class="o">;</span>
@@ -164,11 +164,11 @@ request target.</p>
         <span class="o">});</span>
         <span class="n">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
+<span class="o">}</span></code></pre></div>
 <p>We’ve moved the instantiation of the label to the beginning of the page
 constructor and made a local, final variable. This way we can reference the
 label in the event handler of the link component.</p>
-<p>We also had to call <code class="highlighter-rouge">setOutputMarkupId(true)</code> on the label to be able to
+<p>We also had to call <code>setOutputMarkupId(true)</code> on the label to be able to
 update the component when the request is returned to the client browser. If
 we don’t, Wicket will not know how to update the markup in the client.</p>
 <p>If you put this code into your page’s class, then you’ll have a working Ajax
@@ -179,9 +179,9 @@ require a degree in JavaScript. Even better, you don’t necessarily need to
 update your markup file to work with Ajax. In this (simple) example we were
 able to add Ajax behavior to the page without touching the markup file.</p>
 <p>The most important lesson here is that in order to update components using
-Ajax is that you need to add those components to the <code class="highlighter-rouge">AjaxRequestTarget</code> and
+Ajax is that you need to add those components to the <code>AjaxRequestTarget</code> and
 that the components that are to be updated in that request, should have
-<code class="highlighter-rouge">setOutputMarkupId(true)</code>.</p>
+<code>setOutputMarkupId(true)</code>.</p>
         </section>
     </div>
 </main>

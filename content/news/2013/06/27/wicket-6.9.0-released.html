@@ -59,19 +59,19 @@ compared to 6.0.0.</p>
 <p>Switch between jQuery 1.x and 2.x depending on the user agent. For IE
 6/7/8 jQuery ver. 1.x will be used, for any other browser - ver. 2.x.
 To use this resource reference do in your application’s init method:</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">getJavaScriptLibrarySettings</span><span class="o">()</span>
         <span class="o">.</span><span class="na">setJQueryReference</span><span class="o">(</span><span class="n">DynamicJQueryResourceReference</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
-<span class="o">}</span></code></pre></figure>
+<span class="o">}</span></code></pre></div>
 <p>Upgraded Atmoshpere (1.0.13) and Bootstrap (2.3.2) resources.</p>
 <h3 id="using-this-release">Using this release</h3>
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>6.9.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
 <ul>
@@ -116,7 +116,7 @@ migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5199">WICKET-5199</a> - Component.getBehaviors(Class&lt;M&gt; type) documentation is obsolete</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5207">WICKET-5207</a> - Use documented jQuery APIs for triggering the special event ‘inputchange’</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5208">WICKET-5208</a> - Contribute jQuery 1.x or 2.x depending on the user agent</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5210">WICKET-5210</a> - JQuery problem because component appears twice in DOM while Ajax refresh</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5210">WICKET-5210</a> - JQuery problem because component appears twice in DOM while Ajax refresh </li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5211">WICKET-5211</a> - Make CryptoMapper extendable</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5215">WICKET-5215</a> - Better exception message when Page instantiation fails in DefaultPageFactory</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5219">WICKET-5219</a> - ServletWebResponse should call #setHeader() to set Ajax-Location for redirect</li>
