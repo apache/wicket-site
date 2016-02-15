@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /learn/examples/guestbook.html -->
+		<!-- /start/quickstart.html || /learn/examples/guestbook -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /learn/examples/guestbook.html -->
+		<!-- /start/download.html || /learn/examples/guestbook -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /learn/examples/guestbook.html -->
+		<!-- /learn || /learn/examples/guestbook -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /learn/examples/guestbook.html -->
+		<!-- /help || /learn/examples/guestbook -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /learn/examples/guestbook.html -->
+		<!-- /contribute || /learn/examples/guestbook -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /learn/examples/guestbook.html -->
+		<!-- /community || /learn/examples/guestbook -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /learn/examples/guestbook.html -->
+		<!-- /apache || /learn/examples/guestbook -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -51,7 +51,7 @@
         <section class="l-two-third left">
             <p>The GuestBook application allows users to enter comments that appear on a
 page like a weblog. Drawing the list of comments is very easy with the Wicket
-<code>ListView</code> component. This example also gives an impression of what form
+<code class="highlighter-rouge">ListView</code> component. This example also gives an impression of what form
 handling is like.</p>
 <p><img src="guestbook.png" alt="Guestbook screenshot" /></p>
 <p>As with all examples, you have to put all files in the same package
@@ -60,7 +60,7 @@ another. It is possible to alter this behavior, but that is beyond the scope
 of this example.</p>
 <h2 id="commentjava">Comment.java</h2>
 <p>The Comment POJO model is very straightforward:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>  
 <span class="kn">import</span> <span class="nn">org.apache.wicket.IClusterable</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Comment</span> <span class="kd">implements</span> <span class="n">IClusterable</span> <span class="o">{</span>
@@ -87,21 +87,21 @@ of this example.</p>
     <span class="kd">public</span> <span class="n">String</span> <span class="n">toString</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="s">"[Comment date = "</span> <span class="o">+</span> <span class="n">date</span> <span class="o">+</span> <span class="s">", text = "</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s">"]"</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 <h2 id="guestbookjava">GuestBook.java</h2>
-<p>In the file <code>GuestBook.java</code> we have put the Java component code for the
+<p>In the file <code class="highlighter-rouge">GuestBook.java</code> we have put the Java component code for the
 guestbook page. This is the homepage for the guestbook application. The page
 consists of a form for entering new items to the guestbook and a list of
 repeating markup for showing the guestbook entries.</p>
-<p>The <code>GuestBook</code> constructor adds a <code>CommentForm</code> and a <code>ListView</code> of
+<p>The <code class="highlighter-rouge">GuestBook</code> constructor adds a <code class="highlighter-rouge">CommentForm</code> and a <code class="highlighter-rouge">ListView</code> of
 the comments. Notice how the model is passed in as the second argument to the
-<code>ListView</code> constructor.</p>
-<p>Then as the view renders, the <code>populateItem</code> method is called passing in a
-<code>ListItem</code> container for the current row in the list.</p>
-<p>The implementation below obtains the <code>Comment</code> POJO from the list item and
-adds label components for the date and text of the <code>Comment</code>. This is all
+<code class="highlighter-rouge">ListView</code> constructor.</p>
+<p>Then as the view renders, the <code class="highlighter-rouge">populateItem</code> method is called passing in a
+<code class="highlighter-rouge">ListItem</code> container for the current row in the list.</p>
+<p>The implementation below obtains the <code class="highlighter-rouge">Comment</code> POJO from the list item and
+adds label components for the date and text of the <code class="highlighter-rouge">Comment</code>. This is all
 accomplished in just a few lines of code.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
@@ -176,30 +176,30 @@ accomplished in just a few lines of code.</p>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">clear</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">commentList</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-<p>When the <code>CommentForm</code> is submitted, the <code>onSubmit()</code> method is called.
-Notice that nothing gets the value of the <code>TextArea</code> that was added in the
-<code>CommentForm</code> constructor. This is because the comment is the model and the
-third parameter to the <code>TextArea</code> constructor specified the property of the
-model to update. So all <code>onSubmit()</code> has to do is create a new comment from
+<span class="o">}</span></code></pre></figure>
+<p>When the <code class="highlighter-rouge">CommentForm</code> is submitted, the <code class="highlighter-rouge">onSubmit()</code> method is called.
+Notice that nothing gets the value of the <code class="highlighter-rouge">TextArea</code> that was added in the
+<code class="highlighter-rouge">CommentForm</code> constructor. This is because the comment is the model and the
+third parameter to the <code class="highlighter-rouge">TextArea</code> constructor specified the property of the
+model to update. So all <code class="highlighter-rouge">onSubmit()</code> has to do is create a new comment from
 the model that was updated and add it to the comment list. When the page
 redraws, the new list will be rendered.</p>
-<p>We use a synchronized list as our shared static model used by <code>commentListView</code>
-(<code>commentList</code>) to ensure that it is only updated by one thread at a time.
+<p>We use a synchronized list as our shared static model used by <code class="highlighter-rouge">commentListView</code>
+(<code class="highlighter-rouge">commentList</code>) to ensure that it is only updated by one thread at a time.
 Remember, this is a multi-user application with a shared model!</p>
-<p>Finally, you may notice the call to <code>commentListView.modelChanged()</code>. This
+<p>Finally, you may notice the call to <code class="highlighter-rouge">commentListView.modelChanged()</code>. This
 informs the list view that its model has been modified. In more advanced
 usage scenarios, this would allow Wicket to expire stale pages accessed with
 the browser’s back button.</p>
 <h2 id="guestbookhtml">GuestBook.html</h2>
-<p>In the HTML below, notice the way that the <code>TextArea</code> component is being
-nested inside the <code>CommentForm</code>. Wicket is able to keep everything straight
-because the Java <code>Component.add()</code> calls have to result in the same nesting
+<p>In the HTML below, notice the way that the <code class="highlighter-rouge">TextArea</code> component is being
+nested inside the <code class="highlighter-rouge">CommentForm</code>. Wicket is able to keep everything straight
+because the Java <code class="highlighter-rouge">Component.add()</code> calls have to result in the same nesting
 structure as the HTML.</p>
-<p>Finally, notice the <code>&lt;wicket:remove&gt;</code> block. This is simply markup that is
+<p>Finally, notice the <code class="highlighter-rouge">&lt;wicket:remove&gt;</code> block. This is simply markup that is
 there for previewing purposes only. When the page renders, it is stripped
 out.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">"http://wicket.apache.org/"</span><span class="nt">&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">"http://wicket.apache.org/"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;title&gt;</span>Wicket Examples - guestbook<span class="nt">&lt;/title&gt;</span>
     <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"style.css"</span><span class="nt">/&gt;</span>
@@ -228,11 +228,11 @@ out.</p>
     <span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/wicket:remove&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 <h2 id="guestbookapplicationjava">GuestBookApplication.java</h2>
-<p>For completeness, we’ve included the <code>GuestBookApplication</code> class, and as a
-final treat the modifications to the <code>web.xml</code> file.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
+<p>For completeness, we’ve included the <code class="highlighter-rouge">GuestBookApplication</code> class, and as a
+final treat the modifications to the <code class="highlighter-rouge">web.xml</code> file.</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">guestbook</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.Page</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.examples.WicketExampleApplication</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">GuestBookApplication</span> <span class="kd">extends</span> <span class="n">WicketExampleApplication</span> <span class="o">{</span>
@@ -242,18 +242,18 @@ final treat the modifications to the <code>web.xml</code> file.</p>
     <span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">Page</span><span class="o">&gt;</span> <span class="n">getHomePage</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">GuestBook</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure>
 <h2 id="webxml">web.xml</h2>
 <p>Add the following two sections (servlet and servlet-mapping) to your web.xml
 file for running this application.</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;filter&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;filter&gt;</span>
     <span class="nt">&lt;filter-name&gt;</span>GuestBookApplication<span class="nt">&lt;/filter-name&gt;</span>
     <span class="nt">&lt;filter-class&gt;</span>org.apache.wicket.protocol.http.WicketFilter<span class="nt">&lt;/filter-class&gt;</span>
     <span class="nt">&lt;init-param&gt;</span>
       <span class="nt">&lt;param-name&gt;</span>applicationClassName<span class="nt">&lt;/param-name&gt;</span>
       <span class="nt">&lt;param-value&gt;</span>org.apache.wicket.examples.guestbook.GuestBookApplication<span class="nt">&lt;/param-value&gt;</span>
     <span class="nt">&lt;/init-param&gt;</span>
-<span class="nt">&lt;/filter&gt;</span></code></pre></div>
+<span class="nt">&lt;/filter&gt;</span></code></pre></figure>
         </section>
     </div>
 </main>

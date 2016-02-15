@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /learn/examples/usingfragments.html -->
+		<!-- /start/quickstart.html || /learn/examples/usingfragments -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /learn/examples/usingfragments.html -->
+		<!-- /start/download.html || /learn/examples/usingfragments -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /learn/examples/usingfragments.html -->
+		<!-- /learn || /learn/examples/usingfragments -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /learn/examples/usingfragments.html -->
+		<!-- /help || /learn/examples/usingfragments -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /learn/examples/usingfragments.html -->
+		<!-- /contribute || /learn/examples/usingfragments -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /learn/examples/usingfragments.html -->
+		<!-- /community || /learn/examples/usingfragments -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /learn/examples/usingfragments.html -->
+		<!-- /apache || /learn/examples/usingfragments -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -52,12 +52,12 @@
             <p>This example shows you how to use fragments (Wicket 1.2 feature) to lessen
 the burden on extra markup files. Fragments are ‘inline panels’ and are a
 quick way of using panel type components in pages without having to create a
-<code>Panel</code> markup file and class.</p>
+<code class="highlighter-rouge">Panel</code> markup file and class.</p>
 <p>In all the Wicket examples, you have to put all files in the same package
 directory. This means putting the markup files and the java files next to one
 another. It is possible to alter this behavior, but that is beyond the scope
-of this example. The only exception is the obligatory <code>web.xml</code> file which
-should reside in the <code>WEB-INF/</code> directory of your web application root
+of this example. The only exception is the obligatory <code class="highlighter-rouge">web.xml</code> file which
+should reside in the <code class="highlighter-rouge">WEB-INF/</code> directory of your web application root
 folder.</p>
 <p>In this example we assume you already have read and understood the other
 examples which give you information on the structure and nature of Wicket
@@ -67,7 +67,7 @@ example</a>.</p>
 <p>First things first, let’s create a page that we can add our fragments to. We
 will add a Loop that will repeat markup and choose a different Fragment for
 each item in the loop.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;ul&gt;</span>
@@ -76,13 +76,13 @@ each item in the loop.</p>
     <span class="nt">&lt;wicket:fragment</span> <span class="na">wicket:id=</span><span class="s">"fragment1"</span><span class="nt">&gt;</span>panel 1<span class="nt">&lt;/wicket:fragment&gt;</span>
     <span class="nt">&lt;wicket:fragment</span> <span class="na">wicket:id=</span><span class="s">"fragment2"</span><span class="nt">&gt;</span>panel 2<span class="nt">&lt;/wicket:fragment&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 <p>As you can see in this markup file, we already took care of adding the
-fragment markup to the page in the <code>&lt;wicket:fragment&gt;</code> tags. Each fragment
+fragment markup to the page in the <code class="highlighter-rouge">&lt;wicket:fragment&gt;</code> tags. Each fragment
 can contain its own markup and components. Those components need to be added
 to the Fragment instance in the Java file, just as you would do with a panel
 and web markup container.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.list.Loop</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.panel.Fragment</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="n">QuickStartPage</span> <span class="o">{</span>
@@ -95,17 +95,17 @@ and web markup container.</p>
         <span class="o">};</span>
         <span class="n">add</span><span class="o">(</span><span class="n">loop</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-<p>The Loop will render 5 items, and the <code>populateItem</code> method will be called
+<span class="o">}</span></code></pre></figure>
+<p>The Loop will render 5 items, and the <code class="highlighter-rouge">populateItem</code> method will be called
 for each item. In each item we construct a fragment identifier that
-corresponds to the identifier in the <code>&lt;wicket:fragment&gt;</code>. The <code>Fragment</code>
+corresponds to the identifier in the <code class="highlighter-rouge">&lt;wicket:fragment&gt;</code>. The <code class="highlighter-rouge">Fragment</code>
 constructor takes the identifier of the markup it needs to attach to, and the
 fragment identifier telling it where to find the specific markup in the file.</p>
 <h2 id="adding-components-to-fragments">Adding components to fragments</h2>
 <p>In the previous example we just showed different markup for each fragment,
 but you can add components to the fragments as well. Let’s add a label to
 fragment 1.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;ul&gt;</span>
@@ -114,10 +114,10 @@ fragment 1.</p>
     <span class="nt">&lt;wicket:fragment</span> <span class="na">wicket:id=</span><span class="s">"fragment1"</span><span class="nt">&gt;</span>panel 1 <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"label"</span><span class="nt">&gt;&lt;/span&gt;&lt;/wicket:fragment&gt;</span>
     <span class="nt">&lt;wicket:fragment</span> <span class="na">wicket:id=</span><span class="s">"fragment2"</span><span class="nt">&gt;</span>panel 2<span class="nt">&lt;/wicket:fragment&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 <p>In order to add the component to the first fragment we’ll introduce a
 subclass for fragment one to encapsulate the component.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.list.Loop</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.panel.Fragment</span><span class="o">;</span>
@@ -142,15 +142,15 @@ subclass for fragment one to encapsulate the component.</p>
         <span class="o">};</span>
         <span class="n">add</span><span class="o">(</span><span class="n">loop</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-<p>The class <code>Fragment1</code> adds the label to itself. In the loop’s <code>populateItem</code>
-we alternate the fragments type between <code>Fragment</code> and <code>Fragment1</code>. This
-means that in the final page on one line you’ll see <code>"panel 1 Hello, World!"</code>
-and on the other line just <code>"panel 2"</code>.</p>
+<span class="o">}</span></code></pre></figure>
+<p>The class <code class="highlighter-rouge">Fragment1</code> adds the label to itself. In the loop’s <code class="highlighter-rouge">populateItem</code>
+we alternate the fragments type between <code class="highlighter-rouge">Fragment</code> and <code class="highlighter-rouge">Fragment1</code>. This
+means that in the final page on one line you’ll see <code class="highlighter-rouge">"panel 1 Hello, World!"</code>
+and on the other line just <code class="highlighter-rouge">"panel 2"</code>.</p>
 <h2 id="summary">Summary</h2>
 <p>Fragments make a quick way to add encapsulated components without having to
 resort to setting the visibility flag on a markup container. For fragments we
-introduced a new Wicket tag: <code>&lt;wicket:fragment&gt;</code>.</p>
+introduced a new Wicket tag: <code class="highlighter-rouge">&lt;wicket:fragment&gt;</code>.</p>
         </section>
     </div>
 </main>

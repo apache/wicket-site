@@ -69,17 +69,17 @@ ability to render a page or component to a String so that you can use
 Wicket to render HTML email messages. Now you can use
 <a href="http://ci.apache.org/projects/wicket/apidocs/6.x/org/apache/wicket/core/util/string/ComponentRenderer.html">ComponentRenderer</a> to
 actually do so without having to resort to other less obvious methods.</p>
-<p>ComponentRenderer exposes two methods: <code>renderComponent</code> and
-<code>renderPage</code> and they do exactly what their names suggest. Happy
+<p>ComponentRenderer exposes two methods: <code class="highlighter-rouge">renderComponent</code> and
+<code class="highlighter-rouge">renderPage</code> and they do exactly what their names suggest. Happy
 emailing!</p>
 <h3 id="using-this-release">Using this release</h3>
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>6.7.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
 <ul>
@@ -105,7 +105,7 @@ migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4903">WICKET-4903</a> - relativeUrl’s begins with ./</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4907">WICKET-4907</a> - UrlResourceReference generates broken relative URLs</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4942">WICKET-4942</a> - Double slash ‘//’ in starting url makes Url.parse output a relative Url</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4989">WICKET-4989</a> - WicketTester should send copies of its cookies </li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4989">WICKET-4989</a> - WicketTester should send copies of its cookies</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4995">WICKET-4995</a> - Using CryptoMapper causes page to render twice</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5039">WICKET-5039</a> - Manual invocation of FunctionsExecutor#notify() is broken</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5041">WICKET-5041</a> - DefaultCssAutoCompleteTextField should have Constructor (String id)</li>
@@ -158,7 +158,7 @@ migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5050">WICKET-5050</a> - AutoComplete should not request suggestions if input is no longer active element</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5057">WICKET-5057</a> - FilteringHeaderResponse requires a usage of FilteringHeaderResponse.IHeaderResponseFilter for no reason when FilteredHeaderItem is used</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5062">WICKET-5062</a> - Update the list of HTML void elements with the latest HTML5 ones</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5065">WICKET-5065</a> - Improve UrlRenderer to be able to render urls without scheme and/or host </li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5065">WICKET-5065</a> - Improve UrlRenderer to be able to render urls without scheme and/or host</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5066">WICKET-5066</a> - Allow PackageResource to decide itself whether it could be accepted or not</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5074">WICKET-5074</a> - Improvement for MockHttpServletRequest and FormTester to support ‘multiple’ input type of fileUpload</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5079">WICKET-5079</a> - Allow WebApplication-specific Spring configuration</li>

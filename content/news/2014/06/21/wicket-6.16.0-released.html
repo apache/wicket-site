@@ -68,11 +68,11 @@ announcement.</p>
 <h3 id="using-this-release">Using this release</h3>
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
  <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
  <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
  <span class="nt">&lt;version&gt;</span>6.16.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></div>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
 <ul>
@@ -90,7 +90,7 @@ migration guide found at</p>
 <p>— The Wicket team</p>
 <h3 id="release-notes---wicket---version-6160">Release Notes - Wicket - Version 6.16.0</h3>
 <h4 id="bug">Bug</h4>
-<pre><code>* [WICKET-4545] - MarkupNotFoundException for Fragment and TransparentWebMarkupContainer
+<div class="highlighter-rouge"><pre class="highlight"><code>* [WICKET-4545] - MarkupNotFoundException for Fragment and TransparentWebMarkupContainer
 * [WICKET-5553] - When using an Ajax request to display initially hidden components inside inline enclosures, only the first one appears.
 * [WICKET-5560] - A 404 error occurs when using a CryptoMapper
 * [WICKET-5569] - Unable to find markup for children of deeply nested IComponentResolvers during Ajax response
@@ -106,8 +106,9 @@ migration guide found at</p>
 * [WICKET-5596] - DropDownChoice#wantsOnSelectionChangedNotifications(T) not being called on unmounted page
 * [WICKET-5601] - AbstractSingleSelectChoice fails with NullPointerException when its choice renderer returns null from #getIdValue() 
 </code></pre>
+</div>
 <h4 id="improvement">Improvement</h4>
-<pre><code>* [WICKET-5563] - RestartResponseAtInterceptPageException - add public function to retrieve originalUrl
+<div class="highlighter-rouge"><pre class="highlight"><code>* [WICKET-5563] - RestartResponseAtInterceptPageException - add public function to retrieve originalUrl
 * [WICKET-5574] - ComponentRenderer should use Application#createRequestCycle
 * [WICKET-5575] - Add support in FormTester#submit(String|Component) for Ajax submitters
 * [WICKET-5577] - Generation of wicket ids with prefix / suffix
@@ -117,9 +118,11 @@ migration guide found at</p>
 * [WICKET-5600] - Introduce CharSequenceResource similar to ByteArrayResource
 * [WICKET-5606] - SelectOptions with #setRecreateChoices(true) loses selection on form errors
 </code></pre>
+</div>
 <h4 id="task">Task</h4>
-<pre><code>* [WICKET-5587] - Upgrade JQuery to latest releases - 1.11.1 &amp; 2.1.1
+<div class="highlighter-rouge"><pre class="highlight"><code>* [WICKET-5587] - Upgrade JQuery to latest releases - 1.11.1 &amp; 2.1.1
 </code></pre>
+</div>
 </div>
         </section>
     </div>
