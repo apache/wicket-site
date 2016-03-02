@@ -244,20 +244,17 @@ The release consist of almost 300 features, improvements and fixes. In accordanc
 </div>
 <div class="l-two-third">
     <article>
-        <h2>CVE-2015-5347 Apache Wicket XSS vulnerability</h2>
-        <small>01 Mar 2016</small>
+        <h2>CVE-2015-7520 Apache Wicket XSS vulnerability</h2>
+        <small>02 Mar 2016</small>
         <p>Severity: Important</p>
 <p>Vendor:
 The Apache Software Foundation</p>
 <p>Versions Affected:
 Apache Wicket 1.5.x, 6.x and 7.x</p>
 <p>Description:</p>
-<p>It is possible for JavaScript statements to break out of a ModalWindow’s 
-title - only quotes are escaped in the JavaScript settings object, allowing JavaScript
-to be injected into the markup.</p>
+<p>It is possible for JavaScript statements to break out of a RadioGroup’s 
+and CheckBoxMultipleChoice’s “value” attribute of &lt;input&gt; elements</p>
 <p>This might pose a security threat if the written JavaScript contains user provided data.</p>
-<p>The title is now escaped by default, this can be disabled explicitly via
-  modalWindow.setEscapeModelStrings(false).</p>
 <h2 id="the-application-developers-are-recommended-to-upgrade-to">The application developers are recommended to upgrade to:</h2>
 <ul>
   <li><a href="/news/2016/02/19/wicket-1.5.15-released.html">Apache Wicket 1.5.15</a></li>
@@ -265,9 +262,9 @@ to be injected into the markup.</p>
   <li><a href="/news/2016/01/20/wicket-7.2.0-released.html">Apache Wicket 7.2.0</a></li>
 </ul>
 <p>Credit:
-This issue was reported by Tobias Gierke!</p>
+This issue was reported by Canh Ngo!</p>
 <p>Apache Wicket Team</p>
-        <a href="/news/2016/03/01/cve-2015-5347.html">Read more...</a> 
+        <a href="/news/2016/03/02/cve-2015-7520.html">Read more...</a> 
     </article>
 </div>
 <div class="l-one-third news">
@@ -278,6 +275,12 @@ articles concerning release, security and community updates.</p>
 title="Atom 1.0 feed" href="/atom.xml">RSS feed</a> to
 get updates in your favorite RSS reader the moment they happen.</p>
 <ul>
+<li>
+    <h3>CVE-2015-5347 Apache Wicket XSS vulnerability</h3>
+    <small>01 Mar 2016</small>
+    Severity: Important Vendor: The Apache Software Foundation Versions Affected: Apache Wicket 1.5.x, 6.x and 7.x Description: It is possible for JavaScript statements to break out...
+    <a href="/news/2016/03/01/cve-2015-5347.html">more</a>
+</li>
 <li>
     <h3>Apache Wicket 6.22.0 released</h3>
     <small>19 Feb 2016</small>
@@ -301,12 +304,6 @@ get updates in your favorite RSS reader the moment they happen.</p>
     <small>16 Nov 2015</small>
     The Apache Wicket PMC is proud to announce Apache Wicket 6.21.0! This release marks another minor release of Wicket 6. We use semantic versioning for...
     <a href="/news/2015/11/16/wicket-6.21.0-released.html">more</a>
-</li>
-<li>
-    <h3>Apache Wicket 1.4.x end of life</h3>
-    <small>15 Nov 2015</small>
-    The Apache Wicket team announces that support for Apache Wicket 1.4.x ends on 16 November 2015. On the same day Wicket 1.5.x enters “security fixes”...
-    <a href="/news/2015/11/15/wicket-1.4.x-eol.html">more</a>
 </li>
 </ul>
 </div>
