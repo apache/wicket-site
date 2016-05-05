@@ -17,7 +17,7 @@ This section contains all news items published in <a href="{{site.baseurl}}/news
 	<h3 id="{{ site.baseurl }}{{post.url}}">{{post.title}}</h3>
     <small>{{post.date | date_to_string}}</small>
 	<p>{{ post.content | markdownify | strip_html | truncatewords:50 }}
-	<a href="{{ site.baseurl }}{{post.url}}">more</a></li></p>
+	<a href="{{ site.baseurl }}{{post.url}}">more</a></p>
 </article>
     {% endfor %}
 {% endfor %}

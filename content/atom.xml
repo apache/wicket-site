@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2016-03-02T15:59:59+01:00</updated>
+    <updated>2016-05-05T14:29:26+02:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -243,8 +243,8 @@ client.&lt;/p&gt;
 update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 
 &lt;dependency&gt;
-    &lt;groupid&gt;org.apache.wicket&lt;/groupid&gt;
-    &lt;artifactid&gt;wicket-core&lt;/artifactid&gt;
+    &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
+    &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
     &lt;version&gt;7.2.0&lt;/version&gt;
 &lt;/dependency&gt;
 
@@ -485,7 +485,7 @@ migration guide found at&lt;/p&gt;
   &lt;li&gt;[WICKET-5955] - error from WebPage ## reportMissingHead&lt;/li&gt;
   &lt;li&gt;[WICKET-5974] - Change AjaxPagingNavigator##onAjaxEvent() to only consider parent components that have setOutputMarkupId(true)&lt;/li&gt;
   &lt;li&gt;[WICKET-5976] - Improve the documentation of FeedbackMessages first(int level)&lt;/li&gt;
-  &lt;li&gt;[WICKET-5986] - NumberTextField&lt;n&gt; should use Models for minimum, maximum and step&lt;/n&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-5986] - &lt;code class=&quot;highlighter-rouge&quot;&gt;NumberTextField&amp;lt;N&amp;gt;&lt;/code&gt; should use Models for minimum, maximum and step&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;task&quot;&gt;Task&lt;/h4&gt;
@@ -553,8 +553,8 @@ a couple of component queuing issues.&lt;/p&gt;
 update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 
 &lt;dependency&gt;
-    &lt;groupid&gt;org.apache.wicket&lt;/groupid&gt;
-    &lt;artifactid&gt;wicket-core&lt;/artifactid&gt;
+    &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
+    &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
     &lt;version&gt;7.1.0&lt;/version&gt;
 &lt;/dependency&gt;
 
