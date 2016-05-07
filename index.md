@@ -12,40 +12,6 @@ additionalContents:
    path: news.html
    sectionId: news
 ---
-<div class="l-full l-first preamble" markdown="1">
-<h1 id="wicket7">Apache&nbsp;Wicket v7.0 released</h1>
-
-The Apache Software Foundation announces Apache Wicket™ v7.0 Open Source Java web framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more.
-</div>
-
-<div class="l-first" markdown="1">
-
-The Apache Software Foundation (ASF), the all-volunteer developers, stewards, and incubators of nearly 150 Open Source projects and initiatives, today announced Apache™ Wicket™ v7.0, the Open Source Java web framework for high performance, scalable, component oriented web applications. 
-This marks the seventh major release of the project that celebrated its 10 year anniversary last year.
-
-This framework allows Java developers to write web applications using components. 
-This way developers can reason about the user interface in user interface building blocks, making it easier to link specific user interactions to server-side code. 
-Wicket is a high performance framework processing billions of requests daily across the world.
-
-"With this release we have added a major improvement to our framework, making development with Wicket even easier.", said Martijn Dashorst, Vice President of Apache Wicket.
-"By adding 'Component Queuing' we have divorced the strict relationship between the Java component classes and the markup. This has been a headache for many users and sparked one of the longest discussions on our community lists. We finally put this issue to bed."
-
-"Other major improvements are the move towards Java 7, newer Java EE standards, security features and the addition of new components. Wicket now bundles a cross site request forgery (CSRF) prevention measure, and provides support for inline images using the data: protocol," continued Martijn Dashorst.
-
-Apache Wicket v7.0 reflects over 2 years of development, testing and feedback from hundreds of knowledgable users, bringing a highly stable, production ready release of the popular web framework.
-The release consist of almost 300 features, improvements and fixes. In accordance with Semantic Versioning, this major release contains [several documented API breaks](http://s.apache.org/wicket7migrate). Following the Semantic Versioning standard, future minor releases of Wicket v7 will remain API compatible.
-
-You can start using [Apache Wicket v7.0](start/wicket-7.x.html) now.
-
-Have fun!
-
--- The Wicket Team
-
-[Read the full press release](news/2015/07/28/wicket-7.0-released.html)
-
-</div>
-
----
 
 <div class="l-full l-first preamble">
     <h1 id="introduction">Introducing Apache&nbsp;Wicket</h1>

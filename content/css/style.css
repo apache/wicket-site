@@ -715,6 +715,9 @@ button.button--alert {
     width: 50%;
     min-width: 320px;
     margin: 0 auto; }
+.jumbotron .jumbotron-version {
+  text-transform: lowercase;
+  color: white; }
 
 nav.mainmenu {
   display: block;

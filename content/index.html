@@ -19,8 +19,7 @@
     </head>
 
     <body class="index">
-        <div class="header wicket7">
-	<a href="start/wicket-7.x.html"><img src="img/apachewicket7.svg"></a>
+        <div class="header jumbotron">
 <nav class="mainmenu">
     <ul>
 		<!-- /start/quickstart.html || / -->
@@ -39,40 +38,22 @@
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
-    <div class="submenu">
-        <ul>
-            <li>Jump to: </li>
-            <li><a href="#wicket7">Wicket 7</a></li>
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#poweredby">Powered by</a></li>
-            <li><a href="#news">News</a></li>
-        </ul>
+    <div class="jumbotron-logo">
+        <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
     </div>
+    <div class="jumbotron-mission">Write maintainable, secure and scalable web applications using just Java and HTML</div>
+    <div class="jumbotron-download">
+        <a class="button" href="#news">Latest News</a>
+        <a class="button" href="/start/quickstart.html">Get started</a>
+		<a class="button" href="http://examples7x.wicket.apache.org/index.html">Live Examples</a>
+		<br>
+		<small class="jumbotron-version">Current release: 7.3.0</small>
+    </div>
+    <div class="l-first">&nbsp;</div>
 </div>
 <div class="l-container">
     <section>
         <div class="l-full l-first preamble">
-  <h1 id="wicket7">Apache&nbsp;Wicket v7.0 released</h1>
-  <p>The Apache Software Foundation announces Apache Wicket™ v7.0 Open Source Java web framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more.</p>
-</div>
-<div class="l-first">
-  <p>The Apache Software Foundation (ASF), the all-volunteer developers, stewards, and incubators of nearly 150 Open Source projects and initiatives, today announced Apache™ Wicket™ v7.0, the Open Source Java web framework for high performance, scalable, component oriented web applications. 
-This marks the seventh major release of the project that celebrated its 10 year anniversary last year.</p>
-  <p>This framework allows Java developers to write web applications using components. 
-This way developers can reason about the user interface in user interface building blocks, making it easier to link specific user interactions to server-side code. 
-Wicket is a high performance framework processing billions of requests daily across the world.</p>
-  <p>“With this release we have added a major improvement to our framework, making development with Wicket even easier.”, said Martijn Dashorst, Vice President of Apache Wicket.
-“By adding ‘Component Queuing’ we have divorced the strict relationship between the Java component classes and the markup. This has been a headache for many users and sparked one of the longest discussions on our community lists. We finally put this issue to bed.”</p>
-  <p>“Other major improvements are the move towards Java 7, newer Java EE standards, security features and the addition of new components. Wicket now bundles a cross site request forgery (CSRF) prevention measure, and provides support for inline images using the data: protocol,” continued Martijn Dashorst.</p>
-  <p>Apache Wicket v7.0 reflects over 2 years of development, testing and feedback from hundreds of knowledgable users, bringing a highly stable, production ready release of the popular web framework.
-The release consist of almost 300 features, improvements and fixes. In accordance with Semantic Versioning, this major release contains <a href="http://s.apache.org/wicket7migrate">several documented API breaks</a>. Following the Semantic Versioning standard, future minor releases of Wicket v7 will remain API compatible.</p>
-  <p>You can start using <a href="start/wicket-7.x.html">Apache Wicket v7.0</a> now.</p>
-  <p>Have fun!</p>
-  <p>– The Wicket Team</p>
-  <p><a href="news/2015/07/28/wicket-7.0-released.html">Read the full press release</a></p>
-</div>
-<hr />
-<div class="l-full l-first preamble">
     <h1 id="introduction">Introducing Apache&nbsp;Wicket</h1>
     <p>Invented in 2004, Wicket is one of the few survivors of the Java
     serverside web framework wars of the mid 2000's. Wicket is an open
@@ -244,27 +225,43 @@ The release consist of almost 300 features, improvements and fixes. In accordanc
 </div>
 <div class="l-two-third">
     <article>
-        <h2>CVE-2015-7520 Apache Wicket XSS vulnerability</h2>
-        <small>02 Mar 2016</small>
-        <p>Severity: Important</p>
-<p>Vendor:
-The Apache Software Foundation</p>
-<p>Versions Affected:
-Apache Wicket 1.5.x, 6.x and 7.x</p>
-<p>Description:</p>
-<p>It is possible for JavaScript statements to break out of a RadioGroup’s 
-and CheckBoxMultipleChoice’s “value” attribute of &lt;input&gt; elements</p>
-<p>This might pose a security threat if the written JavaScript contains user provided data.</p>
-<h2 id="the-application-developers-are-recommended-to-upgrade-to">The application developers are recommended to upgrade to:</h2>
-<ul>
-  <li><a href="/news/2016/02/19/wicket-1.5.15-released.html">Apache Wicket 1.5.15</a></li>
-  <li><a href="/news/2016/02/19/wicket-6.22.0-released.html">Apache Wicket 6.22.0</a></li>
-  <li><a href="/news/2016/01/20/wicket-7.2.0-released.html">Apache Wicket 7.2.0</a></li>
-</ul>
-<p>Credit:
-This issue was reported by Canh Ngo!</p>
-<p>Apache Wicket Team</p>
-        <a href="/news/2016/03/02/cve-2015-7520.html">Read more...</a> 
+        <h2>Apache Wicket 7.3.0 released</h2>
+        <small>05 May 2016</small>
+        <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.3.0!</p>
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+<p>This release marks another minor release of Wicket 7. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+7.0.0.</p>
+<h2 id="new-and-noteworthy">New and noteworthy</h2>
+<h4 id="wicket-metrics-added">Wicket Metrics added</h4>
+<p>A new experimental module for integrating with <a href="http://metrics.dropwizard.io/">DropWizard’s Metrics</a> project was created. 
+Metrics provides a powerful toolkit of ways to measure the behavior of critical components in your production environment. 
+Using the Metrics integration requires the use of AspectJ (which is licensed under the Eclipse Public License 1.0)</p>
+<p>You can read more about using the Metrics integration in our user guide’s <a href="https://ci.apache.org/projects/wicket/guide/7.x/guide/single.html#monitoring">monitoring chapter</a>.</p>
+<h4 id="jquery-upgrade">jQuery upgrade</h4>
+<p>Wicket ships standard with it’s own jQuery. With this release jQuery was upgraded to 1.12.3/2.2.3.</p>
+        <a href="/news/2016/05/05/wicket-7.3.0-released.html">Read more...</a> 
+    </article>
+    <article>
+        <h2>Apache Wicket 6.23.0 released</h2>
+        <small>05 May 2016</small>
+        <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.23.0!</p>
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+<p>This release marks another minor release of Wicket 6. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+6.0.0.</p>
+<h2 id="new-and-noteworthy">New and noteworthy</h2>
+<h4 id="jquery-upgrade">jQuery upgrade</h4>
+<p>Wicket ships standard with it’s own jQuery. With this release jQuery was upgraded to 1.12.3/2.2.3.</p>
+        <a href="/news/2016/05/05/wicket-6.23.0-released.html">Read more...</a> 
     </article>
 </div>
 <div class="l-one-third news">
@@ -275,6 +272,18 @@ articles concerning release, security and community updates.</p>
 title="Atom 1.0 feed" href="/atom.xml">RSS feed</a> to
 get updates in your favorite RSS reader the moment they happen.</p>
 <ul>
+<li>
+    <h3>Apache Wicket 6.23.0 released</h3>
+    <small>05 May 2016</small>
+    The Apache Wicket PMC is proud to announce Apache Wicket 6.23.0! Apache Wicket is an open source Java component oriented web application framework that powers...
+    <a href="/news/2016/05/05/wicket-6.23.0-released.html">more</a>
+</li>
+<li>
+    <h3>CVE-2015-7520 Apache Wicket XSS vulnerability</h3>
+    <small>02 Mar 2016</small>
+    Severity: Important Vendor: The Apache Software Foundation Versions Affected: Apache Wicket 1.5.x, 6.x and 7.x Description: It is possible for JavaScript statements to break out...
+    <a href="/news/2016/03/02/cve-2015-7520.html">more</a>
+</li>
 <li>
     <h3>CVE-2015-5347 Apache Wicket XSS vulnerability</h3>
     <small>01 Mar 2016</small>
@@ -292,18 +301,6 @@ get updates in your favorite RSS reader the moment they happen.</p>
     <small>19 Feb 2016</small>
     This is the fifteenth maintenance release of the Wicket 1.5.x series. This release brings over 2 bug fixes. CHANGELOG for 1.5.15: Bug [WICKET-6037] - ModalWindow...
     <a href="/news/2016/02/19/wicket-1.5.15-released.html">more</a>
-</li>
-<li>
-    <h3>Apache Wicket 7.2.0 released</h3>
-    <small>20 Jan 2016</small>
-    The Apache Wicket PMC is proud to announce Apache Wicket 7.2.0! This release marks another minor release of Wicket 7. We use semantic versioning for...
-    <a href="/news/2016/01/20/wicket-7.2.0-released.html">more</a>
-</li>
-<li>
-    <h3>Apache Wicket 6.21.0 released</h3>
-    <small>16 Nov 2015</small>
-    The Apache Wicket PMC is proud to announce Apache Wicket 6.21.0! This release marks another minor release of Wicket 6. We use semantic versioning for...
-    <a href="/news/2015/11/16/wicket-6.21.0-released.html">more</a>
 </li>
 </ul>
 </div>
