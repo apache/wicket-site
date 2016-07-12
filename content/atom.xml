@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2016-05-07T14:03:56+02:00</updated>
+    <updated>2016-07-12T21:31:15+02:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -520,11 +520,11 @@ client.&lt;/p&gt;
 &lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 
-&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
-    &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
-    &lt;version&gt;7.2.0&lt;/version&gt;
-&lt;/dependency&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;7.2.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Or download and build the distribution yourself, or use our
 convenience binary package&lt;/p&gt;
@@ -830,11 +830,11 @@ a couple of component queuing issues.&lt;/p&gt;
 &lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 
-&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
-    &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
-    &lt;version&gt;7.1.0&lt;/version&gt;
-&lt;/dependency&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;7.1.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Or download and build the distribution yourself, or use our
 convenience binary package&lt;/p&gt;

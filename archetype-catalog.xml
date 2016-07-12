@@ -1,0 +1,16 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8" ?>
+<archetype-catalog>
+	<archetypes>
+{% for version in site.wicket.versions reversed %}
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>{{version}}</version>
+			<description>Wicket {{version}} Quickstart</description>
+		</archetype>
+{% endfor %}
+	</archetypes>
+</archetype-catalog>

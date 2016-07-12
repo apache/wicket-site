@@ -125,7 +125,7 @@ look at the example at hand. Let’s first create the base page.</p>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.link.BookmarkablePageLink</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BasePage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="n">BasePage</span><span class="o">()</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="nf">BasePage</span><span class="o">()</span> <span class="o">{</span>
 		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BookmarkablePageLink</span><span class="o">(</span><span class="s">"page1"</span><span class="o">,</span> <span class="n">Page1</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
 		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BookmarkablePageLink</span><span class="o">(</span><span class="s">"page2"</span><span class="o">,</span> <span class="n">Page2</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
 		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"footer"</span><span class="o">,</span> <span class="s">"This is in the footer"</span><span class="o">));</span>
@@ -166,7 +166,7 @@ markup file and Java class. Let’s first implement <code class="highlighter-rou
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Page1</span> <span class="kd">extends</span> <span class="n">BasePage</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="n">Page1</span><span class="o">()</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="nf">Page1</span><span class="o">()</span> <span class="o">{</span>
 		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"label1"</span><span class="o">,</span> <span class="s">"This is in the subclass Page1"</span><span class="o">));</span>
 	<span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
@@ -190,7 +190,7 @@ Wicket will not be able to render the component in the final page.</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">quickstart</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Page2</span> <span class="kd">extends</span> <span class="n">BasePage</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="n">Page2</span><span class="o">()</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="nf">Page2</span><span class="o">()</span> <span class="o">{</span>
 		<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"label2"</span><span class="o">,</span> <span class="s">"This is in the subclass Page2"</span><span class="o">));</span>
 	<span class="o">}</span>
 <span class="o">}</span></code></pre></figure>

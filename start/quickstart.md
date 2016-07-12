@@ -107,7 +107,7 @@ command line to your clipboard.
 </div>
   <div>
     <label id="cmdLabel" for="cmdLine">generated command line</label>
-    <textarea onfocus="this.select();" id="cmdLine"></textarea>
+    <textarea onfocus="this.select();" id="cmdLine" style="resize: vertical;"></textarea>
     <script>changeIt();</script>
   </div>
   <div>
@@ -121,6 +121,12 @@ window (or DOS box) and navigate to where you want the project to be
 generated (e.g. for Eclipse users this would be your workspace folder).
 Paste the command line into your terminal window and press «enter» to
 execute the command.
+
+You can create your quickstart interactively too with the following Maven command:
+
+```shell
+    mvn archetype:generate -DarchetypeCatalog=http://wicket.apache.org
+```
 
 #### Result of the Maven command
 

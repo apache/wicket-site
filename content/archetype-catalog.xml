@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<archetype-catalog>
+	<archetypes>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>7.4.0-SNAPSHOT</version>
+			<description>Wicket 7.4.0-SNAPSHOT Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>6.24.0-SNAPSHOT</version>
+			<description>Wicket 6.24.0-SNAPSHOT Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>1.5-SNAPSHOT</version>
+			<description>Wicket 1.5-SNAPSHOT Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>7.3.0</version>
+			<description>Wicket 7.3.0 Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>1.4.23</version>
+			<description>Wicket 1.4.23 Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>1.5.15</version>
+			<description>Wicket 1.5.15 Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>6.23.0</version>
+			<description>Wicket 6.23.0 Quickstart</description>
+		</archetype>
+
+	</archetypes>
+</archetype-catalog>
