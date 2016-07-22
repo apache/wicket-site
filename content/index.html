@@ -47,7 +47,7 @@
         <a class="button" href="/start/quickstart.html">Get started</a>
 		<a class="button" href="http://examples7x.wicket.apache.org/index.html">Live Examples</a>
 		<br>
-		<small class="jumbotron-version">Current release: 7.3.0</small>
+		<small class="jumbotron-version">Current release: 7.4.0</small>
     </div>
     <div class="l-first">&nbsp;</div>
 </div>
@@ -225,9 +225,9 @@
 </div>
 <div class="l-two-third">
     <article>
-        <h2>Apache Wicket 7.3.0 released</h2>
-        <small>05 May 2016</small>
-        <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.3.0!</p>
+        <h2>Apache Wicket 7.4.0 released</h2>
+        <small>21 Jul 2016</small>
+        <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.4.0!</p>
 <p>Apache Wicket is an open source Java component oriented web application
 framework that powers thousands of web applications and web sites for
 governments, stores, universities, cities, banks, email providers, and
@@ -237,19 +237,108 @@ use semantic versioning for the development of Wicket, and as such no
 API breaks are present breaks are present in this release compared to
 7.0.0.</p>
 <h2 id="new-and-noteworthy">New and noteworthy</h2>
-<h4 id="wicket-metrics-added">Wicket Metrics added</h4>
-<p>A new experimental module for integrating with <a href="http://metrics.dropwizard.io/">DropWizard’s Metrics</a> project was created. 
-Metrics provides a powerful toolkit of ways to measure the behavior of critical components in your production environment. 
-Using the Metrics integration requires the use of AspectJ (which is licensed under the Eclipse Public License 1.0)</p>
-<p>You can read more about using the Metrics integration in our user guide’s <a href="https://ci.apache.org/projects/wicket/guide/7.x/guide/single.html#monitoring">monitoring chapter</a>.</p>
-<h4 id="jquery-upgrade">jQuery upgrade</h4>
-<p>Wicket ships standard with it’s own jQuery. With this release jQuery was upgraded to 1.12.3/2.2.3.</p>
-        <a href="/news/2016/05/05/wicket-7.3.0-released.html">Read more...</a> 
+<ul>
+  <li>
+    <p>improves stateless AJAX support by integrating the Wicket Stuff
+wicket-stateless module (WICKET-6183)</p>
+  </li>
+  <li>
+    <p>improves compatibility for playing videos on iOS devices due to missing
+media type in MediaComponent</p>
+  </li>
+  <li>
+    <p>upgrades provided JQuery to 1.12.4 and 2.2.4</p>
+  </li>
+  <li>
+    <p>improves compatibility with CGLIB when using wicket-jmx</p>
+  </li>
+</ul>
+<h2 id="using-this-release">Using this release</h2>
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>7.4.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.4.0">http://www.apache.org/dyn/closer.cgi/wicket/7.4.0</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.4.0/binaries">http://www.apache.org/dyn/closer.cgi/wicket/7.4.0/binaries</a></li>
+</ul>
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+<p>If you upgrade from 7.y.z this release is a drop in replacement. If
+you come from a version prior to 7.0.0, please read our Wicket 7
+migration guide found at</p>
+<ul>
+  <li><a href="http://s.apache.org/wicket7migrate">http://s.apache.org/wicket7migrate</a></li>
+</ul>
+<p>Have fun!</p>
+<p>— The Wicket team</p>
+<p>========================================================================</p>
+<p>The signatures for the source release artefacts:</p>
+<p>Signature for apache-wicket-7.4.0.zip:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+iEYEABECAAYFAleLztAACgkQJBX8W/xy/UU1tACgnetUeJcjAGegJJ175UMjq2z3
+QJAAnjLmcDjcUKGOd/hfBvdvXfo2RL2d
+=sPs0
+-----END PGP SIGNATURE-----
+</code></pre>
+</div>
+<p>Signature for apache-wicket-7.4.0.tar.gz:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+iEYEABECAAYFAleLzs8ACgkQJBX8W/xy/UVNogCgvokjiIH8p/tH3FO27qW0uHfY
+pS8AoINM8PFic38Lbf55tNmeegzROZYx
+=iTAS
+-----END PGP SIGNATURE-----
+</code></pre>
+</div>
+<p>========================================================================</p>
+<h3 id="this-release">This Release</h3>
+<h4 id="changelog-for-740">CHANGELOG for 7.4.0:</h4>
+<h5 id="bug">Bug</h5>
+<ul>
+  <li>[WICKET-6154] - Performance bottleneck when using KeyInSessionSunJceCryptFactory</li>
+  <li>[WICKET-6155] - Newline in ModalWindow title</li>
+  <li>[WICKET-6157] - WicketTester and application servers are destroying app differently</li>
+  <li>[WICKET-6160] - Missing type for MediaComponent causing iOS devices not to be able to play videos</li>
+  <li>[WICKET-6162] - Reload leads to unexpected RuntimeException ‘Unable to find component with id’</li>
+  <li>[WICKET-6169] - NullPointerException accessing AbstractRequestLogger.getLiveSessions</li>
+  <li>[WICKET-6170] - Wrong requestmapper used for cache decorated resources</li>
+  <li>[WICKET-6172] - Inconsistent results from getTag[s]ByWicketId</li>
+  <li>[WICKET-6173] - WICKET-6172 makes TagTester.createTagsByAttribute stop working</li>
+  <li>[WICKET-6174] - Browser/Client info navigatorJavaEnabled property returns undefined</li>
+  <li>[WICKET-6175] - Aautocomplete suggestion window is not closing in IE11</li>
+  <li>[WICKET-6180] - JMX Initializer’s usage of CGLIB makes it impossible to upgrade to CGLIB 3.2.3</li>
+  <li>[WICKET-6185] - Border body not reachable for visitors</li>
+  <li>[WICKET-6187] - Enclosures rendered twice in derived component</li>
+  <li>[WICKET-6191] - AjaxTimerBehavior will stop after ajax update of component it is attached to</li>
+  <li>[WICKET-6196] - CheckingObjectOutputStream broken in Wicket 7</li>
+  <li>[WICKET-6198] - Unable to disable a MultiFileUploadField</li>
+  <li>[WICKET-6202] - Guide: 26.1 Page storing, section HttpSessionDataStore - example code is not correct</li>
+  <li>[WICKET-6204] - Copy only the provided attributes for Ajax link inclusion</li>
+</ul>
+<h5 id="improvement">Improvement</h5>
+<ul>
+  <li>[WICKET-6153] - WicketTester’s MockHttpServletRequest doesn’t expose setLocale(aLocale) method</li>
+  <li>[WICKET-6178] - MetaDataHeaderItem # generateString() should return specials characters escaped like StringEscapeUtils.escapeHtml(s) does</li>
+  <li>[WICKET-6182] - Remove recreateBookmarkablePagesAfterExpiry check in Component#createRequestHandler</li>
+  <li>[WICKET-6183] - Improve stateless support for AJAX</li>
+  <li>[WICKET-6186] - Upgrade JQuery to 1.12.4/2.2.4</li>
+</ul>
+<h5 id="new-feature">New Feature</h5>
+<ul>
+  <li>[WICKET-6193] - NestedStringResourceLoader - replaces nested keys within property files</li>
+</ul>
+        <a href="/news/2016/07/21/wicket-7.4.0-released.html">Read more...</a> 
     </article>
     <article>
-        <h2>Apache Wicket 6.23.0 released</h2>
-        <small>05 May 2016</small>
-        <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.23.0!</p>
+        <h2>Apache Wicket 6.24.0 released</h2>
+        <small>21 Jul 2016</small>
+        <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.24.0!</p>
 <p>Apache Wicket is an open source Java component oriented web application
 framework that powers thousands of web applications and web sites for
 governments, stores, universities, cities, banks, email providers, and
@@ -259,9 +348,79 @@ use semantic versioning for the development of Wicket, and as such no
 API breaks are present breaks are present in this release compared to
 6.0.0.</p>
 <h2 id="new-and-noteworthy">New and noteworthy</h2>
-<h4 id="jquery-upgrade">jQuery upgrade</h4>
-<p>Wicket ships standard with it’s own jQuery. With this release jQuery was upgraded to 1.12.3/2.2.3.</p>
-        <a href="/news/2016/05/05/wicket-6.23.0-released.html">Read more...</a> 
+<ul>
+  <li>
+    <p>upgrades JQuery dependency to 1.12.4 and 2.2.4</p>
+  </li>
+  <li>
+    <p>increases performance when using KeyInSessionSunJceCryptFactory</p>
+  </li>
+</ul>
+<h2 id="using-this-release">Using this release</h2>
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>6.24.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.24.0">http://www.apache.org/dyn/closer.cgi/wicket/6.24.0</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.24.0/binaries">http://www.apache.org/dyn/closer.cgi/wicket/6.24.0/binaries</a></li>
+</ul>
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+<p>If you upgrade from 6.y.z this release is a drop in replacement. If
+you come from a version prior to 6.0.0, please read our Wicket 6
+migration guide found at</p>
+<ul>
+  <li><a href="http://s.apache.org/wicket6migration">http://s.apache.org/wicket6migration</a></li>
+</ul>
+<p>Have fun!</p>
+<p>— The Wicket team</p>
+<p>========================================================================</p>
+<p>The signatures for the source release artefacts:</p>
+<p>Signature for apache-wicket-6.24.0.zip:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+iEYEABECAAYFAleLyQ4ACgkQJBX8W/xy/UU+KgCg1k+wBV51fa1YXIZWkObNA3WS
+JDcAn3nrxumEXqau3kMoFd3Nb2FpOHjz
+=OALQ
+-----END PGP SIGNATURE-----
+</code></pre>
+</div>
+<p>Signature for apache-wicket-6.24.0.tar.gz:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+iEYEABECAAYFAleLyQ4ACgkQJBX8W/xy/UXYFwCeP13OmmFBJqljbW5CKYwUbFSY
+QxEAnif6bikYEgoeNv7eBeUsoutC8Hp8
+=lDjk
+-----END PGP SIGNATURE-----
+</code></pre>
+</div>
+<p>========================================================================</p>
+<h3 id="this-release">This Release</h3>
+<h4 id="changelog-for-6240">CHANGELOG for 6.24.0:</h4>
+<h5 id="bug">Bug</h5>
+<ul>
+  <li>[WICKET-6154] - Performance bottleneck when using KeyInSessionSunJceCryptFactory</li>
+  <li>[WICKET-6169] - NullPointerException accessing AbstractRequestLogger.getLiveSessions</li>
+  <li>[WICKET-6172] - Inconsistent results from getTag[s]ByWicketId</li>
+  <li>[WICKET-6174] - Browser/Client info navigatorJavaEnabled property returns undefined</li>
+  <li>[WICKET-6175] - Aautocomplete suggestion window is not closing in IE11</li>
+  <li>[WICKET-6181] - Revert the removal of the default error message when uploading too big files</li>
+  <li>[WICKET-6191] - AjaxTimerBehavior will stop after ajax update of component it is attached to</li>
+  <li>[WICKET-6202] - Guide: 26.1 Page storing, section HttpSessionDataStore - example code is not correct</li>
+  <li>[WICKET-6204] - Copy only the provided attributes for Ajax link inclusion</li>
+</ul>
+<h5 id="improvement">Improvement</h5>
+<ul>
+  <li>[WICKET-6053] - Allow to reuse the same application instance in several tests</li>
+  <li>[WICKET-6178] - MetaDataHeaderItem # generateString() should return specials characters escaped like StringEscapeUtils.escapeHtml(s) does</li>
+  <li>[WICKET-6186] - Upgrade JQuery to 1.12.4/2.2.4</li>
+</ul>
+        <a href="/news/2016/07/21/wicket-6.24.0-released.html">Read more...</a> 
     </article>
 </div>
 <div class="l-one-third news">
@@ -272,6 +431,18 @@ articles concerning release, security and community updates.</p>
 title="Atom 1.0 feed" href="/atom.xml">RSS feed</a> to
 get updates in your favorite RSS reader the moment they happen.</p>
 <ul>
+<li>
+    <h3>Apache Wicket 6.24.0 released</h3>
+    <small>21 Jul 2016</small>
+    The Apache Wicket PMC is proud to announce Apache Wicket 6.24.0! Apache Wicket is an open source Java component oriented web application framework that powers...
+    <a href="/news/2016/07/21/wicket-6.24.0-released.html">more</a>
+</li>
+<li>
+    <h3>Apache Wicket 7.3.0 released</h3>
+    <small>05 May 2016</small>
+    The Apache Wicket PMC is proud to announce Apache Wicket 7.3.0! Apache Wicket is an open source Java component oriented web application framework that powers...
+    <a href="/news/2016/05/05/wicket-7.3.0-released.html">more</a>
+</li>
 <li>
     <h3>Apache Wicket 6.23.0 released</h3>
     <small>05 May 2016</small>
@@ -289,18 +460,6 @@ get updates in your favorite RSS reader the moment they happen.</p>
     <small>01 Mar 2016</small>
     Severity: Important Vendor: The Apache Software Foundation Versions Affected: Apache Wicket 1.5.x, 6.x and 7.x Description: It is possible for JavaScript statements to break out...
     <a href="/news/2016/03/01/cve-2015-5347.html">more</a>
-</li>
-<li>
-    <h3>Apache Wicket 6.22.0 released</h3>
-    <small>19 Feb 2016</small>
-    The Apache Wicket PMC is proud to announce Apache Wicket 6.22.0! This release marks another minor release of Wicket 6. We use semantic versioning for...
-    <a href="/news/2016/02/19/wicket-6.22.0-released.html">more</a>
-</li>
-<li>
-    <h3>Wicket 1.5.15 released</h3>
-    <small>19 Feb 2016</small>
-    This is the fifteenth maintenance release of the Wicket 1.5.x series. This release brings over 2 bug fixes. CHANGELOG for 1.5.15: Bug [WICKET-6037] - ModalWindow...
-    <a href="/news/2016/02/19/wicket-1.5.15-released.html">more</a>
 </li>
 </ul>
 </div>
