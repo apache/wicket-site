@@ -40,8 +40,8 @@
 		<archetype>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-archetype-quickstart</artifactId>
-			<version>1.5.15</version>
-			<description>Wicket 1.5.15 Quickstart</description>
+			<version>1.5.16</version>
+			<description>Wicket 1.5.16 Quickstart</description>
 		</archetype>
 
 		<archetype>
