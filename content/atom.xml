@@ -12,6 +12,296 @@
  
 
     <entry>
+        <title>Apache Wicket 8.0.0-M1 released</title>
+        <link href="http://wicket.apache.org/news/2016/07/25/wicket-8.0.0-M1-released.html"/>
+        <updated>2016-07-25T00:00:00+02:00</updated>
+        <id>http://wicket.apache.org/news/2016/07/25/wicket-8.0.0-M1-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M1!&lt;/p&gt;
+
+&lt;p&gt;Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
+
+&lt;p&gt;This release marks the first milestone of the major release of Wicket 8. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+8.0.0.&lt;/p&gt;
+
+&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Beside a lot of changes which were implemented in Apache Wicket 7, the new
+milestone of the major version of Apache Wicket 8 provides some 
+great features.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Lambda support for Models and Components (See “Lambda Expressions” chapter in the user guide)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;NestedStringResourceLoader to replace nested keys within property files&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A lot of bugfixes and improvements&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Features which were almost ready and will be available with 8.0.0-M2&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;PushBuilder API integration [WICKET-6194] 
+(See “Wicket HTTP/2 Support (Experimental)” chapter in the user guide)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Features which were set to “won’t fix”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Microservices support (decoupled component usage) [WICKET-6112]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
+
+&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;8.0.0-M1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or download and build the distribution yourself, or use our
+convenience binary package&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1/binaries&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1/binaries&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
+
+&lt;p&gt;If you upgrade from 8.y.z this release is a drop in replacement. If
+you come from a version prior to 8.0.0, please read our Wicket 7
+migration guide found at&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://s.apache.org/wicket8migration&quot;&gt;http://s.apache.org/wicket8migration&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Have fun!&lt;/p&gt;
+
+&lt;p&gt;— The Wicket team&lt;/p&gt;
+
+&lt;p&gt;================================&lt;/p&gt;
+
+&lt;p&gt;The signatures for the source release artefacts:&lt;/p&gt;
+
+&lt;p&gt;Signature for apache-wicket-8.0.0-M1.zip:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+
+iEYEABECAAYFAld5Gc8ACgkQJBX8W/xy/UV/wwCfa+/9cOB0KEOHB6vT41/ISIP/
+udAAoNM46vtM+T2RYU5uSV08fWjzUjiV
+=4pKN
+-----END PGP SIGNATURE-----
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Signature for apache-wicket-8.0.0-M1.tar.gz:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+
+iEYEABECAAYFAld5Gc8ACgkQJBX8W/xy/UX5ngCgvckuOYDq+x6yVgTdDrhGskEz
+cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
+=9v6u
+-----END PGP SIGNATURE-----
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;================================&lt;/p&gt;
+
+&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
+
+&lt;h4 id=&quot;changelog-for-800-m1&quot;&gt;CHANGELOG for 8.0.0-M1:&lt;/h4&gt;
+
+&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-5836] - Update the version of clirr-maven-plugin (current 2.6.1)&lt;/li&gt;
+  &lt;li&gt;[WICKET-5993] - AjaxButton - image is not shown even though type=”image” is in html-template&lt;/li&gt;
+  &lt;li&gt;[WICKET-5994] - Mounted TemplateResourceReference throws org.apache.wicket.WicketRuntimeException when https is used&lt;/li&gt;
+  &lt;li&gt;[WICKET-5995] - “Range” header parsing is broken&lt;/li&gt;
+  &lt;li&gt;[WICKET-5996] - Mounted packages throw IllegalArgumentException when visiting base package url.&lt;/li&gt;
+  &lt;li&gt;[WICKET-5997] - Compatibility problem with Websphere liberty profile&lt;/li&gt;
+  &lt;li&gt;[WICKET-5999] - AjaxFormValidatingBehavior not updates initially hidden feedback component&lt;/li&gt;
+  &lt;li&gt;[WICKET-6001] - Exception raised while refreshing a page with queued components missing in the markup&lt;/li&gt;
+  &lt;li&gt;[WICKET-6002] - FileUploadField makes form-component models become null on submit&lt;/li&gt;
+  &lt;li&gt;[WICKET-6005] - WicketRuntimeException from AjaxPagingNavigator#onAjaxEvent&lt;/li&gt;
+  &lt;li&gt;[WICKET-6006] - ModalWindow.closeCurrent() causes 414 status error&lt;/li&gt;
+  &lt;li&gt;[WICKET-6007] - PageableListView constructor argument and set/getItemsPerPage are inconsistent&lt;/li&gt;
+  &lt;li&gt;[WICKET-6010] - Downloading filenames containing ‘,’ or ‘;’ gives problems&lt;/li&gt;
+  &lt;li&gt;[WICKET-6011] - NPE in case DebugBar is added to AjaxRequestTarget&lt;/li&gt;
+  &lt;li&gt;[WICKET-6013] - CLONE AjaxFallbackOrderByBorder wicketOrder[Up,Down,None] class missing in 7.1.0&lt;/li&gt;
+  &lt;li&gt;[WICKET-6014] - TransparentWebMarkupContainer breaks OnChangeAjaxBehavior for Select2&lt;/li&gt;
+  &lt;li&gt;[WICKET-6017] - Tests fail when executed with not expected locale&lt;/li&gt;
+  &lt;li&gt;[WICKET-6018] - TransparentWebMarkupContainer is not really “transparent”&lt;/li&gt;
+  &lt;li&gt;[WICKET-6020] - GuiceFieldValueFactory returns the NULL_SENTINEL from the cache&lt;/li&gt;
+  &lt;li&gt;[WICKET-6021] - ConcurrentModificationException in MarkupContainer#iterator#next&lt;/li&gt;
+  &lt;li&gt;[WICKET-6024] - Possible issue with Border and LoadableDetachableModel in 7.1.0&lt;/li&gt;
+  &lt;li&gt;[WICKET-6026] - Problem in detecting child id on nested &lt;wicket:enclosure&gt;&lt;/wicket:enclosure&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-6027] - Nested TransparentWebMarkupContainer, markup of inner component not found&lt;/li&gt;
+  &lt;li&gt;[WICKET-6028] - Detach called on enclosure component while it had a non-empty queue&lt;/li&gt;
+  &lt;li&gt;[WICKET-6031] - NPE in PackageResourceReference#getResource() when there is no request&lt;/li&gt;
+  &lt;li&gt;[WICKET-6032] - Wicket.Ajax.done() called twice on redirect&lt;/li&gt;
+  &lt;li&gt;[WICKET-6036] - Failure to process markup with nested tags inside a Label&lt;/li&gt;
+  &lt;li&gt;[WICKET-6037] - ModalWindow vulnerable to Javascript injection through title model&lt;/li&gt;
+  &lt;li&gt;[WICKET-6041] - Nested forms / parent FormComponents do not reflect updated model when nested form submitted&lt;/li&gt;
+  &lt;li&gt;[WICKET-6043] - Cannot set wicket:enclosure on queued component in ListView&lt;/li&gt;
+  &lt;li&gt;[WICKET-6044] - AjaxFormChoiceComponentUpdatingBehavior: Duplicate input values according to WICKET-5948&lt;/li&gt;
+  &lt;li&gt;[WICKET-6045] - ListView NullPointerException when viewSize is set explicitly&lt;/li&gt;
+  &lt;li&gt;[WICKET-6048] - German Translation for EqualInputValidator wrong&lt;/li&gt;
+  &lt;li&gt;[WICKET-6050] - Wicket Ajax (Wicket.From.serializeElement) causes 400 bad request&lt;/li&gt;
+  &lt;li&gt;[WICKET-6052] - CSS header contribution overlap&lt;/li&gt;
+  &lt;li&gt;[WICKET-6058] - Error in calculation of byte ranges&lt;/li&gt;
+  &lt;li&gt;[WICKET-6059] - TransparentWebMarkupContainer can not resolve autocomponents in its parent&lt;/li&gt;
+  &lt;li&gt;[WICKET-6062] - MockHttpSession should renew its id after invalidation&lt;/li&gt;
+  &lt;li&gt;[WICKET-6063] - Add support for WebSocketRequest#getUrl() and other properties which are available in the handshake request&lt;/li&gt;
+  &lt;li&gt;[WICKET-6064] - WebSocketResponse.sendRedirect could be supported with &lt;ajax-response&gt;&lt;redirect&gt;...&amp;lt;/&amp;gt;&amp;lt;/&amp;gt;&lt;/redirect&gt;&lt;/ajax-response&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-6065] - Calling http://examples7x.wicket.apache.org/resourceaggregation/ generate Internal error&lt;/li&gt;
+  &lt;li&gt;[WICKET-6068] - The key RangeValidator.exact is not mapped in Application_de.properties&lt;/li&gt;
+  &lt;li&gt;[WICKET-6069] - OnChangeAjaxBehavior does not work if the url contains a request parameter with same name as wicket id&lt;/li&gt;
+  &lt;li&gt;[WICKET-6076] - Problem with queued components and enclosure&lt;/li&gt;
+  &lt;li&gt;[WICKET-6078] - Problem with queued components and auto linking&lt;/li&gt;
+  &lt;li&gt;[WICKET-6079] - Problem with queued components and label&lt;/li&gt;
+  &lt;li&gt;[WICKET-6080] - Encapsulation of 3 enclosures leads to WicketRuntimeException&lt;/li&gt;
+  &lt;li&gt;[WICKET-6084] - ajax request failure handler receives incorrect arguments&lt;/li&gt;
+  &lt;li&gt;[WICKET-6085] - AjaxTimerBehavior with failure handler cause memory leak in browser&lt;/li&gt;
+  &lt;li&gt;[WICKET-6087] - Invalid AbstractRequestWrapperFactory.needsWrapper method scope: package - cannot create a custom implementation&lt;/li&gt;
+  &lt;li&gt;[WICKET-6088] - Problem with queued components and setting the model&lt;/li&gt;
+  &lt;li&gt;[WICKET-6091] - NPE in RequestLoggerRequestCycleListener when using native-websockets&lt;/li&gt;
+  &lt;li&gt;[WICKET-6094] - Find adequate ResourceReference with mount parameters&lt;/li&gt;
+  &lt;li&gt;[WICKET-6097] - JsonRequestLogger –&amp;gt; JsonMappingException –&amp;gt; StackOverflowError Infinite recursion&lt;/li&gt;
+  &lt;li&gt;[WICKET-6102] - StackoverflowError related to enclosures&lt;/li&gt;
+  &lt;li&gt;[WICKET-6108] - Closing a ModalWindow with jQuery 2.2.0 produces javascript errors&lt;/li&gt;
+  &lt;li&gt;[WICKET-6109] - Enclosure - “IllegalArgumentException: Argument ‘markup’ may not be null” after app restart&lt;/li&gt;
+  &lt;li&gt;[WICKET-6111] - Empty redirect on redirect to home page if home page already shown&lt;/li&gt;
+  &lt;li&gt;[WICKET-6116] - Exception ‘A child already exists’ when backing to a page with some markups in a Border&lt;/li&gt;
+  &lt;li&gt;[WICKET-6129] - IRequestCycleListener not notified of all executed handlers&lt;/li&gt;
+  &lt;li&gt;[WICKET-6131] - IndexOutOfBoundsException in org.apache.wicket.core. request.mapper.CryptoMapper.decryptEntireUrl&lt;/li&gt;
+  &lt;li&gt;[WICKET-6133] - Failing test SpringBeanWithGenericsTest in 7.3.0.0 SNAPSHOT&lt;/li&gt;
+  &lt;li&gt;[WICKET-6134] - NPE when using ListView with missing markup&lt;/li&gt;
+  &lt;li&gt;[WICKET-6135] - There is no good way to get POST body content&lt;/li&gt;
+  &lt;li&gt;[WICKET-6139] - AjaxButton forces rendering type=”button”&lt;/li&gt;
+  &lt;li&gt;[WICKET-6141] - Runtime Exception rendering ComponentTag with RelativePathPrefixHandler&lt;/li&gt;
+  &lt;li&gt;[WICKET-6151] - DebugBar/PageSizeDebugPanel throws NullPointerException (need wrapper exception with more detail)&lt;/li&gt;
+  &lt;li&gt;[WICKET-6154] - Performance bottleneck when using KeyInSessionSunJceCryptFactory&lt;/li&gt;
+  &lt;li&gt;[WICKET-6155] - Newline in ModalWindow title&lt;/li&gt;
+  &lt;li&gt;[WICKET-6157] - WicketTester and application servers are destroying app differently&lt;/li&gt;
+  &lt;li&gt;[WICKET-6160] - Missing type for MediaComponent causing iOS devices not to be able to play videos&lt;/li&gt;
+  &lt;li&gt;[WICKET-6161] - SecuritySettings.setEnforceMounts() should be applicable for all kind of pages&lt;/li&gt;
+  &lt;li&gt;[WICKET-6162] - Reload leads to unexpected RuntimeException ‘Unable to find component with id’&lt;/li&gt;
+  &lt;li&gt;[WICKET-6169] - NullPointerException accessing AbstractRequestLogger.getLiveSessions&lt;/li&gt;
+  &lt;li&gt;[WICKET-6170] - Wrong requestmapper used for cache decorated resources&lt;/li&gt;
+  &lt;li&gt;[WICKET-6171] - Problem with nested dialog with multipart form&lt;/li&gt;
+  &lt;li&gt;[WICKET-6172] - Inconsistent results from getTag[s]ByWicketId&lt;/li&gt;
+  &lt;li&gt;[WICKET-6173] - WICKET-6172 makes TagTester.createTagsByAttribute stop working&lt;/li&gt;
+  &lt;li&gt;[WICKET-6174] - Browser/Client info navigatorJavaEnabled property returns undefined&lt;/li&gt;
+  &lt;li&gt;[WICKET-6175] - Aautocomplete suggestion window is not closing in IE11&lt;/li&gt;
+  &lt;li&gt;[WICKET-6180] - JMX Initializer’s usage of CGLIB makes it impossible to upgrade to CGLIB 3.2.3&lt;/li&gt;
+  &lt;li&gt;[WICKET-6185] - Border body not reachable for visitors&lt;/li&gt;
+  &lt;li&gt;[WICKET-6187] - Enclosures rendered twice in derived component&lt;/li&gt;
+  &lt;li&gt;[WICKET-6191] - AjaxTimerBehavior will stop after ajax update of component it is attached to&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-5866] - Reconsider generics of IConverterLocator#getConverter()&lt;/li&gt;
+  &lt;li&gt;[WICKET-5920] - roll a version of ListDataProvider implementing ISortableDetachable model&lt;/li&gt;
+  &lt;li&gt;[WICKET-5950] - Model and GenericBaseModel could both implement IObjectClassAwareModel&lt;/li&gt;
+  &lt;li&gt;[WICKET-5969] - Please give us access to PageTable.index pageId queue&lt;/li&gt;
+  &lt;li&gt;[WICKET-5986] - NumberTextField&lt;n&gt; should use Models for minimum, maximum and step&lt;/n&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-6015] - AjaxFallbackOrderByBorder/Link should support updateAjaxAttributes() idiom&lt;/li&gt;
+  &lt;li&gt;[WICKET-6019] - Remove ‘final’ modifier for Localizer#getStringIgnoreSettings() methods&lt;/li&gt;
+  &lt;li&gt;[WICKET-6023] - small tweak for component queuing for the AbstractRepeater&lt;/li&gt;
+  &lt;li&gt;[WICKET-6029] - Make Border’s methods consistent with commit f14e03f&lt;/li&gt;
+  &lt;li&gt;[WICKET-6046] - Wicket Quickstart Example Application shows deployment memory leak in Tomcat&lt;/li&gt;
+  &lt;li&gt;[WICKET-6051] - Improve performance of CssUrlReplacer&lt;/li&gt;
+  &lt;li&gt;[WICKET-6053] - Allow to reuse the same application instance in several tests&lt;/li&gt;
+  &lt;li&gt;[WICKET-6054] - Provide a factory method for the WebSocketResponse &amp;amp; WebSocketRequest&lt;/li&gt;
+  &lt;li&gt;[WICKET-6060] - Deprecate org.apache.wicket.util.IProvider&lt;/li&gt;
+  &lt;li&gt;[WICKET-6061] - Improved PackageResource#getCacheKey&lt;/li&gt;
+  &lt;li&gt;[WICKET-6070] - Provide factory methods for WizardButtonBar buttons&lt;/li&gt;
+  &lt;li&gt;[WICKET-6072] - Improve the quickstart to make it easier to use JSR-356 web sockets&lt;/li&gt;
+  &lt;li&gt;[WICKET-6081] - Add “assertNotRequired” to the WicketTester&lt;/li&gt;
+  &lt;li&gt;[WICKET-6098] - Add logging to HttpSessionDataStore&lt;/li&gt;
+  &lt;li&gt;[WICKET-6100] - Upgrade jQuery to 1.12.3/2.2.3&lt;/li&gt;
+  &lt;li&gt;[WICKET-6103] - Synchronization on JSR 356 connection&lt;/li&gt;
+  &lt;li&gt;[WICKET-6104] - Rework AjaxFallback** components to use java.util.Optional for their #onEvent methods&lt;/li&gt;
+  &lt;li&gt;[WICKET-6106] - Propagate JSR 356 WebSocket connection error to a page&lt;/li&gt;
+  &lt;li&gt;[WICKET-6107] - Broadcast onClose event regardless of the JSR 356 WebSocket connection closed state&lt;/li&gt;
+  &lt;li&gt;[WICKET-6110] - Add a message to StalePageException for better debugging&lt;/li&gt;
+  &lt;li&gt;[WICKET-6113] - Improve ResourceStreamResource API by passing Attributes to #getResourceStream()&lt;/li&gt;
+  &lt;li&gt;[WICKET-6114] - FormComponentPanel#clearInput() should delegate to its FormComponent children&lt;/li&gt;
+  &lt;li&gt;[WICKET-6115] - Provide default implementation of IDetachable#detach() in IModel&lt;/li&gt;
+  &lt;li&gt;[WICKET-6117] - Make IGenericComponent a mixin/trait so it could be easily reused in custom components&lt;/li&gt;
+  &lt;li&gt;[WICKET-6118] - Deprecate org.apache.wicket.util.IContextProvider&lt;/li&gt;
+  &lt;li&gt;[WICKET-6122] - Add .map to the list of allowed file extensions in SecurePackageResourceGuard&lt;/li&gt;
+  &lt;li&gt;[WICKET-6123] - Remove ‘abstract’ from ChainingModel&lt;/li&gt;
+  &lt;li&gt;[WICKET-6127] - Add metrics for request duration&lt;/li&gt;
+  &lt;li&gt;[WICKET-6128] - Add metrics for currently active sessions&lt;/li&gt;
+  &lt;li&gt;[WICKET-6130] - Make it easier to override parts of SystemMapper&lt;/li&gt;
+  &lt;li&gt;[WICKET-6132] - AbstractChoice#getChoices() should be final&lt;/li&gt;
+  &lt;li&gt;[WICKET-6137] - ListenerInterfaceRequestHandler simplification&lt;/li&gt;
+  &lt;li&gt;[WICKET-6140] - Ajax should prevent updating components which are not on page&lt;/li&gt;
+  &lt;li&gt;[WICKET-6144] - Wicket-ajax parameter / header may be used to bypass proper exception handling&lt;/li&gt;
+  &lt;li&gt;[WICKET-6145] - Enable DeltaManager to replicate PageTable in Sessions&lt;/li&gt;
+  &lt;li&gt;[WICKET-6146] - Provide default implementation of IRequestHandler#detach()&lt;/li&gt;
+  &lt;li&gt;[WICKET-6152] - Allow to add more than one WebSocketBehavior in the component tree&lt;/li&gt;
+  &lt;li&gt;[WICKET-6153] - WicketTester’s MockHttpServletRequest doesn’t expose setLocale(aLocale) method&lt;/li&gt;
+  &lt;li&gt;[WICKET-6178] - MetaDataHeaderItem # generateString() should return specials characters escaped like StringEscapeUtils.escapeHtml(s) does&lt;/li&gt;
+  &lt;li&gt;[WICKET-6182] - Remove recreateBookmarkablePagesAfterExpiry check in Component#createRequestHandler&lt;/li&gt;
+  &lt;li&gt;[WICKET-6183] - Improve stateless support for AJAX&lt;/li&gt;
+  &lt;li&gt;[WICKET-6184] - Remove form argument from AjaxButton and AjaxLink callbacks&lt;/li&gt;
+  &lt;li&gt;[WICKET-6188] - Use DynamicJQueryResourceReference by default&lt;/li&gt;
+  &lt;li&gt;[WICKET-6189] - Return Optional&lt;t&gt; from RequestCycle.find(Class&lt;t&gt;)&lt;/t&gt;&lt;/t&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;new-feature&quot;&gt;New Feature&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-5991] - Introduce models which use Java 8 supplier/consumer&lt;/li&gt;
+  &lt;li&gt;[WICKET-6025] - Read resource files with Java’s NIO API&lt;/li&gt;
+  &lt;li&gt;[WICKET-6042] - Implementation of ExternalImage component&lt;/li&gt;
+  &lt;li&gt;[WICKET-6120] - Wicket Metrics&lt;/li&gt;
+  &lt;li&gt;[WICKET-6121] - use lambdas for columns&lt;/li&gt;
+  &lt;li&gt;[WICKET-6193] - NestedStringResourceLoader - replaces nested keys within property files&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;tasks&quot;&gt;Tasks&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-5990] - Upgrade Jetty usage in Wicket tests/quickstart to Jetty 9.3.x&lt;/li&gt;
+  &lt;li&gt;[WICKET-6004] - Wicket 8 cleanup - TODOs and deprecated methods&lt;/li&gt;
+  &lt;li&gt;[WICKET-6057] - Upgrade commons-collections to 4.1&lt;/li&gt;
+  &lt;li&gt;[WICKET-6071] - Upgrade jQuery to 1.12 / 2.2.0&lt;/li&gt;
+  &lt;li&gt;[WICKET-6119] - Deprecate HtmlDocumentValidator&lt;/li&gt;
+  &lt;li&gt;[WICKET-6147] - Remove the support for the deprecated /wicket.properties and /META-INF/wicket/**.properties&lt;/li&gt;
+  &lt;li&gt;[WICKET-6150] - Deprecate org.apache.wicket.util.crypt.Base64 and use java.util.Base64&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;wish&quot;&gt;Wish&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-6067] - Provide an Ajax Behavior that prevents form submit on ENTER&lt;/li&gt;
+  &lt;li&gt;[WICKET-6095] - Multiline headers in DataTable&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </entry>
+
+    <entry>
         <title>Apache Wicket 7.4.0 released</title>
         <link href="http://wicket.apache.org/news/2016/07/21/wicket-7.4.0-released.html"/>
         <updated>2016-07-21T00:00:00+02:00</updated>
@@ -80,7 +370,7 @@ migration guide found at&lt;/p&gt;
 
 &lt;p&gt;— The Wicket team&lt;/p&gt;
 
-&lt;p&gt;========================================================================&lt;/p&gt;
+&lt;p&gt;================================&lt;/p&gt;
 
 &lt;p&gt;The signatures for the source release artefacts:&lt;/p&gt;
 
@@ -108,7 +398,7 @@ pS8AoINM8PFic38Lbf55tNmeegzROZYx
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;========================================================================&lt;/p&gt;
+&lt;p&gt;================================&lt;/p&gt;
 
 &lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
 
@@ -217,7 +507,7 @@ migration guide found at&lt;/p&gt;
 
 &lt;p&gt;— The Wicket team&lt;/p&gt;
 
-&lt;p&gt;========================================================================&lt;/p&gt;
+&lt;p&gt;================================&lt;/p&gt;
 
 &lt;p&gt;The signatures for the source release artefacts:&lt;/p&gt;
 
@@ -245,7 +535,7 @@ QxEAnif6bikYEgoeNv7eBeUsoutC8Hp8
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;========================================================================&lt;/p&gt;
+&lt;p&gt;================================&lt;/p&gt;
 
 &lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
 
@@ -341,7 +631,7 @@ migration guide found at&lt;/p&gt;
 
 &lt;p&gt;— The Wicket team&lt;/p&gt;
 
-&lt;p&gt;========================================================================&lt;/p&gt;
+&lt;p&gt;================================&lt;/p&gt;
 
 &lt;p&gt;The signatures for the source release artefacts:&lt;/p&gt;
 
@@ -369,7 +659,7 @@ ZJcAnREA/PnxMckF2HWqgeunp+siydFJ
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;========================================================================&lt;/p&gt;
+&lt;p&gt;================================&lt;/p&gt;
 
 &lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
 
@@ -497,7 +787,7 @@ migration guide found at&lt;/p&gt;
 
 &lt;p&gt;— The Wicket team&lt;/p&gt;
 
-&lt;p&gt;========================================================================&lt;/p&gt;
+&lt;p&gt;================================&lt;/p&gt;
 
 &lt;p&gt;The signatures for the source release artefacts:&lt;/p&gt;
 
@@ -525,7 +815,7 @@ fPwAn2meYov9oWZ8C1rG4MG2Sc8LfvHa
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;========================================================================&lt;/p&gt;
+&lt;p&gt;================================&lt;/p&gt;
 
 &lt;h3 id=&quot;changelog-for-6230&quot;&gt;CHANGELOG for 6.23.0&lt;/h3&gt;
 
@@ -534,7 +824,7 @@ fPwAn2meYov9oWZ8C1rG4MG2Sc8LfvHa
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6108&quot;&gt;WICKET-6108&lt;/a&gt; - Closing a ModalWindow with jQuery 2.2.0 produces javascript errors&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6111&quot;&gt;WICKET-6111&lt;/a&gt; - Empty redirect on redirect to home page if home page already shown&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6131&quot;&gt;WICKET-6131&lt;/a&gt; - IndexOutOfBoundsException in org.apache.wicket.core.request.mapper.CryptoMapper.decryptEntireUrl&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6131&quot;&gt;WICKET-6131&lt;/a&gt; - IndexOutOfBoundsException in org.apache.wicket.core. request.mapper.CryptoMapper.decryptEntireUrl&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6135&quot;&gt;WICKET-6135&lt;/a&gt; - There is no good way to get POST body content&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -937,104 +1227,6 @@ pdzbYsa2IMyPjC3a5hVK
 &lt;p&gt;Have fun!&lt;/p&gt;
 
 &lt;p&gt;— The Wicket team&lt;/p&gt;
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 6.21.0 released</title>
-        <link href="http://wicket.apache.org/news/2015/11/16/wicket-6.21.0-released.html"/>
-        <updated>2015-11-16T00:00:00+01:00</updated>
-        <id>http://wicket.apache.org/news/2015/11/16/wicket-6.21.0-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.21.0!&lt;/p&gt;
-
-&lt;p&gt;This release marks another minor release of Wicket 6. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present breaks are present in this release compared to
-6.0.0.&lt;/p&gt;
-
-&lt;h3 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h3&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;6.21.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
- * Source: [http://www.apache.org/dyn/closer.cgi/wicket/6.21.0](http://www.apache.org/dyn/closer.cgi/wicket/6.21.0)
- * Binary: [http://www.apache.org/dyn/closer.cgi/wicket/6.21.0/binaries](http://www.apache.org/dyn/closer.cgi/wicket/6.21.0/binaries)
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h3&gt;
-
-&lt;p&gt;If you upgrade from 6.y.z this release is a drop in replacement. If
-you come from a version prior to 6.0.0, please read our Wicket 6
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0&quot;&gt;migration to Wicket 6&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;h3 id=&quot;this-release&quot;&gt;This release&lt;/h3&gt;
-
-&lt;h4 id=&quot;changelog-for-6210&quot;&gt;CHANGELOG for 6.21.0:&lt;/h4&gt;
-
-&lt;p&gt;The following changes were made in Wicket for this release.&lt;/p&gt;
-
-&lt;h4 id=&quot;bug&quot;&gt;Bug&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-5882] - AutoComplete suggestion list disappear when I click on autoComplete scrollbar in IE&lt;/li&gt;
-  &lt;li&gt;[WICKET-5898] - StackOverflowError after form submit with a validation error&lt;/li&gt;
-  &lt;li&gt;[WICKET-5925] - wicket-examples DataTablePage is broken&lt;/li&gt;
-  &lt;li&gt;[WICKET-5927] - Velocity remote code execution&lt;/li&gt;
-  &lt;li&gt;[WICKET-5939] - AjaxEventBehavior should not lower-case the event name&lt;/li&gt;
-  &lt;li&gt;[WICKET-5941] - Headers not rendered for components inside TransparentWebMarkupContainer on ajax update&lt;/li&gt;
-  &lt;li&gt;[WICKET-5944] - CSRF prevention does not work with https URLs on the default port&lt;/li&gt;
-  &lt;li&gt;[WICKET-5946] - JavaScript/Css PackageResource should use the same charset for compressing&lt;/li&gt;
-  &lt;li&gt;[WICKET-5959] - HTML input placeholder text breaks AutoCompleteTextField in IE11&lt;/li&gt;
-  &lt;li&gt;[WICKET-5960] - Page header isn’t rendered for pages where URL has changed during render&lt;/li&gt;
-  &lt;li&gt;[WICKET-5968] - CachingResourceLocator lookup key doesn’t take strict into account&lt;/li&gt;
-  &lt;li&gt;[WICKET-5970] - UrlRenderer does not render fragments&lt;/li&gt;
-  &lt;li&gt;[WICKET-5973] - IllegalArgumentException ‘bytes’ cannot be negative. on opening Inspector&lt;/li&gt;
-  &lt;li&gt;[WICKET-5978] - LazyInitProxyFactory fills permgen space&lt;/li&gt;
-  &lt;li&gt;[WICKET-5989] - BaseWicketTester##startComponentInPage fails for pages with &lt;wicket:header-items&gt;&amp;lt;/wicket:header&amp;gt; placeholder&lt;/wicket:header-items&gt;&lt;/li&gt;
-  &lt;li&gt;[WICKET-5994] - Mounted TemplateResourceReference throws org.apache.wicket.WicketRuntimeException when https is used&lt;/li&gt;
-  &lt;li&gt;[WICKET-5996] - Mounted packages throw IllegalArgumentException when visiting base package url.&lt;/li&gt;
-  &lt;li&gt;[WICKET-6005] - WicketRuntimeException from AjaxPagingNavigator##onAjaxEvent&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;improvement&quot;&gt;Improvement&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-5926] - Arquillian Support with Container ServletContext in BaseWicketTester/WicketTester.&lt;/li&gt;
-  &lt;li&gt;[WICKET-5930] - Upgrade Atmosphere to 2.2.7&lt;/li&gt;
-  &lt;li&gt;[WICKET-5932] - Allow empty column list for DataTable&lt;/li&gt;
-  &lt;li&gt;[WICKET-5933] - Avoid serialization of untouched page after ajax request&lt;/li&gt;
-  &lt;li&gt;[WICKET-5935] - IoC Guice: cache proxies and fail on creation when binding is missing&lt;/li&gt;
-  &lt;li&gt;[WICKET-5945] - add a new topic/listener that notifies of Ajax calls done&lt;/li&gt;
-  &lt;li&gt;[WICKET-5948] - wicket-ajax.js probably doesn’t traverse the children of &amp;lt;div&amp;gt; or &lt;span&gt;&lt;/span&gt;&lt;/li&gt;
-  &lt;li&gt;[WICKET-5955] - error from WebPage ## reportMissingHead&lt;/li&gt;
-  &lt;li&gt;[WICKET-5974] - Change AjaxPagingNavigator##onAjaxEvent() to only consider parent components that have setOutputMarkupId(true)&lt;/li&gt;
-  &lt;li&gt;[WICKET-5976] - Improve the documentation of FeedbackMessages first(int level)&lt;/li&gt;
-  &lt;li&gt;[WICKET-5986] - &lt;code class=&quot;highlighter-rouge&quot;&gt;NumberTextField&amp;lt;N&amp;gt;&lt;/code&gt; should use Models for minimum, maximum and step&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;task&quot;&gt;Task&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-5951] - Upgrade Atmosphere to 2.2.8&lt;/li&gt;
-&lt;/ul&gt;
 </content>
     </entry>
 
