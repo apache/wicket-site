@@ -6,7 +6,7 @@ framework](http://wicket.apache.org).
 ## Project info
 
 The site is based on [Jekyll](http://jekyllrb.com/). So you have to be
-familiar with Markdown template language and have Jekyll (ver. 2+)
+familiar with Markdown template language and have Jekyll (ver. 3+)
 installed to contribute to the project.
 
 ## Run the project
