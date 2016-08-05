@@ -1,61 +1,95 @@
-<p>The Apache Wicket PMC is proud to announce Apache Wicket 7.2.0!</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Apache Wicket 7.2.0 released | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    </head>
+
+    <body class="">
+        <div class="header default">
+    <div class="l-container">
+<nav class="mainmenu">
+    <ul>
+		<!-- /start/quickstart.html || /news/2016/01/20/wicket-7.2.0-released.html -->
+    	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+		<!-- /start/download.html || /news/2016/01/20/wicket-7.2.0-released.html -->
+    	<li class=""><a href="/start/download.html">Download</a></li>
+		<!-- /learn || /news/2016/01/20/wicket-7.2.0-released.html -->
+    	<li class=""><a href="/learn">Documentation</a></li>
+		<!-- /help || /news/2016/01/20/wicket-7.2.0-released.html -->
+    	<li class=""><a href="/help">Support</a></li>
+		<!-- /contribute || /news/2016/01/20/wicket-7.2.0-released.html -->
+    	<li class=""><a href="/contribute">Contribute</a></li>
+		<!-- /community || /news/2016/01/20/wicket-7.2.0-released.html -->
+    	<li class=""><a href="/community">Community</a></li>
+		<!-- /apache || /news/2016/01/20/wicket-7.2.0-released.html -->
+    	<li class=""><a href="/apache">Apache</a></li>
+    </ul>
+</nav>
+        <div class="logo">
+    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+</div>
+    </div>
+</div>
+<main>
+    <div class="l-container">
+        <header class="l-full preamble">
+            <h1>Apache Wicket 7.2.0 released</h1>
+        </header>
+        <section class="l-one-third right">
+        </section>
+        <section class="l-two-third left">
+            <div class="l-full">
+    <p class="meta">20 Jan 2016</p>
+    <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.2.0!</p>
 <p>This release marks another minor release of Wicket 7. We
 use semantic versioning for the development of Wicket, and as such no
 API breaks are present breaks are present in this release compared to
 7.0.0.</p>
-
 <h4 id="new-and-noteworthy">New and noteworthy</h4>
-
 <p>In this version two new features have been implemented. The first
 features is to read resources from out of file systems with Java’s
 NIO API, which also allows you to write own file systems.</p>
-
 <p>As an example you can read audio files from within a folder of
 a ZIP file without extracting it and stream it directly to the
 client.</p>
-
 <p>The second feature is to load images from external servers.</p>
-
 <p>In addition a lot of bugs has been fixed regarding ajax and enclosures.</p>
-
 <h4 id="using-this-release">Using this release</h4>
-
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
-
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>7.2.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
-
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
-
 <div class="highlight"><pre>
  * Source: http://www.apache.org/dyn/closer.cgi/wicket/7.2.0
  * Binary: http://www.apache.org/dyn/closer.cgi/wicket/7.2.0/binaries
 </pre></div>
-
 <h4 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h4>
-
 <p>If you upgrade from 7.y.z this release is a drop in replacement. If
 you come from a version prior to 7.0.0, please read our Wicket 7
 migration guide found at</p>
-
 <ul>
   <li>http://s.apache.org/wicket7migrate</li>
 </ul>
-
 <h4 id="the-signatures-for-the-source-release-artefacts">The signatures for the source release artefacts:</h4>
-
 <p>Signature for apache-wicket-7.2.0.zip:</p>
-
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
 Comment: GPGTools - https://gpgtools.org
-
 iQIcBAABCgAGBQJWqyoKAAoJENaEKd8Bv4IClgYP/i9tJKKFIcz4uB4BLrej41HS
 oy8w7iBEAt+PbNU5QeCRJawiGLfuc8WblXsRfu2F3HLwuCyW4HXzIjGxAFf2bjDL
 GyATgVYiR0U4JVO4oCcO855e8Sgde9gVj1Eza5QuaIpDquBF9OTresydragcqJs8
@@ -71,13 +105,10 @@ T3huTv7fKGk7k+DxIyRi
 =Eokv
 -----END PGP SIGNATURE-----
 </pre></div>
-
 <p>Signature for apache-wicket-7.2.0.tar.gz:</p>
-
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
 Comment: GPGTools - https://gpgtools.org
-
 iQIcBAABCgAGBQJWqywsAAoJENaEKd8Bv4IC0KIP/2qWdbmhs6BYdX/bj3sjkrVx
 r3tsuYWt8dYrK+qyUI2D1tB5i4Vd3i+2BPnvOGhyjUevTaiIvRQirYkYwRx7ZamE
 9jsLzuoprYzQBObOd42Gy+uOH33necSyNwgEOoXoGk/L6l+TBc30tedSWS7zsBJY
@@ -92,13 +123,9 @@ FPO4aMOedD/It6YWfK4aEG2sDmTtXZzO7RXzQaCJNs9Ko+3EsG4EqrY5Cnrb2pKf
 pdzbYsa2IMyPjC3a5hVK
 =pbxZ
 -----END PGP SIGNATURE-----
-
 </pre></div>
-
 <h4 id="changelog-for-720">CHANGELOG for 7.2.0</h4>
-
 <h4 id="bug">Bug</h4>
-
 <div class="highlighter-rouge"><pre class="highlight"><code>* [WICKET-6001] - Exception raised while refreshing a page with queued components missing in the markup
 * [WICKET-6002] - FileUploadField makes form-component models become null on submit
 * [WICKET-6006] - ModalWindow.closeCurrent() causes 414 status error
@@ -136,9 +163,7 @@ pdzbYsa2IMyPjC3a5hVK
 * [WICKET-6077] - Border's body is not added as a child due to dequeuing
 </code></pre>
 </div>
-
 <h4 id="improvement">Improvement</h4>
-
 <div class="highlighter-rouge"><pre class="highlight"><code>* [WICKET-5950] - Model and GenericBaseModel could both implement IObjectClassAwareModel
 * [WICKET-5969] - Please give us access to PageTable.index pageId queue
 * [WICKET-6015] - AjaxFallbackOrderByBorder/Link should support updateAjaxAttributes() idiom
@@ -153,27 +178,33 @@ pdzbYsa2IMyPjC3a5hVK
 * [WICKET-6072] - Improve the quickstart to make it easier to use JSR-356 web sockets
 </code></pre>
 </div>
-
 <h4 id="new-feature">New Feature</h4>
-
 <div class="highlighter-rouge"><pre class="highlight"><code>* [WICKET-6025] - Read resource files with Java's NIO API
 * [WICKET-6042] - Implementation of ExternalImage component
 </code></pre>
 </div>
-
 <h4 id="task">Task</h4>
-
 <div class="highlighter-rouge"><pre class="highlight"><code>* [WICKET-6049] - Update the site to point to the new deployments of the examples
 * [WICKET-6057] - Upgrade commons-collections to 4.1
 * [WICKET-6071] - Upgrade jQuery to 1.12 / 2.2.0
 </code></pre>
 </div>
-
 <h4 id="wish">Wish</h4>
 <div class="highlighter-rouge"><pre class="highlight"><code>* [WICKET-6067] - Provide an Ajax Behavior that prevents form submit on ENTER
 </code></pre>
 </div>
-
 <p>Have fun!</p>
-
 <p>— The Wicket team</p>
+</div>
+        </section>
+    </div>
+</main>
+        <footer class="l-container">
+            <div class="l-full">
+   	<img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
+    <div style="margin-top:12px;">Copyright © 2016 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+</div>
+        </footer>
+    </body>
+
+</html>
