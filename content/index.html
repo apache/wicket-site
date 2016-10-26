@@ -47,7 +47,7 @@
         <a class="button" href="/start/quickstart.html">Get started</a>
 		<a class="button" href="http://examples7x.wicket.apache.org/index.html">Live Examples</a>
 		<br>
-		<small class="jumbotron-version">Current release: 7.4.0</small>
+		<small class="jumbotron-version">Current release: 7.5.0</small>
     </div>
     <div class="l-first">&nbsp;</div>
 </div>
@@ -225,51 +225,60 @@
 </div>
 <div class="l-two-third">
     <article>
-        <h2>Wicket 1.5.16 released</h2>
-        <small>05 Aug 2016</small>
-        <p>This is the sixteenth maintenance release of the Wicket 1.5.x series. This release brings over 2 bug fixes.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>CHANGELOG for 1.5.16:
-</code></pre>
-</div>
-<h4 id="bug">Bug</h4>
-<ul>
-  <li>CVE-2013-2186: Disable (de)serialization of Commons FileUpload items.</li>
-  <li>CVE-2016-3092: Apache Commons Fileupload information disclosure vulnerability</li>
-</ul>
-<h4 id="to-use-in-maven">To use in Maven:</h4>
+        <h2>Apache Wicket 8.0.0-M2 released</h2>
+        <small>26 Oct 2016</small>
+        <p>The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M2!</p>
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+<p>This release marks the first milestone of the major release of Wicket 8. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+8.0.0.</p>
+<h2 id="using-this-release">Using this release</h2>
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.5.16<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>8.0.0-M2<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
-<h4 id="download-the-full-distributionhttpwwwapacheorgdynclosercgiwicket1516-including-sources">Download the <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.16">full distribution</a> (including sources)</h4>
-        <a href="/news/2016/08/05/wicket-1.5.16-released.html">Read more...</a> 
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2">http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2/binaries">http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2/binaries</a></li>
+</ul>
+        <a href="/news/2016/10/26/wicket-8.0.0-M2-released.html">Read more...</a> 
     </article>
     <article>
-        <h2>CVE-2016-3092 & CVE-2013-2186 Apache Commons Fileupload vulnerabilities</h2>
-        <small>05 Aug 2016</small>
-        <p>Severity: Important</p>
-<p>Vendor:
-The Apache Software Foundation</p>
-<p>Versions Affected:
-Apache Wicket 1.5.x, 6.x and 7.x</p>
-<p>Description:</p>
-<p>CVE-2016-3092: A malicious client can send file upload requests that cause the HTTP server
-using the Apache Commons Fileupload library to become unresponsive, preventing
-the server from servicing other requests.</p>
-<p>This flaw is not exploitable beyond causing the code to loop expending
-CPU resources.</p>
-<p>CVE-2013-2186:
-The DiskFileItem class in Apache Commons FileUpload allows remote attackers to write to arbitrary files via a NULL byte in a file name in a serialized instance.</p>
-<h2 id="the-application-developers-are-recommended-to-upgrade-to">The application developers are recommended to upgrade to:</h2>
+        <h2>Apache Wicket 7.5.0 released</h2>
+        <small>26 Oct 2016</small>
+        <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.5.0!</p>
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+<p>This release marks another minor release of Wicket 7. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+7.0.0.</p>
+<h2 id="using-this-release">Using this release</h2>
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>7.5.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
 <ul>
-  <li><a href="/news/2016/08/05/wicket-1.5.16-released.html">Apache Wicket 1.5.16</a></li>
-  <li><a href="/news/2016/07/21/wicket-6.24.0-released.html">Apache Wicket 6.24.0</a></li>
-  <li><a href="/news/2016/07/21/wicket-7.4.0-released.html">Apache Wicket 7.4.0</a></li>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.5.0">http://www.apache.org/dyn/closer.cgi/wicket/7.5.0</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.5.0/binaries">http://www.apache.org/dyn/closer.cgi/wicket/7.5.0/binaries</a></li>
 </ul>
-<p>Since version 7.0.0 Apache Wicket does not embed Apache Commons FileUpload but uses it as a Maven dependency so an application can just update the dependency to version 1.3.2.</p>
-<p>Apache Wicket Team</p>
-        <a href="/news/2016/08/05/cve-2016-3092.html">Read more...</a> 
+        <a href="/news/2016/10/26/wicket-7.5.0-released.html">Read more...</a> 
     </article>
 </div>
 <div class="l-one-third news">
@@ -281,6 +290,24 @@ title="Atom 1.0 feed" href="/atom.xml">RSS feed</a> to
 get updates in your favorite RSS reader the moment they happen.</p>
 <ul>
 <li>
+    <h3>Apache Wicket 7.5.0 released</h3>
+    <small>26 Oct 2016</small>
+    The Apache Wicket PMC is proud to announce Apache Wicket 7.5.0! Apache Wicket is an open source Java component oriented web application framework that powers...
+    <a href="/news/2016/10/26/wicket-7.5.0-released.html">more</a>
+</li>
+<li>
+    <h3>Apache Wicket 6.25.0 released</h3>
+    <small>26 Oct 2016</small>
+    The Apache Wicket PMC is proud to announce Apache Wicket 6.25.0! Apache Wicket is an open source Java component oriented web application framework that powers...
+    <a href="/news/2016/10/26/wicket-6.25.0-released.html">more</a>
+</li>
+<li>
+    <h3>Wicket 1.5.16 released</h3>
+    <small>05 Aug 2016</small>
+    This is the sixteenth maintenance release of the Wicket 1.5.x series. This release brings over 2 bug fixes. CHANGELOG for 1.5.16: Bug CVE-2013-2186: Disable (de)serialization...
+    <a href="/news/2016/08/05/wicket-1.5.16-released.html">more</a>
+</li>
+<li>
     <h3>CVE-2016-3092 & CVE-2013-2186 Apache Commons Fileupload vulnerabilities</h3>
     <small>05 Aug 2016</small>
     Severity: Important Vendor: The Apache Software Foundation Versions Affected: Apache Wicket 1.5.x, 6.x and 7.x Description: CVE-2016-3092: A malicious client can send file upload requests...
@@ -291,24 +318,6 @@ get updates in your favorite RSS reader the moment they happen.</p>
     <small>25 Jul 2016</small>
     The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M1! Apache Wicket is an open source Java component oriented web application framework that powers...
     <a href="/news/2016/07/25/wicket-8.0.0-M1-released.html">more</a>
-</li>
-<li>
-    <h3>Apache Wicket 7.4.0 released</h3>
-    <small>21 Jul 2016</small>
-    The Apache Wicket PMC is proud to announce Apache Wicket 7.4.0! Apache Wicket is an open source Java component oriented web application framework that powers...
-    <a href="/news/2016/07/21/wicket-7.4.0-released.html">more</a>
-</li>
-<li>
-    <h3>Apache Wicket 6.24.0 released</h3>
-    <small>21 Jul 2016</small>
-    The Apache Wicket PMC is proud to announce Apache Wicket 6.24.0! Apache Wicket is an open source Java component oriented web application framework that powers...
-    <a href="/news/2016/07/21/wicket-6.24.0-released.html">more</a>
-</li>
-<li>
-    <h3>Apache Wicket 7.3.0 released</h3>
-    <small>05 May 2016</small>
-    The Apache Wicket PMC is proud to announce Apache Wicket 7.3.0! Apache Wicket is an open source Java component oriented web application framework that powers...
-    <a href="/news/2016/05/05/wicket-7.3.0-released.html">more</a>
 </li>
 </ul>
 </div>
