@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2016-10-26T21:41:30+02:00</updated>
+    <updated>2016-10-30T12:14:00+01:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -43,8 +43,8 @@ update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 convenience binary package&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2/binaries&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2/binaries&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2&quot;&gt;8.0.0-M2 source download&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2/binaries&quot;&gt;8.0.0-M2 binary download&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!--more--&gt;
@@ -69,26 +69,27 @@ migration guide found at&lt;/p&gt;
 
 &lt;p&gt;Signature for apache-wicket-8.0.0-M2.zip:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt; 
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
 
-&lt;p&gt;iEYEABECAAYFAlgHzXgACgkQJBX8W/xy/UU4+ACgxCcY0zPKiw3x7n0rizY9CkiN
+iEYEABECAAYFAlgHzXgACgkQJBX8W/xy/UU4+ACgxCcY0zPKiw3x7n0rizY9CkiN
 3tkAmwYX0hrkfkSYJKkkBaMSrI+z/zSf
 =9mFS
-—–END PGP SIGNATURE—–&lt;/p&gt;
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Signature for apache-wicket-8.0.0-M2.tar.gz:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt; 
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
 
-&lt;p&gt;iEYEABECAAYFAlgHzXgACgkQJBX8W/xy/UU+GQCgsvsRwloc9JSMB1ieJT+6aoqR
+iEYEABECAAYFAlgHzXgACgkQJBX8W/xy/UU+GQCgsvsRwloc9JSMB1ieJT+6aoqR
 CWsAnAmmb+z3Exzbn2bT8zE3IrY6wUHw
 =LVj6
-—–END PGP SIGNATURE—–&lt;/p&gt;
-
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;================================&lt;/p&gt;
 
 &lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
@@ -155,7 +156,7 @@ AutoLinkResolver ignores session locale changes&lt;/li&gt;
   &lt;li&gt;[WICKET-6226] -  DOCTYPE URL in properties.xml example in wicket documentation won’t work.&lt;/li&gt;
   &lt;li&gt;[WICKET-6228] - Hide AuthenticatedWebSession#signOut() from the public API&lt;/li&gt;
   &lt;li&gt;[WICKET-6229] - Introduce a new setting in ExceptionSettings to control whether to throw exception or log a WARN when requesting for markup id on non-renderable component&lt;/li&gt;
-  &lt;li&gt;[WICKET-6233] - Add component info in the error messages related to WicketTester#assertComponentOnAjaxResponse()&lt;/li&gt;
+  &lt;li&gt;[WICKET-6233] - Add component info in the error messages related to WicketTester #assertComponentOnAjaxResponse()&lt;/li&gt;
   &lt;li&gt;[WICKET-6234] - Log the decrypted url in CryptoMapper for debugging purposes&lt;/li&gt;
   &lt;li&gt;[WICKET-6239] - Use Response#addHeader() instead of #setContentLength()&lt;/li&gt;
   &lt;li&gt;[WICKET-6240] - Hook method to display more information on ExceptionErrorPage&lt;/li&gt;
@@ -202,8 +203,8 @@ update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 convenience binary package&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.5.0&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/7.5.0&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.5.0/binaries&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/7.5.0/binaries&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.5.0&quot;&gt;7.5.0 source download&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.5.0/binaries&quot;&gt;7.5.0 binary download&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!--more--&gt;
@@ -228,26 +229,27 @@ migration guide found at&lt;/p&gt;
 
 &lt;p&gt;Signature for apache-wicket-7.5.0.zip:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt; 
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
 
-&lt;p&gt;iEYEABECAAYFAlgHyLgACgkQJBX8W/xy/UVtJQCfazMNKzMMG5y+GTnCNg0YloBB
+iEYEABECAAYFAlgHyLgACgkQJBX8W/xy/UVtJQCfazMNKzMMG5y+GTnCNg0YloBB
 IB0Amwdp/H6z78kXds8kTJNBXJAVlCVc
 =yXrI
-—–END PGP SIGNATURE—–&lt;/p&gt;
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Signature for apache-wicket-7.5.0.tar.gz:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt; 
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
 
-&lt;p&gt;iEYEABECAAYFAlgHyLgACgkQJBX8W/xy/UUVtgCgx2kALIRDUGdXHjl1hQwOPhzW
+iEYEABECAAYFAlgHyLgACgkQJBX8W/xy/UUVtgCgx2kALIRDUGdXHjl1hQwOPhzW
 NVYAn0VNdt96cd5VmIW7nIFSb0PidYbH
 =ob3v
-—–END PGP SIGNATURE—–&lt;/p&gt;
-
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;================================&lt;/p&gt;
 
 &lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
@@ -301,7 +303,7 @@ NVYAn0VNdt96cd5VmIW7nIFSb0PidYbH
   &lt;li&gt;[WICKET-6211] - PasswordTextField should clear password by default&lt;/li&gt;
   &lt;li&gt;[WICKET-6226] -  DOCTYPE URL in properties.xml example in wicket documentation won’t work.&lt;/li&gt;
   &lt;li&gt;[WICKET-6229] - Introduce a new setting in ExceptionSettings to control whether to throw exception or log a WARN when requesting for markup id on non-renderable component&lt;/li&gt;
-  &lt;li&gt;[WICKET-6233] - Add component info in the error messages related to WicketTester#assertComponentOnAjaxResponse()&lt;/li&gt;
+  &lt;li&gt;[WICKET-6233] - Add component info in the error messages related to WicketTester #assertComponentOnAjaxResponse()&lt;/li&gt;
   &lt;li&gt;[WICKET-6234] - Log the decrypted url in CryptoMapper for debugging purposes&lt;/li&gt;
   &lt;li&gt;[WICKET-6239] - Use Response#addHeader() instead of #setContentLength()&lt;/li&gt;
   &lt;li&gt;[WICKET-6240] - Hook method to display more information on ExceptionErrorPage&lt;/li&gt;
@@ -347,10 +349,8 @@ update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 &lt;p&gt;Or download and build the distribution yourself, or use our
 convenience binary package&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.25.0&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/6.25.0&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.25.0/binaries&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/6.25.0/binaries&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.25.0&quot;&gt;6.25.0 source download&lt;/a&gt;
+Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.25.0/binaries&quot;&gt;6.25.0 binary download&lt;/a&gt;&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -374,26 +374,27 @@ migration guide found at&lt;/p&gt;
 
 &lt;p&gt;Signature for apache-wicket-6.25.0.zip:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt; 
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
 
-&lt;p&gt;iEYEABECAAYFAlgH0UkACgkQJBX8W/xy/UXmgQCfUwVfCDkCU1ZNdFnf32HSeUs4
+iEYEABECAAYFAlgH0UkACgkQJBX8W/xy/UXmgQCfUwVfCDkCU1ZNdFnf32HSeUs4
 tFYAoJYkHA4eO4IvKeq8OIV19MBTNdvL
 =qs0y
-—–END PGP SIGNATURE—–&lt;/p&gt;
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Signature for apache-wicket-6.25.0.tar.gz:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt; 
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
 
-&lt;p&gt;iEYEABECAAYFAlgH0UkACgkQJBX8W/xy/UXO/QCgs4t/TD3K7XQWmOi0Q0BHYUY4
+iEYEABECAAYFAlgH0UkACgkQJBX8W/xy/UXO/QCgs4t/TD3K7XQWmOi0Q0BHYUY4
 o3MAoKiK1OWSjev2vG9T0xH9j7/QkQ48
 =bH45
-—–END PGP SIGNATURE—–&lt;/p&gt;
-
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;================================&lt;/p&gt;
 
 &lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
@@ -431,7 +432,7 @@ o3MAoKiK1OWSjev2vG9T0xH9j7/QkQ48
   &lt;li&gt;[WICKET-6206] - Allow to use custom anticache parameter value for Image component&lt;/li&gt;
   &lt;li&gt;[WICKET-6210] - FileUpload does not support files of zero size&lt;/li&gt;
   &lt;li&gt;[WICKET-6226] -  DOCTYPE URL in properties.xml example in wicket documentation won’t work.&lt;/li&gt;
-  &lt;li&gt;[WICKET-6233] - Add component info in the error messages related to WicketTester#assertComponentOnAjaxResponse()&lt;/li&gt;
+  &lt;li&gt;[WICKET-6233] - Add component info in the error messages related to WicketTester #assertComponentOnAjaxResponse()&lt;/li&gt;
   &lt;li&gt;[WICKET-6234] - Log the decrypted url in CryptoMapper for debugging purposes&lt;/li&gt;
   &lt;li&gt;[WICKET-6239] - Use Response#addHeader() instead of #setContentLength()&lt;/li&gt;
 &lt;/ul&gt;
@@ -570,8 +571,8 @@ update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 convenience binary package&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1/binaries&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1/binaries&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1&quot;&gt;8.0.0-M1 source download&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1/binaries&quot;&gt;8.0.0-M1 binary download&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
@@ -718,7 +719,7 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   &lt;li&gt;[WICKET-5920] - roll a version of ListDataProvider implementing ISortableDetachable model&lt;/li&gt;
   &lt;li&gt;[WICKET-5950] - Model and GenericBaseModel could both implement IObjectClassAwareModel&lt;/li&gt;
   &lt;li&gt;[WICKET-5969] - Please give us access to PageTable.index pageId queue&lt;/li&gt;
-  &lt;li&gt;[WICKET-5986] - NumberTextField&lt;N&gt; should use Models for minimum, maximum and step&lt;/N&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-5986] - NumberTextField&lt;n&gt; should use Models for minimum, maximum and step&lt;/n&gt;&lt;/li&gt;
   &lt;li&gt;[WICKET-6015] - AjaxFallbackOrderByBorder/Link should support updateAjaxAttributes() idiom&lt;/li&gt;
   &lt;li&gt;[WICKET-6019] - Remove ‘final’ modifier for Localizer#getStringIgnoreSettings() methods&lt;/li&gt;
   &lt;li&gt;[WICKET-6023] - small tweak for component queuing for the AbstractRepeater&lt;/li&gt;
@@ -762,7 +763,7 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   &lt;li&gt;[WICKET-6183] - Improve stateless support for AJAX&lt;/li&gt;
   &lt;li&gt;[WICKET-6184] - Remove form argument from AjaxButton and AjaxLink callbacks&lt;/li&gt;
   &lt;li&gt;[WICKET-6188] - Use DynamicJQueryResourceReference by default&lt;/li&gt;
-  &lt;li&gt;[WICKET-6189] - Return Optional&lt;T&gt; from RequestCycle.find(Class&lt;T&gt;)&lt;/T&gt;&lt;/T&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-6189] - Return Optional&lt;t&gt; from RequestCycle.find(Class&lt;t&gt;)&lt;/t&gt;&lt;/t&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h5 id=&quot;new-feature&quot;&gt;New Feature&lt;/h5&gt;
@@ -848,8 +849,8 @@ update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 convenience binary package&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.4.0&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/7.4.0&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.4.0/binaries&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/7.4.0/binaries&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.4.0&quot;&gt;7.4.0 source download&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.4.0/binaries&quot;&gt;7.4.0 binary download&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
@@ -985,8 +986,8 @@ update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 convenience binary package&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.24.0&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/6.24.0&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.24.0/binaries&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/6.24.0/binaries&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.24.0&quot;&gt;6.24.0 source download&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.24.0/binaries&quot;&gt;6.24.0 binary download&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
@@ -1109,8 +1110,8 @@ update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 convenience binary package&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.3.0&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/7.3.0&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.3.0/binaries&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/7.3.0/binaries&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.3.0&quot;&gt;7.3.0 source download&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.3.0/binaries&quot;&gt;7.3.0 binary download&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
@@ -1265,8 +1266,8 @@ update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
 convenience binary package&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.23.0&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/6.23.0&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.23.0/binaries&quot;&gt;http://www.apache.org/dyn/closer.cgi/wicket/6.23.0/binaries&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.23.0&quot;&gt;6.23.0 source download&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.23.0/binaries&quot;&gt;6.23.0 binary download&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;

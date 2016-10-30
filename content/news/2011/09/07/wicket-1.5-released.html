@@ -87,7 +87,7 @@
  * Objects that can send events
  */</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IEventSource</span> <span class="o">{</span>
-    <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="nf">send</span><span class="o">(</span><span class="n">IEventSink</span> <span class="n">sink</span><span class="o">,</span> <span class="n">Broadcast</span> <span class="n">broadcast</span><span class="o">,</span> <span class="n">T</span> <span class="n">payload</span><span class="o">);</span>
+    <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="n">send</span><span class="o">(</span><span class="n">IEventSink</span> <span class="n">sink</span><span class="o">,</span> <span class="n">Broadcast</span> <span class="n">broadcast</span><span class="o">,</span> <span class="n">T</span> <span class="n">payload</span><span class="o">);</span>
 <span class="o">}</span></code></pre></figure>
 <p>and</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
@@ -98,7 +98,7 @@
     <span class="cm">/**
      * Called when an event is sent to this sink
      */</span>
-    <span class="kt">void</span> <span class="nf">onEvent</span><span class="o">(</span><span class="n">IEvent</span><span class="o">&lt;?&gt;</span> <span class="n">event</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="n">onEvent</span><span class="o">(</span><span class="n">IEvent</span><span class="o">&lt;?&gt;</span> <span class="n">event</span><span class="o">);</span>
 <span class="o">}</span></code></pre></figure>
 <p>The classes that implement these interfaces, and can thus participate in the event mechanism are: <code class="highlighter-rouge">Component</code>, <code class="highlighter-rouge">RequestCycle</code>, <code class="highlighter-rouge">Session</code>, and <code class="highlighter-rouge">Application</code>.</p>
 <p>The mechanism allows for different event broadcast methods defined here:</p>
@@ -115,14 +115,14 @@
 <p>Applications can register custom event dispatchers in <code class="highlighter-rouge">FrameworkSettings</code>; the dispatchers can be used to build custom event delivery mechanisms. For example a custom <code class="highlighter-rouge">IEventDispatcher</code> mechanism can route events to annotated methods, for example:</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="kd">extends</span> <span class="n">Component</span> <span class="o">{</span>
     <span class="nd">@OnEvent</span>
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">onUserAdded</span><span class="o">(</span><span class="n">UserAddedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{...}</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="n">onUserAdded</span><span class="o">(</span><span class="n">UserAddedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{...}</span>
 <span class="o">}</span></code></pre></figure>
 <p>where <code class="highlighter-rouge">UserAddedEvent</code> is the event payload object.</p>
 <p>The default <code class="highlighter-rouge">Component#onEvent</code> method will be called even if custom dispatchers are registered.</p>
 <p>A default event is raised whenever Wicket begins to create an AJAX response. The payload of the event is the <code class="highlighter-rouge">AjaxRequestTarget</code> used for event. Sample implementation:</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// component that always adds itself to the ajax response</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="kd">extends</span> <span class="n">Component</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onEvent</span><span class="o">(</span><span class="n">IEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onEvent</span><span class="o">(</span><span class="n">IEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getPayload</span><span class="o">()</span> <span class="k">instanceof</span> <span class="n">AjaxRequestTarget</span><span class="o">)</span> <span class="o">{</span>
             <span class="o">((</span><span class="n">AjaxRequestTarget</span><span class="o">)</span><span class="n">event</span><span class="o">.</span><span class="na">getPayload</span><span class="o">()).</span><span class="na">add</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
          <span class="o">}</span>

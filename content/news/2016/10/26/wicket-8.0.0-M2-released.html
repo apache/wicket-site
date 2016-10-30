@@ -71,8 +71,8 @@ update any other dependencies on Wicket projects to the same version):</p>
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
 <ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2">http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2/binaries">http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2/binaries</a></li>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2">8.0.0-M2 source download</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M2/binaries">8.0.0-M2 binary download</a></li>
 </ul>
 <!--more-->
 <h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
@@ -87,21 +87,23 @@ migration guide found at</p>
 <p>================================</p>
 <p>The signatures for the source release artefacts:</p>
 <p>Signature for apache-wicket-8.0.0-M2.zip:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-</code></pre>
-</div>
-<p>iEYEABECAAYFAlgHzXgACgkQJBX8W/xy/UU4+ACgxCcY0zPKiw3x7n0rizY9CkiN
+<div class="highlight"><pre> 
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+iEYEABECAAYFAlgHzXgACgkQJBX8W/xy/UU4+ACgxCcY0zPKiw3x7n0rizY9CkiN
 3tkAmwYX0hrkfkSYJKkkBaMSrI+z/zSf
 =9mFS
-—–END PGP SIGNATURE—–</p>
+-----END PGP SIGNATURE-----
+</pre></div>
 <p>Signature for apache-wicket-8.0.0-M2.tar.gz:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>-----BEGIN PGP SIGNATURE----- Comment: GPGTools - https://gpgtools.org
-</code></pre>
-</div>
-<p>iEYEABECAAYFAlgHzXgACgkQJBX8W/xy/UU+GQCgsvsRwloc9JSMB1ieJT+6aoqR
+<div class="highlight"><pre> 
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+iEYEABECAAYFAlgHzXgACgkQJBX8W/xy/UU+GQCgsvsRwloc9JSMB1ieJT+6aoqR
 CWsAnAmmb+z3Exzbn2bT8zE3IrY6wUHw
 =LVj6
-—–END PGP SIGNATURE—–</p>
+-----END PGP SIGNATURE-----
+</pre></div>
 <p>================================</p>
 <h3 id="this-release">This Release</h3>
 <h4 id="changelog-for-800-m2">CHANGELOG for 8.0.0-M2:</h4>
@@ -160,7 +162,7 @@ AutoLinkResolver ignores session locale changes</li>
   <li>[WICKET-6226] -  DOCTYPE URL in properties.xml example in wicket documentation won’t work.</li>
   <li>[WICKET-6228] - Hide AuthenticatedWebSession#signOut() from the public API</li>
   <li>[WICKET-6229] - Introduce a new setting in ExceptionSettings to control whether to throw exception or log a WARN when requesting for markup id on non-renderable component</li>
-  <li>[WICKET-6233] - Add component info in the error messages related to WicketTester#assertComponentOnAjaxResponse()</li>
+  <li>[WICKET-6233] - Add component info in the error messages related to WicketTester #assertComponentOnAjaxResponse()</li>
   <li>[WICKET-6234] - Log the decrypted url in CryptoMapper for debugging purposes</li>
   <li>[WICKET-6239] - Use Response#addHeader() instead of #setContentLength()</li>
   <li>[WICKET-6240] - Hook method to display more information on ExceptionErrorPage</li>
