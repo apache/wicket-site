@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta charset="utf-8">
-        <title>Monthly archive for May 2010 | Apache Wicket</title>
+        <title>Monthly archive for November 2016 | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /news/2010/05 -->
+		<!-- /start/quickstart.html || /news/2016/11 -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /news/2010/05 -->
+		<!-- /start/download.html || /news/2016/11 -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /news/2010/05 -->
+		<!-- /learn || /news/2016/11 -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /news/2010/05 -->
+		<!-- /help || /news/2016/11 -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /news/2010/05 -->
+		<!-- /contribute || /news/2016/11 -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /news/2010/05 -->
+		<!-- /community || /news/2016/11 -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /news/2010/05 -->
+		<!-- /apache || /news/2016/11 -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -43,36 +43,22 @@
 <main>
     <div class="l-container">
         <header class="l-full preamble">
-            <h1>Monthly archive for May 2010</h1>
+            <h1>Monthly archive for November 2016</h1>
         </header>
         <div class="l-two-third">
 <div class="news">
-	<h3>Wicket 1.4.8 released</h3>
-  <p><small>03 May 2010</small></p>
-	<p>Wicket 1.4.8 is released!</p>
-<p>This is the eighth maintenance release of 1.4.x series and brings over
-20 bug fixes and improvements.</p>
-<ul>
-  <li><a href="https://svn.apache.org/repos/asf/wicket/releases/wicket-1.4.8">SVN tag</a></li>
-  <li>Using Maven:</li>
-</ul>
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org...</code></pre></figure>
-	<a href="/news/2010/05/03/wicket-1.4.8-released.html">more</a></li>
-</div>
-<div class="news">
-	<h3>Wicket 1.4.9 released</h3>
-  <p><small>24 May 2010</small></p>
-	<p>This is the ninth maintenance release of the 1.4.x series and brings over
-fifteen bug fixes and improvements.</p>
-<ul>
-  <li><a href="http://svn.apache.org/repos/asf/wicket/releases/wicket-1.4.9/">Subversion tag</a></li>
-  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;styleName=Html&amp;version=12314962">Changelog</a></li>
-  <li>To use in Maven:</li>
-</ul>
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apa...</code></pre></figure>
-	<a href="/news/2010/05/24/wicket-1.4.9-released.html">more</a></li>
+	<h3>CVE-2016-6806 Apache Wicket CSRF detection vulnerability</h3>
+  <p><small>08 Nov 2016</small></p>
+	<p><em>Severity</em>: Important</p>
+<p><em>Vendor</em>: The Apache Software Foundation</p>
+<p><em>Versions Affected</em>: Apache Wicket 6.20.0, 6.21.0, 6.22.0, 6.23.0, 6.24.0,
+7.0.0, 7.1.0, 7.2.0, 7.3.0, 7.4.0 and 8.0.0-M1</p>
+<p><em>Description</em>: Affected versions of Apache Wicket provide a CSRF prevention
+measure that fails to discover some cross origin requests. The mitigation is to
+not only check the Origin HTTP header, but also take the Referer HTTP header
+into account when no Origin was provided. Furthermore, not all Wicket server
+side targets were subjected to the CSRF check. This was also f...</p>
+	<a href="/news/2016/11/08/cve-2016-6806.html">more</a></li>
 </div>
         </div>
         <div class="l-one-third">

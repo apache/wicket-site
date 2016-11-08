@@ -3,13 +3,51 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2016-10-30T12:14:00+01:00</updated>
+    <updated>2016-11-08T14:13:22+01:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
         <email>dev@wicket.apache.org</email>
     </author>
  
+
+    <entry>
+        <title>CVE-2016-6806 Apache Wicket CSRF detection vulnerability</title>
+        <link href="http://wicket.apache.org/news/2016/11/08/cve-2016-6806.html"/>
+        <updated>2016-11-08T00:00:00+01:00</updated>
+        <id>http://wicket.apache.org/news/2016/11/08/cve-2016-6806</id>
+        <content type="html">&lt;p&gt;&lt;em&gt;Severity&lt;/em&gt;: Important&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Vendor&lt;/em&gt;: The Apache Software Foundation&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Versions Affected&lt;/em&gt;: Apache Wicket 6.20.0, 6.21.0, 6.22.0, 6.23.0, 6.24.0,
+7.0.0, 7.1.0, 7.2.0, 7.3.0, 7.4.0 and 8.0.0-M1&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Description&lt;/em&gt;: Affected versions of Apache Wicket provide a CSRF prevention
+measure that fails to discover some cross origin requests. The mitigation is to
+not only check the Origin HTTP header, but also take the Referer HTTP header
+into account when no Origin was provided. Furthermore, not all Wicket server
+side targets were subjected to the CSRF check. This was also fixed.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Mitigation&lt;/em&gt;: 6.x users should upgrade to 6.25.0, 7.x users should upgrade to
+7.5.0 and 8.0.0-M1 users should upgrade to 8.0.0-M2.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Credit&lt;/em&gt;: This issue was discovered by Gerben Janssen van Doorn&lt;/p&gt;
+
+&lt;p&gt;References: https://wicket.apache.org/news&lt;/p&gt;
+
+&lt;h2 id=&quot;the-application-developers-are-recommended-to-upgrade-to&quot;&gt;The application developers are recommended to upgrade to:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/news/2016/10/26/wicket-6.25.0-released.html&quot;&gt;Apache Wicket 6.25.0&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/news/2016/10/26/wicket-7.5.0-released.html&quot;&gt;Apache Wicket 7.5.0&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/news/2016/10/26/wicket-8.0.0-M2-released.html&quot;&gt;Apache Wicket 8.0.0-M2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Users of Wicket verions prior to 6.20 are not affected because the particular
+component was introduced in 6.20.0.&lt;/p&gt;
+</content>
+    </entry>
 
     <entry>
         <title>Apache Wicket 8.0.0-M2 released</title>
@@ -719,7 +757,7 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   &lt;li&gt;[WICKET-5920] - roll a version of ListDataProvider implementing ISortableDetachable model&lt;/li&gt;
   &lt;li&gt;[WICKET-5950] - Model and GenericBaseModel could both implement IObjectClassAwareModel&lt;/li&gt;
   &lt;li&gt;[WICKET-5969] - Please give us access to PageTable.index pageId queue&lt;/li&gt;
-  &lt;li&gt;[WICKET-5986] - NumberTextField&lt;n&gt; should use Models for minimum, maximum and step&lt;/n&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-5986] - NumberTextField&lt;N&gt; should use Models for minimum, maximum and step&lt;/N&gt;&lt;/li&gt;
   &lt;li&gt;[WICKET-6015] - AjaxFallbackOrderByBorder/Link should support updateAjaxAttributes() idiom&lt;/li&gt;
   &lt;li&gt;[WICKET-6019] - Remove ‘final’ modifier for Localizer#getStringIgnoreSettings() methods&lt;/li&gt;
   &lt;li&gt;[WICKET-6023] - small tweak for component queuing for the AbstractRepeater&lt;/li&gt;
@@ -763,7 +801,7 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   &lt;li&gt;[WICKET-6183] - Improve stateless support for AJAX&lt;/li&gt;
   &lt;li&gt;[WICKET-6184] - Remove form argument from AjaxButton and AjaxLink callbacks&lt;/li&gt;
   &lt;li&gt;[WICKET-6188] - Use DynamicJQueryResourceReference by default&lt;/li&gt;
-  &lt;li&gt;[WICKET-6189] - Return Optional&lt;t&gt; from RequestCycle.find(Class&lt;t&gt;)&lt;/t&gt;&lt;/t&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-6189] - Return Optional&lt;T&gt; from RequestCycle.find(Class&lt;T&gt;)&lt;/T&gt;&lt;/T&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h5 id=&quot;new-feature&quot;&gt;New Feature&lt;/h5&gt;
@@ -1222,120 +1260,6 @@ ZJcAnREA/PnxMckF2HWqgeunp+siydFJ
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6095&quot;&gt;WICKET-6095&lt;/a&gt; - Multiline headers in DataTable&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 6.23.0 released</title>
-        <link href="http://wicket.apache.org/news/2016/05/05/wicket-6.23.0-released.html"/>
-        <updated>2016-05-05T00:00:00+02:00</updated>
-        <id>http://wicket.apache.org/news/2016/05/05/wicket-6.23.0-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.23.0!&lt;/p&gt;
-
-&lt;p&gt;Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
-
-&lt;p&gt;This release marks another minor release of Wicket 6. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present breaks are present in this release compared to
-6.0.0.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
-
-&lt;h4 id=&quot;jquery-upgrade&quot;&gt;jQuery upgrade&lt;/h4&gt;
-
-&lt;p&gt;Wicket ships standard with it’s own jQuery. With this release jQuery was upgraded to 1.12.3/2.2.3.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;6.23.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.23.0&quot;&gt;6.23.0 source download&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.23.0/binaries&quot;&gt;6.23.0 binary download&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
-
-&lt;p&gt;If you upgrade from 6.y.z this release is a drop in replacement. If
-you come from a version prior to 6.0.0, please read our Wicket 6
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://s.apache.org/wicket6migrate&quot;&gt;http://s.apache.org/wicket6migrate&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;p&gt;================================&lt;/p&gt;
-
-&lt;p&gt;The signatures for the source release artefacts:&lt;/p&gt;
-
-&lt;p&gt;Signature for apache-wicket-6.23.0.zip:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE-----
-Comment: GPGTools - https://gpgtools.org
-
-iEYEABECAAYFAlcd7YkACgkQJBX8W/xy/UXj0ACgrhCPPnuW7xSd2p7zo6pxQKeU
-uC4AmwaavBtALbyC0w4eaK6qgOTTbTFa
-=thu6
------END PGP SIGNATURE-----
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Signature for apache-wicket-6.23.0.tar.gz:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP SIGNATURE-----
-Comment: GPGTools - https://gpgtools.org
-
-iEYEABECAAYFAlcd7YkACgkQJBX8W/xy/UXWXQCeNWa8xIe4dtrXrognVudOonXf
-fPwAn2meYov9oWZ8C1rG4MG2Sc8LfvHa
-=7Anf
------END PGP SIGNATURE-----
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;================================&lt;/p&gt;
-
-&lt;h3 id=&quot;changelog-for-6230&quot;&gt;CHANGELOG for 6.23.0&lt;/h3&gt;
-
-&lt;h4 id=&quot;bug&quot;&gt;Bug&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6108&quot;&gt;WICKET-6108&lt;/a&gt; - Closing a ModalWindow with jQuery 2.2.0 produces javascript errors&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6111&quot;&gt;WICKET-6111&lt;/a&gt; - Empty redirect on redirect to home page if home page already shown&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6131&quot;&gt;WICKET-6131&lt;/a&gt; - IndexOutOfBoundsException in org.apache.wicket.core. request.mapper.CryptoMapper.decryptEntireUrl&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6135&quot;&gt;WICKET-6135&lt;/a&gt; - There is no good way to get POST body content&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;improvement&quot;&gt;Improvement&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6098&quot;&gt;WICKET-6098&lt;/a&gt; - Add logging to HttpSessionDataStore&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6100&quot;&gt;WICKET-6100&lt;/a&gt; - Upgrade jQuery to 1.12.3/2.2.3&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6110&quot;&gt;WICKET-6110&lt;/a&gt; - Add a message to StalePageException for better debugging&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6122&quot;&gt;WICKET-6122&lt;/a&gt; - Add .map to the list of allowed file extensions in SecurePackageResourceGuard&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6123&quot;&gt;WICKET-6123&lt;/a&gt; - Remove ‘abstract’ from ChainingModel&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6144&quot;&gt;WICKET-6144&lt;/a&gt; - Wicket-ajax parameter / header may be used to bypass proper exception handling&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6145&quot;&gt;WICKET-6145&lt;/a&gt; - Enable DeltaManager to replicate PageTable in Sessions&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6152&quot;&gt;WICKET-6152&lt;/a&gt; - Allow to add more than one WebSocketBehavior in the component tree&lt;/li&gt;
 &lt;/ul&gt;
 </content>
     </entry>
