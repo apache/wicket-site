@@ -225,6 +225,32 @@
 </div>
 <div class="l-two-third">
     <article>
+        <h2>CVE-2016-6806 Apache Wicket CSRF detection vulnerability</h2>
+        <small>08 Nov 2016</small>
+        <p><em>Severity</em>: Important</p>
+<p><em>Vendor</em>: The Apache Software Foundation</p>
+<p><em>Versions Affected</em>: Apache Wicket 6.20.0, 6.21.0, 6.22.0, 6.23.0, 6.24.0,
+7.0.0, 7.1.0, 7.2.0, 7.3.0, 7.4.0 and 8.0.0-M1</p>
+<p><em>Description</em>: Affected versions of Apache Wicket provide a CSRF prevention
+measure that fails to discover some cross origin requests. The mitigation is to
+not only check the Origin HTTP header, but also take the Referer HTTP header
+into account when no Origin was provided. Furthermore, not all Wicket server
+side targets were subjected to the CSRF check. This was also fixed.</p>
+<p><em>Mitigation</em>: 6.x users should upgrade to 6.25.0, 7.x users should upgrade to
+7.5.0 and 8.0.0-M1 users should upgrade to 8.0.0-M2.</p>
+<p><em>Credit</em>: This issue was discovered by Gerben Janssen van Doorn</p>
+<p>References: https://wicket.apache.org/news</p>
+<h2 id="the-application-developers-are-recommended-to-upgrade-to">The application developers are recommended to upgrade to:</h2>
+<ul>
+  <li><a href="/news/2016/10/26/wicket-6.25.0-released.html">Apache Wicket 6.25.0</a></li>
+  <li><a href="/news/2016/10/26/wicket-7.5.0-released.html">Apache Wicket 7.5.0</a></li>
+  <li><a href="/news/2016/10/26/wicket-8.0.0-M2-released.html">Apache Wicket 8.0.0-M2</a></li>
+</ul>
+<p>Users of Wicket verions prior to 6.20 are not affected because the particular
+component was introduced in 6.20.0.</p>
+        <a href="/news/2016/11/08/cve-2016-6806.html">Read more...</a>
+    </article>
+    <article>
         <h2>Apache Wicket 8.0.0-M2 released</h2>
         <small>26 Oct 2016</small>
         <p>The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M2!</p>
@@ -252,34 +278,6 @@ convenience binary package</p>
 </ul>
         <a href="/news/2016/10/26/wicket-8.0.0-M2-released.html">Read more...</a>
     </article>
-    <article>
-        <h2>Apache Wicket 7.5.0 released</h2>
-        <small>26 Oct 2016</small>
-        <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.5.0!</p>
-<p>Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org</p>
-<p>This release marks another minor release of Wicket 7. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present breaks are present in this release compared to
-7.0.0.</p>
-<h2 id="using-this-release">Using this release</h2>
-<p>With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):</p>
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>7.5.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
-<p>Or download and build the distribution yourself, or use our
-convenience binary package</p>
-<ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.5.0">7.5.0 source download</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.5.0/binaries">7.5.0 binary download</a></li>
-</ul>
-        <a href="/news/2016/10/26/wicket-7.5.0-released.html">Read more...</a>
-    </article>
 </div>
 <div class="l-one-third news">
 <h2>Older news</h2>
@@ -289,6 +287,12 @@ articles concerning release, security and community updates.</p>
 title="Atom 1.0 feed" href="/atom.xml">RSS feed</a> to
 get updates in your favorite RSS reader the moment they happen.</p>
 <ul>
+<li>
+    <h3>Apache Wicket 8.0.0-M2 released</h3>
+    <small>26 Oct 2016</small>
+    The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M2! Apache Wicket is an open source Java component oriented web application framework that powers...
+    <a href="/news/2016/10/26/wicket-8.0.0-M2-released.html">more</a>
+</li>
 <li>
     <h3>Apache Wicket 7.5.0 released</h3>
     <small>26 Oct 2016</small>
@@ -312,12 +316,6 @@ get updates in your favorite RSS reader the moment they happen.</p>
     <small>05 Aug 2016</small>
     Severity: Important Vendor: The Apache Software Foundation Versions Affected: Apache Wicket 1.5.x, 6.x and 7.x Description: CVE-2016-3092: A malicious client can send file upload requests...
     <a href="/news/2016/08/05/cve-2016-3092.html">more</a>
-</li>
-<li>
-    <h3>Apache Wicket 8.0.0-M1 released</h3>
-    <small>25 Jul 2016</small>
-    The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M1! Apache Wicket is an open source Java component oriented web application framework that powers...
-    <a href="/news/2016/07/25/wicket-8.0.0-M1-released.html">more</a>
 </li>
 </ul>
 </div>
