@@ -47,9 +47,8 @@ projects.
 The guide is available as PDF or html file for the following versions:
 
 1.  Wicket 8.x
-* [HTML](http://ci.apache.org/projects/wicket/guide/8.x/)
-* [HTML (single page)](http://ci.apache.org/projects/wicket/guide/8.x/guide/single.html)
-* [PDF](http://ci.apache.org/projects/wicket/guide/8.x/guide/single.pdf)
+* [HTML (single page)](https://ci.apache.org/projects/wicket/guide/8.x/single.html)
+* [PDF](https://ci.apache.org/projects/wicket/guide/8.x/single.pdf)
 
 2.  Wicket 7.x
 * [HTML](http://ci.apache.org/projects/wicket/guide/7.x/)
