@@ -16,7 +16,7 @@
 		<homepage rdf:resource="http://wicket.apache.org"/>
 		<asfext:pmc rdf:resource="http://wicket.apache.org/"/>
 		<shortdesc>Apache Wicket is an open source Java component oriented web application framework.</shortdesc>
-		<description>With proper mark-up/logic separation, a POJO data model, and a refreshing lack of XML, Apache Wicket makes developing web-apps simple and enjoyable again. Swap the boilerplate, complex debugging and brittle code for powerful, reusable components written with plain Java and HTML.</description>
+		<description>Write maintainable, secure and scalable web applications using just Java and HTML. Invented in 2004, Wicket is one of the few survivors of the Java serverside web framework wars of the mid 2000's, and a proud member of the Apache Software Foundation.</description>
 		<bug-database rdf:resource="http://issues.apache.org/jira/browse/WICKET"/>
 		<mailing-list rdf:resource="http://wicket.apache.org"/>
 		<download-page rdf:resource="http://wicket.apache.org"/>
