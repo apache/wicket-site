@@ -46,6 +46,13 @@ Identity Access Management Java SDK for LDAP v3 compliant systems.
 Fortress is 100% compliant with RBAC, ARBAC02 and IETF's password
 policy draft. It uses Apache Wicket for its [RBAC Web Management UI][fortress-2].
 
+### Apache AsterixDB
+
+[Apache AsterixDB][asterixdb-1]  is a BDMS (Big Data Management System) with a rich 
+feature set that sets it apart from other Big Data platforms. Its submodule Hyracks
+uses Apache Wicket for its administration console.
+
+
 [isis-1]: http://isis.apache.org
 [isis-2]: http://isis.apache.org/documentation.html#wicket-viewer
 [oodt-1]: http://oodt.apache.org
@@ -58,3 +65,4 @@ policy draft. It uses Apache Wicket for its [RBAC Web Management UI][fortress-2]
 [nutch-2]: https://nutch.apache.org/#22-september-2014-wicket-webapp-now-part-of-nutch-2x-codebase
 [fortress-1]: https://directory.apache.org/fortress/
 [fortress-2]: https://directory.apache.org/fortress/overview.html
+[asterixdb-1]: https://asterixdb.apache.org/
