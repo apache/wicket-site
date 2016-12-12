@@ -124,7 +124,7 @@ with the generated choices.</p>
                     <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;(</span><span class="n">employee</span><span class="o">,</span> <span class="s">"managedBy"</span><span class="o">),</span>
                     <span class="k">new</span> <span class="n">LoadableDetachableModel</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
                         <span class="nd">@Override</span>
-                        <span class="kd">protected</span> <span class="n">Object</span> <span class="nf">load</span><span class="o">()</span> <span class="o">{</span>
+                        <span class="kd">protected</span> <span class="n">Object</span> <span class="nf">load</span><span class="o">()</span> <span class="o">{</span> 
                             <span class="k">return</span> <span class="n">Person</span><span class="o">.</span><span class="na">getManagers</span><span class="o">();</span>
                         <span class="o">}</span>
                     <span class="o">}</span>

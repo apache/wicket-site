@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2016-11-27T23:15:58+01:00</updated>
+    <updated>2016-12-12T17:05:46+01:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -352,7 +352,6 @@ NVYAn0VNdt96cd5VmIW7nIFSb0PidYbH
 &lt;ul&gt;
   &lt;li&gt;[WICKET-5623] - Custom Getters and Setters for PropertyResolver&lt;/li&gt;
 &lt;/ul&gt;
-
 </content>
     </entry>
 
