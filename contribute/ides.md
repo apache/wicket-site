@@ -8,8 +8,8 @@ title: IDE Support for Wicket development
 For all leading IDE's support is under development. Here's a list of efforts
 for the major IDE's.
 
-* Eclipse: [Qwickie](http://code.google.com/p/qwickie), [Wicket Source](https://github.com/42Lines/wicket-source/wiki)
-* Netbeans: [NB Wicket Support](http://plugins.netbeans.org/plugin/3586/wicket-1-4-support)
+* Eclipse: [Qwickie](http://code.google.com/p/qwickie), [Wicket Source](https://github.com/jennybrown8/wicket-source)
+* Netbeans: [NB Wicket Support](http://plugins.netbeans.org/plugin/3586/wicket-1-4-support), [Wicket Source](https://github.com/JoachimRohde/NBWicketSourcePlugin)
 * IntelliJ IDEA: [Wicket Forge](http://wicketforge.googlecode.com/), [Wicket Source](https://github.com/armhold/wicket-source-intellij)
 
 These projects are not maintained or supported by the core Wicket team, but
