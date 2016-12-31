@@ -136,12 +136,10 @@ gpg --print-md SHA1 apache-wicket-$NEWVERSION.zip &gt; apache-wicket-$NEWVERSION
 <p>The following steps are ONLY necessary as long as the above TODO has not been resolved.</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">git push origin build/wicket-$NEWVERSION:refs/heads/build/wicket-$NEWVERSION
 <span class="err">git push -tags origin</span></code></pre></figure>
-<p>The step below uploads the artifacts to a staging area for Maven.</p>
-<ul>
-  <li>assumes you have an Apache nexus account</li>
-  <li>will checkout a fresh copy and build it (ask Maven for why)</li>
-  <li>artifacts will have different signature than in previous release:prepare build (due to times changing)</li>
-</ul>
+<p>The step below uploads the artifacts to a staging area for Maven.
+* assumes you have an Apache nexus account
+* will checkout a fresh copy and build it (ask Maven for why)
+* artifacts will have different signature than in previous release:prepare build (due to times changing)</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">mvn release:perform</span></code></pre></figure>
 <p>This will upload artifacts and signatures to Apache nexus in a staging repository.</p>
 <h4 id="create-a-binary-release">Create a binary release</h4>
@@ -244,13 +242,11 @@ git tag release/wicket-x.y.z
 <p>This works if you can deploy artifacts into the repository.apache.org properly (i.e. you don’t see failures mentioning 401 errors).</p>
 <h3 id="managing-staged-artifacts">Managing Staged Artifacts</h3>
 <p>By logging in with your Apache committer credentials to <a href="https://repository.apache.org">Apache Nexus Staging repo</a> you can access the management interface for the staged artifacts.</p>
-<p>The interface will allow you to:</p>
-<ul>
-  <li>View the staging repositories.</li>
-  <li>Close staging repositories.</li>
-  <li>Release closed repository artifacts (into the release repo and after 1-2 hours into central as well).</li>
-  <li>Drop open and closed staging repositories.</li>
-</ul>
+<p>The interface will allow you to:
+* View the staging repositories.
+* Close staging repositories.
+* Release closed repository artifacts (into the release repo and after 1-2 hours into central as well).
+* Drop open and closed staging repositories.</p>
 <p>More information is available at: <a href="http://www.apache.org/dev/publishing-maven-artifacts.html#staging-maven">Publishing Maven Artifacts</a></p>
 <h2 id="announcing">Announcing the release</h2>
 <p>Edit the _config.yaml file. This file contains a site wide configuration
