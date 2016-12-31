@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta charset="utf-8">
-        <title>Monthly archive for September 2012 | Apache Wicket</title>
+        <title>Monthly archive for December 2016 | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
@@ -19,19 +19,19 @@
     <div class="l-container">
 <nav class="mainmenu">
     <ul>
-		<!-- /start/quickstart.html || /news/2012/09 -->
+		<!-- /start/quickstart.html || /news/2016/12 -->
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /news/2012/09 -->
+		<!-- /start/download.html || /news/2016/12 -->
     	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /news/2012/09 -->
+		<!-- /learn || /news/2016/12 -->
     	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /news/2012/09 -->
+		<!-- /help || /news/2016/12 -->
     	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /news/2012/09 -->
+		<!-- /contribute || /news/2016/12 -->
     	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /news/2012/09 -->
+		<!-- /community || /news/2016/12 -->
     	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /news/2012/09 -->
+		<!-- /apache || /news/2016/12 -->
     	<li class=""><a href="/apache">Apache</a></li>
     </ul>
 </nav>
@@ -43,43 +43,21 @@
 <main>
     <div class="l-container">
         <header class="l-full preamble">
-            <h1>Monthly archive for September 2012</h1>
+            <h1>Monthly archive for December 2016</h1>
         </header>
         <div class="l-two-third">
 <div class="news">
-	<h3>Wicket 1.4.21 released</h3>
-  <p><small>05 Sep 2012</small></p>
-	<p>This is 21st release of the Wicket 1.4.x series. This is also the last release of the 1.4.x series, rounding up the remaining
-bugfixes. No further
-releases will happen in this branch.</p>
-<ul>
-  <li><a href="http://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=shortlog;h=refs/tags/release/wicket-1.4.21">Git tag</a></li>
-  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;version=12320171">Changelog...</a></li>
-</ul>
-	<a href="/news/2012/09/05/wicket-1.4.21-released.html">more</a></li>
-</div>
-<div class="news">
-	<h3>Apache Wicket v6.0.0 released</h3>
-  <p><small>05 Sep 2012</small></p>
-	<blockquote>
-  <p>“With great pleasure we announce the availability of Apache Wicket 6.0.0”</p>
-  <p>– Martijn Dashorst, Vice President, Apache Wicket</p>
-</blockquote>
-<p>Apache Wicket v6.0.0 is the 6th major release of the popular open source Java web framework. Numerous enhancem...</p>
-	<a href="/news/2012/09/05/wicket-6.0.0-released.html">more</a></li>
-</div>
-<div class="news">
-	<h3>CVE-2012-3373 - Apache Wicket XSS vulnerability</h3>
-  <p><small>06 Sep 2012</small></p>
-	<p>Severity: Important</p>
-<p>Vendor:
-The Apache Software Foundation</p>
-<p>Versions Affected:
-Apache Wicket 1.4.x and 1.5.x</p>
-<p>Description:
-It is possible to inject JavaScript statements into an ajax link by adding an
-encoded null byte to a URL pointing to a Wicket app. This could be done by...</p>
-	<a href="/news/2012/09/06/cve-2012-3373.html">more</a></li>
+	<h3>CVE-2016-6793 Apache Wicket deserialization vulnerability</h3>
+  <p><small>31 Dec 2016</small></p>
+	<p><em>Severity</em>: Low</p>
+<p><em>Vendor</em>: The Apache Software Foundation</p>
+<p><em>Versions Affected</em>: Apache Wicket 6.x and 1.5.x</p>
+<p><em>Description</em>: Depending on the ISerializer set in the Wicket application, 
+it’s possible that a Wicket’s object deserialized from an untrusted source 
+and utilized by the application to causes the code to enter in an infinite 
+loop. Specifically, Wicket’s DiskFileItem class, serialized by Kryo, allows 
+an attacker to hack its serialized form to put a client on an infin...</p>
+	<a href="/news/2016/12/31/cve-2016-6793.html">more</a></li>
 </div>
         </div>
         <div class="l-one-third">
