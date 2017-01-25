@@ -81,15 +81,15 @@ how it works on the Java side:</p>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.link.Link</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.model.Model</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="n">QuickStartPage</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">Index</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Index</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
             <span class="kd">private</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="kd">public</span> <span class="n">Integer</span> <span class="n">getObject</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getObject</span><span class="o">()</span> <span class="o">{</span>
                 <span class="k">return</span> <span class="n">counter</span><span class="o">++;</span>
             <span class="o">}</span>
         <span class="o">};</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Link</span><span class="o">(</span><span class="s">"link"</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
                 <span class="c1">// do nothing.</span>
             <span class="o">}</span>
         <span class="o">});</span>
@@ -117,15 +117,15 @@ provides a fallback to a normal request in case no Ajax is available.</p>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.model.Model</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="n">QuickStartPage</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">Index</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Index</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
             <span class="kd">private</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="kd">public</span> <span class="n">Integer</span> <span class="n">getObject</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getObject</span><span class="o">()</span> <span class="o">{</span>
                 <span class="k">return</span> <span class="n">counter</span><span class="o">++;</span>
             <span class="o">}</span>
         <span class="o">};</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxFallbackLink</span><span class="o">(</span><span class="s">"link"</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
                 <span class="c1">// add the components that need to be updated to </span>
                 <span class="c1">// the target</span>
             <span class="o">}</span>
@@ -145,17 +145,17 @@ request target.</p>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.model.Model</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="n">QuickStartPage</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">Index</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Index</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Model</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
             <span class="kd">private</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="kd">public</span> <span class="n">Integer</span> <span class="n">getObject</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getObject</span><span class="o">()</span> <span class="o">{</span>
                 <span class="k">return</span> <span class="n">counter</span><span class="o">++;</span>
             <span class="o">}</span>
         <span class="o">};</span>
         <span class="kd">final</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">"counter"</span><span class="o">,</span> <span class="n">model</span><span class="o">);</span>
         <span class="n">label</span><span class="o">.</span><span class="na">setOutputMarkupId</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxFallbackLink</span><span class="o">(</span><span class="s">"link"</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
                     <span class="c1">// target is only available in an Ajax request</span>
                     <span class="n">target</span><span class="o">.</span><span class="na">addComponent</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
@@ -188,7 +188,7 @@ that the components that are to be updated in that request, should have
         <footer class="l-container">
             <div class="l-full">
    	<img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
-    <div style="margin-top:12px;">Copyright © 2016 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+    <div style="margin-top:12px;">Copyright © 2017 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
 </div>
         </footer>
     </body>

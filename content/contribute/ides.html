@@ -63,13 +63,13 @@ by their respective development teams.</p>
 <h3 id="eclipse">Eclipse</h3>
 <p>Eclipse offers a good support for Maven based projects with <a href="http://www.eclipse.org/m2e/">plugin M2Eclipse</a>. Once installed you can go to ‘Import…-&gt;Existing Maven Projects’ and import one or more Maven projects into your workspace.</p>
 <p>Alternatively, you can generate an Eclipse project typing the following command on project’s root:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">mvn eclipse:eclipse</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">mvn eclipse:eclipse</span></code></pre></figure>
 <p>Maven will add all the necessary JAR files to the project’s classpath. Now the sources can be imported in Eclipse using the “Existing Projects into Workspace” wizard.</p>
 <p>If not already present the <code class="highlighter-rouge">M2_REPO</code> classpath variable has to point to your local Maven repository.
 The repository is typically found in <code class="highlighter-rouge">C:\Documents and Settings\&lt;username&gt;\.m2\repo</code> or (for unix buffs) <code class="highlighter-rouge">~/.m2/repo</code>. It can be set within Eclipse (Preferences-&gt;Java-&gt;Build Path-&gt;Classpath Variables) or with the help of Maven:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt; eclipse:add-maven-repo</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt; eclipse:add-maven-repo</span></code></pre></figure>
 <p>If you want to go along with the Wicket way of code formatting you should import the Wicket code format profile into your workspace (Preferences-&gt;Java-&gt;Code Style-&gt;Formatter), found in:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">&lt;path-to-eclipse-workspace&gt;/wicket-core/EclipseCodeFormat.xml</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">&lt;path-to-eclipse-workspace&gt;/wicket-core/EclipseCodeFormat.xml</span></code></pre></figure>
 <p>Finally configure the editor to automatically format all edited lines and organize imports on save (Preferences-&gt;Java-&gt;Editor-&gt;Save Actions).</p>
 <h3 id="netbeans">NetBeans</h3>
 <p>NetBeans comes with Maven integration. Further help can be found at their <a href="http://wiki.netbeans.org/MavenBestPractices" title="NetBeans Community Wiki">Wiki</a></p>
@@ -82,7 +82,7 @@ The repository is typically found in <code class="highlighter-rouge">C:\Document
         <footer class="l-container">
             <div class="l-full">
    	<img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
-    <div style="margin-top:12px;">Copyright © 2016 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+    <div style="margin-top:12px;">Copyright © 2017 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
 </div>
         </footer>
     </body>

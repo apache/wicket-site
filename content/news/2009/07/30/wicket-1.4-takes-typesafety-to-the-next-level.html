@@ -99,7 +99,7 @@ nationalities, credit card processors, etc.</p>
 <p>The signature of a constructor for the <code class="highlighter-rouge">DropDownChoice</code> component in Wicket
 1.3 was:</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DropDownChoice</span> <span class="kd">extends</span> <span class="o">...</span>
-    <span class="kd">public</span> <span class="n">DropDownChoice</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">IModel</span> <span class="n">model</span><span class="o">,</span> <span class="n">IModel</span> <span class="n">choices</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nf">DropDownChoice</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">IModel</span> <span class="n">model</span><span class="o">,</span> <span class="n">IModel</span> <span class="n">choices</span><span class="o">)</span>
 <span class="o">}</span></code></pre></figure>
 <p>As you can see, this constructor doesn’t give much insight into what goes
 where (other than the names of the parameters). The first parameter is the
@@ -110,7 +110,7 @@ to assign the right IModel values to the right parameters. Now take a look at
 the same constructor, but now in Wicket 1.4. The signature for our generified
 constructor looks like the following example.</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">DropDownChoice</span> <span class="kd">extends</span> <span class="o">...</span>
-    <span class="kd">public</span> <span class="n">DropDownChoice</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">IModel</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">model</span><span class="o">,</span> <span class="n">IModel</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">List</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">T</span><span class="o">&gt;&gt;</span> <span class="n">choices</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nf">DropDownChoice</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">IModel</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">model</span><span class="o">,</span> <span class="n">IModel</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">List</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">T</span><span class="o">&gt;&gt;</span> <span class="n">choices</span><span class="o">)</span>
 <span class="o">}</span></code></pre></figure>
 <p>Here we communicate that the first <code class="highlighter-rouge">IModel</code> parameter is a <code class="highlighter-rouge">T</code>, which is the
 single value that will be provided when the <code class="highlighter-rouge">DropDownChoice</code> selects one
@@ -129,9 +129,9 @@ use a model or use two different model types: which one should be in the
 lead? We chose to generify only the components that clearly benefited from
 the extra type information, leading to clean code like this:</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">ListView</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">peopleListView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;(</span><span class="s">"people"</span><span class="o">,</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">protected</span> <span class="kt">void</span> <span class="n">populateItem</span><span class="o">(</span><span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Link</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;(</span><span class="s">"editPerson"</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">()){</span>
-                <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">()</span> <span class="o">{</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
                     <span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="n">getModelObject</span><span class="o">();</span>
                     <span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="n">EditPersonPage</span><span class="o">(</span><span class="n">p</span><span class="o">));</span>
                 <span class="o">}</span>
@@ -145,7 +145,7 @@ the extra type information, leading to clean code like this:</p>
         <footer class="l-container">
             <div class="l-full">
    	<img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
-    <div style="margin-top:12px;">Copyright © 2016 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+    <div style="margin-top:12px;">Copyright © 2017 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
 </div>
         </footer>
     </body>

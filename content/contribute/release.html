@@ -75,24 +75,24 @@
 <ul>
   <li>Start gpg-agent as a daemon (OS X, using homebrew installation of gpg, gpg-agent, pinentry):</li>
 </ul>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">    eval `gpg-agent --daemon --pinentry-program /usr/local/bin/pinentry`</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">    eval `gpg-agent --daemon --pinentry-program /usr/local/bin/pinentry`</span></code></pre></figure>
 <ul>
   <li>Create an environment variable such that you can copy/paste several of the following commands (substitute 6.0.0 with the number you’re actually going to release):</li>
 </ul>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">export NEWVERSION=6.0.0</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">export NEWVERSION=6.0.0</span></code></pre></figure>
 <ul>
   <li>Sign pom.xml such that gpg-agent has enabled your key (and remove the .asc file). This triggers the pinentry program and sets the stage for gpg-agent:</li>
 </ul>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">gpg --armor --detach-sign --use-agent --sign pom.xml
-rm pom.xml.asc</code></pre></figure>
+<span class="err">rm pom.xml.asc</span></code></pre></figure>
 <ul>
   <li>Create release branch:</li>
 </ul>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">mvn release:branch -DbranchName=build/wicket-$NEWVERSION</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">mvn release:branch -DbranchName=build/wicket-$NEWVERSION</span></code></pre></figure>
 <ul>
   <li>Checkout the release branch:</li>
 </ul>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">git checkout build/wicket-$NEWVERSION</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">git checkout build/wicket-$NEWVERSION</span></code></pre></figure>
 <ul>
   <li>
     <p>Update archetypes/quickstart/src/main/archetype-resources/pom.xml to use NEWVERSION of Wicket and commit</p>
@@ -106,16 +106,16 @@ rm pom.xml.asc</code></pre></figure>
     </ul>
   </li>
 </ul>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">mvn release:prepare</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">mvn release:prepare</span></code></pre></figure>
 <ul>
   <li>Remove last commit such that HEAD points to the NEWVERSION release, not the new development version</li>
 </ul>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">git reset HEAD^ --hard</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">git reset HEAD^ --hard</span></code></pre></figure>
 <ul>
   <li>Create source archive:</li>
 </ul>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">git archive --format=tar.gz --prefix=apache-wicket-$NEWVERSION/ -o apache-wicket-$NEWVERSION.tar.gz wicket-$NEWVERSION
-git archive --format=zip --prefix=apache-wicket-$NEWVERSION/ -o apache-wicket-$NEWVERSION.zip wicket-$NEWVERSION</code></pre></figure>
+<span class="err">git archive --format=zip --prefix=apache-wicket-$NEWVERSION/ -o apache-wicket-$NEWVERSION.zip wicket-$NEWVERSION</span></code></pre></figure>
 <ul>
   <li><strong>NOTE 1</strong> the trailing ‘/’ after –prefix=NEWVERSION is vital for the tarball</li>
   <li><strong>NOTE 2</strong> you can ignore the gpg generated messages telling ‘You need a passphrase to unlock the secret key for’, unless an error occurred—these messages are not error messages</li>
@@ -126,21 +126,21 @@ gpg --armor --detach-sign --use-agent --sign apache-wicket-$NEWVERSION.zip
 gpg --print-md SHA1 apache-wicket-$NEWVERSION.tar.gz &gt; apache-wicket-$NEWVERSION.tar.gz.sha
 gpg --print-md MD5  apache-wicket-$NEWVERSION.tar.gz &gt; apache-wicket-$NEWVERSION.tar.gz.md5
 gpg --print-md SHA1 apache-wicket-$NEWVERSION.zip &gt; apache-wicket-$NEWVERSION.zip.sha
-gpg --print-md MD5  apache-wicket-$NEWVERSION.zip &gt; apache-wicket-$NEWVERSION.zip.md5</code></pre></figure>
+<span class="err">gpg --print-md MD5  apache-wicket-$NEWVERSION.zip &gt; apache-wicket-$NEWVERSION.zip.md5</span></code></pre></figure>
 <p>To sign the tag (overwrites the maven generated tag), execute:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">git tag -s --force wicket-$NEWVERSION</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">git tag -s --force wicket-$NEWVERSION</span></code></pre></figure>
 <h4 id="staging-the-build">Staging the build</h4>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">ssh APACHE_ID@people.apache.org mkdir public_html/wicket-$NEWVERSION
-scp apache-wicket-* APACHE_ID@people.apache.org:public_html/wicket-$NEWVERSION</code></pre></figure>
+<span class="err">scp apache-wicket-* APACHE_ID@people.apache.org:public_html/wicket-$NEWVERSION</span></code></pre></figure>
 <p><strong>TODO</strong> figure out how to let <code class="highlighter-rouge">release:perform</code> work from a local checkout, such that we can actually <em>stage</em> the build instead of having to push the tag to our git repo.</p>
 <p>The following steps are ONLY necessary as long as the above TODO has not been resolved.</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">git push origin build/wicket-$NEWVERSION:refs/heads/build/wicket-$NEWVERSION
-git push -tags origin</code></pre></figure>
+<span class="err">git push -tags origin</span></code></pre></figure>
 <p>The step below uploads the artifacts to a staging area for Maven.
 * assumes you have an Apache nexus account
 * will checkout a fresh copy and build it (ask Maven for why)
 * artifacts will have different signature than in previous release:prepare build (due to times changing)</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">mvn release:perform</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="err">mvn release:perform</span></code></pre></figure>
 <p>This will upload artifacts and signatures to Apache nexus in a staging repository.</p>
 <h4 id="create-a-binary-release">Create a binary release</h4>
 <p>As we don’t vote on binary packages, but do want to cater to developers not using Maven, it is very convenient to create a download for non-Maven users.</p>
@@ -163,14 +163,14 @@ gpg --print-md MD5  apache-wicket-$NEWVERSION-bin.tar.gz &gt; apache-wicket-$NEW
 gpg --print-md SHA1 apache-wicket-$NEWVERSION-bin.zip &gt; apache-wicket-$NEWVERSION.-binzip.sha
 gpg --print-md MD5  apache-wicket-$NEWVERSION-bin.zip &gt; apache-wicket-$NEWVERSION-bin.zip.md5
 ssh APACHE_ID@people.apache.org mkdir public_html/wicket-$NEWVERSION/bin
-scp apache-wicket-*bin.* APACHE_ID@people.apache.org:public_html/wicket-$NEWVERSION/bin</code></pre></figure>
+<span class="err">scp apache-wicket-*bin.* APACHE_ID@people.apache.org:public_html/wicket-$NEWVERSION/bin</span></code></pre></figure>
 <p>This binary release contains all required files to comply with the release policy, and the binary artefacts generated by our Maven release build, including the experimental modules and examples.</p>
 <h4 id="vote-the-build">Vote the build</h4>
 <p>Start a vote on dev@ for this release. Allow for at least 72 hours, and ensure you take into account weekends.</p>
 <h4 id="promoting-the-build">Promoting the build</h4>
 <p>The following two steps are only necessary when the previous TODO is resolved (you can’t push the tag twice).</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">git push origin build/wicket-$NEWVERSION:refs/heads/build/wicket-$NEWVERSION
-git push -tags origin</code></pre></figure>
+<span class="err">git push -tags origin</span></code></pre></figure>
 <p>You only need to do them if you haven’t done so yet.</p>
 <p>See also <a href="#nexus">managing nexus</a> for the steps needed to publish the artifacts to Maven Central. And don’t forget to announce the release!</p>
 <h2 id="release-14">Releasing Apache Wicket 1.4.x+</h2>
@@ -192,7 +192,7 @@ git push -tags origin</code></pre></figure>
             &lt;password&gt;$your_apache_password&lt;/password&gt;
         &lt;/server&gt;
 &lt;/servers&gt;
-&lt;/settings&gt;</code></pre></figure>
+<span class="err">&lt;/settings&gt;</span></code></pre></figure>
 <ul>
   <li>Make sure you have a GnuPG key which is added to <a href="https://svn.apache.org/repos/asf/wicket/common/KEYS">KEYS</a>.
 Read the header of KEYS file to see how to add it.</li>
@@ -207,7 +207,7 @@ will copy the assemblies to your people.apache.org account.</li>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">ssh people.apache.org
 mkdir /www/www.apache.org/dist/wicket/x.y.z
 mv ~/public_html/wicket-x.y.z/dist/* /www/www.apache.org/dist/wicket/x.y.z
-chown -R :wicket /www/www.apache.org/dist/wicket/x.y.z</code></pre></figure>
+<span class="err">chown -R :wicket /www/www.apache.org/dist/wicket/x.y.z</span></code></pre></figure>
 <ul>
   <li>Login to <a href="https://repository.apache.org">Apache Nexus Staging repo</a>, select the closed repository and click <strong>Release</strong>.  It will be accessible immediately through the apache release repo and then within 1-2 hours through maven central.</li>
   <li>If the release is voted down you can <strong>Drop</strong> the staged release and then restage later after incorporating the necessary changes.</li>
@@ -215,7 +215,7 @@ chown -R :wicket /www/www.apache.org/dist/wicket/x.y.z</code></pre></figure>
 </ul>
 <figure class="highlight"><pre><code class="language-console" data-lang="console">git checkout build/wicket-x.y.z
 git tag release/wicket-x.y.z
-git push --tags</code></pre></figure>
+<span class="err">git push --tags</span></code></pre></figure>
 <ul>
   <li>Wait until repo1.maven.org has picked up the release artifacts.</li>
   <li>Wait 24 hours until mirrors picked up release artifacts</li>
@@ -238,7 +238,7 @@ git push --tags</code></pre></figure>
             &lt;password&gt;$password&lt;/password&gt;
         &lt;/server&gt;
 &lt;/servers&gt;
-&lt;/settings&gt;</code></pre></figure>
+<span class="err">&lt;/settings&gt;</span></code></pre></figure>
 <p>This works if you can deploy artifacts into the repository.apache.org properly (i.e. you don’t see failures mentioning 401 errors).</p>
 <h3 id="managing-staged-artifacts">Managing Staged Artifacts</h3>
 <p>By logging in with your Apache committer credentials to <a href="https://repository.apache.org">Apache Nexus Staging repo</a> you can access the management interface for the staged artifacts.</p>
@@ -273,21 +273,21 @@ contains your announcement.</li>
 <a href="https://svn.apache.org/repos/asf/wicket/common/site/apidocs/1.4">https://svn.apache.org/repos/asf/wicket/common/site/apidocs/1.4</a>
 svnpubsub will push this directly to our website. (example script below)</li>
 </ul>
-<figure class="highlight"><pre><code class="language-console" data-lang="console"># do this in your locally-checked-out release branch (i.e. svn.../releases/wicket-1.4.13)
-mvn javadoc:aggregate
-# note that you may need to tweak these paths to fit your configuration:
-cp -r target/site/apidocs/* ../wicket-common/site/apidocs/1.4/
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="ni"># </span><span class="nc">do</span><span class="kv"> this in your locally-checked-out release branch (i.e. svn.../releases/wicket-1.4.13)
+</span>mvn javadoc:aggregate
+<span class="ni"># </span><span class="nc">note</span><span class="kv"> that you may need to tweak these paths to fit your configuration:
+</span>cp -r target/site/apidocs/* ../wicket-common/site/apidocs/1.4/
 cd ../wicket-common/
-# call "svn add" for files that are new (there's probably an easier way to do this)
-svn stat | grep -e '^?' | sed 's/\?\W*//' | xargs svn add
-svn commit -m "changes to update javadocs to latest release"</code></pre></figure>
+<span class="ni"># </span><span class="nc">call</span><span class="kv"> "svn add" for files that are new (there's probably an easier way to do this)
+</span>svn stat | grep -e '^?' | sed 's/\?\W*//' | xargs svn add
+<span class="err">svn commit -m "changes to update javadocs to latest release"</span></code></pre></figure>
         </section>
     </div>
 </main>
         <footer class="l-container">
             <div class="l-full">
    	<img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
-    <div style="margin-top:12px;">Copyright © 2016 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+    <div style="margin-top:12px;">Copyright © 2017 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
 </div>
         </footer>
     </body>

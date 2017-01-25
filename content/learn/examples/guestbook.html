@@ -66,25 +66,25 @@ of this example.</p>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Comment</span> <span class="kd">implements</span> <span class="n">IClusterable</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">text</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
-    <span class="kd">public</span> <span class="n">Comment</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Comment</span><span class="o">()</span> <span class="o">{</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">Comment</span><span class="o">(</span><span class="kd">final</span> <span class="n">Comment</span> <span class="n">comment</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Comment</span><span class="o">(</span><span class="kd">final</span> <span class="n">Comment</span> <span class="n">comment</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">text</span> <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="na">text</span><span class="o">;</span>
         <span class="k">this</span><span class="o">.</span><span class="na">date</span> <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="na">date</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">getText</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getText</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">text</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setText</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setText</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">Date</span> <span class="n">getDate</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">getDate</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">date</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setDate</span><span class="o">(</span><span class="n">Date</span> <span class="n">date</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDate</span><span class="o">(</span><span class="n">Date</span> <span class="n">date</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">date</span> <span class="o">=</span> <span class="n">date</span><span class="o">;</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">toString</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="s">"[Comment date = "</span> <span class="o">+</span> <span class="n">date</span> <span class="o">+</span> <span class="s">", text = "</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s">"]"</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
@@ -123,13 +123,13 @@ accomplished in just a few lines of code.</p>
     <span class="cm">/**
      * Constructor that is invoked when page is invoked without a session.
      */</span>
-    <span class="kd">public</span> <span class="n">GuestBook</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">GuestBook</span><span class="o">()</span> <span class="o">{</span>
         <span class="c1">// Add comment form</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">CommentForm</span><span class="o">(</span><span class="s">"commentForm"</span><span class="o">));</span>
         <span class="c1">// Add commentListView of existing comments</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">PropertyListView</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;(</span><span class="s">"comments"</span><span class="o">,</span> <span class="n">commentList</span><span class="o">)</span> <span class="o">{</span>
             <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="n">populateItem</span><span class="o">(</span><span class="kd">final</span> <span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span> <span class="n">listItem</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="kd">final</span> <span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Comment</span><span class="o">&gt;</span> <span class="n">listItem</span><span class="o">)</span> <span class="o">{</span>
                 <span class="n">listItem</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"date"</span><span class="o">));</span>
                 <span class="n">listItem</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">MultiLineLabel</span><span class="o">(</span><span class="s">"text"</span><span class="o">));</span>
             <span class="o">}</span>
@@ -139,7 +139,7 @@ accomplished in just a few lines of code.</p>
      * A form that allows a user to add a comment.
      */</span>
     <span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">CommentForm</span> <span class="kd">extends</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">ValueMap</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="kd">public</span> <span class="n">CommentForm</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="nf">CommentForm</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
             <span class="c1">// Construct form with no validation listener</span>
             <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="k">new</span> <span class="n">CompoundPropertyModel</span><span class="o">&lt;</span><span class="n">ValueMap</span><span class="o">&gt;(</span><span class="k">new</span> <span class="n">ValueMap</span><span class="o">()));</span>
             <span class="c1">// this is just to make the unit test happy</span>
@@ -153,7 +153,7 @@ accomplished in just a few lines of code.</p>
          * Show the resulting valid edit
          */</span>
         <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="n">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
             <span class="n">ValueMap</span> <span class="n">values</span> <span class="o">=</span> <span class="n">getModelObject</span><span class="o">();</span>
             <span class="c1">// check if the honey pot is filled</span>
             <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">isNotBlank</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">values</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"comment"</span><span class="o">)))</span> <span class="o">{</span>
@@ -173,7 +173,7 @@ accomplished in just a few lines of code.</p>
     <span class="cm">/**
      * Clears the comments.
      */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">clear</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">clear</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">commentList</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
@@ -236,10 +236,10 @@ final treat the modifications to the <code class="highlighter-rouge">web.xml</co
 <span class="kn">import</span> <span class="nn">org.apache.wicket.Page</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.examples.WicketExampleApplication</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">GuestBookApplication</span> <span class="kd">extends</span> <span class="n">WicketExampleApplication</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">GuestBookApplication</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">GuestBookApplication</span><span class="o">()</span> <span class="o">{</span>
     <span class="o">}</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">Page</span><span class="o">&gt;</span> <span class="n">getHomePage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">Page</span><span class="o">&gt;</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">GuestBook</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
@@ -260,7 +260,7 @@ file for running this application.</p>
         <footer class="l-container">
             <div class="l-full">
    	<img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
-    <div style="margin-top:12px;">Copyright © 2016 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+    <div style="margin-top:12px;">Copyright © 2017 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
 </div>
         </footer>
     </body>
