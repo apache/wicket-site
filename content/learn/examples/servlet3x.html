@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Servlet 3.x with Spring Framework | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    </head>
+
+    <body class="">
+        <div class="header default">
+    <div class="l-container">
+<nav class="mainmenu">
+    <ul>
+		<!-- /start/quickstart.html || /learn/examples/servlet3x -->
+    	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+		<!-- /start/download.html || /learn/examples/servlet3x -->
+    	<li class=""><a href="/start/download.html">Download</a></li>
+		<!-- /learn || /learn/examples/servlet3x -->
+    	<li class=""><a href="/learn">Documentation</a></li>
+		<!-- /help || /learn/examples/servlet3x -->
+    	<li class=""><a href="/help">Support</a></li>
+		<!-- /contribute || /learn/examples/servlet3x -->
+    	<li class=""><a href="/contribute">Contribute</a></li>
+		<!-- /community || /learn/examples/servlet3x -->
+    	<li class=""><a href="/community">Community</a></li>
+		<!-- /apache || /learn/examples/servlet3x -->
+    	<li class=""><a href="/apache">Apache</a></li>
+    </ul>
+</nav>
+        <div class="logo">
+    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+</div>
+    </div>
+</div>
+<main>
+    <div class="l-container">
+        <header class="l-full preamble">
+            <h1>Servlet 3.x with Spring Framework</h1>
+        </header>
+        <section class="l-one-third right">
+            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#creating-the-web-components"><span class="toc-number">1</span> <span class="toc-text">Creating the web components</span></a><ul><li class="toc--level-2 toc--section-2"><a href="#myfilterjava"><span class="toc-number">1.1</span> <span class="toc-text">MyFilter.java</span></a></li><li class="toc--level-2 toc--section-3"><a href="#mycontextloaderlistenerjava"><span class="toc-number">1.2</span> <span class="toc-text">MyContextLoaderListener.java</span></a></li><li class="toc--level-2 toc--section-4"><a href="#myrequestcontextlistenerjava"><span class="toc-number">1.3</span> <span class="toc-text">MyRequestContextListener.java</span></a></li></ul></li><li class="toc--level-1 toc--section-5"><a href="#creating-the-web-application-class"><span class="toc-number">2</span> <span class="toc-text">Creating the web application class</span></a></li><li class="toc--level-1 toc--section-6"><a href="#summary"><span class="toc-number">3</span> <span class="toc-text">Summary</span></a></li></ul></div>
+        </section>
+        <section class="l-two-third left">
+            <p>This example shows you how to configure Wicket to run without any XML definitions.
+It requires to use the Servlet 3.x API and a container which is able to load the
+web component definitions via annotations defined within this standard.</p>
+<h2 id="creating-the-web-components">Creating the web components</h2>
+<h3 id="myfilterjava">MyFilter.java</h3>
+<p>First you have to configure the filter which was done within the web.xml in previous
+of the Servlet specification. All initialization parameters are configured also via annotations.
+The Application class is defined in the init param with the name applicationClassName.</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@WebFilter</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/*"</span><span class="o">,</span> <span class="n">initParams</span> <span class="o">=</span> <span class="o">{</span>
+		<span class="nd">@WebInitParam</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"applicationClassName"</span><span class="o">,</span>
+		<span class="n">value</span> <span class="o">=</span> <span class="s">"com.my.package.MyApplication"</span><span class="o">),</span>
+		<span class="nd">@WebInitParam</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"configuration"</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">"development"</span><span class="o">)</span> <span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFilter</span> <span class="kd">extends</span> <span class="n">WicketFilter</span> <span class="o">{}</span></code></pre></figure>
+<h3 id="mycontextloaderlistenerjava">MyContextLoaderListener.java</h3>
+<p>Another important class is the ContextLoaderListener which in our case is going to initialize
+the Spring Framework’s context and effects a package scan for other Spring components. Usually
+those Spring components are initialized with specific annotations like @Component or @Service for
+example. You have to place in all your Spring Components in the scanned package or in subpackages
+(com.my.package in this case)</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@WebListener</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyContextLoaderListener</span> <span class="kd">extends</span> <span class="n">ContextLoaderListener</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="n">AnnotationConfigWebApplicationContext</span> <span class="n">context</span><span class="o">;</span>
+  <span class="kd">static</span> <span class="o">{</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AnnotationConfigWebApplicationContext</span><span class="o">();</span>
+    <span class="n">context</span><span class="o">.</span><span class="na">scan</span><span class="o">(</span><span class="s">"com.my.package"</span><span class="o">);</span>
+    <span class="n">context</span><span class="o">.</span><span class="na">refresh</span><span class="o">();</span>
+  <span class="o">}</span>
+  <span class="kd">public</span> <span class="n">MyContextLoaderListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">AnnotationConfigWebApplicationContext</span> <span class="n">getContext</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">context</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">setContext</span><span class="o">(</span>
+    <span class="n">AnnotationConfigWebApplicationContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">MyContextLoaderListener</span><span class="o">.</span><span class="na">context</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+<h3 id="myrequestcontextlistenerjava">MyRequestContextListener.java</h3>
+<p>To configure Spring Framework to recognize the request context a RequestContextListener needs to be
+defined. This listener enables the web project to define beans with a scope. So if you want a bean
+to remains in the session as long as the user is surfing on your web page you can do this by adding the
+annotation @SessionScope together with @Component.</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@WebListener</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyRequestContextListener</span> <span class="kd">extends</span> <span class="n">RequestContextListener</span><span class="o">{}</span></code></pre></figure>
+<h2 id="creating-the-web-application-class">Creating the web application class</h2>
+<p>Within our application class it is required to hand over the Spring’s application context to the 
+SpringComponentInjector so that beans are also injected into Wicket components - this can be done by using the 
+@SpringBean annotation. If you are interested in how to implement the home page have a look at the 
+corresponding example: <a href="helloworld.html">Hello World!</a></p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyApplication</span> <span class="kd">extends</span> <span class="n">WebApplication</span> <span class="o">{</span>
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">Page</span><span class="o">&gt;</span> <span class="n">getHomePage</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">HelloWorld</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="n">init</span><span class="o">()</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+		<span class="n">getComponentInstantiationListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span>
+			<span class="k">new</span> <span class="n">SpringComponentInjector</span><span class="o">(</span><span class="k">this</span><span class="o">,</span>
+				<span class="n">MyContextLoaderListener</span><span class="o">.</span><span class="na">getContext</span><span class="o">()));</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+<h2 id="summary">Summary</h2>
+<p>Since Servlet 3.x and the corresponding changes within the Spring Framework to configure web applications
+without any XML definitions it is easily possible to increase the maintainability, because every configuration
+is covered by the java compiler. Also you don’t have to switch between various different initialization representations.
+Required artifacts are: spring-web (required: &gt;4.0), wicket-spring (recommend: &gt;7.6.0), wicket-core (recommend: &gt;7.6.0),
+javax.servlet-api (required: &gt;3.x)</p>
+        </section>
+    </div>
+</main>
+        <footer class="l-container">
+            <div class="l-full">
+   	<img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
+    <div style="margin-top:12px;">Copyright © 2017 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+</div>
+        </footer>
+    </body>
+
+</html>

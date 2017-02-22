@@ -24,3 +24,5 @@ action (available for version [7.x](http://examples7x.wicket.apache.org/index.ht
   features building a counter.
 * [Using Fragments](usingfragments.html) - A short example explaining Wicket's
   fragments feature. Fragments are a type of inline panels.
+* [Servlet 3.x with Spring Framework](servlet3x.html) - An example to show the configuration of
+  Wicket and Spring Framework without any XML definitions.
