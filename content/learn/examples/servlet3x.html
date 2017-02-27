@@ -72,17 +72,19 @@ those Spring components are initialized with specific annotations like @Componen
 example. You have to place them into the scanned package or in sub packages. (com.my.package in this case)</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebListener</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.springframework.web.context.ContextLoaderListener</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.context.WebApplicationContext</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.springframework.web.context.support.AnnotationConfigWebApplicationContext</span><span class="o">;</span>
 <span class="nd">@WebListener</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyContextLoaderListener</span> <span class="kd">extends</span> <span class="n">ContextLoaderListener</span> <span class="o">{</span>
-  <span class="kd">private</span> <span class="kd">static</span> <span class="n">AnnotationConfigWebApplicationContext</span> <span class="n">context</span><span class="o">;</span>
-  <span class="kd">static</span> <span class="o">{</span>
-    <span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AnnotationConfigWebApplicationContext</span><span class="o">();</span>
+  <span class="kd">public</span> <span class="n">MyContextLoaderListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">getWebApplicationContext</span><span class="o">());</span>
+  <span class="o">}</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="n">WebApplicationContext</span> <span class="n">getWebApplicationContext</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">AnnotationConfigWebApplicationContext</span> <span class="n">context</span>
+    	<span class="o">=</span> <span class="k">new</span> <span class="n">AnnotationConfigWebApplicationContext</span><span class="o">();</span>
     <span class="n">context</span><span class="o">.</span><span class="na">scan</span><span class="o">(</span><span class="s">"com.my.package"</span><span class="o">);</span>
     <span class="n">context</span><span class="o">.</span><span class="na">refresh</span><span class="o">();</span>
-  <span class="o">}</span>
-  <span class="kd">public</span> <span class="n">MyContextLoaderListener</span><span class="o">()</span> <span class="o">{</span>
-    <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">context</span><span class="o">;</span>
   <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 <h3 id="myrequestcontextlistenerjava">MyRequestContextListener.java</h3>
