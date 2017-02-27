@@ -38,21 +38,22 @@ example. You have to place them into the scanned package or in sub packages. (co
 {% highlight java %}
 import javax.servlet.annotation.WebListener;
 import org.springframework.web.context.ContextLoaderListener;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 @WebListener
 public class MyContextLoaderListener extends ContextLoaderListener {
 
-  private static AnnotationConfigWebApplicationContext context;
-
-  static {
-    context = new AnnotationConfigWebApplicationContext();
-    context.scan("com.my.package");
-    context.refresh();
+  public MyContextLoaderListener() {
+    super(getWebApplicationContext());
   }
 
-  public MyContextLoaderListener() {
-    super(context);
+  private static WebApplicationContext getWebApplicationContext() {
+    AnnotationConfigWebApplicationContext context
+    	= new AnnotationConfigWebApplicationContext();
+    context.scan("com.my.package");
+    context.refresh();
+    return context;
   }
 }
 {% endhighlight %}
