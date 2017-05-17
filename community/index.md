@@ -35,8 +35,14 @@ An overview of the available sub-projects can be found [here](https://github.com
 
 ## Wicket-Bootstrap project
 
-[Wicket-Bootstrap](http://wb.agilecoders.de/) is a full-fledged project that provides integration between Wicket and the popular CSS and JS framework. The project site
+[Wicket-Bootstrap](http://wb-mgrigorov.rhcloud.com/) is a full-fledged project that provides integration between Wicket and the popular CSS and JS framework. The project site
 offers a complete showcase of the available features.
+
+---
+
+## Wicket JQuery-UI integration
+
+[Wicket JQuery-UI integration](http://www.7thweb.net/) provides full integration between Wicket and JQuery UI with many great-looking widgets ready to be used in your application. 
 
 ---
 
