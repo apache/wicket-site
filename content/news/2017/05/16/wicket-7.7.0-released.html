@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Apache Wicket 7.7.0 released | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    </head>
+
+    <body class="">
+        <div class="header default">
+    <div class="l-container">
+<nav class="mainmenu">
+    <ul>
+		<!-- /start/quickstart.html || /news/2017/05/16/wicket-7.7.0-released.html -->
+    	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+		<!-- /start/download.html || /news/2017/05/16/wicket-7.7.0-released.html -->
+    	<li class=""><a href="/start/download.html">Download</a></li>
+		<!-- /learn || /news/2017/05/16/wicket-7.7.0-released.html -->
+    	<li class=""><a href="/learn">Documentation</a></li>
+		<!-- /help || /news/2017/05/16/wicket-7.7.0-released.html -->
+    	<li class=""><a href="/help">Support</a></li>
+		<!-- /contribute || /news/2017/05/16/wicket-7.7.0-released.html -->
+    	<li class=""><a href="/contribute">Contribute</a></li>
+		<!-- /community || /news/2017/05/16/wicket-7.7.0-released.html -->
+    	<li class=""><a href="/community">Community</a></li>
+		<!-- /apache || /news/2017/05/16/wicket-7.7.0-released.html -->
+    	<li class=""><a href="/apache">Apache</a></li>
+    </ul>
+</nav>
+        <div class="logo">
+    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+</div>
+    </div>
+</div>
+<main>
+    <div class="l-container">
+        <header class="l-full preamble">
+            <h1>Apache Wicket 7.7.0 released</h1>
+        </header>
+        <section class="l-one-third right">
+            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul></li></ul></div>
+        </section>
+        <section class="l-two-third left">
+            <div class="l-full">
+    <p class="meta">16 May 2017</p>
+    <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.7.0!</p>
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+<p>This release marks another minor release of Wicket 7. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+7.0.0.</p>
+<h2 id="new-and-noteworthy">New and noteworthy</h2>
+<p>With this version Wicket changed its internal JSON implementation (package org.apache.wicket.ajax.json) switching from project JSON-java (https://github.com/stleary/JSON-java) to Open JSON (https://github.com/openjson/openjson). This was necessery as JSON-java’s license is no longer compatible with Apache License 2.0.</p>
+<h2 id="using-this-release">Using this release</h2>
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>7.7.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.7.0">7.7.0 source download</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.7.0/binaries">7.7.0 binary download</a></li>
+</ul>
+<!--more-->
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+<p>If you upgrade from 7.y.z this release is a drop in replacement. If
+you come from a version prior to 7.0.0, please read our Wicket 7
+migration guide found at</p>
+<ul>
+  <li>http://s.apache.org/wicket7migrate</li>
+</ul>
+<p>Have fun!</p>
+<p>— The Wicket team</p>
+<p>========================================================================</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>The signatures for the source release artefacts:
+</code></pre>
+</div>
+<p>Signature for apache-wicket-7.7.0.zip:</p>
+<div class="highlight"><pre> 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+iQIcBAABAgAGBQJZFKHNAAoJEAzCjx+CMhBVeUEQAKYrOl330nSPSPIlNdFn84ux
+VASOZ7R0WgkF3jiI7YfqJoif3KY5oed3Exu/zhNvjc45Gocw6HZp7ETDHw5lpaMl
+vEjXGCkp/OwYrwfUKs9eCwfM0l5XG7wfSMgEpEWBeGVpZjDS08bnQje8rH3sjhHz
+g+Kzen2WItdRpw+TSpxG8RHUOpJ0lUy7tTIIdYtLBL7HnMqgKOSKDQMfUW+q/voS
+3qxOKhpVA5mw46z8v/z2c96FUBU9JbKpBl4DAp8dMWy2a+/GEB7O/SM4wpFgRXim
+iOerbsEi0nruBGm4RU7pMH4aGppZmr2IdiGMeiA1ZlgI7TBJB2SmvK4hffhaTmV6
+Zcn6BtCPn70reUdHOijnebAuLsLio0D1jtGb2kQ4VvxuamXc+qLJfnyiWtg91kf8
+A6NcNzENN1sdMORHBah7tSwN4RP47eKG1uFN3isBi+lKiZcYPW/DmSWKNEY76Q0T
+SMPgcvIl3vz4tCfCo08PSbQG6HPgut+0KzuhA7KyLO34WmzvnQxvcigrOTDUUHy1
+bHEoSlcor+XZcIOPYmKJLZVHFDNrnZRfqgTPHo9w0AlYAYmmbwL5iM9vG/u3zxuv
+SziD7fXvu8zqA33XNNikS4DJz76Onz1ZOrx3dhZt3lIktIJC5KYxk8so+w1DjX0q
+wDSelmuT4U9w7iX4Y0Cf
+=6Htq
+-----END PGP SIGNATURE-----
+</pre></div>
+<p>Signature for apache-wicket-7.7.0.tar.gz:</p>
+<div class="highlight"><pre> 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+iQIcBAABAgAGBQJZFKHNAAoJEAzCjx+CMhBVjeIP/RjNERucRA5/C/4M/HhxU/wt
+05ZlyiEYTTviuX5gLPc3AQQm7zA0FrQo5Mz80+KGKECq63hbXtHsqxqsvEAOLnf0
+mhgtvgmZwILaXkY3Q7WBgrxqKZsISLGlOiBWJQV68ml5qPsjd08WEXmpscrIr13B
+zCPekHtizOKepNZmXRxPGdSV9ZeoHllFKwb257nFSd0oK2B6wcrrD4WFZjUNPMFP
+daP5qH3bIsr0Kp2938hEVwqXFRpcxZqEF/ZReVEv0tC66R9pqd+JVt8myH6YpnHR
+Ymg3ApjQTFHKw2dBtfA0l5izH0UiAkSRYrNszxT5jcgReX+PICUfwNpYa+FHByAk
+sP15sFZ5JT1sqwtGkBhVvLE9gm8IB8MndInWS31oaAW8jv4hX823HsN4VEoh+PzU
+lQTmTEVCyLzYMA0GdXCmKyugNbaSnQBCqbTkbMjqPnPXcwaOUJmX7U4A43MeTrS4
+7E8Y50xCfBL22uYEoEhcylscVqW/8NDrmUAb7rfS7RmAgd4XUIpPeHogM/in021R
+8Qx+Op2dY1FRgbmD40CaLkAx1tQ1806BCFBCcLU9SqthdNt1slySvussTHdz+usF
+/qlursrXa56tqchhl1z8mM80NLtnK+VYUtJkQ8ClEs8ADypiidmNLFb+QcLv8NRl
+oAIYkVII4BcThA/4eJIY
+=f/Rl
+-----END PGP SIGNATURE-----
+</pre></div>
+<p>========================================================================</p>
+<h3 id="this-release">This Release</h3>
+<h4 id="changelog-for-770">CHANGELOG for 7.7.0:</h4>
+<h5 id="bug">Bug</h5>
+<ul>
+  <li>[WICKET-6165] - Inconsistent behavior of Markupstream.hasMore vs. MarkupStream.next.</li>
+  <li>[WICKET-6303] - renderHead method of a Behavior added to a Border body is not called</li>
+  <li>[WICKET-6306] - Changing model object of Panel added to a Border not allowed</li>
+  <li>[WICKET-6311] - SignOutPage_ru.html is missing</li>
+  <li>[WICKET-6314] - 7.6 release references 7.5-SNAPSHOT poms</li>
+  <li>[WICKET-6316] - Wicket tester encodes page id for stateless links in stateless pages</li>
+  <li>[WICKET-6317] - AuthenticatedWebSession#signOut() calls twice after session invalidation</li>
+  <li>[WICKET-6319] - AutoCompleteTextField: popup is hidden when clicking on scrollbar in IE</li>
+  <li>[WICKET-6332] - NullPointerException in PageParameters#equals()</li>
+  <li>[WICKET-6339] - Wrong implementation of MarkupFragment.iterator()</li>
+  <li>[WICKET-6340] - The Ajax reponse of an AjaxSubmitButton creates invalid XHTML markup for multipart forms</li>
+  <li>[WICKET-6342] - Wrong baseUrl in BaseWebSocketBehavior</li>
+  <li>[WICKET-6349] - Stateless form does not work when RecreateBookmarkablePagesAfterExpiry is false</li>
+  <li>[WICKET-6353] - Proxy deserialization fails due to classloading issues</li>
+  <li>[WICKET-6356] - Clustering failover not working on Tomcat</li>
+  <li>[WICKET-6361] - MarkupContainer#queue doesn’t work in table column</li>
+  <li>[WICKET-6365] - Links on “Contribute to the User Guide” are broken</li>
+</ul>
+<h5 id="improvement">Improvement</h5>
+<ul>
+  <li>[WICKET-6212] - CheckChoice / add a getAdditionalAttributes() also for <label>-tag</label></li>
+  <li>[WICKET-6265] - Make it possible to authorize component instantiations both with OR and AND rules</li>
+  <li>[WICKET-6307] - SubmitLink does not work in Chrome “ff.onsubmit is not a function”</li>
+  <li>[WICKET-6308] - Add an extra constructor to EmailTextField with a custom validator but without model</li>
+  <li>[WICKET-6323] - Allow ResourceBundles to use the defer attribute</li>
+  <li>[WICKET-6328] - Add ‘pathInfo’ to ForwardAttributes</li>
+  <li>[WICKET-6333] - Use onConfigure() to set the visibility of ExportToolbar instead of overriding isVisible()</li>
+  <li>[WICKET-6351] - Form.anyFormComponentError performance degradation</li>
+  <li>[WICKET-6364] - The autogenerated input field when a form has a default button should not gain the focus when navigating with tab</li>
+</ul>
+<h5 id="task">Task</h5>
+<ul>
+  <li>[WICKET-6287] - Switch from json.org to open-json</li>
+</ul>
+</div>
+        </section>
+    </div>
+</main>
+        <footer class="l-container">
+            <div class="l-full">
+   	<img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
+    <div style="margin-top:12px;">Copyright © 2017 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+</div>
+        </footer>
+    </body>
+
+</html>
