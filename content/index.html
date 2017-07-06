@@ -225,6 +225,36 @@
 </div>
 <div class="l-two-third">
     <article>
+        <h2>Apache Wicket 6.27.0 released</h2>
+        <small>06 Jul 2017</small>
+        <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.27.0!</p>
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+<p>This release marks another minor release of Wicket 6. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+6.0.0.</p>
+<h2 id="new-and-noteworthy">New and noteworthy</h2>
+<p>With this version Wicket changed its internal JSON implementation (package org.apache.wicket.ajax.json) switching from project JSON-java (https://github.com/stleary/JSON-java) to Open JSON (https://github.com/openjson/openjson). This was necessery as JSON-java’s license is no longer compatible with Apache License 2.0.</p>
+<h2 id="using-this-release">Using this release</h2>
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>6.27.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.27.0">6.27.0 source download</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.27.0/binaries">6.27.0 binary download</a></li>
+</ul>
+        <a href="/news/2017/07/06/wicket-6.27.0-released.html">Read more...</a> 
+    </article>
+    <article>
         <h2>Apache Wicket 8.0.0-M6 released</h2>
         <small>18 May 2017</small>
         <p>The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M6!</p>
@@ -257,36 +287,6 @@ convenience binary package</p>
 </ul>
         <a href="/news/2017/05/18/wicket-8.0.0-M6-released.html">Read more...</a> 
     </article>
-    <article>
-        <h2>Apache Wicket 7.7.0 released</h2>
-        <small>16 May 2017</small>
-        <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.7.0!</p>
-<p>Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org</p>
-<p>This release marks another minor release of Wicket 7. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present breaks are present in this release compared to
-7.0.0.</p>
-<h2 id="new-and-noteworthy">New and noteworthy</h2>
-<p>With this version Wicket changed its internal JSON implementation (package org.apache.wicket.ajax.json) switching from project JSON-java (https://github.com/stleary/JSON-java) to Open JSON (https://github.com/openjson/openjson). This was necessery as JSON-java’s license is no longer compatible with Apache License 2.0.</p>
-<h2 id="using-this-release">Using this release</h2>
-<p>With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):</p>
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>7.7.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
-<p>Or download and build the distribution yourself, or use our
-convenience binary package</p>
-<ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.7.0">7.7.0 source download</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.7.0/binaries">7.7.0 binary download</a></li>
-</ul>
-        <a href="/news/2017/05/16/wicket-7.7.0-released.html">Read more...</a> 
-    </article>
 </div>
 <div class="l-one-third news">
 <h2>Older news</h2>
@@ -296,6 +296,12 @@ articles concerning release, security and community updates.</p>
 title="Atom 1.0 feed" href="/atom.xml">RSS feed</a> to
 get updates in your favorite RSS reader the moment they happen.</p>
 <ul>
+<li>
+    <h3>Apache Wicket 8.0.0-M6 released</h3>
+    <small>18 May 2017</small>
+    The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M6! Apache Wicket is an open source Java component oriented web application framework that powers...
+    <a href="/news/2017/05/18/wicket-8.0.0-M6-released.html">more</a>
+</li>
 <li>
     <h3>Apache Wicket 7.7.0 released</h3>
     <small>16 May 2017</small>
@@ -319,12 +325,6 @@ get updates in your favorite RSS reader the moment they happen.</p>
     <small>31 Dec 2016</small>
     Severity: Low Vendor: The Apache Software Foundation Versions Affected: Apache Wicket 6.x and 1.5.x Description: Depending on the ISerializer set in the Wicket application, it’s...
     <a href="/news/2016/12/31/cve-2016-6793.html">more</a>
-</li>
-<li>
-    <h3>Apache Wicket 8.0.0-M3 released</h3>
-    <small>29 Dec 2016</small>
-    The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M3! Apache Wicket is an open source Java component oriented web application framework that powers...
-    <a href="/news/2016/12/29/wicket-8.0.0-M3-released.html">more</a>
 </li>
 </ul>
 </div>

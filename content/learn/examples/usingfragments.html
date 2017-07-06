@@ -86,9 +86,9 @@ and web markup container.</p>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.list.Loop</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.panel.Fragment</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="n">QuickStartPage</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">Index</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Index</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">Loop</span> <span class="n">loop</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Loop</span><span class="o">(</span><span class="s">"list"</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">protected</span> <span class="kt">void</span> <span class="n">populateItem</span><span class="o">(</span><span class="n">LoopItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="n">LoopItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
                 <span class="n">String</span> <span class="n">fragmentId</span> <span class="o">=</span> <span class="s">"fragment"</span> <span class="o">+</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getIteration</span><span class="o">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
                 <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Fragment</span><span class="o">(</span><span class="s">"panel"</span><span class="o">,</span> <span class="n">fragmentId</span><span class="o">,</span> <span class="n">Index</span><span class="o">.</span><span class="na">this</span><span class="o">));</span>
             <span class="o">}</span>
@@ -123,14 +123,14 @@ subclass for fragment one to encapsulate the component.</p>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.panel.Fragment</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="n">QuickStartPage</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Fragment1</span> <span class="kd">extends</span> <span class="n">Fragment</span> <span class="o">{</span>
-        <span class="kd">public</span> <span class="n">Fragment1</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">markupId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="nf">Fragment1</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">markupId</span><span class="o">)</span> <span class="o">{</span>
             <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">markupId</span><span class="o">,</span> <span class="n">Index</span><span class="o">.</span><span class="na">this</span><span class="o">);</span>
             <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"label"</span><span class="o">,</span> <span class="s">"Hello, World!"</span><span class="o">));</span>
         <span class="o">}</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">Index</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Index</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">Loop</span> <span class="n">loop</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Loop</span><span class="o">(</span><span class="s">"list"</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">protected</span> <span class="kt">void</span> <span class="n">populateItem</span><span class="o">(</span><span class="n">LoopItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="n">LoopItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
                 <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getIteration</span><span class="o">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
                 <span class="n">String</span> <span class="n">fragmentId</span> <span class="o">=</span> <span class="s">"fragment"</span> <span class="o">+</span> <span class="n">index</span><span class="o">;</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
