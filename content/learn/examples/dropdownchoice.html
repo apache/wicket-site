@@ -69,13 +69,13 @@ select the manager of an employee.</p>
     <span class="cm">/**
      * Used to display the person.
      */</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">toString</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
     <span class="o">}</span>
     <span class="cm">/**
      * Gets the list of possible managers from the database.
      */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="nf">getManagers</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">getManagers</span><span class="o">()</span> <span class="o">{</span>
         <span class="c1">// gets the managers from the database</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
@@ -115,7 +115,7 @@ The <code class="highlighter-rouge">&lt;option&gt;</code> tags are there for pre
 with the generated choices.</p>
 <p>Let’s see how the page looks like from the Java side:</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AssignManagerPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="nf">AssignManagerPage</span><span class="o">(</span><span class="n">Person</span> <span class="n">employee</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">AssignManagerPage</span><span class="o">(</span><span class="n">Person</span> <span class="n">employee</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">Form</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Form</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
         <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
         <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="n">employee</span><span class="o">,</span> <span class="s">"name"</span><span class="o">)));</span>
@@ -124,7 +124,7 @@ with the generated choices.</p>
                     <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;(</span><span class="n">employee</span><span class="o">,</span> <span class="s">"managedBy"</span><span class="o">),</span>
                     <span class="k">new</span> <span class="n">LoadableDetachableModel</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
                         <span class="nd">@Override</span>
-                        <span class="kd">protected</span> <span class="n">Object</span> <span class="nf">load</span><span class="o">()</span> <span class="o">{</span> 
+                        <span class="kd">protected</span> <span class="n">Object</span> <span class="n">load</span><span class="o">()</span> <span class="o">{</span> 
                             <span class="k">return</span> <span class="n">Person</span><span class="o">.</span><span class="na">getManagers</span><span class="o">();</span>
                         <span class="o">}</span>
                     <span class="o">}</span>

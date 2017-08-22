@@ -66,7 +66,7 @@ the attributes for all Ajax requests.</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">application</span><span class="o">.</span><span class="na">getAjaxRequestTargetListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxRequestTarget</span><span class="o">.</span><span class="na">AbstractListener</span><span class="o">()</span>
 <span class="o">{</span>
 	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateAjaxAttributes</span><span class="o">(</span><span class="n">AjaxRequestAttributes</span> <span class="n">attributes</span><span class="o">)</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="n">updateAjaxAttributes</span><span class="o">(</span><span class="n">AjaxRequestAttributes</span> <span class="n">attributes</span><span class="o">)</span>
 	<span class="o">{</span>
 		<span class="kd">super</span><span class="o">.</span><span class="na">updateAjaxAttributes</span><span class="o">(</span><span class="n">attributes</span><span class="o">);</span>
 		<span class="n">attributes</span><span class="o">.</span><span class="na">setChannel</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxChannel</span><span class="o">(</span><span class="s">"globalAjaxChannel"</span><span class="o">,</span> <span class="n">AjaxChannel</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">ACTIVE</span><span class="o">));</span>
