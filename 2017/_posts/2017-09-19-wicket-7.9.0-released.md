@@ -1,0 +1,126 @@
+---
+layout: post
+title: Apache Wicket 7.9.0 released
+---
+The Apache Wicket PMC is proud to announce Apache Wicket 7.9.0!
+
+Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org
+
+This release marks another minor release of Wicket 7. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+7.0.0.
+
+<OPTIONAL> New and noteworthy
+<OPTIONAL> ------------------
+<OPTIONAL>
+Using this release
+------------------
+
+With Apache Maven update your dependency to (and don't forget to
+update any other dependencies on Wicket projects to the same version):
+
+{% highlight xml%}
+<dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-core</artifactId>
+    <version>7.9.0</version>
+</dependency>
+{% endhighlight%}
+
+Or download and build the distribution yourself, or use our
+convenience binary package
+
+ * Source: [7.9.0 source download](http://www.apache.org/dyn/closer.cgi/wicket/7.9.0)
+ * Binary: [7.9.0 binary download](http://www.apache.org/dyn/closer.cgi/wicket/7.9.0/binaries)
+
+<!--more-->
+
+Upgrading from earlier versions
+-------------------------------
+
+If you upgrade from 7.y.z this release is a drop in replacement. If
+you come from a version prior to 7.0.0, please read our Wicket 7
+migration guide found at
+
+ * http://s.apache.org/wicket7migrate
+
+Have fun!
+
+— The Wicket team
+
+
+========================================================================
+
+    The signatures for the source release artefacts:
+
+    
+Signature for apache-wicket-7.9.0.zip:
+
+<div class='highlight'><pre>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAABAgAGBQJZvBu5AAoJEAzCjx+CMhBVaPMP/0pZ+1p6uIfnzV7EHDNqv35F
+WJ82gFCqWZov29EUFcb+2YOCjFOU6BG61pgP98IzB+qhXomHf34hhrzomuEZCtlR
+hxYjMxnvaPHR5C/2SEkbtGtHs8YFE5SylmKB2V9Qchpx0ClicApSu1JvAb8q3rnL
+CDLIOEDEtKsioLcsVZpXT67ctgKc/Pp5Gdd0lRClnEOUONQ1WJ7yQ1uy5JfxS+Xv
+48zdiIumzgdTWgm1HJXzM41Lp4NdpwZx6/GVvD/9RjNMMOxxsPw5ZZUG/P9jtPTg
+anSXIjA2q40Y2NDRwdMMgKFNBsPoef4QHqgniiNTTZVsitGHo/jl0LqSjyXZ7MSE
+VwzSv/FOQcEfiVCMklJG+8JFIpq2/CLDCIWvlNpBC1QTqzw97xLW0gw/R88rcAoe
+ESrl7k4OSKS/YWilDRgCgaw5nBhGwqpN/Luv5Yzvxe91BFi1RXcBVq4xs/ceQd8c
+r7Sa8ZC2uvCFGdRBbMK1OjYU7Y8DjTJb3Fp2EzQRjIqAqaj6PMINEYdYvKJG8d3Y
+Z90qMv2QqF3q5BNbBU9Lf9z0Kau/W3jGXFC0wxj9tYj5gz3F5EEWDLbHj3pRiH0/
+vAHPPMZekI7GQbsYel+nGtkHBj3osPGUQ/ESQDLutJiqJ9t1e1Eijd/CdX+r5pUL
+JG97c19NWfJaKfKdCT60
+=ReUR
+-----END PGP SIGNATURE-----
+</pre></div>
+
+    
+Signature for apache-wicket-7.9.0.tar.gz:
+
+<div class='highlight'><pre>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAABAgAGBQJZvBu5AAoJEAzCjx+CMhBVtzkQAKjDi4eBTH9A/gl0e4r5VQxP
+E+RPPVzo1Jf2+1Szz4gR4cLgFGGFqLQoqBM7YGWRSSaxdI1/ys7sn91MTg+pLCSB
+I5Xh145t/Ok58czr1N5VsIPLo3pU0pHMZwmPv+xDjv42EbogpsoFaEQsN3XorKyo
+DlrtN9WAh3pXj2y05nHqFNsUUuWACPmo+CCAuAPsTIqYbxDyB0OjlFA54ovSY41Q
+sP5UP7EuhM7W9Px38RzArUUT2WNIJlDdHogISZrurkj3aS5K5qTe1KGx2u15B6Gi
+gjU9P2aw3pzpHiBXsBInAthwGXWecIkvvRst85mQo3ivLydmyIla00+DZCe3vgkE
+cJHDCFig8QwF9kC1rtma3Rep3aXDiq+mLdDWXPqMC66s1BzzuH4xeX78/OadyVOB
+7PIjs3vUfJUIwITVG4RlLNQebDeIeFaWubT19zjcelet325WlAJpwAOGtWxj31bG
+7pWmUUAkJo0yUuK1wLBb+TN+GHQBsjwSMTxs/PTAAsq6m53fPkOFerzL5ygCshvt
+dlFAd48VZVIzWZTc0yYq0X5oHtQETIDgIKcFuJp88uBfTc0Io9r+QMdAWTgUIuzH
+OqMV4TXjaM/YBWurQ4B/Xz1KPgR7gtSjifnw3hytEIT7RHq/Av+3bJTjvby4t7r9
+CeQiIicC2Ghx4BrN1Lxk
+=b9ky
+-----END PGP SIGNATURE-----
+</pre></div>
+
+    
+========================================================================
+
+### This Release
+
+#### CHANGELOG for 7.9.0:
+    
+##### Bug
+
+ * [WICKET-6429] - AbstractRequestLogger should not create new Sessions
+ * [WICKET-6455] - AjaxFormSubmitBehavior doesn't submit inner forms
+ * [WICKET-6457] - PageStore not cleared at session end
+ * [WICKET-6459] - Ajax re-renders of enclosures do not render their children's header contributions
+ * [WICKET-6462] - When an Ajax Button is submitted, AjaxFormSubmitBehavior # onSubmit is called twice
+ * [WICKET-6465] - PageStore not cleared at session end
+
+##### Improvement
+
+ * [WICKET-6454] - WicketApplication behind a proxy with restrictive internet access can not initialized
+ * [WICKET-6463] - Please add additional constructor to Roles
+
