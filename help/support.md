@@ -21,12 +21,6 @@ even project development.
         <i class="fa fa-group"></i><br>
         Go to the wiki
     </a>
-    <a class="button invisible" href="https://cwiki.apache.org/confluence/display/WICKET/Companies+that+provide+services">
-        <i class="fa fa-group"></i><br>
-    </a>
-    <a class="button hidden" href="">
-        <i class="fa fa-group"></i><br>
-    </a>
 </div>
 
 Being mentioned here is not an indication of official "endorsement" by

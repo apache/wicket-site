@@ -46,6 +46,12 @@ offers a complete showcase of the available features.
 
 ---
 
+## Wicket Spring Boot integration
+
+[Wicket Spring Boot](https://github.com/MarcGiffing/wicket-spring-boot) makes it easy to create a Wicket applications with a minimum of configuration effort. It uses Spring Boot to autoconfigure Wickets core and its extension (like WicketStuff, BeanValidation, etc...). 
+
+---
+
 ## Tumblr account {#tumblr}
 
 You can show everyone what you have done with Wicket posting a screenshot at [our Tumblr account](http://builtwithwicket.tumblr.com/) 
