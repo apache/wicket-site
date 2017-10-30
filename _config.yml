@@ -25,6 +25,8 @@ wicket:
   released:   2017-10-25
   versions:   [6.28.0, 1.5.17, 1.4.23, 7.9.0, 1.5-SNAPSHOT, 6.29.0-SNAPSHOT, 7.10.0-SNAPSHOT, 8.0.0-M8, 8.0.0-SNAPSHOT]
 
+live_examples_url: http://examples7x.wicket.apache.org/
+
 navigation:
 - id: start
   text: Quick Start
