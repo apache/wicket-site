@@ -20,10 +20,6 @@ preamble: Wicket is released as a source archive, convenience binaries and throu
 		<i class="fa fa-cloud-download"></i><br>
 		Apache Wicket 6.x
 	</a>
-	<a class="button" href="wicket-1.5.x.html">
-		<i class="fa fa-cloud-download"></i><br>
-		Apache Wicket 1.5.x
-	</a>
 </div>
 
 ## Supported Versions
@@ -49,11 +45,6 @@ The following releases are supported by the Wicket team.
 	<tr>
 		<td><a href="wicket-6.x.html">Wicket 6.x</a></td>
 		<td>{{site.wicket.version_60}}</td>
-		<td>supported</td>
-	</tr>
-	<tr>
-		<td><a href="wicket-1.5.x.html">Wicket 1.5.x</a></td>
-		<td>{{site.wicket.version_15}}</td>
 		<td>security fixes only, upgrade to 7.x or 8.x</td>
 	</tr>
 </table>
@@ -74,6 +65,11 @@ versions.
 		<th style="width:30%">Version</th>
 		<th style="width:30%">Latest release</th>
 		<th style="width:40%">Status</th>
+	</tr>
+	<tr>
+		<td><a href="wicket-1.5.x.html">Wicket 1.5.x</a></td>
+		<td>{{site.wicket.version_15}}</td>
+		<td>discontinued, upgrade to 7.x or 8.x</td>
 	</tr>
 	<tr>
 		<td><a href="wicket-1.4.x.html">Wicket 1.4.x</a></td>

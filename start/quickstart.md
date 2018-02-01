@@ -32,16 +32,18 @@ atitlePicture:
 		var artifactId = document.getElementById("artifactId").value;
 		var version = document.getElementById("version").value;
 		var appserver = document.getElementById("appserver").value;
-		var cmd;
-		if(version.match(/^1\.[34]/))
-			cmd = 'mvn archetype:create -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;						
-		else
-			cmd = 'mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;						
+		var goal = version.match(/^1\.[34]/) ? 'create' : 'generate';
 
-		if (version.match(/.*SNAPSHOT/))
-			cmd += ' -DarchetypeRepository=https://repository.apache.org/content/repositories/snapshots/';
-		else
-			cmd += ' -DarchetypeRepository=https://repository.apache.org/';
+		var repo, plugin;
+		if (version.match(/.*SNAPSHOT/)) {
+			plugin = 'org.apache.maven.plugins:maven-archetype-plugin:2.4';
+			repo = ' -DarchetypeRepository=https://repository.apache.org/content/repositories/snapshots/';
+		} else {
+			plugin = 'archetype';
+			repo = ' -DarchetypeRepository=https://repository.apache.org/';
+		}
+		var	cmd = 'mvn ' + plugin + ':' + goal + ' -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion='
+			+ version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId + repo;						
 
 		if (appserver === 'wildfly')
 			cmd += ' -Dlog4j.properties=wildfly-doesnt-need-log4j.properties';
