@@ -18,12 +18,12 @@ wicket:
   version:    7.10.0
   version_80: 8.0.0-M9
   version_70: 7.10.0
-  version_60: 6.28.0
+  version_60: 6.29.0
   version_15: 1.5.17
   version_14: 1.4.23
   version_13: 1.3.7
   released:   2018-02-17
-  versions:   [6.28.0, 1.5.17, 1.4.23, 7.10.0, 1.5-SNAPSHOT, 6.29.0-SNAPSHOT, 7.11.0-SNAPSHOT, 8.0.0-M9, 8.0.0-SNAPSHOT]
+  versions:   [6.29.0, 1.5.17, 1.4.23, 7.10.0, 1.5-SNAPSHOT, 6.30.0-SNAPSHOT, 7.11.0-SNAPSHOT, 8.0.0-M9, 8.0.0-SNAPSHOT]
 
 live_examples_url: http://examples7x.wicket.apache.org/
 
