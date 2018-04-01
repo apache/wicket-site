@@ -169,23 +169,22 @@ public class Page2 extends WebPage {
 
 ### NavomaticBorder.java ###
 
-So how does NavomaticBorder work? Glad you asked. The Java code below simply
-adds the two BoxBorder components you see. These components are nested borders
-which each draw a thin black line around their contents. The rest of the magic
-is in the NavomaticBorder markup.
+So how does NavomaticBorder work? Glad you asked. The Java code below adds two
+other components, which are itself borders. Each adds a line around its
+contents. The rest of the magic is in the NavomaticBorder markup.
 
 {% highlight java %}
 package wicket.examples.navomatic;
 
+import org.apache.wicket.examples.compref.MyBorder;
 import org.apache.wicket.markup.html.border.Border;
-import org.apache.wicket.markup.html.border.BoxBorder;
 
 public class NavomaticBorder extends Border {
     public NavomaticBorder(final String componentName) {
         super(componentName);
 
-        addToBorder(new BoxBorder("navigationBorder"));
-        addToBorder(new BoxBorder("bodyBorder"));
+        addToBorder(new MyBorder("navigationBorder"));
+        addToBorder(new MyBorder("bodyBorder"));
     }
 }
 {% endhighlight %}
@@ -233,7 +232,7 @@ the tag at the use context.
 
 Next, notice that the navigation links and the border's `<wicket:body/>` are
 both enclosed in `<span>` tags which have wicket:id attributes that associate
-those tags with the BoxBorder components added in the NavomaticBorder
+those tags with the MyBorder components added in the NavomaticBorder
 constructor. These nested border components will each draw a thin black line
 around their contents.
 
@@ -241,9 +240,8 @@ Finally, the `<wicket:link>` tag is used to mark the links in the navigation
 as automatic links. Ordinarily, you would need to create link components and
 attach them to your page manually, but anchor links that are marked as
 automatic are parsed and hooked up to link components for you, as appropriate.
-The italicizing behavior is also automatic. Since Wicket knows which page is
-current, it removes the anchor link tag for any link that points to the
-current page (since the link would be useless) and italicizes the link text.
+Since Wicket knows which page is current, it removes the href attribute for
+any link that points to the current page (since the link would be useless).
 
 ### web.xml ###
 
