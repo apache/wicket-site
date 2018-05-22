@@ -1,0 +1,14 @@
+<div class="header jumbotron">
+   	{% include mainmenu.html %}
+    <div class="jumbotron-logo">
+          <a href="{{site.baseurl}}/"><img src="{{ site.baseurl }}/img/logo-apachewicket-tungsten-8.svg" alt="Apache Wicket"></a>
+          <div class="jumbotron-poweredbyasf">powered by <b>The Apache Software Foundation</b></div>
+    </div>
+    <div class="jumbotron-mission">Write Less, Achieve More</div>
+    <div class="jumbotron-download">
+{% for p in page.jumbotronLinks %}
+          <a class="button" href="{{ site.baseurl }}{{ p.url }}" style="padding: 1em 3em; border-radius:5px">{{ p.text }}</a>
+{% endfor %}
+    </div>
+    <div class="l-first">&nbsp;</div>
+</div>

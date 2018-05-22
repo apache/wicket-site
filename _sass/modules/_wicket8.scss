@@ -1,0 +1,37 @@
+
+.wicket8 {
+    nav.mainmenu {
+        a, a:active, a:hover {
+            color:$almost-black;
+        }
+    }
+
+    .header {
+        color:$almost-black;
+    }
+    .jumbotron {
+        &.header{
+            background-color:#BF866F;
+            background-image: url('../img/background-3.jpg');
+            background-repeat: no-repeat;
+            background-position: center 25%;
+            background-size: cover;
+            box-shadow: none;
+        }
+        .jumbotron-version {
+            color:$almost-black;
+        }
+        .jumbotron-poweredbyasf {
+            margin: 0 auto;
+            text-align: center;
+            
+            b {
+                font-weight: bold;
+            }
+        }
+        .jumbotron-mission {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+}

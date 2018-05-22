@@ -1,7 +1,7 @@
 ---
 layout: title
 title: Home
-pageclasses: index
+pageclasses: wicket8 index
 additionalContents:
   -
    header: builtwithwicket--header.html
@@ -11,6 +11,13 @@ additionalContents:
   -
    path: news.html
    sectionId: news
+jumbotronLinks:
+  -
+    text: Learn More &raquo;
+    url: /8
+  -
+    text: Download now &raquo;
+    url: /start/wicket-8.x.html
 ---
 
 <div class="l-full l-first preamble">

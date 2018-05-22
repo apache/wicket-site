@@ -395,6 +395,10 @@ button.button--alert {
 
   h2, h3 {
     page-break-after: avoid; } }
+.lineno {
+  text-align: right;
+  margin-right: 0.5rem; }
+
 .highlight {
   background: #ffffff; }
 
@@ -829,6 +833,28 @@ div.quickstart-wizard {
   vertical-align: baseline;
   font-weight: bold;
   width: 2rem; }
+
+.wicket8 nav.mainmenu a, .wicket8 nav.mainmenu a:active, .wicket8 nav.mainmenu a:hover {
+  color: #111111; }
+.wicket8 .header {
+  color: #111111; }
+.wicket8 .jumbotron.header {
+  background-color: #BF866F;
+  background-image: url("../img/background-3.jpg");
+  background-repeat: no-repeat;
+  background-position: center 25%;
+  background-size: cover;
+  box-shadow: none; }
+.wicket8 .jumbotron .jumbotron-version {
+  color: #111111; }
+.wicket8 .jumbotron .jumbotron-poweredbyasf {
+  margin: 0 auto;
+  text-align: center; }
+  .wicket8 .jumbotron .jumbotron-poweredbyasf b {
+    font-weight: bold; }
+.wicket8 .jumbotron .jumbotron-mission {
+  font-size: 2rem;
+  font-weight: bold; }
 
 code, pre, code > span, pre > span {
   font-family: 'Source Code Pro', 'courier new', monospace;
