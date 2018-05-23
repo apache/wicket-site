@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2018-05-23T14:41:19+02:00</updated>
+    <updated>2018-05-23T14:51:56+02:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -18,7 +18,7 @@
         <id>http://wicket.apache.org/news/2018/05/22/wicket-8-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket project announces the 8th major release of the open source Java web framework servicing websites and applications across the globe for over a decade. With this release Wicket embraces Java 8 idioms fully, allowing the use of lambda expressions in all the right places. With Wicket 8 you can write fewer, faster and more maintainable code.&lt;/p&gt;
 
-&lt;!-- more --&gt;
+&lt;!--more--&gt;
 
 &lt;h2 id=&quot;a-careful-application-of-java-8&quot;&gt;A Careful Application of Java 8&lt;/h2&gt;
 
@@ -50,25 +50,24 @@
 
 &lt;p&gt;For example the AjaxFallbackLink, a link that works using both with and without AJAX, now uses Optional to signify whether the link was clicked utilizing AJAX or normal request processing: the AJAX request is wrapped in an Optional. Previous versions of Wicket would provide a null value for the AJAX request.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// WICKET 7:
-add(new AjaxFallbackLink&amp;lt;Void&amp;gt;(&quot;wicket7&quot;) {
-    @Override
-    public void onClick(AjaxRequestTarget target) {
-        if(target != null) {
-            // ...
-        }
-    }
-});
-// WICKET 8:
-add(new AjaxFallbackLink&amp;lt;Void&amp;gt;(&quot;wicket8&quot;) {
-    @Override
-    public void onClick(Optional&amp;lt;AjaxRequestTarget&amp;gt; target) {
-        if(target.isPresent()) {
-            // ...
-        }
-    }
-});
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// WICKET 7:&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AjaxFallbackLink&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Void&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wicket7&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AjaxRequestTarget&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// WICKET 8:&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AjaxFallbackLink&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Void&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wicket8&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Optional&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AjaxRequestTarget&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isPresent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Because we have modified the API to utilize Optional, you will get compile errors when you start migrating to Wicket 8. This gives you the exact positions where these improvements have occurred and you can start working with the Optional API.&lt;/p&gt;
 
@@ -78,15 +77,14 @@ add(new AjaxFallbackLink&amp;lt;Void&amp;gt;(&quot;wicket8&quot;) {
 
 &lt;p&gt;The following example binds a Label component to the name of a person object in different ways using Wicket 8:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;add(new Label(&quot;name1&quot;, person::name));
-add(new Label(&quot;name2&quot;, () -&amp;gt; person.getName()));
-add(new Label(&quot;name3&quot;, LambdaModel.of(personModel, Person::getName)));
-add(new Label(&quot;name4&quot;, 
-    LambdaModel.of(contractModel, Contract::getPerson)
-        .map(Person::getName)));
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;person:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()));&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name3&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LambdaModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;personModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;Person:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)));&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name4&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;LambdaModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;contractModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;Contract:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getPerson&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;Person:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)));&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;The new LambdaModel type in Wicket enables type safe, refactor safe databinding for components. Previously one would bind data to components using PropertyModel, using a string expression to determine the exact property to show. The string expression is something like “person.name”. This is inherently difficult to refactor when you decide to change the name field into for example “lastName”. With LambdaModel, this refactoring is trivial for IDEs to perform: the Java methods can easily be renamed and the IDE will find all the references.&lt;/p&gt;
+&lt;p&gt;The new &lt;code class=&quot;highlighter-rouge&quot;&gt;LambdaModel&lt;/code&gt; type in Wicket enables type safe, refactor safe databinding for components. Previously one would bind data to components using &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyModel&lt;/code&gt;, using a string expression to determine the exact property to show. The string expression is something like &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;person.name&quot;&lt;/code&gt;. This is inherently difficult to refactor when you decide to change the name field into for example &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;lastName&quot;&lt;/code&gt;. With &lt;code class=&quot;highlighter-rouge&quot;&gt;LambdaModel&lt;/code&gt;, this refactoring is trivial for IDEs to perform: the Java methods can easily be renamed and the IDE will find all the references.&lt;/p&gt;
 
 &lt;p&gt;Microbenchmarks have shown that using lambda models provides much better performance than the string based PropertyModel at the cost of slightly larger memory footprint.&lt;/p&gt;
 
@@ -104,13 +102,13 @@ add(new Label(&quot;name4&quot;,
 
 &lt;p&gt;When you migrate from a previous Wicket version to Wicket 8, a full list of changes and migrations is available at the following page:&lt;/p&gt;
 
-&lt;p&gt;https://s.apache.org/wicket8migrate&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://s.apache.org/wicket8migrate&quot;&gt;https://s.apache.org/wicket8migrate&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Please consult this migration guide when you are moving towards Wicket 8.&lt;/p&gt;
 
 &lt;h2 id=&quot;support&quot;&gt;Support&lt;/h2&gt;
 
-&lt;p&gt;You can find out about our support channels through the following page on our website: https://wicket.apache.org/help/&lt;/p&gt;
+&lt;p&gt;You can find out about our support channels through the following page on our website: &lt;a href=&quot;https://wicket.apache.org/help/&quot;&gt;https://wicket.apache.org/help/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
 

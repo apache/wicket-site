@@ -13,9 +13,6 @@ additionalContents:
    sectionId: news
 jumbotronLinks:
   -
-    text: Learn More &raquo;
-    url: /8
-  -
     text: Download now &raquo;
     url: /start/wicket-8.x.html
 ---
