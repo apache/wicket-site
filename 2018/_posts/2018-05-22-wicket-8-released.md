@@ -101,6 +101,25 @@ Please consult this migration guide when you are moving towards Wicket 8.
 
 You can find out about our support channels through the following page on our website: [https://wicket.apache.org/help/](https://wicket.apache.org/help/)
 
+## Download
+
+With Apache Maven update your dependency to (and don't forget to
+update any other dependencies on Wicket projects to the same version):
+
+{% highlight xml%}
+<dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-core</artifactId>
+    <version>8.0.0</version>
+</dependency>
+{% endhighlight%}
+
+Or download and build the distribution yourself, or use our
+convenience binary package
+
+ * Source: [8.0.0 source download](http://www.apache.org/dyn/closer.cgi/wicket/8.0.0)
+ * Binary: [8.0.0 binary download](http://www.apache.org/dyn/closer.cgi/wicket/8.0.0/binaries)
+
 ## Thanks
 
 Our many thanks go out to our contributors for testing this release during its development and providing invaluable feedback.
