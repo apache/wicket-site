@@ -137,7 +137,7 @@ add(new Label("name4",
 </div>
 
 <div class="l-first">
-  <div class="l-one-third">
+  <div class="l-half">
     <h3>No Rewrite Necessary</h3>
     <p>
       The Wicket team has been very careful of adopting Java 8 technologies and as such you don’t have to rewrite your whole application, whilst still reaping all the benefits of Java 8.
@@ -146,7 +146,7 @@ add(new Label("name4",
       As this is a new major version we have, in accordance with semantic versioning, cleaned up many APIs and you will get compile errors when you migrate from previous Wicket versions.
     </p>
   </div>
-  <div class="l-one-third">
+  <div class="l-half">
     <h3>Migrating to Wicket 8</h3>
     <p>
       When you migrate from a previous Wicket version to Wicket 8, a full list of changes and migrations is available at the following page:
@@ -157,6 +157,40 @@ add(new Label("name4",
     <p>
       Please consult this migration guide when you are moving towards Wicket 8.
     </p>
+  </div>
+</div>
+<div class="l-first">
+  <div class="l-full">
+    <h2>Getting Started with Wicket 8</h2>
+    <p>
+      It is very easy to get started with Wicket: use our <a href="/start/quickstart.html">quick-start wizard</a> or 
+      use one of the options below.
+    </p>
+  </div>
+  <div class="l-half">
+    <h3>Download using Apache Maven</h3>
+    <p>
+      With Apache Maven update your dependency to (and don't forget to
+      update any other dependencies on Wicket projects to the same version):
+    </p>
+{% highlight xml%}
+<dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-core</artifactId>
+    <version>8.0.0</version>
+</dependency>
+{% endhighlight%}
+  </div>
+  <div class="l-half">
+    <h3>Download sources/binaries manually</h3>
+    <p>
+      Or download and build the distribution yourself, or use our
+      convenience binary package
+    </p>
+    <ul>
+      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0">8.0.0 source download</a></li>
+      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0/binaries">8.0.0 binary download</a></li>
+    </ul>
   </div>
 </div>
 
@@ -256,4 +290,5 @@ add(new Label("name4",
         for these specifications.</p>
     </div>
 </div>
-<div class="l-first"></div>
+<div class="l-first">
+</div>
