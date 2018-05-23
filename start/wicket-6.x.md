@@ -16,7 +16,7 @@ preamble: Here you can learn about the status of Wicket 6.x, find links to downl
 
 ## Status
 
-The status for Wicket 1.5.x is: **security fixes only**.
+The status for Wicket 6.x is: **security fixes only**.
 
 This branch is **no longer actively maintained** and will only recieve
 backported security fixes when relevant and as long as we are able to

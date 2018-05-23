@@ -16,9 +16,9 @@ preamble: Here you can learn about the status of Wicket 1.5.x, find links to dow
 
 ## Status
 
-The status for Wicket 1.4.x is: **discontinued**.
+The status for Wicket 1.5.x is: **discontinued**.
 
-This branch is **no longer maintained and will no longer recieve any updates**.
+This branch is **no longer maintained and will no longer receive any updates**.
 
 <i class="fa fa-exclamation-circle"></i>
 **You should upgrade to Wicket 8.x at your earliest convenience.**
