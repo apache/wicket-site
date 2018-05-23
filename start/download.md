@@ -49,7 +49,7 @@ The following releases are supported by the Wicket team.
 	<tr>
 		<td><a href="wicket-7.x.html">Wicket 7.x</a></td>
 		<td>{{site.wicket.version_70}}</td>
-		<td>current, supported</td>
+		<td>supported</td>
 	</tr>
 	<tr>
 		<td><a href="wicket-6.x.html">Wicket 6.x</a></td>

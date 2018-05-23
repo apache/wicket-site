@@ -16,14 +16,12 @@ preamble: Here you can learn about the status of Wicket 1.5.x, find links to dow
 
 ## Status
 
-The status for Wicket 1.5.x is: **security fixes only**.
+The status for Wicket 1.4.x is: **discontinued**.
 
-This branch is **no longer actively maintained** and will only recieve
-backported security fixes when relevant and as long as we are able to
-actually build this branch.
+This branch is **no longer maintained and will no longer recieve any updates**.
 
 <i class="fa fa-exclamation-circle"></i>
-**You should upgrade to Wicket 7.x at your earliest convenience.**
+**You should upgrade to Wicket 8.x at your earliest convenience.**
 
 ### Semantic Versioning
 
