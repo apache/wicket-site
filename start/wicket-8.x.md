@@ -6,6 +6,7 @@ preamble: Here you can learn about the status of Wicket 8.x, find links to downl
 ---
 <div class="button-bar">
 	<a class="button" href="#status"><i class="fa fa-info-circle"></i><br>Status</a>
+	<a class="button" href="#download"><i class="fa fa-download"></i><br>Download</a>
 </div>
 <div class="button-bar">
 	<a class="button" href="#requirements"><i class="fa fa-exclamation-triangle"></i><br>Requirements</a>
@@ -14,7 +15,10 @@ preamble: Here you can learn about the status of Wicket 8.x, find links to downl
 
 ## Status
 
-The status for Wicket 8.x is: **in development**.
+The status for Wicket 8.x is: **supported**.
+
+This is the current stable, **production ready** release of Wicket. All
+projects intended for production use should use this version.
 
 ### Semantic versioning
 
