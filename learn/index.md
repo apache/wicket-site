@@ -11,14 +11,20 @@ preamble: No matter how you want to learn about Wicket, there's something availa
 	<a class="button" href="https://cwiki.apache.org/WICKET"><i class="fa fa-users"></i><br>Wiki</a>
 </div>
 <div class="button-bar">
-	<a class="button" href="#guide"><i class="fa fa-file-text-o"></i><br>Guide</a>
+	<a class="button" href="#guide"><i class="fa fa-file-text-o"></i><br>User Guide</a>
 	<a class="button" href="#javadoc"><i class="fa fa-code"></i><br>API docs</a>
 	<a class="button" href="books/index.html"><i class="fa fa-book"></i><br>Books</a>
 </div>
 <div class="button-bar">
 	<a class="button" href="#migrations"><i class="fa fa-history"></i><br>Migrations</a>
-	<a class="button" href="#examples"><i class="fa fa-life-ring"></i><br>Support &amp; Examples</a>
+	<a class="button" href="#presentations"><i class="fa fa-file-powerpoint-o"></i><br>Presentations</a>
 	<a class="button" href="#ides"><i class="fa fa-terminal"></i><br>IDEs</a>
+</div>
+
+<div class="button-bar">
+	<a class="button" style="visibility: hidden;"></a>
+	<a class="button" href="#examples"><i class="fa fa-life-ring"></i><br>Support &amp; Examples</a>
+	<a class="button" style="visibility: hidden;"></a>
 </div>
 
 ## News Archive {#news}
@@ -144,6 +150,13 @@ Find [here]({{ site.baseurl }}/contribute/ides.html) how to work with Wicket pro
 
 - <a href="{{ site.baseurl }}/learn/examples/index.html">Examples</a> - Browse a vast collection of examples in live action without having to install anything!
 - <a href="http://examples8x.wicket.apache.org">Wicket 8 examples</a> / <a href="http://examples7x.wicket.apache.org">Wicket 7 examples</a> / <a href="http://examples6x.wicket.apache.org">Wicket 6 examples</a> - A special subset of live examples to show you how to use Wicket components.
+
+
+---
+
+## Presentations {#presentations}
+
+New to Wicket and eager to learn it? This [presentation]({{ site.baseurl }}/learn/presentations/wicketIntroduction.pdf) is for you!
 
 [migrate3]: http://s.apache.org/wicket3migrate
 [migrate4]: http://s.apache.org/wicket4migrate
