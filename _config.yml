@@ -16,6 +16,7 @@ sass:
     sass_dir: _sass
 wicket:
   version:    8.0.0
+  version_90: 9.0.0-SNAPSHOT
   version_80: 8.1.0
   version_70: 7.10.0
   version_60: 6.29.0

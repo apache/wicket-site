@@ -47,7 +47,7 @@
             <p>Here you can learn about the status of Wicket 8.x, find links to download it, learn how to configure your Maven POM to use Wicket, find the minimal requirements, and migrate your existing application to this Wicket version.</p>
         </header>
         <section class="l-one-third right">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#status"><span class="toc-number">1</span> <span class="toc-text">Status</span></a><ul><li class="toc--level-2 toc--section-2"><a href="#semantic-versioning"><span class="toc-number">1.1</span> <span class="toc-text">Semantic versioning</span></a></li><li class="toc--level-2 toc--section-3"><a href="#change-log"><span class="toc-number">1.2</span> <span class="toc-text">Change log</span></a></li></ul></li><li class="toc--level-1 toc--section-4"><a href="#download"><span class="toc-number">2</span> <span class="toc-text">Download</span></a><ul><li class="toc--level-2 toc--section-5"><a href="#maven"><span class="toc-number">2.1</span> <span class="toc-text">Using Apache Maven</span></a></li></ul></li><li class="toc--level-1 toc--section-6"><a href="#requirements"><span class="toc-number">3</span> <span class="toc-text">Requirements</span></a><ul><li class="toc--level-2 toc--section-7"><a href="#java-version"><span class="toc-number">3.1</span> <span class="toc-text">Java version</span></a></li><li class="toc--level-2 toc--section-8"><a href="#servlet-api"><span class="toc-number">3.2</span> <span class="toc-text">Servlet API</span></a></li><li class="toc--level-2 toc--section-9"><a href="#logging"><span class="toc-number">3.3</span> <span class="toc-text">Logging</span></a></li><li class="toc--level-2 toc--section-10"><a href="#dont-mix-wicket-versions"><span class="toc-number">3.4</span> <span class="toc-text">Don’t mix Wicket versions</span></a></li></ul></li><li class="toc--level-1 toc--section-11"><a href="#migrate"><span class="toc-number">4</span> <span class="toc-text">Migrating from earlier versions</span></a></li></ul></div>
+            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#status"><span class="toc-number">1</span> <span class="toc-text">Status</span></a><ul><li class="toc--level-2 toc--section-2"><a href="#semantic-versioning"><span class="toc-number">1.1</span> <span class="toc-text">Semantic versioning</span></a></li><li class="toc--level-2 toc--section-3"><a href="#change-log"><span class="toc-number">1.2</span> <span class="toc-text">Change log</span></a></li></ul></li><li class="toc--level-1 toc--section-4"><a href="#download"><span class="toc-number">2</span> <span class="toc-text">Download</span></a><ul><li class="toc--level-2 toc--section-5"><a href="#maven"><span class="toc-number">2.1</span> <span class="toc-text">Using Apache Maven</span></a></li><li class="toc--level-2 toc--section-6"><a href="#manually"><span class="toc-number">2.2</span> <span class="toc-text">Download Manually</span></a></li><li class="toc--level-2 toc--section-7"><a href="#verify-distributions-signature"><span class="toc-number">2.3</span> <span class="toc-text">Verify distribution’s signature</span></a></li><li class="toc--level-2 toc--section-8"><a href="#older-releases"><span class="toc-number">2.4</span> <span class="toc-text">Older releases</span></a></li></ul></li><li class="toc--level-1 toc--section-9"><a href="#requirements"><span class="toc-number">3</span> <span class="toc-text">Requirements</span></a><ul><li class="toc--level-2 toc--section-10"><a href="#java-version"><span class="toc-number">3.1</span> <span class="toc-text">Java version</span></a></li><li class="toc--level-2 toc--section-11"><a href="#servlet-api"><span class="toc-number">3.2</span> <span class="toc-text">Servlet API</span></a></li><li class="toc--level-2 toc--section-12"><a href="#logging"><span class="toc-number">3.3</span> <span class="toc-text">Logging</span></a></li><li class="toc--level-2 toc--section-13"><a href="#dont-mix-wicket-versions"><span class="toc-number">3.4</span> <span class="toc-text">Don’t mix Wicket versions</span></a></li></ul></li><li class="toc--level-1 toc--section-14"><a href="#migrate"><span class="toc-number">4</span> <span class="toc-text">Migrating from earlier versions</span></a></li></ul></div>
         </section>
         <section class="l-two-third left">
             <div class="button-bar">
@@ -69,7 +69,7 @@ releases will not break compatibility.</p>
 <p>The change log is not available at the current state of the development process.</p>
 <h2 id="download">Download</h2>
 <p>The most recent test version in this branch is: <strong>8.1.0</strong>. 
-You can test the current state of development using <a href="#maven">Maven</a>.</p>
+You can test the current state of development using <a href="#maven">Maven</a> or <a href="#manually">download it manually</a>.</p>
 <h3 id="maven">Using Apache Maven</h3>
 <p>Use the following Maven dependency to use Wicket in your project:</p>
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
@@ -83,6 +83,40 @@ You can test the current state of development using <a href="#maven">Maven</a>.<
 dependencies (copy above snippet and change the <code class="highlighter-rouge">artifactId</code>
 accordingly).</p>
 <p>If you are not a Maven user, you can download the Wicket release manually.</p>
+<h3 id="manually">Download Manually</h3>
+<p>Use the following links to download Wicket manually to build Wicket
+from source:</p>
+<ul>
+  <li>Download source <a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/apache-wicket-8.1.0.tar.gz">apache-wicket-8.1.0.tar.gz</a>
+(<a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/apache-wicket-8.1.0.tar.gz.asc">PGP</a>,
+<a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/apache-wicket-8.1.0.tar.gz.sha256">SHA-256</a>
+)</li>
+  <li>Download source <a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/apache-wicket-8.1.0.zip">apache-wicket-8.1.0.zip</a>
+(<a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/apache-wicket-8.1.0.zip.asc">PGP</a>,
+<a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/apache-wicket-8.1.0.zip.sha256">SHA-256</a>
+)</li>
+</ul>
+<p>Or use the following links to get the pre-packaged binaries instead:</p>
+<ul>
+  <li>Download binaries <a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/binaries/apache-wicket-8.1.0-bin.tar.gz">apache-wicket-8.1.0-bin.tar.gz</a>
+(<a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/binaries/apache-wicket-8.1.0-bin.tar.gz.asc">PGP</a>,
+<a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/binaries/apache-wicket-8.1.0-bin.tar.gz.sha256">SHA-256</a>
+)</li>
+  <li>Download binaries <a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/binaries/apache-wicket-8.1.0-bin.zip">apache-wicket-8.1.0-bin.zip</a>
+(<a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/binaries/apache-wicket-8.1.0-bin.zip.asc">PGP</a>,
+<a href="https://dist.apache.org/repos/dist/release/wicket/8.1.0/binaries/apache-wicket-8.1.0-bin.zip.sha256">SHA-256</a>
+)</li>
+</ul>
+<p>Note that the binary packages and the source packages don’t contain any
+dependencies necessary to have your project working out of the box. We
+strongly urge you to use Maven (or Buildr, or Gradle) as your
+dependency management system.</p>
+<h3 id="verify-distributions-signature">Verify distribution’s signature</h3>
+<p>PGP signatures can be verified as described <a href="http://www.apache.org/dev/release-signing.html#verifying-signature">on this page</a>. The public key used to sign Wicket distributions can be found in the <a href="https://dist.apache.org/repos/dist/release/wicket/KEYS">KEYS file</a>.</p>
+<h3 id="older-releases">Older releases</h3>
+<p>The Apache mirroring system only hosts the latest version of each actively supported branch.
+When you need to download an older release you can find them in the archives.</p>
+<p>Go to <a href="https://archive.apache.org/dist/wicket">the Apache archives</a> to find your specific version.</p>
 <h2 id="requirements">Requirements</h2>
 <p>Apache Wicket has few requirements in order to work properly. In this
 section you’ll find the minimum requirements for all Wicket modules.

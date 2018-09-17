@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Apache Wicket 8.x
+title: Apache Wicket 9.x
 active_link: download
-preamble: Here you can learn about the status of Wicket 8.x, find links to download it, learn how to configure your Maven POM to use Wicket, find the minimal requirements, and migrate your existing application to this Wicket version.
+preamble: Here you can learn about the status of Wicket 9.x, find links to download it, learn how to configure your Maven POM to use Wicket, find the minimal requirements, and migrate your existing application to this Wicket version.
 ---
 <div class="button-bar">
 	<a class="button" href="#status"><i class="fa fa-info-circle"></i><br>Status</a>
@@ -15,10 +15,10 @@ preamble: Here you can learn about the status of Wicket 8.x, find links to downl
 
 ## Status
 
-The status for Wicket 8.x is: **supported**.
+The status for Wicket 9.x is: **in development**.
 
-This is the current stable, **production ready** release of Wicket. All
-projects intended for production use should use this version.
+This is the current in development release of Wicket. As such,
+all projects intended for production should **NOT** use this version.
 
 ### Semantic versioning
 
@@ -31,8 +31,8 @@ The change log is not available at the current state of the development process.
 
 ## Download
 
-The most recent test version in this branch is: **{{site.wicket.version_80}}**. 
-You can test the current state of development using [Maven](#maven) or [download it manually](#manually).
+The most recent test version in this branch is: **{{site.wicket.version_90}}**. 
+You can test the current state of development using [Maven](#maven).
 
 ### Using Apache Maven {#maven}
 
@@ -42,7 +42,7 @@ Use the following Maven dependency to use Wicket in your project:
 <dependency>
     <groupId>org.apache.wicket</groupId>
     <artifactId>wicket-core</artifactId>
-    <version>{{site.wicket.version_80}}</version>
+    <version>{{site.wicket.version_90}}</version>
 </dependency>
 {% endhighlight xml %}
 
@@ -54,40 +54,6 @@ dependencies (copy above snippet and change the `artifactId`
 accordingly).
 
 If you are not a Maven user, you can download the Wicket release manually.
-
-### Download Manually {#manually}
-
-Use the following links to download Wicket manually to build Wicket
-from source:
-
-- Download source [apache-wicket-{{site.wicket.version_80}}.tar.gz](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz)
-([PGP](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz.asc),
-[SHA-256](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz.sha256)
-)
-- Download source [apache-wicket-{{site.wicket.version_80}}.zip](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip)
-([PGP](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip.asc),
-[SHA-256](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip.sha256)
-)
-
-Or use the following links to get the pre-packaged binaries instead:
-
-- Download binaries [apache-wicket-{{site.wicket.version_80}}-bin.tar.gz](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz)
-([PGP](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz.asc),
-[SHA-256](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz.sha256)
-)
-- Download binaries [apache-wicket-{{site.wicket.version_80}}-bin.zip](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip)
-([PGP](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip.asc),
-[SHA-256](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip.sha256)
-)
-
-Note that the binary packages and the source packages don't contain any
-dependencies necessary to have your project working out of the box. We
-strongly urge you to use Maven (or Buildr, or Gradle) as your
-dependency management system.
-
-### Verify distribution's signature
-
-PGP signatures can be verified as described [on this page](http://www.apache.org/dev/release-signing.html#verifying-signature). The public key used to sign Wicket distributions can be found in the [KEYS file](https://dist.apache.org/repos/dist/release/wicket/KEYS). 
 
 ### Older releases
 
@@ -106,7 +72,7 @@ more details on the necessary libraries.
 
 ### Java version
 
-This Wicket version requires at least the following Java version: **JDK 8.0 or newer**.
+This Wicket version requires at least the following Java version: **JDK 10.0 or newer**.
 
 Not only is a particular version of Java necessary, Wicket also needs
 access to specific APIs.
@@ -152,3 +118,4 @@ Wicket you may find our migration guides invaluable:
  * Migrating from [Wicket 1.5 to Wicket 6.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0)
  * Migrating from [Wicket 6.x to Wicket 7.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+7.0)
  * Migrating from [Wicket 7.x to Wicket 8.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+8.0)
+ * Migrating from [Wicket 8.x to Wicket 9.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+9.0)
