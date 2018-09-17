@@ -60,24 +60,24 @@ If you are not a Maven user, you can download the Wicket release manually.
 Use the following links to download Wicket manually to build Wicket
 from source:
 
-- Download source [apache-wicket-{{site.wicket.version_80}}.tar.gz](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz)
-([PGP](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz.asc),
-[SHA-256](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz.sha256)
+- Download source [apache-wicket-{{site.wicket.version_80}}.tar.gz](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz)
+([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz.asc),
+[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz.sha256)
 )
-- Download source [apache-wicket-{{site.wicket.version_80}}.zip](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip)
-([PGP](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip.asc),
-[SHA-256](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip.sha256)
+- Download source [apache-wicket-{{site.wicket.version_80}}.zip](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip)
+([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip.asc),
+[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip.sha256)
 )
 
 Or use the following links to get the pre-packaged binaries instead:
 
-- Download binaries [apache-wicket-{{site.wicket.version_80}}-bin.tar.gz](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz)
-([PGP](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz.asc),
-[SHA-256](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz.sha256)
+- Download binaries [apache-wicket-{{site.wicket.version_80}}-bin.tar.gz](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz)
+([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz.asc),
+[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz.sha256)
 )
-- Download binaries [apache-wicket-{{site.wicket.version_80}}-bin.zip](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip)
-([PGP](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip.asc),
-[SHA-256](https://dist.apache.org/repos/dist/release/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip.sha256)
+- Download binaries [apache-wicket-{{site.wicket.version_80}}-bin.zip](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip)
+([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip.asc),
+[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip.sha256)
 )
 
 Note that the binary packages and the source packages don't contain any
@@ -87,7 +87,7 @@ dependency management system.
 
 ### Verify distribution's signature
 
-PGP signatures can be verified as described [on this page](http://www.apache.org/dev/release-signing.html#verifying-signature). The public key used to sign Wicket distributions can be found in the [KEYS file](https://dist.apache.org/repos/dist/release/wicket/KEYS). 
+PGP signatures can be verified as described [on this page](http://www.apache.org/dev/release-signing.html#verifying-signature). The public key used to sign Wicket distributions can be found in the [KEYS file](https://www.apache.org/dist/wicket/KEYS). 
 
 ### Older releases
 

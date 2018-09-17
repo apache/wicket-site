@@ -36,11 +36,11 @@ The following releases are supported by the Wicket team.
 		<th style="width:30%">Latest release</th>
 		<th style="width:40%">Status</th>
 	</tr>
-	<tr>
+	<!-- tr>
 		<td><a href="wicket-9.x.html">Wicket 9.x</a></td>
 		<td>{{site.wicket.version_90}}</td>
 		<td>in development</td>
-	</tr>
+	</tr -->
 	<tr>
 		<td><a href="wicket-8.x.html">Wicket 8.x</a></td>
 		<td>{{site.wicket.version_80}}</td>
