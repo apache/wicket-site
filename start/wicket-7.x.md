@@ -68,22 +68,22 @@ If you are not a Maven user, you can download the Wicket release manually.
 Use the following links to download Wicket manually to build Wicket
 from source:
 
-- Download source [apache-wicket-{{site.wicket.version_70}}.tar.gz](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.tar.gz)
+- Download source [apache-wicket-{{site.wicket.version_70}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.tar.gz)
 ([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.tar.gz.asc),
 [SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.tar.gz.sha256)
 )
-- Download source [apache-wicket-{{site.wicket.version_70}}.zip](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.zip)
+- Download source [apache-wicket-{{site.wicket.version_70}}.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.zip)
 ([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.zip.asc),
 [SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.zip.sha256)
 )
 
 Or use the following links to get the pre-packaged binaries instead:
 
-- Download binaries [apache-wicket-{{site.wicket.version_70}}-bin.tar.gz](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.tar.gz)
+- Download binaries [apache-wicket-{{site.wicket.version_70}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.tar.gz)
 ([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.tar.gz.asc),
 [SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.tar.gz.sha256)
 )
-- Download binaries [apache-wicket-{{site.wicket.version_70}}-bin.zip](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.zip)
+- Download binaries [apache-wicket-{{site.wicket.version_70}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.zip)
 ([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.zip.asc),
 [SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.zip.sha256)
 )
