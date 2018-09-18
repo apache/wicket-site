@@ -121,7 +121,7 @@
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// WICKET 7:</span>
 <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxFallbackLink</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="s">"wicket7"</span><span class="o">)</span> <span class="o">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span><span class="o">(</span><span class="n">target</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
             <span class="c1">// ...</span>
         <span class="o">}</span>
@@ -130,7 +130,7 @@
 <span class="c1">// WICKET 8:</span>
 <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxFallbackLink</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="s">"wicket8"</span><span class="o">)</span> <span class="o">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">AjaxRequestTarget</span><span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onClick</span><span class="o">(</span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">AjaxRequestTarget</span><span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span><span class="o">(</span><span class="n">target</span><span class="o">.</span><span class="na">isPresent</span><span class="o">())</span> <span class="o">{</span>
             <span class="c1">// ...</span>
         <span class="o">}</span>

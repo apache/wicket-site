@@ -27,7 +27,8 @@ releases will not break compatibility.
 
 ### Change log
 
-The change log is not available at the current state of the development process.
+To see what changed in these releases you can read the
+[change log](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/CHANGELOG-8.x).
 
 ## Download
 

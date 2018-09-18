@@ -52,11 +52,9 @@
     <p class="meta">11 Aug 2010</p>
     <p>This is the tenth maintenance release of the 1.4.x series and brings over
 thirty bug fixes and improvements.</p>
-<p>As well as bringing bug fixes and small improvements, 1.4.10 brings two major new features:</p>
-<ul>
-  <li>Delayed component initialization</li>
-  <li>Component configuration</li>
-</ul>
+<p>As well as bringing bug fixes and small improvements, 1.4.10 brings two major new features:
+* Delayed component initialization
+* Component configuration</p>
 <p>Delayed component initialization allows developers to initialize their components outside of a constructor, when more environment is available to the component instance. From the javadoc:</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Component</span> <span class="o">{</span>
 	<span class="cm">/**
@@ -83,7 +81,7 @@ thirty bug fixes and improvements.</p>
 	 * &lt;/p&gt;
 	 * 
 	 */</span>
-	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onInitialize</span><span class="o">()</span> <span class="o">{}</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="n">onInitialize</span><span class="o">()</span> <span class="o">{}</span>
 <span class="o">}</span></code></pre></figure>
 <p>Component configuration allows developers to easier configure component states such as visibility, enabled, etc. From the javadoc:</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Component</span> <span class="o">{</span>
@@ -145,7 +143,7 @@ thirty bug fixes and improvements.</p>
 	 * }
 	 * &lt;/pre&gt;
 	 */</span>
-	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onConfigure</span><span class="o">()</span> <span class="o">{}</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="n">onConfigure</span><span class="o">()</span> <span class="o">{}</span>
 <span class="o">}</span></code></pre></figure>
 <ul>
   <li><a href="http://svn.apache.org/repos/asf/wicket/releases/wicket-1.4.10/">Subversion tag</a></li>

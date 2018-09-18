@@ -84,20 +84,22 @@ central way of using the Bootstrap resources. In the future we
 will provide proper components and behaviors for the Bootstrap
 concepts.</p>
 <p>To use this new <strong>experimental</strong> module, add this to your pom:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;dependency&gt;
     &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
     &lt;artifactId&gt;wicket-bootstrap&lt;/artifactId&gt;
     &lt;version&gt;0.1&lt;/version&gt;
 &lt;/dependency&gt;
-</code></pre></div></div>
+</code></pre>
+</div>
 <p>To add Bootstrap support to your pages, add this in the <code class="highlighter-rouge">renderHead</code>
 method:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Override
+<div class="highlighter-rouge"><pre class="highlight"><code>@Override
 public void renderHead(IHeaderResponse response) {
     super.renderHead(response);
     Bootstrap.renderHead(response);
 }
-</code></pre></div></div>
+</code></pre>
+</div>
 <p>This will render a dependency to the Twitter bootstrap CSS and JS files,
 including the required dependency to JQuery.</p>
 <h2 id="new-wicket-examples">New Wicket Examples</h2>
@@ -107,8 +109,9 @@ and bring them into 2012. The new examples are located in the
 <p>It is currently a copy of Twitter Bootstrap’s design but with Wicket
 specific filling.</p>
 <p>You can test the examples by running the</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wicket-examples-jar/src/test/java/Start.java
-</code></pre></div></div>
+<div class="highlighter-rouge"><pre class="highlight"><code>wicket-examples-jar/src/test/java/Start.java
+</code></pre>
+</div>
 <p>class in the default package.</p>
 <p>The examples will feature a component reference with typical use
 cases, full examples such as Hello, World, and descriptions of the
@@ -135,12 +138,13 @@ between 1.5.x and 6.x series: <a href="http://s.apache.org/wicket-6.0-migration"
 Jira: <a href="http://s.apache.org/wicket-6.0.0-beta3-changelog">changelog</a></li>
 </ul>
 <p>To use it in Maven:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;dependency&gt;
     &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
     &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
     &lt;version&gt;6.0.0-beta3&lt;/version&gt;
 &lt;/dependency&gt;
-</code></pre></div></div>
+</code></pre>
+</div>
 <p>If you don’t use a dependencies management build tool then you
 can download the full distribution (including source) and build from
 source yourself.</p>

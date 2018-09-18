@@ -48,7 +48,7 @@
             <p>Use the following wizard to generate a Quick Start Project using Maven. Paste the generated command line into a shell (DOS prompt or unix shell) and create a project with Wicket in a jiffy.</p>
         </header>
         <section class="l-one-third right">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#before-you-start"><span class="toc-number">1</span> <span class="toc-text">Before you start</span></a></li><li class="toc--level-1 toc--section-2"><a href="#5-small-steps-to-a-web-application"><span class="toc-number">2</span> <span class="toc-text">5 small steps to a web application</span></a></li><li class="toc--level-1 toc--section-3"><a href="#quick-start-wizard"><span class="toc-number">3</span> <span class="toc-text">Quick Start Wizard</span></a></li><li class="toc--level-1 toc--section-4"><a href="#import-the-quick-start-in-your-ide"><span class="toc-number">4</span> <span class="toc-text">Import the Quick Start in your IDE</span></a><ul><li class="toc--level-2 toc--section-5"><a href="#eclipse"><span class="toc-number">4.1</span> <span class="toc-text">Eclipse</span></a></li><li class="toc--level-2 toc--section-6"><a href="#intellij-idea"><span class="toc-number">4.2</span> <span class="toc-text">IntelliJ IDEA</span></a></li><li class="toc--level-2 toc--section-7"><a href="#netbeans"><span class="toc-number">4.3</span> <span class="toc-text">Netbeans</span></a></li></ul></li></ul></div>
+            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#before-you-start"><span class="toc-number">1</span> <span class="toc-text">Before you start</span></a></li><li class="toc--level-1 toc--section-2"><a href="#small-steps-to-a-web-application"><span class="toc-number">2</span> <span class="toc-text">5 small steps to a web application</span></a></li><li class="toc--level-1 toc--section-3"><a href="#quick-start-wizard"><span class="toc-number">3</span> <span class="toc-text">Quick Start Wizard</span></a></li><li class="toc--level-1 toc--section-4"><a href="#import-the-quick-start-in-your-ide"><span class="toc-number">4</span> <span class="toc-text">Import the Quick Start in your IDE</span></a><ul><li class="toc--level-2 toc--section-5"><a href="#eclipse"><span class="toc-number">4.1</span> <span class="toc-text">Eclipse</span></a></li><li class="toc--level-2 toc--section-6"><a href="#intellij-idea"><span class="toc-number">4.2</span> <span class="toc-text">IntelliJ IDEA</span></a></li><li class="toc--level-2 toc--section-7"><a href="#netbeans"><span class="toc-number">4.3</span> <span class="toc-text">Netbeans</span></a></li></ul></li></ul></div>
         </section>
         <section class="l-two-third left">
             <script type="text/javascript" charset="utf-8" src="/javascript/ZeroClipboard-1.1.7.min.js"></script>
@@ -91,7 +91,7 @@
 <p>The Quick Start Wizard uses <a href="http://maven.apache.org">Apache Maven</a> to
 make it really fast to get started. You should have Maven installed and
 working before you can use the Quick Start wizard.</p>
-<h2 id="5-small-steps-to-a-web-application">5 small steps to a web application</h2>
+<h2 id="small-steps-to-a-web-application">5 small steps to a web application</h2>
 <p>Use the following steps to quickly generate a project to get you
 started:</p>
 <ol>
@@ -154,12 +154,13 @@ generated (e.g. for Eclipse users this would be your workspace folder).
 Paste the command line into your terminal window and press «enter» to
 execute the command.</p>
 <p>You can create your quickstart interactively too with the following Maven command:</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    mvn archetype:generate <span class="nt">-DarchetypeCatalog</span><span class="o">=</span>http://wicket.apache.org
-</code></pre></div></div>
+<div class="highlighter-rouge"><pre class="highlight"><code>    mvn archetype:generate -DarchetypeCatalog<span class="o">=</span>http://wicket.apache.org
+</code></pre>
+</div>
 <h4 id="result-of-the-maven-command">Result of the Maven command</h4>
 <p>Executing the Maven command line will result the following directory
 structure:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.\myproject
+<div class="highlighter-rouge"><pre class="highlight"><code>.\myproject
     |   pom.xml
     |
     \---src
@@ -183,7 +184,8 @@ structure:</p>
                 \---com
                     \---mycompany
                             Start.java
-</code></pre></div></div>
+</code></pre>
+</div>
 <p>It might be different depending on your settings (and version of
 Wicket), but this is basically the standard layout for web projects.</p>
 <h2 id="import-the-quick-start-in-your-ide">Import the Quick Start in your IDE</h2>

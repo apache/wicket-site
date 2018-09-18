@@ -68,13 +68,13 @@ without having to go through the whole build-deploy cycle.</p>
 defines what the home page is, and allows for some configuration.</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.apache.wicket.protocol.http.WebApplication</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorldApplication</span> <span class="kd">extends</span> <span class="n">WebApplication</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="nf">HelloWorldApplication</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">HelloWorldApplication</span><span class="o">()</span> <span class="o">{</span>
     <span class="o">}</span>
     <span class="cm">/**
      * @see org.apache.wicket.Application#getHomePage()
      */</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">Class</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Class</span> <span class="n">getHomePage</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">HelloWorld</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
@@ -85,7 +85,7 @@ rendered by the HelloWorld page is returned.</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebPage</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="nf">HelloWorld</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">HelloWorld</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"message"</span><span class="o">,</span> <span class="s">"Hello World!"</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
