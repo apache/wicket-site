@@ -97,11 +97,13 @@ telling everyone it doesn’t work. The former will help diagnose the problem,
 the latter will mainly get you abused on the mailing list.</p>
 <h2 id="submit-a-patch">Submit a patch</h2>
 <p>This is the most involved, but the most rewarding route ;-).
-In a nutshell this involves:
- * Checking out the Wicket source code from the Subversion repository.
- * Building it via mvn or IDE plugin.
- * Proving the bug exists, either via a Quickstart, or writing a unit test.
- * Submitting your fix as a Subversion patch file.</p>
+In a nutshell this involves:</p>
+<ul>
+  <li>Checking out the Wicket source code from the Subversion repository.</li>
+  <li>Building it via mvn or IDE plugin.</li>
+  <li>Proving the bug exists, either via a Quickstart, or writing a unit test.</li>
+  <li>Submitting your fix as a Subversion patch file.</li>
+</ul>
 <p>This guide will outline how to do it with Eclipse + Subclipse + m2eclipse.
 If you prefer the command line, then start here: <a href="/contribute/build.html">building from source</a>
 If you can provide a walk through for your IDE of choice then please do add it.</p>
@@ -124,19 +126,18 @@ the SVN Repositories tab on the left, right click &gt; New &gt; Repository
 Location… and paste in the repository url:
 http://svn.apache.org/repos/asf/wicket</p>
   </li>
-  <li>
-    <p><strong>Checkout the code</strong> - Click on the new Repository and navigate to: trunk
-&gt; right click &gt; checkout as maven project. Some serious churning will now
+  <li><strong>Checkout the code</strong> - Click on the new Repository and navigate to: trunk
+    <blockquote>
+      <p>right click &gt; checkout as maven project. Some serious churning will now
 occur as you download of Wicket source, and then maven crawls the internet
 for all the required libraries. Seriously, go for a stroll in the sunshine;
 the checkout and build took about 6minutes on my machine, and thats without
 maven needing to download anything.</p>
+    </blockquote>
   </li>
-  <li>
-    <p><strong>Building Wicket</strong> - All that waiting wasn’t in vain, as you should now
+  <li><strong>Building Wicket</strong> - All that waiting wasn’t in vain, as you should now
 have a fully checked out, dependency managed, built, possibly working,
-Wicket code base.</p>
-  </li>
+Wicket code base.</li>
 </ul>
 <h3 id="kick-the-tires">Kick the tires</h3>
 <ul>

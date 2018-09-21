@@ -69,14 +69,14 @@ announcements, adding new committers and other important Wicket related news.</p
 <h2 id="install">Install Jekyll</h2>
 <p>Follow the instructions available on the <a href="http://github.com/mojombo/jekyll">Jekyll
 website</a>. Basically it boils down to:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">gem install jekyll</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">gem install jekyll</span></code></pre></figure>
 <p>You also need to install the Pygments Python module.</p>
 <h2 id="clone">Clone wicket-site</h2>
 <p>Before you can edit the site, you need to clone it:</p>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone git@github.com:apache/wicket-site.git</code></pre></figure>
 <h2 id="run">Run the site</h2>
 <p>You can run the website and edit it live:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console">jekyll serve -w</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">jekyll serve -w</span></code></pre></figure>
 <p>This not only runs the server, but watches for modifications and regenerates
 any modified files.</p>
 <p>You can check out the website running at <a href="http://localhost:4000">localhost, port 4000</a>.</p>
@@ -91,26 +91,26 @@ rendered correctly.</p>
 another property for an additional subtitle.</p>
 <p>For example: (the <code class="highlighter-rouge">---</code> must be included):</p>
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
-<span class="s">layout</span><span class="pi">:</span> <span class="s">default</span>
-<span class="s">title</span><span class="pi">:</span> <span class="s">Main title</span>
-<span class="s">subtitle</span><span class="pi">:</span> <span class="s">Subtitle</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">default</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Main title</span>
+<span class="na">subtitle</span><span class="pi">:</span> <span class="s">Subtitle</span>
 <span class="nn">---</span></code></pre></figure>
 <p>A more advanced feature for the default layout is the ability to specify more files to include
 in the final page. This can be done with property <code class="highlighter-rouge">additionalContents</code> where we can list additional files
 with an id for their section tag and a value for the CSS class:</p>
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
-<span class="s">layout</span><span class="pi">:</span> <span class="s">default</span>
-<span class="s">title</span><span class="pi">:</span> <span class="s">Welcome to Apache Wicket</span>
-<span class="s">subtitle</span><span class="pi">:</span> <span class="s">Discover why developers love Wicket!</span>
-<span class="s">additionalContents</span><span class="pi">:</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">default</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Welcome to Apache Wicket</span>
+<span class="na">subtitle</span><span class="pi">:</span> <span class="s">Discover why developers love Wicket!</span>
+<span class="na">additionalContents</span><span class="pi">:</span>
   <span class="pi">-</span>
-   <span class="s">path</span><span class="pi">:</span> <span class="s">anotherPage.html</span>
-   <span class="s">sectionId</span><span class="pi">:</span> <span class="s">anotherPage</span>
-   <span class="s">cssClass</span><span class="pi">:</span> <span class="s">sectionClass</span>
+   <span class="na">path</span><span class="pi">:</span> <span class="s">anotherPage.html</span>
+   <span class="na">sectionId</span><span class="pi">:</span> <span class="s">anotherPage</span>
+   <span class="na">cssClass</span><span class="pi">:</span> <span class="s">sectionClass</span>
   <span class="pi">-</span>
-   <span class="s">path</span><span class="pi">:</span> <span class="s">yetAnotherPage.html</span>
-   <span class="s">sectionId</span><span class="pi">:</span> <span class="s">yetAnotherPage</span>
-   <span class="s">cssClass</span><span class="pi">:</span> <span class="s">yetAnotherSectionClass</span>
+   <span class="na">path</span><span class="pi">:</span> <span class="s">yetAnotherPage.html</span>
+   <span class="na">sectionId</span><span class="pi">:</span> <span class="s">yetAnotherPage</span>
+   <span class="na">cssClass</span><span class="pi">:</span> <span class="s">yetAnotherSectionClass</span>
 <span class="nn">---</span></code></pre></figure>
 <h4 id="additional-conventions">Additional conventions</h4>
 <p>The following conventions have been adopted for the templeates of the site pages:</p>
@@ -133,8 +133,8 @@ automatically added to the front page and the RSS feed.</p>
 to be formatted as <code class="highlighter-rouge">yyyy-mm-dd-title.md</code> and the blog item should start with a
 YAML preamble, similar to normal pages:</p>
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
-<span class="s">layout</span><span class="pi">:</span> <span class="s">post</span>
-<span class="s">title</span><span class="pi">:</span> <span class="s">Wicket 1.4.7 released</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Wicket 1.4.7 released</span>
 <span class="nn">---</span></code></pre></figure>
 <h2 id="update">Update the site</h2>
 <p>When you’re done with making your changes, please check the following:</p>

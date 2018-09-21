@@ -122,11 +122,6 @@ generated (e.g. for Eclipse users this would be your workspace folder).
 Paste the command line into your terminal window and press «enter» to
 execute the command.
 
-You can create your quickstart interactively too with the following Maven command:
-
-```shell
-    mvn archetype:generate -DarchetypeCatalog=http://wicket.apache.org
-```
 
 #### Result of the Maven command
 
