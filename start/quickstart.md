@@ -33,10 +33,13 @@ atitlePicture:
 		var version = document.getElementById("version").value;
 		var appserver = document.getElementById("appserver").value;
 		var cmd;
+				
 		if(version.match(/^1\.[34]/))
 			cmd = 'mvn archetype:create -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;						
+		else if(version.match(/.*SNAPSHOT/))
+			cmd = 'mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;		
 		else
-			cmd = 'mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;						
+			cmd = 'mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;			
 
 		if (version.match(/.*SNAPSHOT/))
 			cmd += ' -DarchetypeRepository=https://repository.apache.org/content/repositories/snapshots/';
