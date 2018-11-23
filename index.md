@@ -73,7 +73,7 @@ jumbotronLinks:
 </div>
 <div class="l-first">
   <div class="l-full">
-    <h3>Optional is Somtimes Required</h3>
+    <h3>Optional is Sometimes Required</h3>
   </div>
   <div class="l-one-third">
     <p>
