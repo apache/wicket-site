@@ -3,13 +3,128 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2018-12-04T20:56:20+01:00</updated>
+    <updated>2018-12-11T21:26:20+01:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
         <email>dev@wicket.apache.org</email>
     </author>
  
+
+    <entry>
+        <title>Apache Wicket 6.30.0 released</title>
+        <link href="http://wicket.apache.org/news/2018/12/10/wicket-6.30.0-released.html"/>
+        <updated>2018-12-10T00:00:00+01:00</updated>
+        <id>http://wicket.apache.org/news/2018/12/10/wicket-6.30.0-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.30.0!&lt;/p&gt;
+
+&lt;p&gt;Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
+
+&lt;p&gt;This release marks another minor release of Wicket 6. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+6.0.0.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
+
+&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;6.30.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or download and build the distribution yourself, or use our
+convenience binary package&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.30.0&quot;&gt;6.30.0 source download&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/6.30.0/binaries&quot;&gt;6.30.0 binary download&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
+
+&lt;p&gt;If you upgrade from 6.y.z this release is a drop in replacement. If
+you come from a version prior to 6.0.0, please read our Wicket 6
+migration guide found at&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://s.apache.org/wicket6migration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Have fun!&lt;/p&gt;
+
+&lt;p&gt;— The Wicket team&lt;/p&gt;
+
+&lt;p&gt;========================================================================&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The signatures for the source release artefacts:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Signature for apache-wicket-6.30.0.zip:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlwIOJcACgkQh48B+qjT
+VuHmRw//QpWDqMMoEPh7JhmvUS+6GQ+WJVTfn9nlFtXqMwa/MvQ+22RJgrBWOWQx
+is2czsKZ+roHoYztjuk9kfiepjBNtif+kFBzF+cyuyE/6LmG2IjgSTiFbuQKaNyT
+MOrDN/W1QgrroWZndLZSfVZFLtsiJ0CNvssfnsc9BuNitPjDE39RHcgXRMHyJVbI
+dx69VOokOh0fm86IslV4K1c+l1aYGFRWEoXPJTHOMHi17/FqJV9fRXNHXLHas6Lu
+kME35/NhvKynLjh1YZslaYEBCpksTQ6M5ojvf1nb4PFsG8ld+rvMKk9BuJTf18vi
+WtrlvSol4o4exSX8r37F5c8tAMmT25Ji6D7a6BZ2f6AdcpXyBDmHxWufzPkJjlgZ
+9Lru1bTp0tCvIr7xSZ0DNGKFHc3JC81I49MFklw4aBrcRUuiA5uhJFE/0sYtX8/O
+3yMeqPj5CKwqhalNTpBZ/8X2cIOQfR++wF9IvnxB8fsbjm+em0BBWDPkQ2TodScv
+iQEfKadw40/AC+CuZ0r4aXOIqNPXQDFVKX1T2zpbiEoZ3iWpwj0K+xAoB3CV7Rik
+a2PnFyWcKZrnF/GyV/xeemsS61QB6Y8ArhO8OXBCVfunYpiY41XkYqJpZLrC9MCp
+KcKSZDp6ssLYISSYD+vwkw0q/auOLeOUlyXZR8myGyV9SjrDTec=
+=u67E
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Signature for apache-wicket-6.30.0.tar.gz:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlwIOJcACgkQh48B+qjT
+VuE+NA//Y2zSy+mX1doPmIVkuQ3hFGilcU1yEPU0WlyxMfL6OPBTsE6vfDn7wjRr
+/ZE2otecN+CSC1qqmhOo+B+lbszxfafH+TgVMpEbMMvZjCuZFS0ZjAde7PxH1ynB
+7tQLyGqDGjdvewmZuOj9f/ICqt7QyhEbQ1t61vk5537g9umZqVv+9tnwy97epCKw
+kzjIRIysE5vjG/MmLJl/1QwdB/AfWVr6a32Kr+SbSA9gX0/J3Acu0aFpgQ1HEjD4
+YeNZCxjJb7Wv1GmrzwUtWjoLQZ19KRNEOz0Y76LE3UcR9L5ckVM89bmLXZ0ND2Ip
+p2JfwlZvw1Fe4Iwi8x/pu9mtGPKpvW50QVp3nPsUn86DZ6uzxfFcCumY9zlI6Pwf
+B2t03MSZ3FU/W8oawpqXiTJLX8p6PudCNHO3lRoZ6gmb76IzIlH2e1QsTUPD2Q+E
+y2FSxnPfvTLI6QfnKXsDEE833mwa19vEgw4QxjRmcQsgZW5TuzRw9TAKAU7DFLgH
+eltCyj4+UPZ/FMwYVSk1J/1v8fyaxRv97Egu1vX/pJxm97yqdfk9iOYcT28uq7Fq
+Z302PqS0uXcEx8rKq3IxjK7A60dxAESNDLHXvexELHbQ+dLSkx5K8uVdVkWphdpS
+W82xj76VSzsMI0pEZXHhLs0yFgtQSe2tHaTNuuAC7rF/KF8ZVU4=
+=z2io
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;========================================================================&lt;/p&gt;
+
+&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
+
+&lt;h4 id=&quot;changelog-for-6300&quot;&gt;CHANGELOG for 6.30.0:&lt;/h4&gt;
+
+&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-6551] - LazyInitProxyFactory doesn’t work correctly at Weblogic&lt;/li&gt;
+  &lt;li&gt;[WICKET-6553] - SelectOptions doesn’t html-encode option values&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+    </entry>
 
     <entry>
         <title>Apache Wicket 7.11.0 released</title>
@@ -1291,137 +1406,6 @@ WSEJobCokQDT80UChQRB
 
 &lt;ul&gt;
   &lt;li&gt;[WICKET-6308] - Add an extra constructor to EmailTextField with a custom validator but without model&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 7.9.0 released</title>
-        <link href="http://wicket.apache.org/news/2017/09/19/wicket-7.9.0-released.html"/>
-        <updated>2017-09-19T00:00:00+02:00</updated>
-        <id>http://wicket.apache.org/news/2017/09/19/wicket-7.9.0-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.9.0!&lt;/p&gt;
-
-&lt;p&gt;Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
-
-&lt;p&gt;This release marks another minor release of Wicket 7. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present breaks are present in this release compared to
-7.0.0.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
-&lt;p&gt;This release fixes WICKET-6457 and WICKET-6465 which caused the page store not to be cleared when session ends.&lt;/p&gt;
-
-&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;7.9.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.9.0&quot;&gt;7.9.0 source download&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/7.9.0/binaries&quot;&gt;7.9.0 binary download&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
-
-&lt;p&gt;If you upgrade from 7.y.z this release is a drop in replacement. If
-you come from a version prior to 7.0.0, please read our Wicket 7
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://s.apache.org/wicket7migrate&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The signatures for the source release artefacts:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Signature for apache-wicket-7.9.0.zip:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAABAgAGBQJZvBu5AAoJEAzCjx+CMhBVaPMP/0pZ+1p6uIfnzV7EHDNqv35F
-WJ82gFCqWZov29EUFcb+2YOCjFOU6BG61pgP98IzB+qhXomHf34hhrzomuEZCtlR
-hxYjMxnvaPHR5C/2SEkbtGtHs8YFE5SylmKB2V9Qchpx0ClicApSu1JvAb8q3rnL
-CDLIOEDEtKsioLcsVZpXT67ctgKc/Pp5Gdd0lRClnEOUONQ1WJ7yQ1uy5JfxS+Xv
-48zdiIumzgdTWgm1HJXzM41Lp4NdpwZx6/GVvD/9RjNMMOxxsPw5ZZUG/P9jtPTg
-anSXIjA2q40Y2NDRwdMMgKFNBsPoef4QHqgniiNTTZVsitGHo/jl0LqSjyXZ7MSE
-VwzSv/FOQcEfiVCMklJG+8JFIpq2/CLDCIWvlNpBC1QTqzw97xLW0gw/R88rcAoe
-ESrl7k4OSKS/YWilDRgCgaw5nBhGwqpN/Luv5Yzvxe91BFi1RXcBVq4xs/ceQd8c
-r7Sa8ZC2uvCFGdRBbMK1OjYU7Y8DjTJb3Fp2EzQRjIqAqaj6PMINEYdYvKJG8d3Y
-Z90qMv2QqF3q5BNbBU9Lf9z0Kau/W3jGXFC0wxj9tYj5gz3F5EEWDLbHj3pRiH0/
-vAHPPMZekI7GQbsYel+nGtkHBj3osPGUQ/ESQDLutJiqJ9t1e1Eijd/CdX+r5pUL
-JG97c19NWfJaKfKdCT60
-=ReUR
------END PGP SIGNATURE-----
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Signature for apache-wicket-7.9.0.tar.gz:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAABAgAGBQJZvBu5AAoJEAzCjx+CMhBVtzkQAKjDi4eBTH9A/gl0e4r5VQxP
-E+RPPVzo1Jf2+1Szz4gR4cLgFGGFqLQoqBM7YGWRSSaxdI1/ys7sn91MTg+pLCSB
-I5Xh145t/Ok58czr1N5VsIPLo3pU0pHMZwmPv+xDjv42EbogpsoFaEQsN3XorKyo
-DlrtN9WAh3pXj2y05nHqFNsUUuWACPmo+CCAuAPsTIqYbxDyB0OjlFA54ovSY41Q
-sP5UP7EuhM7W9Px38RzArUUT2WNIJlDdHogISZrurkj3aS5K5qTe1KGx2u15B6Gi
-gjU9P2aw3pzpHiBXsBInAthwGXWecIkvvRst85mQo3ivLydmyIla00+DZCe3vgkE
-cJHDCFig8QwF9kC1rtma3Rep3aXDiq+mLdDWXPqMC66s1BzzuH4xeX78/OadyVOB
-7PIjs3vUfJUIwITVG4RlLNQebDeIeFaWubT19zjcelet325WlAJpwAOGtWxj31bG
-7pWmUUAkJo0yUuK1wLBb+TN+GHQBsjwSMTxs/PTAAsq6m53fPkOFerzL5ygCshvt
-dlFAd48VZVIzWZTc0yYq0X5oHtQETIDgIKcFuJp88uBfTc0Io9r+QMdAWTgUIuzH
-OqMV4TXjaM/YBWurQ4B/Xz1KPgR7gtSjifnw3hytEIT7RHq/Av+3bJTjvby4t7r9
-CeQiIicC2Ghx4BrN1Lxk
-=b9ky
------END PGP SIGNATURE-----
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
-
-&lt;h4 id=&quot;changelog-for-790&quot;&gt;CHANGELOG for 7.9.0:&lt;/h4&gt;
-
-&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-6429] - AbstractRequestLogger should not create new Sessions&lt;/li&gt;
-  &lt;li&gt;[WICKET-6455] - AjaxFormSubmitBehavior doesn’t submit inner forms&lt;/li&gt;
-  &lt;li&gt;[WICKET-6457] - PageStore not cleared at session end&lt;/li&gt;
-  &lt;li&gt;[WICKET-6459] - Ajax re-renders of enclosures do not render their children’s header contributions&lt;/li&gt;
-  &lt;li&gt;[WICKET-6462] - When an Ajax Button is submitted, AjaxFormSubmitBehavior # onSubmit is called twice&lt;/li&gt;
-  &lt;li&gt;[WICKET-6465] - PageStore not cleared at session end&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-6454] - WicketApplication behind a proxy with restrictive internet access can not initialized&lt;/li&gt;
-  &lt;li&gt;[WICKET-6463] - Please add additional constructor to Roles&lt;/li&gt;
 &lt;/ul&gt;
 
 </content>
