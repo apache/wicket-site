@@ -337,8 +337,8 @@
     {
         return Math.floor(Math.random()*(max-min+1)+min);
     }
-    $.getJSON('//builtwithwicket.tumblr.com/api/read/json?callback=?',
-        function(response) {   
+    $.getJSON('https://dashorst.github.io/built-with-wicket/tumblr.json',
+        function(response) {
             var posts = response.posts;  
             for(var postIndex in posts) {
                 var post = posts[postIndex];

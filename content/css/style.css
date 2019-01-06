@@ -840,9 +840,9 @@ div.quickstart-wizard {
   color: #111111; }
 .wicket8 .jumbotron.header {
   background-color: #BF866F;
-  background-image: url("../img/background-3.jpg");
+  background-image: url("../img/background-4.jpg");
   background-repeat: no-repeat;
-  background-position: center 25%;
+  background-position: center 50%;
   background-size: cover;
   box-shadow: none; }
 .wicket8 .jumbotron .jumbotron-version {
@@ -874,7 +874,7 @@ h1 a, h2 a, h3 a {
   border: none; }
 
 div.header {
-  background-image: url("../img/background-2.jpg");
+  background-image: url("../img/background-4.jpg");
   background-repeat: no-repeat;
   background-position: center 25%;
   background-size: cover;

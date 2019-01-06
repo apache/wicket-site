@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2018-12-11T21:26:20+01:00</updated>
+    <updated>2019-01-06T16:00:07-06:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -14,7 +14,7 @@
     <entry>
         <title>Apache Wicket 6.30.0 released</title>
         <link href="http://wicket.apache.org/news/2018/12/10/wicket-6.30.0-released.html"/>
-        <updated>2018-12-10T00:00:00+01:00</updated>
+        <updated>2018-12-10T00:00:00-06:00</updated>
         <id>http://wicket.apache.org/news/2018/12/10/wicket-6.30.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.30.0!&lt;/p&gt;
 
@@ -129,7 +129,7 @@ W82xj76VSzsMI0pEZXHhLs0yFgtQSe2tHaTNuuAC7rF/KF8ZVU4=
     <entry>
         <title>Apache Wicket 7.11.0 released</title>
         <link href="http://wicket.apache.org/news/2018/12/01/wicket-7.11.0-released.html"/>
-        <updated>2018-12-01T00:00:00+01:00</updated>
+        <updated>2018-12-01T00:00:00-06:00</updated>
         <id>http://wicket.apache.org/news/2018/12/01/wicket-7.11.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.11.0!&lt;/p&gt;
 
@@ -265,7 +265,7 @@ gYN04WLcT14n4SJanNE94IHy6RcvAe1RqkQoRXMrUAloXDnCP0A=
     <entry>
         <title>Apache Wicket 8.2.0 released</title>
         <link href="http://wicket.apache.org/news/2018/11/17/wicket-8.2.0-released.html"/>
-        <updated>2018-11-17T00:00:00+01:00</updated>
+        <updated>2018-11-17T00:00:00-06:00</updated>
         <id>http://wicket.apache.org/news/2018/11/17/wicket-8.2.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 8.2.0!&lt;/p&gt;
 
@@ -406,7 +406,7 @@ XakTpIUvh0Qz0uXt79q/Sqe315w6Gt0iefCHkaKeGPSRTPMfYpI=
     <entry>
         <title>Apache Wicket 8.1.0 released</title>
         <link href="http://wicket.apache.org/news/2018/09/15/wicket-8.1.0-released.html"/>
-        <updated>2018-09-15T00:00:00+02:00</updated>
+        <updated>2018-09-15T00:00:00-05:00</updated>
         <id>http://wicket.apache.org/news/2018/09/15/wicket-8.1.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 8.1.0!&lt;/p&gt;
 
@@ -544,7 +544,7 @@ lJo1T4d0KiH1FWCkqvFpvlICN54ynWMp/L16Lw0wYwHjoo4SzrU=
     <entry>
         <title>Announcing Apache Wicket 8: Write Less, Achieve More</title>
         <link href="http://wicket.apache.org/news/2018/05/22/wicket-8-released.html"/>
-        <updated>2018-05-22T00:00:00+02:00</updated>
+        <updated>2018-05-22T00:00:00-05:00</updated>
         <id>http://wicket.apache.org/news/2018/05/22/wicket-8-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket project announces the 8th major release of the open source Java web framework servicing websites and applications across the globe for over a decade. With this release Wicket embraces Java 8 idioms fully, allowing the use of lambda expressions in all the right places. With Wicket 8 you can write fewer, faster and more maintainable code.&lt;/p&gt;
 
@@ -669,7 +669,7 @@ convenience binary package&lt;/p&gt;
     <entry>
         <title>Apache Wicket 6.29.0 released</title>
         <link href="http://wicket.apache.org/news/2018/02/21/wicket-6.29.0-released.html"/>
-        <updated>2018-02-21T00:00:00+01:00</updated>
+        <updated>2018-02-21T00:00:00-06:00</updated>
         <id>http://wicket.apache.org/news/2018/02/21/wicket-6.29.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.29.0!&lt;/p&gt;
 
@@ -788,7 +788,7 @@ QV/yE6KsG5K8AqjY9DdD
     <entry>
         <title>Apache Wicket 8.0.0-M9 released</title>
         <link href="http://wicket.apache.org/news/2018/02/17/wicket-8.0.0-M9-released.html"/>
-        <updated>2018-02-17T00:00:00+01:00</updated>
+        <updated>2018-02-17T00:00:00-06:00</updated>
         <id>http://wicket.apache.org/news/2018/02/17/wicket-8.0.0-M9-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M9!&lt;/p&gt;
 
@@ -982,7 +982,7 @@ CCJOHO3iofZ0wlGnB5J7
     <entry>
         <title>Apache Wicket 7.10.0 released</title>
         <link href="http://wicket.apache.org/news/2018/02/15/wicket-7.10.0-released.html"/>
-        <updated>2018-02-15T00:00:00+01:00</updated>
+        <updated>2018-02-15T00:00:00-06:00</updated>
         <id>http://wicket.apache.org/news/2018/02/15/wicket-7.10.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 7.10.0!&lt;/p&gt;
 
@@ -1128,7 +1128,7 @@ yAJTJGXXQnKndxbPpqW3
     <entry>
         <title>Apache Wicket 8.0.0-M8 released</title>
         <link href="http://wicket.apache.org/news/2017/10/25/wicket-8.0.0-M8-released.html"/>
-        <updated>2017-10-25T00:00:00+02:00</updated>
+        <updated>2017-10-25T00:00:00-05:00</updated>
         <id>http://wicket.apache.org/news/2017/10/25/wicket-8.0.0-M8-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M8!&lt;/p&gt;
 
@@ -1288,7 +1288,7 @@ NibTg1y/uwyVloPYyRp1
     <entry>
         <title>Apache Wicket 6.28.0 released</title>
         <link href="http://wicket.apache.org/news/2017/10/01/wicket-6.28.0-released.html"/>
-        <updated>2017-10-01T00:00:00+02:00</updated>
+        <updated>2017-10-01T00:00:00-05:00</updated>
         <id>http://wicket.apache.org/news/2017/10/01/wicket-6.28.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 6.28.0!&lt;/p&gt;
 
