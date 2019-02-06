@@ -91,7 +91,7 @@ border, and the markup which would be output on rendering:</p>
 <h3 id="border-usage">Border usage</h3>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">wicket:id = </span><span class="s">"myBorder"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">"myBorder"</span><span class="nt">&gt;</span>
       Middle
   <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
@@ -132,7 +132,7 @@ this case, we set Page1 to be our home page.</p>
 <h3 id="page1html">Page1.html</h3>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span> 
-    <span class="nt">&lt;span</span> <span class="na">wicket:id = </span><span class="s">"navomaticBorder"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">"navomaticBorder"</span><span class="nt">&gt;</span>
         You are viewing Page1
     <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
@@ -153,7 +153,7 @@ sources for Page3 altogether because it follows the same pattern):</p>
 <h3 id="page2html">Page2.html</h3>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">wicket:id = </span><span class="s">"navomaticBorder"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">"navomaticBorder"</span><span class="nt">&gt;</span>
         You are viewing Page2
     <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
@@ -180,19 +180,19 @@ contents. The rest of the magic is in the NavomaticBorder markup.</p>
         <span class="nt">&lt;table&gt;</span>
             <span class="nt">&lt;tr&gt;</span>
                 <span class="nt">&lt;td&gt;</span>
-                    <span class="nt">&lt;span</span> <span class="na">wicket:id = </span><span class="s">"navigationBorder"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">"navigationBorder"</span><span class="nt">&gt;</span>
                       <span class="nt">&lt;b&gt;</span>Navigation Links<span class="nt">&lt;/b&gt;</span>
                       <span class="nt">&lt;p&gt;</span>
                         <span class="nt">&lt;wicket:link&gt;</span>
-                          <span class="nt">&lt;a</span> <span class="na">href = </span><span class="s">"Page1.html"</span><span class="nt">&gt;</span>Page1<span class="nt">&lt;/a&gt;&lt;br/&gt;</span>
-                          <span class="nt">&lt;a</span> <span class="na">href = </span><span class="s">"Page2.html"</span><span class="nt">&gt;</span>Page2<span class="nt">&lt;/a&gt;&lt;br/&gt;</span>
-                          <span class="nt">&lt;a</span> <span class="na">href = </span><span class="s">"Page3.html"</span><span class="nt">&gt;</span>Page3<span class="nt">&lt;/a&gt;</span>
+                          <span class="nt">&lt;a</span> <span class="na">href =</span><span class="err"> </span><span class="s">"Page1.html"</span><span class="nt">&gt;</span>Page1<span class="nt">&lt;/a&gt;&lt;br/&gt;</span>
+                          <span class="nt">&lt;a</span> <span class="na">href =</span><span class="err"> </span><span class="s">"Page2.html"</span><span class="nt">&gt;</span>Page2<span class="nt">&lt;/a&gt;&lt;br/&gt;</span>
+                          <span class="nt">&lt;a</span> <span class="na">href =</span><span class="err"> </span><span class="s">"Page3.html"</span><span class="nt">&gt;</span>Page3<span class="nt">&lt;/a&gt;</span>
                         <span class="nt">&lt;/wicket:link&gt;</span>
                       <span class="nt">&lt;/p&gt;</span>
                     <span class="nt">&lt;/span&gt;</span>
                 <span class="nt">&lt;/td&gt;</span>
                 <span class="nt">&lt;td&gt;</span>
-                    <span class="nt">&lt;span</span> <span class="na">wicket:id = </span><span class="s">"bodyBorder"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">"bodyBorder"</span><span class="nt">&gt;</span>
                         <span class="nt">&lt;wicket:body/&gt;</span>
                     <span class="nt">&lt;/span&gt;</span>
                 <span class="nt">&lt;/td&gt;</span>
@@ -242,7 +242,7 @@ sections need to be added to the web.xml in the WEB-INF folder.</p>
         <footer class="l-container">
             <div class="l-full">
    	<img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
-    <div style="margin-top:12px;">Copyright © 2018 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+    <div style="margin-top:12px;">Copyright © 2019 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
 </div>
         </footer>
     </body>
