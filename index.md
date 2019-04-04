@@ -188,8 +188,8 @@ add(new Label("name4",
       convenience binary package
     </p>
     <ul>
-      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0">8.0.0 source download</a></li>
-      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0/binaries">8.0.0 binary download</a></li>
+      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_80}}">{{site.wicket.version_80}} source download</a></li>
+      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_80}}/binaries">{{site.wicket.version_80}} binary download</a></li>
     </ul>
   </div>
 </div>
