@@ -201,7 +201,7 @@
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>8.0.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>8.4.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
   </div>
   <div class="l-half">
@@ -337,7 +337,7 @@
     {
         return Math.floor(Math.random()*(max-min+1)+min);
     }
-    $.getJSON('https://dashorst.github.io/built-with-wicket/tumblr.json',
+    $.getJSON('./tumblr.json',
         function(response) {
             var posts = response.posts;  
             for(var postIndex in posts) {

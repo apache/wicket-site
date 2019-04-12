@@ -177,7 +177,7 @@ add(new Label("name4",
 <dependency>
     <groupId>org.apache.wicket</groupId>
     <artifactId>wicket-core</artifactId>
-    <version>8.0.0</version>
+    <version>{{site.wicket.version_80}}</version>
 </dependency>
 {% endhighlight%}
   </div>

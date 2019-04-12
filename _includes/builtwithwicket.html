@@ -22,7 +22,7 @@
         return Math.floor(Math.random()*(max-min+1)+min);
     }
 
-    $.getJSON('https://dashorst.github.io/built-with-wicket/tumblr.json',
+    $.getJSON('./tumblr.json',
         function(response) {
             var posts = response.posts;  
 
