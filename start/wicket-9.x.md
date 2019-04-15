@@ -32,7 +32,7 @@ The change log is not available at the current state of the development process.
 ## Download
 
 The most recent test version in this branch is: **{{site.wicket.version_90}}**. 
-You can test the current state of development using [Maven](#maven).
+You can test the current state of development using [Maven](#maven) or [download it manually](#manually).
 
 ### Using Apache Maven {#maven}
 
@@ -55,6 +55,41 @@ accordingly).
 
 If you are not a Maven user, you can download the Wicket release manually.
 
+### Download Manually {#manually}
+
+Use the following links to download Wicket manually to build Wicket
+from source:
+
+- Download source [apache-wicket-{{site.wicket.version_90}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.tar.gz)
+([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.tar.gz.asc),
+[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.tar.gz.sha256)
+)
+- Download source [apache-wicket-{{site.wicket.version_90}}.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.zip)
+([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.zip.asc),
+[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.zip.sha256)
+)
+
+Or use the following links to get the pre-packaged binaries instead:
+
+- Download binaries [apache-wicket-{{site.wicket.version_90}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.tar.gz)
+([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.tar.gz.asc),
+[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.tar.gz.sha256)
+)
+- Download binaries [apache-wicket-{{site.wicket.version_90}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.zip)
+([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.zip.asc),
+[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.zip.sha256)
+)
+
+Note that the binary packages and the source packages don't contain any
+dependencies necessary to have your project working out of the box. We
+strongly urge you to use Maven (or Buildr, or Gradle) as your
+dependency management system.
+
+### Verify distribution's signature
+
+PGP signatures can be verified as described [on this page](http://www.apache.org/dev/release-signing.html#verifying-signature). The public key used to sign Wicket distributions can be found in the [KEYS file](https://www.apache.org/dist/wicket/KEYS). 
+
+
 ### Older releases
 
 The Apache mirroring system only hosts the latest version of each actively supported branch.
@@ -72,7 +107,7 @@ more details on the necessary libraries.
 
 ### Java version
 
-This Wicket version requires at least the following Java version: **JDK 10.0 or newer**.
+This Wicket version requires at least the following Java version: **JDK 11.0 or newer**.
 
 Not only is a particular version of Java necessary, Wicket also needs
 access to specific APIs.
