@@ -1,0 +1,207 @@
+---
+layout: post
+title: Apache Wicket 9.0.0-M1 released
+---
+The Apache Wicket PMC is proud to announce Apache Wicket 9.0.0-M1!
+
+Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org
+
+This release marks the first milestone of the major release of Wicket 9. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+9.0.0.
+
+New and noteworthy
+------------------
+
+** Java 11 support
+
+The new milestone requires Java 11 as minimum version. 
+
+** Test with earlier Java versions
+
+Wicket 9 branch is also tested with Java 12 and 13 as part of OpenJDK Quality Outreach project
+lead by Oracle OpenJDK team. For more informations see the following link:
+
+http://apache-wicket.1842946.n4.nabble.com/Fwd-Testing-Apache-Wicket-with-JDK-Early-Access-builds-td4681441.html
+
+** Rework page and data storage
+
+The internal mechanism used to store page instances has been reworked and refactored to be simpler and easier to use. 
+
+
+Using this release
+------------------
+
+With Apache Maven update your dependency to (and don't forget to
+update any other dependencies on Wicket projects to the same version):
+
+{% highlight xml%}
+<dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-core</artifactId>
+    <version>9.0.0-M1</version>
+</dependency>
+{% endhighlight%}
+
+Or download and build the distribution yourself, or use our
+convenience binary package you can find here:
+
+ * Download: http://wicket.apache.org/start/wicket-9.x.html#manually
+
+<!--more-->
+
+Upgrading from earlier versions
+-------------------------------
+
+If you upgrade from 9.y.z this release is a drop in replacement. If
+you come from a version prior to 9.0.0, please read our Wicket 9
+migration guide found at
+
+ * http://s.apache.org/wicket9migrate
+
+Have fun!
+
+— The Wicket team
+
+
+========================================================================
+
+    The signatures for the source release artefacts:
+
+    
+Signature for apache-wicket-9.0.0-M1.zip:
+
+<div class='highlight'><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlyuOSEACgkQh48B+qjT
+VuFLNA/+NZ13eStA3Gi09RXn0/mUPfQ/On8vOL2ypveLOu3isCOTHddWBowWPaeX
+GAa3ycFseLalszzoYAC0hoSTnh3LF0O3RYqEgAI4GX1hdRzpnOVksb0Bkj27s+N/
+lDiPCvdm1gxPVGoSWz8rvn6Y9v9t+1Y/WwjduCxB6NvmaDTXwnn2nnTQjNwNz/kX
+vBr7BnDkHcUjpYW5q2ZHdo2ZBOZS81tABe2JI86CeHYJVjzjy5GuDjZqa7ixGeMj
+DzaZ0RaxSEAlTjbJ5DtC5bVrRaDrLPwWCn4ynZVjmIDOmuUacgnNYIiVIlo5MIhY
+l5896eUdu4bImP1RdiYCDN0o0UGD9jOycJO9QvDzYUTiK+m2d2C7n4Cgbvo6JKrX
+fjYpRY95Xi8ST13yGaJl+3yUWXQSJvtOdneibcbkN20Pp7K9UGcGbY+efwNLejqe
+d4VO2reNsFapD6mBgremaIQK9C3jeuAJmzq1rM0tSkbrt1zHmGBU5R+Kc9dWFZRY
+QRKbuuTya/XW03si2uBzh+rxC+7Mpyi7SUE3LEOilACt0lPz0lJJu/oUzZiMM2VN
+UKG4VdxAkzZ2Ja1FDSOPJ6zw9lN3mPvWj9l4T7/cXQpELIVQSo17Foq16JdrCB6H
+BnYdUkVTJ4cWxNmlyDU6AhSQkKVUbps23XjfXD2E0uD84dbj1eo=
+=ArhK
+-----END PGP SIGNATURE-----
+</pre></div>
+
+    
+Signature for apache-wicket-9.0.0-M1.tar.gz:
+
+<div class='highlight'><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlyuOSEACgkQh48B+qjT
+VuGEdQ//aLP1iPvV8LftKphL2fEoxNASi8a4yJ6n1llQgJm692uLo9VPL1tALXDJ
+r7glipgHu5NYGy5zXV6gZMb6Gr0V2ydW9mS37V1BWWSw2X6D1tgYbzZMmYlhfZcQ
+9O5hWVFQ8qAD345E7Tjw+nRdr4lFSKxgQDsohZiSDtYc1duFQ31fxt7v8xMpJT4b
+Nu2AJkzB7L0LjQT3graovZuNkjp/5wWcTZ8gRN3A+VlF/Cp6KmWfWWXYNJLRXZZV
+YRlWA5CF6DLu9VQJqOWS4FxcJirJroawatn9rNUs48j/ExJhooyno36JTy4BiBA4
+i9h5bJaxYmMECpO0Y5WaNm9TOEMmrb4VHwx/DDvG/WXEAtY1Nt+C0A65l23KHRuD
+cjd0tHEBzDo052m34duQwtVcuOnxxyfg6kue1plRdOF9zyW1484RCUhsit370IT2
+m84ek1kbQnUzxICQYm2J/3ak056wQ08rYmWkki2rw2uTvXz3YvrQo+jPg2Avybct
+yE+wVCTbRqvfcmn5hcOTdcth50BV273iwczMealbdulnfp7PoDi8Z00AJ6kICQMz
+48y6Y5VSz94xLxb6a99xkGfnqwos78xh4iV2DG3+778oAfewYgo9d2NTVfsX4xox
+D+eLF92tdmEQbIN3e6r6KGv4YamL+DypvAcbsPEDL1e1MrHA8mQ=
+=lIwn
+-----END PGP SIGNATURE-----
+</pre></div>
+
+    
+========================================================================
+
+### This Release
+
+#### CHANGELOG for 9.0.0-M1:
+    
+##### Bug
+
+ * [WICKET-5552] - Events to close pop-up on Modal Window are not propagated
+ * [WICKET-6568] - Wicket fails / does not encode request header values in AjaxCalls
+ * [WICKET-6570] - Unable to read cookies containing '.' characters in names when using CookieUtils 
+ * [WICKET-6574] - JQueryResourceReference#get() (still) return V1
+ * [WICKET-6584] - Import Junit Package as optional
+ * [WICKET-6586] - Broken JavaScript due to fix charsetName in JavaScriptPackageResource
+ * [WICKET-6588] - Under Tomcat (ver. >= 8.5) BaseWebSocketBehavior can't find session id cookie 
+ * [WICKET-6599] - ResponseIOException should never escape from WicketFilter
+ * [WICKET-6602] - AuthenticatedWebApplication login Workflow broken with replaceSession
+ * [WICKET-6603] - WicketTester.destroy sometimes hangs
+ * [WICKET-6606] - data-wicket-placeholder is invalid XHTML
+ * [WICKET-6607] - NoSuchMethodError when using Spring-Beans with constructor injection in an AjaxLink#onClick
+ * [WICKET-6610] - Incorrect Javadoc: Refering to specific page in Application properties file is not possible
+ * [WICKET-6614] - AbstractRangeValidator looks up string with the wrong key if locale is Turkish
+ * [WICKET-6617] - Header contribution ignore <wicket:header-items/>
+ * [WICKET-6623] - Consecutive Temporary Behaviors are not properly removed
+ * [WICKET-6629] - OOM (and disk) in AsynchronousPageStore
+ * [WICKET-6630] - FileUpload.writeToTempFile() fails with commons-fileupload 1.4
+ * [WICKET-6631] - AnnotProxyFieldValueFactory does not cache beanNames
+ * [WICKET-6637] - Handling exception Wicket 8
+ * [WICKET-6639] - PageStoreManager$SessionEntry.clear produces NullPointerException
+ * [WICKET-6642] - Form.findSubmittingComponent returns null instead of SubmitLink
+ * [WICKET-6645] - Concurrent web socket response message processing on the client
+ * [WICKET-6650] - Url decode the name of the file after AjaxDownload with Location == Blob
+ * [WICKET-6651] - Redirecting with ResetResponseException does not work anymore
+
+##### New Feature
+
+ * [WICKET-6577] - Introduce class GenericWebMarkupContainer
+ * [WICKET-6578] - StatelessResourceLink
+ * [WICKET-6626] - Introduce application-wide Component#onComponentTag listeners
+ * [WICKET-6641] - Extract an interface for classes allowing to register feedback messages
+
+##### Improvement
+
+ * [WICKET-6435] - WicketTester should provide assertExists and assertNotExists methods
+ * [WICKET-6550] - Unify all metadata capable objects.
+ * [WICKET-6555] - AbstractChoice subclasses code duplication
+ * [WICKET-6556] - Change DataTable's HTML order
+ * [WICKET-6557] - Allow meta tags to be contributed during AJAX request
+ * [WICKET-6560] - Improve serialization warnings in ChainingModel
+ * [WICKET-6562] - Remove from wicket-core all the deprecated classes
+ * [WICKET-6563] - Rework page and data storage
+ * [WICKET-6565] - ResponseIOException logged as an error in DefaultExceptionMapper
+ * [WICKET-6575] - Ajax requests are still firing even when placeholder tag is written only
+ * [WICKET-6576] - Support multiple dateFormats for LocalDateTextfield
+ * [WICKET-6579] - Upgrade Spring to 5.x version
+ * [WICKET-6580] - org.apache.wicket.util.lang.Bytes - toString()
+ * [WICKET-6581] - Upgrade wicket-cdi to cdi version 2
+ * [WICKET-6587] - CheckBoxSelector should accept more CheckBoxes to be added later
+ * [WICKET-6595] - Upgrade JUnit to v5.x
+ * [WICKET-6600] - Error logging in AjaxRequestHandler is too strict
+ * [WICKET-6601] - Events to close pop-up on Modal Window are not propagated from caption bar
+ * [WICKET-6605] - Allow AjaxFallbackButton to be stateless 
+ * [WICKET-6618] - Stateless pages and access to unconfigured components
+ * [WICKET-6621] - Exceeding exception retries should return control back to server
+ * [WICKET-6634] - Save the closeCode and message in WebSocket's ClosedMessage
+ * [WICKET-6635] - Move AbstractPropertyModel#getInnermostModelOrObject() to ChainingModel
+ * [WICKET-6638] - RedirectRequestHandler does not support Ajax
+ * [WICKET-6640] - Add settings for customizing the ModalWindow's spacing, header height and overflow
+ * [WICKET-6644] - AbstractPageableView can only be serialized with Java built-in serialization
+ * [WICKET-6648] - It is impossible to initiate AjaxDownloadBehavior with IPartialPageRequestHandler
+
+##### Wish
+
+ * [WICKET-6539] - Scope fix for DataTable toolbars
+ * [WICKET-6569] - LambdaModel.of overload is ambiguous
+ * [WICKET-6646] - Upgrade jquery to 3.3.x
+
+##### Task
+
+ * [WICKET-6583] - Upgrade Tests to Junit5
+ * [WICKET-6594] - JavaDoc of redirectToInterceptPage in Component urges to use redirectTo method when in a constructor
+ * [WICKET-6596] - Use JQuery 3.x as default
+ * [WICKET-6598] - Upgrade Objenesis to 3.x for better support of Java 11
+ * [WICKET-6609] - Update Guice from 4.1.0 to 4.2.2
+ * [WICKET-6620] - @Deprecated classes/methods need to be removed
+ * [WICKET-6624] - Upgrade to commons-filupload 1.4
+ * [WICKET-6647] - Upgrade asm to 7.1
+
