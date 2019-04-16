@@ -6,6 +6,12 @@ preamble: Wicket is released as a source archive, convenience binaries and throu
 ---
 
 <div class="button-bar">
+	<a class="button" href="wicket-9.x.html">
+		<i class="fa fa-cloud-download"></i><br>
+		Apache Wicket 9.x
+	</a>
+</div>
+<div class="button-bar">
 	<a class="button" href="wicket-8.x.html">
 		<i class="fa fa-cloud-download"></i><br>
 		Apache Wicket 8.x
@@ -25,7 +31,6 @@ preamble: Wicket is released as a source archive, convenience binaries and throu
 		Apache Wicket 1.5.x
 	</a>
 </div>
-
 ## Supported Versions
 
 The following releases are supported by the Wicket team.
@@ -36,11 +41,11 @@ The following releases are supported by the Wicket team.
 		<th style="width:30%">Latest release</th>
 		<th style="width:40%">Status</th>
 	</tr>
-	<!-- tr>
+	<tr>
 		<td><a href="wicket-9.x.html">Wicket 9.x</a></td>
 		<td>{{site.wicket.version_90}}</td>
 		<td>in development</td>
-	</tr -->
+	</tr>
 	<tr>
 		<td><a href="wicket-8.x.html">Wicket 8.x</a></td>
 		<td>{{site.wicket.version_80}}</td>

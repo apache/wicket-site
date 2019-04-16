@@ -22,12 +22,15 @@ all projects intended for production should **NOT** use this version.
 
 ### Semantic versioning
 
-These releases follow semantic versioning so upgrades between minor
-releases will not break compatibility.
+Since Wicket 9 is still in development, backward api compatibility between 
+milestone release is not guaranteed.
+We will continue to use semantic versioning when we will made Wicket 9 final 
+and maintain api compatibility between minor versions of Wicket 9.
 
 ### Change log
 
-The change log is not available at the current state of the development process.
+To see what changed in these releases you can read the
+[change log](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/CHANGELOG-9.x).
 
 ## Download
 

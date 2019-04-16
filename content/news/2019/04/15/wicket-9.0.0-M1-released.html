@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Apache Wicket 9.0.0-M1 released | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    </head>
+
+    <body class="">
+        <div class="header default">
+    <div class="l-container">
+<nav class="mainmenu">
+    <ul>
+		<!-- /start/quickstart.html || /news/2019/04/15/wicket-9.0.0-M1-released.html -->
+    	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+		<!-- /start/download.html || /news/2019/04/15/wicket-9.0.0-M1-released.html -->
+    	<li class=""><a href="/start/download.html">Download</a></li>
+		<!-- /learn || /news/2019/04/15/wicket-9.0.0-M1-released.html -->
+    	<li class=""><a href="/learn">Documentation</a></li>
+		<!-- /help || /news/2019/04/15/wicket-9.0.0-M1-released.html -->
+    	<li class=""><a href="/help">Support</a></li>
+		<!-- /contribute || /news/2019/04/15/wicket-9.0.0-M1-released.html -->
+    	<li class=""><a href="/contribute">Contribute</a></li>
+		<!-- /community || /news/2019/04/15/wicket-9.0.0-M1-released.html -->
+    	<li class=""><a href="/community">Community</a></li>
+		<!-- /apache || /news/2019/04/15/wicket-9.0.0-M1-released.html -->
+    	<li class=""><a href="/apache">Apache</a></li>
+    </ul>
+</nav>
+        <div class="logo">
+    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+</div>
+    </div>
+</div>
+<main>
+    <div class="l-container">
+        <header class="l-full preamble">
+            <h1>Apache Wicket 9.0.0-M1 released</h1>
+        </header>
+        <section class="l-one-third right">
+            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul></li></ul></div>
+        </section>
+        <section class="l-two-third left">
+            <div class="l-full">
+    <p class="meta">15 Apr 2019</p>
+    <p>The Apache Wicket PMC is proud to announce Apache Wicket 9.0.0-M1!</p>
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+<p>This release marks the first milestone of the major release of Wicket 9. 
+Since Wicket 9 is still in development, backward api compatibility between 
+milestone release is not guaranteed.
+We will continue to use semantic versioning when we will made Wicket 9 final 
+and maintain api compatibility between minor versions of Wicket 9.</p>
+<h2 id="new-and-noteworthy">New and noteworthy</h2>
+<p><strong>Java 11 support</strong></p>
+<p>The new milestone requires Java 11 as minimum version.</p>
+<p><strong>JUnit 5 support</strong></p>
+<p>Wicket 9 has been migrated from JUnit 4 to 5. Module junit-vintage-engine is provided as test dependency to
+make old tests work without migrating all the code to JUnit 5.</p>
+<p><strong>Test with newer Java versions</strong></p>
+<p>Wicket 9 branch is also tested with Java 12 and 13 as part of OpenJDK Quality Outreach project
+lead by Oracle OpenJDK team. For more informations see the following link:</p>
+<p>http://apache-wicket.1842946.n4.nabble.com/Fwd-Testing-Apache-Wicket-with-JDK-Early-Access-builds-td4681441.html</p>
+<p><strong>Rework page and data storage</strong></p>
+<p>The internal mechanism used to store page instances has been reworked and refactored to be simpler and easier to use.</p>
+<h2 id="using-this-release">Using this release</h2>
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>9.0.0-M1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+<p>Or download and build the distribution yourself, or use our
+convenience binary package you can find here:</p>
+<ul>
+  <li>Download: http://wicket.apache.org/start/wicket-9.x.html#manually</li>
+</ul>
+<!--more-->
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+<p>If you upgrade from 9.y.z this release is a drop in replacement. If
+you come from a version prior to 9.0.0, please read our Wicket 9
+migration guide found at</p>
+<ul>
+  <li>http://s.apache.org/wicket9migrate</li>
+</ul>
+<p>Have fun!</p>
+<p>— The Wicket team</p>
+<p>========================================================================</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
+</code></pre></div></div>
+<p>Signature for apache-wicket-9.0.0-M1.zip:</p>
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlyuOSEACgkQh48B+qjT
+VuFLNA/+NZ13eStA3Gi09RXn0/mUPfQ/On8vOL2ypveLOu3isCOTHddWBowWPaeX
+GAa3ycFseLalszzoYAC0hoSTnh3LF0O3RYqEgAI4GX1hdRzpnOVksb0Bkj27s+N/
+lDiPCvdm1gxPVGoSWz8rvn6Y9v9t+1Y/WwjduCxB6NvmaDTXwnn2nnTQjNwNz/kX
+vBr7BnDkHcUjpYW5q2ZHdo2ZBOZS81tABe2JI86CeHYJVjzjy5GuDjZqa7ixGeMj
+DzaZ0RaxSEAlTjbJ5DtC5bVrRaDrLPwWCn4ynZVjmIDOmuUacgnNYIiVIlo5MIhY
+l5896eUdu4bImP1RdiYCDN0o0UGD9jOycJO9QvDzYUTiK+m2d2C7n4Cgbvo6JKrX
+fjYpRY95Xi8ST13yGaJl+3yUWXQSJvtOdneibcbkN20Pp7K9UGcGbY+efwNLejqe
+d4VO2reNsFapD6mBgremaIQK9C3jeuAJmzq1rM0tSkbrt1zHmGBU5R+Kc9dWFZRY
+QRKbuuTya/XW03si2uBzh+rxC+7Mpyi7SUE3LEOilACt0lPz0lJJu/oUzZiMM2VN
+UKG4VdxAkzZ2Ja1FDSOPJ6zw9lN3mPvWj9l4T7/cXQpELIVQSo17Foq16JdrCB6H
+BnYdUkVTJ4cWxNmlyDU6AhSQkKVUbps23XjfXD2E0uD84dbj1eo=
+=ArhK
+-----END PGP SIGNATURE-----
+</pre></div>
+<p>Signature for apache-wicket-9.0.0-M1.tar.gz:</p>
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlyuOSEACgkQh48B+qjT
+VuGEdQ//aLP1iPvV8LftKphL2fEoxNASi8a4yJ6n1llQgJm692uLo9VPL1tALXDJ
+r7glipgHu5NYGy5zXV6gZMb6Gr0V2ydW9mS37V1BWWSw2X6D1tgYbzZMmYlhfZcQ
+9O5hWVFQ8qAD345E7Tjw+nRdr4lFSKxgQDsohZiSDtYc1duFQ31fxt7v8xMpJT4b
+Nu2AJkzB7L0LjQT3graovZuNkjp/5wWcTZ8gRN3A+VlF/Cp6KmWfWWXYNJLRXZZV
+YRlWA5CF6DLu9VQJqOWS4FxcJirJroawatn9rNUs48j/ExJhooyno36JTy4BiBA4
+i9h5bJaxYmMECpO0Y5WaNm9TOEMmrb4VHwx/DDvG/WXEAtY1Nt+C0A65l23KHRuD
+cjd0tHEBzDo052m34duQwtVcuOnxxyfg6kue1plRdOF9zyW1484RCUhsit370IT2
+m84ek1kbQnUzxICQYm2J/3ak056wQ08rYmWkki2rw2uTvXz3YvrQo+jPg2Avybct
+yE+wVCTbRqvfcmn5hcOTdcth50BV273iwczMealbdulnfp7PoDi8Z00AJ6kICQMz
+48y6Y5VSz94xLxb6a99xkGfnqwos78xh4iV2DG3+778oAfewYgo9d2NTVfsX4xox
+D+eLF92tdmEQbIN3e6r6KGv4YamL+DypvAcbsPEDL1e1MrHA8mQ=
+=lIwn
+-----END PGP SIGNATURE-----
+</pre></div>
+<p>========================================================================</p>
+<h3 id="this-release">This Release</h3>
+<h4 id="changelog-for-900-m1">CHANGELOG for 9.0.0-M1:</h4>
+<h5 id="bug">Bug</h5>
+<ul>
+  <li>[WICKET-5552] - Events to close pop-up on Modal Window are not propagated</li>
+  <li>[WICKET-6568] - Wicket fails / does not encode request header values in AjaxCalls</li>
+  <li>[WICKET-6570] - Unable to read cookies containing ‘.’ characters in names when using CookieUtils</li>
+  <li>[WICKET-6574] - JQueryResourceReference#get() (still) return V1</li>
+  <li>[WICKET-6584] - Import Junit Package as optional</li>
+  <li>[WICKET-6586] - Broken JavaScript due to fix charsetName in JavaScriptPackageResource</li>
+  <li>[WICKET-6588] - Under Tomcat (ver. &gt;= 8.5) BaseWebSocketBehavior can’t find session id cookie</li>
+  <li>[WICKET-6599] - ResponseIOException should never escape from WicketFilter</li>
+  <li>[WICKET-6602] - AuthenticatedWebApplication login Workflow broken with replaceSession</li>
+  <li>[WICKET-6603] - WicketTester.destroy sometimes hangs</li>
+  <li>[WICKET-6606] - data-wicket-placeholder is invalid XHTML</li>
+  <li>[WICKET-6607] - NoSuchMethodError when using Spring-Beans with constructor injection in an AjaxLink#onClick</li>
+  <li>[WICKET-6610] - Incorrect Javadoc: Refering to specific page in Application properties file is not possible</li>
+  <li>[WICKET-6614] - AbstractRangeValidator looks up string with the wrong key if locale is Turkish</li>
+  <li>[WICKET-6617] - Header contribution ignore <wicket:header-items></wicket:header-items></li>
+  <li>[WICKET-6623] - Consecutive Temporary Behaviors are not properly removed</li>
+  <li>[WICKET-6629] - OOM (and disk) in AsynchronousPageStore</li>
+  <li>[WICKET-6630] - FileUpload.writeToTempFile() fails with commons-fileupload 1.4</li>
+  <li>[WICKET-6631] - AnnotProxyFieldValueFactory does not cache beanNames</li>
+  <li>[WICKET-6637] - Handling exception Wicket 8</li>
+  <li>[WICKET-6639] - PageStoreManager$SessionEntry.clear produces NullPointerException</li>
+  <li>[WICKET-6642] - Form.findSubmittingComponent returns null instead of SubmitLink</li>
+  <li>[WICKET-6645] - Concurrent web socket response message processing on the client</li>
+  <li>[WICKET-6650] - Url decode the name of the file after AjaxDownload with Location == Blob</li>
+  <li>[WICKET-6651] - Redirecting with ResetResponseException does not work anymore</li>
+</ul>
+<h5 id="new-feature">New Feature</h5>
+<ul>
+  <li>[WICKET-6577] - Introduce class GenericWebMarkupContainer</li>
+  <li>[WICKET-6578] - StatelessResourceLink</li>
+  <li>[WICKET-6626] - Introduce application-wide Component#onComponentTag listeners</li>
+  <li>[WICKET-6641] - Extract an interface for classes allowing to register feedback messages</li>
+</ul>
+<h5 id="improvement">Improvement</h5>
+<ul>
+  <li>[WICKET-6435] - WicketTester should provide assertExists and assertNotExists methods</li>
+  <li>[WICKET-6550] - Unify all metadata capable objects.</li>
+  <li>[WICKET-6555] - AbstractChoice subclasses code duplication</li>
+  <li>[WICKET-6556] - Change DataTable’s HTML order</li>
+  <li>[WICKET-6557] - Allow meta tags to be contributed during AJAX request</li>
+  <li>[WICKET-6560] - Improve serialization warnings in ChainingModel</li>
+  <li>[WICKET-6562] - Remove from wicket-core all the deprecated classes</li>
+  <li>[WICKET-6563] - Rework page and data storage</li>
+  <li>[WICKET-6565] - ResponseIOException logged as an error in DefaultExceptionMapper</li>
+  <li>[WICKET-6575] - Ajax requests are still firing even when placeholder tag is written only</li>
+  <li>[WICKET-6576] - Support multiple dateFormats for LocalDateTextfield</li>
+  <li>[WICKET-6579] - Upgrade Spring to 5.x version</li>
+  <li>[WICKET-6580] - org.apache.wicket.util.lang.Bytes - toString()</li>
+  <li>[WICKET-6581] - Upgrade wicket-cdi to cdi version 2</li>
+  <li>[WICKET-6587] - CheckBoxSelector should accept more CheckBoxes to be added later</li>
+  <li>[WICKET-6595] - Upgrade JUnit to v5.x</li>
+  <li>[WICKET-6600] - Error logging in AjaxRequestHandler is too strict</li>
+  <li>[WICKET-6601] - Events to close pop-up on Modal Window are not propagated from caption bar</li>
+  <li>[WICKET-6605] - Allow AjaxFallbackButton to be stateless</li>
+  <li>[WICKET-6618] - Stateless pages and access to unconfigured components</li>
+  <li>[WICKET-6621] - Exceeding exception retries should return control back to server</li>
+  <li>[WICKET-6634] - Save the closeCode and message in WebSocket’s ClosedMessage</li>
+  <li>[WICKET-6635] - Move AbstractPropertyModel#getInnermostModelOrObject() to ChainingModel</li>
+  <li>[WICKET-6638] - RedirectRequestHandler does not support Ajax</li>
+  <li>[WICKET-6640] - Add settings for customizing the ModalWindow’s spacing, header height and overflow</li>
+  <li>[WICKET-6644] - AbstractPageableView can only be serialized with Java built-in serialization</li>
+  <li>[WICKET-6648] - It is impossible to initiate AjaxDownloadBehavior with IPartialPageRequestHandler</li>
+</ul>
+<h5 id="wish">Wish</h5>
+<ul>
+  <li>[WICKET-6539] - Scope fix for DataTable toolbars</li>
+  <li>[WICKET-6569] - LambdaModel.of overload is ambiguous</li>
+  <li>[WICKET-6646] - Upgrade jquery to 3.3.x</li>
+</ul>
+<h5 id="task">Task</h5>
+<ul>
+  <li>[WICKET-6583] - Upgrade Tests to Junit5</li>
+  <li>[WICKET-6594] - JavaDoc of redirectToInterceptPage in Component urges to use redirectTo method when in a constructor</li>
+  <li>[WICKET-6596] - Use JQuery 3.x as default</li>
+  <li>[WICKET-6598] - Upgrade Objenesis to 3.x for better support of Java 11</li>
+  <li>[WICKET-6609] - Update Guice from 4.1.0 to 4.2.2</li>
+  <li>[WICKET-6620] - @Deprecated classes/methods need to be removed</li>
+  <li>[WICKET-6624] - Upgrade to commons-filupload 1.4</li>
+  <li>[WICKET-6647] - Upgrade asm to 7.1</li>
+</ul>
+</div>
+        </section>
+    </div>
+</main>
+        <footer class="l-container">
+            <div class="l-full">
+   	<img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
+    <div style="margin-top:12px;">Copyright © 2019 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+</div>
+        </footer>
+    </body>
+
+</html>
