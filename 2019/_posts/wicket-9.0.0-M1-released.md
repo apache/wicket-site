@@ -9,10 +9,11 @@ framework that powers thousands of web applications and web sites for
 governments, stores, universities, cities, banks, email providers, and
 more. You can find more about Apache Wicket at https://wicket.apache.org
 
-This release marks the first milestone of the major release of Wicket 9. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present breaks are present in this release compared to
-9.0.0.
+This release marks the first milestone of the major release of Wicket 9. 
+Since Wicket 9 is still in development, backward api compatibility between 
+milestone release is not guaranteed.
+We will continue to use semantic versioning when we will made Wicket 9 final 
+and maintain api compatibility between minor versions of Wicket 9.
 
 New and noteworthy
 ------------------
@@ -21,7 +22,12 @@ New and noteworthy
 
 The new milestone requires Java 11 as minimum version. 
 
-** Test with earlier Java versions
+** JUnit 5 support
+
+Wicket 9 has been migrated from JUnit 4 to 5. Module junit-vintage-engine is provided as test dependency to
+make old tests work without migrating all the code to JUnit 5.
+
+** Test with newer Java versions
 
 Wicket 9 branch is also tested with Java 12 and 13 as part of OpenJDK Quality Outreach project
 lead by Oracle OpenJDK team. For more informations see the following link:
