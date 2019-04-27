@@ -106,6 +106,10 @@ provide migration paths between the different Wicket versions.
 Here's a list of the migration guides:
 
 <div class="button-bar">
+    <a class="button" href="http://s.apache.org/wicket9migration">
+        Wicket 9<br>
+		migration guide
+    </a>
     <a class="button" href="http://s.apache.org/wicket8migration">
         Wicket 8<br>
 		migration guide
@@ -114,12 +118,12 @@ Here's a list of the migration guides:
         Wicket 7<br>
 		migration guide
     </a>
+</div>
+<div class="button-bar">
     <a class="button" href="http://s.apache.org/wicket6migration">
         Wicket 6<br>
 		migration guide
     </a>
-</div>
-<div class="button-bar">
     <a class="button" href="http://s.apache.org/wicket5migrate">
         Wicket 1.5<br>
 		migration guide
@@ -128,10 +132,14 @@ Here's a list of the migration guides:
 		Wicket 1.4<br>
 		migration guide
     </a>
+</div>
+<div class="button-bar">
+    <a class="button" style="visibility: hidden;"></a>
     <a class="button" href="http://s.apache.org/wicket3migrate">
         Wicket 1.3<br>
 		migration guide
     </a>
+    <a class="button" style="visibility: hidden;"></a>
 </div>
 
 If you encounter a change that was not in the migration guide, don't
