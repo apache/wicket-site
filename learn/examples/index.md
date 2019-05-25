@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: default-no-right-menu
 title: A Quick Tour of Wicket
 ---
 Nothing says more about a development technology than a few simple examples.
@@ -9,8 +9,13 @@ in Wicket when compared to other frameworks. You will discover that Wicket's
 component-oriented structure and its "low touch" approach to HTML is quite
 inviting.
 
+---
+
+## For beginners
+
+Here you find a collection of examples meant to help you understand the basic concepts of the framework. They are particularly helpful if you are new to Wicket and you are reading our [User Guide]({{ site.baseurl }}/learn/#guide). 
 You can see these examples and many more in live
-action (available for version [7.x](http://examples7x.wicket.apache.org/index.html) and [6.x](http://examples6x.wicket.apache.org/index.html)) without having to install anything.
+action (available for version [8.x](http://examples8x.wicket.apache.org/index.html), [7.x](http://examples7x.wicket.apache.org/index.html) and [6.x](http://examples6x.wicket.apache.org/index.html)) without having to install anything.
 
 * [Hello World!](helloworld.html) - Everybody's favorite example
 * [Navomatic](navomatic.html) - Automatic navigation using Borders and Links
@@ -26,3 +31,6 @@ action (available for version [7.x](http://examples7x.wicket.apache.org/index.ht
   fragments feature. Fragments are a type of inline panels.
 * [Servlet 3.x with Spring Framework](servlet3x.html) - An example to show the configuration of
   Wicket and Spring Framework without any XML definitions.
+
+{% include ui-frameworks-integration.html %}
+

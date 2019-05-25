@@ -163,8 +163,6 @@ Find [here]({{ site.baseurl }}/contribute/ides.html) how to work with Wicket pro
 ## Examples {#examples}
 
 - <a href="{{ site.baseurl }}/learn/examples/index.html">Examples</a> - Browse a vast collection of examples in live action without having to install anything!
-- <a href="http://examples8x.wicket.apache.org">Wicket 8 examples</a> / <a href="http://examples7x.wicket.apache.org">Wicket 7 examples</a> / <a href="http://examples6x.wicket.apache.org">Wicket 6 examples</a> - A special subset of live examples to show you how to use Wicket components.
-
 
 ---
 

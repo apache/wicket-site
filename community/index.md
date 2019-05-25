@@ -31,18 +31,7 @@ which sites are running on top of Wicket and other useful informations.
 with popular JavaScript frameworks (like TinyMCE, FoundationJS, etc...) to advanched features such as async tasks execution or RESTFull appliactions.
 An overview of the available sub-projects can be found [here](https://github.com/wicketstuff/core/wiki).
 
----
-
-## Wicket-Bootstrap project
-
-[Wicket-Bootstrap](https://github.com/l0rdn1kk0n/wicket-bootstrap) is a full-fledged project that provides integration between Wicket and the popular CSS and JS framework. The project site
-offers a complete showcase of the available features.
-
----
-
-## Wicket JQuery-UI integration
-
-[Wicket JQuery-UI integration](http://www.7thweb.net/wicket-jquery-ui) provides full integration between Wicket and JQuery UI with many great-looking widgets ready to be used in your application. 
+{% include ui-frameworks-integration.html %}
 
 ---
 
