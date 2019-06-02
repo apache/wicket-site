@@ -3,13 +3,164 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2019-05-28T21:10:22+02:00</updated>
+    <updated>2019-06-02T22:06:45+02:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
         <email>dev@wicket.apache.org</email>
     </author>
  
+
+    <entry>
+        <title>Apache Wicket 9.0.0-M2 released</title>
+        <link href="http://wicket.apache.org/news/2019/06/02/wicket-9.0.0-M2-released.html"/>
+        <updated>2019-06-02T00:00:00+02:00</updated>
+        <id>http://wicket.apache.org/news/2019/06/02/wicket-9.0.0-M2-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 9.0.0-M2!&lt;/p&gt;
+
+&lt;p&gt;Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
+
+&lt;p&gt;This release marks another minor release of Wicket 9. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+9.0.0.&lt;/p&gt;
+
+&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Ajax JavaScript clean-up&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;File wicket-ajax-jquery.js has been cleaned up from obsolete code and 
+unused functionalities.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Package org.apache.wicket.util.time has been deprecated&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Legacy package org.apache.wicket.util.time from module wicket-util has been 
+deprecated. Users are recommended to migrate to standard classes
+java.time.Instant and java.time.Duration. See &lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6662&quot;&gt;WICKET-6662&lt;/a&gt;
+ for more details.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
+
+&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;9.0.0-M2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or download and build the distribution yourself, or use our
+convenience binary package you can find here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-9.x.html#manually&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
+
+&lt;p&gt;If you upgrade from 9.y.z this release is a drop in replacement. If
+you come from a version prior to 9.0.0, please read our Wicket 9
+migration guide found at&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://s.apache.org/wicket9migrate&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Have fun!&lt;/p&gt;
+
+&lt;p&gt;— The Wicket team&lt;/p&gt;
+
+&lt;p&gt;========================================================================&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The signatures for the source release artefacts:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Signature for apache-wicket-9.0.0-M2.zip:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlzuv10ACgkQh48B+qjT
+VuHJyRAAi0Lzsl1sLoqErPqEfhXdEydVVbrLBauObOQjimev29mrtijLiZMY2Ie8
+zcEqc8Jk8x6ZRyPln2oH18HyT7dbzxdAM/QSuqHYl6XWwIH97Bb8U87RYrR1YYgP
+4gL24rsv/OSe1NInMJYbykhoh41g9pKfbbLun7cGv6YK3oYNUYUBs2GCvoknxb+u
+/GZFLB06fArYGVbd3cmNdySqQhw71xxrw/R4D8wO/282J2U2HS65W5dqKXIwBRWL
+8e0HLiKc5vvziB3NsQ4YAQ4tBgoATx6GY3UYyQxanVL6B4O6L4Sup+tFL+m4WcyJ
+7jq4UMasZD51sDGwbxIF0MubgwocnxsfT1B3vZgFw2bTAq+gJ0pvlZETA8WUc/T8
+t1C+KyAG2TX8QNEpCJfPKExH6brqt4sMdEW6c443xfA/if4y7PdGKOf3dnQ5lqtP
+Ncd1CQ7ia1LNG7RYVCEA1HYmSAiZy/C5ZVS891vqHCKV9/qoxupQf9ii5UsUmHqm
+tez7M9w46KVjmgpyuCSfBIvtCdOsm94Hhd0x2vcs0tHpqgm93T1a3fddxKfSbMj5
+S21of/LZmvuQp3NJFES2YOCBduMgZY7I3YHCcKYLrEub5gjG16b8CR8qJzd36YoU
+MFbuQDgb0l4tT8ZTIqqhfeCvyw4ntevwcgRJoJmyctTrwnq1Hsg=
+=eW0h
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Signature for apache-wicket-9.0.0-M2.tar.gz:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlzuv10ACgkQh48B+qjT
+VuHnqQ//Z3LKl0tfpSxcXXywTQTFaT3IKPIOwV0wf/30hAgQF24TUiZ/Bhm7kl5L
+PnkCM/r06Q7aSOgzb+vCyVDN60S4hPnUXP5pPPBoHhTyqJ6syL2uQDeMYoYd2ySw
+GGT2biUO6b0DXzHVKi58wLJ2YHvLq0XlTL0VBflcjv+ASzfBNH80yAfA6Ti2M0IK
+IvWqbGZcW8nbu6U4jQhmjoyduqzRXM8tVZZ3CZwiJpQtKKJ/EISqFZxgpbEQkkF4
+9FNVOYk4Y825F9B2P5Yi3P/uC3XX9LHf+olyEpVqUlzhyWZ2F8u1YEwkZ1SEsO0u
+kVyIaEbVgwhWEBx6Digrg8hiR3rsFh7ROEJjtR5JFQ82b35zpuM7VUKBk6jwQb0b
+Wi9QVDCVODH2mrSCHpEnxe2+KxdWDnrPb10/rikcY4KNRYsxPVUNvk+1P1fX7yvu
+D2r5JJQxIuyuDZo9NQll540yJ7Rnp1TYgkCpIcdonleGC8yZwyCud8FHC6pld0jQ
+l4RsLjJO0e2KF3MefrpkxRwfLNzUUuRrqmRNMx3Im9glmSHGZ8GhCz2UVB0TziZa
+U2sXXjTntkR29HXciBY7J4NP/izH3KTSMBp4MLyuwe3oZGKHmTLir903VN9gaMxh
+y08SO+AHfu0QE9N2cbKF6nCz1W+vBcjM7d6IHdNHWQKbwATyaiI=
+=XFAH
+-----END PGP SIGNATURE-----
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;========================================================================&lt;/p&gt;
+
+&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
+
+&lt;h4 id=&quot;changelog-for-900-m2&quot;&gt;CHANGELOG for 9.0.0-M2:&lt;/h4&gt;
+
+&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-6611] - Missing check for IScopeAwareTextResourceProcessor when concatenating resources&lt;/li&gt;
+  &lt;li&gt;[WICKET-6669] - CSS Resource Bundling throws exception when used with CssUrlReplacer&lt;/li&gt;
+  &lt;li&gt;[WICKET-6671] - IAjaxLink should be serializable&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-6618] - Stateless pages and access to unconfigured components&lt;/li&gt;
+  &lt;li&gt;[WICKET-6656] - JSR 303 - @NotNull validation problems&lt;/li&gt;
+  &lt;li&gt;[WICKET-6657] - change replaceAll() to replace() when a regex is not used&lt;/li&gt;
+  &lt;li&gt;[WICKET-6658] - Allow nested forms on non-&amp;lt;form&amp;gt; tag&lt;/li&gt;
+  &lt;li&gt;[WICKET-6659] - commons-io:commons-io is used in multiple versions at same time&lt;/li&gt;
+  &lt;li&gt;[WICKET-6662] - Remove legacy package org.apache.wicket.util.time from wicket-util&lt;/li&gt;
+  &lt;li&gt;[WICKET-6667] - Ajax JavaScript clean-up&lt;/li&gt;
+  &lt;li&gt;[WICKET-6668] - Sign out the existing session if a sign in attempt has failed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;task&quot;&gt;Task&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-6653] - Upgrade Velocity to 2.x&lt;/li&gt;
+  &lt;li&gt;[WICKET-6654] - Upgrade JQuery to 3.4.0&lt;/li&gt;
+  &lt;li&gt;[WICKET-6661] - Upgrade jquery to 3.4.x&lt;/li&gt;
+  &lt;li&gt;[WICKET-6665] - Upgrade various dependencies&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+    </entry>
 
     <entry>
         <title>Apache Wicket 8.5.0 released</title>
@@ -1281,147 +1432,6 @@ gYN04WLcT14n4SJanNE94IHy6RcvAe1RqkQoRXMrUAloXDnCP0A=
 
 &lt;ul&gt;
   &lt;li&gt;[WICKET-6594] - JavaDoc of redirectToInterceptPage in Component urges to use redirectTo method when in a constructor&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 8.2.0 released</title>
-        <link href="http://wicket.apache.org/news/2018/11/17/wicket-8.2.0-released.html"/>
-        <updated>2018-11-17T00:00:00+01:00</updated>
-        <id>http://wicket.apache.org/news/2018/11/17/wicket-8.2.0-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 8.2.0!&lt;/p&gt;
-
-&lt;p&gt;Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
-
-&lt;p&gt;This release marks another minor release of Wicket 8. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present breaks are present in this release compared to
-8.0.0.&lt;/p&gt;
-
-&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;8.2.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package you can find here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-8.x.html#manually&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
-
-&lt;p&gt;If you upgrade from 8.y.z this release is a drop in replacement. If
-you come from a version prior to 8.0.0, please read our Wicket 8
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://s.apache.org/wicket8migrate&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The signatures for the source release artefacts:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Signature for apache-wicket-8.2.0.zip:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlvp2TgACgkQh48B+qjT
-VuEpdA/+MHzlRp4/haMNDb6N1GNbRWINxG0ODWHWdHpDpquyAd9EvPhh1qf4USZ1
-kzuCfrVCj7XI6D540UyixnVr5zs9FSJLBmVqqXWsbPH+ThpsJX7qU5ZbNTeKO9xk
-8dTt8/ppq1/CA/gcmGkVBJgzbokI/BkElAqipSIn+pRSXX3ZOomsWql8IZG61Cdi
-+vpwuJZIbGvd5YEmoJjs81L7yd/INJUJeY1w5RHwp+P/iUeQioR9zDxJvr1MpfuP
-OOFxo7D1i5VCBiRiK9RKoDKS85MelUzKCL/yzFCrVrEM0QtsoUl8qBrCq644dcum
-/sctaWfUpUrt3KCtf8kumrwdmG4YVmNadcy/fs66gqEmkeTDcmFJ+N4E2yb0894t
-aaAtJyRn96srtGd0xeYzrddOI9dE1iL5zjAUWT6AkHZR/FIR2aZ9K1QwSVcYauqN
-sXX6QnPIuwzAuuGZrRBCYZ0o3zA4Vc27dp21OLBtnDKhDE1deuQPyyRyzvJbe7vL
-GRmTu0KowzVrHmUPLMGgx7sDbISSngE+pEGHt7h1cYR73GTi0IFaGZP1CM7cWnX1
-gNTMw96WfHWqAfPWHWBilV6t4Xkhyu0Tr6M8RQC0QzOhMU8hVq7eky/z7lHwyn4u
-ZLPeFyAj3rqUw83kJkpidHtUVUG1G4n63fsVKBZIK4LU0QpJ93c=
-=QR+F
------END PGP SIGNATURE-----
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Signature for apache-wicket-8.2.0.tar.gz:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlvp2TgACgkQh48B+qjT
-VuHPug//Ysrv2VmfDp+TTLIifaX5ldYzF43cqitn9YDsdTERgdWv1DLU42zS+HGK
-Tye/M5SjQKoWi81anqwqw1DsQe77Y4LpIrjRTwAOQ8NtII+Lm9Rbhi5EW4Og9jn3
-Z34Pelo3ty/DhWp+yUZ3kvrFO0ko4RWswtC3c3OVTWlITjaTfR2PNwcif2F9Nx/9
-eDMVKmNA0D5/bOIDwSxllgRFkS06mvoX1wE63p1fMPrCUNNUreRjlYHKkYDHDDJM
-xYj4Ykf+rL8FcIxWwNJwrg5nmvG7fnTeqGJZhxW2gG+rlnHrFCmPFwE6yWh6iLxN
-LhbHZ0tlpL2bMZ96tD90BF6JgKQZKXifQZ7fVXszoF8ox0U/cmb/2CeXZc9HrofS
-a1UuSRAQQvf5GP49dWAh7vlpbV2E0eYmTDJQIh4J9ACd6W4d8c3DAHO+ztDBUhiT
-q1aiecLnK4BKjIvqX9CdDNMGg21X+r1N468X83i+jTylNgMzSwV22lMAZ+utxeP5
-R72Bl1t2+/10PSAlmXPQ89Wcl08FgvMtAmcyu29jQa42ps2X4VTSw7H+Do9VL5If
-wCOZ2FrwyyrG1XfAQCqmQ5wV/y7LP3N0GZP+O/9TmhIvhIO+lgT2l3EI4Jqj3GsR
-XakTpIUvh0Qz0uXt79q/Sqe315w6Gt0iefCHkaKeGPSRTPMfYpI=
-=uSj8
------END PGP SIGNATURE-----
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
-
-&lt;h4 id=&quot;changelog-for-820&quot;&gt;CHANGELOG for 8.2.0:&lt;/h4&gt;
-
-&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-4423] - Modal Window dragging failes with iframe&lt;/li&gt;
-  &lt;li&gt;[WICKET-5552] - Events to close pop-up on Modal Window are not propagated&lt;/li&gt;
-  &lt;li&gt;[WICKET-6586] - Broken JavaScript due to fix charsetName in JavaScriptPackageResource&lt;/li&gt;
-  &lt;li&gt;[WICKET-6588] - Under Tomcat (ver. &amp;gt;= 8.5) BaseWebSocketBehavior can’t find session id cookie&lt;/li&gt;
-  &lt;li&gt;[WICKET-6589] - ClientInfo fails with NumberFormatException for unusual browser versions&lt;/li&gt;
-  &lt;li&gt;[WICKET-6599] - ResponseIOException should never escape from WicketFilter&lt;/li&gt;
-  &lt;li&gt;[WICKET-6602] - AuthenticatedWebApplication login Workflow broken with replaceSession&lt;/li&gt;
-  &lt;li&gt;[WICKET-6603] - WicketTester.destroy sometimes hangs&lt;/li&gt;
-  &lt;li&gt;[WICKET-6604] - Ajax repaint is not correctly handled when component being repainted has an enclosure associated with it and is not a child of the enclosure&lt;/li&gt;
-  &lt;li&gt;[WICKET-6606] - data-wicket-placeholder is invalid XHTML&lt;/li&gt;
-  &lt;li&gt;[WICKET-6607] - NoSuchMethodError when using Spring-Beans with constructor injection in an AjaxLink#onClick&lt;/li&gt;
-  &lt;li&gt;[WICKET-6608] - Stateless page, mix of queue and add can cause unforseen consequences&lt;/li&gt;
-  &lt;li&gt;[WICKET-6610] - Incorrect Javadoc: Refering to specific page in Application properties file is not possible&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-6435] - WicketTester should provide assertExists and assertNotExists methods&lt;/li&gt;
-  &lt;li&gt;[WICKET-6600] - Error logging in AjaxRequestHandler is too strict&lt;/li&gt;
-  &lt;li&gt;[WICKET-6601] - Events to close pop-up on Modal Window are not propagated from caption bar&lt;/li&gt;
-  &lt;li&gt;[WICKET-6605] - Allow AjaxFallbackButton to be stateless&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;task&quot;&gt;Task&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-6594] - JavaDoc of redirectToInterceptPage in Component urges to use redirectTo method when in a constructor&lt;/li&gt;
-  &lt;li&gt;[WICKET-6609] - Update Guice from 4.1.0 to 4.2.2&lt;/li&gt;
 &lt;/ul&gt;
 
 </content>

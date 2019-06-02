@@ -16,7 +16,7 @@ sass:
     sass_dir: _sass
 wicket:
   version:    8.5.0
-  version_90: 9.0.0-M1
+  version_90: 9.0.0-M2
   version_80: 8.5.0
   version_70: 7.14.0
   version_60: 6.30.0
@@ -24,7 +24,7 @@ wicket:
   version_14: 1.4.23
   version_13: 1.3.7
   released:   2019-05-28
-  versions:   [6.30.0, 1.5.16, 1.4.23, 7.14.0, 8.5.0, 9.0.0-M1, 1.5-SNAPSHOT, 6.31.0-SNAPSHOT, 7.15.0-SNAPSHOT, 8.6.0-SNAPSHOT, 9.0.0-M2-SNAPSHOT]
+  versions:   [6.30.0, 1.5.16, 1.4.23, 7.14.0, 8.5.0, 9.0.0-M2, 1.5-SNAPSHOT, 6.31.0-SNAPSHOT, 7.15.0-SNAPSHOT, 8.6.0-SNAPSHOT, 9.0.0-M3-SNAPSHOT]
 
 live_examples_url: http://examples8x.wicket.apache.org/
 
