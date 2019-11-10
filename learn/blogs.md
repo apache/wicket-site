@@ -13,6 +13,7 @@ There are many who want to share their experiences with Wicket and do so on the 
 Here is a list of regular Wicket bloggers, consisting of core contributers and enthusiastic users.
 
 * [Wicket in Action](http://wicketinaction.com/) - Igor Vaynberg, Martijn Dashorst
+* [CoderDreams](https://www.coderdreams.com/category/wicket/) - Roman Sery
 * [Chillenious!](http://chillenious.wordpress.com/) - Eelco Hillenius
 * [Jonathan](http://codeact.wordpress.com/) - Jonathan Locke
 * [Here be beasties](http://herebebeasties.com/) - Al Maw
