@@ -15,3 +15,5 @@ Just go on project root folder and execute `jekyll serve -w` to generate
 the static HTML and start the local server. The project comes with all
 the dependencies you need (css, js, pictures, etc.) so you don't need
 any preliminary operation before running Jekyll.
+
+If Jekyll is missing any dependency then run `bundle install`.
