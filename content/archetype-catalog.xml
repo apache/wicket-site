@@ -12,8 +12,8 @@
 		<archetype>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-archetype-quickstart</artifactId>
-			<version>8.7.0-SNAPSHOT</version>
-			<description>Wicket 8.7.0-SNAPSHOT Quickstart</description>
+			<version>8.8.0-SNAPSHOT</version>
+			<description>Wicket 8.8.0-SNAPSHOT Quickstart</description>
 		</archetype>
 
 		<archetype>
@@ -47,8 +47,8 @@
 		<archetype>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-archetype-quickstart</artifactId>
-			<version>8.6.1</version>
-			<description>Wicket 8.6.1 Quickstart</description>
+			<version>8.7.0</version>
+			<description>Wicket 8.7.0 Quickstart</description>
 		</archetype>
 
 		<archetype>
