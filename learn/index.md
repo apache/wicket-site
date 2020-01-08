@@ -22,9 +22,9 @@ preamble: No matter how you want to learn about Wicket, there's something availa
 </div>
 
 <div class="button-bar">
+	<a class="button" href="#courses"><i class="fa fa-graduation-cap"></i><br>Online courses</a>
 	<a class="button" style="visibility: hidden;"></a>
 	<a class="button" href="#examples"><i class="fa fa-life-ring"></i><br>Support &amp; Examples</a>
-	<a class="button" style="visibility: hidden;"></a>
 </div>
 
 ## News Archive {#news}
@@ -163,6 +163,12 @@ Find [here]({{ site.baseurl }}/contribute/ides.html) how to work with Wicket pro
 ## Examples {#examples}
 
 - <a href="{{ site.baseurl }}/learn/examples/index.html">Examples</a> - Browse a vast collection of examples in live action without having to install anything!
+
+---
+
+## Online courses {#courses}
+
+- <a href="https://www.udemy.com/course/apache-wicket-kompakt/">Apache Wicket Kompakt</a> - A complete German-based course with many pratical examples.
 
 ---
 
