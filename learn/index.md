@@ -23,7 +23,7 @@ preamble: No matter how you want to learn about Wicket, there's something availa
 
 <div class="button-bar">
 	<a class="button" href="#courses"><i class="fa fa-graduation-cap"></i><br>Online courses</a>
-	<a class="button" style="visibility: hidden;"></a>
+	<div class="button"></div>
 	<a class="button" href="#examples"><i class="fa fa-life-ring"></i><br>Support &amp; Examples</a>
 </div>
 
