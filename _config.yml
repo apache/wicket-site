@@ -24,7 +24,7 @@ wicket:
   version_14: 1.4.23
   version_13: 1.3.7
   released:   2019-09-17
-  versions:   [6.30.0, 1.5.16, 1.4.23, 7.16.0, 8.7.0, 9.0.0-M3, 1.5-SNAPSHOT, 6.31.0-SNAPSHOT, 7.17.0-SNAPSHOT, 8.8.0-SNAPSHOT, 9.0.0-M4-SNAPSHOT]
+  versions:   [6.30.0, 1.5.16, 1.4.23, 7.16.0, 8.7.0, 9.0.0-M4, 1.5-SNAPSHOT, 6.31.0-SNAPSHOT, 7.17.0-SNAPSHOT, 8.8.0-SNAPSHOT, 9.0.0-M5-SNAPSHOT]
 
 live_examples_url: http://examples8x.wicket.apache.org/
 
