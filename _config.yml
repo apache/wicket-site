@@ -16,7 +16,7 @@ sass:
     sass_dir: _sass
 wicket:
   version:    8.7.0
-  version_90: 9.0.0-M3
+  version_90: 9.0.0-M4
   version_80: 8.7.0
   version_70: 7.16.0
   version_60: 6.30.0
