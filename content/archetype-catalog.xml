@@ -5,8 +5,8 @@
 		<archetype>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-archetype-quickstart</artifactId>
-			<version>9.0.0-M5-SNAPSHOT</version>
-			<description>Wicket 9.0.0-M5-SNAPSHOT Quickstart</description>
+			<version>9.0.0-M6-SNAPSHOT</version>
+			<description>Wicket 9.0.0-M6-SNAPSHOT Quickstart</description>
 		</archetype>
 
 		<archetype>
@@ -40,8 +40,8 @@
 		<archetype>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-archetype-quickstart</artifactId>
-			<version>9.0.0-M4</version>
-			<description>Wicket 9.0.0-M4 Quickstart</description>
+			<version>9.0.0-M5</version>
+			<description>Wicket 9.0.0-M5 Quickstart</description>
 		</archetype>
 
 		<archetype>
