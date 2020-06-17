@@ -363,7 +363,7 @@ button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 
 .jumbotron .jumbotron-version { text-transform: lowercase; color: white; }
 
-nav.mainmenu { display: block; margin: 0 auto 2rem auto; text-align: center; }
+nav.mainmenu { display: block; margin: 0 auto 2rem auto; text-align: center; padding-top: 12px; }
 
 nav.mainmenu ul { list-style: none; }
 
@@ -373,7 +373,7 @@ nav.mainmenu li.active { border-bottom: 2px solid white; }
 
 nav.mainmenu li + li { margin-left: 2.0833333333%; }
 
-nav.mainmenu a, nav.mainmenu a:active { border: none; color: orange; font-weight: 400; text-decoration: none; }
+nav.mainmenu a, nav.mainmenu a:active { border: none; color: #e97826; font-weight: 500; text-decoration: none; }
 
 nav.mainmenu a:hover { color: #303284; }
 
@@ -433,7 +433,7 @@ a:hover { color: #ffb158; }
 
 h1 a, h2 a, h3 a { border: none; }
 
-div.header { background-repeat: no-repeat; background-position: center 25%; background-size: cover; background-color: white; color: #fff; display: block; position: relative; width: 100%; }
+div.header { background-color: white; border-bottom: 1px solid #e1e1e1; box-shadow: 0 .5rem 3rem #f0f0f0; color: #fff; display: block; position: relative; width: 100%; }
 
 .default nav.mainmenu { margin: 0; padding-right: 1em; }
 

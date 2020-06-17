@@ -37,10 +37,9 @@ h1 a, h2 a, h3 a {
 }
 
 div.header {
-    background-repeat: no-repeat;
-    background-position: center 25%;
-    background-size: cover;
     background-color: white;
+    border-bottom: 1px solid #e1e1e1;
+    box-shadow: 0 .5rem 3rem #f0f0f0;
     color:#fff;
     display:block;
     position:relative;
