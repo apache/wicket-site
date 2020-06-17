@@ -36,7 +36,7 @@
     </ul>
 </nav>
         <div class="logo">
-    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
     </div>
 </div>
@@ -63,13 +63,13 @@ this behavior is removed from its parent.</p>
 <p>By registering a custom AjaxRequestTarget.AbstractListener the application can manipulate all
 the attributes for all Ajax requests.</p>
 <p>Example:</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">application</span><span class="o">.</span><span class="na">getAjaxRequestTargetListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxRequestTarget</span><span class="o">.</span><span class="na">AbstractListener</span><span class="o">()</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">application</span><span class="o">.</span><span class="na">getAjaxRequestTargetListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxRequestTarget</span><span class="o">.</span><span class="na">AbstractListener</span><span class="o">()</span>
 <span class="o">{</span>
 	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateAjaxAttributes</span><span class="o">(</span><span class="n">AjaxRequestAttributes</span> <span class="n">attributes</span><span class="o">)</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateAjaxAttributes</span><span class="o">(</span><span class="nc">AjaxRequestAttributes</span> <span class="n">attributes</span><span class="o">)</span>
 	<span class="o">{</span>
 		<span class="kd">super</span><span class="o">.</span><span class="na">updateAjaxAttributes</span><span class="o">(</span><span class="n">attributes</span><span class="o">);</span>
-		<span class="n">attributes</span><span class="o">.</span><span class="na">setChannel</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxChannel</span><span class="o">(</span><span class="s">"globalAjaxChannel"</span><span class="o">,</span> <span class="n">AjaxChannel</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">ACTIVE</span><span class="o">));</span>
+		<span class="n">attributes</span><span class="o">.</span><span class="na">setChannel</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxChannel</span><span class="o">(</span><span class="s">"globalAjaxChannel"</span><span class="o">,</span> <span class="nc">AjaxChannel</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">ACTIVE</span><span class="o">));</span>
 	<span class="o">}</span>
 <span class="o">});</span></code></pre></figure>
 <p>Each Ajax behavior/component can override such global settings.</p>
@@ -91,16 +91,16 @@ convenience binary package</p>
 <p>If you upgrade from 6.y.z this release is a drop in
 replacement. If you come from a version prior to 6.0.0, please
 read our Wicket 6 migration guide found at</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://s.apache.org/wicket-6.0-migration
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://s.apache.org/wicket-6.0-migration
 </code></pre></div></div>
 <p>Have fun!</p>
 <p>— The Wicket team</p>
 <h3 id="release-notes---wicket---version-650">Release Notes - Wicket - Version 6.5.0</h3>
 <h4 id="sub-task">Sub-task</h4>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-4976](https://issues.apache.org/jira/browse/WICKET-4976) - WicketTester#startComponent(Component) doesn't detach the component and request cycle
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-4976](https://issues.apache.org/jira/browse/WICKET-4976) - WicketTester#startComponent(Component) doesn't detach the component and request cycle
 </code></pre></div></div>
 <h4 id="bug">Bug</h4>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-4906](https://issues.apache.org/jira/browse/WICKET-4906) - Form#visitFormComponents can cause ClassCastException
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-4906](https://issues.apache.org/jira/browse/WICKET-4906) - Form#visitFormComponents can cause ClassCastException
 * [WICKET-4925](https://issues.apache.org/jira/browse/WICKET-4925) - AbstractAjaxBehavior should clean stored reference to a component on unbind
 * [WICKET-4927](https://issues.apache.org/jira/browse/WICKET-4927) - Header can not be set from IRequestCycleListener#onEndRequest()
 * [WICKET-4928](https://issues.apache.org/jira/browse/WICKET-4928) - Error adding links to WebSocketRequestHandler
@@ -123,7 +123,7 @@ read our Wicket 6 migration guide found at</p>
 * [WICKET-4986](https://issues.apache.org/jira/browse/WICKET-4986) - wicket-ajax-jquery.js fails with 'member not found' on IE for delayed ajax requests
 </code></pre></div></div>
 <h4 id="improvement">Improvement</h4>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-4919](https://issues.apache.org/jira/browse/WICKET-4919) - AjaxLazyLoadPanel needs a method to add components to the AjaxRequestTarget when the component is rendered
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-4919](https://issues.apache.org/jira/browse/WICKET-4919) - AjaxLazyLoadPanel needs a method to add components to the AjaxRequestTarget when the component is rendered
 * [WICKET-4933](https://issues.apache.org/jira/browse/WICKET-4933) - Palette does not handle disabled choices correctly
 * [WICKET-4937](https://issues.apache.org/jira/browse/WICKET-4937) - Add IResponseFilter that can filter out invalid XML characters
 * [WICKET-4940](https://issues.apache.org/jira/browse/WICKET-4940) - Make MountedMapper#getMatchedSegmentSizes(url) protected

@@ -119,18 +119,18 @@
   </div>
   <div class="l-two-third">
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// WICKET 7:</span>
-<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxFallbackLink</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="s">"wicket7"</span><span class="o">)</span> <span class="o">{</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxFallbackLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"wicket7"</span><span class="o">)</span> <span class="o">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span><span class="o">(</span><span class="n">target</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
             <span class="c1">// ...</span>
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">});</span>
 <span class="c1">// WICKET 8:</span>
-<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxFallbackLink</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="s">"wicket8"</span><span class="o">)</span> <span class="o">{</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxFallbackLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"wicket8"</span><span class="o">)</span> <span class="o">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">AjaxRequestTarget</span><span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">AjaxRequestTarget</span><span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span><span class="o">(</span><span class="n">target</span><span class="o">.</span><span class="na">isPresent</span><span class="o">())</span> <span class="o">{</span>
             <span class="c1">// ...</span>
         <span class="o">}</span>
@@ -147,11 +147,11 @@
     <p>
       The following example binds a Label component to the name of a person object in different ways using Wicket 8:
     </p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"name1"</span><span class="o">,</span> <span class="nl">person:</span><span class="o">:</span><span class="n">name</span><span class="o">));</span>
-<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"name2"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
-<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"name3"</span><span class="o">,</span> <span class="n">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">personModel</span><span class="o">,</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span>
-<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"name4"</span><span class="o">,</span>
-  <span class="n">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">contractModel</span><span class="o">,</span> <span class="nl">Contract:</span><span class="o">:</span><span class="n">getPerson</span><span class="o">)</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name1"</span><span class="o">,</span> <span class="nl">person:</span><span class="o">:</span><span class="n">name</span><span class="o">));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name2"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name3"</span><span class="o">,</span> <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">personModel</span><span class="o">,</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name4"</span><span class="o">,</span>
+  <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">contractModel</span><span class="o">,</span> <span class="nl">Contract:</span><span class="o">:</span><span class="n">getPerson</span><span class="o">)</span>
     <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span></code></pre></figure>
     <p>
       The new <code>LambdaModel</code> type in Wicket enables type safe, refactor safe databinding for components. Previously one would bind data to components using PropertyModel, using a string expression to determine the exact property to show. The string expression is something like <code>"person.name"</code>. This is inherently difficult to refactor when you decide to change the name field into for example <code>"lastName"</code>. With <code>LambdaModel</code>, this refactoring is trivial for IDEs to perform: the Java methods can easily be renamed and the IDE will find all the references.

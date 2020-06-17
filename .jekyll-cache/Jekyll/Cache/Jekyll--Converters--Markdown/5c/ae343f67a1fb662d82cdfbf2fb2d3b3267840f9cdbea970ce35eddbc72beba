@@ -1,0 +1,139 @@
+I"<p>The Apache Wicket PMC is proud to announce Apache Wicket 7.6.0!</p>
+
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
+<p>This release marks another minor release of Wicket 7. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+7.0.0.</p>
+
+<h2 id="using-this-release">Using this release</h2>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>7.6.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.6.0">7.6.0 source download</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.6.0/binaries">7.6.0 binary download</a></li>
+</ul>
+
+<!--more-->
+
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
+<p>If you upgrade from 7.y.z this release is a drop in replacement. If
+you come from a version prior to 7.0.0, please read our Wicket 7
+migration guide found at</p>
+
+<ul>
+  <li><a href="http://s.apache.org/wicket7migrate">http://s.apache.org/wicket7migrate</a></li>
+</ul>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<p>================================</p>
+
+<p>The signatures for the source release artefacts:</p>
+
+<p>Signature for apache-wicket-7.6.0.zip:</p>
+
+<div class="highlight"><pre> 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAABAgAGBQJYYWYUAAoJEAzCjx+CMhBVJX0P/RNIPW47hjwNysUJALcKHUUI
+Kc201T0gz0ecCYDpOH1r9nL70mJlhBu/SFRCSLLHx3BRFyIeJqbFV8WzaexdQEXu
+c/Ay7WNTQntmmfncGogWwLNgSNzDLSWjqJt8erLkOnxkC6GsWl2tDSZ7if2veYOP
+B1DqrTaNV3z14t6cJSpahCR9uN1dO8c/QPYdeMRGILKqBqoleXCr000tGTM9Rxxa
+j2VsyeQivcAVbjiX7dLuZqZqafj9GWVgmuucVzCx76PWg6JcjjZSuhUax26xLKc/
+LCCsoxVMEY3/2qLY9nMEKZ6lRrP2xavrFSGshhDRgzz7cUmG1SMNnAw6c6Vtrtp0
+qPSF9Pc2HNw/MkVYM0RVceDSu2bbs90anl8q2Fdnl2Y0Y8oD9YMMmHPaA60U5zWt
+nHrlHwXu5PBcDfg0IAtopWrhqrpVwj4wfjAGzUEkR4vX5vJqBg6NcxiYSyuU69gx
+X3Epe1GpCu1vHZE6jwK3/U/Pbx3Rq1azpxxHqeIZg93Y/SlQuxO02ZPodsB5WYRZ
+VFIxmR9syLHU7tH6qlgzXVLQa7ATz4du03NvU6AeyBt6gkTqZlB5gD/udFKGq035
+qCAmPMu1GAFI8dEJKJTEH8ugGGybwuLCndh6BdQPNGxGmNDl8gncSHlBPfTFnW/L
+8pnNxoGW28YaDrvYNpbY
+=VGOa
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>Signature for apache-wicket-7.6.0.tar.gz:</p>
+
+<div class="highlight"><pre> 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAABAgAGBQJYYWYUAAoJEAzCjx+CMhBVuAIP/ihMnP7N3tD9L5yS5vNl6I1R
+BMwpiqrpeWhpYsgrr9f9HId5H2fVBGx8AAvZVnKQQanSWVdYlX0VpJ74fSgMY0mg
+gEOmyOYwzKnzFNiodYa47ynfhz2+Vw9jy4MFsNU+R4/k1c5QWaSgSVfKbQT4uWCD
+7ehga8mfU6yzlXkCQ58Frb25Bc4JM2wRyQx42OHddoIHTa9U9yaI52yAAV/UMYfi
+Nr2zqMmIt7cTBGLBunpVmFAP6reFMJrcWl8UmMARzm+2PMUMsMBGqs0nTrjAhAR9
+UwA/bJ2QJMrAA3aMYP3+frsrJltvQQCrJy12e7wBCyuN9JbzZ6nfeuz6T4dAdoMb
+sGjX3F9XO7t7Fy9k0kmJ3T3Fm7PQ8tU9OW68YQChPuAEa4UlYflPJtvELCqQWRfK
+/j4J82lKuzPXeFwpJitrqtKI46UdHHyLssXgBJ5rb1Qmk+9zllhRn+/qNiNR06rJ
+xk+GeDiO5HsAmWrSMZXmbiASSULgFBYjdhIoil2OiNcj72pE0gVv2Ll787drYLoW
+t+FIqHBTL4kxYIOxkWDyGVUZo+C//WksKN0Fv6TbDzx8ePie5MDP7jDkImH/VmN0
+xD0lWt/zH6mVD9Ovc89E6HmCiKk3dluU8Bzx2E6611RbbA/imBYj2IjAlXl8I75N
+EP6HRzIcMLydmv73Hg+r
+=DRts
+-----END PGP SIGNATURE-----
+</pre></div>
+<p>================================</p>
+
+<h3 id="this-release">This Release</h3>
+
+<h4 id="changelog-for-760">CHANGELOG for 7.6.0:</h4>
+
+<h5 id="sub-task">Sub-task</h5>
+
+<ul>
+  <li>[WICKET-6278] - Backport TagTester fix to 6.x and 7.x</li>
+</ul>
+
+<h5 id="bug">Bug</h5>
+
+<ul>
+  <li>[WICKET-6256] - 8.0.0-M1 <wicket:link> MarkupNotFoundException</wicket:link></li>
+  <li>[WICKET-6257] - Page instance isn’t mapped to an URL just after the ‘cid’ parameter is add</li>
+  <li>[WICKET-6262] - IllegalArgumentException: Argument ‘filterPrefix’ may not be null or empty with WebSocketBehavior</li>
+  <li>[WICKET-6267] - Native Websocket exception when the page is expired</li>
+  <li>[WICKET-6270] - No upload is seen as empty upload after WICKET-6210</li>
+  <li>[WICKET-6277] - Broadcasting ClosedMessage about the JSR 356 WebSocket connection after the container was turned off</li>
+  <li>[WICKET-6279] - AttributeModifier.VALUELESS_ATTRIBUTE_REMOVE does not work after deserialisation</li>
+  <li>[WICKET-6283] - Page parameter equality should not depend on named parameters order</li>
+  <li>[WICKET-6285] - NoRecordsToolbar should override onConfigure rather than isVisible</li>
+  <li>[WICKET-6289] - Autolinking adds onclick attribute to <img /> tags</li>
+  <li>[WICKET-6290] - CssUrlReplacer doesn’t understand data: urls and breaks them</li>
+  <li>[WICKET-6296] - Not possible to add WebSocketBehavior in ajax request</li>
+  <li>[WICKET-6298] - Markup not found for Component id =<em>header</em> and WICKET-6231, regression ?</li>
+</ul>
+
+<h5 id="improvement">Improvement</h5>
+
+<ul>
+  <li>[WICKET-6056] - Improvements to browser info gathering implementation</li>
+  <li>[WICKET-6258] - Repeater example page show the back button with the enable link style when disabled</li>
+  <li>[WICKET-6260] - Revert Ajax detection needed for character encoding to WebRequest.isAjax()</li>
+  <li>[WICKET-6261] - CheckGroupSelector default selection state incorrect when the list of Checks is empty</li>
+  <li>[WICKET-6263] - Fix JavaScript tests to pass with jQuery 2.x. and 3.x</li>
+  <li>[WICKET-6264] - Form: improve error message for disabled/invisible IFormSubmittingComponent</li>
+  <li>[WICKET-6271] - IRequestableComponent getPage() javaDoc and Component implementation mismatch</li>
+  <li>[WICKET-6274] - Add origin header to ajax requests in BaseWicketTester</li>
+  <li>[WICKET-6282] - Make native web socket message classes serializable</li>
+  <li>[WICKET-6297] - Add wicket:label tag in wicket.xsd</li>
+</ul>
+:ET

@@ -36,7 +36,7 @@
     </ul>
 </nav>
         <div class="logo">
-    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
     </div>
 </div>
@@ -64,7 +64,7 @@ The Application class is defined in the init param with the name applicationClas
 		<span class="nd">@WebInitParam</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"applicationClassName"</span><span class="o">,</span>
 		<span class="n">value</span> <span class="o">=</span> <span class="s">"com.my.package.MyApplication"</span><span class="o">),</span>
 		<span class="nd">@WebInitParam</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"configuration"</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">"development"</span><span class="o">)</span> <span class="o">})</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFilter</span> <span class="kd">extends</span> <span class="n">WicketFilter</span> <span class="o">{}</span></code></pre></figure>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFilter</span> <span class="kd">extends</span> <span class="nc">WicketFilter</span> <span class="o">{}</span></code></pre></figure>
 <h3 id="mycontextloaderlistenerjava">MyContextLoaderListener.java</h3>
 <p>Another important class is the ContextLoaderListener which in our case is going to initialize
 the Spring Framework’s context and effects a package scan for Spring components. Usually
@@ -75,13 +75,13 @@ example. You have to place them into the scanned package or in sub packages. (co
 <span class="kn">import</span> <span class="nn">org.springframework.web.context.WebApplicationContext</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.springframework.web.context.support.AnnotationConfigWebApplicationContext</span><span class="o">;</span>
 <span class="nd">@WebListener</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyContextLoaderListener</span> <span class="kd">extends</span> <span class="n">ContextLoaderListener</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyContextLoaderListener</span> <span class="kd">extends</span> <span class="nc">ContextLoaderListener</span> <span class="o">{</span>
   <span class="kd">public</span> <span class="nf">MyContextLoaderListener</span><span class="o">()</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">(</span><span class="n">getWebApplicationContext</span><span class="o">());</span>
   <span class="o">}</span>
-  <span class="kd">private</span> <span class="kd">static</span> <span class="n">WebApplicationContext</span> <span class="nf">getWebApplicationContext</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">AnnotationConfigWebApplicationContext</span> <span class="n">context</span>
-    	<span class="o">=</span> <span class="k">new</span> <span class="n">AnnotationConfigWebApplicationContext</span><span class="o">();</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="nc">WebApplicationContext</span> <span class="nf">getWebApplicationContext</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">AnnotationConfigWebApplicationContext</span> <span class="n">context</span>
+    	<span class="o">=</span> <span class="k">new</span> <span class="nc">AnnotationConfigWebApplicationContext</span><span class="o">();</span>
     <span class="n">context</span><span class="o">.</span><span class="na">scan</span><span class="o">(</span><span class="s">"com.my.package"</span><span class="o">);</span>
     <span class="n">context</span><span class="o">.</span><span class="na">refresh</span><span class="o">();</span>
     <span class="k">return</span> <span class="n">context</span><span class="o">;</span>
@@ -95,7 +95,7 @@ annotation @SessionScope together with @Component.</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebListener</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.springframework.web.context.request.RequestContextListener</span><span class="o">;</span>
 <span class="nd">@WebListener</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyRequestContextListener</span> <span class="kd">extends</span> <span class="n">RequestContextListener</span><span class="o">{}</span></code></pre></figure>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyRequestContextListener</span> <span class="kd">extends</span> <span class="nc">RequestContextListener</span><span class="o">{}</span></code></pre></figure>
 <h3 id="mysessionbeanjava">MySessionBean.java</h3>
 <p>This is a small example of a session scoped bean within the “com.my.package” package. It can be 
 autowired by using the @SpringBean annotation in any wicket component like a WebPage or a Panel.</p>
@@ -108,12 +108,12 @@ autowired by using the @SpringBean annotation in any wicket component like a Web
 <span class="nd">@SessionScope</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MySessionBean</span> <span class="o">{</span>
   <span class="nd">@Autowired</span>
-  <span class="kd">private</span> <span class="n">HttpSession</span> <span class="n">httpSession</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">HttpSession</span> <span class="n">httpSession</span><span class="o">;</span>
   <span class="nd">@PostConstruct</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">postConstruct</span><span class="o">()</span> <span class="o">{</span>
     <span class="c1">// do something after the bean has been constructed</span>
   <span class="o">}</span>
-  <span class="kd">public</span> <span class="n">HttpSession</span> <span class="nf">getHttpSession</span><span class="o">()</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="nc">HttpSession</span> <span class="nf">getHttpSession</span><span class="o">()</span> <span class="o">{</span>
     <span class="k">return</span> <span class="n">httpSession</span><span class="o">;</span>
   <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
@@ -121,9 +121,9 @@ autowired by using the @SpringBean annotation in any wicket component like a Web
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">com.my.package.MySessionBean</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.spring.injection.annot.SpringBean</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebPage</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
   <span class="nd">@SpringBean</span>
-  <span class="kd">private</span> <span class="n">MySessionBean</span> <span class="n">mySessionBean</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">MySessionBean</span> <span class="n">mySessionBean</span><span class="o">;</span>
   <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">()</span> <span class="o">{</span>
     <span class="c1">// do something</span>
   <span class="o">}</span>
@@ -138,16 +138,16 @@ example: <a href="helloworld.html">Hello World!</a></p>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.spring.injection.annot.SpringComponentInjector</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.springframework.web.context.support.WebApplicationContextUtils</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.my.package.HelloWorld</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyApplication</span> <span class="kd">extends</span> <span class="n">WebApplication</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyApplication</span> <span class="kd">extends</span> <span class="nc">WebApplication</span> <span class="o">{</span>
   <span class="nd">@Override</span>
-  <span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">Page</span><span class="o">&gt;</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="n">HelloWorld</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="nc">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">Page</span><span class="o">&gt;</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nc">HelloWorld</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
   <span class="o">}</span>
   <span class="nd">@Override</span>
   <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
-    <span class="n">getComponentInstantiationListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">SpringComponentInjector</span><span class="o">(</span><span class="k">this</span><span class="o">,</span>
-      <span class="n">WebApplicationContextUtils</span><span class="o">.</span><span class="na">getRequiredWebApplicationContext</span><span class="o">(</span>
+    <span class="n">getComponentInstantiationListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">SpringComponentInjector</span><span class="o">(</span><span class="k">this</span><span class="o">,</span>
+      <span class="nc">WebApplicationContextUtils</span><span class="o">.</span><span class="na">getRequiredWebApplicationContext</span><span class="o">(</span>
         <span class="n">getServletContext</span><span class="o">())));</span>
   <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>

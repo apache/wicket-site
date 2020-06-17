@@ -1,0 +1,134 @@
+I"�<p>The Apache Wicket PMC is proud to announce Apache Wicket 8.2.0!</p>
+
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
+<p>This release marks another minor release of Wicket 8. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+8.0.0.</p>
+
+<h2 id="using-this-release">Using this release</h2>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>8.2.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package you can find here:</p>
+
+<ul>
+  <li>Download: http://wicket.apache.org/start/wicket-8.x.html#manually</li>
+</ul>
+
+<!--more-->
+
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
+<p>If you upgrade from 8.y.z this release is a drop in replacement. If
+you come from a version prior to 8.0.0, please read our Wicket 8
+migration guide found at</p>
+
+<ul>
+  <li>http://s.apache.org/wicket8migrate</li>
+</ul>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<p>========================================================================</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
+</code></pre></div></div>
+
+<p>Signature for apache-wicket-8.2.0.zip:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlvp2TgACgkQh48B+qjT
+VuEpdA/+MHzlRp4/haMNDb6N1GNbRWINxG0ODWHWdHpDpquyAd9EvPhh1qf4USZ1
+kzuCfrVCj7XI6D540UyixnVr5zs9FSJLBmVqqXWsbPH+ThpsJX7qU5ZbNTeKO9xk
+8dTt8/ppq1/CA/gcmGkVBJgzbokI/BkElAqipSIn+pRSXX3ZOomsWql8IZG61Cdi
++vpwuJZIbGvd5YEmoJjs81L7yd/INJUJeY1w5RHwp+P/iUeQioR9zDxJvr1MpfuP
+OOFxo7D1i5VCBiRiK9RKoDKS85MelUzKCL/yzFCrVrEM0QtsoUl8qBrCq644dcum
+/sctaWfUpUrt3KCtf8kumrwdmG4YVmNadcy/fs66gqEmkeTDcmFJ+N4E2yb0894t
+aaAtJyRn96srtGd0xeYzrddOI9dE1iL5zjAUWT6AkHZR/FIR2aZ9K1QwSVcYauqN
+sXX6QnPIuwzAuuGZrRBCYZ0o3zA4Vc27dp21OLBtnDKhDE1deuQPyyRyzvJbe7vL
+GRmTu0KowzVrHmUPLMGgx7sDbISSngE+pEGHt7h1cYR73GTi0IFaGZP1CM7cWnX1
+gNTMw96WfHWqAfPWHWBilV6t4Xkhyu0Tr6M8RQC0QzOhMU8hVq7eky/z7lHwyn4u
+ZLPeFyAj3rqUw83kJkpidHtUVUG1G4n63fsVKBZIK4LU0QpJ93c=
+=QR+F
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>Signature for apache-wicket-8.2.0.tar.gz:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlvp2TgACgkQh48B+qjT
+VuHPug//Ysrv2VmfDp+TTLIifaX5ldYzF43cqitn9YDsdTERgdWv1DLU42zS+HGK
+Tye/M5SjQKoWi81anqwqw1DsQe77Y4LpIrjRTwAOQ8NtII+Lm9Rbhi5EW4Og9jn3
+Z34Pelo3ty/DhWp+yUZ3kvrFO0ko4RWswtC3c3OVTWlITjaTfR2PNwcif2F9Nx/9
+eDMVKmNA0D5/bOIDwSxllgRFkS06mvoX1wE63p1fMPrCUNNUreRjlYHKkYDHDDJM
+xYj4Ykf+rL8FcIxWwNJwrg5nmvG7fnTeqGJZhxW2gG+rlnHrFCmPFwE6yWh6iLxN
+LhbHZ0tlpL2bMZ96tD90BF6JgKQZKXifQZ7fVXszoF8ox0U/cmb/2CeXZc9HrofS
+a1UuSRAQQvf5GP49dWAh7vlpbV2E0eYmTDJQIh4J9ACd6W4d8c3DAHO+ztDBUhiT
+q1aiecLnK4BKjIvqX9CdDNMGg21X+r1N468X83i+jTylNgMzSwV22lMAZ+utxeP5
+R72Bl1t2+/10PSAlmXPQ89Wcl08FgvMtAmcyu29jQa42ps2X4VTSw7H+Do9VL5If
+wCOZ2FrwyyrG1XfAQCqmQ5wV/y7LP3N0GZP+O/9TmhIvhIO+lgT2l3EI4Jqj3GsR
+XakTpIUvh0Qz0uXt79q/Sqe315w6Gt0iefCHkaKeGPSRTPMfYpI=
+=uSj8
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>========================================================================</p>
+
+<h3 id="this-release">This Release</h3>
+
+<h4 id="changelog-for-820">CHANGELOG for 8.2.0:</h4>
+
+<h5 id="bug">Bug</h5>
+
+<ul>
+  <li>[WICKET-4423] - Modal Window dragging failes with iframe</li>
+  <li>[WICKET-5552] - Events to close pop-up on Modal Window are not propagated</li>
+  <li>[WICKET-6586] - Broken JavaScript due to fix charsetName in JavaScriptPackageResource</li>
+  <li>[WICKET-6588] - Under Tomcat (ver. &gt;= 8.5) BaseWebSocketBehavior can’t find session id cookie</li>
+  <li>[WICKET-6589] - ClientInfo fails with NumberFormatException for unusual browser versions</li>
+  <li>[WICKET-6599] - ResponseIOException should never escape from WicketFilter</li>
+  <li>[WICKET-6602] - AuthenticatedWebApplication login Workflow broken with replaceSession</li>
+  <li>[WICKET-6603] - WicketTester.destroy sometimes hangs</li>
+  <li>[WICKET-6604] - Ajax repaint is not correctly handled when component being repainted has an enclosure associated with it and is not a child of the enclosure</li>
+  <li>[WICKET-6606] - data-wicket-placeholder is invalid XHTML</li>
+  <li>[WICKET-6607] - NoSuchMethodError when using Spring-Beans with constructor injection in an AjaxLink#onClick</li>
+  <li>[WICKET-6608] - Stateless page, mix of queue and add can cause unforseen consequences</li>
+  <li>[WICKET-6610] - Incorrect Javadoc: Refering to specific page in Application properties file is not possible</li>
+</ul>
+
+<h5 id="improvement">Improvement</h5>
+
+<ul>
+  <li>[WICKET-6435] - WicketTester should provide assertExists and assertNotExists methods</li>
+  <li>[WICKET-6600] - Error logging in AjaxRequestHandler is too strict</li>
+  <li>[WICKET-6601] - Events to close pop-up on Modal Window are not propagated from caption bar</li>
+  <li>[WICKET-6605] - Allow AjaxFallbackButton to be stateless</li>
+</ul>
+
+<h5 id="task">Task</h5>
+
+<ul>
+  <li>[WICKET-6594] - JavaDoc of redirectToInterceptPage in Component urges to use redirectTo method when in a constructor</li>
+  <li>[WICKET-6609] - Update Guice from 4.1.0 to 4.2.2</li>
+</ul>
+
+:ET

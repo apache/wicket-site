@@ -36,7 +36,7 @@
     </ul>
 </nav>
         <div class="logo">
-    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
     </div>
 </div>
@@ -56,12 +56,12 @@ This release brings over many improvements over the 1.5.x series.</p>
 <h4 id="wicket-atmosphere">Wicket Atmosphere</h4>
 <p>The Beta 2 contains a new experimental module Wicket Atmosphere, which brings serverside push to Wicket and provides a great way to render serverside markup and send it to the browsers of your users. Check out the atmosphere example in our Examples project to see it in action.</p>
 <p>In your application’s init method you need to register the push event bus:</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">new</span> <span class="n">EventBus</span><span class="o">(</span><span class="k">this</span><span class="o">);</span></code></pre></figure>
-<p>Somewhere where you want to push your changes to the client, you need to publish your event to the push <code class="highlighter-rouge">EventBus</code>:</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">EventBus</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">post</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getModelObject</span><span class="o">());</span></code></pre></figure>
-<p>And finally you need to subscribe your page (or component) to the <code class="highlighter-rouge">EventBus</code>’s events with <code class="highlighter-rouge">@Subscribe</code>, taking in the typed parameter you post to the EventBus (in this case a <code class="highlighter-rouge">String</code>):</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">new</span> <span class="nc">EventBus</span><span class="o">(</span><span class="k">this</span><span class="o">);</span></code></pre></figure>
+<p>Somewhere where you want to push your changes to the client, you need to publish your event to the push <code class="language-plaintext highlighter-rouge">EventBus</code>:</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">EventBus</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">post</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getModelObject</span><span class="o">());</span></code></pre></figure>
+<p>And finally you need to subscribe your page (or component) to the <code class="language-plaintext highlighter-rouge">EventBus</code>’s events with <code class="language-plaintext highlighter-rouge">@Subscribe</code>, taking in the typed parameter you post to the EventBus (in this case a <code class="language-plaintext highlighter-rouge">String</code>):</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Subscribe</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">receiveMessage</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">,</span> <span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">receiveMessage</span><span class="o">(</span><span class="nc">AjaxRequestTarget</span> <span class="n">target</span><span class="o">,</span> <span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
 	<span class="n">label</span><span class="o">.</span><span class="na">setDefaultModelObject</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
 	<span class="n">target</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
 <span class="o">}</span></code></pre></figure>

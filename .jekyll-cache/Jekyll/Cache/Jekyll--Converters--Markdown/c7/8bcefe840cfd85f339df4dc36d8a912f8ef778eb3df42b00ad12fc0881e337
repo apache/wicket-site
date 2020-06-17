@@ -1,0 +1,139 @@
+I"U<p>The Apache Wicket PMC is proud to announce Apache Wicket 7.5.0!</p>
+
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
+<p>This release marks another minor release of Wicket 7. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+7.0.0.</p>
+
+<h2 id="using-this-release">Using this release</h2>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>7.5.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.5.0">7.5.0 source download</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.5.0/binaries">7.5.0 binary download</a></li>
+</ul>
+
+<!--more-->
+
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
+<p>If you upgrade from 7.y.z this release is a drop in replacement. If
+you come from a version prior to 7.0.0, please read our Wicket 7
+migration guide found at</p>
+
+<ul>
+  <li><a href="http://s.apache.org/wicket7migrate">http://s.apache.org/wicket7migrate</a></li>
+</ul>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<p>================================</p>
+
+<p>The signatures for the source release artefacts:</p>
+
+<p>Signature for apache-wicket-7.5.0.zip:</p>
+
+<div class="highlight"><pre> 
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+
+iEYEABECAAYFAlgHyLgACgkQJBX8W/xy/UVtJQCfazMNKzMMG5y+GTnCNg0YloBB
+IB0Amwdp/H6z78kXds8kTJNBXJAVlCVc
+=yXrI
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>Signature for apache-wicket-7.5.0.tar.gz:</p>
+
+<div class="highlight"><pre> 
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+
+iEYEABECAAYFAlgHyLgACgkQJBX8W/xy/UUVtgCgx2kALIRDUGdXHjl1hQwOPhzW
+NVYAn0VNdt96cd5VmIW7nIFSb0PidYbH
+=ob3v
+-----END PGP SIGNATURE-----
+</pre></div>
+<p>================================</p>
+
+<h3 id="this-release">This Release</h3>
+
+<h4 id="changelog-for-750">CHANGELOG for 7.5.0:</h4>
+
+<h5 id="sub-task">Sub-task</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-6243] - ResourceReferenceAutolink component resolved by AutoLinkResolver ignores session locale changes
+</code></pre></div></div>
+
+<h5 id="bug">Bug</h5>
+
+<ul>
+  <li>[WICKET-5972] - Datepicker “Close” text overlays ‘x’ icon.</li>
+  <li>[WICKET-6136] - AutoCompleteTextField issue in Android 5.1.1</li>
+  <li>[WICKET-6192] - Remove recreateBookmarkablePagesAfterExpiry check in AbstractBookmarkableMapper#mapHandler</li>
+  <li>[WICKET-6209] - requesting focus on disabled field fails with error in IE8</li>
+  <li>[WICKET-6214] - ModalWindow broken on IE</li>
+  <li>[WICKET-6215] - Test fail when non empty model is set to PasswordTextField</li>
+  <li>[WICKET-6216] - Problem with queued components and border</li>
+  <li>[WICKET-6217] - Enclosure broken within Border/Panel</li>
+  <li>[WICKET-6219] - Fragment fails to report an error in development mode</li>
+  <li>[WICKET-6221] - WicketTester - missing border path</li>
+  <li>[WICKET-6222] - renderHead not called with anonymous inner Border class</li>
+  <li>[WICKET-6225] - Button wrongly sets its model object as ‘value’ attribute</li>
+  <li>[WICKET-6227] - CharSequenceResource calculates wrong length when there are unicode symbols</li>
+  <li>[WICKET-6230] - Infinite redirection when using UrlPathPageParametersEncoder</li>
+  <li>[WICKET-6231] - wicket:enclosure and getVariation().</li>
+  <li>[WICKET-6232] - When sending binary data from server to client, wicket-websocket-jquery.js throws error “message.indexOf is not a function”</li>
+  <li>[WICKET-6235] - TableTree#updateNode() fails if no corresponding node is visible</li>
+  <li>[WICKET-6236] - Files.remove() causes a 5 seconds delay instead of 500ms as was intended</li>
+  <li>[WICKET-6237] - PageRequestHandlerTracker doesn’t work with IRequestHandlerDelegate</li>
+  <li>[WICKET-6238] - pub2 Wicket example isn’t switching the beer images</li>
+  <li>[WICKET-6241] - CheckingObjectOutputStream should track the original instance, before writeReplace()</li>
+  <li>[WICKET-6242] - Weak concurrency management in AuthenticatedWebSession#signedIn</li>
+  <li>[WICKET-6244] - Palette does not list unselected options</li>
+  <li>[WICKET-6245] - Open up CsrfPreventionRequestCycleListener for extension</li>
+  <li>[WICKET-6249] - Invalid state of LoadableDetachableModel with exception during load()</li>
+  <li>[WICKET-6250] - FileUploadField does not deteach models and fails to null the reference to the transient fileUploads field if forceCloseStreamsOnDetach is false</li>
+  <li>[WICKET-6254] - Wicket WebSockets problem behind HTTP proxy without servlet context</li>
+</ul>
+
+<h5 id="improvement">Improvement</h5>
+
+<ul>
+  <li>[WICKET-5866] - Reconsider generics of IConverterLocator#getConverter()</li>
+  <li>[WICKET-6206] - Allow to use custom anticache parameter value for Image component</li>
+  <li>[WICKET-6210] - FileUpload does not support files of zero size</li>
+  <li>[WICKET-6211] - PasswordTextField should clear password by default</li>
+  <li>[WICKET-6226] -  DOCTYPE URL in properties.xml example in wicket documentation won’t work.</li>
+  <li>[WICKET-6229] - Introduce a new setting in ExceptionSettings to control whether to throw exception or log a WARN when requesting for markup id on non-renderable component</li>
+  <li>[WICKET-6233] - Add component info in the error messages related to WicketTester #assertComponentOnAjaxResponse()</li>
+  <li>[WICKET-6234] - Log the decrypted url in CryptoMapper for debugging purposes</li>
+  <li>[WICKET-6239] - Use Response#addHeader() instead of #setContentLength()</li>
+  <li>[WICKET-6240] - Hook method to display more information on ExceptionErrorPage</li>
+</ul>
+
+<h5 id="new-feature">New Feature</h5>
+
+<ul>
+  <li>[WICKET-5623] - Custom Getters and Setters for PropertyResolver</li>
+</ul>
+
+:ET

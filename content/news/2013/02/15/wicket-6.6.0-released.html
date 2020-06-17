@@ -36,7 +36,7 @@
     </ul>
 </nav>
         <div class="logo">
-    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
     </div>
 </div>
@@ -58,9 +58,9 @@ to 6.0.0.</p>
 <h3 id="new-and-noteworthy">New and noteworthy</h3>
 <h4 id="wicketfor-attribute-for-html-label-tags">wicket:for attribute for html label tags</h4>
 <p>While already available for some time, the wicket-1.5.xsd now contains
-a valid definition for the <code class="highlighter-rouge">wicket:for</code> attribute such that it</p>
+a valid definition for the <code class="language-plaintext highlighter-rouge">wicket:for</code> attribute such that it</p>
 <blockquote>
-  <p>Can be used in HTML <code class="highlighter-rouge">&lt;label&gt;</code> element to automatically link it
+  <p>Can be used in HTML <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> element to automatically link it
 to a form element. The value of this attribute must have the same value of
 the form component’s wicket:id attribute.</p>
 </blockquote>
@@ -68,14 +68,14 @@ the form component’s wicket:id attribute.</p>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;label</span> <span class="na">wicket:for=</span><span class="s">"someinput"</span><span class="nt">&gt;</span>Some label<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;input</span> <span class="na">wicket:id=</span><span class="s">"someinput"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span></code></pre></figure>
 <h4 id="added-a-callback-for-an-invalidated-session">Added a callback for an invalidated session</h4>
-<p>Session is extended with a life cycle event called <code class="highlighter-rouge">onInvalidate()</code>.
+<p>Session is extended with a life cycle event called <code class="language-plaintext highlighter-rouge">onInvalidate()</code>.
 This method is executed when the user session is invalidated either
-by explicit call to <code class="highlighter-rouge">org.apache.wicket.Session#invalidate()</code> or due
+by explicit call to <code class="language-plaintext highlighter-rouge">org.apache.wicket.Session#invalidate()</code> or due
 to HttpSession expiration.</p>
 <p>In case of session expiration this method is called in a non-worker
 thread, i.e. there are no thread locals exported for the Application,
 RequestCycle and Session. The Session is the current instance. The
-Application can be found by using <code class="highlighter-rouge">Application#get(String)</code>. There is
+Application can be found by using <code class="language-plaintext highlighter-rouge">Application#get(String)</code>. There is
 no way to get a reference to a RequestCycle.</p>
 <h3 id="using-this-release">Using this release</h3>
 <p>With Apache Maven update your dependency to (and don’t forget to
@@ -111,7 +111,7 @@ migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4998">WICKET-4998</a> - AjaxFormComponentUpdatingBehavior(“onkeypress”) is triggered when Enter is used on autocomplete list</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5011">WICKET-5011</a> - Allow Select to work with non-equals objects</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5013">WICKET-5013</a> - Wicket Enclosure fails with more than one component</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5014">WICKET-5014</a> - Changes in WicketObjects.sizeof(final Serializable object) clashes with <code class="highlighter-rouge">&lt;header-contribution&gt;</code> in AjaxResponse</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-5014">WICKET-5014</a> - Changes in WicketObjects.sizeof(final Serializable object) clashes with <code class="language-plaintext highlighter-rouge">&lt;header-contribution&gt;</code> in AjaxResponse</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5019">WICKET-5019</a> - Handling of NO_MINIFIED_NAME in PackageResourceReference#internalGetMinifiedName()</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5020">WICKET-5020</a> - InlineEnclosureHandler always uses “wicket” namespace</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5024">WICKET-5024</a> - Global ajax event for precondition is not called</li>

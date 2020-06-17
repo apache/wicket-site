@@ -1,0 +1,20 @@
+I"­<p>Severity: Important</p>
+
+<p>Vendor:
+The Apache Software Foundation</p>
+
+<p>Versions Affected:
+Apache Wicket 1.4.x, 1.5.x and 1.6.x</p>
+
+<p>Description:
+It is possible for JavaScript statements to break out of a &lt;script&gt; tag in the rendered response.
+This might pose a security threat if the written JavaScript contains user provided data.</p>
+
+<p>This vulnerability is fixed in
+<a href="https://wicket.apache.org/news/2012/12/14/wicket-6.4.0-released.html">Apache Wicket 6.4.0</a>,
+<a href="https://wicket.apache.org/news/2013/02/26/wicket-1.5.10-released.html">Apache Wicket 1.5.10</a> and
+Apache Wicket 1.4.22.</p>
+
+<p>Credit:
+This issue was reported by Michael Riedel.</p>
+:ET

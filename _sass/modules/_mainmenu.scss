@@ -7,21 +7,25 @@ nav.mainmenu {
     }
     li {
         display:inline-block;
-        font-size:12px;
+        font-size:18px;
         text-transform: uppercase;
-        
+        font-weight:bold;
         &.active { border-bottom: 2px solid white;}
     }
     li+li {
         margin-left:1*$grid-column;
     }
 
-    a, a:active, a:hover {
+    a, a:active {
         border:none;
-        color:#fff;
+        color:orange;
         font-weight:400;
         text-decoration: none;
     }
+    
+    a:hover {
+        color: #303284;
+    }    
     
     @media screen and (orientation: portrait) {
     	padding-bottom:50px;

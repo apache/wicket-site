@@ -1,0 +1,142 @@
+I"F!<p>HelloWorld demonstrates the basic structure of a web application in Wicket. A
+Label component is used to display a message on the home page for the
+application.</p>
+
+<p>In all the Wicket examples, you have to put all files in the same package
+directory. This means putting the markup files and the java files next to one
+another. It is possible to alter this behavior, but that is beyond the scope
+of this example. The only exception is the obligatory web.xml file which
+should reside in the WEB-INF/ directory of your web application root folder.</p>
+
+<p>If you wish to start building this example, you may want to take a look at the
+Wicket Quickstart project, which provides a quick way of getting up and
+running without having to figure things out yourself. The Quickstart project
+contains the necessary build files (Ant and Maven), libraries, minimal set of
+Java and markup files and an embedded Jetty server to run your application
+without having to go through the whole build-deploy cycle.</p>
+
+<h3 id="helloworldapplicationjava">HelloWorldApplication.java</h3>
+
+<p>Each Wicket application is defined by an Application object. This object
+defines what the home page is, and allows for some configuration.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.apache.wicket.protocol.http.WebApplication</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorldApplication</span> <span class="kd">extends</span> <span class="nc">WebApplication</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">HelloWorldApplication</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * @see org.apache.wicket.Application#getHomePage()
+     */</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Class</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">HelloWorld</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Here you can see that we define <code class="language-plaintext highlighter-rouge">wicket.examples.helloworld.HelloWorld</code> to be
+our home page. When the base URL of our application is requested, the markup
+rendered by the HelloWorld page is returned.</p>
+
+<h3 id="helloworldjava">HelloWorld.java</h3>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebPage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.basic.Label</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">HelloWorld</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"message"</span><span class="o">,</span> <span class="s">"Hello World!"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>The Label is constructed using two parameters:</p>
+
+<ol>
+  <li>
+    <p>“message”</p>
+  </li>
+  <li>
+    <p>“Hello World!”</p>
+  </li>
+</ol>
+
+<p>The first parameter is the component identifier, which Wicket uses to identify
+the <code class="language-plaintext highlighter-rouge">Label</code> component in your HTML markup. The second parameter is the message
+which the <code class="language-plaintext highlighter-rouge">Label</code> should render.</p>
+
+<h3 id="helloworldhtml">HelloWorld.html</h3>
+
+<p>The HTML file that defines our Hello World functionality is as follows:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"message"</span><span class="nt">&gt;</span>Message goes here<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>In this file, you see two elements that need some attention:</p>
+
+<ul>
+  <li>
+    <p>the component declaration <code class="language-plaintext highlighter-rouge">&lt;span wicket:id="message"&gt;</code></p>
+  </li>
+  <li>
+    <p>the text <code class="language-plaintext highlighter-rouge">Message goes here</code></p>
+  </li>
+</ul>
+
+<p>The component declaration consists of the Wicket identifier <code class="language-plaintext highlighter-rouge">wicket:id</code> and the
+component identifier <code class="language-plaintext highlighter-rouge">message</code>. The component identifier should be the same as
+the name of the component you defined in your <code class="language-plaintext highlighter-rouge">WebPage</code>. The text between
+the <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> tags is removed when the component renders its message. The final
+content of the component is determined by your Java code.</p>
+
+<h3 id="webxml">web.xml</h3>
+
+<p>In order to deploy our HelloWorld program, we need to make our application
+known to the application server by means of the web.xml file.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE web-app
+      PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+      "http://java.sun.com/dtd/web-app_2_3.dtd"&gt;</span>
+
+<span class="nt">&lt;web-app&gt;</span>
+    <span class="nt">&lt;display-name&gt;</span>Wicket Examples<span class="nt">&lt;/display-name&gt;</span>
+    <span class="nt">&lt;filter&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>HelloWorldApplication<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;filter-class&gt;</span>org.apache.wicket.protocol.http.WicketFilter<span class="nt">&lt;/filter-class&gt;</span>
+        <span class="nt">&lt;init-param&gt;</span>
+          <span class="nt">&lt;param-name&gt;</span>applicationClassName<span class="nt">&lt;/param-name&gt;</span>
+          <span class="nt">&lt;param-value&gt;</span>org.apache.wicket.examples.helloworld.HelloWorldApplication<span class="nt">&lt;/param-value&gt;</span>
+        <span class="nt">&lt;/init-param&gt;</span>
+    <span class="nt">&lt;/filter&gt;</span>
+    <span class="nt">&lt;filter-mapping&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>HelloWorldApplication<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+    <span class="nt">&lt;/filter-mapping&gt;</span>
+<span class="nt">&lt;/web-app&gt;</span></code></pre></figure>
+
+<p>In this definition you see the Wicket filter defined, which handles all
+requests. In order to let Wicket know which application is available, only the
+applicationClassName filter parameter is needed.</p>
+
+<p>Also, notice the url-mapping to /*. The Wicket filter will only process
+requests that are Wicket requests. If a request is not Wicket related, the
+filter will pass the request on to the chain. This ensures that (static)
+resources outside the realm of the Wicket application, such as style sheets,
+JavaScript files, images and so forth will be served by the container.</p>
+
+<h2 id="ready-to-deploy">Ready to deploy</h2>
+
+<p>That’s it. No more configuration necessary! All you need to do now is to
+deploy the web application into your favorite application server. Point your
+browser to the url: <code class="language-plaintext highlighter-rouge">http://&lt;servername&gt;/&lt;warfilename&gt;/</code>, substituting
+servername and warfilename to the appropriate values, such as
+http://localhost:8080/helloworld/.</p>
+
+<p>As you can see: no superfluous XML configuration files are needed to enable a
+Wicket application. Only the markup (HTML) files, the Java class files and the
+required web.xml were needed to create this application.</p>
+:ET

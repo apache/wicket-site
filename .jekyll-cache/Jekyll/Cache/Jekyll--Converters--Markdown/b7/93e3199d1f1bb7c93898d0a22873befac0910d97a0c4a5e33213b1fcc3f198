@@ -1,0 +1,39 @@
+I"P	<p>Severity: Important</p>
+
+<p>Vendor:
+The Apache Software Foundation</p>
+
+<p>Versions Affected:
+Apache Wicket 1.4.x and 1.5.x</p>
+
+<p>Description:
+It is possible to view the content of any file of a web application by
+using an Url to a Wicket resource which resolves to a ‘null’ package.
+With such a Url the attacker can request the content of any file by specifying
+its relative path, i.e. the attacker must know the file name to be able to
+request it.</p>
+
+<p>Mitigation:
+Setup a custom org.apache.wicket.markup.html.IPackageResourceGuard that provides
+a whitelist of allowed resources.
+Since versions 1.4.20 and 1.5.5 Apache Wicket uses by default
+org.apache.wicket.markup.html.SecurePackageResourceGuard with a preconfigured
+list of allowed file extensions.
+Either setup SecurePackageResourceGuard with code like:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyApp</span> <span class="kd">extends</span> <span class="nc">WebApplication</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+        <span class="nc">SecurePackageResourceGuard</span> <span class="n">guard</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SecurePackageResourceGuard</span><span class="o">();</span>
+        <span class="n">guard</span><span class="o">.</span><span class="na">addPattern</span><span class="o">(...);</span>
+        <span class="n">guard</span><span class="o">.</span><span class="na">addPattern</span><span class="o">(...);</span>
+        <span class="n">getResourceSettings</span><span class="o">().</span><span class="na">setPackageResourceGuard</span><span class="o">(</span><span class="n">guard</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>or upgrade <a href="http://wicket.apache.org/news/2012/03/12/wicket-1.4.20-released.html">Apache Wicket 1.4.20</a> or
+<a href="http://wicket.apache.org/news/2012/03/12/wicket-1.5.5-released.html">Apache Wicket 1.5.5</a></p>
+
+<p>Credit:
+This issue was discovered by Sebastian van Erk.</p>
+:ET

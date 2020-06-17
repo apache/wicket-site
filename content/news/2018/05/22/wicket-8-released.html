@@ -36,7 +36,7 @@
     </ul>
 </nav>
         <div class="logo">
-    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
     </div>
 </div>
@@ -69,18 +69,18 @@
 <p>The new Optional type in Java 8 is intended for places in your API where things can be null. In Wicket’s case we have adopted Optional in just those places to clarify the API.</p>
 <p>For example the AjaxFallbackLink, a link that works using both with and without AJAX, now uses Optional to signify whether the link was clicked utilizing AJAX or normal request processing: the AJAX request is wrapped in an Optional. Previous versions of Wicket would provide a null value for the AJAX request.</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// WICKET 7:</span>
-<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxFallbackLink</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="s">"wicket7"</span><span class="o">)</span> <span class="o">{</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxFallbackLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"wicket7"</span><span class="o">)</span> <span class="o">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span><span class="o">(</span><span class="n">target</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
             <span class="c1">// ...</span>
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">});</span>
 <span class="c1">// WICKET 8:</span>
-<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AjaxFallbackLink</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="s">"wicket8"</span><span class="o">)</span> <span class="o">{</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxFallbackLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"wicket8"</span><span class="o">)</span> <span class="o">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">AjaxRequestTarget</span><span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">AjaxRequestTarget</span><span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span><span class="o">(</span><span class="n">target</span><span class="o">.</span><span class="na">isPresent</span><span class="o">())</span> <span class="o">{</span>
             <span class="c1">// ...</span>
         <span class="o">}</span>
@@ -90,13 +90,13 @@
 <h2 id="models-as-functional-interface">Models as Functional Interface</h2>
 <p>Wicket uses models as the databinding method: each data-aware component can take a model implementation to retrieve and store data in. From Wicket 8 we have made the root interface IModel a <em>functional interface</em>. You can now use lambdas where you can use models.</p>
 <p>The following example binds a Label component to the name of a person object in different ways using Wicket 8:</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"name1"</span><span class="o">,</span> <span class="nl">person:</span><span class="o">:</span><span class="n">name</span><span class="o">));</span>
-<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"name2"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
-<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"name3"</span><span class="o">,</span> <span class="n">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">personModel</span><span class="o">,</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span>
-<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"name4"</span><span class="o">,</span> 
-    <span class="n">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">contractModel</span><span class="o">,</span> <span class="nl">Contract:</span><span class="o">:</span><span class="n">getPerson</span><span class="o">)</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name1"</span><span class="o">,</span> <span class="nl">person:</span><span class="o">:</span><span class="n">name</span><span class="o">));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name2"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name3"</span><span class="o">,</span> <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">personModel</span><span class="o">,</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name4"</span><span class="o">,</span> 
+    <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">contractModel</span><span class="o">,</span> <span class="nl">Contract:</span><span class="o">:</span><span class="n">getPerson</span><span class="o">)</span>
         <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span></code></pre></figure>
-<p>The new <code class="highlighter-rouge">LambdaModel</code> type in Wicket enables type safe, refactor safe databinding for components. Previously one would bind data to components using <code class="highlighter-rouge">PropertyModel</code>, using a string expression to determine the exact property to show. The string expression is something like <code class="highlighter-rouge">"person.name"</code>. This is inherently difficult to refactor when you decide to change the name field into for example <code class="highlighter-rouge">"lastName"</code>. With <code class="highlighter-rouge">LambdaModel</code>, this refactoring is trivial for IDEs to perform: the Java methods can easily be renamed and the IDE will find all the references.</p>
+<p>The new <code class="language-plaintext highlighter-rouge">LambdaModel</code> type in Wicket enables type safe, refactor safe databinding for components. Previously one would bind data to components using <code class="language-plaintext highlighter-rouge">PropertyModel</code>, using a string expression to determine the exact property to show. The string expression is something like <code class="language-plaintext highlighter-rouge">"person.name"</code>. This is inherently difficult to refactor when you decide to change the name field into for example <code class="language-plaintext highlighter-rouge">"lastName"</code>. With <code class="language-plaintext highlighter-rouge">LambdaModel</code>, this refactoring is trivial for IDEs to perform: the Java methods can easily be renamed and the IDE will find all the references.</p>
 <p>Microbenchmarks have shown that using lambda models provides much better performance than the string based PropertyModel at the cost of slightly larger memory footprint.</p>
 <h2 id="servlet-31-required">Servlet 3.1 Required</h2>
 <p>As of Wicket 8 we only support the Java Servlet API 3.1 (or newer). This means that to run applications built using Wicket 8 you have to run your application in a modern server like Tomcat 8.x, Jetty 9.1+ or a Java EE 7 compatible server.</p>

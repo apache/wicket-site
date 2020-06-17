@@ -1,0 +1,49 @@
+I"�<p>The Apache Wicket PMC is proud to announce Apache Wicket 6.1.1!</p>
+
+<p>This release marks the first patch release of Wicket 6. Starting with Wicket 
+6 we use semantic versioning for the future development of Wicket, and as
+such no API breaks are present in this release compared to 6.1.0 and 6.0.0.</p>
+
+<p>This release fixes two bugs in 6.1.0:</p>
+
+<p><a href="https://issues.apache.org/jira/browse/WICKET-4789">WICKET-4789</a></p>
+
+<p>The way URLs are encoded was changed (WICKET-4645) and now the first
+request (with ;jsessionid in path) generates invalid internal links.</p>
+
+<p><a href="https://issues.apache.org/jira/browse/WICKET-4759">WICKET-4759</a></p>
+
+<p>FilterForm/FilterToolbar don’t work when there’s more than one IColumn
+to be filtered</p>
+
+<p>Any other issues will be released in 6.2.0</p>
+
+<h2 id="using-this-release">Using this release</h2>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>6.1.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.1.1">6.1.1 source download</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.1.1/binaries">6.1.1 binary download</a></li>
+</ul>
+
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
+<p>If you upgrade from 6.0.0 or 6.1.0, this release is a drop in 
+replacement. If you come from a version prior to 6.0.0, please 
+read our Wicket 6 migration guide found at <a href="http://s.apache.org/wicket-6.0-migration">http://s.apache.org/wicket-6.0-migration</a></p>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+:ET

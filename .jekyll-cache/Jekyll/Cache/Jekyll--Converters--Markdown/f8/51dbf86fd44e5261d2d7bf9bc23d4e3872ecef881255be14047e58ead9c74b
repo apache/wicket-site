@@ -1,0 +1,64 @@
+I"^<p>This is the ninth maintenance release of the 1.4.x series and brings over
+fifteen bug fixes and improvements.</p>
+
+<ul>
+  <li><a href="http://svn.apache.org/repos/asf/wicket/releases/wicket-1.4.9/">Subversion tag</a></li>
+  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;styleName=Html&amp;version=12314962">Changelog</a></li>
+  <li>To use in Maven:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.4.9<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<ul>
+  <li>Download the <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.4.9">full
+distribution</a> (including
+source)</li>
+</ul>
+
+<p>It is worth noting that
+<a href="https://issues.apache.org/jira/browse/WICKET-2846">WICKET-2846</a> will be
+reverted in the next release because the community has shown a preference for
+this. So, it would be wise not to take advantage of the
+<code class="language-plaintext highlighter-rouge">InheritableThreadLocal</code> that was put into version 1.4.9.</p>
+
+<h2 id="release-notes---wicket---version-149">Release Notes - Wicket - Version 1.4.9</h2>
+
+<h3 id="bugs">Bugs</h3>
+
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2741">WICKET-2741</a> - non-performant Collections.synchronizedMap() should be
+replaced with ConcurrentMap</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2843">WICKET-2843</a> - Palette is incompatible with ListMultipleChoice in its use
+of the model</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2853">WICKET-2853</a> - ListMultipleChoice/CheckBoxMultipleChoice do not retain
+selected but disabled items</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2856">WICKET-2856</a> - PackageStringResourceLoader.loadStringResource() causes
+NullPointerException when used in a Class within the root package (i.e. it
+has no package declaration)</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2858">WICKET-2858</a> - WicketSessionFilter: java.lang.IllegalArgumentException:
+Argument application can not be null</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2859">WICKET-2859</a> - Wrong package names in Examples</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2860">WICKET-2860</a> - Wrong name for swiss Application.properties</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2861">WICKET-2861</a> - getConvertedInput() returns null and selectedValues.addAll
+tries adding it</li>
+</ul>
+
+<h3 id="improvements">Improvements</h3>
+
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2790">WICKET-2790</a> - wicketTester.executeAjaxEvent method does not check if form
+is multiPart</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2840">WICKET-2840</a> - Remove final on
+AbstractRequestTargetUrlCodingStrategy#getMountPath()</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2846">WICKET-2846</a> - Store Application in InheritableThreadLocal instead of
+ThreadLocal</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2855">WICKET-2855</a> - Constructor of RedirectRequestTarget does not validate URL</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2869">WICKET-2869</a> - RangeValidator should use getMinimum and getMaximum</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2870">WICKET-2870</a> - Fix hungarian translation for Wizard</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-2879">WICKET-2879</a> - delegate isVisible in PanelCachingTab</li>
+</ul>
+:ET

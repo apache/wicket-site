@@ -36,7 +36,7 @@
     </ul>
 </nav>
         <div class="logo">
-    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
     </div>
 </div>
@@ -60,24 +60,24 @@
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>1.5.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
-<p>Please note that Wicket’s main artifact ID has been renamed to <code class="highlighter-rouge">wicket-core</code>.</p>
+<p>Please note that Wicket’s main artifact ID has been renamed to <code class="language-plaintext highlighter-rouge">wicket-core</code>.</p>
 <p>You will need to upgrade all modules (i.e. wicket, wicket-extensions, wicket-ioc, wicket-spring, etc) to 1.5.0. <strong>It is not possible to mix previous versions of Wicket with modules of this release.</strong></p>
 <h2 id="most-notable-changes">Most notable changes</h2>
 <p>With this release the Wicket team has revised many of its internals. A short list:</p>
 <ul>
-  <li>HTML5 components added: <code class="highlighter-rouge">EmailTextField</code>, <code class="highlighter-rouge">NumberTextField</code>, <code class="highlighter-rouge">UrlTextField</code> and <code class="highlighter-rouge">RangeTextField</code></li>
+  <li>HTML5 components added: <code class="language-plaintext highlighter-rouge">EmailTextField</code>, <code class="language-plaintext highlighter-rouge">NumberTextField</code>, <code class="language-plaintext highlighter-rouge">UrlTextField</code> and <code class="language-plaintext highlighter-rouge">RangeTextField</code></li>
   <li>New inter-component events (explained below)</li>
   <li>Minimum required servlet API is servlet-api 2.5</li>
-  <li>All standard validators now extend <code class="highlighter-rouge">Behavior</code> to allow for client side validations</li>
-  <li><code class="highlighter-rouge">IBehavior</code> has been removed and <code class="highlighter-rouge">AbstractBehavior</code> has been deprecated, you should now extend <code class="highlighter-rouge">Behavior</code> instead</li>
+  <li>All standard validators now extend <code class="language-plaintext highlighter-rouge">Behavior</code> to allow for client side validations</li>
+  <li><code class="language-plaintext highlighter-rouge">IBehavior</code> has been removed and <code class="language-plaintext highlighter-rouge">AbstractBehavior</code> has been deprecated, you should now extend <code class="language-plaintext highlighter-rouge">Behavior</code> instead</li>
   <li>Simplified the <a href="https://cwiki.apache.org/confluence/display/WICKET/RequestCycle+in+Wicket+1.5">request cycle processing</a> and made it more extensible</li>
   <li>URL handling is now in one place</li>
   <li>Wicket’s rendering code has been greatly simplified</li>
   <li>Improved browser <a href="https://cwiki.apache.org/confluence/display/WICKET/Caching+in+Wicket+1.5">caching support</a></li>
   <li>ClientSideImageMap replaces old ImageMap</li>
-  <li>Better support for running behind proxies with <code class="highlighter-rouge">x-forwarded-for</code> header</li>
+  <li>Better support for running behind proxies with <code class="language-plaintext highlighter-rouge">x-forwarded-for</code> header</li>
   <li><a href="https://cwiki.apache.org/confluence/display/WICKET/RequestCycle+in+Wicket+1.5">Request cycle listeners</a> make it easier to integrate frameworks in your Wicket application</li>
-  <li>Consistent naming: methods with <code class="highlighter-rouge">Javascript</code> in the name have been renamed to use proper capitalization: <code class="highlighter-rouge">JavaScript</code></li>
+  <li>Consistent naming: methods with <code class="language-plaintext highlighter-rouge">Javascript</code> in the name have been renamed to use proper capitalization: <code class="language-plaintext highlighter-rouge">JavaScript</code></li>
   <li>Switching to HTTPS is as simple as configuring a new root mapper to make Wicket HTTPS aware and annotating a page with @RequireHttps</li>
 </ul>
 <p>A longer list of changes and improvements can be found in our <a href="http://s.apache.org/wicket-1.5-migration">migration guide</a>.</p>
@@ -87,7 +87,7 @@
  * Objects that can send events
  */</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IEventSource</span> <span class="o">{</span>
-    <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="nf">send</span><span class="o">(</span><span class="n">IEventSink</span> <span class="n">sink</span><span class="o">,</span> <span class="n">Broadcast</span> <span class="n">broadcast</span><span class="o">,</span> <span class="n">T</span> <span class="n">payload</span><span class="o">);</span>
+    <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="nf">send</span><span class="o">(</span><span class="nc">IEventSink</span> <span class="n">sink</span><span class="o">,</span> <span class="nc">Broadcast</span> <span class="n">broadcast</span><span class="o">,</span> <span class="no">T</span> <span class="n">payload</span><span class="o">);</span>
 <span class="o">}</span></code></pre></figure>
 <p>and</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
@@ -98,33 +98,33 @@
     <span class="cm">/**
      * Called when an event is sent to this sink
      */</span>
-    <span class="kt">void</span> <span class="nf">onEvent</span><span class="o">(</span><span class="n">IEvent</span><span class="o">&lt;?&gt;</span> <span class="n">event</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">onEvent</span><span class="o">(</span><span class="nc">IEvent</span><span class="o">&lt;?&gt;</span> <span class="n">event</span><span class="o">);</span>
 <span class="o">}</span></code></pre></figure>
-<p>The classes that implement these interfaces, and can thus participate in the event mechanism are: <code class="highlighter-rouge">Component</code>, <code class="highlighter-rouge">RequestCycle</code>, <code class="highlighter-rouge">Session</code>, and <code class="highlighter-rouge">Application</code>.</p>
+<p>The classes that implement these interfaces, and can thus participate in the event mechanism are: <code class="language-plaintext highlighter-rouge">Component</code>, <code class="language-plaintext highlighter-rouge">RequestCycle</code>, <code class="language-plaintext highlighter-rouge">Session</code>, and <code class="language-plaintext highlighter-rouge">Application</code>.</p>
 <p>The mechanism allows for different event broadcast methods defined here:</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
  * Defines the event broadcast type.
  */</span>
-<span class="kd">public</span> <span class="kd">enum</span> <span class="n">Broadcast</span> <span class="o">{</span>
-    <span class="n">BREADTH</span><span class="o">,</span>
-    <span class="n">DEPTH</span><span class="o">,</span>
-    <span class="n">BUBBLE</span><span class="o">,</span>
-    <span class="n">EXACT</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Broadcast</span> <span class="o">{</span>
+    <span class="no">BREADTH</span><span class="o">,</span>
+    <span class="no">DEPTH</span><span class="o">,</span>
+    <span class="no">BUBBLE</span><span class="o">,</span>
+    <span class="no">EXACT</span><span class="o">;</span>
 <span class="o">}</span></code></pre></figure>
 <p>There is an example in wicket-examples which demonstrates the usage of this.</p>
-<p>Applications can register custom event dispatchers in <code class="highlighter-rouge">FrameworkSettings</code>; the dispatchers can be used to build custom event delivery mechanisms. For example a custom <code class="highlighter-rouge">IEventDispatcher</code> mechanism can route events to annotated methods, for example:</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="kd">extends</span> <span class="n">Component</span> <span class="o">{</span>
+<p>Applications can register custom event dispatchers in <code class="language-plaintext highlighter-rouge">FrameworkSettings</code>; the dispatchers can be used to build custom event delivery mechanisms. For example a custom <code class="language-plaintext highlighter-rouge">IEventDispatcher</code> mechanism can route events to annotated methods, for example:</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="kd">extends</span> <span class="nc">Component</span> <span class="o">{</span>
     <span class="nd">@OnEvent</span>
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">onUserAdded</span><span class="o">(</span><span class="n">UserAddedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{...}</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">onUserAdded</span><span class="o">(</span><span class="nc">UserAddedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{...}</span>
 <span class="o">}</span></code></pre></figure>
-<p>where <code class="highlighter-rouge">UserAddedEvent</code> is the event payload object.</p>
-<p>The default <code class="highlighter-rouge">Component#onEvent</code> method will be called even if custom dispatchers are registered.</p>
-<p>A default event is raised whenever Wicket begins to create an AJAX response. The payload of the event is the <code class="highlighter-rouge">AjaxRequestTarget</code> used for event. Sample implementation:</p>
+<p>where <code class="language-plaintext highlighter-rouge">UserAddedEvent</code> is the event payload object.</p>
+<p>The default <code class="language-plaintext highlighter-rouge">Component#onEvent</code> method will be called even if custom dispatchers are registered.</p>
+<p>A default event is raised whenever Wicket begins to create an AJAX response. The payload of the event is the <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code> used for event. Sample implementation:</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// component that always adds itself to the ajax response</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="kd">extends</span> <span class="n">Component</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onEvent</span><span class="o">(</span><span class="n">IEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getPayload</span><span class="o">()</span> <span class="k">instanceof</span> <span class="n">AjaxRequestTarget</span><span class="o">)</span> <span class="o">{</span>
-            <span class="o">((</span><span class="n">AjaxRequestTarget</span><span class="o">)</span><span class="n">event</span><span class="o">.</span><span class="na">getPayload</span><span class="o">()).</span><span class="na">add</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="kd">extends</span> <span class="nc">Component</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onEvent</span><span class="o">(</span><span class="nc">IEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getPayload</span><span class="o">()</span> <span class="k">instanceof</span> <span class="nc">AjaxRequestTarget</span><span class="o">)</span> <span class="o">{</span>
+            <span class="o">((</span><span class="nc">AjaxRequestTarget</span><span class="o">)</span><span class="n">event</span><span class="o">.</span><span class="na">getPayload</span><span class="o">()).</span><span class="na">add</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
          <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>

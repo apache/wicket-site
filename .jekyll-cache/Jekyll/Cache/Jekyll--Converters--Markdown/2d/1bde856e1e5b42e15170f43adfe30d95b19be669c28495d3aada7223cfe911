@@ -1,0 +1,138 @@
+I"�<p>We use <a href="http://github.com/mojombo/jekyll">Jekyll</a> for writing our
+documentation on our main website. Publishing new content is as simple as
+regenerating the site and committing the changed files.</p>
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#install">Install Jekyll</a></li>
+  <li><a href="#clone">Clone wicket-site</a></li>
+  <li><a href="#run">Run the site</a></li>
+  <li><a href="#write">Write some documentation</a></li>
+  <li><a href="#update">Update the site</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The site is split into two parts: static content and the official Apache
+Wicket blog. The static content contains all the documentation that is more
+static (such as mailing lists, downloads, examples). The blog includes release
+announcements, adding new committers and other important Wicket related news.</p>
+
+<h2 id="install">Install Jekyll</h2>
+
+<p>Follow the instructions available on the <a href="http://github.com/mojombo/jekyll">Jekyll
+website</a>. Basically it boils down to:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">gem install jekyll</span></code></pre></figure>
+
+<p>You also need to install the Pygments Python module.</p>
+
+<h2 id="clone">Clone wicket-site</h2>
+
+<p>Before you can edit the site, you need to clone it:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone git@github.com:apache/wicket-site.git</code></pre></figure>
+
+<h2 id="run">Run the site</h2>
+
+<p>You can run the website and edit it live:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">jekyll serve -w</span></code></pre></figure>
+
+<p>This not only runs the server, but watches for modifications and regenerates
+any modified files.</p>
+
+<p>You can check out the website running at <a href="http://localhost:4000">localhost, port 4000</a>.</p>
+
+<h2 id="write">Write some documentation</h2>
+
+<p>Jekyll can render HTML from markdown syntax and textile syntax. <strong>For our site
+we use markdown</strong>.</p>
+
+<h3 id="page-template">Page template</h3>
+
+<p>Each page needs to have a YAML preamble that specifies the rendered template
+and other variables. If it doesn’t include the YAML preamble, it won’t be
+rendered correctly.</p>
+
+<p>The default layout supports a property to specify the main title for the page and 
+another property for an additional subtitle.</p>
+
+<p>For example: (the <code class="language-plaintext highlighter-rouge">---</code> must be included):</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">default</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Main title</span>
+<span class="na">subtitle</span><span class="pi">:</span> <span class="s">Subtitle</span>
+<span class="nn">---</span></code></pre></figure>
+
+<p>A more advanced feature for the default layout is the ability to specify more files to include
+in the final page. This can be done with property <code class="language-plaintext highlighter-rouge">additionalContents</code> where we can list additional files
+with an id for their section tag and a value for the CSS class:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">default</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Welcome to Apache Wicket</span>
+<span class="na">subtitle</span><span class="pi">:</span> <span class="s">Discover why developers love Wicket!</span>
+<span class="na">additionalContents</span><span class="pi">:</span>
+  <span class="pi">-</span>
+   <span class="na">path</span><span class="pi">:</span> <span class="s">anotherPage.html</span>
+   <span class="na">sectionId</span><span class="pi">:</span> <span class="s">anotherPage</span>
+   <span class="na">cssClass</span><span class="pi">:</span> <span class="s">sectionClass</span>
+  <span class="pi">-</span>
+   <span class="na">path</span><span class="pi">:</span> <span class="s">yetAnotherPage.html</span>
+   <span class="na">sectionId</span><span class="pi">:</span> <span class="s">yetAnotherPage</span>
+   <span class="na">cssClass</span><span class="pi">:</span> <span class="s">yetAnotherSectionClass</span>
+<span class="nn">---</span></code></pre></figure>
+
+<h4 id="additional-conventions">Additional conventions</h4>
+
+<p>The following conventions have been adopted for the templeates of the site pages:</p>
+
+<ul>
+  <li>Any link to static resources (css, js, pictures, etc.) is prefixed with <code class="language-plaintext highlighter-rouge">site.baseurl</code> to support <a href="http://jekyllrb.com/docs/github-pages/#project-page-url-structure">GitHub free hosting</a>. However, to run the project locally you don’t need to specify any baseurl.</li>
+  <li>Site posts use custom tag <code class="language-plaintext highlighter-rouge">&lt;!--more--&gt;</code> as <code class="language-plaintext highlighter-rouge">excerpt_separator</code>.</li>
+</ul>
+
+<h3 id="syntax-highlighting">Syntax highlighting</h3>
+
+<p>If you have a need to render code in your templates and have it syntax
+highlighted, surround the code with {\% highlight java \%} (substitute java
+with the language you want highlighted.)</p>
+
+<h3 id="menu">Menu</h3>
+
+<p>If you want your page linked from every page, include the link in
+<code class="language-plaintext highlighter-rouge">_includes/header.html</code>.</p>
+
+<h3 id="blog-posts">Blog posts</h3>
+
+<p>For news items such as release announcements, new committers and other
+happenings, it is appriorate to create a blog post. The blog post is
+automatically added to the front page and the RSS feed.</p>
+
+<p>The blog items are written using the normal Jekyll syntax. The filename needs
+to be formatted as <code class="language-plaintext highlighter-rouge">yyyy-mm-dd-title.md</code> and the blog item should start with a
+YAML preamble, similar to normal pages:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Wicket 1.4.7 released</span>
+<span class="nn">---</span></code></pre></figure>
+
+<h2 id="update">Update the site</h2>
+
+<p>When you’re done with making your changes, please check the following:</p>
+
+<ul>
+  <li>Do the modified files contain only those changes that you actually want to
+publish? (Use <code class="language-plaintext highlighter-rouge">git status</code> to check)</li>
+  <li>Did you start Jekyll to generate the site?</li>
+</ul>
+
+<p>If these things are OK, you can either create a pull request when
+you’re not a committer, or just commit the changes. In the latter case, the
+modifications are pushed immediately to the site and are live within a minute.</p>
+:ET

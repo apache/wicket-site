@@ -1,0 +1,127 @@
+I""<p>The Wicket projects are built using a multi-module build as proposed by the
+Maven project. We use Maven to build our projects and distributions. To be
+able to build Wicket directly from subversion, you will need an understanding
+of Maven.</p>
+
+<p>This document contains the following sections.</p>
+
+<ol>
+  <li>Getting your Wicket version</li>
+  <li>Building Wicket</li>
+  <li>Coping with test failures</li>
+  <li>Using your own built artifacts</li>
+</ol>
+
+<p>For more information on the project structure, please read the ‘Better Builds
+With Maven’ book which has a detailed description on how to structure a
+maintainable, enterprise ready build. The book is available for free from the
+Mergere website.</p>
+
+<h2 id="getting-your-wicket-version">Getting your Wicket version</h2>
+
+<p>Clone the master branch from Apache Git Wicket repository</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>git clone http://git-wip-us.apache.org/repos/asf/wicket.git</code></pre></figure>
+
+<p>This will give you a directory structure like the following directory tree:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">wicket
+wicket/wicket-core
+wicket/wicket-extensions
+wicket/wicket-spring
+wicket/wicket-auth-roles
+wicket/wicket-examples
+wicket/wicket-spring-annot
+</span><span class="c">...</span></code></pre></figure>
+
+<p>To check out a different branch use:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>wicket
+<span class="gp">$</span><span class="w"> </span>git checkout <span class="nt">-b</span> release/wicket-x.y.z release/wicket-x.y.z
+<span class="gp">#</span><span class="w"> </span>verify the branch with:
+<span class="gp">$</span><span class="w"> </span>git branch</code></pre></figure>
+
+<p>In this document we focus at the maven project descriptor located in the top
+level directory, which enforces default settings for all Wicket projects such
+as plug-in settings, versioning of the Wicket projects, managing the various
+dependencies and more.</p>
+
+<p>The artifacts in this project are there only for having a consistent build.
+This top-level project doesn’t have sources for itself.</p>
+
+<h2 id="building-wicket">Building Wicket</h2>
+
+<p>The current development version of Wicket requires at least jdk 6.</p>
+
+<p>If you want to ensure that your Wicket version is built using JDK-6 and
+fully compatible with that Java version, you will need to build it with a Java
+6 compiler and runtime library.</p>
+
+<p>If you haven’t done so already change into the Wicket root directory:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">cd wicket</span></code></pre></figure>
+
+<p>Now building all of Wicket is as simple as issuing the following command:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn install</span></code></pre></figure>
+
+<p>This will compile, test, package and install all Wicket projects. Installation
+means putting the jar files into your local Maven repository, including the
+source, but without the javadoc jars (this is a Wicket specific configuration,
+because build javadoc takes a long time).</p>
+
+<p>The following commands are useful:</p>
+<table>
+<tr><th>Commandline</th><th>Description</th></tr>
+<tr><td>`mvn clean`</td><td>cleans up build artifacts</td></tr>
+<tr><td>`mvn compile`</td><td>compiles the projects</td></tr>
+<tr><td>`mvn package`</td><td>creates the jar files in the target/ subdirectories</td></tr>
+<tr><td>`mvn install`</td><td>installs the jar files in your local repository</td></tr>
+<tr><td>`mvn -Prelease package`</td><td>generates the javadoc/source jars as well</td></tr>
+</table>
+
+<p>You can just run the install target, as Maven will build the previous stages
+automatically.</p>
+
+<h3 id="coping-with-test-failures">Coping with test failures</h3>
+
+<p>As this is our main development you might/will encounter failing unit tests.
+These can be skipped using:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn -Dmaven.test.skip=true install</span></code></pre></figure>
+
+<p>Of course, all bets are off then and your mileage may vary if you use such a
+built jar.</p>
+
+<h3 id="using-your-own-built-artifacts">Using your own built artifacts</h3>
+
+<p>Now you have built your own fresh Wicket jar you must be anxious to use it.
+This is now as simple as adding a snapshot dependency on the specific Wicket
+version. So in your pom.xml you can use:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>6.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>compile<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>And adding this to your Eclipse, NetBeans or IntelliJ IDEA project classpath
+is then as simple as:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn eclipse:eclipse</span></code></pre></figure>
+
+<p>or opening the project using Netbeans or IDEAs Maven integration.</p>
+
+<p>Maven will then add all the necessary JAR files to the project’s classpath.</p>
+
+<p>One thing you need to make sure is that you have set the <code class="language-plaintext highlighter-rouge">M2_REPO</code> classpath
+variable in Eclipse (or a similar construct in Netbeans), and point it to your
+local repository, typically found in <code class="language-plaintext highlighter-rouge">C:\Documents and Settings\username\.m2\repo</code>
+or (for unix buffs) <code class="language-plaintext highlighter-rouge">~/.m2/repo</code></p>
+
+<p>You can add this setting using maven:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt;</span><span class="w"> </span>eclipse:add-maven-repo</code></pre></figure>
+
+:ET

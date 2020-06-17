@@ -1,0 +1,18 @@
+I" <p>This is the tenth maintenance release of the Wicket 1.5.x series. This release brings over 28 bug fixes and improvements.</p>
+
+<ul>
+  <li><a href="https://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=shortlog;h=refs/tags/release/wicket-1.5.10">Git tag</a></li>
+  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;version=12323510">Changelog</a></li>
+  <li>To use in Maven:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.5.10<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<ul>
+  <li>Download the <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.10">full distribution</a> (including source)</li>
+</ul>
+:ET

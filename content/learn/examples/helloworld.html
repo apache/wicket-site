@@ -36,7 +36,7 @@
     </ul>
 </nav>
         <div class="logo">
-    <a href="/"><img src="/img/logo-apachewicket-white.svg" alt="Apache Wicket"></a>
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
     </div>
 </div>
@@ -67,26 +67,26 @@ without having to go through the whole build-deploy cycle.</p>
 <p>Each Wicket application is defined by an Application object. This object
 defines what the home page is, and allows for some configuration.</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.apache.wicket.protocol.http.WebApplication</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorldApplication</span> <span class="kd">extends</span> <span class="n">WebApplication</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorldApplication</span> <span class="kd">extends</span> <span class="nc">WebApplication</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">HelloWorldApplication</span><span class="o">()</span> <span class="o">{</span>
     <span class="o">}</span>
     <span class="cm">/**
      * @see org.apache.wicket.Application#getHomePage()
      */</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="n">Class</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">HelloWorld</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">Class</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">HelloWorld</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
-<p>Here you can see that we define <code class="highlighter-rouge">wicket.examples.helloworld.HelloWorld</code> to be
+<p>Here you can see that we define <code class="language-plaintext highlighter-rouge">wicket.examples.helloworld.HelloWorld</code> to be
 our home page. When the base URL of our application is requested, the markup
 rendered by the HelloWorld page is returned.</p>
 <h3 id="helloworldjava">HelloWorld.java</h3>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebPage</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.basic.Label</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">HelloWorld</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"message"</span><span class="o">,</span> <span class="s">"Hello World!"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"message"</span><span class="o">,</span> <span class="s">"Hello World!"</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 <p>The Label is constructed using two parameters:</p>
@@ -99,8 +99,8 @@ rendered by the HelloWorld page is returned.</p>
   </li>
 </ol>
 <p>The first parameter is the component identifier, which Wicket uses to identify
-the <code class="highlighter-rouge">Label</code> component in your HTML markup. The second parameter is the message
-which the <code class="highlighter-rouge">Label</code> should render.</p>
+the <code class="language-plaintext highlighter-rouge">Label</code> component in your HTML markup. The second parameter is the message
+which the <code class="language-plaintext highlighter-rouge">Label</code> should render.</p>
 <h3 id="helloworldhtml">HelloWorld.html</h3>
 <p>The HTML file that defines our Hello World functionality is as follows:</p>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
@@ -111,16 +111,16 @@ which the <code class="highlighter-rouge">Label</code> should render.</p>
 <p>In this file, you see two elements that need some attention:</p>
 <ul>
   <li>
-    <p>the component declaration <code class="highlighter-rouge">&lt;span wicket:id="message"&gt;</code></p>
+    <p>the component declaration <code class="language-plaintext highlighter-rouge">&lt;span wicket:id="message"&gt;</code></p>
   </li>
   <li>
-    <p>the text <code class="highlighter-rouge">Message goes here</code></p>
+    <p>the text <code class="language-plaintext highlighter-rouge">Message goes here</code></p>
   </li>
 </ul>
-<p>The component declaration consists of the Wicket identifier <code class="highlighter-rouge">wicket:id</code> and the
-component identifier <code class="highlighter-rouge">message</code>. The component identifier should be the same as
-the name of the component you defined in your <code class="highlighter-rouge">WebPage</code>. The text between
-the <code class="highlighter-rouge">&lt;span&gt;</code> tags is removed when the component renders its message. The final
+<p>The component declaration consists of the Wicket identifier <code class="language-plaintext highlighter-rouge">wicket:id</code> and the
+component identifier <code class="language-plaintext highlighter-rouge">message</code>. The component identifier should be the same as
+the name of the component you defined in your <code class="language-plaintext highlighter-rouge">WebPage</code>. The text between
+the <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> tags is removed when the component renders its message. The final
 content of the component is determined by your Java code.</p>
 <h3 id="webxml">web.xml</h3>
 <p>In order to deploy our HelloWorld program, we need to make our application
@@ -155,7 +155,7 @@ JavaScript files, images and so forth will be served by the container.</p>
 <h2 id="ready-to-deploy">Ready to deploy</h2>
 <p>That’s it. No more configuration necessary! All you need to do now is to
 deploy the web application into your favorite application server. Point your
-browser to the url: <code class="highlighter-rouge">http://&lt;servername&gt;/&lt;warfilename&gt;/</code>, substituting
+browser to the url: <code class="language-plaintext highlighter-rouge">http://&lt;servername&gt;/&lt;warfilename&gt;/</code>, substituting
 servername and warfilename to the appropriate values, such as
 http://localhost:8080/helloworld/.</p>
 <p>As you can see: no superfluous XML configuration files are needed to enable a

@@ -1,0 +1,118 @@
+I"�)<p>The Apache Wicket project announces the 8th major release of the open source Java web framework servicing websites and applications across the globe for over a decade. With this release Wicket embraces Java 8 idioms fully, allowing the use of lambda expressions in all the right places. With Wicket 8 you can write fewer, faster and more maintainable code.</p>
+
+<!--more-->
+
+<h2 id="a-careful-application-of-java-8">A Careful Application of Java 8</h2>
+
+<p>While previous versions of Wicket work well with Java 8 and beyond, the Wicket API was not optimized to make full use of Java 8 idioms. After careful consideration and trying many paths to adopt new ways of combining Java 8 and Wicket, we finally settled on the current API.</p>
+
+<p>Java 8’s new idioms and types have been applied throughout Wicket’s API. Learn more about the details below.</p>
+
+<h2 id="java-8-required">Java 8+ Required</h2>
+
+<p>Starting with Wicket 8 the minimum required version of Java is Java 8. All Wicket supplied projects have been upgraded to Java 8 and Wicket 8, and shortly all active community projects, such as Wicket Stuff, will follow suit.</p>
+
+<p>With the adoption of Java 8 we were able to provide support for Lambdas.</p>
+
+<h2 id="lambdas-in-all-the-right-places">Lambdas in All The Right Places</h2>
+
+<p>The major feature of Java 8 was the addition of lambda support in the language. With Wicket 8 we have looked at providing lambda support in the API and have weighed it against performance and memory usage considerations.</p>
+
+<p>In this light we have opted to continue using subclassing as the primary extension mechanism for Wicket components.</p>
+
+<p>Factories for lambdas have been provided for various forms of models (databinding) and behaviors (adapters for components).</p>
+
+<h2 id="java-datetime-api">Java Date/Time API</h2>
+
+<p>Wicket 8 provides out-of-the-box support for the new types for handling dates in Java 8. These can be converted, validated and bound to components.</p>
+
+<h2 id="optional-is-somtimes-required">Optional is Somtimes Required</h2>
+
+<p>The new Optional type in Java 8 is intended for places in your API where things can be null. In Wicket’s case we have adopted Optional in just those places to clarify the API.</p>
+
+<p>For example the AjaxFallbackLink, a link that works using both with and without AJAX, now uses Optional to signify whether the link was clicked utilizing AJAX or normal request processing: the AJAX request is wrapped in an Optional. Previous versions of Wicket would provide a null value for the AJAX request.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// WICKET 7:</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxFallbackLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"wicket7"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">target</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// ...</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+<span class="c1">// WICKET 8:</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxFallbackLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"wicket8"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">AjaxRequestTarget</span><span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">target</span><span class="o">.</span><span class="na">isPresent</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// ...</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">});</span></code></pre></figure>
+
+<p>Because we have modified the API to utilize Optional, you will get compile errors when you start migrating to Wicket 8. This gives you the exact positions where these improvements have occurred and you can start working with the Optional API.</p>
+
+<h2 id="models-as-functional-interface">Models as Functional Interface</h2>
+
+<p>Wicket uses models as the databinding method: each data-aware component can take a model implementation to retrieve and store data in. From Wicket 8 we have made the root interface IModel a <em>functional interface</em>. You can now use lambdas where you can use models.</p>
+
+<p>The following example binds a Label component to the name of a person object in different ways using Wicket 8:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name1"</span><span class="o">,</span> <span class="nl">person:</span><span class="o">:</span><span class="n">name</span><span class="o">));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name2"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name3"</span><span class="o">,</span> <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">personModel</span><span class="o">,</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name4"</span><span class="o">,</span> 
+    <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">contractModel</span><span class="o">,</span> <span class="nl">Contract:</span><span class="o">:</span><span class="n">getPerson</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span></code></pre></figure>
+
+<p>The new <code class="language-plaintext highlighter-rouge">LambdaModel</code> type in Wicket enables type safe, refactor safe databinding for components. Previously one would bind data to components using <code class="language-plaintext highlighter-rouge">PropertyModel</code>, using a string expression to determine the exact property to show. The string expression is something like <code class="language-plaintext highlighter-rouge">"person.name"</code>. This is inherently difficult to refactor when you decide to change the name field into for example <code class="language-plaintext highlighter-rouge">"lastName"</code>. With <code class="language-plaintext highlighter-rouge">LambdaModel</code>, this refactoring is trivial for IDEs to perform: the Java methods can easily be renamed and the IDE will find all the references.</p>
+
+<p>Microbenchmarks have shown that using lambda models provides much better performance than the string based PropertyModel at the cost of slightly larger memory footprint.</p>
+
+<h2 id="servlet-31-required">Servlet 3.1 Required</h2>
+
+<p>As of Wicket 8 we only support the Java Servlet API 3.1 (or newer). This means that to run applications built using Wicket 8 you have to run your application in a modern server like Tomcat 8.x, Jetty 9.1+ or a Java EE 7 compatible server.</p>
+
+<h2 id="no-rewrite-necessary">No Rewrite Necessary</h2>
+
+<p>The Wicket team has been very careful of adopting Java 8 technologies and as such you don’t have to rewrite your whole application, whilst still reaping all the benefits of Java 8.</p>
+
+<p>As this is a new major version we have, in accordance with semantic versioning, cleaned up many APIs and you will get compile errors when you migrate from previous Wicket versions.</p>
+
+<h2 id="migrating-to-wicket-8">Migrating to Wicket 8</h2>
+
+<p>When you migrate from a previous Wicket version to Wicket 8, a full list of changes and migrations is available at the following page:</p>
+
+<p><a href="https://s.apache.org/wicket8migrate">https://s.apache.org/wicket8migrate</a></p>
+
+<p>Please consult this migration guide when you are moving towards Wicket 8.</p>
+
+<h2 id="support">Support</h2>
+
+<p>You can find out about our support channels through the following page on our website: <a href="https://wicket.apache.org/help/">https://wicket.apache.org/help/</a></p>
+
+<h2 id="download">Download</h2>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>8.0.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0">8.0.0 source download</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0/binaries">8.0.0 binary download</a></li>
+</ul>
+
+<h2 id="thanks">Thanks</h2>
+
+<p>Our many thanks go out to our contributors for testing this release during its development and providing invaluable feedback.</p>
+
+:ET

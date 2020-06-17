@@ -1,0 +1,32 @@
+I"X<p>Severity: Important</p>
+
+<p>Vendor:
+The Apache Software Foundation</p>
+
+<p>Versions Affected:
+Apache Wicket 1.4.22, 1.5.10 and 6.7.0</p>
+
+<p>Description:
+It is possible to make Wicket deliver the HTML templates in their raw/non-processed form.
+An attacker could see any sensitive information in the part of the HTML template that is usually ignored during rendering.
+For example if there is sensitive information before or after the Wicket Panel/Border’s markup:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">something sensitive here 1
+<span class="nt">&lt;wicket:panel&gt;</span>
+   real application code
+<span class="nt">&lt;/wicket:panel&gt;</span>
+something sensitive here 2</code></pre></figure>
+
+<p>Usually Wicket will render only the “real application code” part but by exploiting this vulnerability an attacker can see also the code with the sensitive information.</p>
+
+<p>The application developers are recommended to upgrade to:</p>
+<ul>
+  <li><a href="/news/2014/02/06/wicket-1.4.23-released.html">Apache Wicket 1.4.23</a></li>
+  <li><a href="/news/2014/02/06/wicket-1.5.11-released.html">Apache Wicket 1.5.11</a></li>
+  <li><a href="/news/2013/05/17/wicket-6.8.0-released.html">Apache Wicket 6.8.0</a></li>
+</ul>
+
+<p>and/or to remove any sensitive information in the HTML templates.</p>
+
+<p>Apache Wicket Team</p>
+:ET

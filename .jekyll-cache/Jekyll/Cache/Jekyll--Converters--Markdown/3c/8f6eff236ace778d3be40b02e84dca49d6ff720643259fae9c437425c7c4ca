@@ -1,0 +1,31 @@
+I"ù<p><em>Severity</em>: Important</p>
+
+<p><em>Vendor</em>: The Apache Software Foundation</p>
+
+<p><em>Versions Affected</em>: Apache Wicket 6.20.0, 6.21.0, 6.22.0, 6.23.0, 6.24.0,
+7.0.0, 7.1.0, 7.2.0, 7.3.0, 7.4.0 and 8.0.0-M1</p>
+
+<p><em>Description</em>: Affected versions of Apache Wicket provide a CSRF prevention
+measure that fails to discover some cross origin requests. The mitigation is to
+not only check the Origin HTTP header, but also take the Referer HTTP header
+into account when no Origin was provided. Furthermore, not all Wicket server
+side targets were subjected to the CSRF check. This was also fixed.</p>
+
+<p><em>Mitigation</em>: 6.x users should upgrade to 6.25.0, 7.x users should upgrade to
+7.5.0 and 8.0.0-M1 users should upgrade to 8.0.0-M2.</p>
+
+<p><em>Credit</em>: This issue was discovered by Gerben Janssen van Doorn</p>
+
+<p>References: https://wicket.apache.org/news</p>
+
+<h2 id="the-application-developers-are-recommended-to-upgrade-to">The application developers are recommended to upgrade to:</h2>
+
+<ul>
+  <li><a href="/news/2016/10/26/wicket-6.25.0-released.html">Apache Wicket 6.25.0</a></li>
+  <li><a href="/news/2016/10/26/wicket-7.5.0-released.html">Apache Wicket 7.5.0</a></li>
+  <li><a href="/news/2016/10/26/wicket-8.0.0-M2-released.html">Apache Wicket 8.0.0-M2</a></li>
+</ul>
+
+<p>Users of Wicket verions prior to 6.20 are not affected because the particular
+component was introduced in 6.20.0.</p>
+:ET

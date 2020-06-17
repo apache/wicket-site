@@ -1,0 +1,23 @@
+I"¤<p>The Apache Wicket project is proud to announce the fourth maintenance release
+of Apache Wicket 1.4.</p>
+
+<h3 id="download-apache-wicket-144">Download Apache Wicket 1.4.4</h3>
+
+<p>You can download the release here:
+<a href="http://www.apache.org/dyn/closer.cgi/wicket/1.4.4">http://www.apache.org/dyn/closer.cgi/wicket/1.4.4</a></p>
+
+<p>Or use this in your Maven pomâ€™s to upgrade to the new version:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.4.4<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<h3 id="changes">Changes</h3>
+
+<p>A complete list of changes can be found
+<a href="https://issues.apache.org/jira/secure/IssueNavigator.jspa?reset=true&amp;&amp;pid=12310561&amp;fixfor=12314323&amp;sorter/field=priority&amp;sorter/order=DESC">here</a>.</p>
+
+<p>We thank you for your patience and support.</p>
+:ET

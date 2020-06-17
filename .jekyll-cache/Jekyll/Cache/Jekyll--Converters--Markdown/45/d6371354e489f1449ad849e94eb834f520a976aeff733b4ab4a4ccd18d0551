@@ -1,0 +1,32 @@
+I"6<p>Severity: Important</p>
+
+<p>Vendor:
+The Apache Software Foundation</p>
+
+<p>Versions Affected:
+Apache Wicket 1.5.x, 6.x and 7.x</p>
+
+<p>Description:</p>
+
+<p>It is possible for JavaScript statements to break out of a ModalWindow’s 
+title - only quotes are escaped in the JavaScript settings object, allowing JavaScript
+to be injected into the markup.</p>
+
+<p>This might pose a security threat if the written JavaScript contains user provided data.</p>
+
+<p>The title is now escaped by default, this can be disabled explicitly via
+  modalWindow.setEscapeModelStrings(false).</p>
+
+<h2 id="the-application-developers-are-recommended-to-upgrade-to">The application developers are recommended to upgrade to:</h2>
+
+<ul>
+  <li><a href="/news/2016/02/19/wicket-1.5.15-released.html">Apache Wicket 1.5.15</a></li>
+  <li><a href="/news/2016/02/19/wicket-6.22.0-released.html">Apache Wicket 6.22.0</a></li>
+  <li><a href="/news/2016/01/20/wicket-7.2.0-released.html">Apache Wicket 7.2.0</a></li>
+</ul>
+
+<p>Credit:
+This issue was reported by Tobias Gierke!</p>
+
+<p>Apache Wicket Team</p>
+:ET

@@ -1,0 +1,136 @@
+I"�<p>The Apache Wicket PMC is proud to announce Apache Wicket 7.8.0!</p>
+
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
+<p>This release marks another minor release of Wicket 7. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+7.0.0.</p>
+
+<h2 id="using-this-release">Using this release</h2>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>7.8.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.8.0">7.8.0 source download</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.8.0/binaries">7.8.0 binary download</a></li>
+</ul>
+
+<!--more-->
+
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
+<p>If you upgrade from 7.y.z this release is a drop in replacement. If
+you come from a version prior to 7.0.0, please read our Wicket 7
+migration guide found at</p>
+
+<ul>
+  <li>http://s.apache.org/wicket7migrate</li>
+</ul>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<p>========================================================================</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
+</code></pre></div></div>
+
+<p>Signature for apache-wicket-7.8.0.zip:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAABAgAGBQJZYLxvAAoJEAzCjx+CMhBVTZYQAK+meFQ369uBzF9I5/slF5B7
+IDkchyU4HESUSJq6F+oGYYPBx5d6uDelk0yrGFC5h0jPys7PmjjjKzIrWrp8asbg
+b9arUJsbEYvXqxY3/6jv7cA5e8/jZQVmL4gn1Y0zOZLL4i71haS6syafmuSMhqrN
++qcbr0X8SquDSlfBXHUGl5HYfggvM8ryfn9BHp0LXUmByHPvipCxaAW2iAH08Uws
+sUrkVgQxPlsDeb+TRqDU2oEO3JGMBam7lc5lL7OUJihIBiYXTKUAFmoHZ93w34uA
+HhkddE4IS+JppAgBJUYTtnZau8nwoimNlipmzPLbP7f81DRBAl4g7YyhN80uMRrC
+Hf+pfjhHDK9MDZDJ3fvZKJI3SRoLDDogkCO5VWdSrm327YU3noauJaQfI16CPQQ0
+KLv5oX8G2qnj1waJxrymPRfKv8H4EaODleH3SPY6tFez0YqVnPdVCN+8ivveS7LC
+Xhm27wiIBiBWqnYNdFXu1+bul06rVoZINjohMx5ehQ8Be5t/ffwd+abEBXPEZvWc
+82LuSzjZyTYztGwCq5zTjaqu07k1VEfs+YUwyMsxYhLiCE7FFvtBxprHJxW0pXni
+ZohPCJ/0Wu+4q9O9D02FieZQmJBqmWH5wND7JQw98LWZQVqz56rmA3qqJLzqezuK
+opP+d0HegKBF0uC2YvlE
+=Hwk8
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>Signature for apache-wicket-7.8.0.tar.gz:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAABAgAGBQJZYLxvAAoJEAzCjx+CMhBVjy4P/0OGngs8Uk2GQ+dMmhnzo6d3
+yIg7CRnJtX16nZu58hyE5kUyWIq2ySpomlbD6cBxP16R1nzUHNDdijroWC8zAx2q
+y7F/f7vDXcKhW8P8y21lZqffGHhEwaey1b3aTmUmqiZGjohtvZx3ED+Y3JdIGxHL
+VmO7deEirPJGyptSB0pu+STcltbU3+9H1pcfuaPKxB9Ucr08AIEtTWwuZWg9DHdb
+5U26S5VX0gNNd2Otivf49I6G6BWml5Kpx5z4yBFolgajbKHJ+vveBOND0d8fw4te
+c6nKFV1hIR4eXXhfI584+MuLcI83V86Tc/sFQgNk/1uIGIdBE0mcRd7YqemNLu+u
+tF52Zii0HHScp8ocOU+B+lYL5Keek4WkCQ7oZqjKZx5rjZS9AsF1041PcZ31JDlk
+c8Y4qhF1Add/msFuyeo3nsiu6xky/wHef5pCTcjLi66+8X+53tjUQed8BqiZDCcm
+NeOfwOQ4MWUWNz7Sfs/gayI4vZ9uFksJik7g/XR/o2L2Dny+J0PsA/kCHurhT0rb
+IfhcyrGgLn6zDpDafullJv9N0mwyBUGW//4GhhHmM1SmCKr57sDobalZFjeMTv4p
+b/3JYMD6O7AdS5Eyj+LU6Pg2vK10oW2fP/H0clCKqIzsF5rdNDcjVTDCwnal5y+W
+S0QhZQSTWuzVS8MA4W4b
+=sf4k
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>========================================================================</p>
+
+<h3 id="this-release">This Release</h3>
+
+<h4 id="changelog-for-780">CHANGELOG for 7.8.0:</h4>
+
+<h5 id="bug">Bug</h5>
+
+<ul>
+  <li>[WICKET-4324] - [wicket-ioc] LazyInitProxyFactory CGLIB proxies naming strategy may cause java.lang.IllegalAccessError</li>
+  <li>[WICKET-6362] - HeaderItems with different PageParameters are treated as identical</li>
+  <li>[WICKET-6366] - Autocomplete race condition makes page unresponsive</li>
+  <li>[WICKET-6373] - Edge not recognized in UserAgent</li>
+  <li>[WICKET-6374] - Exception caused by border extending another border with <wicket:extend></wicket:extend></li>
+  <li>[WICKET-6376] - Ajax redirects to non http(s)-urls are interpreted as relative</li>
+  <li>[WICKET-6377] - Autolinking breaks hierarchy for nested elements</li>
+  <li>[WICKET-6386] - Simplification of the code in WICKET-3347 is not consistent with previous behavior</li>
+  <li>[WICKET-6387] - ModalWindow PageReference broken</li>
+  <li>[WICKET-6393] - NestedStringResourceLoader ignores hard-coded default values and throws MissingResourceException</li>
+  <li>[WICKET-6398] - WICKET-6204 breaks jQuery.noConflict()</li>
+  <li>[WICKET-6399] - Dequeuing of Border component with nested body fails</li>
+  <li>[WICKET-6400] - Object with array property fails on NPE when construction JSON object</li>
+</ul>
+
+<h5 id="improvement">Improvement</h5>
+
+<ul>
+  <li>[WICKET-6372] - Consider to switch to a sans-serif typeface in the Wicket guide</li>
+  <li>[WICKET-6385] - Allow using custom port for web socket connections</li>
+  <li>[WICKET-6389] - Introduce CsrfPreventionRequestCycleListener that is aware of Web Socket requests</li>
+  <li>[WICKET-6401] - OSGi-Manifest: wicket-util should decalre its dependency to ‘commons-io’ and ‘commons-fileupload’</li>
+</ul>
+
+<h5 id="task">Task</h5>
+
+<ul>
+  <li>[WICKET-6391] - Deprecate the classes and methods which now throw runtime exception after the switch to OpenJson</li>
+</ul>
+
+:ET

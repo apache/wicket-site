@@ -1,0 +1,32 @@
+I"±<p>The Apache Software Foundation takes a very active stance in
+eliminating security problems against the Apache Wicket web framework.</p>
+
+<p>For reporting and discussing a security issue you should contact the
+Wicket PMC privately.</p>
+
+<p><strong>** PLEASE DO NOT CREATE A SECURITY REPORT IN OUR ISSUE TRACKER **</strong></p>
+
+<p>The issue tracker for Wicket is not the appropriate venue for reporting
+security issues as the issue tracker is publicly accessible. Instead,
+contact the Wicket PMC privately.</p>
+
+<h3 id="contact-the-wicket-pmc-privately">Contact the Wicket PMC privately</h3>
+
+<p>Send your security issue to <strong>private at wicket.apache.org</strong>. This list
+is not publicly available so we can discuss and fix the issue in
+private without leaking the info to any bad guys.</p>
+
+<p><a class="button" href="mailto:private@wicket.apache.org?subject=Security%20issue" onclick="window.location.href='mailto:private@wicket.apache.org?subject=Security%20issue';return false;">
+    <i class="fa fa-shield"></i>
+    REPORT A SECURITY ISSUE
+</a></p>
+
+<p>We treat all security issues seriously and will try to fix them as soon
+as possible in all affected versions that we still support.</p>
+
+<h3 id="report-normal-bugs-in-jira">Report normal bugs in JIRA</h3>
+
+<p>The Security Team cannot accept regular bug reports or other queries,
+we ask that you use our <a href="/help/#reportbug">bug reporting page</a>
+for normal, non-security bugs.</p>
+:ET

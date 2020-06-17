@@ -1,0 +1,22 @@
+I"‹<p>The Wicket Team is proud to introduce the seventh Release Candidate in Wicket 1.5 series. See the changelog for the list of bug fixes and improvements done between 1.5-RC5.1 and 1.5-RC7</p>
+
+<p>More detailed migration notes are available on our <a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+1.5">Migrate to 1.5 Wiki Page</a></p>
+
+<p>Release Artifacts:</p>
+<ul>
+  <li><a href="http://svn.apache.org/repos/asf/wicket/releases/wicket-1.5-RC7">Subversion tag</a></li>
+  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;version=12316657">Changelog RC6</a></li>
+  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;version=12317645">Changelog RC7</a></li>
+  <li>To use in Maven:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.5-RC7<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<ul>
+  <li>Download the <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5-RC7">full distribution</a> (including source)</li>
+</ul>
+:ET

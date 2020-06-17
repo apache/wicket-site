@@ -1,0 +1,89 @@
+I"K<p>The Apache Wicket PMC is proud to announce Apache Wicket 6.3.0!</p>
+
+<p>This release marks the third minor release of Wicket 6. Starting
+with Wicket 6 we use semantic versioning for the future development of
+Wicket, and as such no API breaks are present in this release compared
+to 6.0.0.</p>
+
+<h2 id="new-and-noteworthy">New and noteworthy</h2>
+
+<p>This release fixes some javascript errors in IE7 and IE8 with Wicket 6.</p>
+
+<p>We have upgraded the embedded JQuery library to 1.8.2 (the most recent
+stable release of JQuery). If you depend on an earlier version of
+JQuery, you can instruct Wicket to use your older version. See the
+<a href="https://cwiki.apache.org/confluence/display/WICKET/Wicket+Ajax#WicketAjax-Configuration">Wicket Ajax Guide</a>
+for more information.</p>
+
+<p>For the full changelog see the release notes attached to the end of
+this announcement.</p>
+
+<h2 id="using-this-release">Using this release</h2>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>6.3.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.3.0">6.3.0 source download</a></li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.3.0/binaries">6.3.0 binary download</a></li>
+</ul>
+
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
+<p>If you upgrade from 6.0.0, 6.1.0, or 6.2.0 this release is a drop in 
+replacement. If you come from a version prior to 6.0.0, please 
+read our Wicket 6 migration guide found at <a href="http://s.apache.org/wicket-6.0-migration">http://s.apache.org/wicket-6.0-migration</a></p>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<h3 id="release-notes---wicket---version-630">Release Notes - Wicket - Version 6.3.0</h3>
+
+<h4 id="bug">Bug</h4>
+
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4623">WICKET-4623</a> - UploadProgressBar does not show up if the form submitted by AjaxButton or AjaxLink</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4826">WICKET-4826</a> - PaletteButton#onComponentTag(ComponentTag) does not call super</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4829">WICKET-4829</a> - ComponentResolvers created in app init ignore markup’s namespace</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4836">WICKET-4836</a> - Unmount a page does not work if the path starts with /</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4837">WICKET-4837</a> - SmartLinkMultiLineLabel does not display email addresses or web URLs as hyperlinks</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4841">WICKET-4841</a> - Return error code 400 when an Ajax request has no base url set in header/request parameters.</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4842">WICKET-4842</a> - WicketRuntimeException when Tomcat cleans up a session later on</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4844">WICKET-4844</a> - AbstractResourceReferenceMapper doesn’t escape separators in style/variation names</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4848">WICKET-4848</a> - Reporter of FeedbackMessage should not be set to ‘null’ on detach</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4850">WICKET-4850</a> - BaseWicketTester discards cookies with MaxAge = -1 when processing a new request</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4851">WICKET-4851</a> - IE8, IE7 javascript errors with Wicket 6</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4857">WICKET-4857</a> - AutoCompleteTextFields submits Form if a choice is selected via enter-key</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4859">WICKET-4859</a> - Integer overflow in AbstractToolbar</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4864">WICKET-4864</a> - ‘format’ not set in ConversionException</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4865">WICKET-4865</a> - Page parameters not working with CryptoMapper</li>
+</ul>
+
+<h4 id="improvement">Improvement</h4>
+
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4831">WICKET-4831</a> - Append the feedback message CSS class instead of overriding it</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4835">WICKET-4835</a> - Add debug log messages in CompoundRequestMapper#mapRequest</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4845">WICKET-4845</a> - Make BasicResourceReferenceMapper public so it is easy to extend it</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4853">WICKET-4853</a> - Change FormComponent#reportRequiredError() from private to protected</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4856">WICKET-4856</a> - Support SVG extension in SecurePackageResourceGuard</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4863">WICKET-4863</a> - Customize ValidationError creation by FormComponent</li>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4867">WICKET-4867</a> - Detach the object before calculating its size</li>
+</ul>
+
+<h4 id="task">Task</h4>
+
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET-4855">WICKET-4855</a> - Upgrade JQuery to 1.8.2</li>
+</ul>
+:ET

@@ -1,0 +1,59 @@
+I"�<p>The Wicket team is proud to announce the second beta release of the Wicket 6.x series.
+This release brings over many improvements over the 1.5.x series.</p>
+
+<h3 id="new-and-noteworthy">New and Noteworthy</h3>
+
+<h4 id="wicket-atmosphere">Wicket Atmosphere</h4>
+
+<p>The Beta 2 contains a new experimental module Wicket Atmosphere, which brings serverside push to Wicket and provides a great way to render serverside markup and send it to the browsers of your users. Check out the atmosphere example in our Examples project to see it in action.</p>
+
+<p>In your application’s init method you need to register the push event bus:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">new</span> <span class="nc">EventBus</span><span class="o">(</span><span class="k">this</span><span class="o">);</span></code></pre></figure>
+
+<p>Somewhere where you want to push your changes to the client, you need to publish your event to the push <code class="language-plaintext highlighter-rouge">EventBus</code>:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">EventBus</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">post</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getModelObject</span><span class="o">());</span></code></pre></figure>
+
+<p>And finally you need to subscribe your page (or component) to the <code class="language-plaintext highlighter-rouge">EventBus</code>’s events with <code class="language-plaintext highlighter-rouge">@Subscribe</code>, taking in the typed parameter you post to the EventBus (in this case a <code class="language-plaintext highlighter-rouge">String</code>):</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Subscribe</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">receiveMessage</span><span class="o">(</span><span class="nc">AjaxRequestTarget</span> <span class="n">target</span><span class="o">,</span> <span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">label</span><span class="o">.</span><span class="na">setDefaultModelObject</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+	<span class="n">target</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>To be able to use Wicket Atmosphere you need to include the following dependency:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-atmosphere<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Please note that this is still experimental.</p>
+
+<h3 id="this-release">This release</h3>
+
+<p>Check the <a href="https://cwiki.apache.org/confluence/display/WICKET/Wicket+6.0+Roadmap">roadmap</a> with a list of the major goals.
+And the <a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0">migration guide</a> with all major and some minor changes between 1.5.x and 6.x series.</p>
+
+<p>The Jira changelog of all closed ticket at <a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;version=12320343">Jira</a></p>
+
+<p>To use it in Maven:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>6.0.0-beta2<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>If you don’t use a dependencies management build tool then you can download the <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.0.0-beta2">full distribution</a> (including source).</p>
+
+<p>There are no more planned API breaks but if you find something that can be made better now it the time to discuss it!
+We will try to avoid making any API changes in the Release Candidates that will follow this beta release.</p>
+
+<p>Any feedback about the new features, their implementation and their documentation is very welcome!</p>
+
+<p>The Wicket team!</p>
+:ET
