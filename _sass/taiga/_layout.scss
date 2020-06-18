@@ -49,3 +49,8 @@
 
     @include breakpoint($breakpoint-20) { padding: $spacing * 2; }
 }
+
+.l-menu-container {
+    @include grid-container;
+    padding: $spacing;
+}

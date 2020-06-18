@@ -30,9 +30,9 @@ p { margin-bottom: 1rem; }
 
 p.is-lead { font-size: 1.125rem; }
 
-a { color: #FF9925; cursor: pointer; text-decoration: none; }
+a { color: #E97826; cursor: pointer; text-decoration: none; }
 
-a:hover { color: #ffb158; }
+a:hover { color: #ee9554; }
 
 small { color: #8d9994; font-size: 0.875rem; }
 
@@ -104,6 +104,12 @@ dl.advanced dd { float: left; width: 66.6666666667%; margin-left: 0%; margin-rig
 
 @media (min-width: 769px) { .l-container { padding: 2rem; } }
 
+.l-menu-container { padding: 1rem; }
+
+.l-menu-container:before, .l-menu-container:after { content: ""; display: table; }
+
+.l-menu-container:after { clear: both; }
+
 .is-hidden { display: none !important; }
 
 .is-hidden, .is-invisible { visibility: hidden !important; }
@@ -132,7 +138,7 @@ button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 
 .button, input[type=submit], button { background: #FF9925; color: #fff; }
 
-.button:hover, input[type=submit]:hover, button:hover { background: #ffb158; color: #fff; }
+.button:hover, input[type=submit]:hover, button:hover { background: #ee9554; color: #fff; }
 
 .button:active, .button:focus, input[type=submit]:active, input[type=submit]:focus, button:active, button:focus { box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); }
 
@@ -339,7 +345,7 @@ button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 /* Literal.Number.Integer.Long */
 .logo { text-align: center; }
 
-@media (min-width: 769px) { .logo { display: inline-block; float: left; margin: 0; margin-left: 2.0833333333%; } }
+@media (min-width: 769px) { .logo { display: inline-block; float: left; margin: 0; margin-left: 2.0833333333%; margin-left: 0; } }
 
 .logo img { display: inline-block; width: 160px; }
 
@@ -387,7 +393,7 @@ nav.mainmenu a:hover { color: #303284; }
 
 .builtwithwicket { background-color: #eee; /*margin-left: -1rem; margin-right: -1rem;*/ padding-bottom: 2rem; padding-left: 1rem; padding-right: 1rem; }
 
-.builtwithwicket .slick-prev::before, .builtwithwicket .slick-next::before { color: #FF9925; }
+.builtwithwicket .slick-prev::before, .builtwithwicket .slick-next::before { color: #E97826; }
 
 .builtwithwicket + hr { display: none; }
 
@@ -427,9 +433,9 @@ div.quickstart-wizard button { background-color: #E68A00; color: white; height: 
 
 code, pre, code > span, pre > span { font-family: 'Source Code Pro', 'courier new', monospace; font-size: 0.875rem; }
 
-a { border-color: #FF9925; border-style: none none dotted none; border-width: 0 0 1px 0; cursor: pointer; font-weight: 400; text-decoration: none; }
+a { border-color: #E97826; border-style: none none dotted none; border-width: 0 0 1px 0; cursor: pointer; font-weight: 400; text-decoration: none; }
 
-a:hover { color: #ffb158; }
+a:hover { color: #ee9554; }
 
 h1 a, h2 a, h3 a { border: none; }
 
@@ -445,7 +451,7 @@ div.header { background-color: white; border-bottom: 1px solid #e1e1e1; box-shad
 
 .preamble h1 { font-weight: 300; padding-top: 2rem; }
 
-.preamble h2 { color: #FF9925; font-weight: 300; }
+.preamble h2 { color: #E97826; font-weight: 300; }
 
 .preamble h1 + *, .preamble h2 + *, .preamble img + * { padding-top: 2rem; }
 
@@ -483,13 +489,13 @@ th { text-align: left; }
 
 .media-bar a > img { width: 100%; }
 
-.wicket7.header { background-color: #FF9925; background-image: url(/img/wicket-7-bg.jpg); margin-bottom: 0; text-align: center; }
+.wicket7.header { background-color: #E97826; background-image: url(/img/wicket-7-bg.jpg); margin-bottom: 0; text-align: center; }
 
 .wicket7.header a { border: none; margin: 0; padding: 0; height: 0; }
 
 .wicket7.header img { min-width: 240px; width: 33%; margin: 0 auto; padding: 6rem 0 4rem; }
 
-.wicket7.header nav.mainmenu { background-color: #FF9925; line-height: 3em; margin-top: 1rem; margin-bottom: 0; padding-right: 1em; }
+.wicket7.header nav.mainmenu { background-color: #E97826; line-height: 3em; margin-top: 1rem; margin-bottom: 0; padding-right: 1em; }
 
 .wicket7.header nav.mainmenu ul { margin-bottom: 0; }
 

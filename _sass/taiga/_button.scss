@@ -33,7 +33,7 @@ input::-moz-focus-inner {
 input[type=submit],
 button {
     @extend %button;
-    background: $color-brand-50;
+    background: $color-brand-70;
     color: $white;
 
     &:hover {
