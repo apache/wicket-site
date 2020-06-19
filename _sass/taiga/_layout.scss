@@ -54,3 +54,8 @@
     @include grid-container;
     padding: $spacing;
 }
+
+footer {
+    background-image: linear-gradient(rgb(255, 255, 255) 0px, rgb(233, 233, 233) 30%);
+}
+

@@ -110,6 +110,8 @@ dl.advanced dd { float: left; width: 66.6666666667%; margin-left: 0%; margin-rig
 
 .l-menu-container:after { clear: both; }
 
+footer { background-image: linear-gradient(white 0px, #e9e9e9 30%); }
+
 .is-hidden { display: none !important; }
 
 .is-hidden, .is-invisible { visibility: hidden !important; }
