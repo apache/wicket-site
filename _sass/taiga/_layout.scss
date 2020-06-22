@@ -44,18 +44,9 @@
 .l-container {
     margin: auto;
     max-width: $max-width;
-    padding: $spacing;
+    padding: $spacing ;
     @include grid-container;
 
-    @include breakpoint($breakpoint-20) { padding: $spacing * 2; }
-}
-
-.l-menu-container {
-    @include grid-container;
-    padding: $spacing;
-}
-
-footer {
-    background-image: linear-gradient(rgb(255, 255, 255) 0px, rgb(233, 233, 233) 30%);
+    @include breakpoint($breakpoint-20) { padding: ($spacing * 2) ($spacing * 5); }
 }
 
