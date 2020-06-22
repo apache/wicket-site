@@ -80,43 +80,45 @@ And you're done!
 Fill in your project details in the wizard below and copy the generated
 command line to your clipboard.
 
-<div class="quickstart-wizard">
-  <div>
-    <label title="Base Package" for="groupId">Group ID</label>
-    <input type="text" value="com.mycompany" onkeyup="changeIt();" id="groupId">
-  </div>
-  <div>
-    <label title="Project Name" for="artifactId">Artifact ID</label>
-    <input type="text" value="myproject" onkeyup="changeIt();" id="artifactId">
-  </div>
-  <div>
-    <label title="Wicket Version" for="version">Wicket Version</label>
-    <select onchange="changeIt();" id="version">
-{% for version in site.wicket.versions reversed %}
-{% if version == site.wicket.version %}
-	<option value="{{version}}" selected="selected">{{version}}</option>
-{% else %}
-	<option value="{{version}}">{{version}}</option>
-{% endif %}
-{% endfor %}
+  <div class="l-two-third">
+    <div class="quickstart-wizard">
+      <div>
+        <label title="Base Package" for="groupId">Group ID</label>
+        <input type="text" value="com.mycompany" onkeyup="changeIt();" id="groupId">
+      </div>
+      <div>
+        <label title="Project Name" for="artifactId">Artifact ID</label>
+        <input type="text" value="myproject" onkeyup="changeIt();" id="artifactId">
+      </div>
+      <div>
+        <label title="Wicket Version" for="version">Wicket Version</label>
+        <select onchange="changeIt();" id="version">
+    {% for version in site.wicket.versions reversed %}
+    {% if version == site.wicket.version %}
+    	<option value="{{version}}" selected="selected">{{version}}</option>
+    {% else %}
+    	<option value="{{version}}">{{version}}</option>
+    {% endif %}
+    {% endfor %}
+        </select>
+      </div>
+      <div>
+    <label for="appserver" title="Server to deploy on">Server to deploy on</label>
+    <select id="appserver" onchange="changeIt();">
+    	<option value="any" selected="selected">Any but Wild Fly</option>
+    	<option value="wildfly" >Wild Fly (JBoss 8.x)</option>
     </select>
+    </div>
+      <div>
+        <label id="cmdLabel" for="cmdLine">generated command line</label>
+        <textarea onfocus="this.select();" id="cmdLine" style="resize: vertical;"></textarea>
+        <script>changeIt();</script>
+      </div>
+      <div>
+        <button data-clipboard-target="cmdLine" class="clip_button" id="cmdLineCopy">copy to clipboard</button>
+      </div>
+    </div>
   </div>
-  <div>
-<label for="appserver" title="Server to deploy on">Server to deploy on</label>
-<select id="appserver" onchange="changeIt();">
-	<option value="any" selected="selected">Any but Wild Fly</option>
-	<option value="wildfly" >Wild Fly (JBoss 8.x)</option>
-</select>
-</div>
-  <div>
-    <label id="cmdLabel" for="cmdLine">generated command line</label>
-    <textarea onfocus="this.select();" id="cmdLine" style="resize: vertical;"></textarea>
-    <script>changeIt();</script>
-  </div>
-  <div>
-    <button data-clipboard-target="cmdLine" class="clip_button" id="cmdLineCopy">copy to clipboard</button>
-  </div>
-</div>
 <br/>
 
 With the generated command line on your clipboard open up a terminal
