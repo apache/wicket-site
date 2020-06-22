@@ -65,9 +65,9 @@ by their respective development teams.</p>
 <p>Alternatively, you can generate an Eclipse project typing the following command on project’s root:</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn eclipse:eclipse</span></code></pre></figure>
 <p>Maven will add all the necessary JAR files to the project’s classpath. Now the sources can be imported in Eclipse using the “Existing Projects into Workspace” wizard.</p>
-<p>If not already present the <code class="highlighter-rouge">M2_REPO</code> classpath variable has to point to your local Maven repository.
-The repository is typically found in <code class="highlighter-rouge">C:\Documents and Settings\&lt;username&gt;\.m2\repo</code> or (for unix buffs) <code class="highlighter-rouge">~/.m2/repo</code>. It can be set within Eclipse (Preferences-&gt;Java-&gt;Build Path-&gt;Classpath Variables) or with the help of Maven:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt;</span> eclipse:add-maven-repo</code></pre></figure>
+<p>If not already present the <code class="language-plaintext highlighter-rouge">M2_REPO</code> classpath variable has to point to your local Maven repository.
+The repository is typically found in <code class="language-plaintext highlighter-rouge">C:\Documents and Settings\&lt;username&gt;\.m2\repo</code> or (for unix buffs) <code class="language-plaintext highlighter-rouge">~/.m2/repo</code>. It can be set within Eclipse (Preferences-&gt;Java-&gt;Build Path-&gt;Classpath Variables) or with the help of Maven:</p>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt;</span><span class="w"> </span>eclipse:add-maven-repo</code></pre></figure>
 <p>If you want to go along with the Wicket way of code formatting you should import the Wicket code format profile into your workspace (Preferences-&gt;Java-&gt;Code Style-&gt;Formatter), found in:</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&lt;path-to-eclipse-workspace&gt;</span>/wicket-core/EclipseCodeFormat.xml</code></pre></figure>
 <p>Finally configure the editor to automatically format all edited lines and organize imports on save (Preferences-&gt;Java-&gt;Editor-&gt;Save Actions).</p>

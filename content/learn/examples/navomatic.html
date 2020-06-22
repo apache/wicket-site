@@ -67,7 +67,7 @@ in italics. Also the message box shows that we are viewing Page2 instead of
 Page1.</p>
 <h2 id="navigation-component">Navigation component</h2>
 <p>To create a reusable navigation component we are going to use a
-<code class="highlighter-rouge">org.apache.wicket.markup.html.border.Border</code> component. From the Border
+<code class="language-plaintext highlighter-rouge">org.apache.wicket.markup.html.border.Border</code> component. From the Border
 Javadoc:</p>
 <blockquote>
   <p>A border component has associated markup which is drawn and determines
@@ -75,9 +75,9 @@ placement of any markup and/or components nested within the border
 component.</p>
 </blockquote>
 <p>The portion of the border’s associated markup file which is to be used in
-rendering the border is denoted by a <code class="highlighter-rouge">&lt;wicket:border&gt;</code> tag. The children of the
+rendering the border is denoted by a <code class="language-plaintext highlighter-rouge">&lt;wicket:border&gt;</code> tag. The children of the
 border component instance are then inserted into this markup, replacing the
-first <code class="highlighter-rouge">&lt;wicket:body/&gt;</code> tag in the border’s associated markup.</p>
+first <code class="language-plaintext highlighter-rouge">&lt;wicket:body/&gt;</code> tag in the border’s associated markup.</p>
 <p>For example, here is markup for a simple Border subclass, a usage of that
 border, and the markup which would be output on rendering:</p>
 <h3 id="border-markup">Border markup</h3>
@@ -91,7 +91,7 @@ border, and the markup which would be output on rendering:</p>
 <h3 id="border-usage">Border usage</h3>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">"myBorder"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">wicket:id = </span><span class="s">"myBorder"</span><span class="nt">&gt;</span>
       Middle
   <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
@@ -102,8 +102,8 @@ border, and the markup which would be output on rendering:</p>
       First Middle Last
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></figure>
-<p>In other words, the markup around the <code class="highlighter-rouge">&lt;wicket:body/&gt;</code> tag in the border
-component is sort of “wrapped around” the body of the <code class="highlighter-rouge">&lt;span&gt;</code> tag where the
+<p>In other words, the markup around the <code class="language-plaintext highlighter-rouge">&lt;wicket:body/&gt;</code> tag in the border
+component is sort of “wrapped around” the body of the <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> tag where the
 border is used. This seems simple in this example, but keep in mind that
 nested components and even nested borders can appear anywhere in either markup
 file. This can be used to create quite complex effects with relatively little
@@ -111,49 +111,49 @@ code.</p>
 <h3 id="navomaticapplicationjava">NavomaticApplication.java</h3>
 <p>Just as in the Hello World! example, we need to define our application. In
 this case, we set Page1 to be our home page.</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">navomatic</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">org.apache.wicket.examples.navomatic</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.protocol.http.WebApplication</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavomaticApplication</span> <span class="kd">extends</span> <span class="n">WebApplication</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavomaticApplication</span> <span class="kd">extends</span> <span class="nc">WebApplication</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">NavomaticApplication</span><span class="o">()</span> <span class="o">{</span>
     <span class="o">}</span>
-    <span class="kd">public</span> <span class="n">Class</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">Page1</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">Class</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Page1</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 <h3 id="page1java">Page1.java</h3>
 <p>The Page1 Java and HTML files look like this:</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">navomatic</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">wicket.examples.navomatic</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebPage</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Page1</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Page1</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">Page1</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">NavomaticBorder</span><span class="o">(</span><span class="s">"navomaticBorder"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">NavomaticBorder</span><span class="o">(</span><span class="s">"navomaticBorder"</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 <h3 id="page1html">Page1.html</h3>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span> 
-    <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">"navomaticBorder"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">wicket:id = </span><span class="s">"navomaticBorder"</span><span class="nt">&gt;</span>
         You are viewing Page1
     <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></figure>
-<p>Notice that the NavomaticBorder component is attached to the <code class="highlighter-rouge">&lt;span&gt;</code> tag
+<p>Notice that the NavomaticBorder component is attached to the <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> tag
 because the name of the component in the Java code is “navomaticBorder” and
-the <code class="highlighter-rouge">&lt;span&gt;</code> tag’s wicket:id attribute is set to “navomaticBorder”. Because the
+the <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> tag’s wicket:id attribute is set to “navomaticBorder”. Because the
 two names match, Wicket associates the NavomaticBorder Java component with the
-<code class="highlighter-rouge">&lt;span&gt;</code> tag.</p>
+<code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> tag.</p>
 <h3 id="page2java">Page2.java</h3>
 <p>The Page2 Java and HTML files look almost identical (and we’ll omit the
 sources for Page3 altogether because it follows the same pattern):</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Page2</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Page2</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">Page2</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">NavomaticBorder</span><span class="o">(</span><span class="s">"navomaticBorder"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">NavomaticBorder</span><span class="o">(</span><span class="s">"navomaticBorder"</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 <h3 id="page2html">Page2.html</h3>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">"navomaticBorder"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">wicket:id = </span><span class="s">"navomaticBorder"</span><span class="nt">&gt;</span>
         You are viewing Page2
     <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
@@ -162,14 +162,14 @@ sources for Page3 altogether because it follows the same pattern):</p>
 <p>So how does NavomaticBorder work? Glad you asked. The Java code below adds two
 other components, which are itself borders. Each adds a line around its
 contents. The rest of the magic is in the NavomaticBorder markup.</p>
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">wicket</span><span class="o">.</span><span class="na">examples</span><span class="o">.</span><span class="na">navomatic</span><span class="o">;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">wicket.examples.navomatic</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.examples.compref.MyBorder</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.border.Border</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavomaticBorder</span> <span class="kd">extends</span> <span class="n">Border</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="nf">NavomaticBorder</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">componentName</span><span class="o">)</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NavomaticBorder</span> <span class="kd">extends</span> <span class="nc">Border</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">NavomaticBorder</span><span class="o">(</span><span class="kd">final</span> <span class="nc">String</span> <span class="n">componentName</span><span class="o">)</span> <span class="o">{</span>
         <span class="kd">super</span><span class="o">(</span><span class="n">componentName</span><span class="o">);</span>
-        <span class="n">addToBorder</span><span class="o">(</span><span class="k">new</span> <span class="n">MyBorder</span><span class="o">(</span><span class="s">"navigationBorder"</span><span class="o">));</span>
-        <span class="n">addToBorder</span><span class="o">(</span><span class="k">new</span> <span class="n">MyBorder</span><span class="o">(</span><span class="s">"bodyBorder"</span><span class="o">));</span>
+        <span class="n">addToBorder</span><span class="o">(</span><span class="k">new</span> <span class="nc">MyBorder</span><span class="o">(</span><span class="s">"navigationBorder"</span><span class="o">));</span>
+        <span class="n">addToBorder</span><span class="o">(</span><span class="k">new</span> <span class="nc">MyBorder</span><span class="o">(</span><span class="s">"bodyBorder"</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 <h3 id="navomaticborderhtml">NavomaticBorder.html</h3>
@@ -180,19 +180,19 @@ contents. The rest of the magic is in the NavomaticBorder markup.</p>
         <span class="nt">&lt;table&gt;</span>
             <span class="nt">&lt;tr&gt;</span>
                 <span class="nt">&lt;td&gt;</span>
-                    <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">"navigationBorder"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;span</span> <span class="na">wicket:id = </span><span class="s">"navigationBorder"</span><span class="nt">&gt;</span>
                       <span class="nt">&lt;b&gt;</span>Navigation Links<span class="nt">&lt;/b&gt;</span>
                       <span class="nt">&lt;p&gt;</span>
                         <span class="nt">&lt;wicket:link&gt;</span>
-                          <span class="nt">&lt;a</span> <span class="na">href =</span><span class="err"> </span><span class="s">"Page1.html"</span><span class="nt">&gt;</span>Page1<span class="nt">&lt;/a&gt;&lt;br/&gt;</span>
-                          <span class="nt">&lt;a</span> <span class="na">href =</span><span class="err"> </span><span class="s">"Page2.html"</span><span class="nt">&gt;</span>Page2<span class="nt">&lt;/a&gt;&lt;br/&gt;</span>
-                          <span class="nt">&lt;a</span> <span class="na">href =</span><span class="err"> </span><span class="s">"Page3.html"</span><span class="nt">&gt;</span>Page3<span class="nt">&lt;/a&gt;</span>
+                          <span class="nt">&lt;a</span> <span class="na">href = </span><span class="s">"Page1.html"</span><span class="nt">&gt;</span>Page1<span class="nt">&lt;/a&gt;&lt;br/&gt;</span>
+                          <span class="nt">&lt;a</span> <span class="na">href = </span><span class="s">"Page2.html"</span><span class="nt">&gt;</span>Page2<span class="nt">&lt;/a&gt;&lt;br/&gt;</span>
+                          <span class="nt">&lt;a</span> <span class="na">href = </span><span class="s">"Page3.html"</span><span class="nt">&gt;</span>Page3<span class="nt">&lt;/a&gt;</span>
                         <span class="nt">&lt;/wicket:link&gt;</span>
                       <span class="nt">&lt;/p&gt;</span>
                     <span class="nt">&lt;/span&gt;</span>
                 <span class="nt">&lt;/td&gt;</span>
                 <span class="nt">&lt;td&gt;</span>
-                    <span class="nt">&lt;span</span> <span class="na">wicket:id =</span><span class="err"> </span><span class="s">"bodyBorder"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;span</span> <span class="na">wicket:id = </span><span class="s">"bodyBorder"</span><span class="nt">&gt;</span>
                         <span class="nt">&lt;wicket:body/&gt;</span>
                     <span class="nt">&lt;/span&gt;</span>
                 <span class="nt">&lt;/td&gt;</span>
@@ -203,17 +203,17 @@ contents. The rest of the magic is in the NavomaticBorder markup.</p>
  <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></figure>
 <p>Notice that the markup above encloses the entire contents of the markup file’s
-<code class="highlighter-rouge">&lt;body&gt;</code> with a <code class="highlighter-rouge">&lt;wicket:border&gt;</code> tag, as we described earlier. This lets the
+<code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> with a <code class="language-plaintext highlighter-rouge">&lt;wicket:border&gt;</code> tag, as we described earlier. This lets the
 NavomaticBorder know how much of its markup to use when it wraps itself around
 the markup it finds in the context where it is used. Notice also the
-<code class="highlighter-rouge">&lt;wicket:body/&gt;</code> marker which designates where to put whatever is found inside
+<code class="language-plaintext highlighter-rouge">&lt;wicket:body/&gt;</code> marker which designates where to put whatever is found inside
 the tag at the use context.</p>
-<p>Next, notice that the navigation links and the border’s <code class="highlighter-rouge">&lt;wicket:body/&gt;</code> are
-both enclosed in <code class="highlighter-rouge">&lt;span&gt;</code> tags which have wicket:id attributes that associate
+<p>Next, notice that the navigation links and the border’s <code class="language-plaintext highlighter-rouge">&lt;wicket:body/&gt;</code> are
+both enclosed in <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> tags which have wicket:id attributes that associate
 those tags with the MyBorder components added in the NavomaticBorder
 constructor. These nested border components will each draw a thin black line
 around their contents.</p>
-<p>Finally, the <code class="highlighter-rouge">&lt;wicket:link&gt;</code> tag is used to mark the links in the navigation
+<p>Finally, the <code class="language-plaintext highlighter-rouge">&lt;wicket:link&gt;</code> tag is used to mark the links in the navigation
 as automatic links. Ordinarily, you would need to create link components and
 attach them to your page manually, but anchor links that are marked as
 automatic are parsed and hooked up to link components for you, as appropriate.

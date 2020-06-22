@@ -65,7 +65,7 @@ API breaks are present breaks are present in this release compared to
 <figure class="highlight"><pre><code class="language-java" data-lang="java">    <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span>
     <span class="o">{</span>
-       <span class="n">setHeaderResponseDecorator</span><span class="o">(</span><span class="k">new</span> <span class="n">JavaScriptToBodyCustomResponseDecorator</span><span class="o">(</span><span class="s">"footer-container"</span><span class="o">));</span>
+       <span class="n">setHeaderResponseDecorator</span><span class="o">(</span><span class="k">new</span> <span class="nc">JavaScriptToBodyCustomResponseDecorator</span><span class="o">(</span><span class="s">"footer-container"</span><span class="o">));</span>
     <span class="o">}</span></code></pre></figure>
 <p>See <a href="https://ci.apache.org/projects/wicket/guide/7.x/single.html#_put_javascript_inside_page_body">user guide</a> for more details. Now each application has a default IHeaderResponseDecorator, which decorates header responses with a ResourceAggregator. Applications have to make sure, that each response is now explicitly decorated with a ResourceAggregator too:</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java">    <span class="nd">@Override</span>
@@ -73,7 +73,7 @@ API breaks are present breaks are present in this release compared to
     <span class="o">{</span>
        <span class="n">setHeaderResponseDecorator</span><span class="o">(</span><span class="n">response</span> <span class="o">-&gt;</span> 
        <span class="o">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nf">ResourceAggregator</span><span class="o">(</span><span class="k">new</span> <span class="n">JavaScriptFilteredIntoFooterHeaderResponse</span><span class="o">(</span><span class="n">response</span><span class="o">,</span> <span class="s">"footer-container"</span><span class="o">));</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">ResourceAggregator</span><span class="o">(</span><span class="k">new</span> <span class="nc">JavaScriptFilteredIntoFooterHeaderResponse</span><span class="o">(</span><span class="n">response</span><span class="o">,</span> <span class="s">"footer-container"</span><span class="o">));</span>
        <span class="o">});</span>
     <span class="o">}</span></code></pre></figure>
 <h2 id="caveats">Caveats</h2>
@@ -103,7 +103,7 @@ migration guide found at</p>
 <p>Have fun!</p>
 <p>— The Wicket team</p>
 <p>========================================================================</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
 </code></pre></div></div>
 <p>Signature for apache-wicket-8.0.0-M9.zip:</p>
 <div class="highlight"><pre>

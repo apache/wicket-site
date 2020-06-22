@@ -66,7 +66,7 @@ maintainable, enterprise ready build. The book is available for free from the
 Mergere website.</p>
 <h2 id="getting-your-wicket-version">Getting your Wicket version</h2>
 <p>Clone the master branch from Apache Git Wicket repository</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> git clone http://git-wip-us.apache.org/repos/asf/wicket.git</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>git clone http://git-wip-us.apache.org/repos/asf/wicket.git</code></pre></figure>
 <p>This will give you a directory structure like the following directory tree:</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">wicket
 wicket/wicket-core
@@ -77,10 +77,10 @@ wicket/wicket-examples
 wicket/wicket-spring-annot
 </span><span class="c">...</span></code></pre></figure>
 <p>To check out a different branch use:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">cd </span>wicket
-<span class="gp">$</span> git checkout <span class="nt">-b</span> release/wicket-x.y.z release/wicket-x.y.z
-<span class="gp">#</span> verify the branch with:
-<span class="gp">$</span> git branch</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>wicket
+<span class="gp">$</span><span class="w"> </span>git checkout <span class="nt">-b</span> release/wicket-x.y.z release/wicket-x.y.z
+<span class="gp">#</span><span class="w"> </span>verify the branch with:
+<span class="gp">$</span><span class="w"> </span>git branch</code></pre></figure>
 <p>In this document we focus at the maven project descriptor located in the top
 level directory, which enforces default settings for all Wicket projects such
 as plug-in settings, versioning of the Wicket projects, managing the various
@@ -132,12 +132,12 @@ is then as simple as:</p>
 <figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn eclipse:eclipse</span></code></pre></figure>
 <p>or opening the project using Netbeans or IDEAs Maven integration.</p>
 <p>Maven will then add all the necessary JAR files to the project’s classpath.</p>
-<p>One thing you need to make sure is that you have set the <code class="highlighter-rouge">M2_REPO</code> classpath
+<p>One thing you need to make sure is that you have set the <code class="language-plaintext highlighter-rouge">M2_REPO</code> classpath
 variable in Eclipse (or a similar construct in Netbeans), and point it to your
-local repository, typically found in <code class="highlighter-rouge">C:\Documents and Settings\username\.m2\repo</code>
-or (for unix buffs) <code class="highlighter-rouge">~/.m2/repo</code></p>
+local repository, typically found in <code class="language-plaintext highlighter-rouge">C:\Documents and Settings\username\.m2\repo</code>
+or (for unix buffs) <code class="language-plaintext highlighter-rouge">~/.m2/repo</code></p>
 <p>You can add this setting using maven:</p>
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt;</span> eclipse:add-maven-repo</code></pre></figure>
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt;</span><span class="w"> </span>eclipse:add-maven-repo</code></pre></figure>
         </section>
     </div>
 </main>
