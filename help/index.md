@@ -208,5 +208,5 @@ support.
 
 ---
 
-{% markdown help/support.md %}
+{% include support.md %}
 
