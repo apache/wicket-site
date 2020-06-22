@@ -11,15 +11,18 @@ preamble: >
   your question and helping others, reporting a security problem and
   reporting a bug.
 ---
-
-<div class="button-bar">
-    <a class="button" href="#security"><i class="fa fa-lock"></i><br>Security</a>
-    <a class="button" href="#reportbug"><i class="fa fa-bug"></i><br>Report a bug</a>
-</div>
-<div class="button-bar">
-    <a class="button" href="#questions"><i class="fa fa-question-circle"></i><br>Get help</a>
-    <a class="button" href="#commercial"><i class="fa fa-ambulance"></i><br>Commercial support</a>
-</div>
+<div class="l-button-table">
+    <div class="l-two-third">
+      <div class="button-bar">
+        <a class="button" href="#security"><i class="fa fa-lock"></i><br>Security</a>
+        <a class="button" href="#reportbug"><i class="fa fa-bug"></i><br>Report a bug</a>
+      </div>
+      <div class="button-bar">
+        <a class="button" href="#questions"><i class="fa fa-question-circle"></i><br>Get help</a>
+        <a class="button" href="#commercial"><i class="fa fa-ambulance"></i><br>Commercial support</a>
+      </div>
+    </div>
+</div>  
 
 ## We are here to Help {#questions}
 

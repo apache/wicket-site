@@ -5,11 +5,15 @@ subtitle: Stay in touch with the other Wicketers around the world
 preamble: During the last years a large and active community has grown around Wicket. Here you can find what it can offer you and how to join it.
 ---
 
-<div class="button-bar">
-    <a class="button" href="#github"><i class="fa fa-github-square"></i><br>GitHub</a>
-    <a class="button" href="#twitter"><i class="fa fa-twitter"></i><br>Twitter</a>
-    <a class="button" href="#tumblr"><i class="fa fa-tumblr-square"></i><br>Tumblr</a>
-</div>
+<div class="l-button-table">
+    <div class="l-two-third">
+        <div class="button-bar">
+            <a class="button" href="#github"><i class="fa fa-github-square"></i><br>GitHub</a>
+            <a class="button" href="#twitter"><i class="fa fa-twitter"></i><br>Twitter</a>
+            <a class="button" href="#tumblr"><i class="fa fa-tumblr-square"></i><br>Tumblr</a>
+        </div>
+    </div>
+</div>    
 
 ## GitHub repository {#github}
 

@@ -1,58 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta charset="utf-8">
-        <title>How to Get Help for Apache Wicket | Apache Wicket</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
-        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
-		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-
-    </head>
-
-    <body class="">
-        <div class="header default">
-    <div class="l-container">
-<nav class="mainmenu">
-    <ul>
-		<!-- /start/quickstart.html || /help/ -->
-    	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
-		<!-- /start/download.html || /help/ -->
-    	<li class=""><a href="/start/download.html">Download</a></li>
-		<!-- /learn || /help/ -->
-    	<li class=""><a href="/learn">Documentation</a></li>
-		<!-- /help || /help/ -->
-    	<li class=""><a href="/help">Support</a></li>
-		<!-- /contribute || /help/ -->
-    	<li class=""><a href="/contribute">Contribute</a></li>
-		<!-- /community || /help/ -->
-    	<li class=""><a href="/community">Community</a></li>
-		<!-- /apache || /help/ -->
-    	<li class=""><a href="/apache">Apache</a></li>
-    </ul>
-</nav>
-        <div class="logo">
-    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
-</div>
-    </div>
-</div>
-<main>
-    <div class="l-container">
-        <header class="l-full preamble">
-            <h1>How to Get Help for Apache Wicket</h1>
-            <h2>When the documentation and google are not enough</h2>
-            <p>Apache Wicket has a very helpful community with over 10 years of development and thousands of developers working day in and out building great Wicket applications. As they have received help from other developers, many want to return the favour and answer your questions. This document helps you find the various venues of asking your question and helping others, reporting a security problem and reporting a bug.
-</p>
-        </header>
-        <section class="toc left">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#questions"><span class="toc-number">1</span> <span class="toc-text">We are here to Help</span></a></li><li class="toc--level-1 toc--section-2"><a href="#security"><span class="toc-number">2</span> <span class="toc-text">Report A Security Problem</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#contact-the-wicket-pmc-privately"><span class="toc-number">2.1</span> <span class="toc-text">Contact the Wicket PMC privately</span></a></li><li class="toc--level-2 toc--section-4"><a href="#report-normal-bugs-in-jira"><span class="toc-number">2.2</span> <span class="toc-text">Report normal bugs in JIRA</span></a></li></ul></li><li class="toc--level-1 toc--section-5"><a href="#reportbug"><span class="toc-number">3</span> <span class="toc-text">Report a Bug for Apache Wicket</span></a><ul><li class="toc--level-2 toc--section-6"><a href="#checklist-for-reporting-a-bug"><span class="toc-number">3.1</span> <span class="toc-text">Checklist for Reporting a Bug</span></a></li><li class="toc--level-2 toc--section-7"><a href="#searchbug"><span class="toc-number">3.2</span> <span class="toc-text">Search for a Reported, Existing Bug</span></a></li><li class="toc--level-2 toc--section-8"><a href="#latestrelease"><span class="toc-number">3.3</span> <span class="toc-text">Using the Latest Release of Wicket</span></a></li><li class="toc--level-2 toc--section-9"><a href="#compatible"><span class="toc-number">3.4</span> <span class="toc-text">Using Compatible Versions of Supporting Libraries</span></a></li><li class="toc--level-2 toc--section-10"><a href="#bugquickstart"><span class="toc-number">3.5</span> <span class="toc-text">Provide a Quick Start</span></a></li><li class="toc--level-2 toc--section-11"><a href="#createreport"><span class="toc-number">3.6</span> <span class="toc-text">Create a Report in our Issue Tracker</span></a></li><li class="toc--level-2 toc--section-12"><a href="#faster"><span class="toc-number">3.7</span> <span class="toc-text">How to Get Help Faster</span></a></li></ul></li><li class="toc--level-1 toc--section-13"><a href="#commercial"><span class="toc-number">4</span> <span class="toc-text">Commercial Wicket Support</span></a><ul><li class="toc--level-2 toc--section-14"><a href="#finding-a-wicket-service-provider"><span class="toc-number">4.1</span> <span class="toc-text">Finding a Wicket Service Provider</span></a></li><li class="toc--level-2 toc--section-15"><a href="#registering-as-a-wicket-service-provider"><span class="toc-number">4.2</span> <span class="toc-text">Registering as a Wicket Service Provider</span></a></li></ul></li></ul></div>
-        </section>
-        <section>
-            <div class="l-button-table">
+I"6-<div class="l-button-table">
     <div class="l-two-third">
       <div class="button-bar">
         <a class="button" href="#security"><i class="fa fa-lock"></i><br />Security</a>
@@ -64,13 +10,17 @@
       </div>
     </div>
 </div>
+
 <h2 id="questions">We are here to Help</h2>
+
 <p>There are a lot of venues to ask questions about Wicket. The most
 obvious one is of course asking a search engine. But when you can’t
 find an answer or are unable to ask the right question, discussing it
 with a human being is really the way to go.</p>
+
 <p>The following list gives you the options for asking your questions (and
 maybe even answer a couple) about Wicket:</p>
+
 <ul>
   <li>
     <p><a href="email.html">Our mailing lists</a> provide a quick and easy way to ask
@@ -87,46 +37,66 @@ make it difficult to find activity in the channel.</p>
 modern Q&amp;A experience with a helpful community.</p>
   </li>
 </ul>
+
 <p>Whichever you choose, remember to <a href="http://www.catb.org/esr/faqs/smart-questions.html">ask your questions the right
 way</a>.</p>
+
 <hr />
+
 <h2 id="security">Report A Security Problem</h2>
+
 <p>The Apache Software Foundation takes a very active stance in
 eliminating security problems against the Apache Wicket web framework.</p>
+
 <p>For reporting and discussing a security issue you should contact the
 Wicket PMC privately.</p>
+
 <p><strong>** PLEASE DO NOT CREATE A SECURITY REPORT IN OUR ISSUE TRACKER **</strong></p>
+
 <p>The issue tracker for Wicket is not the appropriate venue for reporting
 security issues as the issue tracker is publicly accessible. Instead,
 contact the Wicket PMC privately.</p>
+
 <h3 id="contact-the-wicket-pmc-privately">Contact the Wicket PMC privately</h3>
+
 <p>Send your security issue to <strong>private at wicket.apache.org</strong>. This list
 is not publicly available so we can discuss and fix the issue in
 private without leaking the info to any bad guys.</p>
+
 <p><a class="button" href="mailto:private@wicket.apache.org?subject=Security%20issue" onclick="window.location.href='mailto:private@wicket.apache.org?subject=Security%20issue';return false;">
     <i class="fa fa-shield"></i>
     REPORT A SECURITY ISSUE
 </a></p>
+
 <p>We treat all security issues seriously and will try to fix them as soon
 as possible in all affected versions that we still support.</p>
+
 <h3 id="report-normal-bugs-in-jira">Report normal bugs in JIRA</h3>
+
 <p>The Security Team cannot accept regular bug reports or other queries,
 we ask that you use our <a href="/help/#reportbug">bug reporting page</a>
 for normal, non-security bugs.</p>
+
 <hr />
+
 <h2 id="reportbug">Report a Bug for Apache Wicket</h2>
+
 <p>If you are experiencing problems using Wicket please report your
 problem via the <a href="https://issues.apache.org/jira/browse/WICKET">Issue
 Tracker</a>. You may also
 find it useful to discuss your issues with the community on one of the
 Mailing Lists.</p>
+
 <p>Before asking for help with your issue, it’s a very good idea to search
 for your issue in the mailing list archives and the FAQ. The majority
 of issues can be solved in this manner without having to send an email
 to the mailing list. If you don’t find an answer, use the guidelines
 below when writing the e-mail.</p>
+
 <h3 id="checklist-for-reporting-a-bug">Checklist for Reporting a Bug</h3>
+
 <p>Please use the following checklist before reporting a bug:</p>
+
 <ul>
   <li>Search for a reported, existing bug</li>
   <li>Use the latest release of your Wicket version</li>
@@ -134,59 +104,82 @@ below when writing the e-mail.</p>
   <li>Try reproducing it in a quick start</li>
   <li>Create a report in our issue tracker</li>
 </ul>
+
 <p>While not mandatory, we will ask you these questions in your bug report
 anyway, so you might as well get them out of the way.</p>
+
 <h3 id="searchbug">Search for a Reported, Existing Bug</h3>
+
 <p>A lot of developers use Wicket, and chances are someone already
 encountered your issue. So please search for some keywords of your
 problem using a search engine,
 <a href="http://stackoverflow.com/questions/tagged/wicket">stackoverflow</a> and our
 <a href="https://issues.apache.org/jira/browse/WICKET">issue tracker</a>.</p>
+
 <p>If someone already found your bug, look at how the bug was resolved. If
 it wasn’t resolved, note what they already tried and add your own
 experience to it, possibly including a <a href="#bugquickstart">quick start</a>.</p>
+
 <h3 id="latestrelease">Using the Latest Release of Wicket</h3>
+
 <p>Wicket releases new versions on a regular basis. Chances are that your
 bug has been solved in a recent version. So if for instance you
 discover a bug in Wicket 6.2.0, it might be fixed in a newer version
 (the current version of Wicket 6.x is 6.30.0).</p>
+
 <p>So we ask you to try the latest version of the branch of Wicket you are
 working on. If the bug still remains,</p>
+
 <p>Check if your version is no longer maintained on our download page. If
 your version is no longer maintained we kindly ask you to upgrade your
 project to a newer, maintained version of Wicket. For example if you
 have a project that depends on Wicket 1.3.7, please consider upgrading
 to Wicket 8.8.0.</p>
+
 <h3 id="compatible">Using Compatible Versions of Supporting Libraries</h3>
+
 <p>If you are using a supporting library from either the Wicket project,
 Wicket Stuff or another project, please ensure that the version you use
 is compatible with your Wicket version.</p>
+
 <p>You can’t use Wicket 1.5.x libraries with Wicket 6.x, Wicket 7.x or Wicket 8.x. It
 should be safe to use a library compatible with Wicket 6.0 with
 6.30.0</p>
+
 <p>For example:</p>
+
 <ul>
   <li>wicket-extensions-1.5.12.jar is not compatible with wicket-core-6.30.0</li>
 </ul>
+
 <p>Possible, but not advisable:</p>
+
 <ul>
   <li>wicket-extensions-6.10.0 should be compatible with wicket-core-6.30.0</li>
 </ul>
+
 <p>Advised:</p>
+
 <ul>
   <li>Use wicket-extensions-6.30.0 with wicket-core-6.30.0</li>
 </ul>
+
 <p>This also holds true for release of our sister project <em>Wicket Stuff</em>.</p>
+
 <h3 id="bugquickstart">Provide a Quick Start</h3>
+
 <p>When you encounter an unexpected behavior this can be a bug in Wicket.
 But to be certain it is not caused by something else we kindly ask you
 to try to reproduce your bug in a Quick Start project.</p>
+
 <p>A Quick Start project is generated using our <a href="../start/quickstart.html">online commandline
 generator</a> that creates a Maven project with a simple Wicket
 application. This is a very minimal setup ideal to try to reproduce
 your problem in an isolated way.</p>
+
 <p>The benefits for having your problem reproduced in a minimal Quick
 Start application are many:</p>
+
 <ul>
   <li>
     <p>while trying to reproduce the issue you might discover it is caused
@@ -207,12 +200,16 @@ hand much easier without having to wade through thousands lines of
 code</p>
   </li>
 </ul>
+
 <p>Providing a Quick Start with your problem helps us resolve the bug much
 quicker.</p>
+
 <h3 id="createreport">Create a Report in our Issue Tracker</h3>
+
 <p>Whenever you are reporting a problem, please be sure to include as much
 information as possible; the more we know, the better the chance of a
 quick resolution.</p>
+
 <ul>
   <li>The version of Wicket and the libraries you use</li>
   <li>Which operating system and JDK</li>
@@ -225,8 +222,11 @@ unnecessary parts of a stack trace.</li>
   <li>Log output can be useful too; sometimes enabling DEBUG logging can
 help your code &amp; configuration files are often useful</li>
 </ul>
+
 <h3 id="faster">How to Get Help Faster</h3>
+
 <p>We can help you much quicker if you try the following</p>
+
 <ul>
   <li>Provide us with a JUnit test case that demonstrates your issue. e.g.
 if you think you’ve found a bug, can you create a test case to
@@ -240,20 +240,28 @@ your code and send us the output. To find memory leaks its quicker to
 resolve if you can tell us what classes are taking up all of the RAM;
 we can normally figure out whats wrong from that.</li>
 </ul>
+
 <p>Help us help you!</p>
+
 <p>When you want more direct support, you can consider hiring commercial
 support.</p>
+
 <hr />
+
 <h2 id="commercial">Commercial Wicket Support</h2>
+
 <p>The Wicket community is not only supported by volunteers but several
 individuals and companies provide professional support for Wicket
 application development in many countries around the world.</p>
+
 <h3 id="finding-a-wicket-service-provider">Finding a Wicket Service Provider</h3>
+
 <p>The linked page below lists all companies that provide commercial
 services for Wicket which ranges from training courses, consultancy and
 even project development.</p>
+
 <div class="l-button-table">
-    <div class="l-one-third">
+    <div class="l-two-third">
         <div class="button-bar">
             <a class="button" href="https://cwiki.apache.org/confluence/display/WICKET/Companies+that+provide+services">
                 <i class="fa fa-group"></i><br />
@@ -262,29 +270,21 @@ even project development.</p>
         </div>
     </div>
 </div>
+
 <p>Being mentioned here is not an indication of official “endorsement” by
 the Apache Software Foundation, but is instead provided as a public
 service. This list is in no way a complete listing of the many
 organizations providing either free or for cost support for ASF
 projects. If you would like to be added to this list, or removed, sign
 up for the wiki and add yourself to the list.</p>
+
 <h3 id="registering-as-a-wicket-service-provider">Registering as a Wicket Service Provider</h3>
+
 <p>If you are a service provider specializing in Wicket
 application development you are welcome to add yourself to this wiki
 page (a registered account is required).</p>
+
 <p>We reserve the right to remove your listing if it is deemed
 inappropriate.</p>
-        </section>
-    </div>
-</main>
-        <footer>
-            <div class="l-container">
-    <div class="left">
-        <img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
-        <div style="margin-top:12px;">Copyright © 2020 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
-    </div>
-</div>
-        </footer>
-    </body>
 
-</html>
+:ET

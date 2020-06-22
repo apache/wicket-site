@@ -16,12 +16,16 @@ The linked page below lists all companies that provide commercial
 services for Wicket which ranges from training courses, consultancy and
 even project development.
 
-<div class="button-bar">
-    <a class="button" href="https://cwiki.apache.org/confluence/display/WICKET/Companies+that+provide+services">
-        <i class="fa fa-group"></i><br>
-        Go to the wiki
-    </a>
-</div>
+<div class="l-button-table">
+    <div class="l-one-third">
+        <div class="button-bar">
+            <a class="button" href="https://cwiki.apache.org/confluence/display/WICKET/Companies+that+provide+services">
+                <i class="fa fa-group"></i><br>
+                Go to the wiki
+            </a>
+        </div>
+    </div>
+</div>    
 
 Being mentioned here is not an indication of official "endorsement" by
 the Apache Software Foundation, but is instead provided as a public
