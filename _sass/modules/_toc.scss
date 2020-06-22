@@ -7,7 +7,7 @@
         margin-top: 1rem;
     }
     
-    @include breakpoint($breakpoint-20) {
+    @include breakpoint($breakpoint-10) {
 	   display: none;
     }
 }
