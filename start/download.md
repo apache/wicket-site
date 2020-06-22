@@ -5,31 +5,35 @@ subtitle: Get the most recent version of Wicket in one source package
 preamble: Wicket is released as a source archive, convenience binaries and through the Maven Central Repository. The most convenient way of getting Wicket is through the Maven dependency management system.
 ---
 
-<div class="button-bar">
-	<a class="button" href="wicket-9.x.html">
-		<i class="fa fa-cloud-download"></i><br>
-		Apache Wicket 9.x
-	</a>
-</div>
-<div class="button-bar">
-	<a class="button" href="wicket-8.x.html">
-		<i class="fa fa-cloud-download"></i><br>
-		Apache Wicket 8.x
-	</a>
-	<a class="button" href="wicket-7.x.html">
-		<i class="fa fa-cloud-download"></i><br>
-		Apache Wicket 7.x
-	</a>
-</div>
-<div class="button-bar">
-	<a class="button" href="wicket-6.x.html">
-		<i class="fa fa-cloud-download"></i><br>
-		Apache Wicket 6.x
-	</a>
-	<a class="button" href="wicket-1.5.x.html">
-		<i class="fa fa-cloud-download"></i><br>
-		Apache Wicket 1.5.x
-	</a>
+<div class="l-button-table">
+    <div class="l-two-third">
+        <div class="button-bar">
+        	<a class="button" href="wicket-9.x.html">
+        		<i class="fa fa-cloud-download"></i><br>
+        		Apache Wicket 9.x
+        	</a>
+        </div>
+        <div class="button-bar">
+        	<a class="button" href="wicket-8.x.html">
+        		<i class="fa fa-cloud-download"></i><br>
+        		Apache Wicket 8.x
+        	</a>
+        	<a class="button" href="wicket-7.x.html">
+        		<i class="fa fa-cloud-download"></i><br>
+        		Apache Wicket 7.x
+        	</a>
+        </div>
+        <div class="button-bar">
+        	<a class="button" href="wicket-6.x.html">
+        		<i class="fa fa-cloud-download"></i><br>
+        		Apache Wicket 6.x
+        	</a>
+        	<a class="button" href="wicket-1.5.x.html">
+        		<i class="fa fa-cloud-download"></i><br>
+        		Apache Wicket 1.5.x
+        	</a>
+        </div>
+    </div>
 </div>
 ## Supported Versions
 

@@ -26,7 +26,7 @@ layout: base
         <section class="toc left">
             {{ content | toc_generate }}
         </section>
-        <section class="left">
+        <section>
             {{ content }}
 {% for item in page.additionalContents %}
             <article id="{{item.sectionId}}" {% unless item.cssClass == '' %}class="{{item.cssClass}}"{% endunless %}>

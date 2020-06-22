@@ -11,7 +11,7 @@
 
 $grid-column: 100% / $grid-columns;
 
-@mixin col($n: 1) { float: left; width: ($n * $grid-column); }
+@mixin col($n: 1) { width: ($n * $grid-column); }
 @mixin prepend($n: 1) { margin-left: $grid-column * $n }
 @mixin append($n: 1) { margin-right: $grid-column * $n }
 

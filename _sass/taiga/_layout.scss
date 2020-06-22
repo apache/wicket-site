@@ -1,35 +1,36 @@
 // =========== Layout
 
 .l-full {
-    width:100%;
-    @include breakpoint($breakpoint-10) { @include grid(48, 1); }
+    @include breakpoint($breakpoint-30) { @include grid(48, 1); }
+    width: 100%;
+    float: none;
 }
 
 .l-two-third {
 
-    @include breakpoint($breakpoint-10) { @include grid(32, 1); }
+    @include breakpoint($breakpoint-30) { @include grid(32, 1); }
 }
 
 .l-half {
 
-    @include breakpoint($breakpoint-10) { @include grid(24, 1); }
+    @include breakpoint($breakpoint-30) { @include grid(24, 1); }
 }
 
 .l-one-quarter {
-    @include breakpoint($breakpoint-10) { @include grid(12, 1); }
+    @include breakpoint($breakpoint-30) { @include grid(12, 1); }
 }
 
 .l-one-eigth {
-    @include breakpoint($breakpoint-10) { @include grid(6, 1); }
+    @include breakpoint($breakpoint-30) { @include grid(6, 1); }
 }
 
 .l-one-sixth {
-    @include breakpoint($breakpoint-10) { @include grid(8, 1); }
+    @include breakpoint($breakpoint-30) { @include grid(8, 1); }
 }
 
 .l-one-third {
 
-    @include breakpoint($breakpoint-10) { @include grid(16, 1);  }
+    @include breakpoint($breakpoint-30) { @include grid(16, 1);  }
 }
 
 .l-grid {
@@ -47,6 +48,18 @@
     padding: $spacing ;
     @include grid-container;
 
-    @include breakpoint($breakpoint-20) { padding: ($spacing * 2) ($spacing * 5); }
+    @include breakpoint($breakpoint-30) { padding: $spacing ($spacing * 5); }
 }
 
+.l-button-table {
+    @include breakpoint($breakpoint-30) {
+        display: flex;
+        justify-content: center;        
+    }
+}
+
+.l-button-table > .l-two-third {
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+} 

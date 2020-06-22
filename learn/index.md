@@ -4,27 +4,30 @@ title: Documentation
 subtitle: All the things you want to know about Wicket but are afraid to ask
 preamble: No matter how you want to learn about Wicket, there's something available for you. If you want a quick reference, use the User Guide. If you rather prefer a book, there's a couple waiting for you. And if you rather watch a video or presentation, we have that covered too.
 ---
-
-<div class="button-bar">
-	<a class="button" href="#news"><i class="fa fa-newspaper-o"></i><br>News</a>
-	<a class="button" href="blogs.html"><i class="fa fa-rss"></i><br>Blogs</a>
-	<a class="button" href="https://cwiki.apache.org/WICKET"><i class="fa fa-users"></i><br>Wiki</a>
-</div>
-<div class="button-bar">
-	<a class="button" href="#guide"><i class="fa fa-file-text-o"></i><br>User Guide</a>
-	<a class="button" href="#javadoc"><i class="fa fa-code"></i><br>API docs</a>
-	<a class="button" href="books/index.html"><i class="fa fa-book"></i><br>Books</a>
-</div>
-<div class="button-bar">
-	<a class="button" href="#migrations"><i class="fa fa-history"></i><br>Migrations</a>
-	<a class="button" href="#presentations"><i class="fa fa-file-powerpoint-o"></i><br>Presentations</a>
-	<a class="button" href="#ides"><i class="fa fa-terminal"></i><br>IDEs</a>
-</div>
-
-<div class="button-bar">
-	<a class="button" href="#courses"><i class="fa fa-graduation-cap"></i><br>Online courses</a>
-	<div class="button"></div>
-	<a class="button" href="#examples"><i class="fa fa-life-ring"></i><br>Support &amp; Examples</a>
+<div class="l-button-table">
+    <div class="l-two-third">
+        <div class="button-bar">
+        	<a class="button" href="#news"><i class="fa fa-newspaper-o"></i><br>News</a>
+        	<a class="button" href="blogs.html"><i class="fa fa-rss"></i><br>Blogs</a>
+        	<a class="button" href="https://cwiki.apache.org/WICKET"><i class="fa fa-users"></i><br>Wiki</a>
+        </div>
+        <div class="button-bar">
+        	<a class="button" href="#guide"><i class="fa fa-file-text-o"></i><br>User Guide</a>
+        	<a class="button" href="#javadoc"><i class="fa fa-code"></i><br>API docs</a>
+        	<a class="button" href="books/index.html"><i class="fa fa-book"></i><br>Books</a>
+        </div>
+        <div class="button-bar">
+        	<a class="button" href="#migrations"><i class="fa fa-history"></i><br>Migrations</a>
+        	<a class="button" href="#presentations"><i class="fa fa-file-powerpoint-o"></i><br>Presentations</a>
+        	<a class="button" href="#ides"><i class="fa fa-terminal"></i><br>IDEs</a>
+        </div>
+        
+        <div class="button-bar">
+        	<a class="button" href="#courses"><i class="fa fa-graduation-cap"></i><br>Online courses</a>
+        	<div class="button"></div>
+        	<a class="button" href="#examples"><i class="fa fa-life-ring"></i><br>Support &amp; Examples</a>
+        </div>
+    </div>
 </div>
 
 ## News Archive {#news}
@@ -104,43 +107,47 @@ Wicket's API. We have done our best to document all the changes and
 provide migration paths between the different Wicket versions.
 
 Here's a list of the migration guides:
-
-<div class="button-bar">
-    <a class="button" href="http://s.apache.org/wicket9migration">
-        Wicket 9<br>
-		migration guide
-    </a>
-    <a class="button" href="http://s.apache.org/wicket8migration">
-        Wicket 8<br>
-		migration guide
-    </a>
-    <a class="button" href="http://s.apache.org/wicket7migrate">
-        Wicket 7<br>
-		migration guide
-    </a>
-</div>
-<div class="button-bar">
-    <a class="button" href="http://s.apache.org/wicket6migration">
-        Wicket 6<br>
-		migration guide
-    </a>
-    <a class="button" href="http://s.apache.org/wicket5migrate">
-        Wicket 1.5<br>
-		migration guide
-    </a>
-    <a class="button" href="http://s.apache.org/wicket4migrate">
-		Wicket 1.4<br>
-		migration guide
-    </a>
-</div>
-<div class="button-bar">
-    <a class="button" style="visibility: hidden;"></a>
-    <a class="button" href="http://s.apache.org/wicket3migrate">
-        Wicket 1.3<br>
-		migration guide
-    </a>
-    <a class="button" style="visibility: hidden;"></a>
-</div>
+<div class="l-button-table">
+    <div class="l-two-third">
+        <div class="button-bar">
+            <a class="button" href="http://s.apache.org/wicket9migration">
+                Wicket 9<br>
+        		migration guide
+            </a>
+            <a class="button" href="http://s.apache.org/wicket8migration">
+                Wicket 8<br>
+        		migration guide
+            </a>
+            <a class="button" href="http://s.apache.org/wicket7migrate">
+                Wicket 7<br>
+        		migration guide
+            </a>
+        </div>
+    
+        <div class="button-bar">
+            <a class="button" href="http://s.apache.org/wicket6migration">
+                Wicket 6<br>
+        		migration guide
+            </a>
+            <a class="button" href="http://s.apache.org/wicket5migrate">
+                Wicket 1.5<br>
+        		migration guide
+            </a>
+            <a class="button" href="http://s.apache.org/wicket4migrate">
+        		Wicket 1.4<br>
+        		migration guide
+            </a>
+        </div>
+        <div class="button-bar">
+            <a class="button" style="visibility: hidden;"></a>
+            <a class="button" href="http://s.apache.org/wicket3migrate">
+                Wicket 1.3<br>
+        		migration guide
+            </a>
+            <a class="button" style="visibility: hidden;"></a>
+        </div>
+    </div>
+</div>        
 
 If you encounter a change that was not in the migration guide, don't
 hesitate to notify us.
