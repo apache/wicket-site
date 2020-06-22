@@ -18,6 +18,10 @@ html {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: auto;
     -webkit-text-size-adjust: 100%;
+    
+    @include breakpoint($breakpoint-20) {
+       font-size: $font-size-base + 2;
+    }
 }
 
 body {

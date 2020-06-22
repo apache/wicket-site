@@ -6,4 +6,8 @@
     &>ul > li+li {
         margin-top: 1rem;
     }
+    
+    @include breakpoint($breakpoint-20) {
+	   display: none;
+    }
 }
