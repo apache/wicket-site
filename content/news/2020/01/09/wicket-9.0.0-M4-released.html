@@ -13,37 +13,99 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2020/01/09/wicket-9.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2020/01/09/wicket-9.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2020/01/09/wicket-9.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2020/01/09/wicket-9.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2020/01/09/wicket-9.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2020/01/09/wicket-9.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2020/01/09/wicket-9.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 9.0.0-M4 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
             <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#important-note"><span class="toc-number">1</span> <span class="toc-text">IMPORTANT NOTE</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul></li></ul></div>
@@ -52,48 +114,67 @@
             <div class="l-full">
     <p class="meta">09 Jan 2020</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 9.0.0-M4!</p>
+
 <p>Apache Wicket is an open source Java component oriented web application
 framework that powers thousands of web applications and web sites for
 governments, stores, universities, cities, banks, email providers, and
 more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
 <p>This release marks another minor release of Wicket 9. We
 use semantic versioning for the development of Wicket, and as such no
 API breaks are present breaks are present in this release compared to
 9.0.0.</p>
+
 <h2 id="important-note">IMPORTANT NOTE</h2>
 <p>JDK 11.0.5 has backported a change for UTC rappresentation that breaks
 our test classorg.apache.wicket.util.convert.converter.ZonedDateTimeConverterTest.
 An earlier version of JDK 11 is therefore required to build this release from source.
 The test code will be updated with the next release.</p>
+
 <h2 id="using-this-release">Using this release</h2>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>9.0.0-M4<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package you can find here:</p>
+
 <ul>
   <li>Download: http://wicket.apache.org/start/wicket-9.x.html#manually</li>
 </ul>
+
 <!--more-->
+
 <h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
 <p>If you upgrade from 9.y.z this release is a drop in replacement. If
 you come from a version prior to 9.0.0, please read our Wicket 9
 migration guide found at</p>
+
 <ul>
   <li>http://s.apache.org/wicket9migrate</li>
 </ul>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <p>========================================================================</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
 </code></pre></div></div>
+
 <p>Signature for apache-wicket-9.0.0-M4.zip:</p>
+
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
+
 iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAl4R85kACgkQh48B+qjT
 VuGntA//Xf4wa16S6ebZCcywSg3eHBJMJfq9bBheHcPJIWr6orfAA55ATRJsblon
 qcfwVX6R8+hgNuvDZBr5kilzos4uPG50d3QxK1dkZ5bu9cRXuytVzCP7TqIEUJ4U
@@ -109,9 +190,12 @@ m3NGWCJuc8yY8ovY9cVdYhvdfUfrvZzB2om3TVFK749fBjxx/GY=
 =Bzfw
 -----END PGP SIGNATURE-----
 </pre></div>
+
 <p>Signature for apache-wicket-9.0.0-M4.tar.gz:</p>
+
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
+
 iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAl4R85gACgkQh48B+qjT
 VuF2OA//YxW8XfR1fj3Xt4Y8MhKVjzbs0POPSmr/FHSn9hJrKK3UCo+7PZ3IY9vv
 fxx44jjyyeASLUcezqRJwpkdGO69/HIYngn1q/QDxXxX0zmQZDGl5lWtVZlipU0v
@@ -127,10 +211,15 @@ hT3NHdbzM30YT6hskECkdHALc1yLe/Fdiiqn/1qHoQSqGHJvr1I=
 =h6KN
 -----END PGP SIGNATURE-----
 </pre></div>
+
 <p>========================================================================</p>
+
 <h3 id="this-release">This Release</h3>
+
 <h4 id="changelog-for-900-m4">CHANGELOG for 9.0.0-M4:</h4>
+
 <h5 id="bug">Bug</h5>
+
 <ul>
   <li>[WICKET-6531] - Crash in Unsafe.getObject when running on the J9 VM</li>
   <li>[WICKET-6704] - JavaSerializer.serialize causes the JVM crash !</li>
@@ -140,11 +229,15 @@ hT3NHdbzM30YT6hskECkdHALc1yLe/Fdiiqn/1qHoQSqGHJvr1I=
   <li>[WICKET-6713] - BaseWicketTester does not reset componentInPage field</li>
   <li>[WICKET-6717] - Automatic-Module-Name should be valid Java identifier</li>
 </ul>
+
 <h5 id="new-feature">New Feature</h5>
+
 <ul>
   <li>[WICKET-6666] - Rewrite ModalWindow</li>
 </ul>
+
 <h5 id="improvement">Improvement</h5>
+
 <ul>
   <li>[WICKET-3404] - Improve ModalWindow form handling</li>
   <li>[WICKET-6321] - Support Integrity and Crossorigin attributes for JavaScriptUrlReferenceHeaderItem</li>
@@ -157,10 +250,15 @@ hT3NHdbzM30YT6hskECkdHALc1yLe/Fdiiqn/1qHoQSqGHJvr1I=
   <li>[WICKET-6718] - AjaxFormChoiceComponentUpdatingBehavior uses “click” instead of “change”</li>
   <li>[WICKET-6720] - ConcatBundleResource#getResourceStream should not eagerly fetch resources</li>
 </ul>
+
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -170,5 +268,4 @@ hT3NHdbzM30YT6hskECkdHALc1yLe/Fdiiqn/1qHoQSqGHJvr1I=
 </div>
         </footer>
     </body>
-
 </html>

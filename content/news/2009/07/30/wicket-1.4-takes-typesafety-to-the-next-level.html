@@ -13,37 +13,99 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2009/07/30/wicket-1.4-takes-typesafety-to-the-next-level.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2009/07/30/wicket-1.4-takes-typesafety-to-the-next-level.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2009/07/30/wicket-1.4-takes-typesafety-to-the-next-level.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2009/07/30/wicket-1.4-takes-typesafety-to-the-next-level.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2009/07/30/wicket-1.4-takes-typesafety-to-the-next-level.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2009/07/30/wicket-1.4-takes-typesafety-to-the-next-level.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2009/07/30/wicket-1.4-takes-typesafety-to-the-next-level.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 1.4 takes typesafety to the next level</h1>
+            
+            
+            
         </header>
         <section class="toc left">
             <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#download-apache-wicket-14"><span class="toc-number">1</span> <span class="toc-text">Download Apache Wicket 1.4</span></a></li><li class="toc--level-1 toc--section-2"><a href="#most-notable-changes"><span class="toc-number">2</span> <span class="toc-text">Most notable changes</span></a></li><li class="toc--level-1 toc--section-3"><a href="#increased-type-safety"><span class="toc-number">3</span> <span class="toc-text">Increased type safety</span></a></li><li class="toc--level-1 toc--section-4"><a href="#removal-of-default-model-from-component"><span class="toc-number">4</span> <span class="toc-text">Removal of default model from component</span></a></li></ul></div>
@@ -60,21 +122,29 @@ minimum platform, we were able to utilize Java 5 idioms and increase the type
 safety of our APIs. Using Java generics you can now write typesafe web
 applications and create typesafe, self documenting, reusable custom
 components.</p>
+
 <h2 id="download-apache-wicket-14">Download Apache Wicket 1.4</h2>
+
 <p>You can download the release here:
 http://www.apache.org/dyn/closer.cgi/wicket/1.4.0</p>
+
 <p>Or use this in your Maven pom’s to upgrade to the new version:</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>wicket<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;version&gt;</span>1.4.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>You will need to upgrade all modules (i.e. wicket, wicket-extensions) to
 their 1.4 counterparts. It is not possible to mix Wicket 1.3 libraries with
 1.4 libraries due to API changes.</p>
+
 <h2 id="most-notable-changes">Most notable changes</h2>
+
 <p>From all the changes that went into this release, the following are the most
 important ones:</p>
+
 <ul>
   <li>Generified <code class="language-plaintext highlighter-rouge">IModel</code> interface and implementations increases type safety in your Wicket applications</li>
   <li><code class="language-plaintext highlighter-rouge">Component#getModel()</code> and <code class="language-plaintext highlighter-rouge">Component#setModel()</code> have been renamed to <code class="language-plaintext highlighter-rouge">getDefaultModel()</code> and <code class="language-plaintext highlighter-rouge">setDefaultModel()</code> to better support generified models</li>
@@ -82,13 +152,16 @@ important ones:</p>
   <li>Many API’s have been altered to better work with Java 5’s idioms</li>
   <li>Wicket jars are now packaged with metadata that makes them OSGI bundles</li>
 </ul>
+
 <p>Apart from these changes, the release is mostly compatible with Wicket 1.3
 and upgrading shouldn’t take too long. Early adopters report about a days
 work to upgrade medium to large applications to Wicket 1.4. Read the
 migration guide to learn more about the changes in our APIs. To learn more
 about all the improvements and new features that went into this release,
 check the solved issue list in our JIRA instance.</p>
+
 <h2 id="increased-type-safety">Increased type safety</h2>
+
 <p>Moving towards Java 5 has given us the opportunity to utilize generics and
 clarify our API’s. For example, take a look at <code class="language-plaintext highlighter-rouge">DropDownChoice</code>—one of the
 components with the most questions on our list prior to 1.4. A
@@ -96,11 +169,14 @@ components with the most questions on our list prior to 1.4. A
 available choices in a drop down box, and allows one selection to be made.
 DropDownChoice components are typically used to display a list of countries,
 nationalities, credit card processors, etc.</p>
+
 <p>The signature of a constructor for the <code class="language-plaintext highlighter-rouge">DropDownChoice</code> component in Wicket
 1.3 was:</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DropDownChoice</span> <span class="kd">extends</span> <span class="o">...</span>
     <span class="kd">public</span> <span class="nf">DropDownChoice</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span> <span class="n">model</span><span class="o">,</span> <span class="nc">IModel</span> <span class="n">choices</span><span class="o">)</span>
 <span class="o">}</span></code></pre></figure>
+
 <p>As you can see, this constructor doesn’t give much insight into what goes
 where (other than the names of the parameters). The first parameter is the
 component identifier, the second parameter is the model that contains the
@@ -109,16 +185,20 @@ choices from which the user can select one. You’ll have to read the JavaDoc
 to assign the right IModel values to the right parameters. Now take a look at
 the same constructor, but now in Wicket 1.4. The signature for our generified
 constructor looks like the following example.</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nc">DropDownChoice</span> <span class="kd">extends</span> <span class="o">...</span>
     <span class="kd">public</span> <span class="nf">DropDownChoice</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">model</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">List</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="no">T</span><span class="o">&gt;&gt;</span> <span class="n">choices</span><span class="o">)</span>
 <span class="o">}</span></code></pre></figure>
+
 <p>Here we communicate that the first <code class="language-plaintext highlighter-rouge">IModel</code> parameter is a <code class="language-plaintext highlighter-rouge">T</code>, which is the
 single value that will be provided when the <code class="language-plaintext highlighter-rouge">DropDownChoice</code> selects one
 value. The second parameter provides a <code class="language-plaintext highlighter-rouge">List</code> of objects that extend <code class="language-plaintext highlighter-rouge">T</code>, the
 choices from which to select one value. This was not apparent in the Wicket
 1.3 API, and the type safety brought by generics make this much more clear,
 albeit much more verbose.</p>
+
 <h2 id="removal-of-default-model-from-component">Removal of default model from component</h2>
+
 <p>In Wicket 1.3 each component had by default a model: a <code class="language-plaintext highlighter-rouge">Label</code> had a model, a
 <code class="language-plaintext highlighter-rouge">Link</code> and even <code class="language-plaintext highlighter-rouge">WebMarkupContainer</code> had a model property (all because they
 extend <code class="language-plaintext highlighter-rouge">Component</code> which has a model property). When we generified <code class="language-plaintext highlighter-rouge">IModel</code>,
@@ -128,6 +208,7 @@ associated with it. But that poses problems for components that either do not
 use a model or use two different model types: which one should be in the
 lead? We chose to generify only the components that clearly benefited from
 the extra type information, leading to clean code like this:</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">ListView</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">peopleListView</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListView</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;(</span><span class="s">"people"</span><span class="o">,</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
         <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="nc">ListItem</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Link</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;(</span><span class="s">"editPerson"</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">()){</span>
@@ -138,10 +219,15 @@ the extra type information, leading to clean code like this:</p>
             <span class="o">});</span>
         <span class="o">}</span>
     <span class="o">};</span></code></pre></figure>
+
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -151,5 +237,4 @@ the extra type information, leading to clean code like this:</p>
 </div>
         </footer>
     </body>
-
 </html>

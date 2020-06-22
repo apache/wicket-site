@@ -13,111 +13,205 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2014/11/05/wicket-7.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2014/11/05/wicket-7.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2014/11/05/wicket-7.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2014/11/05/wicket-7.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2014/11/05/wicket-7.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2014/11/05/wicket-7.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2014/11/05/wicket-7.0.0-M4-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 7.0.0-M4 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
+            
         </section>
         <section>
             <div class="l-full">
     <p class="meta">05 Nov 2014</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.0.0-M4!</p>
+
 <p>We have released another milestone release for Apache Wicket 7. We aim
 to finalise Wicket 7 over the coming months and request your help in
 testing the new major version.</p>
+
 <h3 id="caveats">Caveats</h3>
+
 <p>It is still a development version so expect API breaks to happen over
 the course of the coming milestone releases.</p>
+
 <h3 id="semantic-versioning">Semantic versioning</h3>
+
 <p>As we adopted semver Wicket 7 will be the first release since 6.0 where
 we are able to refactor the API. We will continue to use semver when we
 have made Wicket 7 final and maintain api compatibility between minor
 versions of Wicket 7.</p>
+
 <h3 id="requirements">Requirements</h3>
+
 <p>Wicket 7 requires the following:</p>
+
 <ul>
   <li>Java 7</li>
   <li>Servlet 3 compatible container</li>
 </ul>
+
 <p>You can’t mix wicket libraries from prior Wicket versions with Wicket 7.</p>
+
 <h3 id="migration-guide">Migration guide</h3>
+
 <p>As usual we have a migration guide available online for people
 migrating their applications to Wicket 7. We will continue to update
 the guide as development progresses. If you find something that is not
 in the guide, please update the guide, or let us know so we can update
 the guide.</p>
+
 <p>You can find the guide here: <a href="http://s.apache.org/wicket7migrate">http://s.apache.org/wicket7migrate</a></p>
+
 <h3 id="using-this-release">Using this release</h3>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>7.0.0-M4<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.0.0-M4">7.0.0-M4 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.0.0-M4/binaries">7.0.0-M4 binary download</a></li>
 </ul>
+
 <h3 id="about-this-release">About this release</h3>
+
 <p>Below you can find the cryptographic signatures for the distributions
 and the release notes.</p>
+
 <h4 id="the-signatures-for-the-source-release-artefacts">The signatures for the source release artefacts:</h4>
+
 <p>The signatures for the source release artefacts:</p>
+
 <p>Signature for apache-wicket-7.0.0-M4.zip:</p>
+
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
 Comment: GPGTools - https://gpgtools.org
+
 iEYEABECAAYFAlRTjfQACgkQJBX8W/xy/UW+TQCfZn81bkbmcrVEGjWY4rUA2sfy
 rJMAn2Ah/6X2M9Cf02hEMyb8JV+ZPaBa
 =xlUP
 -----END PGP SIGNATURE-----
 </pre></div>
+
 <p>Signature for apache-wicket-7.0.0-M4.tar.gz:</p>
+
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
 Comment: GPGTools - https://gpgtools.org
+
 iEYEABECAAYFAlRTjfQACgkQJBX8W/xy/UVGggCdFyCZATMis/829BmasZKgx28m
 uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
 =kWVF
 -----END PGP SIGNATURE-----
 </pre></div>
+
 <h4 id="changelog-for-700-m4">CHANGELOG for 7.0.0-M4:</h4>
+
 <p>Release Notes - Wicket - Version 7.0.0-M4</p>
+
 <h4 id="bugs">Bugs</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5265">WICKET-5265</a> - FencedFeedbackPanel is broken with RefreshingView(and it’s implementations)</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5326">WICKET-5326</a> - Wicket doesn’t encrypt links and Ajax URLs for mounted pages when CryptoMapper is used</li>
@@ -143,7 +237,9 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5736">WICKET-5736</a> - Atmosphere Eventbus throws Concurrent Modification Exception</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5741">WICKET-5741</a> - Ajax Form example is broken due to 9716f2a7e799133fdf3f7927d0093e6dfe16f529</li>
 </ul>
+
 <h4 id="improvements">Improvements</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5350">WICKET-5350</a> - Enhancement for AbstractChoice and WildcardListModel API</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5691">WICKET-5691</a> - Wicket FileUploadField.getFileUploads() should never return null.</li>
@@ -163,24 +259,36 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5739">WICKET-5739</a> - Add a factory method for WebSocketRequestHandler</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5740">WICKET-5740</a> - Provide a way to adapt the lock timeout based on the page class/id</li>
 </ul>
+
 <h4 id="new-features">New Features</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5677">WICKET-5677</a> - Components should have onAdd to complement onRemove</li>
 </ul>
+
 <h4 id="tasks">Tasks</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5705">WICKET-5705</a> - Disable Javadoc linter in JDK 1.8 because it is too strict</li>
 </ul>
+
 <h4 id="tests">Tests</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5722">WICKET-5722</a> - Queueing in merged markup with transparent resolver in the base class</li>
 </ul>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -190,5 +298,4 @@ uDEAn2eZhOrh8//AIYnkRYFLtWJnyx0F
 </div>
         </footer>
     </body>
-
 </html>

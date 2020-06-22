@@ -13,31 +13,90 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="quickstart">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /start/quickstart -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /start/quickstart -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /start/quickstart -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /start/quickstart -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /start/quickstart -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /start/quickstart -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /start/quickstart -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
@@ -45,6 +104,7 @@
         <header class="l-full preamble">
             <h1>Create a Wicket Quickstart</h1>
             <h2>With the quickstart you’ll be up and running in seconds</h2>
+            
             <p>Use the following wizard to generate a Quick Start Project using Maven. Paste the generated command line into a shell (DOS prompt or unix shell) and create a project with Wicket in a jiffy.</p>
         </header>
         <section class="toc left">
@@ -52,8 +112,10 @@
         </section>
         <section>
             <script type="text/javascript" charset="utf-8" src="/javascript/ZeroClipboard-1.1.7.min.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
+      
       ZeroClipboard.setDefaults( { moviePath: '/javascript/ZeroClipboard-1.1.7.swf' } );
       var clip = new ZeroClipboard(document.getElementById("cmdLineCopy"));
       clip.on( 'noflash', function ( client, args ) {
@@ -66,6 +128,7 @@
         clip.reposition();
       });
     });
+
     function changeIt()
     {
 		var groupId = document.getElementById("groupId").value;
@@ -73,29 +136,38 @@
 		var version = document.getElementById("version").value;
 		var appserver = document.getElementById("appserver").value;
 		var cmd;
+				
 		if(version.match(/^1\.[34]/))
 			cmd = 'mvn archetype:create -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;						
 		else if(version.match(/.*SNAPSHOT/))
 			cmd = 'mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;		
 		else
 			cmd = 'mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;			
+
 		if (version.match(/.*SNAPSHOT/))
 			cmd += ' -DarchetypeRepository=https://repository.apache.org/content/repositories/snapshots/';
 		else
 			cmd += ' -DarchetypeRepository=https://repository.apache.org/';
+
 		if (appserver === 'wildfly')
 			cmd += ' -Dlog4j.properties=wildfly-doesnt-need-log4j.properties';
+
 		cmd += ' -DinteractiveMode=false'; 
 		document.getElementById("cmdLine").value = cmd;
     }
   </script>
+
 <h2 id="before-you-start">Before you start</h2>
+
 <p>The Quick Start Wizard uses <a href="http://maven.apache.org">Apache Maven</a> to
 make it really fast to get started. You should have Maven installed and
 working before you can use the Quick Start wizard.</p>
+
 <h2 id="5-small-steps-to-a-web-application">5 small steps to a web application</h2>
+
 <p>Use the following steps to quickly generate a project to get you
 started:</p>
+
 <ol>
   <li>Fill in the Maven coordinates for your project in the wizard and 
 select the appropriate Wicket version</li>
@@ -105,10 +177,14 @@ terminal (or a DOS box)</li>
   <li>Start the <code class="language-plaintext highlighter-rouge">Start</code> class in the <em>src/test/java</em> folder</li>
   <li>Open your browser to <a target="_blank" href="http://localhost:8080">http://localhost:8080</a></li>
 </ol>
+
 <p>And you’re done!</p>
+
 <h2 id="quick-start-wizard">Quick Start Wizard</h2>
+
 <p>Fill in your project details in the wizard below and copy the generated
 command line to your clipboard.</p>
+
 <div class="l-two-third">
     <div class="quickstart-wizard">
       <div>
@@ -122,17 +198,51 @@ command line to your clipboard.</p>
       <div>
         <label title="Wicket Version" for="version">Wicket Version</label>
         <select onchange="changeIt();" id="version">
+    
+    
     	<option value="9.0.0-M6-SNAPSHOT">9.0.0-M6-SNAPSHOT</option>
+    
+    
+    
     	<option value="8.9.0-SNAPSHOT">8.9.0-SNAPSHOT</option>
+    
+    
+    
     	<option value="7.17.0-SNAPSHOT">7.17.0-SNAPSHOT</option>
+    
+    
+    
     	<option value="6.31.0-SNAPSHOT">6.31.0-SNAPSHOT</option>
+    
+    
+    
     	<option value="1.5-SNAPSHOT">1.5-SNAPSHOT</option>
+    
+    
+    
     	<option value="9.0.0-M5">9.0.0-M5</option>
+    
+    
+    
     	<option value="8.8.0" selected="selected">8.8.0</option>
+    
+    
+    
     	<option value="7.16.0">7.16.0</option>
+    
+    
+    
     	<option value="1.4.23">1.4.23</option>
+    
+    
+    
     	<option value="1.5.16">1.5.16</option>
+    
+    
+    
     	<option value="6.30.0">6.30.0</option>
+    
+    
         </select>
       </div>
       <div>
@@ -153,14 +263,18 @@ command line to your clipboard.</p>
     </div>
   </div>
 <p><br /></p>
+
 <p>With the generated command line on your clipboard open up a terminal
 window (or DOS box) and navigate to where you want the project to be
 generated (e.g. for Eclipse users this would be your workspace folder).
 Paste the command line into your terminal window and press «enter» to
 execute the command.</p>
+
 <h4 id="result-of-the-maven-command">Result of the Maven command</h4>
+
 <p>Executing the Maven command line will result the following directory
 structure:</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.\myproject
     |   pom.xml
     |
@@ -186,31 +300,43 @@ structure:</p>
                     \---mycompany
                             Start.java
 </code></pre></div></div>
+
 <p>It might be different depending on your settings (and version of
 Wicket), but this is basically the standard layout for web projects.</p>
+
 <h2 id="import-the-quick-start-in-your-ide">Import the Quick Start in your IDE</h2>
+
 <p>The Wicket Quick Start uses Apache Maven to make it really fast to get
 started. You should have Maven installed and working before you can use
 the Quick Start wizard.</p>
+
 <h3 id="eclipse">Eclipse</h3>
+
 <p>For Eclipse you should generate the Quick Start project within your
 workspace folder. You also need to ensure that you have m2eclipse
 installed in order to import the project. To import the project you
 select “Import existing project” from the File menu, and select the
 folder of your generated Quick Start project.</p>
+
 <h3 id="intellij-idea">IntelliJ IDEA</h3>
+
 <p>IntelliJ IDEA has native support for Maven projects. You just point the
 open project dialog to the place where you generated the Quick Start
 project and open the pom.xml file. IDEA will then open the project as
 any other Java project.</p>
+
 <h3 id="netbeans">Netbeans</h3>
+
 <p>Netbeans has native support for Maven projects. You just point the open
 project dialog to the place where you generated the Quick Start project
 and open the pom.xml file. Netbeans will then open the project as any
 other Java project.</p>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -220,5 +346,4 @@ other Java project.</p>
 </div>
         </footer>
     </body>
-
 </html>

@@ -13,90 +13,173 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2013/04/12/wicket-6.7.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2013/04/12/wicket-6.7.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2013/04/12/wicket-6.7.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2013/04/12/wicket-6.7.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2013/04/12/wicket-6.7.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2013/04/12/wicket-6.7.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2013/04/12/wicket-6.7.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 6.7.0 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
+            
         </section>
         <section>
             <div class="l-full">
     <p class="meta">12 Apr 2013</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.7.0!</p>
+
 <p>This release marks the seventh minor release of Wicket 6. Starting
 with Wicket 6 we use semantic versioning for the future development
 of Wicket, and as such no API breaks are present in this release
 compared to 6.0.0.</p>
+
 <h3 id="new-and-noteworthy">New and noteworthy</h3>
+
 <h4 id="webfonts-are-now-supported">webfonts are now supported</h4>
+
 <p>Our resource guard that prevents access to classpath resources that
 are not intended to be shared through the web server is a whitelist
 of permissable resource extensions. Typically images, JavaScript
 files, stylesheets are on the whitelist, but the file types for
 webfonts were blocked. From Wicket 6.7 and onward you can now embed
 webfonts with your components and link to them from your stylesheets.</p>
+
 <h4 id="render-a-page-or-component-to-a-string">Render a page or component to a String</h4>
+
 <p>One of the issues that keeps propping up on the user lists is the
 ability to render a page or component to a String so that you can use
 Wicket to render HTML email messages. Now you can use
 <a href="http://ci.apache.org/projects/wicket/apidocs/6.x/org/apache/wicket/core/util/string/ComponentRenderer.html">ComponentRenderer</a> to
 actually do so without having to resort to other less obvious methods.</p>
+
 <p>ComponentRenderer exposes two methods: <code class="language-plaintext highlighter-rouge">renderComponent</code> and
 <code class="language-plaintext highlighter-rouge">renderPage</code> and they do exactly what their names suggest. Happy
 emailing!</p>
+
 <h3 id="using-this-release">Using this release</h3>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>6.7.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.7.0">6.7.0 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.7.0/binaries">6.7.0 binary download</a></li>
 </ul>
+
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
+
 <p>If you upgrade from 6.y.z this release is a drop in replacement. If
 you come from a version prior to 6.0.0, please read our Wicket 6
 migration guide found at</p>
+
 <ul>
   <li><a href="http://s.apache.org/wicket-6.0-migration">http://s.apache.org/wicket-6.0-migration</a></li>
 </ul>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <h3 id="release-notes---wicket---version-670">Release Notes - Wicket - Version 6.7.0</h3>
+
 <h4 id="bug">Bug</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4658">WICKET-4658</a> - TabbedPanel CSS “last” is wrong if last step is not visible</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4803">WICKET-4803</a> - UrlDecoder should log a message when invalid input is provided</li>
@@ -149,7 +232,9 @@ migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5138">WICKET-5138</a> - Wicket does not correctly handle http OPTIONS requests</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5141">WICKET-5141</a> - Exception while rendering absolute URL with UrlResourceReference</li>
 </ul>
+
 <h4 id="improvement">Improvement</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4115">WICKET-4115</a> - SignInPanel should not always redirect to the Home page when the user is signed-in automaticaly with the remember-me feature.</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5005">WICKET-5005</a> - Add Utility to allow conversion from Panel (or Component) to html String</li>
@@ -177,18 +262,27 @@ migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5137">WICKET-5137</a> - Improve TagTester support for Ajax responses</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5139">WICKET-5139</a> - Missing French translations</li>
 </ul>
+
 <h4 id="task">Task</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5097">WICKET-5097</a> - Deprecate BaseWicketTester#startComponent(Component)</li>
 </ul>
+
 <h4 id="test">Test</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5042">WICKET-5042</a> - Cleanup FilteringHeaderResponseTest to make it more readable</li>
 </ul>
+
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -198,5 +292,4 @@ migration guide found at</p>
 </div>
         </footer>
     </body>
-
 </html>

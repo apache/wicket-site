@@ -13,47 +13,112 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /help/reportabug -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /help/reportabug -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /help/reportabug -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /help/reportabug -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /help/reportabug -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /help/reportabug -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /help/reportabug -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Report a bug</h1>
+            
+            
+            
         </header>
         <section class="toc left">
             <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#build-a-quickstart"><span class="toc-number">1</span> <span class="toc-text">Build a Quickstart</span></a></li><li class="toc--level-1 toc--section-2"><a href="#submit-a-patch"><span class="toc-number">2</span> <span class="toc-text">Submit a patch</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#setting-up"><span class="toc-number">2.1</span> <span class="toc-text">Setting up</span></a></li><li class="toc--level-2 toc--section-4"><a href="#checking-out-wicket-from-subversion"><span class="toc-number">2.2</span> <span class="toc-text">Checking out Wicket from Subversion</span></a></li><li class="toc--level-2 toc--section-5"><a href="#kick-the-tires"><span class="toc-number">2.3</span> <span class="toc-text">Kick the tires</span></a></li><li class="toc--level-2 toc--section-6"><a href="#proving-a-bug-exists"><span class="toc-number">2.4</span> <span class="toc-text">Proving a bug exists</span></a></li><li class="toc--level-2 toc--section-7"><a href="#submitting-a-patch"><span class="toc-number">2.5</span> <span class="toc-text">Submitting a patch</span></a></li></ul></li></ul></div>
         </section>
         <section>
             <p>Wicket manages bug reports via the <a href="http://issues.apache.org/jira/browse/WICKET">Apache Jira site</a></p>
+
 <p>It requires you to register with the site, to avoid spamming, and attribute
 credit where its due. It’s relatively painless. Much harder is writing a
 clear and concise bug report.</p>
+
 <p>Etiquette for a bug report is:</p>
+
 <ol>
   <li><strong>Always search for an existing bug report about the issue before adding 
 your own.</strong> This can be tricky, but several duplicate bug reports just 
@@ -75,27 +140,37 @@ as a comment. If it doesnt get noticed by a dev, try submitting a
 quickstart or better still a patch. Ask for it to be reviewed via the
 mailing list.</li>
 </ol>
+
 <p>You will be rewarded with <a href="https://issues.apache.org/jira/secure/ConfigureReport.jspa?versionId=-1&amp;issueStatus=all&amp;selectedProjectId=12310561&amp;reportKey=com.sourcelabs.jira.plugin.report.contributions%3Acontributionreport&amp;Next=Next">subtle kudos</a>
 and the bug is much more likely to be fixed promptly.</p>
+
 <h2 id="build-a-quickstart">Build a Quickstart</h2>
+
 <p>See <a href="/start/quickstart.html">getting started</a> for a good introduction to
 building a barebone Wicket project from one command. There is even a tool to
 let you customise the command for your project.</p>
+
 <p>Or you can watch Al Maw’s excellent
 <a href="http://herebebeasties.com/2007-10-07/wicket-quickstart">screencast</a> covering
 the whole process of installing and running Maven, and getting your Eclipse
 workspace set up.</p>
+
 <p>The Maven command provided there is the quickest way to get a working Wicket
 project that you can use to clearly demonstrate a bug.</p>
+
 <p>Once you have an example that shows the minimum conditions under which the
 issue occurs, then you can zip up the project and attach it to the relevant
 issue.</p>
+
 <p>When a Wicket dev <a href="https://issues.apache.org/jira/browse/WICKET-497?focusedCommentId=12521870&amp;page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#action_12521870">asks you to submit a quickstart</a>,
 that is what they mean.</p>
+
 <p>That is far more useful than posting reams of your application code and
 telling everyone it doesn’t work. The former will help diagnose the problem,
 the latter will mainly get you abused on the mailing list.</p>
+
 <h2 id="submit-a-patch">Submit a patch</h2>
+
 <p>This is the most involved, but the most rewarding route ;-).
 In a nutshell this involves:</p>
 <ul>
@@ -104,18 +179,25 @@ In a nutshell this involves:</p>
   <li>Proving the bug exists, either via a Quickstart, or writing a unit test.</li>
   <li>Submitting your fix as a Subversion patch file.</li>
 </ul>
+
 <p>This guide will outline how to do it with Eclipse + Subclipse + m2eclipse.
 If you prefer the command line, then start here: <a href="/contribute/build.html">building from source</a>
 If you can provide a walk through for your IDE of choice then please do add it.</p>
+
 <h3 id="setting-up">Setting up</h3>
+
 <p>Using an Eclipse 3.4.x flavour of your choice add install the following plugins</p>
+
 <ul>
   <li><a href="http://subclipse.tigris.org/">Subclipse for accessing Subversion</a> - Eclipse update site URL http://subclipse.tigris.org/update_1.6.x</li>
   <li><a href="http://m2eclipse.sonatype.org/">m2eclipse for maven support</a> - Eclipse update site: http://m2eclipse.sonatype.org/update/</li>
 </ul>
+
 <p>I usually install the entire Subclipse plugin, and all of m2eclipse except the Project configurators unless I am using a J2EE version of Eclipse.
 I had a spurious error when adding the m2eclipse update site, “No repository found at http://www.md.pp.ru/~eu/12/” but it didn’t cause any problems with the install.</p>
+
 <h3 id="checking-out-wicket-from-subversion">Checking out Wicket from Subversion</h3>
+
 <ul>
   <li>
     <p><strong>Add the Wicket Subversion repository</strong> - Navigate to Window &gt; Show
@@ -139,7 +221,9 @@ maven needing to download anything.</p>
 have a fully checked out, dependency managed, built, possibly working,
 Wicket code base.</li>
 </ul>
+
 <h3 id="kick-the-tires">Kick the tires</h3>
+
 <ul>
   <li>Create a Quickstart via the wicket-archetype-quickstart</li>
   <li>Navigate to the pom.xml in your Quickstart project.</li>
@@ -149,11 +233,15 @@ Wicket code base.</li>
   <li>Click through to WebApplication class from the extends section of the class definition.</li>
   <li>If all is well, you should be taken to the Wicket project .java version of WebApplication rather than a .class file from a .jar</li>
 </ul>
+
 <h3 id="proving-a-bug-exists">Proving a bug exists</h3>
+
 <ul>
   <li><strong>Writing a unit test with WicketTester</strong></li>
 </ul>
+
 <h3 id="submitting-a-patch">Submitting a patch</h3>
+
 <ul>
   <li>
     <p><strong>Extract your changeset into a patch file</strong> - As we don’t all have commit
@@ -161,6 +249,7 @@ access to the svn repository, we need some other way of getting our changes
 to the developers. This is done by making an svn patch file, essentially a
 plain text diff, with some subversion specific formatting. With the
 Subclipse plug-in creating a patch file is as simple as:</p>
+
     <ol>
       <li>Right click on the project root (e.g. wicket)</li>
       <li>
@@ -180,9 +269,12 @@ Subclipse plug-in creating a patch file is as simple as:</p>
     </ol>
   </li>
 </ul>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -192,5 +284,4 @@ Subclipse plug-in creating a patch file is as simple as:</p>
 </div>
         </footer>
     </body>
-
 </html>

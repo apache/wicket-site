@@ -13,37 +13,99 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2016/07/25/wicket-8.0.0-M1-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2016/07/25/wicket-8.0.0-M1-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2016/07/25/wicket-8.0.0-M1-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2016/07/25/wicket-8.0.0-M1-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2016/07/25/wicket-8.0.0-M1-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2016/07/25/wicket-8.0.0-M1-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2016/07/25/wicket-8.0.0-M1-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 8.0.0-M1 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
             <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul></li></ul></div>
@@ -52,18 +114,23 @@
             <div class="l-full">
     <p class="meta">25 Jul 2016</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M1!</p>
+
 <p>Apache Wicket is an open source Java component oriented web application
 framework that powers thousands of web applications and web sites for
 governments, stores, universities, cities, banks, email providers, and
 more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
 <p>This release marks the first milestone of the major release of Wicket 8. We
 use semantic versioning for the development of Wicket, and as such no
 API breaks are present breaks are present in this release compared to
 8.0.0.</p>
+
 <h2 id="new-and-noteworthy">New and noteworthy</h2>
+
 <p><strong>Beside a lot of changes which were implemented in Apache Wicket 7, the new
 milestone of the major version of Apache Wicket 8 provides some 
 great features.</strong></p>
+
 <ul>
   <li>
     <p>Lambda support for Models and Components (See “Lambda Expressions” chapter in the user guide)</p>
@@ -75,60 +142,87 @@ great features.</strong></p>
     <p>A lot of bugfixes and improvements</p>
   </li>
 </ul>
+
 <p><strong>Features which were almost ready and will be available with 8.0.0-M2</strong></p>
+
 <ul>
   <li>PushBuilder API integration [WICKET-6194] 
 (See “Wicket HTTP/2 Support (Experimental)” chapter in the user guide)</li>
 </ul>
+
 <p><strong>Features which were set to “won’t fix”</strong></p>
+
 <ul>
   <li>Microservices support (decoupled component usage) [WICKET-6112]</li>
 </ul>
+
 <h2 id="using-this-release">Using this release</h2>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>8.0.0-M1<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1">8.0.0-M1 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1/binaries">8.0.0-M1 binary download</a></li>
 </ul>
+
 <h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
 <p>If you upgrade from 8.y.z this release is a drop in replacement. If
 you come from a version prior to 8.0.0, please read our Wicket 7
 migration guide found at</p>
+
 <ul>
   <li><a href="http://s.apache.org/wicket8migration">http://s.apache.org/wicket8migration</a></li>
 </ul>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <p>================================</p>
+
 <p>The signatures for the source release artefacts:</p>
+
 <p>Signature for apache-wicket-8.0.0-M1.zip:</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-----BEGIN PGP SIGNATURE-----
 Comment: GPGTools - https://gpgtools.org
+
 iEYEABECAAYFAld5Gc8ACgkQJBX8W/xy/UV/wwCfa+/9cOB0KEOHB6vT41/ISIP/
 udAAoNM46vtM+T2RYU5uSV08fWjzUjiV
 =4pKN
 -----END PGP SIGNATURE-----
 </code></pre></div></div>
+
 <p>Signature for apache-wicket-8.0.0-M1.tar.gz:</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-----BEGIN PGP SIGNATURE-----
 Comment: GPGTools - https://gpgtools.org
+
 iEYEABECAAYFAld5Gc8ACgkQJBX8W/xy/UX5ngCgvckuOYDq+x6yVgTdDrhGskEz
 cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
 =9v6u
 -----END PGP SIGNATURE-----
 </code></pre></div></div>
+
 <p>================================</p>
+
 <h3 id="this-release">This Release</h3>
+
 <h4 id="changelog-for-800-m1">CHANGELOG for 8.0.0-M1:</h4>
+
 <h5 id="bug">Bug</h5>
+
 <ul>
   <li>[WICKET-5836] - Update the version of clirr-maven-plugin (current 2.6.1)</li>
   <li>[WICKET-5993] - AjaxButton - image is not shown even though type=”image” is in html-template</li>
@@ -215,7 +309,9 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   <li>[WICKET-6187] - Enclosures rendered twice in derived component</li>
   <li>[WICKET-6191] - AjaxTimerBehavior will stop after ajax update of component it is attached to</li>
 </ul>
+
 <h5 id="improvement">Improvement</h5>
+
 <ul>
   <li>[WICKET-5866] - Reconsider generics of IConverterLocator#getConverter()</li>
   <li>[WICKET-5920] - roll a version of ListDataProvider implementing ISortableDetachable model</li>
@@ -267,7 +363,9 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   <li>[WICKET-6188] - Use DynamicJQueryResourceReference by default</li>
   <li>[WICKET-6189] - Return Optional<T> from RequestCycle.find(Class<T>)</T></T></li>
 </ul>
+
 <h5 id="new-feature">New Feature</h5>
+
 <ul>
   <li>[WICKET-5991] - Introduce models which use Java 8 supplier/consumer</li>
   <li>[WICKET-6025] - Read resource files with Java’s NIO API</li>
@@ -276,7 +374,9 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   <li>[WICKET-6121] - use lambdas for columns</li>
   <li>[WICKET-6193] - NestedStringResourceLoader - replaces nested keys within property files</li>
 </ul>
+
 <h5 id="tasks">Tasks</h5>
+
 <ul>
   <li>[WICKET-5990] - Upgrade Jetty usage in Wicket tests/quickstart to Jetty 9.3.x</li>
   <li>[WICKET-6004] - Wicket 8 cleanup - TODOs and deprecated methods</li>
@@ -286,15 +386,21 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   <li>[WICKET-6147] - Remove the support for the deprecated /wicket.properties and /META-INF/wicket/**.properties</li>
   <li>[WICKET-6150] - Deprecate org.apache.wicket.util.crypt.Base64 and use java.util.Base64</li>
 </ul>
+
 <h5 id="wish">Wish</h5>
+
 <ul>
   <li>[WICKET-6067] - Provide an Ajax Behavior that prevents form submit on ENTER</li>
   <li>[WICKET-6095] - Multiline headers in DataTable</li>
 </ul>
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -304,5 +410,4 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
 </div>
         </footer>
     </body>
-
 </html>

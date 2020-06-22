@@ -13,83 +13,164 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2014/04/23/wicket-6.15.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2014/04/23/wicket-6.15.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2014/04/23/wicket-6.15.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2014/04/23/wicket-6.15.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2014/04/23/wicket-6.15.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2014/04/23/wicket-6.15.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2014/04/23/wicket-6.15.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 6.15.0 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
+            
         </section>
         <section>
             <div class="l-full">
     <p class="meta">23 Apr 2014</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.15.0!</p>
+
 <p>This release marks the fifteenth minor release of Wicket 6. Starting
 with Wicket 6 we use semantic versioning for the future development of
 Wicket, and as such no API breaks are present in this release compared
 to 6.0.0.</p>
+
 <h3 id="new-and-noteworthy">New and noteworthy</h3>
+
 <p>This release fixes 25 bugs and adds the following improvements:</p>
+
 <ul>
   <li>The second level page store has been disabled by default (see issue <a href="https://issues.apache.org/jira/browse/WICKET-5554">WICKET-5554</a> for more details).</li>
   <li>Created new placeholder tag to indicate where header contributions should appear. See this <a href="http://wicketinaction.com/2014/03/header-contributions-positioning/">blog post entry</a> or paragraph 15.8 of the official guide.</li>
 </ul>
+
 <p>This release also celebrates the 10th birthday of Wicket!</p>
+
 <h3 id="using-this-release">Using this release</h3>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
  <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
  <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
  <span class="nt">&lt;version&gt;</span>6.15.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.15.0">6.15.0 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.15.0/binaries">6.15.0 binary download</a></li>
 </ul>
+
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
+
 <p>If you upgrade from 6.y.z this release is a drop in replacement. If
 you come from a version prior to 6.0.0, please read our Wicket 6
 migration guide found at</p>
+
 <ul>
   <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0">Migration to Wicket 6.0</a></li>
 </ul>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <h3 id="release-notes---wicket---version-6150">Release Notes - Wicket - Version 6.15.0</h3>
+
 <h4 id="sub-task">Sub-task</h4>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-5510] - Avoid using jQuery.text() when possible. It is very slow in IE
 * [WICKET-5554] - Disable second level pages store because it is efficient only when manually configured
 </code></pre></div></div>
+
 <h4 id="bug">Bug</h4>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-5243] - JS: High stack size in Function Executor causes "too much recursion"
 * [WICKET-5284] - Too deep recursion in AbstractHierarchyIterator
@@ -117,6 +198,7 @@ migration guide found at</p>
 * [WICKET-5558] - Autolinking does not always work in inheritted markup
 * [WICKET-5561] - Derived page without own markup leads to MarkupNotFoundException when BasePage has &amp;lt;wicket:head&amp;gt; in its markup
 </code></pre></div></div>
+
 <h4 id="improvement">Improvement</h4>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-5508] - Memory model improvements for Session fields
 * [WICKET-5512] - Allow using child selector for JS event bindings
@@ -127,21 +209,28 @@ migration guide found at</p>
 * [WICKET-5538] - When using Component.setDefaultModel, only detach the previous model if the new one is different
 * [WICKET-5549] - continueToOriginalDestination() fails after redirectToInterceptPage() on AjaxRequest* [WICKET-5288] - Allow &amp;amp;lt;script&amp;amp;gt;-Tags act as WebMarkUpContainer to add Child-Components
 </code></pre></div></div>
+
 <h4 id="new-feature">New Feature</h4>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-831] - Return response status 404 when a mapper cannot decode a request url
 * [WICKET-2542] - Provide ajax buttons for wizard
 </code></pre></div></div>
+
 <h4 id="task">Task</h4>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-5514] - Update Wicket fragment example
 </code></pre></div></div>
+
 <h4 id="wish">Wish</h4>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-5516] - RadioChoice / add a getAdditionalAttributes() also for &lt;label&gt;-tag
 * [WICKET-5542] - Remove final from TextArea.onComponentTagBody()
 </code></pre></div></div>
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -151,5 +240,4 @@ migration guide found at</p>
 </div>
         </footer>
     </body>
-
 </html>

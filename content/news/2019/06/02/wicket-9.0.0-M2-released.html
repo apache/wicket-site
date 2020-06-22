@@ -13,37 +13,99 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2019/06/02/wicket-9.0.0-M2-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2019/06/02/wicket-9.0.0-M2-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2019/06/02/wicket-9.0.0-M2-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2019/06/02/wicket-9.0.0-M2-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2019/06/02/wicket-9.0.0-M2-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2019/06/02/wicket-9.0.0-M2-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2019/06/02/wicket-9.0.0-M2-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 9.0.0-M2 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
             <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul></li></ul></div>
@@ -52,53 +114,76 @@
             <div class="l-full">
     <p class="meta">02 Jun 2019</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 9.0.0-M2!</p>
+
 <p>Apache Wicket is an open source Java component oriented web application
 framework that powers thousands of web applications and web sites for
 governments, stores, universities, cities, banks, email providers, and
 more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
 <p>This release marks another milestone release of Wicket 9. 
 Since Wicket 9 is still in development, backward api compatibility between 
 milestone release is not guaranteed.
 We will continue to use semantic versioning when we will made Wicket 9 final 
 and maintain api compatibility between minor versions of Wicket 9.</p>
+
 <h2 id="new-and-noteworthy">New and noteworthy</h2>
+
 <p><strong>Ajax JavaScript clean-up</strong></p>
+
 <p>File wicket-ajax-jquery.js has been cleaned up from obsolete code and 
 unused functionalities.</p>
+
 <p><strong>Package org.apache.wicket.util.time has been deprecated</strong></p>
+
 <p>Legacy package org.apache.wicket.util.time from module wicket-util has been 
 deprecated. Users are recommended to migrate to standard classes
 java.time.Instant and java.time.Duration. See <a href="https://issues.apache.org/jira/browse/WICKET-6662">WICKET-6662</a>
  for more details.</p>
+
 <h2 id="using-this-release">Using this release</h2>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>9.0.0-M2<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package you can find here:</p>
+
 <ul>
   <li>Download: http://wicket.apache.org/start/wicket-9.x.html#manually</li>
 </ul>
+
 <!--more-->
+
 <h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
 <p>If you upgrade from 9.y.z this release is a drop in replacement. If
 you come from a version prior to 9.0.0, please read our Wicket 9
 migration guide found at</p>
+
 <ul>
   <li>http://s.apache.org/wicket9migrate</li>
 </ul>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <p>========================================================================</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
 </code></pre></div></div>
+
 <p>Signature for apache-wicket-9.0.0-M2.zip:</p>
+
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
+
 iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlzuv10ACgkQh48B+qjT
 VuHJyRAAi0Lzsl1sLoqErPqEfhXdEydVVbrLBauObOQjimev29mrtijLiZMY2Ie8
 zcEqc8Jk8x6ZRyPln2oH18HyT7dbzxdAM/QSuqHYl6XWwIH97Bb8U87RYrR1YYgP
@@ -114,9 +199,12 @@ MFbuQDgb0l4tT8ZTIqqhfeCvyw4ntevwcgRJoJmyctTrwnq1Hsg=
 =eW0h
 -----END PGP SIGNATURE-----
 </pre></div>
+
 <p>Signature for apache-wicket-9.0.0-M2.tar.gz:</p>
+
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
+
 iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlzuv10ACgkQh48B+qjT
 VuHnqQ//Z3LKl0tfpSxcXXywTQTFaT3IKPIOwV0wf/30hAgQF24TUiZ/Bhm7kl5L
 PnkCM/r06Q7aSOgzb+vCyVDN60S4hPnUXP5pPPBoHhTyqJ6syL2uQDeMYoYd2ySw
@@ -132,16 +220,23 @@ y08SO+AHfu0QE9N2cbKF6nCz1W+vBcjM7d6IHdNHWQKbwATyaiI=
 =XFAH
 -----END PGP SIGNATURE-----
 </pre></div>
+
 <p>========================================================================</p>
+
 <h3 id="this-release">This Release</h3>
+
 <h4 id="changelog-for-900-m2">CHANGELOG for 9.0.0-M2:</h4>
+
 <h5 id="bug">Bug</h5>
+
 <ul>
   <li>[WICKET-6611] - Missing check for IScopeAwareTextResourceProcessor when concatenating resources</li>
   <li>[WICKET-6669] - CSS Resource Bundling throws exception when used with CssUrlReplacer</li>
   <li>[WICKET-6671] - IAjaxLink should be serializable</li>
 </ul>
+
 <h5 id="improvement">Improvement</h5>
+
 <ul>
   <li>[WICKET-6618] - Stateless pages and access to unconfigured components</li>
   <li>[WICKET-6656] - JSR 303 - @NotNull validation problems</li>
@@ -152,17 +247,24 @@ y08SO+AHfu0QE9N2cbKF6nCz1W+vBcjM7d6IHdNHWQKbwATyaiI=
   <li>[WICKET-6667] - Ajax JavaScript clean-up</li>
   <li>[WICKET-6668] - Sign out the existing session if a sign in attempt has failed</li>
 </ul>
+
 <h5 id="task">Task</h5>
+
 <ul>
   <li>[WICKET-6653] - Upgrade Velocity to 2.x</li>
   <li>[WICKET-6654] - Upgrade JQuery to 3.4.0</li>
   <li>[WICKET-6661] - Upgrade jquery to 3.4.x</li>
   <li>[WICKET-6665] - Upgrade various dependencies</li>
 </ul>
+
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -172,5 +274,4 @@ y08SO+AHfu0QE9N2cbKF6nCz1W+vBcjM7d6IHdNHWQKbwATyaiI=
 </div>
         </footer>
     </body>
-
 </html>

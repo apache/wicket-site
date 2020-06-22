@@ -13,54 +13,125 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2012/10/04/wicket-6.1.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2012/10/04/wicket-6.1.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2012/10/04/wicket-6.1.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2012/10/04/wicket-6.1.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2012/10/04/wicket-6.1.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2012/10/04/wicket-6.1.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2012/10/04/wicket-6.1.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 6.1.0 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
+            
         </section>
         <section>
             <div class="l-full">
     <p class="meta">04 Oct 2012</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.1.0!</p>
+
 <p>This release marks the first maintenance release of Wicket 6. Starting with Wicket 6 we use semantic versioning for the future development of Wicket, and as such no API breaks are present in this release compared to 6.0.0.</p>
+
 <h3 id="new-and-noteworthy">New and noteworthy</h3>
+
 <p>Wicket CDI has been integrated as a core module, and can be used to manage conversations in your Wicket application with ease.</p>
+
 <p>Wicket Experimental:</p>
+
 <ul>
   <li>Wicket Bootstrap has been upgraded to 2.1.1</li>
   <li>Several issues with Wicket Atmosphere have been resolved</li>
 </ul>
+
 <h3 id="known-issues">Known issues</h3>
+
 <p>This release has two known issues, which will be solved shortly in 6.1.1 and 6.2.0:</p>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4789">WICKET-4789</a>
 The way URLs are encoded was changed (WICKET-4645) and now the first 
@@ -69,25 +140,38 @@ request (with ;jsessionid in path) generates invalid internal links.</li>
 FilterForm/FilterToolbar don’t work when there’s more than one IColumn to 
 be filtered</li>
 </ul>
+
 <p>Any other issues will be released in 6.2.0</p>
+
 <h3 id="using-this-release">Using this release</h3>
+
 <p>With Apache Maven update your dependency to (and don’t forget to update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>6.1.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our convenience binary package:</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.1.0">6.1.0 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.1.0/binaries">6.1.0 binary download</a></li>
 </ul>
+
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
+
 <p>If you upgrade from 6.0.0, this release is a drop in replacement. If you come from a version prior to 6.0.0, please read our <a href="http://s.apache.org/wicket-6.0-migration">Wicket 6 migration guide</a> found at http://s.apache.org/wicket-6.0-migration</p>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <h3 id="release-notes---wicket---version-610">Release Notes - Wicket - Version 6.1.0</h3>
+
 <h4 id="squashed-bugs">Squashed bugs</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4645">WICKET-4645</a> - encodeURL broken on Tomcat 7.0.28</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4656">WICKET-4656</a> - Atmosphere example doesn't work due to missing 'page' when creating AjaxRequestTarget</li>
@@ -117,7 +201,9 @@ be filtered</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4775">WICKET-4775</a> - PageParameters#mergeWith may loose values of the 'other' PP</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4780">WICKET-4780</a> - Using both MountedMapper and CryptoMapper causes warning</li>
 </ul>
+
 <h4 id="improvement">Improvement</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4730">WICKET-4730</a> - Filter component does not clear filter fields</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4731">WICKET-4731</a> - TimeField not able to work with a java.sql.Time</li>
@@ -126,18 +212,27 @@ be filtered</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4746">WICKET-4746</a> - Wizard component translation for pt_BR</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4748">WICKET-4748</a> - Improve WicketTester to be able to find AjaxBehaviors on second/third/… event name</li>
 </ul>
+
 <h4 id="new-feature">New Feature</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-3969">WICKET-3969</a> - Add CDI integration</li>
 </ul>
+
 <h4 id="task">Task</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4781">WICKET-4781</a> - Downgrade the warning that a rendering falls back to redirect_to_buffer to a DEBUG</li>
 </ul>
+
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -147,5 +242,4 @@ be filtered</li>
 </div>
         </footer>
     </body>
-
 </html>

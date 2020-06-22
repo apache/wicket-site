@@ -13,66 +13,140 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2012/12/14/wicket-6.4.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2012/12/14/wicket-6.4.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2012/12/14/wicket-6.4.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2012/12/14/wicket-6.4.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2012/12/14/wicket-6.4.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2012/12/14/wicket-6.4.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2012/12/14/wicket-6.4.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 6.4.0 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
+            
         </section>
         <section>
             <div class="l-full">
     <p class="meta">14 Dec 2012</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.4.0!</p>
+
 <p>This release marks the fourth minor release of Wicket 6. Starting
 with Wicket 6 we use semantic versioning for the future development of
 Wicket, and as such no API breaks are present in this release compared
 to 6.0.0.</p>
+
 <h3 id="new-and-noteworthy">New and noteworthy</h3>
+
 <p>JQuery was upgraded to 1.8.3, bootstrap to 2.2.2.</p>
+
 <h4 id="jsr-303-beanvalidation-support">JSR 303 BeanValidation support</h4>
+
 <p>Native support for BeanValidation (JSR 303) was added as an 
 experimental module and released as version 0.5. You can grab it
 by using these maven coordinates:</p>
+
 <ul>
   <li>org.apache.wicket:wicket-bean-validation:0.5:jar</li>
 </ul>
+
 <p>or by pasting in the pom snippet below:</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-bean-validation<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>0.5<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Note that this is an experimental module and that it is not released
 under the SemVer rules. Use at your own risk.</p>
+
 <h4 id="hierarchical-feedback-panel">Hierarchical feedback panel</h4>
+
 <p>A new kind of feedback panel was introduced: a hierarchical feedback
 panel. A specialized feedback panel that only displays messages from
 inside a fence defined by a container component. Instances will not
@@ -81,37 +155,54 @@ of these panels to work correctly without displaying the same
 feedback message twice. A constructor that does not takes a fencing
 component creates a catch-all panel that shows messages that do not
 come from inside any fence or from the Session.</p>
+
 <p>For more information see the <a href="http://s.apache.org/wicket-FencedFeedbackPanel">FencedFeedbackPanel javadoc</a>.</p>
+
 <p>For the full changelog see the release notes attached to the end of
 this announcement.</p>
+
 <h3 id="using-this-release">Using this release</h3>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>6.4.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.4.0">6.4.0 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.4.0/binaries">6.4.0 binary download</a></li>
 </ul>
+
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
+
 <p>If you upgrade from 6.0.0, 6.1.0, 6.2.0 or 6.3.0 this release is a drop in
 replacement. If you come from a version prior to 6.0.0, please
 read our Wicket 6 migration guide found at</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://s.apache.org/wicket-6.0-migration
 </code></pre></div></div>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <h3 id="release-notes---wicket---version-640">Release Notes - Wicket - Version 6.4.0</h3>
+
 <h4 id="sub-task">Sub-task</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4880">WICKET-4880</a> - Make it possible to override the Ajax behavior of AjaxSubmitLink and AjaxButton</li>
 </ul>
+
 <h4 id="bug">Bug</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4869">WICKET-4869</a> - Wicket-Atmosphere track message length</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4872">WICKET-4872</a> - IllegalArgumentException on ReloadingWicketFilter and inheritance markup</li>
@@ -137,7 +228,9 @@ read our Wicket 6 migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4922">WICKET-4922</a> - Cloned ServletWebRequest returns wrong OriginalUrl</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4923">WICKET-4923</a> - CryptoMapper ignores original queryString parameters</li>
 </ul>
+
 <h4 id="improvement">Improvement</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4873">WICKET-4873</a> - Support different session id parameter</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4876">WICKET-4876</a> - CheckBoxMultipleChoice should implement getAdditionalAttributes as RadioChoice</li>
@@ -148,21 +241,29 @@ read our Wicket 6 migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4902">WICKET-4902</a> - ConcatBundleResource should use the respective ITextResourceCompressor</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4924">WICKET-4924</a> - Websocket broadcast support does not work with OSGi</li>
 </ul>
+
 <h4 id="new-feature">New Feature</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4832">WICKET-4832</a> - Websocket broadcast support</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4879">WICKET-4879</a> - Implementing channels in wicket-atmosphere</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4883">WICKET-4883</a> - Out of the box bean-validation (JSR 303) integration</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4888">WICKET-4888</a> - Introduce a hierarchical feedback panel (FencedFeedbackPanel)</li>
 </ul>
+
 <h4 id="task">Task</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4885">WICKET-4885</a> - Upgrade jQuery to its latest stable version (1.8.3)</li>
 </ul>
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -172,5 +273,4 @@ read our Wicket 6 migration guide found at</p>
 </div>
         </footer>
     </body>
-
 </html>

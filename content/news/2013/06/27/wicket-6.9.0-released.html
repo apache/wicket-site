@@ -13,82 +13,163 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2013/06/27/wicket-6.9.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2013/06/27/wicket-6.9.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2013/06/27/wicket-6.9.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2013/06/27/wicket-6.9.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2013/06/27/wicket-6.9.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2013/06/27/wicket-6.9.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2013/06/27/wicket-6.9.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 6.9.0 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
+            
         </section>
         <section>
             <div class="l-full">
     <p class="meta">27 Jun 2013</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.9.0!</p>
+
 <p>This release marks the ninth minor release of Wicket 6. Starting with
 Wicket 6 we use semantic versioning for the future development of
 Wicket, and as such no API breaks are present in this release
 compared to 6.0.0.</p>
+
 <h3 id="new-and-noteworthy">New and noteworthy</h3>
+
 <p>Switch between jQuery 1.x and 2.x depending on the user agent. For IE
 6/7/8 jQuery ver. 1.x will be used, for any other browser - ver. 2.x.
 To use this resource reference do in your application’s init method:</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">getJavaScriptLibrarySettings</span><span class="o">()</span>
         <span class="o">.</span><span class="na">setJQueryReference</span><span class="o">(</span><span class="nc">DynamicJQueryResourceReference</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
 <span class="o">}</span></code></pre></figure>
+
 <p>Upgraded Atmoshpere (1.0.13) and Bootstrap (2.3.2) resources.</p>
+
 <h3 id="using-this-release">Using this release</h3>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>6.9.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.9.0">6.9.0 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.9.0/binaries">6.9.0 binary download</a></li>
 </ul>
+
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
+
 <p>If you upgrade from 6.y.z this release is a drop in replacement. If
 you come from a version prior to 6.0.0, please read our Wicket 6
 migration guide found at</p>
+
 <ul>
   <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0">Migration to Wicket 6.0</a></li>
 </ul>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <h3 id="release-notes---wicket---version-690">Release Notes - Wicket - Version 6.9.0</h3>
+
 <h4 id="bug">Bug</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4827">WICKET-4827</a> - Modal panel mouse pointer in resize style for MSIE8 and MSIE9</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5056">WICKET-5056</a> - Page mount with an optional named parameter overtakes a mount with more specific path</li>
@@ -111,7 +192,9 @@ migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5237">WICKET-5237</a> - Wicket generates invalid HTML by expanding col tags</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5247">WICKET-5247</a> - Broken Link in Tomcat because of Page Mount</li>
 </ul>
+
 <h4 id="improvement">Improvement</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5199">WICKET-5199</a> - Component.getBehaviors(Class&lt;M&gt; type) documentation is obsolete</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5207">WICKET-5207</a> - Use documented jQuery APIs for triggering the special event ‘inputchange’</li>
@@ -125,10 +208,14 @@ migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5233">WICKET-5233</a> - Component.getBehaviors() can be implemented slightly more efficiently</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5238">WICKET-5238</a> - Upgrade bootstrap from 2.3.1 to 2.3.2</li>
 </ul>
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -138,5 +225,4 @@ migration guide found at</p>
 </div>
         </footer>
     </body>
-
 </html>

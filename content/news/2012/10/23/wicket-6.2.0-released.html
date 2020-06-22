@@ -13,37 +13,99 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2012/10/23/wicket-6.2.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2012/10/23/wicket-6.2.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2012/10/23/wicket-6.2.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2012/10/23/wicket-6.2.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2012/10/23/wicket-6.2.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2012/10/23/wicket-6.2.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2012/10/23/wicket-6.2.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 6.2.0 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
             <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#release-notes---wicket---version-620"><span class="toc-number">3.1</span> <span class="toc-text">Release Notes - Wicket - Version 6.2.0</span></a></li></ul></li></ul></div>
@@ -52,43 +114,61 @@
             <div class="l-full">
     <p class="meta">23 Oct 2012</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.2.0!</p>
+
 <p>This release marks the second minor release of Wicket 6. Starting
 with Wicket 6 we use semantic versioning for the future development of
 Wicket, and as such no API breaks are present in this release compared
 to 6.0.0.</p>
+
 <h2 id="new-and-noteworthy">New and noteworthy</h2>
+
 <p>SerializableChecker has been made easier to extend. It is now much easier
 to add your own checks at serialization time. For example, check whether your
 LoadableDetachableModels are detached, or no Hibernate entities are referenced
 directly from your component tree, etc.</p>
+
 <p>For the full changelog see the release notes attached to the end of
 this announcement.</p>
+
 <h2 id="using-this-release">Using this release</h2>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>6.2.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.2.0">6.2.0 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.2.0/binaries">6.2.0 binary download</a></li>
 </ul>
+
 <h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
 <p>If you upgrade from 6.0.0 or 6.1.0, this release is a drop in 
 replacement. If you come from a version prior to 6.0.0, please 
 read our Wicket 6 migration guide found at <a href="http://s.apache.org/wicket-6.0-migration">http://s.apache.org/wicket-6.0-migration</a></p>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <h3 id="release-notes---wicket---version-620">Release Notes - Wicket - Version 6.2.0</h3>
+
 <h4 id="sub-task">Sub-task</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4752">WICKET-4752</a> - Revert Wicket-4715 -Read multipart request params in WebApplication</li>
 </ul>
+
 <h4 id="bug">Bug</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4587">WICKET-4587</a> - URLRenderer renderFullUrl</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4589">WICKET-4589</a> - Closing <code class="language-plaintext highlighter-rouge">&lt;/wicket:container&gt;</code> tag is incorrectly setup as autocomponent</li>
@@ -116,7 +196,9 @@ read our Wicket 6 migration guide found at <a href="http://s.apache.org/wicket-6
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4822">WICKET-4822</a> - Wicket.Event.add requires Wicket.$, but wicket-ajax-jquery is not listed as a dependency</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4824">WICKET-4824</a> - Redirect to HTTPS is using wrong port 80 if HttpsConfig with default ports 80/443 is used</li>
 </ul>
+
 <h4 id="improvement">Improvement</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4160">WICKET-4160</a> - Make AbstractAutoCompleteRenderer.renderHeader() and .renderFooter() non-final</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4772">WICKET-4772</a> - DataTable API and handling of AbstractToolbar</li>
@@ -126,16 +208,22 @@ read our Wicket 6 migration guide found at <a href="http://s.apache.org/wicket-6
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4808">WICKET-4808</a> - WebClientInfo.getRemoteAddr() handling “Forwarded-For” value tokens not being ip addresses</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4812">WICKET-4812</a> - Make SerializationChecker easier for extending so custom checks can be added to it</li>
 </ul>
+
 <h4 id="new-feature">New Feature</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4793">WICKET-4793</a> - Support Jetty 9.x websocket implementation</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4802">WICKET-4802</a> - Add functionality to be able to export DataTable content</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4815">WICKET-4815</a> - Interface to mark components with type safe models</li>
 </ul>
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -145,5 +233,4 @@ read our Wicket 6 migration guide found at <a href="http://s.apache.org/wicket-6
 </div>
         </footer>
     </body>
-
 </html>

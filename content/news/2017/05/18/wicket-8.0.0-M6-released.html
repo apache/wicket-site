@@ -13,37 +13,99 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2017/05/18/wicket-8.0.0-M6-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2017/05/18/wicket-8.0.0-M6-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2017/05/18/wicket-8.0.0-M6-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2017/05/18/wicket-8.0.0-M6-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2017/05/18/wicket-8.0.0-M6-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2017/05/18/wicket-8.0.0-M6-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2017/05/18/wicket-8.0.0-M6-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 8.0.0-M6 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
             <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul></li></ul></div>
@@ -52,50 +114,69 @@
             <div class="l-full">
     <p class="meta">18 May 2017</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 8.0.0-M6!</p>
+
 <p>Apache Wicket is an open source Java component oriented web application
 framework that powers thousands of web applications and web sites for
 governments, stores, universities, cities, banks, email providers, and
 more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
 <p>This release marks another minor release of Wicket 8. We
 use semantic versioning for the development of Wicket, and as such no
 API breaks are present breaks are present in this release compared to
 8.0.0.</p>
+
 <h2 id="new-and-noteworthy">New and noteworthy</h2>
 <p>With this version Wicket removed its internal JSON implementation 
 (based on project <a href="https://github.com/stleary/JSON-java">JSON-java</a>) replacing it with 
 external project <a href="https://github.com/openjson/openjson">Open JSON</a>. 
 This was necessary as JSON-java’s license is no longer compatible with Apache License 2.0.</p>
+
 <h2 id="using-this-release">Using this release</h2>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>8.0.0-M6<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M6">8.0.0-M6 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M6/binaries">8.0.0-M6 binary download</a></li>
 </ul>
+
 <!--more-->
+
 <h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
 <p>If you upgrade from 8.y.z this release is a drop in replacement. If
 you come from a version prior to 8.0.0, please read our Wicket 8
 migration guide found at</p>
+
 <ul>
   <li>http://s.apache.org/wicket8migrate</li>
 </ul>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <p>========================================================================</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
 </code></pre></div></div>
+
 <p>Signature for apache-wicket-8.0.0-M6.zip:</p>
+
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
+
 iQIcBAABAgAGBQJZGF1uAAoJEAzCjx+CMhBVHVwQAI9s33bQnf2renrK88l16qHG
 3Krvu79Ks5mXzJZmdf6O9jlfgZ+dFsNtPetkteVX+6ngne23r9g1TBd4qB80KEhD
 qlwbn777TKWhy+CCy++9Nd0qV3Pi6FZv03xzWzo3JaGdzFqne9K4U/af6VIfc69V
@@ -111,10 +192,13 @@ VjUAN2HX4B/1G+k2QFrm
 =kM6A
 -----END PGP SIGNATURE-----
 </pre></div>
+
 <p>Signature for apache-wicket-8.0.0-M6.tar.gz:</p>
+
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
+
 iQIcBAABAgAGBQJZGF1uAAoJEAzCjx+CMhBVLE4P+wVfGgM02TSAIGsRhtCJla9y
 5fb0KtOW6D1mRuuuVK8JbWncqpn5B2yuQGnkttE3OV8YUsR1HDwHBgCrx0z5Dcbh
 +uhNwW+IJTIUrApVVXFN4+X1rZFDQ9dwnJTNjm0kdfzCLPcRriEHzQbg8CUC6JuB
@@ -130,10 +214,15 @@ nWyRNUVXKwvIeu1ad4pujXh7ldNTkDsrtUSkrFCUV4TLya3SGrFLurKefuMidPze
 =kX7X
 -----END PGP SIGNATURE-----
 </pre></div>
+
 <p>========================================================================</p>
+
 <h3 id="this-release">This Release</h3>
+
 <h4 id="changelog-for-800-m6">CHANGELOG for 8.0.0-M6:</h4>
+
 <h5 id="bug">Bug</h5>
+
 <ul>
   <li>[WICKET-6177] - Introduce AsynchronousPageStore</li>
   <li>[WICKET-6339] - Wrong implementation of MarkupFragment.iterator()</li>
@@ -144,7 +233,9 @@ nWyRNUVXKwvIeu1ad4pujXh7ldNTkDsrtUSkrFCUV4TLya3SGrFLurKefuMidPze
   <li>[WICKET-6362] - HeaderItems with different PageParameters are treated as identical</li>
   <li>[WICKET-6365] - Links on “Contribute to the User Guide” are broken</li>
 </ul>
+
 <h5 id="improvement">Improvement</h5>
+
 <ul>
   <li>[WICKET-6347] - IChoiceRenderer implements IDetachable</li>
   <li>[WICKET-6348] - New FormComponentUpdatingBehavior to replace wantOnSelectionChangedNotifications()</li>
@@ -153,20 +244,29 @@ nWyRNUVXKwvIeu1ad4pujXh7ldNTkDsrtUSkrFCUV4TLya3SGrFLurKefuMidPze
   <li>[WICKET-6355] - Pass the request attributes to FileSystemResource#createResourceResponse()</li>
   <li>[WICKET-6364] - The autogenerated input field when a form has a default button should not gain the focus when navigating with tab</li>
 </ul>
+
 <h5 id="new-feature">New Feature</h5>
+
 <ul>
   <li>[WICKET-6286] - Would be good to have AjaxDownload available out of the box</li>
 </ul>
+
 <h5 id="task">Task</h5>
+
 <ul>
   <li>[WICKET-4201] - IPageProvider and its implementations need to be improved</li>
   <li>[WICKET-6322] - Remove lambda factories</li>
   <li>[WICKET-6363] - Do not use jetty-all but specific dependencies</li>
 </ul>
+
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -176,5 +276,4 @@ nWyRNUVXKwvIeu1ad4pujXh7ldNTkDsrtUSkrFCUV4TLya3SGrFLurKefuMidPze
 </div>
         </footer>
     </body>
-
 </html>

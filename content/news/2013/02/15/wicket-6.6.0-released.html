@@ -13,95 +13,181 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2013/02/15/wicket-6.6.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2013/02/15/wicket-6.6.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2013/02/15/wicket-6.6.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2013/02/15/wicket-6.6.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2013/02/15/wicket-6.6.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2013/02/15/wicket-6.6.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2013/02/15/wicket-6.6.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 6.6.0 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
+            
         </section>
         <section>
             <div class="l-full">
     <p class="meta">15 Feb 2013</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.6.0!</p>
+
 <p>This release marks the sixth minor release of Wicket 6. Starting
 with Wicket 6 we use semantic versioning for the future development of
 Wicket, and as such no API breaks are present in this release compared
 to 6.0.0.</p>
+
 <h3 id="new-and-noteworthy">New and noteworthy</h3>
+
 <h4 id="wicketfor-attribute-for-html-label-tags">wicket:for attribute for html label tags</h4>
+
 <p>While already available for some time, the wicket-1.5.xsd now contains
 a valid definition for the <code class="language-plaintext highlighter-rouge">wicket:for</code> attribute such that it</p>
+
 <blockquote>
   <p>Can be used in HTML <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> element to automatically link it
 to a form element. The value of this attribute must have the same value of
 the form component’s wicket:id attribute.</p>
 </blockquote>
+
 <p>So you can use the following markup:</p>
+
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;label</span> <span class="na">wicket:for=</span><span class="s">"someinput"</span><span class="nt">&gt;</span>Some label<span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;input</span> <span class="na">wicket:id=</span><span class="s">"someinput"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span></code></pre></figure>
+
 <h4 id="added-a-callback-for-an-invalidated-session">Added a callback for an invalidated session</h4>
+
 <p>Session is extended with a life cycle event called <code class="language-plaintext highlighter-rouge">onInvalidate()</code>.
 This method is executed when the user session is invalidated either
 by explicit call to <code class="language-plaintext highlighter-rouge">org.apache.wicket.Session#invalidate()</code> or due
 to HttpSession expiration.</p>
+
 <p>In case of session expiration this method is called in a non-worker
 thread, i.e. there are no thread locals exported for the Application,
 RequestCycle and Session. The Session is the current instance. The
 Application can be found by using <code class="language-plaintext highlighter-rouge">Application#get(String)</code>. There is
 no way to get a reference to a RequestCycle.</p>
+
 <h3 id="using-this-release">Using this release</h3>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>6.6.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.6.0">6.6.0 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.6.0/binaries">6.6.0 binary download</a></li>
 </ul>
+
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
+
 <p>If you upgrade from 6.y.z this release is a drop in replacement. If
 you come from a version prior to 6.0.0, please read our Wicket 6
 migration guide found at</p>
+
 <ul>
   <li><a href="http://s.apache.org/wicket-6.0-migration">http://s.apache.org/wicket-6.0-migration</a></li>
 </ul>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <h3 id="release-notes---wicket---version-660">Release Notes - Wicket - Version 6.6.0</h3>
+
 <h4 id="bugs">Bugs</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4723">WICKET-4723</a> - tracking id retrieved in AtmosphereBehavior#onRequest() is always 0</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4724">WICKET-4724</a> - the option name “maxRequests” is wrong in jquery.wicketatmosphere.js</li>
@@ -122,7 +208,9 @@ migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5036">WICKET-5036</a> - Post Parameters are lost when continueToOriginalDestination() is called</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5040">WICKET-5040</a> - Session.exists() returns false when ThreadContext#session is not set to current session</li>
 </ul>
+
 <h4 id="improvement">Improvement</h4>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4444">WICKET-4444</a> - Add a callback to the Session which is called when the HttpSession is invalidated</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-4861">WICKET-4861</a> - Making MultiFileUploadField use HTML5 multiple attr &amp; remove confusing fakepath</li>
@@ -136,10 +224,14 @@ migration guide found at</p>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5022">WICKET-5022</a> - Improve Application_es.properties</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-5025">WICKET-5025</a> - Set the component as a context to the ajax listeners</li>
 </ul>
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -149,5 +241,4 @@ migration guide found at</p>
 </div>
         </footer>
     </body>
-
 </html>

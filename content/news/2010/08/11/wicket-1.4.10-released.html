@@ -13,51 +13,117 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2010/08/11/wicket-1.4.10-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2010/08/11/wicket-1.4.10-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2010/08/11/wicket-1.4.10-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2010/08/11/wicket-1.4.10-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2010/08/11/wicket-1.4.10-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2010/08/11/wicket-1.4.10-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2010/08/11/wicket-1.4.10-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Wicket 1.4.10 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
+            
         </section>
         <section>
             <div class="l-full">
     <p class="meta">11 Aug 2010</p>
     <p>This is the tenth maintenance release of the 1.4.x series and brings over
 thirty bug fixes and improvements.</p>
+
 <p>As well as bringing bug fixes and small improvements, 1.4.10 brings two major new features:</p>
 <ul>
   <li>Delayed component initialization</li>
   <li>Component configuration</li>
 </ul>
+
 <p>Delayed component initialization allows developers to initialize their components outside of a constructor, when more environment is available to the component instance. From the javadoc:</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Component</span> <span class="o">{</span>
 	<span class="cm">/**
 	 * This method is meant to be used as an alternative to initialize components. Usually the
@@ -85,7 +151,9 @@ thirty bug fixes and improvements.</p>
 	 */</span>
 	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onInitialize</span><span class="o">()</span> <span class="o">{}</span>
 <span class="o">}</span></code></pre></figure>
+
 <p>Component configuration allows developers to easier configure component states such as visibility, enabled, etc. From the javadoc:</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Component</span> <span class="o">{</span>
 	<span class="cm">/**
 	 * Called once per request on components before they are about to be rendered. This method
@@ -147,25 +215,32 @@ thirty bug fixes and improvements.</p>
 	 */</span>
 	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onConfigure</span><span class="o">()</span> <span class="o">{}</span>
 <span class="o">}</span></code></pre></figure>
+
 <ul>
   <li><a href="http://svn.apache.org/repos/asf/wicket/releases/wicket-1.4.10/">Subversion tag</a></li>
   <li><a href="https://issues.apache.org/jira/secure/IssueNavigator.jspa?reset=true&amp;mode=hide&amp;sorter/order=DESC&amp;sorter/field=priority&amp;pid=12310561&amp;fixfor=12315070">Changelog</a></li>
   <li>To use in Maven:</li>
 </ul>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>1.4.10<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <ul>
   <li>Download the <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.4.10">full
 distribution</a> (including
 source)</li>
 </ul>
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -175,5 +250,4 @@ source)</li>
 </div>
         </footer>
     </body>
-
 </html>

@@ -13,37 +13,99 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2017/07/06/wicket-6.27.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2017/07/06/wicket-6.27.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2017/07/06/wicket-6.27.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2017/07/06/wicket-6.27.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2017/07/06/wicket-6.27.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2017/07/06/wicket-6.27.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2017/07/06/wicket-6.27.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 6.27.0 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
             <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul></li></ul></div>
@@ -52,47 +114,66 @@
             <div class="l-full">
     <p class="meta">06 Jul 2017</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.27.0!</p>
+
 <p>Apache Wicket is an open source Java component oriented web application
 framework that powers thousands of web applications and web sites for
 governments, stores, universities, cities, banks, email providers, and
 more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
 <p>This release marks another minor release of Wicket 6. We
 use semantic versioning for the development of Wicket, and as such no
 API breaks are present breaks are present in this release compared to
 6.0.0.</p>
+
 <h2 id="new-and-noteworthy">New and noteworthy</h2>
 <p>With this version Wicket changed its internal JSON implementation (package org.apache.wicket.ajax.json) switching from project JSON-java (https://github.com/stleary/JSON-java) to Open JSON (https://github.com/openjson/openjson). This was necessery as JSON-java’s license is no longer compatible with Apache License 2.0.</p>
+
 <h2 id="using-this-release">Using this release</h2>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>6.27.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.27.0">6.27.0 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.27.0/binaries">6.27.0 binary download</a></li>
 </ul>
+
 <!--more-->
+
 <h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
 <p>If you upgrade from 6.y.z this release is a drop in replacement. If
 you come from a version prior to 6.0.0, please read our Wicket 6
 migration guide found at</p>
+
 <ul>
   <li>http://s.apache.org/wicket6migrate</li>
 </ul>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <p>========================================================================</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
 </code></pre></div></div>
+
 <p>Signature for apache-wicket-6.27.0.zip:</p>
+
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
+
 iQIcBAABAgAGBQJZWT9KAAoJEAzCjx+CMhBVx/kQAJKCnO4CJtfIGQCj2zulMxi6
 s3cRF+suIzFUHCeRXH4B+zU9wkcLEyAu2XfmZ1mjOVChpVdXDCZJ2zVquVoXq87f
 iq2iowJkvQIgax+rvin6CxtGfJz9tNIiwT+cJd++ValqLgTJl3j6MPTTcbA8vE+Q
@@ -108,10 +189,13 @@ f2mPw9baJN6asL/FDJhiwiYEDov7dHs3n4Y8uB1MU4P5D1o5k4GwLLXC/yMY1CG1
 =hZAF
 -----END PGP SIGNATURE-----
 </pre></div>
+
 <p>Signature for apache-wicket-6.27.0.tar.gz:</p>
+
 <div class="highlight"><pre>
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
+
 iQIcBAABAgAGBQJZWT9KAAoJEAzCjx+CMhBVShYQAIKMOg2d84EFhw+vzJY4m/OV
 pAND+nwA8/iH8dvK1M7ZtQPYaDlwFDnGHpSnJaW1xo4FMXzvICbOURQiluc3JMJ4
 KESvXF2zOTgt6mC5Wb8409o+S3xnkr9F4AAK/Rf2NtB+xVBHyfnUqFx8KPNEUy5Q
@@ -127,10 +211,15 @@ MfALKqCOD4Ta2B4w9ES0
 =3H98
 -----END PGP SIGNATURE-----
 </pre></div>
+
 <p>========================================================================</p>
+
 <h3 id="this-release">This Release</h3>
+
 <h4 id="changelog-for-6270">CHANGELOG for 6.27.0:</h4>
+
 <h5 id="bug">Bug</h5>
+
 <ul>
   <li>[WICKET-6165] - Inconsistent behavior of Markupstream.hasMore vs. MarkupStream.next.</li>
   <li>[WICKET-6314] - 7.6 release references 7.5-SNAPSHOT poms</li>
@@ -145,7 +234,9 @@ MfALKqCOD4Ta2B4w9ES0
   <li>[WICKET-6400] - Object with array property fails on NPE when construction JSON object</li>
   <li>[WICKET-6409] - Session should use #getSessionStore() instead of ‘sessionStore’</li>
 </ul>
+
 <h5 id="improvement">Improvement</h5>
+
 <ul>
   <li>[WICKET-6212] - CheckChoice / add a getAdditionalAttributes() also for <label>-tag</label></li>
   <li>[WICKET-6307] - SubmitLink does not work in Chrome “ff.onsubmit is not a function”</li>
@@ -153,15 +244,22 @@ MfALKqCOD4Ta2B4w9ES0
   <li>[WICKET-6351] - Form.anyFormComponentError performance degradation</li>
   <li>[WICKET-6364] - The autogenerated input field when a form has a default button should not gain the focus when navigating with tab</li>
 </ul>
+
 <h5 id="task">Task</h5>
+
 <ul>
   <li>[WICKET-6287] - Switch from json.org to open-json</li>
   <li>[WICKET-6391] - Deprecate the classes and methods which now throw runtime exception after the switch to OpenJson</li>
 </ul>
+
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -171,5 +269,4 @@ MfALKqCOD4Ta2B4w9ES0
 </div>
         </footer>
     </body>
-
 </html>

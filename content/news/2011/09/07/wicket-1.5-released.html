@@ -13,37 +13,99 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2011/09/07/wicket-1.5-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2011/09/07/wicket-1.5-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2011/09/07/wicket-1.5-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2011/09/07/wicket-1.5-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2011/09/07/wicket-1.5-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2011/09/07/wicket-1.5-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2011/09/07/wicket-1.5-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket releases Wicket 1.5</h1>
+            
+            
+            
         </header>
         <section class="toc left">
             <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#downloading-apache-wicket-15"><span class="toc-number">1</span> <span class="toc-text">Downloading Apache Wicket 1.5</span></a></li><li class="toc--level-1 toc--section-2"><a href="#most-notable-changes"><span class="toc-number">2</span> <span class="toc-text">Most notable changes</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#inter-component-events"><span class="toc-number">2.1</span> <span class="toc-text">Inter-component events</span></a></li></ul></li></ul></div>
@@ -52,18 +114,27 @@
             <div class="l-full">
     <p class="meta">07 Sep 2011</p>
     <p>The Apache Wicket team is proud to announce the immediate availability of the newest release of their component oriented open source Java web framework. Apache Wicket 1.5 has been in development for the last two years and brings many improvements over previous versions.</p>
+
 <h2 id="downloading-apache-wicket-15">Downloading Apache Wicket 1.5</h2>
+
 <p>You can download the release here: <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.0">http://www.apache.org/dyn/closer.cgi/wicket/1.5.0</a></p>
+
 <p>Or use this in your Maven POM to upgrade to the new version:</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>1.5.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Please note that Wicket’s main artifact ID has been renamed to <code class="language-plaintext highlighter-rouge">wicket-core</code>.</p>
+
 <p>You will need to upgrade all modules (i.e. wicket, wicket-extensions, wicket-ioc, wicket-spring, etc) to 1.5.0. <strong>It is not possible to mix previous versions of Wicket with modules of this release.</strong></p>
+
 <h2 id="most-notable-changes">Most notable changes</h2>
+
 <p>With this release the Wicket team has revised many of its internals. A short list:</p>
+
 <ul>
   <li>HTML5 components added: <code class="language-plaintext highlighter-rouge">EmailTextField</code>, <code class="language-plaintext highlighter-rouge">NumberTextField</code>, <code class="language-plaintext highlighter-rouge">UrlTextField</code> and <code class="language-plaintext highlighter-rouge">RangeTextField</code></li>
   <li>New inter-component events (explained below)</li>
@@ -80,16 +151,22 @@
   <li>Consistent naming: methods with <code class="language-plaintext highlighter-rouge">Javascript</code> in the name have been renamed to use proper capitalization: <code class="language-plaintext highlighter-rouge">JavaScript</code></li>
   <li>Switching to HTTPS is as simple as configuring a new root mapper to make Wicket HTTPS aware and annotating a page with @RequireHttps</li>
 </ul>
+
 <p>A longer list of changes and improvements can be found in our <a href="http://s.apache.org/wicket-1.5-migration">migration guide</a>.</p>
+
 <h3 id="inter-component-events">Inter-component events</h3>
+
 <p>Wicket 1.5 offers a simple, yet flexible, way for component to communicate with each other in a decoupled manner. The two major interfaces that facilitate this are:</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
  * Objects that can send events
  */</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IEventSource</span> <span class="o">{</span>
     <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="nf">send</span><span class="o">(</span><span class="nc">IEventSink</span> <span class="n">sink</span><span class="o">,</span> <span class="nc">Broadcast</span> <span class="n">broadcast</span><span class="o">,</span> <span class="no">T</span> <span class="n">payload</span><span class="o">);</span>
 <span class="o">}</span></code></pre></figure>
+
 <p>and</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
  * Objects that can receive events
  */</span>
@@ -100,8 +177,11 @@
      */</span>
     <span class="kt">void</span> <span class="nf">onEvent</span><span class="o">(</span><span class="nc">IEvent</span><span class="o">&lt;?&gt;</span> <span class="n">event</span><span class="o">);</span>
 <span class="o">}</span></code></pre></figure>
+
 <p>The classes that implement these interfaces, and can thus participate in the event mechanism are: <code class="language-plaintext highlighter-rouge">Component</code>, <code class="language-plaintext highlighter-rouge">RequestCycle</code>, <code class="language-plaintext highlighter-rouge">Session</code>, and <code class="language-plaintext highlighter-rouge">Application</code>.</p>
+
 <p>The mechanism allows for different event broadcast methods defined here:</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
  * Defines the event broadcast type.
  */</span>
@@ -111,15 +191,22 @@
     <span class="no">BUBBLE</span><span class="o">,</span>
     <span class="no">EXACT</span><span class="o">;</span>
 <span class="o">}</span></code></pre></figure>
+
 <p>There is an example in wicket-examples which demonstrates the usage of this.</p>
+
 <p>Applications can register custom event dispatchers in <code class="language-plaintext highlighter-rouge">FrameworkSettings</code>; the dispatchers can be used to build custom event delivery mechanisms. For example a custom <code class="language-plaintext highlighter-rouge">IEventDispatcher</code> mechanism can route events to annotated methods, for example:</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="kd">extends</span> <span class="nc">Component</span> <span class="o">{</span>
     <span class="nd">@OnEvent</span>
     <span class="kd">private</span> <span class="kt">void</span> <span class="nf">onUserAdded</span><span class="o">(</span><span class="nc">UserAddedEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{...}</span>
 <span class="o">}</span></code></pre></figure>
+
 <p>where <code class="language-plaintext highlighter-rouge">UserAddedEvent</code> is the event payload object.</p>
+
 <p>The default <code class="language-plaintext highlighter-rouge">Component#onEvent</code> method will be called even if custom dispatchers are registered.</p>
+
 <p>A default event is raised whenever Wicket begins to create an AJAX response. The payload of the event is the <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code> used for event. Sample implementation:</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// component that always adds itself to the ajax response</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyComponent</span> <span class="kd">extends</span> <span class="nc">Component</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onEvent</span><span class="o">(</span><span class="nc">IEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
@@ -128,10 +215,15 @@
          <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
+
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -141,5 +233,4 @@
 </div>
         </footer>
     </body>
-
 </html>

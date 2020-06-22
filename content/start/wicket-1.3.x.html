@@ -13,37 +13,98 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /start/wicket-1.3.x -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /start/wicket-1.3.x -->
+		
+    	
+        
     	<li class="active"><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /start/wicket-1.3.x -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /start/wicket-1.3.x -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /start/wicket-1.3.x -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /start/wicket-1.3.x -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /start/wicket-1.3.x -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 1.3.x</h1>
+            
+            
             <p>Here you can learn about the status of Wicket 1.3.x, find links to download it, learn how to configure your Maven POM to use Wicket, find the minimal requirements, and migrate your existing application to this Wicket version.</p>
         </header>
         <section class="toc left">
@@ -58,33 +119,51 @@
 	<a class="button" href="#requirements"><i class="fa fa-exclamation-triangle"></i><br />Requirements</a>
 	<a class="button" href="#migrate"><i class="fa fa-history"></i><br />Migrate</a>
 </div>
+
 <h2 id="status">Status</h2>
+
 <p>The status for Wicket 1.3.x is: <strong>discontinued</strong>.</p>
+
 <p>This branch is <strong>no longer maintained and will no longer receive any updates</strong>.</p>
+
 <p><i class="fa fa-exclamation-circle"></i>
 <strong>You should upgrade to Wicket 8.x at your earliest convenience.</strong></p>
+
 <h3 id="semantic-versioning">Semantic Versioning</h3>
+
 <p>This release branch <strong>does not</strong> follow semantic versioning. Upgrading
 between minor versions may break binary compatibility.</p>
+
 <h2 id="download">Download</h2>
+
 <p>The most recent release in this branch is: <strong>1.3.7</strong>.</p>
+
 <p>You can get the release using Maven or download it manually.</p>
+
 <h3 id="using-apache-maven">Using Apache Maven</h3>
+
 <p>Use the following Maven dependency to use Wicket in your project:</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>1.3.7<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Add the snippet above to your project’s POM in the dependency
 (management) section.</p>
+
 <p>You can add more Wicket modules to your project by adding more
 dependencies (copy above snippet and change the <code class="language-plaintext highlighter-rouge">artifactId</code>
 accordingly).</p>
+
 <p>If you are not a Maven user, you can download the Wicket release manually.</p>
+
 <h3 id="download-manually">Download Manually</h3>
+
 <p>Use the following links to download Wicket manually to build Wicket
 from source:</p>
+
 <ul>
   <li>Download source+bin <a href="https://archive.apache.org/dist/wicket/1.3.7/apache-wicket-1.3.7.tar.gz">apache-wicket-1.3.7.tar.gz</a>
 (<a href="https://archive.apache.org/dist/wicket/1.3.7/apache-wicket-1.3.7.tar.gz.asc">PGP</a>,
@@ -97,47 +176,68 @@ from source:</p>
 <a href="http://archive.apache.org/dist/wicket/1.3.7/apache-wicket-1.3.7.zip.sha">SHA</a>
 )</li>
 </ul>
+
 <p>Note that the binary packages and the source packages don’t contain any
 dependencies necessary to have your project working out of the box. We
 strongly urge you to use Maven (or Buildr, or Gradle) as your
 dependency management system.</p>
+
 <h3 id="older-releases">Older releases</h3>
+
 <p>The Apache mirroring system only hosts the latest version of each actively supported branch.
 When you need to download an older release you can find them in the archives.</p>
+
 <p>Go to <a href="https://archive.apache.org/dist/wicket">the Apache archives</a> to find your specific version.</p>
+
 <h2 id="requirements">Requirements</h2>
+
 <p>Apache Wicket has few requirements in order to work properly. In this
 section you’ll find the minimum requirements for all Wicket modules.
 Specific modules may need additional libraries, such as file upload,
 date time APIs, CDI specifications, and more. See the module’s POM for
 more details on the necessary libraries.</p>
+
 <h3 id="java-version">Java version</h3>
+
 <p>This Wicket version requires at least the following Java version: <strong>JDK 1.4.0 or newer</strong>.</p>
+
 <p>Not only is a particular version of Java necessary, Wicket also needs
 access to specific APIs.</p>
+
 <h3 id="servlet-api">Servlet API</h3>
+
 <p>This Wicket version requires at least the following Servlet API
 version: <strong>Servlet API 2.3 or newer</strong>. This is provided by your
 container, please see the documentation of your container to see which
 version of the Servlet specification is supported.</p>
+
 <p>In addition to the Servlet API, Wicket uses SLF4J to let you choose
 your own implementation of a logging framework.</p>
+
 <h3 id="dont-mix-wicket-versions">Don’t mix Wicket versions</h3>
+
 <p>You cannot mix different Wicket versions in your project. You should
 always use the artifacts from a particular release. For example it is
 <strong>not</strong> possible to use Wicket Extensions 1.3 in a Wicket 1.5 project,
 or Wicket Spring 1.4.19 in a Wicket 1.5 project. The same goes for 3rd
 party libraries: make sure you always use a compatible version of your
 3rd party library.</p>
+
 <h2 id="migrating-from-earlier-versions">Migrating from earlier versions</h2>
+
 <p>If you are migrating an existing application from earlier versions of
 Wicket you may find our migration guides invaluable:</p>
+
 <ul>
   <li>Migrating from <a href="https://cwiki.apache.org/confluence/display/WICKET/Migrating+to+Wicket+1.3">Wicket 1.2 to Wicket 1.3</a></li>
 </ul>
+
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -147,5 +247,4 @@ Wicket you may find our migration guides invaluable:</p>
 </div>
         </footer>
     </body>
-
 </html>

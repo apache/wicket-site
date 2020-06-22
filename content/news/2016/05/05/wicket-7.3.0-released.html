@@ -13,37 +13,99 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /news/2016/05/05/wicket-7.3.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /news/2016/05/05/wicket-7.3.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /news/2016/05/05/wicket-7.3.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /news/2016/05/05/wicket-7.3.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /news/2016/05/05/wicket-7.3.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /news/2016/05/05/wicket-7.3.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /news/2016/05/05/wicket-7.3.0-released.html -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Apache Wicket 7.3.0 released</h1>
+            
+            
+            
         </header>
         <section class="toc left">
             <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul></li></ul></div>
@@ -52,68 +114,100 @@
             <div class="l-full">
     <p class="meta">05 May 2016</p>
     <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.3.0!</p>
+
 <p>Apache Wicket is an open source Java component oriented web application
 framework that powers thousands of web applications and web sites for
 governments, stores, universities, cities, banks, email providers, and
 more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
 <p>This release marks another minor release of Wicket 7. We
 use semantic versioning for the development of Wicket, and as such no
 API breaks are present breaks are present in this release compared to
 7.0.0.</p>
+
 <h2 id="new-and-noteworthy">New and noteworthy</h2>
+
 <h4 id="wicket-metrics-added">Wicket Metrics added</h4>
+
 <p>A new experimental module for integrating with <a href="http://metrics.dropwizard.io/">DropWizard’s Metrics</a> project was created. 
 Metrics provides a powerful toolkit of ways to measure the behavior of critical components in your production environment. 
 Using the Metrics integration requires the use of AspectJ (which is licensed under the Eclipse Public License 1.0)</p>
+
 <p>You can read more about using the Metrics integration in our user guide’s <a href="https://ci.apache.org/projects/wicket/guide/7.x/guide/single.html#monitoring">monitoring chapter</a>.</p>
+
 <h4 id="jquery-upgrade">jQuery upgrade</h4>
+
 <p>Wicket ships standard with it’s own jQuery. With this release jQuery was upgraded to 1.12.3/2.2.3.</p>
+
 <!--more-->
+
 <h2 id="using-this-release">Using this release</h2>
+
 <p>With Apache Maven update your dependency to (and don’t forget to
 update any other dependencies on Wicket projects to the same version):</p>
+
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>7.3.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
 <p>Or download and build the distribution yourself, or use our
 convenience binary package</p>
+
 <ul>
   <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.3.0">7.3.0 source download</a></li>
   <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.3.0/binaries">7.3.0 binary download</a></li>
 </ul>
+
 <h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
 <p>If you upgrade from 7.y.z this release is a drop in replacement. If
 you come from a version prior to 7.0.0, please read our Wicket 7
 migration guide found at</p>
+
 <ul>
   <li><a href="http://s.apache.org/wicket7migrate">http://s.apache.org/wicket7migrate</a></li>
 </ul>
+
 <p>Have fun!</p>
+
 <p>— The Wicket team</p>
+
 <p>================================</p>
+
 <p>The signatures for the source release artefacts:</p>
+
 <p>Signature for apache-wicket-7.3.0.zip:</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-----BEGIN PGP SIGNATURE-----
 Comment: GPGTools - https://gpgtools.org
+
 iEYEABECAAYFAlcd4ngACgkQJBX8W/xy/UVP8ACgkHvmhm3RZ006jUfyW7o0DyUk
 gloAmgJ6YSA/owx3VLldI7LC/5DoZwQr
 =8TQC
 -----END PGP SIGNATURE-----
 </code></pre></div></div>
+
 <p>Signature for apache-wicket-7.3.0.tar.gz:</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-----BEGIN PGP SIGNATURE-----
 Comment: GPGTools - https://gpgtools.org
+
 iEYEABECAAYFAlcd4ngACgkQJBX8W/xy/UXmDgCcCW9n15hdrKVKpona4SwaRtrM
 ZJcAnREA/PnxMckF2HWqgeunp+siydFJ
 =tRv/
 -----END PGP SIGNATURE-----
 </code></pre></div></div>
+
 <p>================================</p>
+
 <h3 id="this-release">This Release</h3>
+
 <h4 id="changelog-for-730">CHANGELOG for 7.3.0:</h4>
+
 <h5 id="bug">Bug</h5>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-6069">WICKET-6069</a> - OnChangeAjaxBehavior does not work if the url contains a request parameter with same name as wicket id</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-6078">WICKET-6078</a> - Problem with queued components and auto linking</li>
@@ -140,7 +234,9 @@ ZJcAnREA/PnxMckF2HWqgeunp+siydFJ
   <li><a href="https://issues.apache.org/jira/browse/WICKET-6141">WICKET-6141</a> - Runtime Exception rendering ComponentTag with RelativePathPrefixHandler</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-6151">WICKET-6151</a> - DebugBar/PageSizeDebugPanel throws NullPointerException (need wrapper exception with more detail)</li>
 </ul>
+
 <h5 id="improvement">Improvement</h5>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-6053">WICKET-6053</a> - Allow to reuse the same application instance in several tests</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-6081">WICKET-6081</a> - Add “assertNotRequired” to the WicketTester</li>
@@ -159,18 +255,26 @@ ZJcAnREA/PnxMckF2HWqgeunp+siydFJ
   <li><a href="https://issues.apache.org/jira/browse/WICKET-6145">WICKET-6145</a> - Enable DeltaManager to replicate PageTable in Sessions</li>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-6152">WICKET-6152</a> - Allow to add more than one WebSocketBehavior in the component tree</li>
 </ul>
+
 <h5 id="new-feature">New Feature</h5>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-6120">WICKET-6120</a> - Wicket Metrics</li>
 </ul>
+
 <h5 id="wish">Wish</h5>
+
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/WICKET-6095">WICKET-6095</a> - Multiline headers in DataTable</li>
 </ul>
+
 </div>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -180,5 +284,4 @@ ZJcAnREA/PnxMckF2HWqgeunp+siydFJ
 </div>
         </footer>
     </body>
-
 </html>

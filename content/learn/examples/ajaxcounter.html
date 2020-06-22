@@ -13,37 +13,99 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-
     <body class="">
         <div class="header default">
     <div class="l-container">
+        
 <nav class="mainmenu">
     <ul>
+    
+		
+    	
+        
+        
 		<!-- /start/quickstart.html || /learn/examples/ajaxcounter -->
+		
+    	
+        
     	<li class=""><a href="/start/quickstart.html">Quick Start</a></li>
+    
+		
+    	
+        
+        
 		<!-- /start/download.html || /learn/examples/ajaxcounter -->
+		
+    	
+        
     	<li class=""><a href="/start/download.html">Download</a></li>
+    
+		
+    	
+        
+        
 		<!-- /learn || /learn/examples/ajaxcounter -->
+		
+    	
+        
     	<li class=""><a href="/learn">Documentation</a></li>
+    
+		
+    	
+        
+        
 		<!-- /help || /learn/examples/ajaxcounter -->
+		
+    	
+        
     	<li class=""><a href="/help">Support</a></li>
+    
+		
+    	
+        
+        
 		<!-- /contribute || /learn/examples/ajaxcounter -->
+		
+    	
+        
     	<li class=""><a href="/contribute">Contribute</a></li>
+    
+		
+    	
+        
+        
 		<!-- /community || /learn/examples/ajaxcounter -->
+		
+    	
+        
     	<li class=""><a href="/community">Community</a></li>
+    
+		
+    	
+        
+        
 		<!-- /apache || /learn/examples/ajaxcounter -->
+		
+    	
+        
     	<li class=""><a href="/apache">Apache</a></li>
+    
     </ul>
 </nav>
+
         <div class="logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
+
     </div>
 </div>
 <main>
     <div class="l-container">
         <header class="l-full preamble">
             <h1>Ajax Counter</h1>
+            
+            
+            
         </header>
         <section class="toc left">
             <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#counter-page"><span class="toc-number">1</span> <span class="toc-text">Counter page</span></a></li><li class="toc--level-1 toc--section-2"><a href="#adding-ajax"><span class="toc-number">2</span> <span class="toc-text">Adding Ajax</span></a></li><li class="toc--level-1 toc--section-3"><a href="#summary"><span class="toc-number">3</span> <span class="toc-text">Summary</span></a></li></ul></div>
@@ -51,18 +113,23 @@
         <section>
             <p>This example shows you how to use Wicket’s Ajax behaviors and components by
 building a simple counter that updates through Ajax link clicks.</p>
+
 <p>In all the Wicket examples, you have to put all files in the same package
 directory. This means putting the markup files and the java files next to one
 another. It is possible to alter this behavior, but that is beyond the scope
 of this example. The only exception is the obligatory <code class="language-plaintext highlighter-rouge">web.xml</code> file which
 should reside in the <code class="language-plaintext highlighter-rouge">WEB-INF/</code> directory of your web application root
 folder.</p>
+
 <p>In this example we assume you already have read and understood the other
 examples which give you information on the structure and nature of Wicket
 applications. Specifically read and understand the <a href="helloworld.html">Hello, World
 example</a>.</p>
+
 <h2 id="counter-page">Counter page</h2>
+
 <p>First we’ll create a page that just counts the number of times a link has been clicked. In the following markup you’ll see a link and a label.</p>
+
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
@@ -72,18 +139,23 @@ example</a>.</p>
     <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
 <p>The link component will refresh the page and the label will replace the text
 ‘nr of times’ with the count. Take a look at the following Java file to see
 how it works on the Java side:</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">wicket.quickstart</span><span class="o">;</span>
+
 <span class="kn">import</span> <span class="nn">wicket.Component</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.link.Link</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.model.Model</span><span class="o">;</span>
+
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="nc">QuickStartPage</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">Index</span><span class="o">()</span> <span class="o">{</span>
         <span class="nc">Model</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Model</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
             <span class="kd">private</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
             <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getObject</span><span class="o">()</span> <span class="o">{</span>
                 <span class="k">return</span> <span class="n">counter</span><span class="o">++;</span>
             <span class="o">}</span>
@@ -96,30 +168,39 @@ how it works on the Java side:</p>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="s">"counter"</span><span class="o">,</span> <span class="n">model</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
+
 <p>In this class we created a <code class="language-plaintext highlighter-rouge">Model</code> subclass that increases its counter
 everytime the <code class="language-plaintext highlighter-rouge">getObject</code> method gets called, and returns its value. We set
 this model on the label component, so that each time the label gets rendered
 the counter gets increased.</p>
+
 <p>The link doesn’t do anything, just listen to the requests and update the
 page. If you run this code in your application (download the Quickstart
 project and copy/paste the code in the homepage for a quick experience).</p>
+
 <p>The page gets fully refreshed with each link click. That is not very web 2.0,
 so let’s make it more modern by adding some Ajax stuff.</p>
+
 <h2 id="adding-ajax">Adding Ajax</h2>
+
 <p>To make this a more modern UI we’ll have to change a couple of things. First
 we need to make the link an Ajax link. Wicket provides several types of Ajax
 links, but the best one for our purposes is the <code class="language-plaintext highlighter-rouge">AjaxFallbackLink</code>, as it
 provides a fallback to a normal request in case no Ajax is available.</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">wicket.quickstart</span><span class="o">;</span>
+
 <span class="kn">import</span> <span class="nn">wicket.Component</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.AjaxRequestTarget</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.markup.html.AjaxFallbackLink</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.model.Model</span><span class="o">;</span>
+
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="nc">QuickStartPage</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">Index</span><span class="o">()</span> <span class="o">{</span>
         <span class="nc">Model</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Model</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
             <span class="kd">private</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
             <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getObject</span><span class="o">()</span> <span class="o">{</span>
                 <span class="k">return</span> <span class="n">counter</span><span class="o">++;</span>
             <span class="o">}</span>
@@ -133,21 +214,26 @@ provides a fallback to a normal request in case no Ajax is available.</p>
         <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="s">"counter"</span><span class="o">,</span> <span class="n">model</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
+
 <p>As you can see, the <code class="language-plaintext highlighter-rouge">Link</code> has been replaced with the <code class="language-plaintext highlighter-rouge">AjaxFallbackLink</code>, and the
 <code class="language-plaintext highlighter-rouge">onClick</code> method now takes a new argument: the <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code>. If you want a
 component to be updated in the Ajax request, you’ll have to add them to the
 target. So let’s alter the file to make it possible to add the label to the
 request target.</p>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">wicket.quickstart</span><span class="o">;</span>
+
 <span class="kn">import</span> <span class="nn">wicket.Component</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.AjaxRequestTarget</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.ajax.markup.html.AjaxFallbackLink</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.markup.html.basic.Label</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">wicket.model.Model</span><span class="o">;</span>
+
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Index</span> <span class="kd">extends</span> <span class="nc">QuickStartPage</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">Index</span><span class="o">()</span> <span class="o">{</span>
         <span class="nc">Model</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Model</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
             <span class="kd">private</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
             <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getObject</span><span class="o">()</span> <span class="o">{</span>
                 <span class="k">return</span> <span class="n">counter</span><span class="o">++;</span>
             <span class="o">}</span>
@@ -165,26 +251,35 @@ request target.</p>
         <span class="n">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
+
 <p>We’ve moved the instantiation of the label to the beginning of the page
 constructor and made a local, final variable. This way we can reference the
 label in the event handler of the link component.</p>
+
 <p>We also had to call <code class="language-plaintext highlighter-rouge">setOutputMarkupId(true)</code> on the label to be able to
 update the component when the request is returned to the client browser. If
 we don’t, Wicket will not know how to update the markup in the client.</p>
+
 <p>If you put this code into your page’s class, then you’ll have a working Ajax
 updating counter.</p>
+
 <h2 id="summary">Summary</h2>
+
 <p>Working with Ajax and Wicket using the standard Wicket libraries doesn’t
 require a degree in JavaScript. Even better, you don’t necessarily need to
 update your markup file to work with Ajax. In this (simple) example we were
 able to add Ajax behavior to the page without touching the markup file.</p>
+
 <p>The most important lesson here is that in order to update components using
 Ajax is that you need to add those components to the <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code> and
 that the components that are to be updated in that request, should have
 <code class="language-plaintext highlighter-rouge">setOutputMarkupId(true)</code>.</p>
+
+
         </section>
     </div>
 </main>
+
         <footer>
             <div class="l-container">
     <div class="left">
@@ -194,5 +289,4 @@ that the components that are to be updated in that request, should have
 </div>
         </footer>
     </body>
-
 </html>
