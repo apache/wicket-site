@@ -10,10 +10,10 @@ preamble: >
 
 ## Friends
 
-{% markdown apache/friends.md %}
+{% include friends.md %}
 
 ## License
-
+ 
 All projects of the Apache Wicket project are licensed using the
 [Apache License, version 2.0][apache-license] ([TXT][apache-txt] or
 [HTML][apache-html]).
