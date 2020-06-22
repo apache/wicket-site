@@ -23,6 +23,9 @@ layout: base
             {% endif %}
             {% if page.preamble %}<p>{{ page.preamble | markownify }}</p>{% endif %}
         </header>
+        <section class="toc left">
+            {{ content | toc_generate }}
+        </section>
         <section class="left">
             {{ content }}
 {% for item in page.additionalContents %}
