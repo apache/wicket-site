@@ -1,4 +1,4 @@
-I"�-<div class="l-button-table">
+I"6-<div class="l-button-table">
     <div class="l-two-third">
       <div class="button-bar">
         <a class="button" href="#security"><i class="fa fa-lock"></i><br />Security</a>
@@ -247,12 +247,6 @@ we can normally figure out whats wrong from that.</li>
 support.</p>
 
 <hr />
-
-<hr />
-<p>layout: default
-title: Get help from companies
-subtitle: When you can’t get help quick enough or you need direct support
-—</p>
 
 <h2 id="commercial">Commercial Wicket Support</h2>
 
