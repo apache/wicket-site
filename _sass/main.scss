@@ -52,7 +52,7 @@ div.header {
         padding-right:1em;
         display:flex;
         
-        @include breakpoint($breakpoint-10, 'max-width') {
+        @include breakpoint($breakpoint-20, 'max-width') {
             display:block;
         }
     }

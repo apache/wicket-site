@@ -3,6 +3,7 @@ layout: default
 title: Friend projects
 subtitle: Apache projects using Wicket 
 ---
+
 Being a member of the Apache Software Foundation creates opportunities
 for communities to collaborate and stand on one's shoulders. The
 following friends within the Apache community are proud members using

@@ -10,13 +10,16 @@ preamble: >
 ## Mailing lists
 
 For users of the Wicket community we run the following email lists:
-
-<div class="button-bar">
-    <a class="button" href="#user"><i class="fa fa-comments"></i><br>Users</a>
-    <a class="button" href="#dev"><i class="fa fa-code-fork"></i><br>Developers</a>
-    <a class="button" href="#announce"><i class="fa fa-bullhorn"></i><br>Announcements</a>
-    <a class="button" href="#commit"><i class="fa fa-file-code-o"></i><br>Commits</a>
-    <a class="button" href="#security"><i class="fa fa-lock"></i><br>Security</a>
+<div class="l-button-table">
+    <div class="l-two-third">
+      <div class="button-bar">
+          <a class="button" href="#user"><i class="fa fa-comments"></i><br>Users</a>
+          <a class="button" href="#dev"><i class="fa fa-code-fork"></i><br>Developers</a>
+          <a class="button" href="#announce"><i class="fa fa-bullhorn"></i><br>Announcements</a>
+          <a class="button" href="#commit"><i class="fa fa-file-code-o"></i><br>Commits</a>
+          <a class="button" href="#security"><i class="fa fa-lock"></i><br>Security</a>
+      </div>
+    </div>
 </div>
 
 Learn more about these lists below.

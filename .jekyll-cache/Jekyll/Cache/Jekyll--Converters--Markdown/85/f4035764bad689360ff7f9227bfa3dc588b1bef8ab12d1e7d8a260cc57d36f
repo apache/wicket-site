@@ -1,0 +1,82 @@
+I"%<h2 id="friends">Friends</h2>
+
+<hr />
+<p>layout: default
+title: Friend projects
+subtitle: Apache projects using Wicket 
+—</p>
+
+<p>Being a member of the Apache Software Foundation creates opportunities
+for communities to collaborate and stand on one’s shoulders. The
+following friends within the Apache community are proud members using
+Wicket.</p>
+
+<h3 id="apache-isis">Apache Isis</h3>
+
+<p><a href="http://isis.apache.org">Apache Isis</a> is a full-stack framework for rapidly developing domain
+driven apps and RESTful APIs in Java. It uses Wicket
+6.x as a <a href="http://isis.apache.org/documentation.html#wicket-viewer">default viewer for Isis domain model</a>.</p>
+
+<h3 id="apache-oodt">Apache OODT</h3>
+
+<p><a href="http://oodt.apache.org">Apache OODT</a> is a data grid framework for transparent search
+and discovery of disparate science resources. It uses Apache Wicket for
+its CAS File Manager and CAS Workflow monitor.</p>
+
+<h3 id="apache-openmeetings">Apache Openmeetings</h3>
+
+<p><a href="http://openmeetings.apache.org">Apache Openmeetings</a> provides video conferencing, instant messaging,
+white board, collaborative document editing and other groupware tools
+using API functions of the Red5 Streaming Server for Remoting and
+Streaming. It uses Apache Wicket for its web interfaces.</p>
+
+<h3 id="apache-syncope">Apache Syncope</h3>
+
+<p><a href="https://syncope.apache.org">Apache Syncope</a> is an Open Source system for managing
+digital identities in enterprise environments. It uses Apache Wicket
+for its <a href="https://syncope.apache.org/architecture.html#The_console">web management console</a>.</p>
+
+<h3 id="apache-nutch">Apache Nutch</h3>
+
+<p><a href="https://nutch.apache.org">Apache Nutch</a> is a well matured, production ready web
+crawler. Since version 2.3 it uses Apache Wicket for its <a href="https://nutch.apache.org/#22-september-2014-wicket-webapp-now-part-of-nutch-2x-codebase">web
+management console</a>.</p>
+
+<h3 id="apache-fortress">Apache Fortress</h3>
+
+<p><a href="https://directory.apache.org/fortress/">Apache Fortress</a> is a standards based and Open Source
+Identity Access Management Java SDK for LDAP v3 compliant systems.
+Fortress is 100% compliant with RBAC, ARBAC02 and IETF’s password
+policy draft. It uses Apache Wicket for its <a href="https://directory.apache.org/fortress/overview.html">RBAC Web Management UI</a>.</p>
+
+<h3 id="apache-asterixdb">Apache AsterixDB</h3>
+
+<p><a href="https://asterixdb.apache.org/">Apache AsterixDB</a>  is a BDMS (Big Data Management System) with a rich 
+feature set that sets it apart from other Big Data platforms. Its submodule Hyracks
+uses Apache Wicket for its administration console.</p>
+
+<h2 id="license">License</h2>
+
+<p>All projects of the Apache Wicket project are licensed using the
+<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, version 2.0</a> (<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">TXT</a> or
+<a href="http://www.apache.org/licenses/LICENSE-2.0.html">HTML</a>).</p>
+
+<p>You can read more about the current status of the license at the
+<a href="http://www.apache.org/licenses/">foundation license page</a>.</p>
+
+<h2 id="thanks">Thanks</h2>
+
+<p>The Apache Software Foundation could not exist without the continued
+generous support from the community. We would like to take this
+opportunity to thank our <a href="http://apache.org/foundation/thanks.html">Sponsors</a>. If you are
+interested in sponsoring the ASF, please read our <a href="http://www.apache.org/foundation/sponsorship.html">sponsorship page</a>.</p>
+
+<p>The Wicket project would like to thank the following companies for
+their support of the project.</p>
+
+<ul>
+  <li><a href="http://jetbrains.com">JetBrains</a> for their IntelliJ open source license for our developers</li>
+  <li><a href="http://comsysto.com">ComSysto</a> for contributing the User Guide</li>
+</ul>
+
+:ET

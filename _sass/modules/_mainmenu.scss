@@ -35,11 +35,12 @@ nav.mainmenu {
         
         justify-content: right;
         
-        @include breakpoint($breakpoint-10, 'max-width') {
+        @include breakpoint($breakpoint-20, 'max-width') {
            justify-content: center;
         }
         
-        font-size: 2rem;                
+        font-size: 2rem;
+        flex-wrap: nowrap;
     }
 }
 
@@ -55,11 +56,12 @@ nav.mainmenu {
     text-align:center;
 
     display:flex;
-    @include breakpoint($breakpoint-10, 'max-width') {
+    padding-right: 1rem;
+
+    @include breakpoint($breakpoint-20, 'max-width') {
         
         margin:0;
         @include prepend(1);
-		padding-right: 1rem;
         
         justify-content: center;
         align-items: center;
