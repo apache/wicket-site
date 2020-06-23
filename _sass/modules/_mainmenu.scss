@@ -3,16 +3,11 @@ nav.mainmenu {
     margin:0 auto 2rem auto;
     text-align:center;
     padding-top: 12px;
-    ul {
-        list-style:none;
-    }
-    li {
-        display:inline-block;
-        font-size:18px;
-        text-transform: uppercase;
-        font-weight:bold;
-        &.active { border-bottom: 2px solid white;}
-    }
+    display:inline-block;
+    text-transform: uppercase;
+    font-weight:bold;
+    &.active { border-bottom: 2px solid white;}
+    
     li+li {
         margin-left:1*$grid-column;
     }
@@ -28,7 +23,24 @@ nav.mainmenu {
         color: #303284;
     }    
     
-    @media screen and (orientation: portrait) {
-    	padding-bottom:50px;
+}
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    &:last-child {
+        flex-grow: 1;
+        justify-content: right;
+        font-size: 2rem;
     }
+}
+
+.nav-items {
+   padding-right: 1rem;
+   
+   &:hover {
+       color: $color-brand-50;
+   }
 }

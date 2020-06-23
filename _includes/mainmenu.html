@@ -1,6 +1,7 @@
 {% assign activeMenu = nil %}
 <nav class="mainmenu">
-    <ul>
+    {% include logo.html %}
+    <div class="nav-container">
     {% for link in site.navigation %}
 		{% assign url = page.url|remove:'/index.html' %}
     	{% assign active = nil %}
@@ -34,7 +35,12 @@
         {% else %}
             {% assign url = link.url %}
         {% endunless %}
-    	<li class="{{ active }}"><a href="{{ url }}">{{ link.text }}</a></li>
+    	<a href="{{ url }}" class="{{ active }} nav-items">{{ link.text }}</a>
     {% endfor %}
-    </ul>
+    </div>
+    <div class="nav-container  ">
+        <a href="https://github.com/apache/wicket" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://twitter.com/apache_wicket" target="_blank"><i class="fa fa-twitter nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+    </div>    
 </nav>
