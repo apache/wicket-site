@@ -1,15 +1,1 @@
-.logo {
-    text-align:center;
 
-    display:flex;
-    @include breakpoint($breakpoint-20) {
-        
-        margin:0;
-        @include prepend(1);
-		padding-right: 1rem;
-    }
-    img {
-        display:inline-block;
-        width: 200px;
-    }
-}

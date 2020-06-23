@@ -50,7 +50,11 @@ div.header {
     nav.mainmenu {
         margin:0;
         padding-right:1em;
-        display:flex;   
+        display:flex;
+        
+        @include breakpoint($breakpoint-10, 'max-width') {
+            display:block;
+        }
     }
     a, a:hover, a:active, a:visited {
         border:none;

@@ -29,18 +29,43 @@ nav.mainmenu {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    
+   
     &:last-child {
         flex-grow: 1;
+        
         justify-content: right;
-        font-size: 2rem;
+        
+        @include breakpoint($breakpoint-10, 'max-width') {
+           justify-content: center;
+        }
+        
+        font-size: 2rem;                
     }
 }
 
 .nav-items {
    padding-right: 1rem;
-   
+    
    &:hover {
        color: $color-brand-50;
    }
+}
+
+.nav-logo {
+    text-align:center;
+
+    display:flex;
+    @include breakpoint($breakpoint-10, 'max-width') {
+        
+        margin:0;
+        @include prepend(1);
+		padding-right: 1rem;
+        
+        justify-content: center;
+        align-items: center;
+    }
+    img {
+        display:inline-block;
+        width: 200px;
+    }
 }

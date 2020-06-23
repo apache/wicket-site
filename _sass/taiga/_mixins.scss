@@ -37,8 +37,8 @@
 
 // Media queries
 // Example: @include breakpoint($breakpoint-20) { your properties }
-@mixin breakpoint($breakpoint) {
-    @media ($breakpoint-property: $breakpoint) {
+@mixin breakpoint($breakpoint, $property-name : $breakpoint-property) {
+    @media ($property-name: $breakpoint) {
         @content;
     }
 }
