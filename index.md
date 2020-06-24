@@ -31,7 +31,7 @@ jumbotronLinks:
   </div>
 </div>
 
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-one-third">
     <h3>Java 8+ Required</h3>
     <p>
@@ -54,7 +54,7 @@ jumbotronLinks:
     </p>
   </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-two-third">
     <h3>Lambdas in All The Right Places</h3>
     <p>
@@ -66,7 +66,7 @@ jumbotronLinks:
     </p>
   </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-full">
     <h3>Optional is Sometimes Required</h3>
   </div>
@@ -104,7 +104,7 @@ add(new AjaxFallbackLink<Void>("wicket8") {
   </div>
 </div>
 
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-full">
     <h3>Models as Functional Interface</h3>
     <p>
@@ -131,7 +131,7 @@ add(new Label("name4",
   </div>
 </div>
 
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-half">
     <h3>No Rewrite Necessary</h3>
     <p>
@@ -154,7 +154,7 @@ add(new Label("name4",
     </p>
   </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-full">
     <h2>Getting Started with Wicket 8</h2>
     <p>
@@ -201,7 +201,7 @@ add(new Label("name4",
     web application.</p>
 </div>
 
-<div class="l-first">
+<div class="l-first l-flex">
     <div class="l-one-third">
         <img src="{{site.baseurl}}/img/java-wicket-html5.png" class="l-full">
         <h3>Just Java &amp; HTML</h3>
@@ -225,7 +225,7 @@ add(new Label("name4",
         of basic Ajax components.</p>
     </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
     <div class="l-one-third">
         <h3>Open Source with Apache License</h3>
         <p>Since its inception in 2004 Wicket has been an open source
@@ -247,7 +247,7 @@ add(new Label("name4",
         page, or even component level.</p>
     </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
     <div class="l-one-third">
         <h3>Multi-tab and window support</h3>
         <p>No more pain while keeping taps on multiple tabs and windows. 
@@ -264,7 +264,7 @@ add(new Label("name4",
         file.</p>
     </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
     <div class="l-one-third">
         <h3>Test your pages and components</h3>
         <p>With WicketTester you can achieve testing coverage your QA 
@@ -287,3 +287,4 @@ add(new Label("name4",
 </div>
 <div class="l-first">
 </div>
+<hr/>
