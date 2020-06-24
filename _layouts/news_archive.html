@@ -3,8 +3,7 @@ layout: base
 ---
 <div class="header default">
     <div class="l-container">
-        {% include mainmenu.html %}
-        {% include logo.html %}
+        {% include mainmenu.html %}        
     </div>
 </div>
 <main>
@@ -23,21 +22,22 @@ layout: base
             {% endif %}
             {% if page.preamble %}<p>{{ page.preamble | markownify }}</p>{% endif %}
         </header>
-
-        <div class="l-two-third">
-        {{ content }}
-        </div>
-        <div class="l-one-third">
-        {% for year in site.years %}
-            {% assign y = year.first.first.date | date: "%Y" %}
-            <h2>{{ y }}</h2>
-            <ul>
-            <li><a href="{{site.baseurl}}/news/{{year.first.first.date | date: "%Y"}}">All of {{y}}</a></li>
-            {% for month in year %}
-            <li><a href="{{site.baseurl}}/news/{{year.first.first.date | date: "%Y"}}/{{month.first.date | date: "%m"}}">{{ month.first.date | date: "%B" }}</a></li>
-            {% endfor %}
-            </ul>
-        {% endfor %}
+        <div class="l-flex"> 
+	        <div class="l-two-third">
+	        {{ content }}
+	        </div>
+	        <div class="l-one-third">
+	        {% for year in site.years %}
+	            {% assign y = year.first.first.date | date: "%Y" %}
+	            <h2>{{ y }}</h2>
+	            <ul>
+	            <li><a href="{{site.baseurl}}/news/{{year.first.first.date | date: "%Y"}}">All of {{y}}</a></li>
+	            {% for month in year %}
+	            <li><a href="{{site.baseurl}}/news/{{year.first.first.date | date: "%Y"}}/{{month.first.date | date: "%m"}}">{{ month.first.date | date: "%B" }}</a></li>
+	            {% endfor %}
+	            </ul>
+	        {% endfor %}
+	        </div>
         </div>
     </div>
 </main>
