@@ -112,7 +112,7 @@ main { box-shadow: 0 .5rem 3rem #f0f0f0; }
 
 .l-button-table > .l-two-third { float: none; margin-left: 0; margin-right: 0; }
 
-.l-flex { display: flex; }
+.l-flex { display: flex; flex-wrap: wrap; }
 
 .is-hidden { display: none !important; }
 
