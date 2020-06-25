@@ -1,9 +1,0 @@
-I"Î<p>The user guide has been written using the doc engine from Grails project. You can find a reference for this format <a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/">here</a>.
-For more details about the format used to write the guide and to know how to contribute, see</p>
-
-<ul>
-  <li><a href="https://ci.apache.org/projects/wicket/guide/6.x/guide/contributing.html">the relative chapter for 6.x</a></li>
-  <li><a href="https://ci.apache.org/projects/wicket/guide/7.x/single.html#_contributing_to_this_guide">the relative chapter for 7.x</a></li>
-  <li><a href="https://ci.apache.org/projects/wicket/guide/8.x/single.html#_contributing_to_this_guide">the relative chapter for 8.x</a></li>
-</ul>
-:ET
