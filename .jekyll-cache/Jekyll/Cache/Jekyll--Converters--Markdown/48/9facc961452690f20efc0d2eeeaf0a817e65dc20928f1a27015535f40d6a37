@@ -1,8 +1,11 @@
-I"r=<div class="l-full l-first preamble">
+I" ><div class="l-full l-first preamble">
     <h1 id="introduction">Announcing Apache&nbsp;Wicket&nbsp;8: Write Less, Achieve More</h1>
+    <div>
+    <img src="/img/logo.svg" alt="Apache Wicket" width="200" height="200" />
     <p>
       The Apache Wicket project announces the 8th major release of the open source Java web framework servicing websites and applications across the globe for over a decade. With this release Wicket embraces Java 8 idioms fully, allowing the use of lambda expressions in all the right places. With Wicket 8 you can write fewer, faster and more maintainable code.
     </p>
+  </div>
 </div>
 <div class="l-first">
   <div class="l-full">
@@ -17,7 +20,7 @@
   </div>
 </div>
 
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-one-third">
     <h3>Java 8+ Required</h3>
     <p>
@@ -40,7 +43,7 @@
     </p>
   </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-two-third">
     <h3>Lambdas in All The Right Places</h3>
     <p>
@@ -52,7 +55,7 @@
     </p>
   </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-full">
     <h3>Optional is Sometimes Required</h3>
   </div>
@@ -91,7 +94,7 @@
   </div>
 </div>
 
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-full">
     <h3>Models as Functional Interface</h3>
     <p>
@@ -118,7 +121,7 @@
   </div>
 </div>
 
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-half">
     <h3>No Rewrite Necessary</h3>
     <p>
@@ -141,7 +144,7 @@
     </p>
   </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
   <div class="l-full">
     <h2>Getting Started with Wicket 8</h2>
     <p>
@@ -188,7 +191,7 @@
     web application.</p>
 </div>
 
-<div class="l-first">
+<div class="l-first l-flex">
     <div class="l-one-third">
         <img src="/img/java-wicket-html5.png" class="l-full" />
         <h3>Just Java &amp; HTML</h3>
@@ -212,7 +215,7 @@
         of basic Ajax components.</p>
     </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
     <div class="l-one-third">
         <h3>Open Source with Apache License</h3>
         <p>Since its inception in 2004 Wicket has been an open source
@@ -234,7 +237,7 @@
         page, or even component level.</p>
     </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
     <div class="l-one-third">
         <h3>Multi-tab and window support</h3>
         <p>No more pain while keeping taps on multiple tabs and windows. 
@@ -251,7 +254,7 @@
         file.</p>
     </div>
 </div>
-<div class="l-first">
+<div class="l-first l-flex">
     <div class="l-one-third">
         <h3>Test your pages and components</h3>
         <p>With WicketTester you can achieve testing coverage your QA 
@@ -274,4 +277,6 @@
 </div>
 <div class="l-first">
 </div>
+<hr />
+
 :ET

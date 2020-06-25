@@ -1,26 +1,7 @@
----
-layout: default
-title:
-pageclasses: index
-additionalContents:
-  -
-   header: builtwithwicket--header.html
-   path: builtwithwicket.html
-   sectionId: builtwithwicket
-   cssClass: builtwithwicket
-  -
-   path: news.html
-   sectionId: news
-jumbotronLinks:
-  -
-    text: Download now &raquo;
-    url: /start/wicket-8.x.html
----
-
-<div class="l-full l-first preamble">
+I"A)<div class="l-full l-first preamble">
     <h1 id="introduction">Announcing Apache&nbsp;Wicket&nbsp;8: Write Less, Achieve More</h1>
     <div>
-      <img src="{{ site.baseurl }}/img/logo.svg" alt="Apache Wicket" width="200" height="200">
+      <img src="/img/logo.svg" alt="Apache Wicket" width="200" height="200" />
     </div>
     <p>
       The Apache Wicket project announces the 9th major release of the open source Java web framework servicing websites and applications across the globe since 2004. 
@@ -64,11 +45,10 @@ jumbotronLinks:
      You either risk leaving holes in the defense of your application or you break certain functionality. Protecting against unwanted inline scripts is the most important target to attain. In CSP this is called 'unsafe-inline' and it's the most common cause of cross-site scripting vulnerabilities.
     </p>
     <p>
-     Wicket 9 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need of a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Lookup our <a href="http://wicket.apache.org/learn/#guide" target="_blank">documentation</a> for more information.     
+     Wicket 9 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need of a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Lookup our &lt;a href="http://wicket.apache.org/learn/#guide" target="_blank""&gt;documentation&lt;/a&gt; for more information.     
     </p>
   </div>
 </div>
-
 
 <div class="l-first l-flex">
   <div class="l-half">
@@ -81,21 +61,21 @@ jumbotronLinks:
     </p>
   </div>
   <div class="l-half">
-    <h3>Migrating to Wicket 9</h3>
+    <h3>Migrating to Wicket 8</h3>
     <p>
-      When you migrate from a previous Wicket version to Wicket 9, a full list of changes and migrations is available at the following page:
+      When you migrate from a previous Wicket version to Wicket 8, a full list of changes and migrations is available at the following page:
     </p>
     <p>
-      <a href="https://s.apache.org/wicket9migrate">https://s.apache.org/wicket9migrate</a>
+      <a href="https://s.apache.org/wicket8migrate">https://s.apache.org/wicket8migrate</a>
     </p>
     <p>
-      Please consult this migration guide when you are moving towards Wicket 9.
+      Please consult this migration guide when you are moving towards Wicket 8.
     </p>
   </div>
 </div>
 <div class="l-first l-flex">
   <div class="l-full">
-    <h2>Getting Started with Wicket 9</h2>
+    <h2>Getting Started with Wicket 8</h2>
     <p>
       It is very easy to get started with Wicket: use our <a href="/start/quickstart.html">quick-start wizard</a> or 
       use one of the options below.
@@ -107,13 +87,13 @@ jumbotronLinks:
       With Apache Maven update your dependency to (and don't forget to
       update any other dependencies on Wicket projects to the same version):
     </p>
-{% highlight xml%}
-<dependency>
-    <groupId>org.apache.wicket</groupId>
-    <artifactId>wicket-core</artifactId>
-    <version>{{site.wicket.version_90}}</version>
-</dependency>
-{% endhighlight%}
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>8.8.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
   </div>
   <div class="l-half">
     <h3>Download sources/binaries manually</h3>
@@ -122,13 +102,13 @@ jumbotronLinks:
       convenience binary package
     </p>
     <ul>
-      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}">{{site.wicket.version_90}} source download</a></li>
-      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}/binaries">{{site.wicket.version_90}} binary download</a></li>
+      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.8.0">8.8.0 source download</a></li>
+      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.8.0/binaries">8.8.0 binary download</a></li>
     </ul>
   </div>
 </div>
 
-<hr>
+<hr />
 
 <div class="l-full l-first preamble">
     <h1 id="introduction">Introducing Apache&nbsp;Wicket</h1>
@@ -142,21 +122,21 @@ jumbotronLinks:
 
 <div class="l-first l-flex">
     <div class="l-one-third">
-        <img src="{{site.baseurl}}/img/java-wicket-html5.png" class="l-full">
+        <img src="/img/java-wicket-html5.png" class="l-full" />
         <h3>Just Java &amp; HTML</h3>
         <p>Leverage what you know about Java or your favourite HTML 
         editor to write Wicket applications. With pure Java code and HTML 
         markup Wicket is the go-to web framework for purists.</p>
     </div>
     <div class="l-one-third">
-        <img src="{{site.baseurl}}/img/wicket-safe.png" class="l-full">
+        <img src="/img/wicket-safe.png" class="l-full" />
         <h3>Secure by Default</h3>
         <p>URLs do not expose sensitive information and all component paths are
         session-relative. Wicket keeps your model private except those parts
         you explicitly expose.</p>
     </div>
     <div class="l-one-third">
-        <img src="{{site.baseurl}}/img/wicket-components.png" class="l-full">
+        <img src="/img/wicket-components.png" class="l-full" />
         <h3>AJAX Components</h3>
         <p>Write Ajax applications without having to write a single line 
         of JavaScript code. Wicket's Ajax functionality makes it trivial 
@@ -226,4 +206,6 @@ jumbotronLinks:
 </div>
 <div class="l-first">
 </div>
-<hr/>
+<hr />
+
+:ET
