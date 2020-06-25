@@ -1,12 +1,10 @@
-I"C)<div class="l-full l-first preamble">
-    <h1 id="introduction">Announcing Apache&nbsp;Wicket&nbsp;8: Write Less, Achieve More</h1>
+I"D)<div class="l-full l-first preamble">
+    <h1 id="introduction" class="announce">Announcing Apache Wicket 9: get into the modern Java world!</h1>
     <div>
       <img src="/img/logo.svg" alt="Apache Wicket" width="200" height="200" />
     </div>
     <p>
-      The Apache Wicket project announces the 9th major release of the open source Java web framework servicing websites and applications across the globe since 2004. 
-    </p>
-    <p>
+      The Apache Wicket project announces the 9th major release of the open source Java web framework servicing websites and applications across the globe since 2004.     
       Built on top of Java 11, this version of Wicket brings web development into the modern Java world, offering a fundamental tool to keep you code up to date with Java evolution.
     </p>
 </div>

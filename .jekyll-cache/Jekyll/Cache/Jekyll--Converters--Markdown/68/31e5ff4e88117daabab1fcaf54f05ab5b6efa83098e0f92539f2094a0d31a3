@@ -1,10 +1,11 @@
-I"))<div class="l-full l-first preamble">
-    <h1 id="introduction">Announcing Apache&nbsp;Wicket&nbsp;8: Write Less, Achieve More</h1>
+I"3)<div class="l-full l-first preamble">
+    <h1 id="introduction">Announcing Apache Wicket 9: get into the modern Java world!</h1>
     <div>
       <img src="/img/logo.svg" alt="Apache Wicket" width="200" height="200" />
     </div>
     <p>
-      The Apache Wicket project announces the 9th major release of the open source Java web framework servicing websites and applications across the globe since 2004. Built on top of Java 11, this version of Wicket brings web development into the modern Java world, offering a fundamental tool to keep you code up to date with Java evolution.
+      The Apache Wicket project announces the 9th major release of the open source Java web framework servicing websites and applications across the globe since 2004.     
+      Built on top of Java 11, this version of Wicket brings web development into the modern Java world, offering a fundamental tool to keep you code up to date with Java evolution.
     </p>
 </div>
 <div class="l-first">
@@ -42,7 +43,7 @@
      You either risk leaving holes in the defense of your application or you break certain functionality. Protecting against unwanted inline scripts is the most important target to attain. In CSP this is called 'unsafe-inline' and it's the most common cause of cross-site scripting vulnerabilities.
     </p>
     <p>
-     Wicket 9 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need of a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Lookup our &lt;a href="http://wicket.apache.org/learn/#guide" target="_blank""&gt;documentation&lt;/a&gt; for more information.     
+     Wicket 9 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need of a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Lookup our <a href="http://wicket.apache.org/learn/#guide" target="_blank">documentation</a> for more information.     
     </p>
   </div>
 </div>
@@ -58,21 +59,21 @@
     </p>
   </div>
   <div class="l-half">
-    <h3>Migrating to Wicket 8</h3>
+    <h3>Migrating to Wicket 9</h3>
     <p>
-      When you migrate from a previous Wicket version to Wicket 8, a full list of changes and migrations is available at the following page:
+      When you migrate from a previous Wicket version to Wicket 9, a full list of changes and migrations is available at the following page:
     </p>
     <p>
-      <a href="https://s.apache.org/wicket8migrate">https://s.apache.org/wicket8migrate</a>
+      <a href="https://s.apache.org/wicket9migrate">https://s.apache.org/wicket9migrate</a>
     </p>
     <p>
-      Please consult this migration guide when you are moving towards Wicket 8.
+      Please consult this migration guide when you are moving towards Wicket 9.
     </p>
   </div>
 </div>
 <div class="l-first l-flex">
   <div class="l-full">
-    <h2>Getting Started with Wicket 8</h2>
+    <h2>Getting Started with Wicket 9</h2>
     <p>
       It is very easy to get started with Wicket: use our <a href="/start/quickstart.html">quick-start wizard</a> or 
       use one of the options below.
@@ -88,7 +89,7 @@
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>8.8.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>9.0.0-M5<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
 
   </div>
@@ -99,8 +100,8 @@
       convenience binary package
     </p>
     <ul>
-      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.8.0">8.8.0 source download</a></li>
-      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.8.0/binaries">8.8.0 binary download</a></li>
+      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/9.0.0-M5">9.0.0-M5 source download</a></li>
+      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/9.0.0-M5/binaries">9.0.0-M5 binary download</a></li>
     </ul>
   </div>
 </div>

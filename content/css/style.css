@@ -76,6 +76,8 @@ dl.advanced dd { width: 66.6666666667%; margin-left: 0%; margin-right: 0%; }
 
 main { box-shadow: 0 .5rem 3rem #f0f0f0; }
 
+.announce { font-weight: bold !important; font-size: 4rem; color: #303284; }
+
 .l-full { width: 100%; float: none; }
 
 @media (min-width: 960px) { .l-full { width: 95.8333333333%; margin-left: 2.0833333333%; margin-right: 2.0833333333%; } }
