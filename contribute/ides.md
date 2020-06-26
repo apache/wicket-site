@@ -19,7 +19,7 @@ by their respective development teams.
 
 ### Eclipse ###
 
-Eclipse offers a good support for Maven based projects with [plugin M2Eclipse](http://www.eclipse.org/m2e/). Once installed you can go to 'Import...->Existing Maven Projects' and import one or more Maven projects into your workspace.
+Eclipse offers a native for Maven based projects. To import a maven project just go to 'File...->Import...->Existing Maven Projects' and import one or more Maven projects into your workspace.
 
 Alternatively, you can generate an Eclipse project typing the following command on project's root:
 
@@ -28,13 +28,6 @@ mvn eclipse:eclipse
 {% endhighlight %}
 
 Maven will add all the necessary JAR files to the project's classpath. Now the sources can be imported in Eclipse using the "Existing Projects into Workspace" wizard.
-
-If not already present the `M2_REPO` classpath variable has to point to your local Maven repository.
-The repository is typically found in `C:\Documents and Settings\<username>\.m2\repo` or (for unix buffs) `~/.m2/repo`. It can be set within Eclipse (Preferences->Java->Build Path->Classpath Variables) or with the help of Maven:
-
-{% highlight console %}
-mvn -Declipse.workspace=<path-to-eclipse-workspace> eclipse:add-maven-repo
-{% endhighlight %}
 
 If you want to go along with the Wicket way of code formatting you should import the Wicket code format profile into your workspace (Preferences->Java->Code Style->Formatter), found in:
 

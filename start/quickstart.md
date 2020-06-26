@@ -169,10 +169,8 @@ the Quick Start wizard.
 
 ### Eclipse
 
-For Eclipse you should generate the Quick Start project within your
-workspace folder. You also need to ensure that you have m2eclipse
-installed in order to import the project. To import the project you
-select "Import existing project" from the File menu, and select the
+Eclipse has native support for Maven projects. To import the project you
+select "Import existing Maven project" from the File menu, and select the
 folder of your generated Quick Start project.
 
 ### IntelliJ IDEA

@@ -70,7 +70,7 @@ jumbotronLinks:
 
 <div class="l-first l-flex">
   <div class="l-half">
-    <h3>A Soft Transition to Java 11+</h3>
+    <h3>A Smooth Transition to Java 11+</h3>
     <p>
       If you come from Wicket 8 chances are you don't need any change in your application code to enjoy all the improvements offered by Java 11, such as better Docker support, improved performances, new GC algorithm available, etc...
     </p>
