@@ -134,18 +134,13 @@ by their respective development teams.</p>
 
 <h3 id="eclipse">Eclipse</h3>
 
-<p>Eclipse offers a good support for Maven based projects with <a href="http://www.eclipse.org/m2e/">plugin M2Eclipse</a>. Once installed you can go to ‘Import…-&gt;Existing Maven Projects’ and import one or more Maven projects into your workspace.</p>
+<p>Eclipse offers a native for Maven based projects. To import a maven project just go to ‘File…-&gt;Import…-&gt;Existing Maven Projects’ and import one or more Maven projects into your workspace.</p>
 
 <p>Alternatively, you can generate an Eclipse project typing the following command on project’s root:</p>
 
 <figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn eclipse:eclipse</span></code></pre></figure>
 
 <p>Maven will add all the necessary JAR files to the project’s classpath. Now the sources can be imported in Eclipse using the “Existing Projects into Workspace” wizard.</p>
-
-<p>If not already present the <code class="language-plaintext highlighter-rouge">M2_REPO</code> classpath variable has to point to your local Maven repository.
-The repository is typically found in <code class="language-plaintext highlighter-rouge">C:\Documents and Settings\&lt;username&gt;\.m2\repo</code> or (for unix buffs) <code class="language-plaintext highlighter-rouge">~/.m2/repo</code>. It can be set within Eclipse (Preferences-&gt;Java-&gt;Build Path-&gt;Classpath Variables) or with the help of Maven:</p>
-
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt;</span><span class="w"> </span>eclipse:add-maven-repo</code></pre></figure>
 
 <p>If you want to go along with the Wicket way of code formatting you should import the Wicket code format profile into your workspace (Preferences-&gt;Java-&gt;Code Style-&gt;Formatter), found in:</p>
 
