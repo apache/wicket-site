@@ -381,7 +381,7 @@ nav.mainmenu a:hover { color: #303284; }
 
 .nav-container { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; }
 
-.nav-container:last-child { flex-grow: 1; justify-content: right; font-size: 2rem; flex-wrap: nowrap; }
+.nav-container:last-child { flex-grow: 1; justify-content: flex-end; font-size: 2rem; flex-wrap: nowrap; }
 
 @media (max-width: 769px) { .nav-container:last-child { justify-content: center; } }
 

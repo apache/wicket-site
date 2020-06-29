@@ -33,7 +33,7 @@ nav.mainmenu {
     &:last-child {
         flex-grow: 1;
         
-        justify-content: right;
+        justify-content: flex-end;
         
         @include breakpoint($breakpoint-20, 'max-width') {
            justify-content: center;
