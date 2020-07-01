@@ -72,7 +72,7 @@ jumbotronLinks:
   <div class="l-half">
     <h3>A Smooth Transition to Java 11+</h3>
     <p>
-      If you come from Wicket 8 chances are you don't need any change in your application code to enjoy all the improvements offered by Java 11, such as better Docker support, improved performances, new GC algorithm available, etc...
+      If you come from Wicket 8 chances are you don't need any change in your application code to enjoy all the improvements offered by Java 11, such as better Docker support, improved performances, new Z Garbage Collector, etc...
     </p>
     <p>
       That said, as this is a new major version we have, in accordance with semantic versioning, cleaned up many APIs and you might have compile errors when you migrate from previous Wicket versions.
