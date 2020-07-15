@@ -3,13 +3,80 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2020-07-15T11:59:41+02:00</updated>
+    <updated>2020-07-15T20:31:59+02:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
         <email>dev@wicket.apache.org</email>
     </author>
  
+
+    <entry>
+        <title>Announcing Apache Wicket 9: get into the modern Java world!</title>
+        <link href="http://wicket.apache.org/news/2020/07/15/wicket-9-released.html"/>
+        <updated>2020-07-15T00:00:00+02:00</updated>
+        <id>http://wicket.apache.org/news/2020/07/15/wicket-9-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket project announces the 9th major release of the open source Java web framework servicing websites and applications across the globe since 2004. Built on top of Java 11, this version of Wicket brings web development into the modern Java world, offering a fundamental tool to keep you code up to date with Java evolution.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;bring-the-web-into-the-modern-java-era&quot;&gt;Bring the web into the modern Java era&lt;/h2&gt;
+
+&lt;p&gt;The release of Java 9 has been a turning point in Java history which laid the foundation for the modern Java era. However, the magnitude of this change has discouraged many developers from leaving the safe harbor represented by Java 8. With Wicket 9 we finally have a fundamental tool to move on and bring our web applications into the new Java world.&lt;/p&gt;
+
+&lt;p&gt;With this version Wicket has been completely revisited and improved to embrace new technologies such as Java modularization and new libraries like JUnit 5.&lt;/p&gt;
+
+&lt;h2 id=&quot;stay-up-to-date-with-java-release-cycle&quot;&gt;Stay up to date with Java release cycle&lt;/h2&gt;
+
+&lt;p&gt;With Java releasing at a faster pace it’s important to keep a library up to date with the lastest changes introduced in the platform and ensure it works with the latest Java release. Wicket does all of this by taking part to the &lt;a href=&quot;https://wiki.openjdk.java.net/display/quality/Quality+Outreach&quot;&gt;OpenJDK Quality Outreach&lt;/a&gt;, an initiative aimed to test popular Open Source projects with both the latest OpenJDK release and the Early Access release.&lt;/p&gt;
+
+&lt;h2 id=&quot;be-ready-for-the-next-java-enterprise&quot;&gt;Be ready for the next Java Enterprise&lt;/h2&gt;
+
+&lt;p&gt;Shortly after Java 9 was released, Oracle submitted Java EE to the Eclipse Foundation. As side effect of this owner change, the package name ‘javax’ had to be migrated to ‘jakarta’. Wicket historically promoted decoupling of Java EE APIs and application code, making the transition to future Java Enterprise versions much easier.&lt;/p&gt;
+
+&lt;h2 id=&quot;protect-your-web-apps-with-content-security-policy-csp&quot;&gt;Protect your web apps with Content Security Policy (CSP)&lt;/h2&gt;
+
+&lt;p&gt;s the number of security threats grows, it’s crucial for web applications to adopt the latest security standards and countermeasures. CSP is a modern standard that allows applications to declare approved origins of content (such as JavaScript, CSS, images, etc…) for the browser to load. Constructing a safe and at the same time complete CSP can be challenging. You either risk leaving holes in the defense of your application or you break certain functionality. Protecting against unwanted inline scripts is the most important target to attain. In CSP this is called ‘unsafe-inline’ and it’s the most common cause of cross-site scripting vulnerabilities.&lt;/p&gt;
+
+&lt;p&gt;Wicket 9 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need for a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Lookup our documentation for more information.&lt;/p&gt;
+
+&lt;h2 id=&quot;migrating-to-wicket-9&quot;&gt;Migrating to Wicket 9&lt;/h2&gt;
+
+&lt;p&gt;When you migrate from a previous Wicket version to Wicket 9, a full list of changes and migrations is available at the following page:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://s.apache.org/wicket9migrate&quot;&gt;https://s.apache.org/wicket9migrate&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Please consult this migration guide when you are moving towards Wicket 9.&lt;/p&gt;
+
+&lt;h2 id=&quot;support&quot;&gt;Support&lt;/h2&gt;
+
+&lt;p&gt;You can find out about our support channels through the following page on our website: &lt;a href=&quot;https://wicket.apache.org/help/&quot;&gt;https://wicket.apache.org/help/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;download&quot;&gt;Download&lt;/h2&gt;
+
+&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;9.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or download and build the distribution yourself, or use our
+convenience binary package&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Source: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/9.0.0&quot;&gt;9.0.0 source download&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Binary: &lt;a href=&quot;http://www.apache.org/dyn/closer.cgi/wicket/9.0.0/binaries&quot;&gt;9.0.0 binary download&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Our many thanks go out to our contributors for testing this release during its development and providing invaluable feedback.&lt;/p&gt;
+
+</content>
+    </entry>
 
     <entry>
         <title>Apache Wicket 8.8.0 released</title>
@@ -1229,158 +1296,6 @@ O6X+cR03Xk9e52N+vqTHOChq6dXFa5Tbg1lc1FAf9K8hNQhk2Hc=
 
 &lt;ul&gt;
   &lt;li&gt;[WICKET-6695] - Add AjaxEditable*Label#shouldTrimInput()&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 9.0.0-M2 released</title>
-        <link href="http://wicket.apache.org/news/2019/06/02/wicket-9.0.0-M2-released.html"/>
-        <updated>2019-06-02T00:00:00+02:00</updated>
-        <id>http://wicket.apache.org/news/2019/06/02/wicket-9.0.0-M2-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 9.0.0-M2!&lt;/p&gt;
-
-&lt;p&gt;Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
-
-&lt;p&gt;This release marks another milestone release of Wicket 9. 
-Since Wicket 9 is still in development, backward api compatibility between 
-milestone release is not guaranteed.
-We will continue to use semantic versioning when we will made Wicket 9 final 
-and maintain api compatibility between minor versions of Wicket 9.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Ajax JavaScript clean-up&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;File wicket-ajax-jquery.js has been cleaned up from obsolete code and 
-unused functionalities.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Package org.apache.wicket.util.time has been deprecated&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Legacy package org.apache.wicket.util.time from module wicket-util has been 
-deprecated. Users are recommended to migrate to standard classes
-java.time.Instant and java.time.Duration. See &lt;a href=&quot;https://issues.apache.org/jira/browse/WICKET-6662&quot;&gt;WICKET-6662&lt;/a&gt;
- for more details.&lt;/p&gt;
-
-&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;9.0.0-M2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package you can find here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-9.x.html#manually&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
-
-&lt;p&gt;If you upgrade from 9.y.z this release is a drop in replacement. If
-you come from a version prior to 9.0.0, please read our Wicket 9
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://s.apache.org/wicket9migrate&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The signatures for the source release artefacts:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Signature for apache-wicket-9.0.0-M2.zip:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlzuv10ACgkQh48B+qjT
-VuHJyRAAi0Lzsl1sLoqErPqEfhXdEydVVbrLBauObOQjimev29mrtijLiZMY2Ie8
-zcEqc8Jk8x6ZRyPln2oH18HyT7dbzxdAM/QSuqHYl6XWwIH97Bb8U87RYrR1YYgP
-4gL24rsv/OSe1NInMJYbykhoh41g9pKfbbLun7cGv6YK3oYNUYUBs2GCvoknxb+u
-/GZFLB06fArYGVbd3cmNdySqQhw71xxrw/R4D8wO/282J2U2HS65W5dqKXIwBRWL
-8e0HLiKc5vvziB3NsQ4YAQ4tBgoATx6GY3UYyQxanVL6B4O6L4Sup+tFL+m4WcyJ
-7jq4UMasZD51sDGwbxIF0MubgwocnxsfT1B3vZgFw2bTAq+gJ0pvlZETA8WUc/T8
-t1C+KyAG2TX8QNEpCJfPKExH6brqt4sMdEW6c443xfA/if4y7PdGKOf3dnQ5lqtP
-Ncd1CQ7ia1LNG7RYVCEA1HYmSAiZy/C5ZVS891vqHCKV9/qoxupQf9ii5UsUmHqm
-tez7M9w46KVjmgpyuCSfBIvtCdOsm94Hhd0x2vcs0tHpqgm93T1a3fddxKfSbMj5
-S21of/LZmvuQp3NJFES2YOCBduMgZY7I3YHCcKYLrEub5gjG16b8CR8qJzd36YoU
-MFbuQDgb0l4tT8ZTIqqhfeCvyw4ntevwcgRJoJmyctTrwnq1Hsg=
-=eW0h
------END PGP SIGNATURE-----
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Signature for apache-wicket-9.0.0-M2.tar.gz:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAlzuv10ACgkQh48B+qjT
-VuHnqQ//Z3LKl0tfpSxcXXywTQTFaT3IKPIOwV0wf/30hAgQF24TUiZ/Bhm7kl5L
-PnkCM/r06Q7aSOgzb+vCyVDN60S4hPnUXP5pPPBoHhTyqJ6syL2uQDeMYoYd2ySw
-GGT2biUO6b0DXzHVKi58wLJ2YHvLq0XlTL0VBflcjv+ASzfBNH80yAfA6Ti2M0IK
-IvWqbGZcW8nbu6U4jQhmjoyduqzRXM8tVZZ3CZwiJpQtKKJ/EISqFZxgpbEQkkF4
-9FNVOYk4Y825F9B2P5Yi3P/uC3XX9LHf+olyEpVqUlzhyWZ2F8u1YEwkZ1SEsO0u
-kVyIaEbVgwhWEBx6Digrg8hiR3rsFh7ROEJjtR5JFQ82b35zpuM7VUKBk6jwQb0b
-Wi9QVDCVODH2mrSCHpEnxe2+KxdWDnrPb10/rikcY4KNRYsxPVUNvk+1P1fX7yvu
-D2r5JJQxIuyuDZo9NQll540yJ7Rnp1TYgkCpIcdonleGC8yZwyCud8FHC6pld0jQ
-l4RsLjJO0e2KF3MefrpkxRwfLNzUUuRrqmRNMx3Im9glmSHGZ8GhCz2UVB0TziZa
-U2sXXjTntkR29HXciBY7J4NP/izH3KTSMBp4MLyuwe3oZGKHmTLir903VN9gaMxh
-y08SO+AHfu0QE9N2cbKF6nCz1W+vBcjM7d6IHdNHWQKbwATyaiI=
-=XFAH
------END PGP SIGNATURE-----
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
-
-&lt;h4 id=&quot;changelog-for-900-m2&quot;&gt;CHANGELOG for 9.0.0-M2:&lt;/h4&gt;
-
-&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-6611] - Missing check for IScopeAwareTextResourceProcessor when concatenating resources&lt;/li&gt;
-  &lt;li&gt;[WICKET-6669] - CSS Resource Bundling throws exception when used with CssUrlReplacer&lt;/li&gt;
-  &lt;li&gt;[WICKET-6671] - IAjaxLink should be serializable&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-6618] - Stateless pages and access to unconfigured components&lt;/li&gt;
-  &lt;li&gt;[WICKET-6656] - JSR 303 - @NotNull validation problems&lt;/li&gt;
-  &lt;li&gt;[WICKET-6657] - change replaceAll() to replace() when a regex is not used&lt;/li&gt;
-  &lt;li&gt;[WICKET-6658] - Allow nested forms on non-&amp;lt;form&amp;gt; tag&lt;/li&gt;
-  &lt;li&gt;[WICKET-6659] - commons-io:commons-io is used in multiple versions at same time&lt;/li&gt;
-  &lt;li&gt;[WICKET-6662] - Remove legacy package org.apache.wicket.util.time from wicket-util&lt;/li&gt;
-  &lt;li&gt;[WICKET-6667] - Ajax JavaScript clean-up&lt;/li&gt;
-  &lt;li&gt;[WICKET-6668] - Sign out the existing session if a sign in attempt has failed&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;task&quot;&gt;Task&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-6653] - Upgrade Velocity to 2.x&lt;/li&gt;
-  &lt;li&gt;[WICKET-6654] - Upgrade JQuery to 3.4.0&lt;/li&gt;
-  &lt;li&gt;[WICKET-6661] - Upgrade jquery to 3.4.x&lt;/li&gt;
-  &lt;li&gt;[WICKET-6665] - Upgrade various dependencies&lt;/li&gt;
 &lt;/ul&gt;
 
 </content>
