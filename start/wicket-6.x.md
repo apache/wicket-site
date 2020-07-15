@@ -16,14 +16,12 @@ preamble: Here you can learn about the status of Wicket 6.x, find links to downl
 
 ## Status
 
-The status for Wicket 6.x is: **security fixes only**.
+The status for Wicket 6.x is: **discontinued**.
 
-This branch is **no longer actively maintained** and will only recieve
-backported security fixes when relevant and as long as we are able to
-actually build this branch.
+This branch is **no longer maintained and will no longer receive any updates**.
 
 <i class="fa fa-exclamation-circle"></i>
-**You should upgrade to Wicket 8.x at your earliest convenience.**
+**You should upgrade to Wicket 9.x at your earliest convenience.**
 
 ### Semantic Versioning
 

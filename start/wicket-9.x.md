@@ -15,17 +15,15 @@ preamble: Here you can learn about the status of Wicket 9.x, find links to downl
 
 ## Status
 
-The status for Wicket 9.x is: **in development**.
+The status for Wicket 9.x is: **supported**.
 
-This is the current in development release of Wicket. As such,
-all projects intended for production should **NOT** use this version.
+This is the current stable, **production ready** release of Wicket. All
+projects intended for production use should use this version.
 
 ### Semantic versioning
 
-Since Wicket 9 is still in development, backward api compatibility between 
-milestone release is not guaranteed.
-We will continue to use semantic versioning when we will made Wicket 9 final 
-and maintain api compatibility between minor versions of Wicket 9.
+These releases follow semantic versioning so upgrades between minor
+releases will not break compatibility.
 
 ### Change log
 
