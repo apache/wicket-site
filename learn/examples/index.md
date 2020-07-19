@@ -1,5 +1,5 @@
 ---
-layout: default-no-right-menu
+layout: default
 title: A Quick Tour of Wicket
 ---
 Nothing says more about a development technology than a few simple examples.

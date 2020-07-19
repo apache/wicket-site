@@ -9,6 +9,9 @@
     
     @include breakpoint($breakpoint-10) {
 	   display: none;
-        
     }
+}
+
+.toc.post.index {
+    display: none;
 }

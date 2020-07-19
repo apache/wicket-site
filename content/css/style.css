@@ -405,6 +405,8 @@ nav.mainmenu a:hover { color: #303284; }
 
 @media (min-width: 590px) { .toc { display: none; } }
 
+.toc.post.index { display: none; }
+
 .builtwithwicket { background-color: #eee; /*margin-left: -1rem; margin-right: -1rem;*/ padding-bottom: 2rem; padding-left: 1rem; padding-right: 1rem; }
 
 .builtwithwicket .slick-prev::before, .builtwithwicket .slick-next::before { color: #E97826; }
