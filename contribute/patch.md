@@ -39,7 +39,7 @@ following steps:
 
 ## Time for some coding ##
 
-Wicket uses Get [Git](http://git-scm.com/) as versioning system, so you
+Wicket uses [Git](http://git-scm.com/) as versioning system, so you
 need to have it properly installed and configured to start work on
 Wicket code base. The main git repository is hosted on [Apache git
 server](https://git-wip-us.apache.org/repos/asf/wicket.git) but is
@@ -63,6 +63,10 @@ To create a pull request on GitHub follow the instructions you can find
 [here](https://help.github.com/articles/creating-a-pull-request/). Once
 you have finished to work on you pull request, send us an email using
 [devs](mailto:dev@wicket.apache.org) mailing list.
+
+All Pull Requests are automatically tested at 
+[Github Actions](https://github.com/apache/wicket/actions) on AMD64 and
+at [TravisCI](https://travis-ci.com/github/apache/wicket/) on ARM64 platform.
 
 ### Create a patch ###
 
