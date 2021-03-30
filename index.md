@@ -16,8 +16,9 @@ jumbotronLinks:
     text: Download now &raquo;
     url: /start/wicket-8.x.html
 ---
-
 <div class="l-full l-first preamble">
+    <a class="acevent"></a>
+    <br/>
     <h1 id="introduction" class="announce">Announcing Apache Wicket 9: get into the modern Java world!</h1>
     <div>
       <img src="{{ site.baseurl }}/img/wicket-9-sun.png" alt="Apache Wicket" class="responsive-logo">
