@@ -65,13 +65,8 @@ The guide is available as PDF or html file for the following versions:
 * [PDF](https://ci.apache.org/projects/wicket/guide/8.x/single.pdf)
 
 3.  Wicket 7.x
-* [HTML (single page)](http://ci.apache.org/projects/wicket/guide/7.x/single.html)
-* [PDF](http://ci.apache.org/projects/wicket/guide/7.x/single.pdf)
-
-4.  Wicket 6.x 
-* [HTML](http://ci.apache.org/projects/wicket/guide/6.x/)
-* [HTML (single page)](http://ci.apache.org/projects/wicket/guide/6.x/guide/single.html)
-* [PDF](http://ci.apache.org/projects/wicket/guide/6.x/guide/single.pdf)
+* [HTML (single page)](https://ci.apache.org/projects/wicket/guide/7.x/single.html)
+* [PDF](https://ci.apache.org/projects/wicket/guide/7.x/single.pdf)
 
 You can use the guide for older releases even though there will be
 differences. We urge you however to upgrade your project to the latest
@@ -90,12 +85,8 @@ For reference we also publish the API documentation online so you can
 link to it from emails or websites:
 
 - [JavaDoc 9.x](https://ci.apache.org/projects/wicket/apidocs/9.x/index.html)
-- [JavaDoc 8.x](http://ci.apache.org/projects/wicket/apidocs/8.x/index.html)
-- [JavaDoc 7.x](http://ci.apache.org/projects/wicket/apidocs/7.x/index.html)
-- [JavaDoc 6.x](http://ci.apache.org/projects/wicket/apidocs/6.x/index.html)
-- [JavaDoc 1.5.x](http://ci.apache.org/projects/wicket/apidocs/1.5.x/index.html)
-- [JavaDoc 1.4.x](http://ci.apache.org/projects/wicket/apidocs/1.4.x/index.html)
-- [JavaDoc 1.3.x](http://ci.apache.org/projects/wicket/apidocs/1.3.x/index.html)
+- [JavaDoc 8.x](https://ci.apache.org/projects/wicket/apidocs/8.x/index.html)
+- [JavaDoc 7.x](https://ci.apache.org/projects/wicket/apidocs/7.x/index.html)
 
 ---
 
@@ -110,41 +101,18 @@ Here's a list of the migration guides:
 <div class="l-button-table">
     <div class="l-two-third">
         <div class="button-bar">
-            <a class="button" href="http://s.apache.org/wicket9migration">
+            <a class="button" href="https://s.apache.org/wicket9migration">
                 Wicket 9<br>
         		migration guide
             </a>
-            <a class="button" href="http://s.apache.org/wicket8migration">
+            <a class="button" href="https://s.apache.org/wicket8migration">
                 Wicket 8<br>
         		migration guide
             </a>
-            <a class="button" href="http://s.apache.org/wicket7migrate">
+            <a class="button" href="https://s.apache.org/wicket7migrate">
                 Wicket 7<br>
         		migration guide
             </a>
-        </div>
-    
-        <div class="button-bar">
-            <a class="button" href="http://s.apache.org/wicket6migration">
-                Wicket 6<br>
-        		migration guide
-            </a>
-            <a class="button" href="http://s.apache.org/wicket5migrate">
-                Wicket 1.5<br>
-        		migration guide
-            </a>
-            <a class="button" href="http://s.apache.org/wicket4migrate">
-        		Wicket 1.4<br>
-        		migration guide
-            </a>
-        </div>
-        <div class="button-bar">
-            <a class="button" style="visibility: hidden;"></a>
-            <a class="button" href="http://s.apache.org/wicket3migrate">
-                Wicket 1.3<br>
-        		migration guide
-            </a>
-            <a class="button" style="visibility: hidden;"></a>
         </div>
     </div>
 </div>        
@@ -183,9 +151,5 @@ Find [here]({{ site.baseurl }}/contribute/ides.html) how to work with Wicket pro
 
 New to Wicket and eager to learn it? This [presentation]({{ site.baseurl }}/learn/presentations/wicketIntroduction.pdf) is for you!
 
-[migrate3]: http://s.apache.org/wicket3migrate
-[migrate4]: http://s.apache.org/wicket4migrate
-[migrate5]: http://s.apache.org/wicket5migrate
-[migrate6]: http://s.apache.org/wicket6migrate
-[migrate7]: http://s.apache.org/wicket7migrate
-[migrate8]: http://s.apache.org/wicket8migrate
+[migrate7]: https://s.apache.org/wicket7migrate
+[migrate8]: https://s.apache.org/wicket8migrate
