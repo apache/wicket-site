@@ -3,11 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-<<<<<<< HEAD
     <updated>2021-06-27T22:41:41+02:00</updated>
-=======
-    <updated>2021-04-19T12:25:00+03:00</updated>
->>>>>>> dc7ac3db43b90dd9c2e64c1791a90e91fdde8c74
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
