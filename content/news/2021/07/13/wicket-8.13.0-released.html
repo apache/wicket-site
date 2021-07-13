@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Apache Wicket 8.13.0 released | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<script type="text/javascript" src="https://www.apachecon.com/event-images/snippet.js"></script>
+
+    </head>
+    <body class="">
+        <div class="header default">
+    <div class="l-container">
+        
+<nav class="mainmenu">
+    <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+    <div class="nav-container">
+    
+		
+    	
+        
+        
+		<!-- /start/quickstart.html || /news/2021/07/13/wicket-8.13.0-released.html -->
+		
+    	
+        
+    	<a href="/start/quickstart.html" class=" nav-items">Quick Start</a>
+    
+		
+    	
+        
+        
+		<!-- /start/download.html || /news/2021/07/13/wicket-8.13.0-released.html -->
+		
+    	
+        
+    	<a href="/start/download.html" class=" nav-items">Download</a>
+    
+		
+    	
+        
+        
+		<!-- /learn || /news/2021/07/13/wicket-8.13.0-released.html -->
+		
+    	
+        
+    	<a href="/learn" class=" nav-items">Documentation</a>
+    
+		
+    	
+        
+        
+		<!-- /help || /news/2021/07/13/wicket-8.13.0-released.html -->
+		
+    	
+        
+    	<a href="/help" class=" nav-items">Support</a>
+    
+		
+    	
+        
+        
+		<!-- /contribute || /news/2021/07/13/wicket-8.13.0-released.html -->
+		
+    	
+        
+    	<a href="/contribute" class=" nav-items">Contribute</a>
+    
+		
+    	
+        
+        
+		<!-- /community || /news/2021/07/13/wicket-8.13.0-released.html -->
+		
+    	
+        
+    	<a href="/community" class=" nav-items">Community</a>
+    
+		
+    	
+        
+        
+		<!-- /apache || /news/2021/07/13/wicket-8.13.0-released.html -->
+		
+    	
+        
+    	<a href="/apache" class=" nav-items">Apache</a>
+    
+    </div>
+    <div class="nav-container  ">
+        <a href="https://github.com/apache/wicket" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://twitter.com/apache_wicket" target="_blank"><i class="fa fa-twitter nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+    </div>    
+</nav>
+        
+    </div>
+</div>
+<main>
+    <div class="l-container">
+        <header class="l-full preamble">
+            <h1>Apache Wicket 8.13.0 released</h1>
+            
+            
+            
+        </header>
+        <section class="toc left post ">
+            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#using-this-release"><span class="toc-number">1</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-2"><a href="#upgrading-from-earlier-versions"><span class="toc-number">2</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#this-release"><span class="toc-number">2.1</span> <span class="toc-text">This Release</span></a></li></ul></li></ul></div>
+        </section>
+        <section>
+            <div class="l-full">
+    <p class="meta">13 Jul 2021</p>
+    <p>The Apache Wicket PMC is proud to announce Apache Wicket 8.13.0!</p>
+
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
+<p>This release marks another minor release of Wicket 8. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present in this release compared to 8.0.0.</p>
+
+<h2 id="using-this-release">Using this release</h2>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>8.13.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package you can find here:</p>
+
+<ul>
+  <li>Download: http://wicket.apache.org/start/wicket-8.x.html#manually</li>
+</ul>
+
+<!--more-->
+
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
+<p>If you upgrade from 8.y.z this release is a drop in replacement. If
+you come from a version prior to 8.0.0, please read our Wicket 8
+migration guide found at</p>
+
+<ul>
+  <li>http://s.apache.org/wicket8migrate</li>
+</ul>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<p>========================================================================</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
+</code></pre></div></div>
+
+<p>Signature for apache-wicket-8.13.0.zip:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAmDmFt0ACgkQh48B+qjT
+VuFwgRAAgCdSxSBHRyWjkDbftxoCtJkD49s9pKYdcqfZNYa7Nyn4s55/Tn1e869H
+NkuX6ilBtExMcljZ2/XKMVG2qfgc5zOQUPt5EnIBdSN0n5vBODsN7aEs0bqv7JFV
+b0E4TE0+s+xOM5UVyIFKDVNDZ7Yw9QESgLGJiwVl2tScL6XD7KVVTVmSlQ82iygA
+isR1HgDXpiMwUF3SUsTzWqbF3y5E9+B5o3BFduW/C2PHloSgqgQnIel/z1rIxRHR
+rfIsmKnF54++U2FTgfVZ7g3JK5/ICVAYp879D1OH7tKCIeExyys0Pf8KTpUEsYzr
+WvzuyDWrgpYex5+fOo+MEFZo5gT13ETYfkA2riy1jJMNG3RAZaqJKaeAxXu3omnw
+7BXFkgBwthOZugMxsaNzfeg4QlnamM+MHUOvv69H0VqxdNp4Nf20CwkWG4oPBJ1+
+pf9ibHTv0yUn3FhN3a3/4RpTYQNd2uEAKkZg+t7FM7GiIZpxS8t2c2QOWWH75o9U
+fZh0IZhs/xRZtk8Oz2s/pkkSrIXOAkLeloywzQmayYJ4uDWedKmZprgiNrlLWX+y
+jxCzl2Mgyldvq1Wk3wsU4+gHQuy3C7F+Ke46Yq9dSQRudzT+vFnEd05IwygwRRUk
+Ah54MiQXKjaZ8sw7ZfEpn+9iSgowH7HE4IVymXUNmakStLPEERg=
+=uYXi
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>Signature for apache-wicket-8.13.0.tar.gz:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAmDmFtwACgkQh48B+qjT
+VuG/jA/+MMIlUwjB5xeJSOYD8h/gAqRCURMzfhJOvquxQA9p8LuFFMRAONtEY2T6
+Q9srMrU5SnHnd9DJljSFZ14SvP4+vLKdBQkCuFdfXAs019GUg27/X2h5NU63jV1e
+UK5GvByRgsOoylEtLRa85/a3fxQn0sypnUFQtqimub/JzcZrDpRenJyR+w486Jbc
+AdrcmJw7/xxLb3x6gKB6MVW3/wd5igxlL9ClPqJWtLpCedjJUpF/OyW00H4t6D3r
+6F5NCLMgpapjnTwXI1BmjWBU/Br8LFMRNuA5HgrEJ3JGw33PYrwaSwgf9Z8Gzd83
+OVOmVlZY6KhEsih5FZ7wKPrhTleCN4Y+eKQaGVWlUAz4Q+1UiHF2kD4Ng/pR3goG
+lJfeTysNrPXsqh5/uKIoNaaC3eafn1t6ESTRemSmxEIeyI7iWPqs0QeRSb/NKcJn
+4iO3JXPgnp4e8WokDzRqukpAxz57IynAVactBOk1D+SBD4Wy4jSpP/sUFmcKYrw/
+rUj1XPgFmxYvWTxhHJixEy27VfaPbBEx4qklV5oZ7sF9a9EF3dyTh8uJltnPygdU
+OWRx3Q+SOJW4+CMwAN8Vs5nVG2/gkd/BzljWBkQxWKQo2x21yRXU6KDIA3TIzsks
+/bNS8oER0AhCnEqv5Ax57toANqssYYbbIpjh7CUHQFJMdXcsOi8=
+=1mHV
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>========================================================================</p>
+
+<h3 id="this-release">This Release</h3>
+
+<h4 id="changelog-for-8130">CHANGELOG for 8.13.0:</h4>
+
+<h5 id="bug">Bug</h5>
+
+<ul>
+  <li>[WICKET-6875] - Example for FileSystemResource.java does not work</li>
+  <li>[WICKET-6877] - Removing component’s MetaData during detach phase from within a Behavior causes issue</li>
+  <li>[WICKET-6878] - Rendering of relative Urls does not take into account filterpath for absolute Urls</li>
+  <li>[WICKET-6881] - Link on website to JavaDoc of version 1.3.x is broken</li>
+  <li>[WICKET-6896] - AutoCompleteTextField re-opens dropdown item list after item has been selected</li>
+</ul>
+
+<h5 id="new-feature">New Feature</h5>
+
+<ul>
+  <li>[WICKET-6886] - LambdaChoiceRenderer</li>
+</ul>
+
+<h5 id="improvement">Improvement</h5>
+
+<ul>
+  <li>[WICKET-6876] - add an AJAX behavior that allows to collect file information when a file, to be uploaded,  is selected.</li>
+  <li>[WICKET-6880] - Documentation of DataTable/DataGridView has reference to unknown class UserProvider</li>
+  <li>[WICKET-6885] - Add scope col and colgroup to HeadersToolbar</li>
+</ul>
+
+
+</div>
+
+
+        </section>
+    </div>
+</main>
+
+        <footer>
+            <div class="l-container">
+    <div class="left">
+        <img src="/img/asf_logo_url.svg" style="height:90px; float:left; margin-right:10px;">
+        <div style="margin-top:12px;">Copyright © 2021 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+    </div>
+</div>
+
+        </footer>
+    </body>
+</html>
