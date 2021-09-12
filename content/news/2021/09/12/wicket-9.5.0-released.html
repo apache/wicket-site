@@ -6,7 +6,7 @@
 	
 	
 
-        <title>Apache Wicket 9.0.0-M5 released | Apache Wicket</title>
+        <title>Apache Wicket 9.5.0 released | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
@@ -33,7 +33,7 @@
     	
         
         
-		<!-- /start/quickstart.html || /news/2020/04/06/wicket-9.0.0-M5-released.html -->
+		<!-- /start/quickstart.html || /news/2021/09/12/wicket-9.5.0-released.html -->
 		
     	
         
@@ -43,7 +43,7 @@
     	
         
         
-		<!-- /start/download.html || /news/2020/04/06/wicket-9.0.0-M5-released.html -->
+		<!-- /start/download.html || /news/2021/09/12/wicket-9.5.0-released.html -->
 		
     	
         
@@ -53,7 +53,7 @@
     	
         
         
-		<!-- /learn || /news/2020/04/06/wicket-9.0.0-M5-released.html -->
+		<!-- /learn || /news/2021/09/12/wicket-9.5.0-released.html -->
 		
     	
         
@@ -63,7 +63,7 @@
     	
         
         
-		<!-- /help || /news/2020/04/06/wicket-9.0.0-M5-released.html -->
+		<!-- /help || /news/2021/09/12/wicket-9.5.0-released.html -->
 		
     	
         
@@ -73,7 +73,7 @@
     	
         
         
-		<!-- /contribute || /news/2020/04/06/wicket-9.0.0-M5-released.html -->
+		<!-- /contribute || /news/2021/09/12/wicket-9.5.0-released.html -->
 		
     	
         
@@ -83,7 +83,7 @@
     	
         
         
-		<!-- /community || /news/2020/04/06/wicket-9.0.0-M5-released.html -->
+		<!-- /community || /news/2021/09/12/wicket-9.5.0-released.html -->
 		
     	
         
@@ -93,7 +93,7 @@
     	
         
         
-		<!-- /apache || /news/2020/04/06/wicket-9.0.0-M5-released.html -->
+		<!-- /apache || /news/2021/09/12/wicket-9.5.0-released.html -->
 		
     	
         
@@ -112,7 +112,7 @@
 <main>
     <div class="l-container">
         <header class="l-full preamble">
-            <h1>Apache Wicket 9.0.0-M5 released</h1>
+            <h1>Apache Wicket 9.5.0 released</h1>
             
             
             
@@ -122,8 +122,8 @@
         </section>
         <section>
             <div class="l-full">
-    <p class="meta">06 Apr 2020</p>
-    <p>The Apache Wicket PMC is proud to announce Apache Wicket 9.0.0-M5!</p>
+    <p class="meta">12 Sep 2021</p>
+    <p>The Apache Wicket PMC is proud to announce Apache Wicket 9.5.0!</p>
 
 <p>Apache Wicket is an open source Java component oriented web application
 framework that powers thousands of web applications and web sites for
@@ -132,13 +132,16 @@ more. You can find more about Apache Wicket at https://wicket.apache.org</p>
 
 <p>This release marks another minor release of Wicket 9. We
 use semantic versioning for the development of Wicket, and as such no
-API breaks are present breaks are present in this release compared to
-9.0.0.</p>
+API breaks are present in this release compared to 9.0.0.</p>
 
 <h2 id="new-and-noteworthy">New and noteworthy</h2>
-<p>With this milestone Wicket introduces support for content security policy (CSP) which
-is active by default and prevents inline JavaScript and CSS code from been executed.
-For more details about CSP support see Wicket 9 migration guide linked below.</p>
+
+<p>This release includes the following notable features:</p>
+
+<ul>
+  <li>Full support for Java 9+ module system (WICKET-6904)</li>
+  <li>Support of ByteBuddy as java bytecode manipulation library (WICKET-6913).</li>
+</ul>
 
 <h2 id="using-this-release">Using this release</h2>
 
@@ -148,7 +151,7 @@ update any other dependencies on Wicket projects to the same version):</p>
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>9.0.0-M5<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>9.5.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
 
 <p>Or download and build the distribution yourself, or use our
@@ -176,62 +179,81 @@ migration guide found at</p>
 
 <p>========================================================================</p>
 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
+</code></pre></div></div>
+
+<p>Signature for apache-wicket-9.5.0.zip:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAmE2XWAACgkQh48B+qjT
+VuFQMw//WPSXS00M6SCtFUlIptsBoX2/lsgFTN9w00q3HnvhLPzTAh9Xv/p5ongr
+8mRvl27ODGPqD+2AWR3I6NW036/XG8EKSRUoa8+8g1tI3A4ddHrOWf9v19JDpno1
+M53/n6WKyDES8yOgvf/lsBrv2qgV7twj5vYUPFQxTjYIcKi1PY1Hgz32J2KELjPb
+/FyraEZy9GtTg8rTtYJm5IRkxWRktPsf+/b9dX8deB0XzL9cAz8aeeVs1fudLqGc
+jCHRqUh7yiI/U9jvzwuC7jX3BpqHvREORE16om9JDVf1pMSYAolAPllJfhAWvPLE
+h3wlU9LVaDP7jpoys2gU2SOfWU56ZX7nTBzsxI4njAz4StQqE0TbwldqwM4ubKR0
+gPH9Aw6+vHiSAcaRXXw+jiH4lS5+lA5Di3GzyUIfVLrOYoBbyuF0PXu3Fs7kx8C1
+vDBIG1zqYN5XDSDt5QWu5e5yDA9OsKJpf0l8n3/fH0PgF+bShZ6XGO6LZlRX/PqV
+IemwK3Q1dopUskkqVwNmMpEkfYA/wNC4oREpxiPhPzncWSmfgZk/UX7+/z0L3tQl
+oa0QElb3IxZ/3KYJPycPRQOu+1cNmw1W3NFKmMbVg1T1/Feza1Owy/S/a3giivnZ
+nK5Kf1+OzElbNziUUZ35TI+6FJOnlEiPt344gWvgMXl+5Wf1/kI=
+=9qdv
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>Signature for apache-wicket-9.5.0.tar.gz:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAmE2XWAACgkQh48B+qjT
+VuG3KRAAk/MwBH7DQ2kR1B0NoxFR3mFArwksVp+2X2NAeV9n4aerN/qL3n38p+xw
+qn4+kTSUREi64/2t85Vx5ug6Ub6SZCptljj3PNRJpaWZ4GEptf+et+r1qd2bF7h3
+xECcGjvwsSbmrRnwNl3TFhmIh5FR6eNnfnaCqMbvoEuNT/zyPlXhQXFUE1jGDvdR
+mK9tZRYU2nO1KZF3msUK0Oo/7FeOgIidY6vCDqQfxofWulXaKUyBZ2h9k6zxf/RR
+eH766w4Ir2mIg8Npsv/itIaYRQKJJK8m7StMaczlKEVF+kitmkbfKbQkzjWLyDgB
+x0tOmReNOpi8eXAg7hIO156wCBEyapuktDMMBL60OLXV7E/Gpv1JaEWTNhvqzz6a
+bFcecacDLKJY4+60szDGnBR8sLqgO3OW+YBEqhDcjXY92iRIr0rKVkUB/QLMOfhS
+DqMa7fuJlN4AO6RMOqF5bMB7UUqmTh86C0h0Y0I/GmiBUfwBnoXdEXeIgST0YXuP
++0zUP4A2L2CNoJsfXp2DdL2zEJLvnL5wfTYr/mJTGyhyB5QISbU0L+WlYPgJADQR
+FagwMUNfhu1CD/LLtRk4WvtXkKntWv8aR0x/7JpuzeVKmky1qKYD+7N0Tx1KpvC0
+ODJZbyYgtBAjLcZ6GELX5GG8dZy27LSzpaI9zvg8IIoFsFbSfpY=
+=gYzQ
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>========================================================================</p>
+
 <h3 id="this-release">This Release</h3>
 
-<h4 id="changelog-for-900-m5">CHANGELOG for 9.0.0-M5:</h4>
+<h4 id="changelog-for-950">CHANGELOG for 9.5.0:</h4>
 
 <h5 id="bug">Bug</h5>
 
 <ul>
-  <li>[WICKET-6715] - FileUpload class should not  implement IClusterable</li>
-  <li>[WICKET-6745] - CSP: inline JS in server and client time response filters</li>
-  <li>[WICKET-6746] - HttpsMapper cannot deal with resources over websockets</li>
-  <li>[WICKET-6752] - Some dependencies contain CVEs</li>
-  <li>[WICKET-6753] - res/modal.js using aria-labelledby where it should be using aria-label</li>
-  <li>[WICKET-6754] - Iteration stops with nested containers</li>
-  <li>[WICKET-6755] - MockServletContext does not decode real path</li>
-  <li>[WICKET-6756] - Avoid URL.getFile() when actually expecting paths.</li>
-  <li>[WICKET-6757] - Avoid URL.getFile during mime type detection.</li>
-  <li>[WICKET-6758] - NPE in AbstractWebSocketProcessor after session times out</li>
-</ul>
-
-<h5 id="new-feature">New Feature</h5>
-
-<ul>
-  <li>[WICKET-6727] - Configurable CSP</li>
-  <li>[WICKET-6729] - allow adding IHeaderResponseDecorator without replacing all others</li>
-  <li>[WICKET-6730] - Global access to secure random data</li>
+  <li>[WICKET-6884] - Wicket API 9.x refers to 10.0.0-M1-SNAPSHOT API</li>
+  <li>[WICKET-6902] - Change of PartialPageUpdate order of onAfterResponse and writePriorityEvaluations makes IListener.onAfterResponde ignore prepended javascripts</li>
+  <li>[WICKET-6908] - Possible bug / edge case where page is not detached</li>
+  <li>[WICKET-6909] - Link to Javadoc for 9.x is broken on the website</li>
+  <li>[WICKET-6913] - Java 17 compatibility with cglib</li>
+  <li>[WICKET-6914] - Visibility change of “File Upload” via ajax causes “missing” form-data</li>
 </ul>
 
 <h5 id="improvement">Improvement</h5>
 
 <ul>
-  <li>[WICKET-6724] - CSP: Inline Javascript in AjaxLink</li>
-  <li>[WICKET-6725] - CSP: display:none in Component.renderPlaceholderTag</li>
-  <li>[WICKET-6726] - CSP: inline styling and js in Form submitbutton handling</li>
-  <li>[WICKET-6731] - CSP: inline JS in SubmitLink</li>
-  <li>[WICKET-6732] - CSP: inline JS in Link and ExternalLink</li>
-  <li>[WICKET-6733] - CSP: enable by default</li>
-  <li>[WICKET-6735] - CSP: inline styling in FormComponentFeedbackBorder/Indicator</li>
-  <li>[WICKET-6736] - CSP: Inline styling in BrowserInfoForm</li>
-  <li>[WICKET-6737] - CSP: violations in examples</li>
-  <li>[WICKET-6738] - CSP: inline styling in UploadProgressBar</li>
-  <li>[WICKET-6739] - CSP: inline JS in Palette</li>
-  <li>[WICKET-6740] - CSP: inline JS in Button</li>
-  <li>[WICKET-6741] - CSP: inline JS in FormComponentUpdatingBehavior</li>
-  <li>[WICKET-6749] - CSP: Inline styling in ExceptionErrorPage.html</li>
-  <li>[WICKET-6759] - Support disabling error notification for websockets</li>
-  <li>[WICKET-6760] - Nested Form placeholder should preserve tag name</li>
-  <li>[WICKET-6761] - Support multiple connections to the same websocket resource from a single session</li>
-  <li>[WICKET-6762] - Support manual initialization of websocket connections</li>
+  <li>[WICKET-6901] - PropertyValidator improve configuration doc</li>
+  <li>[WICKET-6911] - wicket-spring throws an error when a spring bean uses ctor injection</li>
 </ul>
 
-<h5 id="tasks">Tasks</h5>
+<h5 id="task">Task</h5>
 
 <ul>
-  <li>[WICKET-6687] - Cleanup the code from attribute inline styles and attribute inline scripts</li>
-  <li>[WICKET-6747] - Document CSP in user guide and migration guide</li>
-  <li>[WICKET-6751] - Support creating custom page access synchronization strategies</li>
+  <li>[WICKET-6903] - Replace maven-clirr-plugin with something newer</li>
+  <li>[WICKET-6904] - Make Apache Wicket fully supporting Java9+ module system</li>
+  <li>[WICKET-6916] - Simplify JMX with StandardMBean</li>
 </ul>
 
 
