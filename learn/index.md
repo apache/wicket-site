@@ -57,16 +57,16 @@ The guide is available as PDF or html file for the following versions:
 
 
 1.  Wicket 9.x
-* [HTML (single page)](https://ci.apache.org/projects/wicket/guide/9.x/single.html)
-* [PDF](https://ci.apache.org/projects/wicket/guide/9.x/single.pdf)
+* [HTML (single page)](https://nightlies.apache.org/wicket/guide/9.x/single.html)
+* [PDF](https://nightlies.apache.org/wicket/guide/9.x/single.pdf)
 
 2.  Wicket 8.x
-* [HTML (single page)](https://ci.apache.org/projects/wicket/guide/8.x/single.html)
-* [PDF](https://ci.apache.org/projects/wicket/guide/8.x/single.pdf)
+* [HTML (single page)](https://nightlies.apache.org/wicket/guide/8.x/single.html)
+* [PDF](https://nightlies.apache.org/wicket/guide/8.x/single.pdf)
 
 3.  Wicket 7.x
-* [HTML (single page)](https://ci.apache.org/projects/wicket/guide/7.x/single.html)
-* [PDF](https://ci.apache.org/projects/wicket/guide/7.x/single.pdf)
+* [HTML (single page)](https://nightlies.apache.org/wicket/guide/7.x/single.html)
+* [PDF](https://nightlies.apache.org/wicket/guide/7.x/single.pdf)
 
 You can use the guide for older releases even though there will be
 differences. We urge you however to upgrade your project to the latest
@@ -84,9 +84,9 @@ method, show you the corresponding documentation.
 For reference we also publish the API documentation online so you can
 link to it from emails or websites:
 
-- [JavaDoc 9.x](https://ci.apache.org/projects/wicket/apidocs/9.x/index.html)
-- [JavaDoc 8.x](https://ci.apache.org/projects/wicket/apidocs/8.x/index.html)
-- [JavaDoc 7.x](https://ci.apache.org/projects/wicket/apidocs/7.x/index.html)
+- [JavaDoc 9.x](https://nightlies.apache.org/wicket/apidocs/9.x/index.html)
+- [JavaDoc 8.x](https://nightlies.apache.org/wicket/apidocs/8.x/index.html)
+- [JavaDoc 7.x](https://nightlies.apache.org/wicket/apidocs/7.x/index.html)
 
 ---
 
