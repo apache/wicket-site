@@ -40,8 +40,8 @@
 		<archetype>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-archetype-quickstart</artifactId>
-			<version>9.9.0</version>
-			<description>Wicket 9.9.0 Quickstart</description>
+			<version>9.9.1</version>
+			<description>Wicket 9.9.1 Quickstart</description>
 		</archetype>
 
 		<archetype>
