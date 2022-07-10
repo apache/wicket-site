@@ -25,8 +25,8 @@
 		<release>
 			<Version>
 				<name>Latest Stable Release</name>
-				<created>2022-02-07</created>
-				<revision>9.10.0</revision>
+				<created>2022-07-07</created>
+				<revision>9.11.0</revision>
 			</Version>
 		</release>
 		<repository>
