@@ -144,6 +144,7 @@ Find [here]({{ site.baseurl }}/contribute/ides.html) how to work with Wicket pro
 ## Online courses {#courses}
 
 - <a href="https://www.udemy.com/course/apache-wicket-kompakt/">Apache Wicket Kompakt</a> - A complete German-based course with many pratical examples.
+- <a href="https://www.udemy.com/course/starting-with-apache-wicket-version-9x/?referralCode=C2A6EF19A72071AA2E22">Starting with Apache Wicket (version 9.x+)</a> - Get started with Apache Wicket 9.x+ with forms, components, MongoDB, GridFS and backed by SpringBoot.
 
 ---
 
