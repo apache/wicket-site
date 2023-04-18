@@ -11,10 +11,6 @@ additionalContents:
   -
    path: news.html
    sectionId: news
-jumbotronLinks:
-  -
-    text: Download now &raquo;
-    url: /start/wicket-8.x.html
 ---
 <div class="l-full l-first preamble">
     <a class="acevent"></a>
