@@ -17,3 +17,20 @@ the dependencies you need (css, js, pictures, etc.) so you don't need
 any preliminary operation before running Jekyll.
 
 If Jekyll is missing any dependency then run `bundle install`.
+
+### Using Docker (thanks Apache Arrow!)
+
+If you don't wish to change or install `ruby` and `nodejs` locally, you can use docker to build and preview the site with a command like:
+
+```shell
+docker run -v `<repository path>`:/wicket-site -p 4000:4000 -it ruby bash
+cd wicket-site
+apt-get update
+apt-get install -y npm
+gem install bundler
+bundle install
+# Serve using local container address
+jekyll serve
+```
+
+Then open http://locahost:4000 locally
