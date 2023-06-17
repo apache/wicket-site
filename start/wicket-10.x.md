@@ -17,7 +17,7 @@ preamble: Here you can learn about the status of Wicket 10.x, find links to down
 
 The status for Wicket 10.x is: **in development**.
 
-This is the development version, **NOT production ready** release of Wicket. All
+This is the development version, **NOT production-ready** release of Wicket. All
 projects intended for production use should use version 9.x.
 
 ### Semantic versioning
@@ -108,7 +108,7 @@ more details on the necessary libraries.
 
 ### Java version
 
-This Wicket version requires at least the following Java version: **JDK 11.0 or newer**.
+This Wicket version requires at least the following Java version: **JDK 17.0 or newer**.
 
 Not only is a particular version of Java necessary, Wicket also needs
 access to specific APIs.
