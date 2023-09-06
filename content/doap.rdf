@@ -30,11 +30,10 @@
 			</Version>
 		</release>
 		<repository>
-            <repository>
-                <GITRepository>
-                    <location rdf:resource="http://git-wip-us.apache.org/repos/asf?p=wicket.git"/>
-                    <browse rdf:resource="http://git-wip-us.apache.org/repos/asf?p=wicket.git"/>
-                </GITRepository>
+			<GITRepository>
+				<location rdf:resource="https://github.com/apache/wicket"/>
+				<browse rdf:resource="https://github.com/apache/wicket"/>
+			</GITRepository>
 		</repository>
 	</Project>
 </rdf:RDF>
