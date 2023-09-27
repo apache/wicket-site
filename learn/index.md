@@ -56,15 +56,19 @@ projects.
 The guide is available as PDF or html file for the following versions:
 
 
-1.  Wicket 9.x
+1.  Wicket 10.x
+* [HTML (single page)](https://nightlies.apache.org/wicket/guide/10.x/single.html)
+* [PDF](https://nightlies.apache.org/wicket/guide/10.x/single.pdf)
+
+2.  Wicket 9.x
 * [HTML (single page)](https://nightlies.apache.org/wicket/guide/9.x/single.html)
 * [PDF](https://nightlies.apache.org/wicket/guide/9.x/single.pdf)
 
-2.  Wicket 8.x
+3.  Wicket 8.x
 * [HTML (single page)](https://nightlies.apache.org/wicket/guide/8.x/single.html)
 * [PDF](https://nightlies.apache.org/wicket/guide/8.x/single.pdf)
 
-3.  Wicket 7.x
+4.  Wicket 7.x
 * [HTML (single page)](https://nightlies.apache.org/wicket/guide/7.x/single.html)
 * [PDF](https://nightlies.apache.org/wicket/guide/7.x/single.pdf)
 
@@ -84,6 +88,7 @@ method, show you the corresponding documentation.
 For reference we also publish the API documentation online so you can
 link to it from emails or websites:
 
+- [JavaDoc 10.x](https://nightlies.apache.org/wicket/apidocs/10.x/index.html)
 - [JavaDoc 9.x](https://nightlies.apache.org/wicket/apidocs/9.x/index.html)
 - [JavaDoc 8.x](https://nightlies.apache.org/wicket/apidocs/8.x/index.html)
 - [JavaDoc 7.x](https://nightlies.apache.org/wicket/apidocs/7.x/index.html)
