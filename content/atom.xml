@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2023-10-16T19:50:51+00:00</updated>
+    <updated>2023-10-28T18:42:08+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -30,9 +30,8 @@ API breaks are present in this release compared to 10.0.0.&lt;/p&gt;
 &lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
 
 &lt;p&gt;In order to improve JPMS adoption, this release introduces the new module 
-wicket-tester containing common classes for unit testing and test cases 
-for wicket-core. Users of class WicketTester must now include this module
-as dependency.&lt;/p&gt;
+wicket-tester containing common classes for unit testing. 
+Users of class WicketTester must now include this module as &lt;strong&gt;test&lt;/strong&gt; dependency.&lt;/p&gt;
 
 &lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
 
