@@ -30,7 +30,7 @@ apt-get install -y npm
 gem install bundler
 bundle install
 # Serve using local container address
-jekyll serve
+jekyll serve -H 0.0.0.0
 ```
 
-Then open http://locahost:4000 locally
+Then open http://localhost:4000 locally
