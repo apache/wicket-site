@@ -27,16 +27,6 @@ preamble: Wicket is released as a source archive, convenience binaries and throu
         		Apache Wicket 7.x
         	</a>
         </div>
-        <div class="button-bar">
-        	<a class="button" href="wicket-6.x.html">
-        		<i class="fa fa-cloud-download"></i><br>
-        		Apache Wicket 6.x
-        	</a>
-        	<a class="button" href="wicket-1.5.x.html">
-        		<i class="fa fa-cloud-download"></i><br>
-        		Apache Wicket 1.5.x
-        	</a>
-        </div>
     </div>
 </div>
 ## Supported Versions
