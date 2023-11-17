@@ -23,8 +23,9 @@ If Jekyll is missing any dependency then run `bundle install`.
 If you don't wish to change or install `ruby` and `nodejs` locally, you can use docker to build and preview the site with a command like:
 
 ```shell
-docker run -v `<repository path>`:/wicket-site -p 4000:4000 -it ruby bash
-cd wicket-site
+cd path/to/wicket-site
+docker run -v $PWD:/wicket-site -p 4000:4000 -it ruby bash
+cd /wicket-site
 apt-get update
 apt-get install -y npm
 gem install bundler
