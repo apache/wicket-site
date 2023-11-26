@@ -15,8 +15,8 @@ excerpt_separator: <!--more-->
 sass:
     sass_dir: _sass
 wicket:
-  version:    9.15.0
-  version_90: 9.15.0
+  version:    9.16.0
+  version_90: 9.16.0
   version_10: 10.0.0-M2
   version_80: 8.15.0
   version_70: 7.18.0
@@ -24,8 +24,8 @@ wicket:
   version_15: 1.5.16
   version_14: 1.4.23
   version_13: 1.3.7
-  released:   2023-10-16
-  versions:   [6.30.0, 1.5.16, 1.4.23, 7.18.0, 8.15.0, 9.15.0, 1.5-SNAPSHOT, 6.31.0-SNAPSHOT, 7.19.0-SNAPSHOT, 8.16.0-SNAPSHOT, 9.16.0-SNAPSHOT, 10.0.0-M2]
+  released:   2023-11-26
+  versions:   [6.30.0, 1.5.16, 1.4.23, 7.18.0, 8.15.0, 9.16.0, 1.5-SNAPSHOT, 6.31.0-SNAPSHOT, 7.19.0-SNAPSHOT, 8.16.0-SNAPSHOT, 9.17.0-SNAPSHOT, 10.0.0-M2]
 
 live_examples_url: http://examples9x.wicket.apache.org/
 

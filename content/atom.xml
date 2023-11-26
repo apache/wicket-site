@@ -3,13 +3,96 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2023-11-16T11:21:45+00:00</updated>
+    <updated>2023-11-26T19:17:32+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
         <email>dev@wicket.apache.org</email>
     </author>
  
+
+    <entry>
+        <title>Apache Wicket 9.16.0 released</title>
+        <link href="http://wicket.apache.org/news/2023/11/26/wicket-9.16.0-released.html"/>
+        <updated>2023-11-26T00:00:00+00:00</updated>
+        <id>http://wicket.apache.org/news/2023/11/26/wicket-9.16.0-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 9.16.0!&lt;/p&gt;
+
+&lt;p&gt;Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
+
+&lt;p&gt;This release marks another minor release of Wicket 9. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present in this release compared to 9.0.0.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
+
+&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;9.16.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or download and build the distribution yourself, or use our
+convenience binary package you can find here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-9.x.html#manually&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
+
+&lt;p&gt;If you upgrade from 9.y.z this release is a drop in replacement. If
+you come from a version prior to 9.0.0, please read our Wicket 9
+migration guide found at&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://s.apache.org/wicket9migrate&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Have fun!&lt;/p&gt;
+
+&lt;p&gt;— The Wicket team&lt;/p&gt;
+
+&lt;p&gt;========================================================================&lt;/p&gt;
+
+&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
+
+&lt;h4 id=&quot;changelog-for-9160&quot;&gt;CHANGELOG for 9.16.0:&lt;/h4&gt;
+
+&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-7056] - HttpSessionStore#getAttribute called on invalidated session&lt;/li&gt;
+  &lt;li&gt;[WICKET-7074] - [AJAX] malformed XML is produced if an error is produced during AJAX rendering and a redirect is issued&lt;/li&gt;
+  &lt;li&gt;[WICKET-7076] - JavaScriptReferenceType newly created is not serializable&lt;/li&gt;
+  &lt;li&gt;[WICKET-7081] - Open packages to expose resources to other modules&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-7078] - CSP: inline JS in Choices and Selection of Palette&lt;/li&gt;
+  &lt;li&gt;[WICKET-7080] - [Events] make default events delivery machinery pluggable and roll usable annotation based one&lt;/li&gt;
+  &lt;li&gt;[WICKET-7082] - Easier to work with polymorphic values inside IModel&lt;/li&gt;
+  &lt;li&gt;[WICKET-7083] - Trigger client side validation when using SubmitLinks&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;task&quot;&gt;Task&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-7073] - Update JQuery to 3.7.1&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+    </entry>
 
     <entry>
         <title>Apache Wicket 10.0.0-M2 released</title>
