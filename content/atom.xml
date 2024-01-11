@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2023-11-26T19:21:10+00:00</updated>
+    <updated>2024-01-11T09:58:31+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -996,88 +996,6 @@ migration guide found at&lt;/p&gt;
   &lt;li&gt;[WICKET-6972] - Add Resource key to be logged on Warning in Localizer.java&lt;/li&gt;
   &lt;li&gt;[WICKET-6976] - Reduce allocations when writing synthetic closing tags&lt;/li&gt;
   &lt;li&gt;[WICKET-6977] - hashCode computations generate excessive garbage objects&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 9.9.1 released</title>
-        <link href="http://wicket.apache.org/news/2022/04/08/wicket-9.9.1-released.html"/>
-        <updated>2022-04-08T00:00:00+00:00</updated>
-        <id>http://wicket.apache.org/news/2022/04/08/wicket-9.9.1-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 9.9.1!&lt;/p&gt;
-
-&lt;p&gt;Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
-
-&lt;p&gt;This release marks another minor release of Wicket 9. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present in this release compared to 9.0.0.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
-
-&lt;p&gt;This hotfix reverts WICKET-6963 which causes MarkupException in some particular cases. 
-(see https://lists.apache.org/thread/y0zthfw2on04sm9wpn60my3x53b8cb3n).
-In addition, this release updates Spring Core dependency to version 5.3.18 which provides a fix 
-for Spring4shell vulnerability (CVE-2022-22965).&lt;/p&gt;
-
-&lt;p&gt;NOTE: Wicket is NOT directly impacted by Spring4shell. Your application might be exposed to this 
-vulnerability only if you use Spring web frameworks (i.e. Spring MVC and Spring WebFlux).&lt;/p&gt;
-
-&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;9.9.1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package you can find here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-9.x.html#manually&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
-
-&lt;p&gt;If you upgrade from 9.y.z this release is a drop in replacement. If
-you come from a version prior to 9.0.0, please read our Wicket 9
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://s.apache.org/wicket9migrate&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
-
-&lt;h4 id=&quot;changelog-for-991&quot;&gt;CHANGELOG for 9.9.1:&lt;/h4&gt;
-
-&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-6966] - IndexOutOfBounds in InSessionPageStore&lt;/li&gt;
-  &lt;li&gt;[WICKET-6965] - Memory leak in WicketEndpoint&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-6963] - (REVERTED) Use singletons for PanelMarkupSourcingStrategy&lt;/li&gt;
 &lt;/ul&gt;
 
 </content>
