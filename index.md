@@ -40,13 +40,13 @@ additionalContents:
   <div class="l-half">
     <h3>Stay up to date with the Java release cycle</h3>
     <p>
-      With Java releasing at a faster pace it's important to keep a library up to date with the latest changes introduced in the platform and ensure it works with the latest Java release. Wicket does all of this by taking part in the <a href="https://wiki.openjdk.java.net/display/quality/Quality+Outreach" target="_blank">OpenJDK Quality Outreach</a>, an initiative aimed to test popular Open Source projects with both the latest OpenJDK release and the Early Access release.
+      Wicket 10 is built on top of Java 17 and is compatible with Java 21. In addtion Wicket takes part in the <a href="https://wiki.openjdk.java.net/display/quality/Quality+Outreach" target="_blank">OpenJDK Quality Outreach</a> to further improve the effort to test compatibility with both the latest OpenJDK release and the Early Access release.
     </p>
   </div>
   <div class="l-half">
-    <h3>Ready for Jackarta EE Enterprise</h3>
+    <h3>Fast migration with OpenRewrite</h3>
     <p>
-     Wicket 10 is entirely based on the new Jakarta EE Specification so now you can adopt the new packages structure and naming conventions.
+     Wicket 10 comes with a migration tool based on OpenRewrite to speed up migration from Wicket 9 and avoid repetitive and error-prone manual changes to your code. For more details on this tool see <a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+10.0#MigrationtoWicket10.0-AddmigrationrecipestoWicket10WICKET-7029">migration guide</a>.
     </p>
   </div>
 </div>
@@ -67,9 +67,10 @@ additionalContents:
 
 <div class="l-first l-flex">
   <div class="l-half">
-    <h3>Ready for Java 17 and beyond</h3>
+    <h2>Getting Started with Wicket 10</h2>
     <p>
-      If you come from Wicket 8 chances are you don't need to change your application code to enjoy all the improvements offered by Java 11, such as better Docker support, improved performance, new Z Garbage Collector, etc...
+      It is very easy to get started with Wicket: use our <a href="/start/quickstart.html">quick-start wizard</a> or 
+      use one of the options below.
     </p>
   </div>
   <div class="l-half">
@@ -78,7 +79,7 @@ additionalContents:
       When you migrate from a previous Wicket version to Wicket 10, a full list of changes and migrations is available at the following page:
     </p>
     <p>
-      <a href="https://s.apache.org/wicket9migrate">https://s.apache.org/wicket10migrate</a>
+      <a href="https://s.apache.org/wicket10migrate">https://s.apache.org/wicket10migrate</a>
     </p>
     <p>
       Please consult this migration guide when you are moving towards Wicket 10.
@@ -86,13 +87,6 @@ additionalContents:
   </div>
 </div>
 <div class="l-first l-flex">
-  <div class="l-full">
-    <h2>Getting Started with Wicket 10</h2>
-    <p>
-      It is very easy to get started with Wicket: use our <a href="/start/quickstart.html">quick-start wizard</a> or 
-      use one of the options below.
-    </p>
-  </div>
   <div class="l-half">
     <h3>Download using Apache Maven</h3>
     <p>
