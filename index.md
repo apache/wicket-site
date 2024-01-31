@@ -15,7 +15,7 @@ additionalContents:
 <div class="l-full l-first preamble">
     <a class="acevent"></a>
     <br/>
-    <h1 id="introduction" class="announce">Announcing Apache Wicket <span class="color-brand">1</span><span class="color-brand" style="font-family: Wicket font;font-size: 46px;">0</span> : get into the modern Java world!</h1>
+    <h1 id="introduction" class="announce">Announcing Apache Wicket <span class="color-brand">1</span><span class="color-brand" style="font-family: Wicket font;font-size: 46px;">0</span> : build modern web applications with Java!</h1>
     <div>
       <img src="{{ site.baseurl }}/img/wicket-9-sun.png" alt="Apache Wicket" class="responsive-logo">
     </div>
@@ -26,12 +26,12 @@ additionalContents:
 </div>
 <div class="l-first">
   <div class="l-full">
-    <h3>Bring the web into the modern Java era</h3>
+    <h3>Use Java to build modern and mantainable web applications</h3>
     <p>
-     The release of Java 9 has been a turning point in Java history which laid the foundation for the modern Java era. However, the magnitude of this change has discouraged many developers from leaving the safe harbor represented by Java 8. With Wicket 9 we finally have a fundamental tool to move on and bring our web applications into the new Java world.
+     Building robust and manteinable web application is not a trivial task, especially for Java developers who might feel lost with modern web technologies. With Wicket you can use the rock-solid Java platform to reach this goal without the burden of the complexity that comes with modern JavaScript development stack. 
     </p>
     <p>
-      With this version Wicket has been completely revisited and improved to embrace new technologies such as Java modularization and new libraries like JUnit 5.
+     Using Wicket and other familiar tools like Apache Maven you can finally make the most of modern UI frameworks and JavaScript libraries without leaving the Java ecosystem!
     </p>
   </div>
 </div>
