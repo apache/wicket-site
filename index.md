@@ -20,8 +20,8 @@ additionalContents:
       <img src="{{ site.baseurl }}/img/wicket-9-sun.png" alt="Apache Wicket" class="responsive-logo">
     </div>
     <p>
-      The Apache Wicket project announces the 9th major release of the open source Java web framework servicing websites and applications across the globe since 2004.
-      Built on top of Java 17, this version of Wicket brings web development into the modern Java world, offering a fundamental tool to keep you code up to date with Java's evolution.
+      The Apache Wicket project announces the 10th major release of the open source Java web framework servicing websites and applications across the globe since 2004.
+      Built on top of Java 17, this version of Wicket brings web development into the modern Java world, offering a fundamental tool to write modern and robust web applications.
     </p>
 </div>
 <div class="l-first">
@@ -59,7 +59,7 @@ additionalContents:
      You either risk leaving holes in the defense of your application or you break certain functionality. Protecting against unwanted inline scripts is the most important target to attain. In CSP this is called 'unsafe-inline' and it's the most common cause of cross-site scripting vulnerabilities.
     </p>
     <p>
-     Wicket 9 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need for a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Lookup our <a href="http://wicket.apache.org/learn/#guide" target="_blank">documentation</a> for more information.
+     Wicket 10 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need for a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Lookup our <a href="http://wicket.apache.org/learn/#guide" target="_blank">documentation</a> for more information.
     </p>
   </div>
 </div>
@@ -97,7 +97,7 @@ additionalContents:
 <dependency>
     <groupId>org.apache.wicket</groupId>
     <artifactId>wicket-core</artifactId>
-    <version>{{site.wicket.version_90}}</version>
+    <version>{{site.wicket.version}}</version>
 </dependency>
 {% endhighlight%}
   </div>
@@ -108,8 +108,8 @@ additionalContents:
       convenient binary package:
     </p>
     <ul>
-      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}">{{site.wicket.version_90}} source download</a></li>
-      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}/binaries">{{site.wicket.version_90}} binary download</a></li>
+      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version}}">{{site.wicket.version}} source download</a></li>
+      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version}}/binaries">{{site.wicket.version}} binary download</a></li>
     </ul>
   </div>
 </div>

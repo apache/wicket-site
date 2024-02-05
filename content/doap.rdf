@@ -26,7 +26,7 @@
 			<Version>
 				<name>Latest Stable Release</name>
 				<created>2023-11-26</created>
-				<revision>9.16.0</revision>
+				<revision>10.0.0-M2</revision>
 			</Version>
 		</release>
 		<repository>
