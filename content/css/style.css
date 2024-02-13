@@ -711,7 +711,7 @@ button.button--alert:focus {
 } /* Literal.Number.Integer.Long */
 .responsive-logo {
   width: 100%;
-  max-width: 400px;
+  max-width: 200px;
   height: auto;
 }
 
@@ -1054,7 +1054,7 @@ div.header {
 .preamble h1 + *,
 .preamble h2 + *,
 .preamble img + * {
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
 .preamble h1:last-child,
 .preamble h2:last-child,
