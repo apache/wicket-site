@@ -4,11 +4,11 @@ for communities to collaborate and stand on one's shoulders. The
 following friends within the Apache community are proud members using
 Wicket.
 
-### Apache Isis
+### Apache Causeway
 
-[Apache Isis][isis-1] is a full-stack framework for rapidly developing domain
+[Apache Causeway][causeway-1] is a full-stack framework for rapidly developing domain
 driven apps and RESTful APIs in Java. It uses Wicket
-6.x as a [default viewer for Isis domain model][isis-2].
+ as a [default viewer for Isis domain model][causeway-2].
 
 ### Apache OODT
 
@@ -49,8 +49,8 @@ feature set that sets it apart from other Big Data platforms. Its submodule Hyra
 uses Apache Wicket for its administration console.
 
 
-[isis-1]: http://isis.apache.org
-[isis-2]: http://isis.apache.org/documentation.html#wicket-viewer
+[causeway-1]: https://causeway.apache.org
+[causeway-2]: https://causeway.apache.org/vw/latest/about.html
 [oodt-1]: http://oodt.apache.org
 [oodt-2]: http://oodt.apache.org/components/maven/webapp/filemgr/
 [oodt-3]: http://oodt.apache.org/components/maven/webapp/workflow/
