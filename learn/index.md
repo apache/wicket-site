@@ -104,8 +104,12 @@ provide migration paths between the different Wicket versions.
 
 Here's a list of the migration guides:
 <div class="l-button-table">
-    <div class="l-two-third">
+    <div class="l-full">
         <div class="button-bar">
+            <a class="button" href="https://s.apache.org/wicket10migration">
+                Wicket 10<br>
+        		migration guide
+            </a>
             <a class="button" href="https://s.apache.org/wicket9migration">
                 Wicket 9<br>
         		migration guide

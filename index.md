@@ -28,7 +28,7 @@ additionalContents:
   <div class="l-full">
     <h3>Use Java to build modern and mantainable web applications</h3>
     <p>
-     Building robust and manteinable web application is not a trivial task, especially for Java developers who might feel lost with modern web technologies. With Wicket you can use the rock-solid Java platform to reach this goal without the burden of the complexity that comes with modern JavaScript development stack. 
+     Building robust and manteinable web applications is not a trivial task, especially for Java developers who might feel lost with modern web technologies. With Wicket you can use the rock-solid Java platform to reach this goal without the burden of the complexity that comes with modern JavaScript development stack. 
     </p>
     <p>
      Using Wicket and other familiar tools like Apache Maven you can finally make the most of modern UI frameworks and JavaScript libraries without leaving the Java ecosystem!
