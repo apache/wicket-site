@@ -15,9 +15,11 @@ preamble: Here you can learn about the status of Wicket 8.x, find links to downl
 
 ## Status
 
-The status for Wicket 8.x is: **supported**.
+The status for Wicket 8.x is: **security fixes only**.
 
-This is the previous stable, production ready release of Wicket. This branch will continue to recieve new features, improvements, bug- and security fixes.
+This branch is **no longer actively maintained** and will only recieve
+backported security fixes when relevant and as long as we are able to
+actually build this branch.
 
 <i class="fa fa-info-circle"></i>
 However, this release will cease to receive updates in the future. You

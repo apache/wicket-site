@@ -17,8 +17,8 @@ preamble: Here you can learn about the status of Wicket 9.x, find links to downl
 
 The status for Wicket 9.x is: **supported**.
 
-This is the current stable, **production ready** release of Wicket. All
-projects intended for production use should use this version.
+This is the previous stable, production ready release of Wicket. This branch will continue to recieve new features, improvements, bug- and security fixes.
+However, this release will cease to receive updates in the future. You really should consider upgrading to Wicket 10.x at your earliest convenience.
 
 ### Semantic versioning
 

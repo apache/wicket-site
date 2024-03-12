@@ -15,10 +15,10 @@ preamble: Here you can learn about the status of Wicket 10.x, find links to down
 
 ## Status
 
-The status for Wicket 10.x is: **in development**.
+The status for Wicket 10.x is: **supported**.
 
-This is the development version, **NOT production-ready** release of Wicket. All
-projects intended for production use should use version 9.x.
+This is the current stable, production ready release of Wicket. All
+projects intended for production use should use this version.
 
 ### Semantic versioning
 
