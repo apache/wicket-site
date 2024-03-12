@@ -210,7 +210,7 @@
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>10.0.0-M2<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>10.0.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
 
   </div>
@@ -221,8 +221,8 @@
       convenient binary package:
     </p>
     <ul>
-      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/10.0.0-M2">10.0.0-M2 source download</a></li>
-      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/10.0.0-M2/binaries">10.0.0-M2 binary download</a></li>
+      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/10.0.0">10.0.0 source download</a></li>
+      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/10.0.0/binaries">10.0.0 binary download</a></li>
     </ul>
   </div>
 </div>
@@ -416,6 +416,49 @@
 	<div class="l-two-third" >
 	
 	    <article>
+	        <h2>Apache Wicket 10.0.0 released</h2>
+	        <small>11 Mar 2024</small>
+	        <p>The Apache Wicket PMC is proud to announce Apache Wicket 10.0.0!</p>
+
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
+<p>This release marks another minor release of Wicket 10. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present in this release compared to 10.0.0.</p>
+
+<h2 id="new-and-noteworthy">New and noteworthy</h2>
+
+<p>This release fixes the following security issue:</p>
+<ul>
+  <li>CVE-2024-27439 - ‘Possible bypass of CSRF protection’</li>
+</ul>
+
+<h2 id="using-this-release">Using this release</h2>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>10.0.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package you can find here:</p>
+
+<ul>
+  <li>Download: http://wicket.apache.org/start/wicket-10.x.html#manually</li>
+</ul>
+
+
+	        <a href="/news/2024/03/11/wicket-10.0.0-released.html">Read more...</a> 
+	    </article>
+	
+	    <article>
 	        <h2>Apache Wicket 9.16.0 released</h2>
 	        <small>26 Nov 2023</small>
 	        <p>The Apache Wicket PMC is proud to announce Apache Wicket 9.16.0!</p>
@@ -451,48 +494,6 @@ convenience binary package you can find here:</p>
 	        <a href="/news/2023/11/26/wicket-9.16.0-released.html">Read more...</a> 
 	    </article>
 	
-	    <article>
-	        <h2>Apache Wicket 10.0.0-M2 released</h2>
-	        <small>16 Oct 2023</small>
-	        <p>The Apache Wicket PMC is proud to announce Apache Wicket 10.0.0-M2!</p>
-
-<p>Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org</p>
-
-<p>This release marks another minor release of Wicket 10. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present in this release compared to 10.0.0.</p>
-
-<h2 id="new-and-noteworthy">New and noteworthy</h2>
-
-<p>In order to improve JPMS adoption, this release introduces the new module 
-wicket-tester containing common classes for unit testing. 
-Users of class WicketTester must now include this module as <strong>test</strong> dependency.</p>
-
-<h2 id="using-this-release">Using this release</h2>
-
-<p>With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):</p>
-
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>10.0.0-M2<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
-
-<p>Or download and build the distribution yourself, or use our
-convenience binary package you can find here:</p>
-
-<ul>
-  <li>Download: http://wicket.apache.org/start/wicket-10.x.html#manually</li>
-</ul>
-
-
-	        <a href="/news/2023/10/16/wicket-10.0.0-M2-released.html">Read more...</a> 
-	    </article>
-	
 	</div>
 
     <div class="l-one-third news">
@@ -507,6 +508,13 @@ convenience binary package you can find here:</p>
 		get updates in your favorite RSS reader the moment they happen.</p>
 		
 		<ul>
+		
+		<li>
+		    <h3>Apache Wicket 9.16.0 released</h3>
+		    <small>26 Nov 2023</small>
+		    The Apache Wicket PMC is proud to announce Apache Wicket 9.16.0! Apache Wicket is an open source Java component oriented web application framework that powers...
+		    <a href="/news/2023/11/26/wicket-9.16.0-released.html">more</a>
+		</li>
 		
 		<li>
 		    <h3>Apache Wicket 10.0.0-M2 released</h3>
@@ -534,13 +542,6 @@ convenience binary package you can find here:</p>
 		    <small>28 May 2023</small>
 		    The Apache Wicket PMC is proud to announce Apache Wicket 9.14.0! Apache Wicket is an open source Java component oriented web application framework that powers...
 		    <a href="/news/2023/05/28/wicket-9.14.0-released.html">more</a>
-		</li>
-		
-		<li>
-		    <h3>Apache Wicket 8.15.0 released</h3>
-		    <small>02 May 2023</small>
-		    The Apache Wicket PMC is proud to announce Apache Wicket 8.15.0! Apache Wicket is an open source Java component oriented web application framework that powers...
-		    <a href="/news/2023/05/02/wicket-8.15.0-released.html">more</a>
 		</li>
 		
 		</ul>
