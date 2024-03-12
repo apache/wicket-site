@@ -42,22 +42,17 @@ The following releases are supported by the Wicket team.
 	<tr>
 		<td><a href="wicket-10.x.html">Wicket 10.x</a></td>
 		<td>{{site.wicket.version_10}}</td>
-		<td>in development, not for production</td>
+		<td>current, supported</td>
 	</tr>
 	<tr>
 		<td><a href="wicket-9.x.html">Wicket 9.x</a></td>
 		<td>{{site.wicket.version_90}}</td>
-		<td>current, supported</td>
+		<td>supported</td>
 	</tr>
 	<tr>
 		<td><a href="wicket-8.x.html">Wicket 8.x</a></td>
 		<td>{{site.wicket.version_80}}</td>
-		<td>supported</td>
-	</tr>
-	<tr>
-		<td><a href="wicket-7.x.html">Wicket 7.x</a></td>
-		<td>{{site.wicket.version_70}}</td>
-		<td>security fixes only, upgrade to 8.x or 9.x</td>
+		<td>security fixes only, upgrade to 9.x or 10.x</td>
 	</tr>	
 </table>
 
@@ -79,39 +74,44 @@ versions.
 		<th style="width:40%">Status</th>
 	</tr>
 	<tr>
+		<td><a href="wicket-7.x.html">Wicket 7.x</a></td>
+		<td>{{site.wicket.version_70}}</td>
+		<td>discontinued, upgrade to 9.x or 10.x</td>
+	</tr>
+	<tr>
 		<td><a href="wicket-6.x.html">Wicket 6.x</a></td>
 		<td>{{site.wicket.version_60}}</td>
-		<td>discontinued, upgrade to 8.x or 9.x</td>
+		<td>discontinued, upgrade to 9.x or 10.x</td>
 	</tr>
 	<tr>
 		<td><a href="wicket-1.5.x.html">Wicket 1.5.x</a></td>
 		<td>{{site.wicket.version_15}}</td>
-		<td>discontinued, upgrade to 8.x or 9.x</td>
+		<td>discontinued, upgrade to 9.x or 10.x</td>
 	</tr>
 	<tr>
 		<td><a href="wicket-1.4.x.html">Wicket 1.4.x</a></td>
 		<td>{{site.wicket.version_14}}</td>
-		<td>discontinued, upgrade to 8.x or 9.x</td>
+		<td>discontinued, upgrade to 9.x or 10.x</td>
 	</tr>
 	<tr>
 		<td><a href="wicket-1.3.x.html">Wicket 1.3.x</a></td>
 		<td>{{site.wicket.version_13}}</td>
-		<td>discontinued, upgrade to 8.x or 9.x</td>
+		<td>discontinued, upgrade to 9.x or 10.x</td>
 	</tr>
 	<tr>
 		<td>Wicket 1.2.x</td>
 		<td>1.2.5</td>
-		<td>discontinued, upgrade to 8.x or 9.x</td>
+		<td>discontinued, upgrade to 9.x or 10.x</td>
 	</tr>
 	<tr>
 		<td>Wicket 1.1.x</td>
 		<td>1.1.0</td>
-		<td>discontinued, upgrade to 8.x or 9.x</td>
+		<td>discontinued, upgrade to 9.x or 10.x</td>
 	</tr>
 	<tr>
 		<td>Wicket 1.0.x</td>
 		<td>1.0.0</td>
-		<td>discontinued, upgrade to 8.x or 9.x</td>
+		<td>discontinued, upgrade to 9.x or 10.x</td>
 	</tr>
 </table>
 
