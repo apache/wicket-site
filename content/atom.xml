@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2024-03-20T21:14:10+00:00</updated>
+    <updated>2024-03-28T16:32:04+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -33,7 +33,7 @@ API breaks are present in this release compared to 9.0.0.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;CVE-2024-27439 - ‘Possible bypass of CSRF protection’
-Reported by Jo Theunis: jo.theunis@dnsbelgium.be&lt;/li&gt;
+Reported by Jo Theunis.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
