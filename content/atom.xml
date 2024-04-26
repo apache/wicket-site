@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2024-03-28T16:32:04+00:00</updated>
+    <updated>2024-04-26T12:56:18+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -267,7 +267,7 @@ migration guide found at&lt;/p&gt;
   &lt;li&gt;[WICKET-7040] - find a different way to add CSP headers&lt;/li&gt;
   &lt;li&gt;[WICKET-7044] - Images in the Wicket 9.x reference guide are not displayed.&lt;/li&gt;
   &lt;li&gt;[WICKET-7052] - Interrupting a task should not be logged as an error&lt;/li&gt;
-  &lt;li&gt;[WICKET-7054] - Tag &lt;script&gt; mus be wrapped in CDATA for &apos;type&apos; values &apos;module&apos; and &apos;importmap&apos;&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-7054] - Tag &lt;script&gt; mus be wrapped in CDATA for 'type' values 'module' and 'importmap'&lt;/script&gt;&lt;/li&gt;
   &lt;li&gt;[WICKET-7055] - AjaxEventBehavior onload event unstable&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -313,7 +313,7 @@ migration guide found at&lt;/p&gt;
   &lt;li&gt;[WICKET-6992] - Reduce object creation and wasted memory in Url toString() methods&lt;/li&gt;
   &lt;li&gt;[WICKET-6994] - Make the servlet API a runtime provided dependency when using JPMS.&lt;/li&gt;
   &lt;li&gt;[WICKET-6998] - Bump slf4j-api to 2.0.0&lt;/li&gt;
-  &lt;li&gt;[WICKET-7000] - ParseException (“Malformed tag”) if &lt;script&gt; attribute &apos;type&apos; is &apos;module&apos;&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-7000] - ParseException (“Malformed tag”) if &lt;script&gt; attribute 'type' is 'module'&lt;/script&gt;&lt;/li&gt;
   &lt;li&gt;[WICKET-7002] - Application metadata access should not require synchronization&lt;/li&gt;
   &lt;li&gt;[WICKET-7003] -  The http RequestLogger is very expensive. #524&lt;/li&gt;
   &lt;li&gt;[WICKET-7004] - Jetty config example contains security hazard&lt;/li&gt;
@@ -734,7 +734,7 @@ migration guide found at&lt;/p&gt;
   &lt;li&gt;[WICKET-7040] - find a different way to add CSP headers&lt;/li&gt;
   &lt;li&gt;[WICKET-7044] - Images in the Wicket 9.x reference guide are not displayed.&lt;/li&gt;
   &lt;li&gt;[WICKET-7052] - Interrupting a task should not be logged as an error&lt;/li&gt;
-  &lt;li&gt;[WICKET-7054] - Tag &lt;script&gt; mus be wrapped in CDATA for &apos;type&apos; values &apos;module&apos; and &apos;importmap&apos;&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-7054] - Tag &lt;script&gt; mus be wrapped in CDATA for 'type' values 'module' and 'importmap'&lt;/script&gt;&lt;/li&gt;
   &lt;li&gt;[WICKET-7055] - AjaxEventBehavior onload event unstable&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -780,7 +780,7 @@ migration guide found at&lt;/p&gt;
   &lt;li&gt;[WICKET-6992] - Reduce object creation and wasted memory in Url toString() methods&lt;/li&gt;
   &lt;li&gt;[WICKET-6994] - Make the servlet API a runtime provided dependency when using JPMS.&lt;/li&gt;
   &lt;li&gt;[WICKET-6998] - Bump slf4j-api to 2.0.0&lt;/li&gt;
-  &lt;li&gt;[WICKET-7000] - ParseException (“Malformed tag”) if &lt;script&gt; attribute &apos;type&apos; is &apos;module&apos;&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-7000] - ParseException (“Malformed tag”) if &lt;script&gt; attribute 'type' is 'module'&lt;/script&gt;&lt;/li&gt;
   &lt;li&gt;[WICKET-7002] - Application metadata access should not require synchronization&lt;/li&gt;
   &lt;li&gt;[WICKET-7003] -  The http RequestLogger is very expensive. #524&lt;/li&gt;
   &lt;li&gt;[WICKET-7004] - Jetty config example contains security hazard&lt;/li&gt;
@@ -889,7 +889,7 @@ migration guide found at&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;[WICKET-7013] - IndexOutOfBoundsException in InSessionPageStore&lt;/li&gt;
   &lt;li&gt;[WICKET-7052] - Interrupting a task should not be logged as an error&lt;/li&gt;
-  &lt;li&gt;[WICKET-7054] - Tag &lt;script&gt; mus be wrapped in CDATA for &apos;type&apos; values &apos;module&apos; and &apos;importmap&apos;&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-7054] - Tag &lt;script&gt; mus be wrapped in CDATA for 'type' values 'module' and 'importmap'&lt;/script&gt;&lt;/li&gt;
   &lt;li&gt;[WICKET-7055] - AjaxEventBehavior onload event unstable&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1184,7 +1184,7 @@ migration guide found at&lt;/p&gt;
   &lt;li&gt;[WICKET-6958] - Allow to use Slf4j 1.7.x in OSGi runtime&lt;/li&gt;
   &lt;li&gt;[WICKET-6982] - Unnecessary initialization of stateful pages in ListenerRequestHandler&lt;/li&gt;
   &lt;li&gt;[WICKET-6998] - Bump slf4j-api to 2.0.0&lt;/li&gt;
-  &lt;li&gt;[WICKET-7000] - ParseException (“Malformed tag”) if &lt;script&gt; attribute &apos;type&apos; is &apos;module&apos;&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;[WICKET-7000] - ParseException (“Malformed tag”) if &lt;script&gt; attribute 'type' is 'module'&lt;/script&gt;&lt;/li&gt;
   &lt;li&gt;[WICKET-7002] - Application metadata access should not require synchronization&lt;/li&gt;
   &lt;li&gt;[WICKET-7003] -  The http RequestLogger is very expensive. #524&lt;/li&gt;
   &lt;li&gt;[WICKET-7004] - Jetty config example contains security hazard&lt;/li&gt;
