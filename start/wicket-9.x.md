@@ -28,7 +28,7 @@ releases will not break compatibility.
 ### Change log
 
 To see what changed in these releases you can read the
-[change log](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/CHANGELOG-9.x).
+[change log](https://downloads.apache.org/wicket/{{site.wicket.version_90}}/CHANGELOG-9.x).
 
 ## Download
 
@@ -62,23 +62,23 @@ Use the following links to download Wicket manually to build Wicket
 from source:
 
 - Download source [apache-wicket-{{site.wicket.version_90}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.tar.gz)
-([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.tar.gz.asc),
-[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.tar.gz.sha256)
+([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.tar.gz.asc),
+[SHA-256](https://downloads.apache.org/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.tar.gz.sha256)
 )
 - Download source [apache-wicket-{{site.wicket.version_90}}.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.zip)
-([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.zip.asc),
-[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.zip.sha256)
+([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.zip.asc),
+[SHA-256](https://downloads.apache.org/wicket/{{site.wicket.version_90}}/apache-wicket-{{site.wicket.version_90}}.zip.sha256)
 )
 
 Or use the following links to get the pre-packaged binaries instead:
 
 - Download binaries [apache-wicket-{{site.wicket.version_90}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.tar.gz)
-([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.tar.gz.asc),
-[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.tar.gz.sha256)
+([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.tar.gz.asc),
+[SHA-256](https://downloads.apache.org/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.tar.gz.sha256)
 )
 - Download binaries [apache-wicket-{{site.wicket.version_90}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.zip)
-([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.zip.asc),
-[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.zip.sha256)
+([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.zip.asc),
+[SHA-256](https://downloads.apache.org/wicket/{{site.wicket.version_90}}/binaries/apache-wicket-{{site.wicket.version_90}}-bin.zip.sha256)
 )
 
 Note that the binary packages and the source packages don't contain any
@@ -88,7 +88,7 @@ dependency management system.
 
 ### Verify distribution's signature
 
-PGP signatures can be verified as described [on this page](http://www.apache.org/dev/release-signing.html#verifying-signature). The public key used to sign Wicket distributions can be found in the [KEYS file](https://www.apache.org/dist/wicket/KEYS). 
+PGP signatures can be verified as described [on this page](http://www.apache.org/dev/release-signing.html#verifying-signature). The public key used to sign Wicket distributions can be found in the [KEYS file](https://downloads.apache.org/wicket/KEYS). 
 
 
 ### Older releases
