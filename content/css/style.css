@@ -94,7 +94,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #ee9554;
+  color: rgb(237.6945606695, 148.8075313808, 84.3054393305);
 }
 
 small {
@@ -127,7 +127,7 @@ del {
 }
 
 mark {
-  background-color: #ffffb3;
+  background-color: rgb(255, 255, 178.5);
 }
 
 hr {
@@ -394,7 +394,7 @@ button {
 .button:hover,
 input[type=submit]:hover,
 button:hover {
-  background: #ee9554;
+  background: rgb(237.6945606695, 148.8075313808, 84.3054393305);
   color: #fff;
 }
 .button:active, .button:focus,
@@ -1008,7 +1008,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #ee9554;
+  color: rgb(237.6945606695, 148.8075313808, 84.3054393305);
 }
 
 h1 a, h2 a, h3 a {
