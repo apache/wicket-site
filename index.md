@@ -4,6 +4,11 @@ title:
 pageclasses: index
 additionalContents:
   -
+   header: builtwithwicket--header.html
+   path: builtwithwicket.html
+   sectionId: builtwithwicket
+   cssClass: builtwithwicket
+  -
    path: news.html
    sectionId: news
 ---

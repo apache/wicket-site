@@ -22,8 +22,9 @@
         return Math.floor(Math.random()*(max-min+1)+min);
     }
 
-    $.getJSON('./tumblr.json',
-        function(response) {
+    fetch('./tumblr.json') // Call the fetch function passing the url of the API as a parameter
+        .then(res => res.json())
+        .then(function (response) {
             var posts = response.posts;  
 
             for(var postIndex in posts) {
@@ -33,7 +34,7 @@
                     '<div class="builtwithwicket-post">\n' +
                     '  <img class="builtwithwicket-screenshot" data-lazy="' + post['photo-url-500'] + '">\n' +
                     '  <p class="builtwithwicket-caption">' + caption + '</p>\n' +
-                    '  <a href="' + post['url'] + '" rel="nofollow">More</a>\n' + 
+                    '  <a href="' + post['url'] + '" target="_blank" rel="nofollow">More</a>\n' + 
                     '</div>');
             }
 
@@ -66,5 +67,8 @@
                 slidesToScroll: 3,
                 swipe: true,
             });
+        })
+        .catch(function(e) {
+            $("#builtwithwicket").remove();
         });
 </script>
