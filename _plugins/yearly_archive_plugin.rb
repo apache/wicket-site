@@ -68,11 +68,11 @@ module Jekyll
       self.basename = 'index'
       self.content = <<-EOS
       {% for year in site.years %}
-      {% assign y = {year.first.first.date | date: '%Y'} %}
+      {% assign y = year.first.first.date | date: '%Y' %}
       {% if y == '#{year}' %}
       <div class="l-first">
           {% for month in year %}
-              {% assign m = {month.first.date | date: '%m'} %}
+              {% assign m = month.first.date | date: '%m' %}
               <div  class="l-full">
                   <h1>All News for {{ month.first.date | date: "%B %Y" }}</h1>
                   <p>This section contains all news items published in <a href="{{site.baseurl}}/news/{{y}}/{{m}}">{{ month.first.date | date: "%B %Y" }}</a>.</p>

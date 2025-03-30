@@ -31,9 +31,9 @@ layout: base
 	            {% assign y = year.first.first.date | date: "%Y" %}
 	            <h2>{{ y }}</h2>
 	            <ul>
-	            <li><a href="{{site.baseurl}}/news/{{year.first.first.date | date: "%Y"}}">All of {{y}}</a></li>
-	            {% for month in year %}
-	            <li><a href="{{site.baseurl}}/news/{{year.first.first.date | date: "%Y"}}/{{month.first.date | date: "%m"}}">{{ month.first.date | date: "%B" }}</a></li>
+	            <li><a href="{{site.baseurl}}/news/{{y}}">All of {{y}}</a></li>
+	            {% for month in year %}{% capture m %}{{ month.first.date | date: "%m" }}{% endcapture %}
+	            <li><a href="{{site.baseurl}}/news/{{y}}/{{m}}">{{ month.first.date | date: "%B" }}</a></li>
 	            {% endfor %}
 	            </ul>
 	        {% endfor %}
