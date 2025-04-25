@@ -5,15 +5,15 @@
 		<archetype>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-archetype-quickstart</artifactId>
-			<version>10.5.0-SNAPSHOT</version>
-			<description>Wicket 10.5.0-SNAPSHOT Quickstart</description>
+			<version>10.6.0-SNAPSHOT</version>
+			<description>Wicket 10.6.0-SNAPSHOT Quickstart</description>
 		</archetype>
 
 		<archetype>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-archetype-quickstart</artifactId>
-			<version>9.21.0-SNAPSHOT</version>
-			<description>Wicket 9.21.0-SNAPSHOT Quickstart</description>
+			<version>9.22.0-SNAPSHOT</version>
+			<description>Wicket 9.22.0-SNAPSHOT Quickstart</description>
 		</archetype>
 
 		<archetype>
@@ -47,15 +47,15 @@
 		<archetype>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-archetype-quickstart</artifactId>
-			<version>10.4.0</version>
-			<description>Wicket 10.4.0 Quickstart</description>
+			<version>10.5.0</version>
+			<description>Wicket 10.5.0 Quickstart</description>
 		</archetype>
 
 		<archetype>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-archetype-quickstart</artifactId>
-			<version>9.20.0</version>
-			<description>Wicket 9.20.0 Quickstart</description>
+			<version>9.21.0</version>
+			<description>Wicket 9.21.0 Quickstart</description>
 		</archetype>
 
 		<archetype>
