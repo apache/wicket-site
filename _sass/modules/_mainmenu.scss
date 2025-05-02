@@ -1,3 +1,7 @@
+@use "../taiga/grid";
+@use "../taiga/mixins";
+@use "../taiga/settings";
+
 nav.mainmenu {
     display:block;
     margin:0 auto 2rem auto;
@@ -9,12 +13,12 @@ nav.mainmenu {
     &.active { border-bottom: 2px solid white;}
     
     li+li {
-        margin-left:1*$grid-column;
+        margin-left:1*grid.$grid-column;
     }
 
     a, a:active {
         border:none;
-        color:$color-brand-50;
+        color:settings.$color-brand-50;
         font-weight:500;
         text-decoration: none;
     }
@@ -35,12 +39,14 @@ nav.mainmenu {
         
         justify-content: flex-end;
         
-        @include breakpoint($breakpoint-20, 'max-width') {
+        @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
            justify-content: center;
         }
         
-        font-size: 2rem;
-        flex-wrap: nowrap;
+        & {
+            font-size: 2rem;
+            flex-wrap: nowrap;
+        }
     }
 }
 
@@ -48,7 +54,7 @@ nav.mainmenu {
    padding-right: 1rem;
     
    &:hover {
-       color: $color-brand-50;
+       color: settings.$color-brand-50;
    }
 }
 
@@ -58,10 +64,10 @@ nav.mainmenu {
     display:flex;
     padding-right: 1rem;
 
-    @include breakpoint($breakpoint-20, 'max-width') {
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
         
         margin:0;
-        @include prepend(1);
+        @include grid.prepend(1);
         
         justify-content: center;
         align-items: center;

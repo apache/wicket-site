@@ -1,3 +1,4 @@
+@use "sass:color";
 // =========== Settings
 
 // Most of the variables are based on some kind of percentages to maintain stability.
@@ -57,9 +58,9 @@ $z-index-30: 30;
 // Add your own color variables
 
 // Color brand
-$color-brand-40: darken(#E97826, 25%);
+$color-brand-40: color.adjust(#E97826, $lightness: -25%);
 $color-brand-50: #E97826; // Default
-$color-brand-60: lighten(#E97826, 10%);
+$color-brand-60: color.adjust(#E97826, $lightness: 10%);
 $color-brand-70: #FF9925; //old default
 
 

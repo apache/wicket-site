@@ -1,6 +1,6 @@
-@import url(../fonts/source-code-pro/stylesheet.css);
-@import url(../fonts/source-sans-pro/stylesheet.css);
-@import url(../fonts/wicket-font/stylesheet.css);
+@import "../fonts/source-code-pro/stylesheet.css";
+@import "../fonts/source-sans-pro/stylesheet.css";
+@import "../fonts/wicket-font/stylesheet.css";
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -38,12 +38,12 @@ html {
   text-rendering: auto;
   -webkit-text-size-adjust: 100%;
 }
+
 @media (min-width: 769px) {
   html {
     font-size: 17px;
   }
 }
-
 body {
   line-height: 1.5em;
   background-color: #fff;
@@ -84,6 +84,7 @@ h6 {
 p {
   margin-bottom: 1rem;
 }
+
 p.is-lead {
   font-size: 1.125rem;
 }
@@ -93,6 +94,7 @@ a {
   cursor: pointer;
   text-decoration: none;
 }
+
 a:hover {
   color: rgb(237.6945606695, 148.8075313808, 84.3054393305);
 }
@@ -153,24 +155,30 @@ ol {
 dl {
   margin-bottom: 1rem;
 }
+
 dl dt {
   font-weight: bold;
 }
+
 dl dd {
   margin-left: 1rem;
 }
+
 dl.advanced:before, dl.advanced:after {
   content: "";
   display: table;
 }
+
 dl.advanced:after {
   clear: both;
 }
+
 dl.advanced dt {
   width: 31.25%;
   margin-left: 0%;
   margin-right: 2.0833333333%;
 }
+
 dl.advanced dd {
   width: 66.6666666667%;
   margin-left: 0%;
@@ -187,16 +195,16 @@ main {
   color: rgb(48, 50, 132);
 }
 
-.l-full {
-  width: 100%;
-  float: none;
-}
 @media (min-width: 960px) {
   .l-full {
     width: 95.8333333333%;
     margin-left: 2.0833333333%;
     margin-right: 2.0833333333%;
   }
+}
+.l-full {
+  width: 100%;
+  float: none;
 }
 
 @media (min-width: 960px) {
@@ -206,7 +214,6 @@ main {
     margin-right: 2.0833333333%;
   }
 }
-
 @media (min-width: 960px) {
   .l-half {
     width: 45.8333333333%;
@@ -214,7 +221,6 @@ main {
     margin-right: 2.0833333333%;
   }
 }
-
 @media (min-width: 960px) {
   .l-one-quarter {
     width: 20.8333333333%;
@@ -222,7 +228,6 @@ main {
     margin-right: 2.0833333333%;
   }
 }
-
 @media (min-width: 960px) {
   .l-one-eigth {
     width: 8.3333333333%;
@@ -230,7 +235,6 @@ main {
     margin-right: 2.0833333333%;
   }
 }
-
 @media (min-width: 960px) {
   .l-one-sixth {
     width: 12.5%;
@@ -238,7 +242,6 @@ main {
     margin-right: 2.0833333333%;
   }
 }
-
 @media (min-width: 960px) {
   .l-one-third {
     width: 29.1666666667%;
@@ -246,14 +249,15 @@ main {
     margin-right: 2.0833333333%;
   }
 }
-
 .l-grid:before, .l-grid:after {
   content: "";
   display: table;
 }
+
 .l-grid:after {
   clear: both;
 }
+
 .l-grid li {
   width: 29.1666666667%;
   margin-left: 2.0833333333%;
@@ -269,26 +273,27 @@ main {
   max-width: 85rem;
   padding: 1rem;
 }
+
 .l-container:before, .l-container:after {
   content: "";
   display: table;
 }
+
 .l-container:after {
   clear: both;
 }
+
 @media (min-width: 960px) {
   .l-container {
     padding: 1rem 5rem;
   }
 }
-
 @media (min-width: 960px) {
   .l-button-table {
     display: flex;
     justify-content: center;
   }
 }
-
 .l-button-table > .l-two-third {
   float: none;
   margin-left: 0;
@@ -317,13 +322,11 @@ main {
     float: left;
   }
 }
-
 @media (min-width: 590px) {
   .right {
     float: right;
   }
 }
-
 .text-left {
   text-align: left;
 }
@@ -379,6 +382,7 @@ button {
   text-decoration: none;
   vertical-align: bottom;
 }
+
 .button--alert:focus, .button--success:focus, .button--neutral:focus, .button:focus,
 input[type=submit]:focus,
 button:focus {
@@ -391,12 +395,14 @@ button {
   background: #FF9925;
   color: #fff;
 }
+
 .button:hover,
 input[type=submit]:hover,
 button:hover {
   background: rgb(237.6945606695, 148.8075313808, 84.3054393305);
   color: #fff;
 }
+
 .button:active, .button:focus,
 input[type=submit]:active,
 input[type=submit]:focus,
@@ -411,12 +417,14 @@ button.button--neutral {
   background: #ccd6d2;
   color: #3f4542;
 }
+
 .button--neutral:hover,
 input[type=submit].button--neutral:hover,
 button.button--neutral:hover {
   background: #8d9994;
   color: #3f4542;
 }
+
 .button--neutral:active, .button--neutral:focus,
 input[type=submit].button--neutral:active,
 input[type=submit].button--neutral:focus,
@@ -431,12 +439,14 @@ button.button--success {
   background-color: #39b924;
   color: #fff;
 }
+
 .button--success:hover,
 input[type=submit].button--success:hover,
 button.button--success:hover {
   background-color: #249c11;
   color: #fff;
 }
+
 .button--success:active, .button--success:focus,
 input[type=submit].button--success:active,
 input[type=submit].button--success:focus,
@@ -451,12 +461,14 @@ button.button--alert {
   background-color: #f3490d;
   color: #fff;
 }
+
 .button--alert:hover,
 input[type=submit].button--alert:hover,
 button.button--alert:hover {
   background-color: #d33e09;
   color: #fff;
 }
+
 .button--alert:active, .button--alert:focus,
 input[type=submit].button--alert:active,
 input[type=submit].button--alert:focus,
@@ -724,6 +736,7 @@ button.button--alert:focus {
   background-size: cover;
   box-shadow: inset 0 0 40px rgb(0, 0, 0);
 }
+
 @media (min-width: 769px) {
   .jumbotron .mainmenu {
     padding-top: 1rem;
@@ -742,6 +755,7 @@ button.button--alert:focus {
   margin-left: 4.1666666667%;
   margin-right: 4.1666666667%;
 }
+
 @media (min-width: 590px) {
   .jumbotron .jumbotron-mission {
     width: 75%;
@@ -763,10 +777,12 @@ button.button--alert:focus {
   text-align: center;
   text-transform: uppercase;
 }
+
 .jumbotron .jumbotron-logo {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
 @media (min-width: 769px) {
   .jumbotron .jumbotron-logo {
     display: block;
@@ -779,6 +795,7 @@ button.button--alert:focus {
   min-width: 320px;
   margin: 0 auto;
 }
+
 .jumbotron .jumbotron-version {
   text-transform: lowercase;
   color: white;
@@ -793,18 +810,22 @@ nav.mainmenu {
   text-transform: uppercase;
   font-weight: bold;
 }
+
 nav.mainmenu.active {
   border-bottom: 2px solid white;
 }
+
 nav.mainmenu li + li {
   margin-left: 2.0833333333%;
 }
+
 nav.mainmenu a, nav.mainmenu a:active {
   border: none;
   color: #E97826;
   font-weight: 500;
   text-decoration: none;
 }
+
 nav.mainmenu a:hover {
   color: #303284;
 }
@@ -815,21 +836,26 @@ nav.mainmenu a:hover {
   align-items: center;
   flex-wrap: wrap;
 }
+
 .nav-container:last-child {
   flex-grow: 1;
   justify-content: flex-end;
-  font-size: 2rem;
-  flex-wrap: nowrap;
 }
+
 @media (max-width: 769px) {
   .nav-container:last-child {
     justify-content: center;
   }
 }
+.nav-container:last-child {
+  font-size: 2rem;
+  flex-wrap: nowrap;
+}
 
 .nav-items {
   padding-right: 1rem;
 }
+
 .nav-items:hover {
   color: #E97826;
 }
@@ -839,6 +865,7 @@ nav.mainmenu a:hover {
   display: flex;
   padding-right: 1rem;
 }
+
 @media (max-width: 769px) {
   .nav-logo {
     margin: 0;
@@ -855,18 +882,20 @@ nav.mainmenu a:hover {
 .toc ul {
   list-style: none;
 }
+
 .toc > ul {
   margin-left: 0;
 }
+
 .toc > ul > li + li {
   margin-top: 1rem;
 }
+
 @media (min-width: 590px) {
   .toc {
     display: none;
   }
 }
-
 .toc.post.index {
   display: none;
 }
@@ -879,6 +908,7 @@ nav.mainmenu a:hover {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
 .builtwithwicket .slick-prev::before,
 .builtwithwicket .slick-next::before {
   color: #E97826;
@@ -908,11 +938,13 @@ div.quickstart-wizard {
   line-height: 2em;
   padding: 1rem 2rem 2rem 2rem;
 }
+
 div.quickstart-wizard label {
   display: block;
   font-weight: bold;
   margin-top: 0.5rem;
 }
+
 div.quickstart-wizard button,
 div.quickstart-wizard input,
 div.quickstart-wizard select,
@@ -925,9 +957,11 @@ div.quickstart-wizard textarea {
   color: #606060;
   height: 2rem;
 }
+
 div.quickstart-wizard textarea {
   height: 5rem;
 }
+
 div.quickstart-wizard button {
   background-color: #E68A00;
   color: white;
@@ -942,6 +976,7 @@ div.quickstart-wizard button {
   padding-left: 0;
   counter-reset: item;
 }
+
 .quickstart ol > li {
   margin-left: 2.5rem;
   padding-left: 0;
@@ -949,6 +984,7 @@ div.quickstart-wizard button {
   list-style: none inside;
   margin-bottom: 10px;
 }
+
 .quickstart ol > li:before {
   background: #FF9925;
   border-radius: 50%;
@@ -968,9 +1004,11 @@ div.quickstart-wizard button {
 .wicket8 nav.mainmenu a, .wicket8 nav.mainmenu a:active, .wicket8 nav.mainmenu a:hover {
   color: #111111;
 }
+
 .wicket8 .header {
   color: #111111;
 }
+
 .wicket8 .jumbotron.header {
   background-color: #BF866F;
   background-image: url("../img/background-4.jpg");
@@ -979,16 +1017,20 @@ div.quickstart-wizard button {
   background-size: cover;
   box-shadow: none;
 }
+
 .wicket8 .jumbotron .jumbotron-version {
   color: #111111;
 }
+
 .wicket8 .jumbotron .jumbotron-poweredbyasf {
   margin: 0 auto;
   text-align: center;
 }
+
 .wicket8 .jumbotron .jumbotron-poweredbyasf b {
   font-weight: bold;
 }
+
 .wicket8 .jumbotron .jumbotron-mission {
   font-size: 2rem;
   font-weight: bold;
@@ -1007,6 +1049,7 @@ a {
   font-weight: 400;
   text-decoration: none;
 }
+
 a:hover {
   color: rgb(237.6945606695, 148.8075313808, 84.3054393305);
 }
@@ -1030,6 +1073,7 @@ div.header {
   padding-right: 1em;
   display: flex;
 }
+
 @media (max-width: 769px) {
   .default nav.mainmenu {
     display: block;
@@ -1044,23 +1088,28 @@ div.header {
   line-height: 2;
   text-align: center;
 }
+
 .preamble h1 {
   font-weight: 300;
 }
+
 .preamble h2 {
   color: #E97826;
   font-weight: 300;
 }
+
 .preamble h1 + *,
 .preamble h2 + *,
 .preamble img + * {
   padding-top: 1rem;
 }
+
 .preamble h1:last-child,
 .preamble h2:last-child,
 .preamble img:last-child {
   margin-bottom: 2rem;
 }
+
 .preamble p {
   font-size: 1.313rem;
   text-align: left;
@@ -1069,6 +1118,7 @@ div.header {
 .index .preamble {
   margin-bottom: 2rem;
 }
+
 .index .preamble p {
   text-align: center;
 }
@@ -1078,6 +1128,7 @@ div.header {
   margin-left: 0;
   padding-left: 0;
 }
+
 .news li {
   display: block;
   margin-left: 0;
@@ -1114,15 +1165,18 @@ article + article {
   margin-bottom: 2rem;
   width: 100%;
 }
+
 .button-bar .button {
   -webkit-flex: 1;
   flex: 1;
   padding: 1rem;
   text-align: center;
 }
+
 .button-bar .button + .button {
   margin-left: 0.5rem;
 }
+
 .button-bar .button i {
   font-size: 3rem;
 }
@@ -1134,9 +1188,11 @@ th {
 .media-bar {
   clear: both;
 }
+
 .media-bar a {
   border: none;
 }
+
 .media-bar a > img {
   width: 100%;
 }
@@ -1151,18 +1207,21 @@ th {
   margin-bottom: 0;
   text-align: center;
 }
+
 .wicket7.header a {
   border: none;
   margin: 0;
   padding: 0;
   height: 0;
 }
+
 .wicket7.header img {
   min-width: 240px;
   width: 33%;
   margin: 0 auto;
   padding: 6rem 0 4rem;
 }
+
 .wicket7.header nav.mainmenu {
   background-color: #E97826;
   line-height: 3em;
@@ -1170,9 +1229,11 @@ th {
   margin-bottom: 0;
   padding-right: 1em;
 }
+
 .wicket7.header nav.mainmenu ul {
   margin-bottom: 0;
 }
+
 @media screen and (orientation: portrait) {
   .wicket7.header nav.mainmenu {
     padding-bottom: 0.25rem;
@@ -1188,19 +1249,24 @@ th {
   padding-right: 1em;
   text-align: center;
 }
+
 .wicket7.header .submenu ul {
   list-style: none;
 }
+
 .wicket7.header .submenu li {
   display: inline-block;
   font-size: 12px;
 }
+
 .wicket7.header .submenu li.active {
   border-bottom: 2px solid;
 }
+
 .wicket7.header .submenu li + li {
   margin-left: 2.0833333333%;
 }
+
 .wicket7.header .submenu a, .wicket7.header .submenu a:active, .wicket7.header .submenu a:hover {
   border: none;
   font-weight: 400;

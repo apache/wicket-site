@@ -2,7 +2,8 @@
 # this ensures Jekyll reads the file to be transformed into CSS later
 # only Main files contain this front matter, not partials.
 ---
-@import url(../fonts/source-code-pro/stylesheet.css);
-@import url(../fonts/source-sans-pro/stylesheet.css);
-@import url(../fonts/wicket-font/stylesheet.css);
-@import "main";
+@use "sass:meta";
+@import "../fonts/source-code-pro/stylesheet.css";
+@import "../fonts/source-sans-pro/stylesheet.css";
+@import "../fonts/wicket-font/stylesheet.css";
+@include meta.load-css("../_sass/main");

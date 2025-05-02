@@ -1,3 +1,8 @@
+@use "sass:color";
+@use "grid";
+@use "mixins";
+@use "settings";
+
 // =========== Base
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
@@ -5,22 +10,22 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 *,
 *:after,
 *:before {
-    @include box-sizing(border-box);
+    @include mixins.box-sizing(border-box);
 }
 
-::-moz-selection { background: $color-neutral-90; color: $white; text-shadow: none; }
-::selection { background: $color-neutral-90; color: $white; text-shadow: none; }
+::-moz-selection { background: settings.$color-neutral-90; color: settings.$white; text-shadow: none; }
+::selection { background: settings.$color-neutral-90; color: settings.$white; text-shadow: none; }
 
 html {
-    color: $color-neutral-70;
-    font: 300 $font-size-base $font-family-body;
+    color: settings.$color-neutral-70;
+    font: 300 settings.$font-size-base settings.$font-family-body;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: auto;
     -webkit-text-size-adjust: 100%;
     
-    @include breakpoint($breakpoint-20) {
-       font-size: $font-size-base + 2;
+    @include mixins.breakpoint(settings.$breakpoint-20) {
+       font-size: settings.$font-size-base + 2;
     }
 }
 
@@ -32,7 +37,7 @@ body {
 
 // Headings
 h1, h2, legend, h3, h4, h5, h6 {
-    font-family: $font-family-heading;
+    font-family: settings.$font-family-heading;
     font-weight: 400;
     line-height: 1.5em;
     margin: 0 0 0.25em 0;
@@ -56,26 +61,26 @@ h6 { font-size: 1rem; }
 
 // Paragraphs
 p {
-    margin-bottom: $spacing;
+    margin-bottom: settings.$spacing;
 
-    &.is-lead { font-size: $font-size-40; }
+    &.is-lead { font-size: settings.$font-size-40; }
 }
 
 
 // Links
 a {
-    color: $color-brand-50;
+    color: settings.$color-brand-50;
     cursor: pointer;
     text-decoration: none;
 
-    &:hover { color: $color-brand-60; }
+    &:hover { color: settings.$color-brand-60; }
 }
 
 
 // Other
 small {
-    color: $color-neutral-50;
-    font-size: $font-size-20;
+    color: settings.$color-neutral-50;
+    font-size: settings.$font-size-20;
 }
 
 em { font-style: italic; }
@@ -86,40 +91,43 @@ code, pre { font-family: 'courier new', monospace; }
 
 pre { overflow-x: auto; }
 
-abbr { border-bottom: 1px dotted $color-neutral-50; }
+abbr { border-bottom: 1px dotted settings.$color-neutral-50; }
 
 del { text-decoration: line-through; }
 
-mark { background-color: lighten(yellow, 35%); }
+mark { background-color: color.adjust(yellow, $lightness: 35%); }
 
 hr {
     background-color: transparent;
-    border: solid $color-neutral-30;
+    border: solid settings.$color-neutral-30;
     border-width: 1px 0 0;
     clear: both;
-    margin: 2.5rem $spacing;
+    margin: 2.5rem settings.$spacing;
 }
 
 
 // Lists
-ul, ol { margin: 0 0 $spacing 1.5rem; }
+ul, ol { margin: 0 0 settings.$spacing 1.5rem; }
 
 ul { list-style: disc; }
 
 ol { list-style: decimal; }
 
 dl {
-    margin-bottom: $spacing;
+    margin-bottom: settings.$spacing;
 
     dt { font-weight: bold; }
-    dd { margin-left: $spacing; }
+    & { // Wrap the dd rule to ensure CSS order matches source order
+        dd { margin-left: settings.$spacing; }
+    }
 
     &.advanced {
-        @include grid-container;
+        @include grid.grid-container;
 
-        dt { @include grid(16, 0, 1); }
-
-        dd { @include grid(32); }
+        dt { @include grid.grid(16, 0, 1); }
+        & { // Wrap the dd rule to ensure CSS order matches source order
+            dd { @include grid.grid(32); }
+        }
     }
 }
 

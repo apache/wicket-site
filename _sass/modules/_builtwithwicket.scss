@@ -1,3 +1,5 @@
+@use "../taiga/settings";
+
 .builtwithwicket {    
     background-color: #eee;
     /*margin-left: -1rem;
@@ -8,7 +10,7 @@
     
     .slick-prev::before,
     .slick-next::before {
-        color: $color-brand-50;
+        color: settings.$color-brand-50;
     }
 }
 

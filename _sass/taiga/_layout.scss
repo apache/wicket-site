@@ -1,42 +1,49 @@
+@use "grid";
+@use "mixins";
+@use "settings";
+
 // =========== Layout
 
 .l-full {
-    @include breakpoint($breakpoint-30) { @include grid(48, 1); }
-    width: 100%;
-    float: none;
+    @include mixins.breakpoint(settings.$breakpoint-30) { @include grid.grid(48, 1); }
+
+    & {
+        width: 100%;
+        float: none;
+    }
 }
 
 .l-two-third {
 
-    @include breakpoint($breakpoint-30) { @include grid(32, 1); }
+    @include mixins.breakpoint(settings.$breakpoint-30) { @include grid.grid(32, 1); }
 }
 
 .l-half {
 
-    @include breakpoint($breakpoint-30) { @include grid(24, 1); }
+    @include mixins.breakpoint(settings.$breakpoint-30) { @include grid.grid(24, 1); }
 }
 
 .l-one-quarter {
-    @include breakpoint($breakpoint-30) { @include grid(12, 1); }
+    @include mixins.breakpoint(settings.$breakpoint-30) { @include grid.grid(12, 1); }
 }
 
 .l-one-eigth {
-    @include breakpoint($breakpoint-30) { @include grid(6, 1); }
+    @include mixins.breakpoint(settings.$breakpoint-30) { @include grid.grid(6, 1); }
 }
 
 .l-one-sixth {
-    @include breakpoint($breakpoint-30) { @include grid(8, 1); }
+    @include mixins.breakpoint(settings.$breakpoint-30) { @include grid.grid(8, 1); }
 }
 
 .l-one-third {
 
-    @include breakpoint($breakpoint-30) { @include grid(16, 1);  }
+    @include mixins.breakpoint(settings.$breakpoint-30) { @include grid.grid(16, 1);  }
 }
 
 .l-grid {
-    @include grid-container;
+    @include grid.grid-container;
 
-    li { @include grid(16, 1); }
+    li { @include grid.grid(16, 1); }
 }
 
 .l-first { clear: left; }
@@ -44,15 +51,15 @@
 
 .l-container {
     margin: auto;
-    max-width: $max-width;
-    padding: $spacing ;
-    @include grid-container;
+    max-width: settings.$max-width;
+    padding: settings.$spacing ;
+    @include grid.grid-container;
 
-    @include breakpoint($breakpoint-30) { padding: $spacing ($spacing * 5); }
+    @include mixins.breakpoint(settings.$breakpoint-30) { padding: settings.$spacing (settings.$spacing * 5); }
 }
 
 .l-button-table {
-    @include breakpoint($breakpoint-30) {
+    @include mixins.breakpoint(settings.$breakpoint-30) {
         display: flex;
         justify-content: center;        
     }

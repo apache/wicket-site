@@ -1,3 +1,5 @@
+@use "settings";
+
 // =========== Mixins
 
 // Animations
@@ -37,7 +39,7 @@
 
 // Media queries
 // Example: @include breakpoint($breakpoint-20) { your properties }
-@mixin breakpoint($breakpoint, $property-name : $breakpoint-property) {
+@mixin breakpoint($breakpoint, $property-name : settings.$breakpoint-property) {
     @media ($property-name: $breakpoint) {
         @content;
     }

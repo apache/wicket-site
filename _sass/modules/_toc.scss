@@ -1,3 +1,6 @@
+@use "../taiga/mixins";
+@use "../taiga/settings";
+
 .toc {
     ul { list-style: none; }
     &>ul {
@@ -7,7 +10,7 @@
         margin-top: 1rem;
     }
     
-    @include breakpoint($breakpoint-10) {
+    @include mixins.breakpoint(settings.$breakpoint-10) {
 	   display: none;
     }
 }

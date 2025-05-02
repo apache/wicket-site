@@ -1,13 +1,15 @@
+@use "../taiga/settings";
+
 
 .wicket8 {
     nav.mainmenu {
         a, a:active, a:hover {
-            color:$almost-black;
+            color:settings.$almost-black;
         }
     }
 
     .header {
-        color:$almost-black;
+        color:settings.$almost-black;
     }
     .jumbotron {
         &.header{
@@ -19,7 +21,7 @@
             box-shadow: none;
         }
         .jumbotron-version {
-            color:$almost-black;
+            color:settings.$almost-black;
         }
         .jumbotron-poweredbyasf {
             margin: 0 auto;

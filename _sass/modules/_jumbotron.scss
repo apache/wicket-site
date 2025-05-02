@@ -1,3 +1,7 @@
+@use "../taiga/grid";
+@use "../taiga/mixins";
+@use "../taiga/settings";
+
 .jumbotron {
     &.header{
 /*        background: radial-gradient(ellipse closest-side, rgba(0,0,0,0), rgba(0,0,0,0.6)), url('../img/background-1.jpg');*/
@@ -10,28 +14,28 @@
     }
 
     .mainmenu {
-        @include breakpoint($breakpoint-20) {
+        @include mixins.breakpoint(settings.$breakpoint-20) {
             padding-top:1rem;
             margin-bottom:7rem;
         }
     }
     .jumbotron-mission {
-        font-size: $font-size-50;
+        font-size: settings.$font-size-50;
         font-weight:400;
         line-height:2;
         margin-top:2rem;
         margin-bottom:2rem;
         text-align:center;
         text-transform:uppercase;
-        @include grid(48,2);
+        @include grid.grid(48,2);
 
-        @include breakpoint($breakpoint-10) {
-            @include grid(48,6);
+        @include mixins.breakpoint(settings.$breakpoint-10) {
+            @include grid.grid(48,6);
             margin-top:2rem;
             margin-bottom:3rem;
         }
-        @include breakpoint($breakpoint-20) {
-            @include grid(48,12);
+        @include mixins.breakpoint(settings.$breakpoint-20) {
+            @include grid.grid(48,12);
         }
     }
 
@@ -45,7 +49,7 @@
         margin-top:2rem;
         margin-bottom:2rem;
 
-        @include breakpoint($breakpoint-20) {
+        @include mixins.breakpoint(settings.$breakpoint-20) {
             display:block;
             float:none;
         }

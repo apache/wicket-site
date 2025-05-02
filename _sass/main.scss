@@ -1,35 +1,35 @@
-@import "taiga/settings";
-@import "taiga/mixins";
-@import "taiga/grid";
-@import "taiga/base";
-@import "taiga/layout";
-@import "taiga/states";
-@import "taiga/button";
-@import "taiga/print";
+@use "taiga/settings";
+@use "taiga/mixins";
+@use "taiga/grid";
+@use "taiga/base";
+@use "taiga/layout";
+@use "taiga/states";
+@use "taiga/button";
+@use "taiga/print";
 
-@import "modules/syntax";
-@import "modules/logo";
-@import "modules/jumbotron";
-@import "modules/mainmenu";
-@import "modules/toc";
-@import "modules/builtwithwicket";
-@import "modules/quickstart";
-@import "modules/wicket8";
+@use "modules/syntax";
+@use "modules/logo";
+@use "modules/jumbotron";
+@use "modules/mainmenu";
+@use "modules/toc";
+@use "modules/builtwithwicket";
+@use "modules/quickstart";
+@use "modules/wicket8";
 
 code, pre, code > span, pre > span { 
     font-family: 'Source Code Pro', 'courier new', monospace; 
-    font-size: $font-size-20; 
+    font-size: settings.$font-size-20; 
 }
 
 a {
-	border-color: $color-brand-50;
+	border-color: settings.$color-brand-50;
     border-style: none none dotted none;
     border-width: 0 0 1px 0;
     cursor: pointer;
     font-weight:400;
     text-decoration: none;
 
-    &:hover { color: $color-brand-60; }
+    &:hover { color: settings.$color-brand-60; }
 }
 
 h1 a, h2 a, h3 a {
@@ -40,7 +40,7 @@ div.header {
     background-color: white;
     border-bottom: 1px solid #e1e1e1;
     box-shadow: 0 .5rem 3rem #f0f0f0;
-    color: $color-brand-50;
+    color: settings.$color-brand-50;
     display:block;
     position:relative;
     width:100%;
@@ -52,7 +52,7 @@ div.header {
         padding-right:1em;
         display:flex;
         
-        @include breakpoint($breakpoint-20, 'max-width') {
+        @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
             display:block;
         }
     }
@@ -70,7 +70,7 @@ div.header {
         font-weight:300;
     }
     h2 {
-        color:$color-brand-50;
+        color:settings.$color-brand-50;
         font-weight:300;
     }
     h1 + *, 
@@ -84,7 +84,7 @@ div.header {
         margin-bottom:2rem;
     }
     p {
-        font-size: $font-size-50;
+        font-size: settings.$font-size-50;
         text-align: left;
     }
 }
@@ -123,7 +123,7 @@ pre {
 }
 
 article+article {
-    border-top: 1px solid $color-neutral-30;
+    border-top: 1px solid settings.$color-neutral-30;
     clear: both;
     margin-top: 2rem;
     padding-top: 2rem;
@@ -169,11 +169,11 @@ th {
 }
 
 .color-brand {
-	color:$color-brand-70;
+	color:settings.$color-brand-70;
 }
 
 .wicket7.header {
-    background-color: $color-brand-50;
+    background-color: settings.$color-brand-50;
     background-image: url(/img/wicket-7-bg.jpg);
 	margin-bottom : 0;
     text-align:center;
@@ -181,7 +181,7 @@ th {
 	img { min-width: 240px; width:33%; margin: 0 auto; padding: 6rem 0 4rem; }
 
 	nav.mainmenu { 
-        background-color: $color-brand-50; 
+        background-color: settings.$color-brand-50; 
         line-height:3em;
         margin-top:1rem; 
         margin-bottom:0;
@@ -213,7 +213,7 @@ th {
             &.active { border-bottom: 2px solid;}
         }
         li+li {
-            margin-left:1*$grid-column;
+            margin-left:1*grid.$grid-column;
         }
 
         a, a:active, a:hover {

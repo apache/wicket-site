@@ -1,3 +1,6 @@
+@use "mixins";
+@use "settings";
+
 // =========== States
 
 .is-hidden { display: none !important; }
@@ -6,9 +9,9 @@
 
 .is-active, .is-visible { display: block; }
 
-.left { @include breakpoint($breakpoint-10) { float: left; } }
+.left { @include mixins.breakpoint(settings.$breakpoint-10) { float: left; } }
 
-.right { @include breakpoint($breakpoint-10) { float: right; } }
+.right { @include mixins.breakpoint(settings.$breakpoint-10) { float: right; } }
 
 .text-left { text-align: left; }
 

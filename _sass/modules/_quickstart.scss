@@ -1,5 +1,7 @@
+@use "../taiga/settings";
+
 div.quickstart-wizard {
-  background-color: $color-brand-70;
+  background-color: settings.$color-brand-70;
   border-radius: 3px;
   color: #ffffff;
   line-height: 2em;
@@ -51,7 +53,7 @@ div.quickstart-wizard {
     margin-bottom:10px
   }
   ol>li:before {
-    background: $color-brand-70;
+    background: settings.$color-brand-70;
     border-radius: 50%; 
     color:#fff;
     content: counter(item);

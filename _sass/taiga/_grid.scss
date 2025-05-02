@@ -1,3 +1,5 @@
+@use "settings";
+
 // =========== Grid
 
 // Use '@include grid(12, 2)' to make a column.
@@ -9,7 +11,7 @@
 // To set different margins on both sides use '@include grid(12, 2, 3)'.
 // You can also use negative margins.
 
-$grid-column: 100% / $grid-columns;
+$grid-column: calc(100% / settings.$grid-columns);
 
 @mixin col($n: 1) { width: ($n * $grid-column); }
 @mixin prepend($n: 1) { margin-left: $grid-column * $n }
