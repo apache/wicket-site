@@ -9,19 +9,19 @@
 
   =======================================================================
 -->
-	<Project rdf:about="http://wicket.apache.org/">
+	<Project rdf:about="https://wicket.apache.org/">
 		<created>2004-04-01</created>
-		<license rdf:resource="http://usefulinc.com/doap/licenses/asl20"/>
+		<license rdf:resource="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
 		<name>Apache Wicket</name>
-		<homepage rdf:resource="http://wicket.apache.org"/>
-		<asfext:pmc rdf:resource="http://wicket.apache.org/"/>
+		<homepage rdf:resource="https://wicket.apache.org"/>
+		<asfext:pmc rdf:resource="https://wicket.apache.org/"/>
 		<shortdesc>Apache Wicket is an open source Java component oriented web application framework.</shortdesc>
 		<description>Write maintainable, secure and scalable web applications using just Java and HTML. Invented in 2004, Wicket is one of the few survivors of the Java serverside web framework wars of the mid 2000's, and a proud member of the Apache Software Foundation.</description>
-		<bug-database rdf:resource="http://issues.apache.org/jira/browse/WICKET"/>
-		<mailing-list rdf:resource="http://wicket.apache.org"/>
-		<download-page rdf:resource="http://wicket.apache.org"/>
+		<bug-database rdf:resource="https://issues.apache.org/jira/browse/WICKET"/>
+		<mailing-list rdf:resource="https://wicket.apache.org"/>
+		<download-page rdf:resource="https://wicket.apache.org"/>
 		<programming-language>Java</programming-language>
-		<category rdf:resource="http://projects.apache.org/category/web-framework"/>
+		<category rdf:resource="https://projects.apache.org/category/web-framework"/>
 		<release>
 			<Version>
 				<name>Latest Stable Release</name>
