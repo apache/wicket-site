@@ -9,7 +9,6 @@ preamble: During the last years a large and active community has grown around Wi
     <div class="l-two-third">
         <div class="button-bar">
             <a class="button" href="#github"><i class="fa fa-github-square"></i><br>GitHub</a>
-            <a class="button" href="#twitter"><i class="fa fa-twitter"></i><br>Twitter</a>
             <a class="button" href="#tumblr"><i class="fa fa-tumblr-square"></i><br>Tumblr</a>
         </div>
     </div>
@@ -19,13 +18,6 @@ preamble: During the last years a large and active community has grown around Wi
 
 Wicket is built by developers for developers. If you want to contribute with new features, patches or any other kind of code, you can use our mirror 
 repository on [GitHub](https://github.com/apache/wicket). You can find more details [here](../contribute/).
-
----
-
-## Twitter account {#twitter}
-
-Stay up-to-date with the last news from the Wicket universe following [our official account](https://twitter.com/apache_wicket). You will also find
-which sites are running on top of Wicket and other useful informations.
 
 ---
 
@@ -42,6 +34,12 @@ An overview of the available sub-projects can be found [here](https://github.com
 ## Wicket Spring Boot integration
 
 [Wicket Spring Boot](https://github.com/MarcGiffing/wicket-spring-boot) makes it easy to create a Wicket applications with a minimum of configuration effort. It uses Spring Boot to autoconfigure Wickets core and its extension (like WicketStuff, BeanValidation, etc...). 
+
+---
+
+## Modern Web development with Apache Wicket
+
+Bring Wicket to the next level integrating your applications with Spring Boot, Hazelcast and WebJars! Learn how to create modern and scalable applications [with real examples](https://github.com/bitstorm/modern-webdev-wicket).
 
 ---
 
