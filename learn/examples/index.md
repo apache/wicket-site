@@ -14,7 +14,7 @@ inviting.
 ## For beginners
 
 Wicket comes with a collection of examples meant to help you understand the basic concepts of the framework. They are particularly helpful if you are new to Wicket and you are reading our [User Guide]({{ site.baseurl }}/learn/#guide). 
-In addition, you can see the Wicket 10.x examples and much more [live action](http://examples10x.wicket.apache.org/index.html).
+In addition, you can see the Wicket 10.x examples and much more [live in action](http://examples10x.wicket.apache.org/index.html).
 
 The following list contains a full description for some of these examples:
 
