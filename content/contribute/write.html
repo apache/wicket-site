@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -116,10 +116,28 @@
             
         </header>
         <section class="toc left default ">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#contents"><span class="toc-number">1</span> <span class="toc-text">Contents</span></a></li><li class="toc--level-1 toc--section-2"><a href="#introduction"><span class="toc-number">2</span> <span class="toc-text">Introduction</span></a></li><li class="toc--level-1 toc--section-3"><a href="#install"><span class="toc-number">3</span> <span class="toc-text">Install Jekyll</span></a></li><li class="toc--level-1 toc--section-4"><a href="#clone"><span class="toc-number">4</span> <span class="toc-text">Clone wicket-site</span></a></li><li class="toc--level-1 toc--section-5"><a href="#run"><span class="toc-number">5</span> <span class="toc-text">Run the site</span></a></li><li class="toc--level-1 toc--section-6"><a href="#write"><span class="toc-number">6</span> <span class="toc-text">Write some documentation</span></a><ul><li class="toc--level-2 toc--section-7"><a href="#page-template"><span class="toc-number">6.1</span> <span class="toc-text">Page template</span></a></li><li class="toc--level-2 toc--section-8"><a href="#syntax-highlighting"><span class="toc-number">6.2</span> <span class="toc-text">Syntax highlighting</span></a></li><li class="toc--level-2 toc--section-9"><a href="#menu"><span class="toc-number">6.3</span> <span class="toc-text">Menu</span></a></li><li class="toc--level-2 toc--section-10"><a href="#blog-posts"><span class="toc-number">6.4</span> <span class="toc-text">Blog posts</span></a></li></ul></li><li class="toc--level-1 toc--section-11"><a href="#update"><span class="toc-number">7</span> <span class="toc-text">Update the site</span></a></li></ul></div>
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#contents"><span class="toc-number">1</span> <span class="toc-text">Contents</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#introduction"><span class="toc-number">2</span> <span class="toc-text">Introduction</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#install"><span class="toc-number">3</span> <span class="toc-text">Install Jekyll</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#clone"><span class="toc-number">4</span> <span class="toc-text">Clone wicket-site</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#run"><span class="toc-number">5</span> <span class="toc-text">Run the site</span></a></li>
+<li class="toc--level-1 toc--section-6">
+<a href="#write"><span class="toc-number">6</span> <span class="toc-text">Write some documentation</span></a><ul>
+<li class="toc--level-2 toc--section-7"><a href="#page-template"><span class="toc-number">6.1</span> <span class="toc-text">Page template</span></a></li>
+<li class="toc--level-2 toc--section-8"><a href="#syntax-highlighting"><span class="toc-number">6.2</span> <span class="toc-text">Syntax highlighting</span></a></li>
+<li class="toc--level-2 toc--section-9"><a href="#menu"><span class="toc-number">6.3</span> <span class="toc-text">Menu</span></a></li>
+<li class="toc--level-2 toc--section-10"><a href="#blog-posts"><span class="toc-number">6.4</span> <span class="toc-text">Blog posts</span></a></li>
+</ul>
+</li>
+<li class="toc--level-1 toc--section-11"><a href="#update"><span class="toc-number">7</span> <span class="toc-text">Update the site</span></a></li>
+</ul>
+</div>
         </section>
         <section>
-            <p>We use <a href="http://github.com/mojombo/jekyll">Jekyll</a> for writing our
+            <p>We use <a href="http://github.com/mojombo/jekyll" target="_blank" rel="noopener noreferrer">Jekyll</a> for writing our
 documentation on our main website. Publishing new content is as simple as
 regenerating the site and committing the changed files.</p>
 
@@ -143,7 +161,7 @@ announcements, adding new committers and other important Wicket related news.</p
 
 <h2 id="install">Install Jekyll</h2>
 
-<p>Follow the instructions available on the <a href="http://github.com/mojombo/jekyll">Jekyll
+<p>Follow the instructions available on the <a href="http://github.com/mojombo/jekyll" target="_blank" rel="noopener noreferrer">Jekyll
 website</a>. Basically it boils down to:</p>
 
 <figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">gem install jekyll</span></code></pre></figure>
@@ -165,7 +183,7 @@ website</a>. Basically it boils down to:</p>
 <p>This not only runs the server, but watches for modifications and regenerates
 any modified files.</p>
 
-<p>You can check out the website running at <a href="http://localhost:4000">localhost, port 4000</a>.</p>
+<p>You can check out the website running at <a href="http://localhost:4000" target="_blank" rel="noopener noreferrer">localhost, port 4000</a>.</p>
 
 <h2 id="write">Write some documentation</h2>
 
@@ -213,7 +231,7 @@ with an id for their section tag and a value for the CSS class:</p>
 <p>The following conventions have been adopted for the templeates of the site pages:</p>
 
 <ul>
-  <li>Any link to static resources (css, js, pictures, etc.) is prefixed with <code class="language-plaintext highlighter-rouge">site.baseurl</code> to support <a href="http://jekyllrb.com/docs/github-pages/#project-page-url-structure">GitHub free hosting</a>. However, to run the project locally you don’t need to specify any baseurl.</li>
+  <li>Any link to static resources (css, js, pictures, etc.) is prefixed with <code class="language-plaintext highlighter-rouge">site.baseurl</code> to support <a href="http://jekyllrb.com/docs/github-pages/#project-page-url-structure" target="_blank" rel="noopener noreferrer">GitHub free hosting</a>. However, to run the project locally you don’t need to specify any baseurl.</li>
   <li>Site posts use custom tag <code class="language-plaintext highlighter-rouge">&lt;!--more--&gt;</code> as <code class="language-plaintext highlighter-rouge">excerpt_separator</code>.</li>
 </ul>
 
@@ -265,17 +283,17 @@ modifications are pushed immediately to the site and are live within a minute.</
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -124,14 +124,14 @@
 	<p>This is the twelfth maintenance release of the Wicket 1.5.x series. This release brings over 5 bug fixes and improvements.</p>
 
 <ul>
-  <li><a href="https://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=shortlog;h=refs/tags/wicket-1.5.12">Git tag</a></li>
-  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;version=12326154">Changelog</a></li>
+  <li><a href="https://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=shortlog;h=refs/tags/wicket-1.5.12" target="_blank" rel="noopener noreferrer">Git tag</a></li>
+  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;version=12326154" target="_blank" rel="noopener noreferrer">Changelog</a></li>
   <li>To use in Maven:</li>
 </ul>
 
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wi...</code></pre></figure>
-	<a href="/news/2014/09/15/wicket-1.5.12-released.html">more</a></li>
+	<a href="/news/2014/09/15/wicket-1.5.12-released.html">more</a>
 </div>
 
 <div class="news">
@@ -150,7 +150,7 @@ Apache Wicket 1.5.11, 6.16.0 and 7.0.0-M2</p>
 <p>When rendering a web page Wicket checks the request url against the one at the render time. It is possible the application to change the page parameters (this includes both the query parameters and parameters encoded into the request path). When the requested url differs with the one at the rendering time Wicket stores the response (i.e. the page markup) at the server side and issues an HTTP redirect to the new url. When the second request comes Wicket just flushes the stored response from the first request into the http output stream. This way the browser address bar shows the updated page parameters.
 When storing the page markup at the server side Wicket uses as an identifier a pair of the current session id plus the new url. However, Wicket does not check if user session is temporary (i.e. sessionId is null).
 This could lead to a security issue if two or more users with a temporary session are redirected to the same url at the same time. Then user1 might see the markup for user2 which has overridden the markup for user1 while user1 was following the HTTP redirect. In thi...</p>
-	<a href="/news/2014/09/22/cve-2014-3526.html">more</a></li>
+	<a href="/news/2014/09/22/cve-2014-3526.html">more</a>
 </div>
 
 
@@ -510,17 +510,17 @@ This could lead to a security issue if two or more users with a temporary sessio
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

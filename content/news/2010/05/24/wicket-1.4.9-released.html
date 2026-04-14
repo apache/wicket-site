@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -116,7 +116,15 @@
             
         </header>
         <section class="toc left post ">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#release-notes---wicket---version-149"><span class="toc-number">1</span> <span class="toc-text">Release Notes - Wicket - Version 1.4.9</span></a><ul><li class="toc--level-2 toc--section-2"><a href="#bugs"><span class="toc-number">1.1</span> <span class="toc-text">Bugs</span></a></li><li class="toc--level-2 toc--section-3"><a href="#improvements"><span class="toc-number">1.2</span> <span class="toc-text">Improvements</span></a></li></ul></li></ul></div>
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul><li class="toc--level-1 toc--section-1">
+<a href="#release-notes---wicket---version-149"><span class="toc-number">1</span> <span class="toc-text">Release Notes - Wicket - Version 1.4.9</span></a><ul>
+<li class="toc--level-2 toc--section-2"><a href="#bugs"><span class="toc-number">1.1</span> <span class="toc-text">Bugs</span></a></li>
+<li class="toc--level-2 toc--section-3"><a href="#improvements"><span class="toc-number">1.2</span> <span class="toc-text">Improvements</span></a></li>
+</ul>
+</li></ul>
+</div>
         </section>
         <section>
             <div class="l-full">
@@ -125,8 +133,8 @@
 fifteen bug fixes and improvements.</p>
 
 <ul>
-  <li><a href="http://svn.apache.org/repos/asf/wicket/releases/wicket-1.4.9/">Subversion tag</a></li>
-  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;styleName=Html&amp;version=12314962">Changelog</a></li>
+  <li><a href="http://svn.apache.org/repos/asf/wicket/releases/wicket-1.4.9/" target="_blank" rel="noopener noreferrer">Subversion tag</a></li>
+  <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310561&amp;styleName=Html&amp;version=12314962" target="_blank" rel="noopener noreferrer">Changelog</a></li>
   <li>To use in Maven:</li>
 </ul>
 
@@ -137,13 +145,13 @@ fifteen bug fixes and improvements.</p>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
 
 <ul>
-  <li>Download the <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.4.9">full
+  <li>Download the <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.4.9" target="_blank" rel="noopener noreferrer">full
 distribution</a> (including
 source)</li>
 </ul>
 
 <p>It is worth noting that
-<a href="https://issues.apache.org/jira/browse/WICKET-2846">WICKET-2846</a> will be
+<a href="https://issues.apache.org/jira/browse/WICKET-2846" target="_blank" rel="noopener noreferrer">WICKET-2846</a> will be
 reverted in the next release because the community has shown a preference for
 this. So, it would be wise not to take advantage of the
 <code class="language-plaintext highlighter-rouge">InheritableThreadLocal</code> that was put into version 1.4.9.</p>
@@ -153,36 +161,51 @@ this. So, it would be wise not to take advantage of the
 <h3 id="bugs">Bugs</h3>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2741">WICKET-2741</a> - non-performant Collections.synchronizedMap() should be
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2741" target="_blank" rel="noopener noreferrer">WICKET-2741</a> - non-performant Collections.synchronizedMap() should be
 replaced with ConcurrentMap</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2843">WICKET-2843</a> - Palette is incompatible with ListMultipleChoice in its use
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2843" target="_blank" rel="noopener noreferrer">WICKET-2843</a> - Palette is incompatible with ListMultipleChoice in its use
 of the model</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2853">WICKET-2853</a> - ListMultipleChoice/CheckBoxMultipleChoice do not retain
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2853" target="_blank" rel="noopener noreferrer">WICKET-2853</a> - ListMultipleChoice/CheckBoxMultipleChoice do not retain
 selected but disabled items</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2856">WICKET-2856</a> - PackageStringResourceLoader.loadStringResource() causes
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2856" target="_blank" rel="noopener noreferrer">WICKET-2856</a> - PackageStringResourceLoader.loadStringResource() causes
 NullPointerException when used in a Class within the root package (i.e. it
 has no package declaration)</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2858">WICKET-2858</a> - WicketSessionFilter: java.lang.IllegalArgumentException:
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2858" target="_blank" rel="noopener noreferrer">WICKET-2858</a> - WicketSessionFilter: java.lang.IllegalArgumentException:
 Argument application can not be null</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2859">WICKET-2859</a> - Wrong package names in Examples</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2860">WICKET-2860</a> - Wrong name for swiss Application.properties</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2861">WICKET-2861</a> - getConvertedInput() returns null and selectedValues.addAll
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2859" target="_blank" rel="noopener noreferrer">WICKET-2859</a> - Wrong package names in Examples</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2860" target="_blank" rel="noopener noreferrer">WICKET-2860</a> - Wrong name for swiss Application.properties</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2861" target="_blank" rel="noopener noreferrer">WICKET-2861</a> - getConvertedInput() returns null and selectedValues.addAll
 tries adding it</li>
 </ul>
 
 <h3 id="improvements">Improvements</h3>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2790">WICKET-2790</a> - wicketTester.executeAjaxEvent method does not check if form
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2790" target="_blank" rel="noopener noreferrer">WICKET-2790</a> - wicketTester.executeAjaxEvent method does not check if form
 is multiPart</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2840">WICKET-2840</a> - Remove final on
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2840" target="_blank" rel="noopener noreferrer">WICKET-2840</a> - Remove final on
 AbstractRequestTargetUrlCodingStrategy#getMountPath()</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2846">WICKET-2846</a> - Store Application in InheritableThreadLocal instead of
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2846" target="_blank" rel="noopener noreferrer">WICKET-2846</a> - Store Application in InheritableThreadLocal instead of
 ThreadLocal</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2855">WICKET-2855</a> - Constructor of RedirectRequestTarget does not validate URL</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2869">WICKET-2869</a> - RangeValidator should use getMinimum and getMaximum</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2870">WICKET-2870</a> - Fix hungarian translation for Wizard</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-2879">WICKET-2879</a> - delegate isVisible in PanelCachingTab</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2855" target="_blank" rel="noopener noreferrer">WICKET-2855</a> - Constructor of RedirectRequestTarget does not validate URL</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2869" target="_blank" rel="noopener noreferrer">WICKET-2869</a> - RangeValidator should use getMinimum and getMaximum</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2870" target="_blank" rel="noopener noreferrer">WICKET-2870</a> - Fix hungarian translation for Wizard</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2879" target="_blank" rel="noopener noreferrer">WICKET-2879</a> - delegate isVisible in PanelCachingTab</li>
 </ul>
 
 </div>
@@ -195,17 +218,17 @@ ThreadLocal</li>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

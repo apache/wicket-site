@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -116,7 +116,16 @@
             
         </header>
         <section class="toc left post ">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul></li></ul></div>
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li>
+<li class="toc--level-1 toc--section-3">
+<a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul>
+</li>
+</ul>
+</div>
         </section>
         <section>
             <div class="l-full">
@@ -137,11 +146,11 @@ API breaks are present breaks are present in this release compared to
 
 <h4 id="wicket-metrics-added">Wicket Metrics added</h4>
 
-<p>A new experimental module for integrating with <a href="http://metrics.dropwizard.io/">DropWizard’s Metrics</a> project was created. 
+<p>A new experimental module for integrating with <a href="http://metrics.dropwizard.io/" target="_blank" rel="noopener noreferrer">DropWizard’s Metrics</a> project was created. 
 Metrics provides a powerful toolkit of ways to measure the behavior of critical components in your production environment. 
 Using the Metrics integration requires the use of AspectJ (which is licensed under the Eclipse Public License 1.0)</p>
 
-<p>You can read more about using the Metrics integration in our user guide’s <a href="https://ci.apache.org/projects/wicket/guide/7.x/guide/single.html#monitoring">monitoring chapter</a>.</p>
+<p>You can read more about using the Metrics integration in our user guide’s <a href="https://ci.apache.org/projects/wicket/guide/7.x/guide/single.html#monitoring" target="_blank" rel="noopener noreferrer">monitoring chapter</a>.</p>
 
 <h4 id="jquery-upgrade">jQuery upgrade</h4>
 
@@ -164,8 +173,10 @@ update any other dependencies on Wicket projects to the same version):</p>
 convenience binary package</p>
 
 <ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.3.0">7.3.0 source download</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.3.0/binaries">7.3.0 binary download</a></li>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.3.0" target="_blank" rel="noopener noreferrer">7.3.0 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/7.3.0/binaries" target="_blank" rel="noopener noreferrer">7.3.0 binary download</a>
+</li>
 </ul>
 
 <h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
@@ -175,7 +186,7 @@ you come from a version prior to 7.0.0, please read our Wicket 7
 migration guide found at</p>
 
 <ul>
-  <li><a href="http://s.apache.org/wicket7migrate">http://s.apache.org/wicket7migrate</a></li>
+  <li><a href="http://s.apache.org/wicket7migrate" target="_blank" rel="noopener noreferrer">http://s.apache.org/wicket7migrate</a></li>
 </ul>
 
 <p>Have fun!</p>
@@ -217,63 +228,105 @@ ZJcAnREA/PnxMckF2HWqgeunp+siydFJ
 <h5 id="bug">Bug</h5>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6069">WICKET-6069</a> - OnChangeAjaxBehavior does not work if the url contains a request parameter with same name as wicket id</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6078">WICKET-6078</a> - Problem with queued components and auto linking</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6079">WICKET-6079</a> - Problem with queued components and label</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6080">WICKET-6080</a> - Encapsulation of 3 enclosures leads to WicketRuntimeException</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6084">WICKET-6084</a> - ajax request failure handler receives incorrect arguments</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6085">WICKET-6085</a> - AjaxTimerBehavior with failure handler cause memory leak in browser</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6087">WICKET-6087</a> - Invalid AbstractRequestWrapperFactory.needsWrapper method scope: package - cannot create a custom implementation</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6088">WICKET-6088</a> - Problem with queued components and setting the model</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6091">WICKET-6091</a> - NPE in RequestLoggerRequestCycleListener when using native-websockets</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6093">WICKET-6093</a> - MarkupException due to ID collision in RelativePathPrefixHandler</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6094">WICKET-6094</a> - Find adequate ResourceReference with mount parameters</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6097">WICKET-6097</a> - JsonRequestLogger –&gt; JsonMappingException –&gt; StackOverflowError Infinite recursion</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6102">WICKET-6102</a> - StackoverflowError related to enclosures</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6108">WICKET-6108</a> - Closing a ModalWindow with jQuery 2.2.0 produces javascript errors</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6109">WICKET-6109</a> - Enclosure - “IllegalArgumentException: Argument ‘markup’ may not be null” after app restart</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6111">WICKET-6111</a> - Empty redirect on redirect to home page if home page already shown</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6116">WICKET-6116</a> - Exception ‘A child already exists’ when backing to a page with some markups in a Border</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6131">WICKET-6131</a> - IndexOutOfBoundsException in org.apache.wicket.core.request.mapper.CryptoMapper.decryptEntireUrl</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6133">WICKET-6133</a> - Failing test SpringBeanWithGenericsTest in 7.3.0.0 SNAPSHOT</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6134">WICKET-6134</a> - NPE when using ListView with missing markup</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6135">WICKET-6135</a> - There is no good way to get POST body content</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6139">WICKET-6139</a> - AjaxButton forces rendering type=”button”</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6141">WICKET-6141</a> - Runtime Exception rendering ComponentTag with RelativePathPrefixHandler</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6151">WICKET-6151</a> - DebugBar/PageSizeDebugPanel throws NullPointerException (need wrapper exception with more detail)</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6069" target="_blank" rel="noopener noreferrer">WICKET-6069</a> - OnChangeAjaxBehavior does not work if the url contains a request parameter with same name as wicket id</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6078" target="_blank" rel="noopener noreferrer">WICKET-6078</a> - Problem with queued components and auto linking</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6079" target="_blank" rel="noopener noreferrer">WICKET-6079</a> - Problem with queued components and label</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6080" target="_blank" rel="noopener noreferrer">WICKET-6080</a> - Encapsulation of 3 enclosures leads to WicketRuntimeException</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6084" target="_blank" rel="noopener noreferrer">WICKET-6084</a> - ajax request failure handler receives incorrect arguments</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6085" target="_blank" rel="noopener noreferrer">WICKET-6085</a> - AjaxTimerBehavior with failure handler cause memory leak in browser</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6087" target="_blank" rel="noopener noreferrer">WICKET-6087</a> - Invalid AbstractRequestWrapperFactory.needsWrapper method scope: package - cannot create a custom implementation</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6088" target="_blank" rel="noopener noreferrer">WICKET-6088</a> - Problem with queued components and setting the model</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6091" target="_blank" rel="noopener noreferrer">WICKET-6091</a> - NPE in RequestLoggerRequestCycleListener when using native-websockets</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6093" target="_blank" rel="noopener noreferrer">WICKET-6093</a> - MarkupException due to ID collision in RelativePathPrefixHandler</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6094" target="_blank" rel="noopener noreferrer">WICKET-6094</a> - Find adequate ResourceReference with mount parameters</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6097" target="_blank" rel="noopener noreferrer">WICKET-6097</a> - JsonRequestLogger –&gt; JsonMappingException –&gt; StackOverflowError Infinite recursion</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6102" target="_blank" rel="noopener noreferrer">WICKET-6102</a> - StackoverflowError related to enclosures</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6108" target="_blank" rel="noopener noreferrer">WICKET-6108</a> - Closing a ModalWindow with jQuery 2.2.0 produces javascript errors</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6109" target="_blank" rel="noopener noreferrer">WICKET-6109</a> - Enclosure - “IllegalArgumentException: Argument ‘markup’ may not be null” after app restart</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6111" target="_blank" rel="noopener noreferrer">WICKET-6111</a> - Empty redirect on redirect to home page if home page already shown</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6116" target="_blank" rel="noopener noreferrer">WICKET-6116</a> - Exception ‘A child already exists’ when backing to a page with some markups in a Border</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6131" target="_blank" rel="noopener noreferrer">WICKET-6131</a> - IndexOutOfBoundsException in org.apache.wicket.core.request.mapper.CryptoMapper.decryptEntireUrl</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6133" target="_blank" rel="noopener noreferrer">WICKET-6133</a> - Failing test SpringBeanWithGenericsTest in 7.3.0.0 SNAPSHOT</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6134" target="_blank" rel="noopener noreferrer">WICKET-6134</a> - NPE when using ListView with missing markup</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6135" target="_blank" rel="noopener noreferrer">WICKET-6135</a> - There is no good way to get POST body content</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6139" target="_blank" rel="noopener noreferrer">WICKET-6139</a> - AjaxButton forces rendering type=”button”</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6141" target="_blank" rel="noopener noreferrer">WICKET-6141</a> - Runtime Exception rendering ComponentTag with RelativePathPrefixHandler</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6151" target="_blank" rel="noopener noreferrer">WICKET-6151</a> - DebugBar/PageSizeDebugPanel throws NullPointerException (need wrapper exception with more detail)</li>
 </ul>
 
 <h5 id="improvement">Improvement</h5>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6053">WICKET-6053</a> - Allow to reuse the same application instance in several tests</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6081">WICKET-6081</a> - Add “assertNotRequired” to the WicketTester</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6098">WICKET-6098</a> - Add logging to HttpSessionDataStore</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6100">WICKET-6100</a> - Upgrade jQuery to 1.12.3/2.2.3</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6103">WICKET-6103</a> - Synchronization on JSR 356 connection</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6106">WICKET-6106</a> - Propagate JSR 356 WebSocket connection error to a page</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6107">WICKET-6107</a> - Broadcast onClose event regardless of the JSR 356 WebSocket connection closed state</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6110">WICKET-6110</a> - Add a message to StalePageException for better debugging</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6122">WICKET-6122</a> - Add .map to the list of allowed file extensions in SecurePackageResourceGuard</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6123">WICKET-6123</a> - Remove ‘abstract’ from ChainingModel</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6127">WICKET-6127</a> - Add metrics for request duration</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6128">WICKET-6128</a> - Add metrics for currently active sessions</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6130">WICKET-6130</a> - Make it easier to override parts of SystemMapper</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6144">WICKET-6144</a> - Wicket-ajax parameter / header may be used to bypass proper exception handling</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6145">WICKET-6145</a> - Enable DeltaManager to replicate PageTable in Sessions</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6152">WICKET-6152</a> - Allow to add more than one WebSocketBehavior in the component tree</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6053" target="_blank" rel="noopener noreferrer">WICKET-6053</a> - Allow to reuse the same application instance in several tests</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6081" target="_blank" rel="noopener noreferrer">WICKET-6081</a> - Add “assertNotRequired” to the WicketTester</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6098" target="_blank" rel="noopener noreferrer">WICKET-6098</a> - Add logging to HttpSessionDataStore</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6100" target="_blank" rel="noopener noreferrer">WICKET-6100</a> - Upgrade jQuery to 1.12.3/2.2.3</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6103" target="_blank" rel="noopener noreferrer">WICKET-6103</a> - Synchronization on JSR 356 connection</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6106" target="_blank" rel="noopener noreferrer">WICKET-6106</a> - Propagate JSR 356 WebSocket connection error to a page</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6107" target="_blank" rel="noopener noreferrer">WICKET-6107</a> - Broadcast onClose event regardless of the JSR 356 WebSocket connection closed state</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6110" target="_blank" rel="noopener noreferrer">WICKET-6110</a> - Add a message to StalePageException for better debugging</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6122" target="_blank" rel="noopener noreferrer">WICKET-6122</a> - Add .map to the list of allowed file extensions in SecurePackageResourceGuard</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6123" target="_blank" rel="noopener noreferrer">WICKET-6123</a> - Remove ‘abstract’ from ChainingModel</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6127" target="_blank" rel="noopener noreferrer">WICKET-6127</a> - Add metrics for request duration</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6128" target="_blank" rel="noopener noreferrer">WICKET-6128</a> - Add metrics for currently active sessions</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6130" target="_blank" rel="noopener noreferrer">WICKET-6130</a> - Make it easier to override parts of SystemMapper</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6144" target="_blank" rel="noopener noreferrer">WICKET-6144</a> - Wicket-ajax parameter / header may be used to bypass proper exception handling</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6145" target="_blank" rel="noopener noreferrer">WICKET-6145</a> - Enable DeltaManager to replicate PageTable in Sessions</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6152" target="_blank" rel="noopener noreferrer">WICKET-6152</a> - Allow to add more than one WebSocketBehavior in the component tree</li>
 </ul>
 
 <h5 id="new-feature">New Feature</h5>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6120">WICKET-6120</a> - Wicket Metrics</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6120" target="_blank" rel="noopener noreferrer">WICKET-6120</a> - Wicket Metrics</li>
 </ul>
 
 <h5 id="wish">Wish</h5>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-6095">WICKET-6095</a> - Multiline headers in DataTable</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-6095" target="_blank" rel="noopener noreferrer">WICKET-6095</a> - Multiline headers in DataTable</li>
 </ul>
 
 </div>
@@ -286,17 +339,17 @@ ZJcAnREA/PnxMckF2HWqgeunp+siydFJ
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

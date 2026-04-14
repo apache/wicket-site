@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -116,7 +116,16 @@
             
         </header>
         <section class="toc left default ">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#the-example-domain"><span class="toc-number">1</span> <span class="toc-text">The example domain</span></a></li><li class="toc--level-1 toc--section-2"><a href="#the-assign-manager-page"><span class="toc-number">2</span> <span class="toc-text">The assign manager page</span></a></li><li class="toc--level-1 toc--section-3"><a href="#selecting-a-choice"><span class="toc-number">3</span> <span class="toc-text">Selecting a choice</span></a></li><li class="toc--level-1 toc--section-4"><a href="#selecting-a-default-choice"><span class="toc-number">4</span> <span class="toc-text">Selecting a default choice</span></a></li><li class="toc--level-1 toc--section-5"><a href="#summary"><span class="toc-number">5</span> <span class="toc-text">Summary</span></a></li></ul></div>
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#the-example-domain"><span class="toc-number">1</span> <span class="toc-text">The example domain</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#the-assign-manager-page"><span class="toc-number">2</span> <span class="toc-text">The assign manager page</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#selecting-a-choice"><span class="toc-number">3</span> <span class="toc-text">Selecting a choice</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#selecting-a-default-choice"><span class="toc-number">4</span> <span class="toc-text">Selecting a default choice</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#summary"><span class="toc-number">5</span> <span class="toc-text">Summary</span></a></li>
+</ul>
+</div>
         </section>
         <section>
             <p>One of the most problematic components for beginners of Wicket is the
@@ -125,7 +134,7 @@ give a little more insight into its workings. This example requires that you
 have some understanding of the Wicket component model (nothing fancy though,
 but you might want to read the other examples first), and the Model concept
 used in Wicket (you can read more on models
-<a href="https://cwiki.apache.org/confluence/display/WICKET/Working+with+Wicket+models">here</a>).</p>
+<a href="https://cwiki.apache.org/confluence/display/WICKET/Working+with+Wicket+models" target="_blank" rel="noopener noreferrer">here</a>).</p>
 
 <h2 id="the-example-domain">The example domain</h2>
 
@@ -258,7 +267,8 @@ following list shows what basically happens:</p>
 <ol>
   <li>create new Employee, with <code class="language-plaintext highlighter-rouge">null</code> for its manager</li>
   <li>create AssignManagerPage with the employee</li>
-  <li>render page, selected value is <code class="language-plaintext highlighter-rouge">"Choose one"</code></li>
+  <li>render page, selected value is <code class="language-plaintext highlighter-rouge">"Choose one"</code>
+</li>
   <li>user selects “Eric Cartman” and submits form</li>
   <li>Wicket assigns manager “Eric Cartman” to <code class="language-plaintext highlighter-rouge">managedBy</code> field of the employee</li>
 </ol>
@@ -295,17 +305,17 @@ the rest of your application.</p>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

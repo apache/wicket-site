@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -164,7 +164,7 @@ feedback message twice. A constructor that does not takes a fencing
 component creates a catch-all panel that shows messages that do not
 come from inside any fence or from the Session.</p>
 
-<p>For more information see the <a href="http://s.apache.org/wicket-FencedFeedbackPanel">FencedFeedbackPanel javadoc</a>.</p>
+<p>For more information see the <a href="http://s.apache.org/wicket-FencedFeedbackPanel" target="_blank" rel="noopener noreferrer">FencedFeedbackPanel javadoc</a>.</p>
 
 <p>For the full changelog see the release notes attached to the end of
 this announcement.</p>
@@ -184,8 +184,10 @@ update any other dependencies on Wicket projects to the same version):</p>
 convenience binary package</p>
 
 <ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.4.0">6.4.0 source download</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.4.0/binaries">6.4.0 binary download</a></li>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.4.0" target="_blank" rel="noopener noreferrer">6.4.0 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.4.0/binaries" target="_blank" rel="noopener noreferrer">6.4.0 binary download</a>
+</li>
 </ul>
 
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
@@ -206,63 +208,100 @@ read our Wicket 6 migration guide found at</p>
 <h4 id="sub-task">Sub-task</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4880">WICKET-4880</a> - Make it possible to override the Ajax behavior of AjaxSubmitLink and AjaxButton</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4880" target="_blank" rel="noopener noreferrer">WICKET-4880</a> - Make it possible to override the Ajax behavior of AjaxSubmitLink and AjaxButton</li>
 </ul>
 
 <h4 id="bug">Bug</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4869">WICKET-4869</a> - Wicket-Atmosphere track message length</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4872">WICKET-4872</a> - IllegalArgumentException on ReloadingWicketFilter and inheritance markup</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4877">WICKET-4877</a> - encodeUrl fails parsing jsessionid when using root context</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4878">WICKET-4878</a> - Rendering of feedback messages fails with DebugBar in page</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4881">WICKET-4881</a> - IE 8 : error when handling Wicket Ajax Response</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4884">WICKET-4884</a> - ValidationError messages for NumberTextFields with minimum/maximum are always English</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4886">WICKET-4886</a> - Do not register Ajax timer if the component is removed</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4890">WICKET-4890</a> - Bad validation messages after WICKET-2128</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4891">WICKET-4891</a> - UrlRenderer.renderRelativeUrl misbehavior if the filterPath is composed.</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4894">WICKET-4894</a> - Internet Explorer fails fails to properly include conditional stylesheet links added via AjaxRequestTarget</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4895">WICKET-4895</a> - WicketRuntimeException: addOrReplace for feedback panel does not clear Component.FEEDBACK_LIST - feedback from replaced component causes error.</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4899">WICKET-4899</a> - autocomplete shows strings with quotes strings as string2 with "quote"</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4900">WICKET-4900</a> - Setting a status code on an AbstractResource results in no HTTP body</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4908">WICKET-4908</a> - Wrong charset or screwed up characters in Norwegian properties-file</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4911">WICKET-4911</a> - Palette Ajax update does not work</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4913">WICKET-4913</a> - HtmlDocumentParser does not support tags containing number (e.g. h1-h6)</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4915">WICKET-4915</a> - org.apache.wicket.util.resource.Patht#find fails on Windows</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4916">WICKET-4916</a> - AbstractTree$TreeItem renderHead does not call renderHead for child TreeItems.</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4917">WICKET-4917</a> - Websockets are not working if URL has a hash in it</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4918">WICKET-4918</a> - LazyInitProxyFactory prevents using package private interfaces</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4920">WICKET-4920</a> - Rendered Url on root context with cookies disabled might result in double slash //</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4922">WICKET-4922</a> - Cloned ServletWebRequest returns wrong OriginalUrl</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4923">WICKET-4923</a> - CryptoMapper ignores original queryString parameters</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4869" target="_blank" rel="noopener noreferrer">WICKET-4869</a> - Wicket-Atmosphere track message length</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4872" target="_blank" rel="noopener noreferrer">WICKET-4872</a> - IllegalArgumentException on ReloadingWicketFilter and inheritance markup</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4877" target="_blank" rel="noopener noreferrer">WICKET-4877</a> - encodeUrl fails parsing jsessionid when using root context</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4878" target="_blank" rel="noopener noreferrer">WICKET-4878</a> - Rendering of feedback messages fails with DebugBar in page</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4881" target="_blank" rel="noopener noreferrer">WICKET-4881</a> - IE 8 : error when handling Wicket Ajax Response</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4884" target="_blank" rel="noopener noreferrer">WICKET-4884</a> - ValidationError messages for NumberTextFields with minimum/maximum are always English</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4886" target="_blank" rel="noopener noreferrer">WICKET-4886</a> - Do not register Ajax timer if the component is removed</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4890" target="_blank" rel="noopener noreferrer">WICKET-4890</a> - Bad validation messages after WICKET-2128</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4891" target="_blank" rel="noopener noreferrer">WICKET-4891</a> - UrlRenderer.renderRelativeUrl misbehavior if the filterPath is composed.</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4894" target="_blank" rel="noopener noreferrer">WICKET-4894</a> - Internet Explorer fails fails to properly include conditional stylesheet links added via AjaxRequestTarget</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4895" target="_blank" rel="noopener noreferrer">WICKET-4895</a> - WicketRuntimeException: addOrReplace for feedback panel does not clear Component.FEEDBACK_LIST - feedback from replaced component causes error.</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4899" target="_blank" rel="noopener noreferrer">WICKET-4899</a> - autocomplete shows strings with quotes strings as string2 with "quote"</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4900" target="_blank" rel="noopener noreferrer">WICKET-4900</a> - Setting a status code on an AbstractResource results in no HTTP body</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4908" target="_blank" rel="noopener noreferrer">WICKET-4908</a> - Wrong charset or screwed up characters in Norwegian properties-file</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4911" target="_blank" rel="noopener noreferrer">WICKET-4911</a> - Palette Ajax update does not work</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4913" target="_blank" rel="noopener noreferrer">WICKET-4913</a> - HtmlDocumentParser does not support tags containing number (e.g. h1-h6)</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4915" target="_blank" rel="noopener noreferrer">WICKET-4915</a> - org.apache.wicket.util.resource.Patht#find fails on Windows</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4916" target="_blank" rel="noopener noreferrer">WICKET-4916</a> - AbstractTree$TreeItem renderHead does not call renderHead for child TreeItems.</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4917" target="_blank" rel="noopener noreferrer">WICKET-4917</a> - Websockets are not working if URL has a hash in it</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4918" target="_blank" rel="noopener noreferrer">WICKET-4918</a> - LazyInitProxyFactory prevents using package private interfaces</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4920" target="_blank" rel="noopener noreferrer">WICKET-4920</a> - Rendered Url on root context with cookies disabled might result in double slash //</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4922" target="_blank" rel="noopener noreferrer">WICKET-4922</a> - Cloned ServletWebRequest returns wrong OriginalUrl</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4923" target="_blank" rel="noopener noreferrer">WICKET-4923</a> - CryptoMapper ignores original queryString parameters</li>
 </ul>
 
 <h4 id="improvement">Improvement</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4873">WICKET-4873</a> - Support different session id parameter</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4876">WICKET-4876</a> - CheckBoxMultipleChoice should implement getAdditionalAttributes as RadioChoice</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4887">WICKET-4887</a> - Use a Set to keep the supported wicket elements in WicketTagIdentifier</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4889">WICKET-4889</a> - Label constructor should accept Serializable as label</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4892">WICKET-4892</a> - Provide helpful exception message in RequestCycle#urlFor()</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4901">WICKET-4901</a> - AjaxPagingNaviagtionLink should provide updateAjaxAttributes like AjaxLink</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4902">WICKET-4902</a> - ConcatBundleResource should use the respective ITextResourceCompressor</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4924">WICKET-4924</a> - Websocket broadcast support does not work with OSGi</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4873" target="_blank" rel="noopener noreferrer">WICKET-4873</a> - Support different session id parameter</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4876" target="_blank" rel="noopener noreferrer">WICKET-4876</a> - CheckBoxMultipleChoice should implement getAdditionalAttributes as RadioChoice</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4887" target="_blank" rel="noopener noreferrer">WICKET-4887</a> - Use a Set to keep the supported wicket elements in WicketTagIdentifier</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4889" target="_blank" rel="noopener noreferrer">WICKET-4889</a> - Label constructor should accept Serializable as label</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4892" target="_blank" rel="noopener noreferrer">WICKET-4892</a> - Provide helpful exception message in RequestCycle#urlFor()</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4901" target="_blank" rel="noopener noreferrer">WICKET-4901</a> - AjaxPagingNaviagtionLink should provide updateAjaxAttributes like AjaxLink</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4902" target="_blank" rel="noopener noreferrer">WICKET-4902</a> - ConcatBundleResource should use the respective ITextResourceCompressor</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4924" target="_blank" rel="noopener noreferrer">WICKET-4924</a> - Websocket broadcast support does not work with OSGi</li>
 </ul>
 
 <h4 id="new-feature">New Feature</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4832">WICKET-4832</a> - Websocket broadcast support</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4879">WICKET-4879</a> - Implementing channels in wicket-atmosphere</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4883">WICKET-4883</a> - Out of the box bean-validation (JSR 303) integration</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4888">WICKET-4888</a> - Introduce a hierarchical feedback panel (FencedFeedbackPanel)</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4832" target="_blank" rel="noopener noreferrer">WICKET-4832</a> - Websocket broadcast support</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4879" target="_blank" rel="noopener noreferrer">WICKET-4879</a> - Implementing channels in wicket-atmosphere</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4883" target="_blank" rel="noopener noreferrer">WICKET-4883</a> - Out of the box bean-validation (JSR 303) integration</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4888" target="_blank" rel="noopener noreferrer">WICKET-4888</a> - Introduce a hierarchical feedback panel (FencedFeedbackPanel)</li>
 </ul>
 
 <h4 id="task">Task</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4885">WICKET-4885</a> - Upgrade jQuery to its latest stable version (1.8.3)</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4885" target="_blank" rel="noopener noreferrer">WICKET-4885</a> - Upgrade jQuery to its latest stable version (1.8.3)</li>
 </ul>
 
 </div>
@@ -275,17 +314,17 @@ read our Wicket 6 migration guide found at</p>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

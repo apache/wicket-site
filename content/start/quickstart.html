@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -116,7 +116,21 @@
             <p>Use the following wizard to generate a Quick Start Project using Maven. Paste the generated command line into a shell (DOS prompt or unix shell) and create a project with Wicket in a jiffy.</p>
         </header>
         <section class="toc left default quickstart">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#before-you-start"><span class="toc-number">1</span> <span class="toc-text">Before you start</span></a></li><li class="toc--level-1 toc--section-2"><a href="#5-small-steps-to-a-web-application"><span class="toc-number">2</span> <span class="toc-text">5 small steps to a web application</span></a></li><li class="toc--level-1 toc--section-3"><a href="#quick-start-wizard"><span class="toc-number">3</span> <span class="toc-text">Quick Start Wizard</span></a></li><li class="toc--level-1 toc--section-4"><a href="#import-the-quick-start-in-your-ide"><span class="toc-number">4</span> <span class="toc-text">Import the Quick Start in your IDE</span></a><ul><li class="toc--level-2 toc--section-5"><a href="#eclipse"><span class="toc-number">4.1</span> <span class="toc-text">Eclipse</span></a></li><li class="toc--level-2 toc--section-6"><a href="#intellij-idea"><span class="toc-number">4.2</span> <span class="toc-text">IntelliJ IDEA</span></a></li><li class="toc--level-2 toc--section-7"><a href="#netbeans"><span class="toc-number">4.3</span> <span class="toc-text">Netbeans</span></a></li></ul></li></ul></div>
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#before-you-start"><span class="toc-number">1</span> <span class="toc-text">Before you start</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#5-small-steps-to-a-web-application"><span class="toc-number">2</span> <span class="toc-text">5 small steps to a web application</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#quick-start-wizard"><span class="toc-number">3</span> <span class="toc-text">Quick Start Wizard</span></a></li>
+<li class="toc--level-1 toc--section-4">
+<a href="#import-the-quick-start-in-your-ide"><span class="toc-number">4</span> <span class="toc-text">Import the Quick Start in your IDE</span></a><ul>
+<li class="toc--level-2 toc--section-5"><a href="#eclipse"><span class="toc-number">4.1</span> <span class="toc-text">Eclipse</span></a></li>
+<li class="toc--level-2 toc--section-6"><a href="#intellij-idea"><span class="toc-number">4.2</span> <span class="toc-text">IntelliJ IDEA</span></a></li>
+<li class="toc--level-2 toc--section-7"><a href="#netbeans"><span class="toc-number">4.3</span> <span class="toc-text">Netbeans</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
         </section>
         <section>
             <script type="text/javascript" charset="utf-8" src="/javascript/ZeroClipboard-1.1.7.min.js"></script>
@@ -165,7 +179,7 @@
 
 <h2 id="before-you-start">Before you start</h2>
 
-<p>The Quick Start Wizard uses <a href="http://maven.apache.org">Apache Maven</a> to
+<p>The Quick Start Wizard uses <a href="http://maven.apache.org" target="_blank" rel="noopener noreferrer">Apache Maven</a> to
 make it really fast to get started. You should have Maven installed and
 working before you can use the Quick Start wizard.</p>
 
@@ -181,7 +195,8 @@ select the appropriate Wicket version</li>
 terminal (or a DOS box)</li>
   <li>Open the project in your IDE of choice</li>
   <li>Start the <code class="language-plaintext highlighter-rouge">Start</code> class in the <em>src/test/java</em> folder</li>
-  <li>Open your browser to <a target="_blank" href="http://localhost:8080">http://localhost:8080</a></li>
+  <li>Open your browser to <a target="_blank" href="http://localhost:8080" rel="noopener noreferrer">http://localhost:8080</a>
+</li>
 </ol>
 
 <p>And you’re done!</p>
@@ -195,11 +210,11 @@ command line to your clipboard.</p>
     <div class="quickstart-wizard">
       <div>
         <label title="Base Package" for="groupId">Group ID</label>
-        <input type="text" value="com.mycompany" onkeyup="changeIt();" id="groupId" />
+        <input type="text" value="com.mycompany" onkeyup="changeIt();" id="groupId">
       </div>
       <div>
         <label title="Project Name" for="artifactId">Artifact ID</label>
-        <input type="text" value="myproject" onkeyup="changeIt();" id="artifactId" />
+        <input type="text" value="myproject" onkeyup="changeIt();" id="artifactId">
       </div>
       <div>
         <label title="Wicket Version" for="version">Wicket Version</label>
@@ -230,7 +245,7 @@ command line to your clipboard.</p>
     
     
     
-    	<option value="10.8.0" selected="selected">10.8.0</option>
+    	<option value="10.8.0" selected>10.8.0</option>
     
     
     
@@ -262,7 +277,7 @@ command line to your clipboard.</p>
       <div>
     <label for="appserver" title="Server to deploy on">Server to deploy on</label>
     <select id="appserver" onchange="changeIt();">
-    	<option value="any" selected="selected">Any but Wild Fly</option>
+    	<option value="any" selected>Any but Wild Fly</option>
     	<option value="wildfly">Wild Fly (JBoss 8.x)</option>
     </select>
     </div>
@@ -276,7 +291,7 @@ command line to your clipboard.</p>
       </div>
     </div>
   </div>
-<p><br /></p>
+<p><br></p>
 
 <p>With the generated command line on your clipboard open up a terminal
 window (or DOS box) and navigate to where you want the project to be
@@ -352,17 +367,17 @@ other Java project.</p>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

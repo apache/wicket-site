@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -116,7 +116,16 @@
             
         </header>
         <section class="toc left post ">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li><li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li><li class="toc--level-1 toc--section-3"><a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul></li></ul></div>
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#new-and-noteworthy"><span class="toc-number">1</span> <span class="toc-text">New and noteworthy</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#using-this-release"><span class="toc-number">2</span> <span class="toc-text">Using this release</span></a></li>
+<li class="toc--level-1 toc--section-3">
+<a href="#upgrading-from-earlier-versions"><span class="toc-number">3</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-4"><a href="#this-release"><span class="toc-number">3.1</span> <span class="toc-text">This Release</span></a></li></ul>
+</li>
+</ul>
+</div>
         </section>
         <section>
             <div class="l-full">
@@ -179,8 +188,10 @@ update any other dependencies on Wicket projects to the same version):</p>
 convenience binary package</p>
 
 <ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1">8.0.0-M1 source download</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1/binaries">8.0.0-M1 binary download</a></li>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1" target="_blank" rel="noopener noreferrer">8.0.0-M1 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0-M1/binaries" target="_blank" rel="noopener noreferrer">8.0.0-M1 binary download</a>
+</li>
 </ul>
 
 <h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
@@ -190,7 +201,7 @@ you come from a version prior to 8.0.0, please read our Wicket 7
 migration guide found at</p>
 
 <ul>
-  <li><a href="http://s.apache.org/wicket8migration">http://s.apache.org/wicket8migration</a></li>
+  <li><a href="http://s.apache.org/wicket8migration" target="_blank" rel="noopener noreferrer">http://s.apache.org/wicket8migration</a></li>
 </ul>
 
 <p>Have fun!</p>
@@ -253,7 +264,8 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   <li>[WICKET-6020] - GuiceFieldValueFactory returns the NULL_SENTINEL from the cache</li>
   <li>[WICKET-6021] - ConcurrentModificationException in MarkupContainer#iterator#next</li>
   <li>[WICKET-6024] - Possible issue with Border and LoadableDetachableModel in 7.1.0</li>
-  <li>[WICKET-6026] - Problem in detecting child id on nested <wicket:enclosure></wicket:enclosure></li>
+  <li>[WICKET-6026] - Problem in detecting child id on nested <wicket:enclosure></wicket:enclosure>
+</li>
   <li>[WICKET-6027] - Nested TransparentWebMarkupContainer, markup of inner component not found</li>
   <li>[WICKET-6028] - Detach called on enclosure component while it had a non-empty queue</li>
   <li>[WICKET-6031] - NPE in PackageResourceReference#getResource() when there is no request</li>
@@ -271,7 +283,8 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   <li>[WICKET-6059] - TransparentWebMarkupContainer can not resolve autocomponents in its parent</li>
   <li>[WICKET-6062] - MockHttpSession should renew its id after invalidation</li>
   <li>[WICKET-6063] - Add support for WebSocketRequest#getUrl() and other properties which are available in the handshake request</li>
-  <li>[WICKET-6064] - WebSocketResponse.sendRedirect could be supported with <ajax-response><redirect>...&lt;/&gt;&lt;/&gt;</redirect></ajax-response></li>
+  <li>[WICKET-6064] - WebSocketResponse.sendRedirect could be supported with <ajax-response><redirect>...&lt;/&gt;&lt;/&gt;</redirect></ajax-response>
+</li>
   <li>[WICKET-6065] - Calling http://examples7x.wicket.apache.org/resourceaggregation/ generate Internal error</li>
   <li>[WICKET-6068] - The key RangeValidator.exact is not mapped in Application_de.properties</li>
   <li>[WICKET-6069] - OnChangeAjaxBehavior does not work if the url contains a request parameter with same name as wicket id</li>
@@ -325,7 +338,8 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   <li>[WICKET-5920] - roll a version of ListDataProvider implementing ISortableDetachable model</li>
   <li>[WICKET-5950] - Model and GenericBaseModel could both implement IObjectClassAwareModel</li>
   <li>[WICKET-5969] - Please give us access to PageTable.index pageId queue</li>
-  <li>[WICKET-5986] - NumberTextField<N> should use Models for minimum, maximum and step</N></li>
+  <li>[WICKET-5986] - NumberTextField<n> should use Models for minimum, maximum and step</n>
+</li>
   <li>[WICKET-6015] - AjaxFallbackOrderByBorder/Link should support updateAjaxAttributes() idiom</li>
   <li>[WICKET-6019] - Remove ‘final’ modifier for Localizer#getStringIgnoreSettings() methods</li>
   <li>[WICKET-6023] - small tweak for component queuing for the AbstractRepeater</li>
@@ -369,7 +383,8 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
   <li>[WICKET-6183] - Improve stateless support for AJAX</li>
   <li>[WICKET-6184] - Remove form argument from AjaxButton and AjaxLink callbacks</li>
   <li>[WICKET-6188] - Use DynamicJQueryResourceReference by default</li>
-  <li>[WICKET-6189] - Return Optional<T> from RequestCycle.find(Class<T>)</T></T></li>
+  <li>[WICKET-6189] - Return Optional<t> from RequestCycle.find(Class<t>)</t></t>
+</li>
 </ul>
 
 <h5 id="new-feature">New Feature</h5>
@@ -412,17 +427,17 @@ cTwAn0jMYcafuw0aHDATKwbTv8U3uZX1
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -117,18 +117,46 @@
 </p>
         </header>
         <section class="toc left default ">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#questions"><span class="toc-number">1</span> <span class="toc-text">We are here to Help</span></a></li><li class="toc--level-1 toc--section-2"><a href="#security"><span class="toc-number">2</span> <span class="toc-text">Report A Security Problem</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#contact-the-wicket-pmc-privately"><span class="toc-number">2.1</span> <span class="toc-text">Contact the Wicket PMC privately</span></a></li><li class="toc--level-2 toc--section-4"><a href="#report-normal-bugs-in-jira"><span class="toc-number">2.2</span> <span class="toc-text">Report normal bugs in JIRA</span></a></li></ul></li><li class="toc--level-1 toc--section-5"><a href="#reportbug"><span class="toc-number">3</span> <span class="toc-text">Report a Bug for Apache Wicket</span></a><ul><li class="toc--level-2 toc--section-6"><a href="#checklist-for-reporting-a-bug"><span class="toc-number">3.1</span> <span class="toc-text">Checklist for Reporting a Bug</span></a></li><li class="toc--level-2 toc--section-7"><a href="#searchbug"><span class="toc-number">3.2</span> <span class="toc-text">Search for a Reported, Existing Bug</span></a></li><li class="toc--level-2 toc--section-8"><a href="#latestrelease"><span class="toc-number">3.3</span> <span class="toc-text">Using the Latest Release of Wicket</span></a></li><li class="toc--level-2 toc--section-9"><a href="#compatible"><span class="toc-number">3.4</span> <span class="toc-text">Using Compatible Versions of Supporting Libraries</span></a></li><li class="toc--level-2 toc--section-10"><a href="#bugquickstart"><span class="toc-number">3.5</span> <span class="toc-text">Provide a Quick Start</span></a></li><li class="toc--level-2 toc--section-11"><a href="#createreport"><span class="toc-number">3.6</span> <span class="toc-text">Create a Report in our Issue Tracker</span></a></li><li class="toc--level-2 toc--section-12"><a href="#faster"><span class="toc-number">3.7</span> <span class="toc-text">How to Get Help Faster</span></a></li></ul></li><li class="toc--level-1 toc--section-13"><a href="#commercial"><span class="toc-number">4</span> <span class="toc-text">Commercial Wicket Support</span></a><ul><li class="toc--level-2 toc--section-14"><a href="#finding-a-wicket-service-provider"><span class="toc-number">4.1</span> <span class="toc-text">Finding a Wicket Service Provider</span></a></li><li class="toc--level-2 toc--section-15"><a href="#registering-as-a-wicket-service-provider"><span class="toc-number">4.2</span> <span class="toc-text">Registering as a Wicket Service Provider</span></a></li></ul></li></ul></div>
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#questions"><span class="toc-number">1</span> <span class="toc-text">We are here to Help</span></a></li>
+<li class="toc--level-1 toc--section-2">
+<a href="#security"><span class="toc-number">2</span> <span class="toc-text">Report A Security Problem</span></a><ul>
+<li class="toc--level-2 toc--section-3"><a href="#contact-the-wicket-pmc-privately"><span class="toc-number">2.1</span> <span class="toc-text">Contact the Wicket PMC privately</span></a></li>
+<li class="toc--level-2 toc--section-4"><a href="#report-normal-bugs-in-jira"><span class="toc-number">2.2</span> <span class="toc-text">Report normal bugs in JIRA</span></a></li>
+</ul>
+</li>
+<li class="toc--level-1 toc--section-5">
+<a href="#reportbug"><span class="toc-number">3</span> <span class="toc-text">Report a Bug for Apache Wicket</span></a><ul>
+<li class="toc--level-2 toc--section-6"><a href="#checklist-for-reporting-a-bug"><span class="toc-number">3.1</span> <span class="toc-text">Checklist for Reporting a Bug</span></a></li>
+<li class="toc--level-2 toc--section-7"><a href="#searchbug"><span class="toc-number">3.2</span> <span class="toc-text">Search for a Reported, Existing Bug</span></a></li>
+<li class="toc--level-2 toc--section-8"><a href="#latestrelease"><span class="toc-number">3.3</span> <span class="toc-text">Using the Latest Release of Wicket</span></a></li>
+<li class="toc--level-2 toc--section-9"><a href="#compatible"><span class="toc-number">3.4</span> <span class="toc-text">Using Compatible Versions of Supporting Libraries</span></a></li>
+<li class="toc--level-2 toc--section-10"><a href="#bugquickstart"><span class="toc-number">3.5</span> <span class="toc-text">Provide a Quick Start</span></a></li>
+<li class="toc--level-2 toc--section-11"><a href="#createreport"><span class="toc-number">3.6</span> <span class="toc-text">Create a Report in our Issue Tracker</span></a></li>
+<li class="toc--level-2 toc--section-12"><a href="#faster"><span class="toc-number">3.7</span> <span class="toc-text">How to Get Help Faster</span></a></li>
+</ul>
+</li>
+<li class="toc--level-1 toc--section-13">
+<a href="#commercial"><span class="toc-number">4</span> <span class="toc-text">Commercial Wicket Support</span></a><ul>
+<li class="toc--level-2 toc--section-14"><a href="#finding-a-wicket-service-provider"><span class="toc-number">4.1</span> <span class="toc-text">Finding a Wicket Service Provider</span></a></li>
+<li class="toc--level-2 toc--section-15"><a href="#registering-as-a-wicket-service-provider"><span class="toc-number">4.2</span> <span class="toc-text">Registering as a Wicket Service Provider</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
         </section>
         <section>
             <div class="l-button-table">
     <div class="l-two-third">
       <div class="button-bar">
-        <a class="button" href="#security"><i class="fa fa-lock"></i><br />Security</a>
-        <a class="button" href="#reportbug"><i class="fa fa-bug"></i><br />Report a bug</a>
+        <a class="button" href="#security"><i class="fa fa-lock"></i><br>Security</a>
+        <a class="button" href="#reportbug"><i class="fa fa-bug"></i><br>Report a bug</a>
       </div>
       <div class="button-bar">
-        <a class="button" href="#questions"><i class="fa fa-question-circle"></i><br />Get help</a>
-        <a class="button" href="#commercial"><i class="fa fa-ambulance"></i><br />Commercial support</a>
+        <a class="button" href="#questions"><i class="fa fa-question-circle"></i><br>Get help</a>
+        <a class="button" href="#commercial"><i class="fa fa-ambulance"></i><br>Commercial support</a>
       </div>
     </div>
 </div>
@@ -155,15 +183,15 @@ provides a more direct discussion platform. Note that time zones can
 make it difficult to find activity in the channel.</p>
   </li>
   <li>
-    <p><a href="http://stackoverflow.com/questions/tagged/wicket" rel="nofollow" title="Goes to Stackoverflow website">Stackoverflow</a> provides a
+    <p><a href="http://stackoverflow.com/questions/tagged/wicket" rel="nofollow noopener noreferrer" title="Goes to Stackoverflow website" target="_blank">Stackoverflow</a> provides a
 modern Q&amp;A experience with a helpful community.</p>
   </li>
 </ul>
 
-<p>Whichever you choose, remember to <a href="http://www.catb.org/esr/faqs/smart-questions.html">ask your questions the right
+<p>Whichever you choose, remember to <a href="http://www.catb.org/esr/faqs/smart-questions.html" target="_blank" rel="noopener noreferrer">ask your questions the right
 way</a>.</p>
 
-<hr />
+<hr>
 
 <h2 id="security">Report A Security Problem</h2>
 
@@ -199,12 +227,12 @@ as possible in all affected versions that we still support.</p>
 we ask that you use our <a href="/help/#reportbug">bug reporting page</a>
 for normal, non-security bugs.</p>
 
-<hr />
+<hr>
 
 <h2 id="reportbug">Report a Bug for Apache Wicket</h2>
 
 <p>If you are experiencing problems using Wicket please report your
-problem via the <a href="https://issues.apache.org/jira/browse/WICKET">Issue
+problem via the <a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue
 Tracker</a>. You may also
 find it useful to discuss your issues with the community on one of the
 Mailing Lists.</p>
@@ -235,8 +263,8 @@ anyway, so you might as well get them out of the way.</p>
 <p>A lot of developers use Wicket, and chances are someone already
 encountered your issue. So please search for some keywords of your
 problem using a search engine,
-<a href="http://stackoverflow.com/questions/tagged/wicket">stackoverflow</a> and our
-<a href="https://issues.apache.org/jira/browse/WICKET">issue tracker</a>.</p>
+<a href="http://stackoverflow.com/questions/tagged/wicket" target="_blank" rel="noopener noreferrer">stackoverflow</a> and our
+<a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">issue tracker</a>.</p>
 
 <p>If someone already found your bug, look at how the bug was resolved. If
 it wasn’t resolved, note what they already tried and add your own
@@ -368,7 +396,7 @@ we can normally figure out whats wrong from that.</li>
 <p>When you want more direct support, you can consider hiring commercial
 support.</p>
 
-<hr />
+<hr>
 
 <h2 id="commercial">Commercial Wicket Support</h2>
 
@@ -385,8 +413,8 @@ even project development.</p>
 <div class="l-button-table">
     <div class="l-one-third">
         <div class="button-bar">
-            <a class="button" href="https://cwiki.apache.org/confluence/display/WICKET/Companies+that+provide+services">
-                <i class="fa fa-group"></i><br />
+            <a class="button" href="https://cwiki.apache.org/confluence/display/WICKET/Companies+that+provide+services" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-group"></i><br>
                 Go to the wiki
             </a>
         </div>
@@ -418,17 +446,17 @@ inappropriate.</p>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

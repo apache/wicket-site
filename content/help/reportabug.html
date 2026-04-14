@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -116,10 +116,24 @@
             
         </header>
         <section class="toc left default ">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#build-a-quickstart"><span class="toc-number">1</span> <span class="toc-text">Build a Quickstart</span></a></li><li class="toc--level-1 toc--section-2"><a href="#submit-a-patch"><span class="toc-number">2</span> <span class="toc-text">Submit a patch</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#setting-up"><span class="toc-number">2.1</span> <span class="toc-text">Setting up</span></a></li><li class="toc--level-2 toc--section-4"><a href="#checking-out-wicket-from-subversion"><span class="toc-number">2.2</span> <span class="toc-text">Checking out Wicket from Subversion</span></a></li><li class="toc--level-2 toc--section-5"><a href="#kick-the-tires"><span class="toc-number">2.3</span> <span class="toc-text">Kick the tires</span></a></li><li class="toc--level-2 toc--section-6"><a href="#proving-a-bug-exists"><span class="toc-number">2.4</span> <span class="toc-text">Proving a bug exists</span></a></li><li class="toc--level-2 toc--section-7"><a href="#submitting-a-patch"><span class="toc-number">2.5</span> <span class="toc-text">Submitting a patch</span></a></li></ul></li></ul></div>
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#build-a-quickstart"><span class="toc-number">1</span> <span class="toc-text">Build a Quickstart</span></a></li>
+<li class="toc--level-1 toc--section-2">
+<a href="#submit-a-patch"><span class="toc-number">2</span> <span class="toc-text">Submit a patch</span></a><ul>
+<li class="toc--level-2 toc--section-3"><a href="#setting-up"><span class="toc-number">2.1</span> <span class="toc-text">Setting up</span></a></li>
+<li class="toc--level-2 toc--section-4"><a href="#checking-out-wicket-from-subversion"><span class="toc-number">2.2</span> <span class="toc-text">Checking out Wicket from Subversion</span></a></li>
+<li class="toc--level-2 toc--section-5"><a href="#kick-the-tires"><span class="toc-number">2.3</span> <span class="toc-text">Kick the tires</span></a></li>
+<li class="toc--level-2 toc--section-6"><a href="#proving-a-bug-exists"><span class="toc-number">2.4</span> <span class="toc-text">Proving a bug exists</span></a></li>
+<li class="toc--level-2 toc--section-7"><a href="#submitting-a-patch"><span class="toc-number">2.5</span> <span class="toc-text">Submitting a patch</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
         </section>
         <section>
-            <p>Wicket manages bug reports via the <a href="http://issues.apache.org/jira/browse/WICKET">Apache Jira site</a></p>
+            <p>Wicket manages bug reports via the <a href="http://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Apache Jira site</a></p>
 
 <p>It requires you to register with the site, to avoid spamming, and attribute
 credit where its due. It’s relatively painless. Much harder is writing a
@@ -128,20 +142,24 @@ clear and concise bug report.</p>
 <p>Etiquette for a bug report is:</p>
 
 <ol>
-  <li><strong>Always search for an existing bug report about the issue before adding 
+  <li>
+<strong>Always search for an existing bug report about the issue before adding 
 your own.</strong> This can be tricky, but several duplicate bug reports just 
 cause an administration headache for developers. If in doubt you can
 always post the details of the bug to the <a href="email.html">mailing list</a>, and
 wait to be asked to submit a bug report by a dev. But the jira search
 functionality is pretty good, so do have go.</li>
-  <li><strong>Be clear and concise in your language.</strong> Wording a short but useful 
+  <li>
+<strong>Be clear and concise in your language.</strong> Wording a short but useful 
 summary, with a description that contains all the steps leading up to the
 error plus any extra circumstantial evidence, is not always easy, but its
 vital to getting the issue resolved, and really valuable.</li>
-  <li><strong>Watch the bug.</strong> The developers may ask you for more information via the
+  <li>
+<strong>Watch the bug.</strong> The developers may ask you for more information via the
 issue comments, so its good practices to check in on the issue whilst its
 still open.</li>
-  <li><strong>Don’t be shy of maintaining the issue.</strong> If you find its a duplicate of
+  <li>
+<strong>Don’t be shy of maintaining the issue.</strong> If you find its a duplicate of
 some other issue that was reported before yours, then mark it as a
 duplicate, and watch the original. If you get more info on the bug, add it
 as a comment. If it doesnt get noticed by a dev, try submitting a
@@ -149,7 +167,7 @@ quickstart or better still a patch. Ask for it to be reviewed via the
 mailing list.</li>
 </ol>
 
-<p>You will be rewarded with <a href="https://issues.apache.org/jira/secure/ConfigureReport.jspa?versionId=-1&amp;issueStatus=all&amp;selectedProjectId=12310561&amp;reportKey=com.sourcelabs.jira.plugin.report.contributions%3Acontributionreport&amp;Next=Next">subtle kudos</a>
+<p>You will be rewarded with <a href="https://issues.apache.org/jira/secure/ConfigureReport.jspa?versionId=-1&amp;issueStatus=all&amp;selectedProjectId=12310561&amp;reportKey=com.sourcelabs.jira.plugin.report.contributions%3Acontributionreport&amp;Next=Next" target="_blank" rel="noopener noreferrer">subtle kudos</a>
 and the bug is much more likely to be fixed promptly.</p>
 
 <h2 id="build-a-quickstart">Build a Quickstart</h2>
@@ -159,7 +177,7 @@ building a barebone Wicket project from one command. There is even a tool to
 let you customise the command for your project.</p>
 
 <p>Or you can watch Al Maw’s excellent
-<a href="http://herebebeasties.com/2007-10-07/wicket-quickstart">screencast</a> covering
+<a href="http://herebebeasties.com/2007-10-07/wicket-quickstart" target="_blank" rel="noopener noreferrer">screencast</a> covering
 the whole process of installing and running Maven, and getting your Eclipse
 workspace set up.</p>
 
@@ -170,7 +188,7 @@ project that you can use to clearly demonstrate a bug.</p>
 issue occurs, then you can zip up the project and attach it to the relevant
 issue.</p>
 
-<p>When a Wicket dev <a href="https://issues.apache.org/jira/browse/WICKET-497?focusedCommentId=12521870&amp;page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#action_12521870">asks you to submit a quickstart</a>,
+<p>When a Wicket dev <a href="https://issues.apache.org/jira/browse/WICKET-497?focusedCommentId=12521870&amp;page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#action_12521870" target="_blank" rel="noopener noreferrer">asks you to submit a quickstart</a>,
 that is what they mean.</p>
 
 <p>That is far more useful than posting reams of your application code and
@@ -197,8 +215,10 @@ If you can provide a walk through for your IDE of choice then please do add it.<
 <p>Using an Eclipse 3.4.x flavour of your choice add install the following plugins</p>
 
 <ul>
-  <li><a href="http://subclipse.tigris.org/">Subclipse for accessing Subversion</a> - Eclipse update site URL http://subclipse.tigris.org/update_1.6.x</li>
-  <li><a href="http://m2eclipse.sonatype.org/">m2eclipse for maven support</a> - Eclipse update site: http://m2eclipse.sonatype.org/update/</li>
+  <li>
+<a href="http://subclipse.tigris.org/" target="_blank" rel="noopener noreferrer">Subclipse for accessing Subversion</a> - Eclipse update site URL http://subclipse.tigris.org/update_1.6.x</li>
+  <li>
+<a href="http://m2eclipse.sonatype.org/" target="_blank" rel="noopener noreferrer">m2eclipse for maven support</a> - Eclipse update site: http://m2eclipse.sonatype.org/update/</li>
 </ul>
 
 <p>I usually install the entire Subclipse plugin, and all of m2eclipse except the Project configurators unless I am using a J2EE version of Eclipse.
@@ -216,7 +236,8 @@ the SVN Repositories tab on the left, right click &gt; New &gt; Repository
 Location… and paste in the repository url:
 http://svn.apache.org/repos/asf/wicket</p>
   </li>
-  <li><strong>Checkout the code</strong> - Click on the new Repository and navigate to: trunk
+  <li>
+<strong>Checkout the code</strong> - Click on the new Repository and navigate to: trunk
     <blockquote>
       <p>right click &gt; checkout as maven project. Some serious churning will now
 occur as you download of Wicket source, and then maven crawls the internet
@@ -225,7 +246,8 @@ the checkout and build took about 6minutes on my machine, and thats without
 maven needing to download anything.</p>
     </blockquote>
   </li>
-  <li><strong>Building Wicket</strong> - All that waiting wasn’t in vain, as you should now
+  <li>
+<strong>Building Wicket</strong> - All that waiting wasn’t in vain, as you should now
 have a fully checked out, dependency managed, built, possibly working,
 Wicket code base.</li>
 </ul>
@@ -286,17 +308,17 @@ Subclipse plug-in creating a patch file is as simple as:</p>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

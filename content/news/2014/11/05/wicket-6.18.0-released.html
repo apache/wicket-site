@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -143,8 +143,10 @@ update any other dependencies on Wicket projects to the same version):</p>
 convenience binary package</p>
 
 <ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.18.0">6.18.0 source download</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.18.0/binaries">6.18.0 binary download</a></li>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.18.0" target="_blank" rel="noopener noreferrer">6.18.0 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.18.0/binaries" target="_blank" rel="noopener noreferrer">6.18.0 binary download</a>
+</li>
 </ul>
 
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
@@ -154,7 +156,7 @@ you come from a version prior to 6.0.0, please read our Wicket 6
 migration guide found at</p>
 
 <ul>
-  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0">migration to Wicket 6</a></li>
+  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0" target="_blank" rel="noopener noreferrer">migration to Wicket 6</a></li>
 </ul>
 
 <p>Have fun!</p>
@@ -201,45 +203,75 @@ i6UAn25gHcC0w8QWiNJXV7u99iTHssaP
 <h4 id="bug">Bug</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5265">WICKET-5265</a> - FencedFeedbackPanel is broken with RefreshingView(and it’s implementations)</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5326">WICKET-5326</a> - Wicket doesn’t encrypt links and Ajax URLs for mounted pages when CryptoMapper is used</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5689">WICKET-5689</a> - Nested Redirects and REDIRECT_TO_BUFFER</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5698">WICKET-5698</a> - WebApplication#unmount() unmounts the whole compound mapper if some of its inner ones matches</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5699">WICKET-5699</a> - wicket-atmosphere 0.20 should use wicket-webjars 0.4.3</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5701">WICKET-5701</a> - WebSocketRequestHandler is not set as a scheduled and thus RequestCycle#find(AjaxRequestTarget.class) doesn’t work</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5704">WICKET-5704</a> - IllegalArgument exception with wicket:child in ajaxrequest</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5706">WICKET-5706</a> - ResourceUtils.getLocaleFromFilename cannot handle filenames with classifiers</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5711">WICKET-5711</a> - OnChangeAjaxBehavior should listen for both ‘inputchange’ and ‘change’ events for TextField and TextArea</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5712">WICKET-5712</a> - SecuritySettings.setEnforceMounts() does not work when the mounted mapper is not in the root compound mapper</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5714">WICKET-5714</a> - MockHttpServletRequest.buildRequest() should work for parameters with multiple values with multipart content type</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5716">WICKET-5716</a> - wicket-autocomplete prevents “change”-listener when leaving input via mouse click</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5717">WICKET-5717</a> - Url.parse/toString should support fragment</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5719">WICKET-5719</a> - Wicket-atmosphere should warn about phone home</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5720">WICKET-5720</a> - Method Strings.join doesn’t work correctly if separator is empty.</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5723">WICKET-5723</a> - CheckGroupSelector with disabled checks</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5731">WICKET-5731</a> - Using “Submit” button in Ajax DropDownChoice example leads to broken HTML page</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5736">WICKET-5736</a> - Atmosphere Eventbus throws Concurrent Modification Exception</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5265" target="_blank" rel="noopener noreferrer">WICKET-5265</a> - FencedFeedbackPanel is broken with RefreshingView(and it’s implementations)</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5326" target="_blank" rel="noopener noreferrer">WICKET-5326</a> - Wicket doesn’t encrypt links and Ajax URLs for mounted pages when CryptoMapper is used</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5689" target="_blank" rel="noopener noreferrer">WICKET-5689</a> - Nested Redirects and REDIRECT_TO_BUFFER</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5698" target="_blank" rel="noopener noreferrer">WICKET-5698</a> - WebApplication#unmount() unmounts the whole compound mapper if some of its inner ones matches</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5699" target="_blank" rel="noopener noreferrer">WICKET-5699</a> - wicket-atmosphere 0.20 should use wicket-webjars 0.4.3</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5701" target="_blank" rel="noopener noreferrer">WICKET-5701</a> - WebSocketRequestHandler is not set as a scheduled and thus RequestCycle#find(AjaxRequestTarget.class) doesn’t work</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5704" target="_blank" rel="noopener noreferrer">WICKET-5704</a> - IllegalArgument exception with wicket:child in ajaxrequest</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5706" target="_blank" rel="noopener noreferrer">WICKET-5706</a> - ResourceUtils.getLocaleFromFilename cannot handle filenames with classifiers</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5711" target="_blank" rel="noopener noreferrer">WICKET-5711</a> - OnChangeAjaxBehavior should listen for both ‘inputchange’ and ‘change’ events for TextField and TextArea</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5712" target="_blank" rel="noopener noreferrer">WICKET-5712</a> - SecuritySettings.setEnforceMounts() does not work when the mounted mapper is not in the root compound mapper</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5714" target="_blank" rel="noopener noreferrer">WICKET-5714</a> - MockHttpServletRequest.buildRequest() should work for parameters with multiple values with multipart content type</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5716" target="_blank" rel="noopener noreferrer">WICKET-5716</a> - wicket-autocomplete prevents “change”-listener when leaving input via mouse click</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5717" target="_blank" rel="noopener noreferrer">WICKET-5717</a> - Url.parse/toString should support fragment</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5719" target="_blank" rel="noopener noreferrer">WICKET-5719</a> - Wicket-atmosphere should warn about phone home</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5720" target="_blank" rel="noopener noreferrer">WICKET-5720</a> - Method Strings.join doesn’t work correctly if separator is empty.</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5723" target="_blank" rel="noopener noreferrer">WICKET-5723</a> - CheckGroupSelector with disabled checks</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5731" target="_blank" rel="noopener noreferrer">WICKET-5731</a> - Using “Submit” button in Ajax DropDownChoice example leads to broken HTML page</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5736" target="_blank" rel="noopener noreferrer">WICKET-5736</a> - Atmosphere Eventbus throws Concurrent Modification Exception</li>
 </ul>
 
 <h4 id="improvement">Improvement</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5691">WICKET-5691</a> - Wicket FileUploadField.getFileUploads() should never return null.</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5692">WICKET-5692</a> - Misleading message in PropertyValidator</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5694">WICKET-5694</a> - Add WicketTester assertion methods for component’s markup style, variation and locale</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5710">WICKET-5710</a> - StringValidator should set ‘minlength’ attribute to input and textarea</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5715">WICKET-5715</a> - Allow setting ‘async’ attribute on reference <script> elements</script></li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5718">WICKET-5718</a> - Upgrade Atmosphere to 2.2.2</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5725">WICKET-5725</a> - Add <code class="language-plaintext highlighter-rouge">NumberTextField(String,Class&lt;T&gt;)</code> constructor</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5729">WICKET-5729</a> - Avoid using input names that conflict with JavaScript DOM API method and attribute names</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5735">WICKET-5735</a> - Propagate fileSizeMax attribute to org.apache.commons.fileupload.FileUploadBase</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5740">WICKET-5740</a> - Provide a way to adapt the lock timeout based on the page class/id</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5691" target="_blank" rel="noopener noreferrer">WICKET-5691</a> - Wicket FileUploadField.getFileUploads() should never return null.</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5692" target="_blank" rel="noopener noreferrer">WICKET-5692</a> - Misleading message in PropertyValidator</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5694" target="_blank" rel="noopener noreferrer">WICKET-5694</a> - Add WicketTester assertion methods for component’s markup style, variation and locale</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5710" target="_blank" rel="noopener noreferrer">WICKET-5710</a> - StringValidator should set ‘minlength’ attribute to input and textarea</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5715" target="_blank" rel="noopener noreferrer">WICKET-5715</a> - Allow setting ‘async’ attribute on reference <script> elements</script>
+</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5718" target="_blank" rel="noopener noreferrer">WICKET-5718</a> - Upgrade Atmosphere to 2.2.2</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5725" target="_blank" rel="noopener noreferrer">WICKET-5725</a> - Add <code class="language-plaintext highlighter-rouge">NumberTextField(String,Class&lt;T&gt;)</code> constructor</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5729" target="_blank" rel="noopener noreferrer">WICKET-5729</a> - Avoid using input names that conflict with JavaScript DOM API method and attribute names</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5735" target="_blank" rel="noopener noreferrer">WICKET-5735</a> - Propagate fileSizeMax attribute to org.apache.commons.fileupload.FileUploadBase</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5740" target="_blank" rel="noopener noreferrer">WICKET-5740</a> - Provide a way to adapt the lock timeout based on the page class/id</li>
 </ul>
 
 <h4 id="new-feature">New Feature</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5677">WICKET-5677</a> - Components should have onAdd to complement onRemove</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5677" target="_blank" rel="noopener noreferrer">WICKET-5677</a> - Components should have onAdd to complement onRemove</li>
 </ul>
 
 
@@ -253,17 +285,17 @@ i6UAn25gHcC0w8QWiNJXV7u99iTHssaP
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

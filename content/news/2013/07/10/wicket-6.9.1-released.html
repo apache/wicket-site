@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -163,19 +163,19 @@ Simple bean [EnhancedAnnotatedTypeImpl] private class
 com.example.HomePage$AForm cannot be a non-static inner class</code></pre></figure>
 
 <p>This was reported as
-<a href="https://issues.apache.org/jira/browse/WICKET-5226">WICKET-5226</a>, as
+<a href="https://issues.apache.org/jira/browse/WICKET-5226" target="_blank" rel="noopener noreferrer">WICKET-5226</a>, as
 it became an issue in Glassfish 4, which ships with Weld 2.0.1 (or
 earlier). We implemented a fix for this particular issue by not
 injecting into anonymous inner classes.</p>
 
 <p>Unfortunately this was not a bug that needed fixing on our part, but
 rather in the Weld framework (see
-<a href="https://issues.jboss.org/browse/WELD-1441">WELD-1441</a>)</p>
+<a href="https://issues.jboss.org/browse/WELD-1441" target="_blank" rel="noopener noreferrer">WELD-1441</a>)</p>
 
 <p>Therefore we reverted the commits done for WICKET-5226 and hope that
 Glassfish will upgrade their Weld implementation soon. For the whole
 story read
-<a href="https://issues.apache.org/jira/browse/WICKET-5264">WICKET-5264</a></p>
+<a href="https://issues.apache.org/jira/browse/WICKET-5264" target="_blank" rel="noopener noreferrer">WICKET-5264</a></p>
 
 <h3 id="using-this-release">Using this release</h3>
 
@@ -192,8 +192,10 @@ update any other dependencies on Wicket projects to the same version):</p>
 convenience binary package</p>
 
 <ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.9.1">6.9.1 source download</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.9.1/binaries">6.9.1 binary download</a></li>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.9.1" target="_blank" rel="noopener noreferrer">6.9.1 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.9.1/binaries" target="_blank" rel="noopener noreferrer">6.9.1 binary download</a>
+</li>
 </ul>
 
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
@@ -203,7 +205,7 @@ you come from a version prior to 6.0.0, please read our Wicket 6
 migration guide found at</p>
 
 <ul>
-  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0">migration to Wicket 6.0</a></li>
+  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0" target="_blank" rel="noopener noreferrer">migration to Wicket 6.0</a></li>
 </ul>
 
 <p>Have fun!</p>
@@ -220,17 +222,17 @@ migration guide found at</p>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

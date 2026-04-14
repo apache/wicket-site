@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -116,7 +116,15 @@
             
         </header>
         <section class="toc left post ">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#downloading-apache-wicket-15"><span class="toc-number">1</span> <span class="toc-text">Downloading Apache Wicket 1.5</span></a></li><li class="toc--level-1 toc--section-2"><a href="#most-notable-changes"><span class="toc-number">2</span> <span class="toc-text">Most notable changes</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#inter-component-events"><span class="toc-number">2.1</span> <span class="toc-text">Inter-component events</span></a></li></ul></li></ul></div>
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#downloading-apache-wicket-15"><span class="toc-number">1</span> <span class="toc-text">Downloading Apache Wicket 1.5</span></a></li>
+<li class="toc--level-1 toc--section-2">
+<a href="#most-notable-changes"><span class="toc-number">2</span> <span class="toc-text">Most notable changes</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#inter-component-events"><span class="toc-number">2.1</span> <span class="toc-text">Inter-component events</span></a></li></ul>
+</li>
+</ul>
+</div>
         </section>
         <section>
             <div class="l-full">
@@ -125,7 +133,7 @@
 
 <h2 id="downloading-apache-wicket-15">Downloading Apache Wicket 1.5</h2>
 
-<p>You can download the release here: <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.0">http://www.apache.org/dyn/closer.cgi/wicket/1.5.0</a></p>
+<p>You can download the release here: <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.0" target="_blank" rel="noopener noreferrer">http://www.apache.org/dyn/closer.cgi/wicket/1.5.0</a></p>
 
 <p>Or use this in your Maven POM to upgrade to the new version:</p>
 
@@ -144,23 +152,28 @@
 <p>With this release the Wicket team has revised many of its internals. A short list:</p>
 
 <ul>
-  <li>HTML5 components added: <code class="language-plaintext highlighter-rouge">EmailTextField</code>, <code class="language-plaintext highlighter-rouge">NumberTextField</code>, <code class="language-plaintext highlighter-rouge">UrlTextField</code> and <code class="language-plaintext highlighter-rouge">RangeTextField</code></li>
+  <li>HTML5 components added: <code class="language-plaintext highlighter-rouge">EmailTextField</code>, <code class="language-plaintext highlighter-rouge">NumberTextField</code>, <code class="language-plaintext highlighter-rouge">UrlTextField</code> and <code class="language-plaintext highlighter-rouge">RangeTextField</code>
+</li>
   <li>New inter-component events (explained below)</li>
   <li>Minimum required servlet API is servlet-api 2.5</li>
   <li>All standard validators now extend <code class="language-plaintext highlighter-rouge">Behavior</code> to allow for client side validations</li>
-  <li><code class="language-plaintext highlighter-rouge">IBehavior</code> has been removed and <code class="language-plaintext highlighter-rouge">AbstractBehavior</code> has been deprecated, you should now extend <code class="language-plaintext highlighter-rouge">Behavior</code> instead</li>
-  <li>Simplified the <a href="https://cwiki.apache.org/confluence/display/WICKET/RequestCycle+in+Wicket+1.5">request cycle processing</a> and made it more extensible</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">IBehavior</code> has been removed and <code class="language-plaintext highlighter-rouge">AbstractBehavior</code> has been deprecated, you should now extend <code class="language-plaintext highlighter-rouge">Behavior</code> instead</li>
+  <li>Simplified the <a href="https://cwiki.apache.org/confluence/display/WICKET/RequestCycle+in+Wicket+1.5" target="_blank" rel="noopener noreferrer">request cycle processing</a> and made it more extensible</li>
   <li>URL handling is now in one place</li>
   <li>Wicket’s rendering code has been greatly simplified</li>
-  <li>Improved browser <a href="https://cwiki.apache.org/confluence/display/WICKET/Caching+in+Wicket+1.5">caching support</a></li>
+  <li>Improved browser <a href="https://cwiki.apache.org/confluence/display/WICKET/Caching+in+Wicket+1.5" target="_blank" rel="noopener noreferrer">caching support</a>
+</li>
   <li>ClientSideImageMap replaces old ImageMap</li>
   <li>Better support for running behind proxies with <code class="language-plaintext highlighter-rouge">x-forwarded-for</code> header</li>
-  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/RequestCycle+in+Wicket+1.5">Request cycle listeners</a> make it easier to integrate frameworks in your Wicket application</li>
-  <li>Consistent naming: methods with <code class="language-plaintext highlighter-rouge">Javascript</code> in the name have been renamed to use proper capitalization: <code class="language-plaintext highlighter-rouge">JavaScript</code></li>
+  <li>
+<a href="https://cwiki.apache.org/confluence/display/WICKET/RequestCycle+in+Wicket+1.5" target="_blank" rel="noopener noreferrer">Request cycle listeners</a> make it easier to integrate frameworks in your Wicket application</li>
+  <li>Consistent naming: methods with <code class="language-plaintext highlighter-rouge">Javascript</code> in the name have been renamed to use proper capitalization: <code class="language-plaintext highlighter-rouge">JavaScript</code>
+</li>
   <li>Switching to HTTPS is as simple as configuring a new root mapper to make Wicket HTTPS aware and annotating a page with @RequireHttps</li>
 </ul>
 
-<p>A longer list of changes and improvements can be found in our <a href="http://s.apache.org/wicket-1.5-migration">migration guide</a>.</p>
+<p>A longer list of changes and improvements can be found in our <a href="http://s.apache.org/wicket-1.5-migration" target="_blank" rel="noopener noreferrer">migration guide</a>.</p>
 
 <h3 id="inter-component-events">Inter-component events</h3>
 
@@ -235,17 +248,17 @@
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

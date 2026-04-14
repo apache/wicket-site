@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -176,19 +176,19 @@ Simple bean [EnhancedAnnotatedTypeImpl] private class
 com.example.HomePage$AForm cannot be a non-static inner class</code></pre></figure>
 
 <p>This was reported as
-<a href="https://issues.apache.org/jira/browse/WICKET-5226">WICKET-5226</a>, as
+<a href="https://issues.apache.org/jira/browse/WICKET-5226" target="_blank" rel="noopener noreferrer">WICKET-5226</a>, as
 it became an issue in Glassfish 4, which ships with Weld 2.0.1 (or
 earlier). We implemented a fix for this particular issue by not
 injecting into anonymous inner classes.</p>
 
 <p>Unfortunately this was not a bug that needed fixing on our part, but
 rather in the Weld framework (see
-<a href="https://issues.jboss.org/browse/WELD-1441">WELD-1441</a>)</p>
+<a href="https://issues.jboss.org/browse/WELD-1441" target="_blank" rel="noopener noreferrer">WELD-1441</a>)</p>
 
 <p>Therefore we reverted the commits done for WICKET-5226 and hope that
 Glassfish will upgrade their Weld implementation soon. For the whole
 story read
-<a href="https://issues.apache.org/jira/browse/WICKET-5264">WICKET-5264</a></p>
+<a href="https://issues.apache.org/jira/browse/WICKET-5264" target="_blank" rel="noopener noreferrer">WICKET-5264</a></p>
 
 <h3 id="using-this-release">Using this release</h3>
 
@@ -205,8 +205,10 @@ update any other dependencies on Wicket projects to the same version):</p>
 convenience binary package</p>
 
 <ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.10.0">6.10.0 source download</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.10.0/binaries">6.10.0 binary download</a></li>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.10.0" target="_blank" rel="noopener noreferrer">6.10.0 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.10.0/binaries" target="_blank" rel="noopener noreferrer">6.10.0 binary download</a>
+</li>
 </ul>
 
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
@@ -216,7 +218,7 @@ you come from a version prior to 6.0.0, please read our Wicket 6
 migration guide found at</p>
 
 <ul>
-  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0">Migration to Wicket 6.0</a></li>
+  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0" target="_blank" rel="noopener noreferrer">Migration to Wicket 6.0</a></li>
 </ul>
 
 <p>Have fun!</p>
@@ -228,51 +230,86 @@ migration guide found at</p>
 <h4 id="sub-task">Sub-task</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5248">WICKET-5248</a> - OnEventHeaderItem is still broken in 6.9.0</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5248" target="_blank" rel="noopener noreferrer">WICKET-5248</a> - OnEventHeaderItem is still broken in 6.9.0</li>
 </ul>
 
 <h4 id="bug">Bug</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5135">WICKET-5135</a> - wicket-atmosphere EventBus constructor throws NullPointerException under invalid state</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5164">WICKET-5164</a> - PageStoreManager.SessionEntry keeps outdated sessionId when container changes sessionId</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5224">WICKET-5224</a> - ModalWindow is not visible in Safari when opened from a link at the bottom of a large page</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5250">WICKET-5250</a> - Minified css/js gets compressed</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5251">WICKET-5251</a> - Minified name resolves incorrectly if default resource reference is used</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5256">WICKET-5256</a> - Allow configuring the resource used by ResourceStreamRequestHandler</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5259">WICKET-5259</a> - Url can't parse urls with username and password</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5260">WICKET-5260</a> - UrlRenderer#renderUrl() doesn't preserve the host</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5263">WICKET-5263</a> - FilenameWithVersionResourceCachingStrategy breaks silently when the versionPrefix is contained in the original filename</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5266">WICKET-5266</a> - Issue with TomcatWebSocketFilter and Spring Security</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5268">WICKET-5268</a> - ComponentRenderer.renderComponent fails to render two components with different component IDs</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5269">WICKET-5269</a> - XmlAjaxResponse restores wrong response</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5272">WICKET-5272</a> - NPE on unmount in BookmarkableMapper.java:189</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5273">WICKET-5273</a> - Tabindex overwritten in modal window for IE - Works in FF, Chrome</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5279">WICKET-5279</a> - o.a.w.a.AtmosphereBehavior onBroadcast should log DEBUG, not INFO</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5287">WICKET-5287</a> - NumberFormatException when parsing the port from Requests with invalid URIs</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5291">WICKET-5291</a> - Dependencies of Resource Bundle References are ignored</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5294">WICKET-5294</a> - MarkupCache ignores enforceReload flag</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5298">WICKET-5298</a> - Wicket Example for effects with Prototype is broken</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5300">WICKET-5300</a> - ComponentRenderingRequestHandler does not clear renderedComponents (PrototypeApplication)</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5302">WICKET-5302</a> - Using InlineEnclosure leads to two re-renderings of the controlling child component</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5306">WICKET-5306</a> - Dynamic and static extra paramaters not evaluated in ajax submitting behavior in a multipart form</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5309">WICKET-5309</a> - No page id appended to some stateful pages using repeaters</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5310">WICKET-5310</a> - if wicket is an external lib, BundleStringResourceLoader doesn't work</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5135" target="_blank" rel="noopener noreferrer">WICKET-5135</a> - wicket-atmosphere EventBus constructor throws NullPointerException under invalid state</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5164" target="_blank" rel="noopener noreferrer">WICKET-5164</a> - PageStoreManager.SessionEntry keeps outdated sessionId when container changes sessionId</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5224" target="_blank" rel="noopener noreferrer">WICKET-5224</a> - ModalWindow is not visible in Safari when opened from a link at the bottom of a large page</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5250" target="_blank" rel="noopener noreferrer">WICKET-5250</a> - Minified css/js gets compressed</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5251" target="_blank" rel="noopener noreferrer">WICKET-5251</a> - Minified name resolves incorrectly if default resource reference is used</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5256" target="_blank" rel="noopener noreferrer">WICKET-5256</a> - Allow configuring the resource used by ResourceStreamRequestHandler</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5259" target="_blank" rel="noopener noreferrer">WICKET-5259</a> - Url can't parse urls with username and password</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5260" target="_blank" rel="noopener noreferrer">WICKET-5260</a> - UrlRenderer#renderUrl() doesn't preserve the host</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5263" target="_blank" rel="noopener noreferrer">WICKET-5263</a> - FilenameWithVersionResourceCachingStrategy breaks silently when the versionPrefix is contained in the original filename</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5266" target="_blank" rel="noopener noreferrer">WICKET-5266</a> - Issue with TomcatWebSocketFilter and Spring Security</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5268" target="_blank" rel="noopener noreferrer">WICKET-5268</a> - ComponentRenderer.renderComponent fails to render two components with different component IDs</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5269" target="_blank" rel="noopener noreferrer">WICKET-5269</a> - XmlAjaxResponse restores wrong response</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5272" target="_blank" rel="noopener noreferrer">WICKET-5272</a> - NPE on unmount in BookmarkableMapper.java:189</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5273" target="_blank" rel="noopener noreferrer">WICKET-5273</a> - Tabindex overwritten in modal window for IE - Works in FF, Chrome</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5279" target="_blank" rel="noopener noreferrer">WICKET-5279</a> - o.a.w.a.AtmosphereBehavior onBroadcast should log DEBUG, not INFO</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5287" target="_blank" rel="noopener noreferrer">WICKET-5287</a> - NumberFormatException when parsing the port from Requests with invalid URIs</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5291" target="_blank" rel="noopener noreferrer">WICKET-5291</a> - Dependencies of Resource Bundle References are ignored</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5294" target="_blank" rel="noopener noreferrer">WICKET-5294</a> - MarkupCache ignores enforceReload flag</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5298" target="_blank" rel="noopener noreferrer">WICKET-5298</a> - Wicket Example for effects with Prototype is broken</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5300" target="_blank" rel="noopener noreferrer">WICKET-5300</a> - ComponentRenderingRequestHandler does not clear renderedComponents (PrototypeApplication)</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5302" target="_blank" rel="noopener noreferrer">WICKET-5302</a> - Using InlineEnclosure leads to two re-renderings of the controlling child component</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5306" target="_blank" rel="noopener noreferrer">WICKET-5306</a> - Dynamic and static extra paramaters not evaluated in ajax submitting behavior in a multipart form</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5309" target="_blank" rel="noopener noreferrer">WICKET-5309</a> - No page id appended to some stateful pages using repeaters</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5310" target="_blank" rel="noopener noreferrer">WICKET-5310</a> - if wicket is an external lib, BundleStringResourceLoader doesn't work</li>
 </ul>
 
 <h4 id="improvement">Improvement</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4993">WICKET-4993</a> - Add a minInputLength parameter to AutoCompleteTextField</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5270">WICKET-5270</a> - Do not set the location.hash when clicking on a link</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5276">WICKET-5276</a> - JavaDoc &amp; API for IConverter</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5277">WICKET-5277</a> - PropertiesFactory - customizable properties loading</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5289">WICKET-5289</a> - setRequired(true) should add the HTML5 "required" attribute on &lt;input&gt; and &lt;textarea&gt; elements</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5295">WICKET-5295</a> - UrlResourceStream#getData content-type detection relies on flawed logic in URLConnection#getContentType</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5296">WICKET-5296</a> - OnEventHeaderItem should remove 'on' prefix for the event name</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5303">WICKET-5303</a> - Static id counter AbstractToolbar prevents stable component paths for testing</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5304">WICKET-5304</a> - AbstractResource should check for error code first before for modifications</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5307">WICKET-5307</a> - Export resources' version cache attribute as request cycle metadata</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4993" target="_blank" rel="noopener noreferrer">WICKET-4993</a> - Add a minInputLength parameter to AutoCompleteTextField</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5270" target="_blank" rel="noopener noreferrer">WICKET-5270</a> - Do not set the location.hash when clicking on a link</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5276" target="_blank" rel="noopener noreferrer">WICKET-5276</a> - JavaDoc &amp; API for IConverter</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5277" target="_blank" rel="noopener noreferrer">WICKET-5277</a> - PropertiesFactory - customizable properties loading</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5289" target="_blank" rel="noopener noreferrer">WICKET-5289</a> - setRequired(true) should add the HTML5 "required" attribute on &lt;input&gt; and &lt;textarea&gt; elements</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5295" target="_blank" rel="noopener noreferrer">WICKET-5295</a> - UrlResourceStream#getData content-type detection relies on flawed logic in URLConnection#getContentType</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5296" target="_blank" rel="noopener noreferrer">WICKET-5296</a> - OnEventHeaderItem should remove 'on' prefix for the event name</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5303" target="_blank" rel="noopener noreferrer">WICKET-5303</a> - Static id counter AbstractToolbar prevents stable component paths for testing</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5304" target="_blank" rel="noopener noreferrer">WICKET-5304</a> - AbstractResource should check for error code first before for modifications</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5307" target="_blank" rel="noopener noreferrer">WICKET-5307</a> - Export resources' version cache attribute as request cycle metadata</li>
 </ul>
 
 </div>
@@ -285,17 +322,17 @@ migration guide found at</p>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

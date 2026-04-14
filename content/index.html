@@ -104,8 +104,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -120,17 +120,20 @@
             
         </header>
         <section class="toc left post index">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#"><span class="toc-number">1</span> <span class="toc-text">Getting Started with Wicket 10</span></a></li></ul></div>
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul><li class="toc--level-1 toc--section-1"><a href="#"><span class="toc-number">1</span> <span class="toc-text">Getting Started with Wicket 10</span></a></li></ul>
+</div>
         </section>
         <section>
             <div class="l-full">
     <p class="meta"></p>
     <div class="l-full l-first preamble">
     <a class="acevent"></a>
-    <br />
+    <br>
     <h1 id="introduction" class="announce">Announcing Apache Wicket <span class="color-brand">1</span><span class="color-brand" style="font-family: Wicket font;font-size: 46px;">0</span> : build modern web applications with Java!</h1>
     <div>
-      <img src="/img/logo.svg" alt="Apache Wicket" class="responsive-logo" />
+      <img src="/img/logo.svg" alt="Apache Wicket" class="responsive-logo">
     </div>
     <p>
       The Apache Wicket project announces the 10th major release of the open source Java web framework servicing websites and applications across the globe since 2004.
@@ -153,13 +156,13 @@
   <div class="l-half">
     <h3>Stay up to date with the Java release cycle</h3>
     <p>
-      Wicket 10 is built on top of Java 17 and is compatible with Java 21. In addtion Wicket takes part in the <a href="https://wiki.openjdk.java.net/display/quality/Quality+Outreach" target="_blank">OpenJDK Quality Outreach</a> to further improve the effort to test compatibility with both the latest OpenJDK release and the Early Access release.
+      Wicket 10 is built on top of Java 17 and is compatible with Java 21. In addtion Wicket takes part in the <a href="https://wiki.openjdk.java.net/display/quality/Quality+Outreach" target="_blank" rel="noopener noreferrer">OpenJDK Quality Outreach</a> to further improve the effort to test compatibility with both the latest OpenJDK release and the Early Access release.
     </p>
   </div>
   <div class="l-half">
     <h3>Fast migration with OpenRewrite</h3>
     <p>
-     Wicket 10 comes with a migration tool based on OpenRewrite to speed up migration from Wicket 9 and avoid repetitive and error-prone manual changes to your code. For more details on this tool see <a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+10.0#MigrationtoWicket10.0-AddmigrationrecipestoWicket10WICKET-7029">migration guide</a>.
+     Wicket 10 comes with a migration tool based on OpenRewrite to speed up migration from Wicket 9 and avoid repetitive and error-prone manual changes to your code. For more details on this tool see <a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+10.0#MigrationtoWicket10.0-AddmigrationrecipestoWicket10WICKET-7029" target="_blank" rel="noopener noreferrer">migration guide</a>.
     </p>
   </div>
 </div>
@@ -172,7 +175,7 @@
      You either risk leaving holes in the defense of your application or you break certain functionality. Protecting against unwanted inline scripts is the most important target to attain. In CSP this is called 'unsafe-inline' and it's the most common cause of cross-site scripting vulnerabilities.
     </p>
     <p>
-     Wicket 10 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need for a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Lookup our <a href="http://wicket.apache.org/learn/#guide" target="_blank">documentation</a> for more information.
+     Wicket 10 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need for a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Lookup our <a href="http://wicket.apache.org/learn/#guide" target="_blank" rel="noopener noreferrer">documentation</a> for more information.
     </p>
   </div>
 </div>
@@ -191,7 +194,7 @@
       When you migrate from a previous Wicket version to Wicket 10, a full list of changes and migrations is available at the following page:
     </p>
     <p>
-      <a href="https://s.apache.org/wicket10migrate">https://s.apache.org/wicket10migrate</a>
+      <a href="https://s.apache.org/wicket10migrate" target="_blank" rel="noopener noreferrer">https://s.apache.org/wicket10migrate</a>
     </p>
     <p>
       Please consult this migration guide when you are moving towards Wicket 10.
@@ -220,16 +223,18 @@
       convenient binary package:
     </p>
     <ul>
-      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/10.8.0">10.8.0 source download</a></li>
-      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/10.8.0/binaries">10.8.0 binary download</a></li>
+      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/10.8.0" target="_blank" rel="noopener noreferrer">10.8.0 source download</a>
+</li>
+      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/10.8.0/binaries" target="_blank" rel="noopener noreferrer">10.8.0 binary download</a>
+</li>
     </ul>
   </div>
 </div>
 
-<hr />
+<hr>
 
 <div class="l-full l-first preamble">
-    <h1 id="introduction">Introducing Apache&nbsp;Wicket</h1>
+    <h1 id="introduction">Introducing Apache Wicket</h1>
     <p>Invented in 2004, Wicket is one of the few survivors of the Java
     serverside web framework wars of the mid 2000's. Wicket is an open
     source, component oriented, serverside, Java web application framework.
@@ -240,21 +245,21 @@
 
 <div class="l-first l-flex">
     <div class="l-one-third">
-        <img src="/img/java-wicket-html5.png" class="l-full" />
+        <img src="/img/java-wicket-html5.png" class="l-full">
         <h3>Just Java &amp; HTML</h3>
         <p>Leverage what you know about Java or your favourite HTML 
         editor to write Wicket applications. With pure Java code and HTML 
         markup Wicket is the go-to web framework for purists.</p>
     </div>
     <div class="l-one-third">
-        <img src="/img/wicket-safe.png" class="l-full" />
+        <img src="/img/wicket-safe.png" class="l-full">
         <h3>Secure by Default</h3>
         <p>URLs do not expose sensitive information and all component paths are
         session-relative. Wicket keeps your model private except those parts
         you explicitly expose.</p>
     </div>
     <div class="l-one-third">
-        <img src="/img/wicket-components.png" class="l-full" />
+        <img src="/img/wicket-components.png" class="l-full">
         <h3>AJAX Components</h3>
         <p>Write Ajax applications without having to write a single line 
         of JavaScript code. Wicket's Ajax functionality makes it trivial 
@@ -323,7 +328,7 @@
 </div>
 <div class="l-first">
 </div>
-<hr />
+<hr>
 
 
 </div>
@@ -334,7 +339,7 @@
     <h1 id="poweredby">Projects Using Apache Wicket</h1>
     <p>
         Many projects use Wicket but are not known for it. 
-        Below you find a list of projects that are <a href="http://builtwithwicket.tumblr.com" rel="nofollow">Powered by Wicket</a>.
+        Below you find a list of projects that are <a href="http://builtwithwicket.tumblr.com" rel="nofollow noopener noreferrer" target="_blank">Powered by Wicket</a>.
     </p>
 </header>
 <article class="l-full">
@@ -343,7 +348,7 @@
     <p>
         This list is generated from our Tumblr feed 'Built with Wicket'. 
         You can submit your own project to this list through 
-        <a href="http://builtwithwicket.tumblr.com/submit" rel="nofollow">this form</a>.
+        <a href="http://builtwithwicket.tumblr.com/submit" rel="nofollow noopener noreferrer" target="_blank">this form</a>.
     </p>
 </article>
 <div class="l-first"></div>
@@ -416,7 +421,7 @@
 
 
 <div class="l-flex"> 
-	<div class="l-two-third" >
+	<div class="l-two-third">
 	
 	    <article>
 	        <h2>Apache Wicket 10.8.0 released</h2>
@@ -499,8 +504,7 @@ convenience binary package you can find here:</p>
 		<p>See the <a href="/news">archives</a> for all news
 		articles concerning release, security and community updates.</p>
 		
-		<p>Note that you can subscribe to our <a type="application/atom+xml"
-		title="Atom 1.0 feed" href="/atom.xml">RSS feed</a> to
+		<p>Note that you can subscribe to our <a type="application/atom+xml" title="Atom 1.0 feed" href="/atom.xml">RSS feed</a> to
 		get updates in your favorite RSS reader the moment they happen.</p>
 		
 		<ul>
@@ -554,17 +558,17 @@ convenience binary package you can find here:</p>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -173,22 +173,22 @@ WELD-000070 Simple bean [EnhancedAnnotatedTypeImpl] private class
 com.example.HomePage$AForm cannot be a non-static inner class</code></pre></figure>
 
 <p>This was reported as
-<a href="https://issues.apache.org/jira/browse/WICKET-5226">WICKET-5226</a>, as
+<a href="https://issues.apache.org/jira/browse/WICKET-5226" target="_blank" rel="noopener noreferrer">WICKET-5226</a>, as
 it became an issue in Glassfish 4, which ships with Weld 2.0.1 (or
 earlier). We implemented a fix for this particular issue by not
 injecting into anonymous inner classes.</p>
 
 <p>Unfortunately this was not a bug that needed fixing on our part, but
 rather in the Weld framework (see
-<a href="https://issues.jboss.org/browse/WELD-1441">WELD-1441</a>)</p>
+<a href="https://issues.jboss.org/browse/WELD-1441" target="_blank" rel="noopener noreferrer">WELD-1441</a>)</p>
 
 <p>Therefore we reverted the commits done for WICKET-5226 and hope that
 Glassfish will upgrade their Weld implementation soon. For the whole
 story read
-<a href="https://issues.apache.org/jira/browse/WICKET-5264">WICKET-5264</a></p>
+<a href="https://issues.apache.org/jira/browse/WICKET-5264" target="_blank" rel="noopener noreferrer">WICKET-5264</a></p>
 
 <p>Glassfish has fixed this in trunk according to
-<a href="https://java.net/jira/browse/GLASSFISH-20619">GLASSFISH-20619</a> but
+<a href="https://java.net/jira/browse/GLASSFISH-20619" target="_blank" rel="noopener noreferrer">GLASSFISH-20619</a> but
 the fix has yet to be integrated into a release.</p>
 
 <h3 id="using-this-release">Using this release</h3>
@@ -206,8 +206,10 @@ update any other dependencies on Wicket projects to the same version):</p>
 convenience binary package</p>
 
 <ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.12.0">6.12.0 source download</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.12.0/binaries">6.12.0 binary download</a></li>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.12.0" target="_blank" rel="noopener noreferrer">6.12.0 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.12.0/binaries" target="_blank" rel="noopener noreferrer">6.12.0 binary download</a>
+</li>
 </ul>
 
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
@@ -217,7 +219,7 @@ you come from a version prior to 6.0.0, please read our Wicket 6
 migration guide found at</p>
 
 <ul>
-  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0">Migration to Wicket 6.0</a></li>
+  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0" target="_blank" rel="noopener noreferrer">Migration to Wicket 6.0</a></li>
 </ul>
 
 <p>Have fun!</p>
@@ -229,41 +231,66 @@ migration guide found at</p>
 <h4 id="bug">Bug</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4862">WICKET-4862</a> - AjaxPagingNavigationLink and AjaxPagingNavigationIncrementLink output inline onclick attributes in addition to Wicket.Ajax.ajax event registration</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5101">WICKET-5101</a> - Could not open second modal window after closing first</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5356">WICKET-5356</a> - AutoCompleteSettings.setShowListOnEmptyInput(true) is not working anymore</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5359">WICKET-5359</a> - org.apache.wicket.util.string.StringValue#equals broken</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5366">WICKET-5366</a> - ResourceAggregator looses information about priority/filtering/… when using a bundle</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5369">WICKET-5369</a> - Can’t set a cookie using CookieUtils during an ajax request due to java.lang.ClassCastException: org.apache.wicket.ajax.AbstractAjaxResponse$AjaxResponse cannot be cast to org.apache.wicket.request.http.WebResponse</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5374">WICKET-5374</a> - SourcesPage fails on resources with non-ASCII characters</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5375">WICKET-5375</a> - Improve ConcatBundleResource error handling when a resource is missing</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5378">WICKET-5378</a> - AutoCompleteTextField inside a ModalWindow shows auto complete dropdown in the wrong location</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5379">WICKET-5379</a> - IE7: AutoCompleteTextField inside a ModalWindow shows auto complete dropdown behind ModalWindow</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5380">WICKET-5380</a> - Wicket rebinds the SessionEntry session attribute and this causes problems in Glassfish</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5382">WICKET-5382</a> - AutoComplete JavaScript errors</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5385">WICKET-5385</a> - wicket-bean-validation PropertyValidator_fr.properties.xml : org.xml.sax.SAXParseException</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5386">WICKET-5386</a> - ChainingModel should not check if the modelObject given as argument is null</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5397">WICKET-5397</a> - target.prependJavaScript and JQuery-Animation in IE8</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5398">WICKET-5398</a> - XmlPullParser fails to properly parse from String with encoding declaration</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4862" target="_blank" rel="noopener noreferrer">WICKET-4862</a> - AjaxPagingNavigationLink and AjaxPagingNavigationIncrementLink output inline onclick attributes in addition to Wicket.Ajax.ajax event registration</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5101" target="_blank" rel="noopener noreferrer">WICKET-5101</a> - Could not open second modal window after closing first</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5356" target="_blank" rel="noopener noreferrer">WICKET-5356</a> - AutoCompleteSettings.setShowListOnEmptyInput(true) is not working anymore</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5359" target="_blank" rel="noopener noreferrer">WICKET-5359</a> - org.apache.wicket.util.string.StringValue#equals broken</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5366" target="_blank" rel="noopener noreferrer">WICKET-5366</a> - ResourceAggregator looses information about priority/filtering/… when using a bundle</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5369" target="_blank" rel="noopener noreferrer">WICKET-5369</a> - Can’t set a cookie using CookieUtils during an ajax request due to java.lang.ClassCastException: org.apache.wicket.ajax.AbstractAjaxResponse$AjaxResponse cannot be cast to org.apache.wicket.request.http.WebResponse</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5374" target="_blank" rel="noopener noreferrer">WICKET-5374</a> - SourcesPage fails on resources with non-ASCII characters</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5375" target="_blank" rel="noopener noreferrer">WICKET-5375</a> - Improve ConcatBundleResource error handling when a resource is missing</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5378" target="_blank" rel="noopener noreferrer">WICKET-5378</a> - AutoCompleteTextField inside a ModalWindow shows auto complete dropdown in the wrong location</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5379" target="_blank" rel="noopener noreferrer">WICKET-5379</a> - IE7: AutoCompleteTextField inside a ModalWindow shows auto complete dropdown behind ModalWindow</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5380" target="_blank" rel="noopener noreferrer">WICKET-5380</a> - Wicket rebinds the SessionEntry session attribute and this causes problems in Glassfish</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5382" target="_blank" rel="noopener noreferrer">WICKET-5382</a> - AutoComplete JavaScript errors</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5385" target="_blank" rel="noopener noreferrer">WICKET-5385</a> - wicket-bean-validation PropertyValidator_fr.properties.xml : org.xml.sax.SAXParseException</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5386" target="_blank" rel="noopener noreferrer">WICKET-5386</a> - ChainingModel should not check if the modelObject given as argument is null</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5397" target="_blank" rel="noopener noreferrer">WICKET-5397</a> - target.prependJavaScript and JQuery-Animation in IE8</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5398" target="_blank" rel="noopener noreferrer">WICKET-5398</a> - XmlPullParser fails to properly parse from String with encoding declaration</li>
 </ul>
 
 <h4 id="improvement">Improvement</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5346">WICKET-5346</a> - Support MultiFileUploadField in FormTester</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5362">WICKET-5362</a> - Add support for parsing IE 11 user agent</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5376">WICKET-5376</a> - Log the exception if the application cannot start properly</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5381">WICKET-5381</a> - Add Wicket.Event.unsubscribe method</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5384">WICKET-5384</a> - Allow form components to trim the input themselves</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5388">WICKET-5388</a> - Allow DebugBar contributors to be removed</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5390">WICKET-5390</a> - Session management doesn’t work with Jetty’s JDBCSessionManager</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5395">WICKET-5395</a> - HeaderItem to be Serializable</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5346" target="_blank" rel="noopener noreferrer">WICKET-5346</a> - Support MultiFileUploadField in FormTester</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5362" target="_blank" rel="noopener noreferrer">WICKET-5362</a> - Add support for parsing IE 11 user agent</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5376" target="_blank" rel="noopener noreferrer">WICKET-5376</a> - Log the exception if the application cannot start properly</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5381" target="_blank" rel="noopener noreferrer">WICKET-5381</a> - Add Wicket.Event.unsubscribe method</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5384" target="_blank" rel="noopener noreferrer">WICKET-5384</a> - Allow form components to trim the input themselves</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5388" target="_blank" rel="noopener noreferrer">WICKET-5388</a> - Allow DebugBar contributors to be removed</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5390" target="_blank" rel="noopener noreferrer">WICKET-5390</a> - Session management doesn’t work with Jetty’s JDBCSessionManager</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5395" target="_blank" rel="noopener noreferrer">WICKET-5395</a> - HeaderItem to be Serializable</li>
 </ul>
 
 <h4 id="wish">Wish</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5393">WICKET-5393</a> - Remove ‘final’ from InlineFrame#onComponentTag()</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5393" target="_blank" rel="noopener noreferrer">WICKET-5393</a> - Remove ‘final’ from InlineFrame#onComponentTag()</li>
 </ul>
 
 </div>
@@ -276,17 +303,17 @@ migration guide found at</p>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

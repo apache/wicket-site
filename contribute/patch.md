@@ -49,9 +49,7 @@ mirror or you can clone the official repository and generate a patch
 file.
 
 **NOTE:** when you are working on Wicket code, please follow our code
-format rules. You can find them [inside wicket-core
-module](https://github.com/apache/wicket/blob/master/wicket-core/Eclipse
-CodeFormat.xml) as Eclipse code formatter profile.
+format rules. You can find them inside wicket-core module as Eclipse code formatter profile.
 
 **NOTE:** when you are using Eclipse IDE, please ensure that you have
 installed "M2E Settings" from the Eclipse Marketplace in addition to

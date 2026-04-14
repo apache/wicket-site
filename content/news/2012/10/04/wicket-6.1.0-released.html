@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -141,10 +141,12 @@
 <p>This release has two known issues, which will be solved shortly in 6.1.1 and 6.2.0:</p>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4789">WICKET-4789</a>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4789" target="_blank" rel="noopener noreferrer">WICKET-4789</a>
 The way URLs are encoded was changed (WICKET-4645) and now the first 
 request (with ;jsessionid in path) generates invalid internal links.</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4759">WICKET-4759</a>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4759" target="_blank" rel="noopener noreferrer">WICKET-4759</a>
 FilterForm/FilterToolbar don’t work when there’s more than one IColumn to 
 be filtered</li>
 </ul>
@@ -164,13 +166,15 @@ be filtered</li>
 <p>Or download and build the distribution yourself, or use our convenience binary package:</p>
 
 <ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.1.0">6.1.0 source download</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.1.0/binaries">6.1.0 binary download</a></li>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.1.0" target="_blank" rel="noopener noreferrer">6.1.0 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.1.0/binaries" target="_blank" rel="noopener noreferrer">6.1.0 binary download</a>
+</li>
 </ul>
 
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
 
-<p>If you upgrade from 6.0.0, this release is a drop in replacement. If you come from a version prior to 6.0.0, please read our <a href="http://s.apache.org/wicket-6.0-migration">Wicket 6 migration guide</a> found at http://s.apache.org/wicket-6.0-migration</p>
+<p>If you upgrade from 6.0.0, this release is a drop in replacement. If you come from a version prior to 6.0.0, please read our <a href="http://s.apache.org/wicket-6.0-migration" target="_blank" rel="noopener noreferrer">Wicket 6 migration guide</a> found at http://s.apache.org/wicket-6.0-migration</p>
 
 <p>Have fun!</p>
 
@@ -181,56 +185,91 @@ be filtered</li>
 <h4 id="squashed-bugs">Squashed bugs</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4645">WICKET-4645</a> - encodeURL broken on Tomcat 7.0.28</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4656">WICKET-4656</a> - Atmosphere example doesn't work due to missing 'page' when creating AjaxRequestTarget</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4729">WICKET-4729</a> - atmosphere example will stop working if opening the same url in a different tab in the same browser</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4732">WICKET-4732</a> - CssPackageResource doesn't work if the extension isn't css</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4734">WICKET-4734</a> - Button value is double escaped</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4735">WICKET-4735</a> - KittenCaptchaPanel is broken</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4737">WICKET-4737</a> - IllegalStateException on WicketFilter.init() after calling setFilterPath()</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4738">WICKET-4738</a> - DownloadLink doesn't wrap the String model used for file name nor does it detach</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4741">WICKET-4741</a> - Only complete handler (no success or failure handler) is called when Ajax link produces an exception</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4742">WICKET-4742</a> - Wicket 6 and Atmospher Integration:  AtmosphereServlet does not delegate WicketFilter for Error Pages .</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4743">WICKET-4743</a> - SerializingObjectSizeOfStrategy do not use framework serializer</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4749">WICKET-4749</a> - TabbedPanel - IModel&lt;?&gt; initModel()</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4750">WICKET-4750</a> - AbstractDefaultAjaxBehavior.getCallbackFunction should not add the event attribute</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4751">WICKET-4751</a> - UploadProgressBar regression</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4753">WICKET-4753</a> - Resource bundles are not resolved on PriorityHeaderItems</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4755">WICKET-4755</a> - "'NEW VALUE' is not a valid Serializable" error during ajax form submission</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4757">WICKET-4757</a> - FormComponents remain invalid forever if there is no feedback panel</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4758">WICKET-4758</a> - DOM ids change of the input fields of FilterToolbar</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4760">WICKET-4760</a> - JavaScriptStripper fails with single line comments</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4761">WICKET-4761</a> - ModalWindow.closeCurrent Javascript error</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4763">WICKET-4763</a> - Page's stateless hint is initially set to 'false'</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4766">WICKET-4766</a> - multiple &amp;lt;style&amp;gt; tags in header are rendered incorrectly</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4768">WICKET-4768</a> - Whitespace in TabbedPanel markup causes layout issues</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4770">WICKET-4770</a> - Wicket 6: modal windows in Safari are always in drag or resize mode</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4773">WICKET-4773</a> - ComponentFeedbackPanel broken under Wicket 6.0.0 when RenderStrategy.REDIRECT_TO_RENDER</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4775">WICKET-4775</a> - PageParameters#mergeWith may loose values of the 'other' PP</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4780">WICKET-4780</a> - Using both MountedMapper and CryptoMapper causes warning</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4645" target="_blank" rel="noopener noreferrer">WICKET-4645</a> - encodeURL broken on Tomcat 7.0.28</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4656" target="_blank" rel="noopener noreferrer">WICKET-4656</a> - Atmosphere example doesn't work due to missing 'page' when creating AjaxRequestTarget</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4729" target="_blank" rel="noopener noreferrer">WICKET-4729</a> - atmosphere example will stop working if opening the same url in a different tab in the same browser</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4732" target="_blank" rel="noopener noreferrer">WICKET-4732</a> - CssPackageResource doesn't work if the extension isn't css</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4734" target="_blank" rel="noopener noreferrer">WICKET-4734</a> - Button value is double escaped</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4735" target="_blank" rel="noopener noreferrer">WICKET-4735</a> - KittenCaptchaPanel is broken</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4737" target="_blank" rel="noopener noreferrer">WICKET-4737</a> - IllegalStateException on WicketFilter.init() after calling setFilterPath()</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4738" target="_blank" rel="noopener noreferrer">WICKET-4738</a> - DownloadLink doesn't wrap the String model used for file name nor does it detach</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4741" target="_blank" rel="noopener noreferrer">WICKET-4741</a> - Only complete handler (no success or failure handler) is called when Ajax link produces an exception</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4742" target="_blank" rel="noopener noreferrer">WICKET-4742</a> - Wicket 6 and Atmospher Integration:  AtmosphereServlet does not delegate WicketFilter for Error Pages .</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4743" target="_blank" rel="noopener noreferrer">WICKET-4743</a> - SerializingObjectSizeOfStrategy do not use framework serializer</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4749" target="_blank" rel="noopener noreferrer">WICKET-4749</a> - TabbedPanel - IModel&lt;?&gt; initModel()</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4750" target="_blank" rel="noopener noreferrer">WICKET-4750</a> - AbstractDefaultAjaxBehavior.getCallbackFunction should not add the event attribute</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4751" target="_blank" rel="noopener noreferrer">WICKET-4751</a> - UploadProgressBar regression</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4753" target="_blank" rel="noopener noreferrer">WICKET-4753</a> - Resource bundles are not resolved on PriorityHeaderItems</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4755" target="_blank" rel="noopener noreferrer">WICKET-4755</a> - "'NEW VALUE' is not a valid Serializable" error during ajax form submission</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4757" target="_blank" rel="noopener noreferrer">WICKET-4757</a> - FormComponents remain invalid forever if there is no feedback panel</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4758" target="_blank" rel="noopener noreferrer">WICKET-4758</a> - DOM ids change of the input fields of FilterToolbar</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4760" target="_blank" rel="noopener noreferrer">WICKET-4760</a> - JavaScriptStripper fails with single line comments</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4761" target="_blank" rel="noopener noreferrer">WICKET-4761</a> - ModalWindow.closeCurrent Javascript error</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4763" target="_blank" rel="noopener noreferrer">WICKET-4763</a> - Page's stateless hint is initially set to 'false'</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4766" target="_blank" rel="noopener noreferrer">WICKET-4766</a> - multiple &amp;lt;style&amp;gt; tags in header are rendered incorrectly</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4768" target="_blank" rel="noopener noreferrer">WICKET-4768</a> - Whitespace in TabbedPanel markup causes layout issues</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4770" target="_blank" rel="noopener noreferrer">WICKET-4770</a> - Wicket 6: modal windows in Safari are always in drag or resize mode</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4773" target="_blank" rel="noopener noreferrer">WICKET-4773</a> - ComponentFeedbackPanel broken under Wicket 6.0.0 when RenderStrategy.REDIRECT_TO_RENDER</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4775" target="_blank" rel="noopener noreferrer">WICKET-4775</a> - PageParameters#mergeWith may loose values of the 'other' PP</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4780" target="_blank" rel="noopener noreferrer">WICKET-4780</a> - Using both MountedMapper and CryptoMapper causes warning</li>
 </ul>
 
 <h4 id="improvement">Improvement</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4730">WICKET-4730</a> - Filter component does not clear filter fields</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4731">WICKET-4731</a> - TimeField not able to work with a java.sql.Time</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4736">WICKET-4736</a> - JavaScriptFilteredIntoFooterHeaderResponse should reverse filter logic</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4745">WICKET-4745</a> - Allow to set initial state of DebugBar to expanded / collapsed</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4746">WICKET-4746</a> - Wizard component translation for pt_BR</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4748">WICKET-4748</a> - Improve WicketTester to be able to find AjaxBehaviors on second/third/… event name</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4730" target="_blank" rel="noopener noreferrer">WICKET-4730</a> - Filter component does not clear filter fields</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4731" target="_blank" rel="noopener noreferrer">WICKET-4731</a> - TimeField not able to work with a java.sql.Time</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4736" target="_blank" rel="noopener noreferrer">WICKET-4736</a> - JavaScriptFilteredIntoFooterHeaderResponse should reverse filter logic</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4745" target="_blank" rel="noopener noreferrer">WICKET-4745</a> - Allow to set initial state of DebugBar to expanded / collapsed</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4746" target="_blank" rel="noopener noreferrer">WICKET-4746</a> - Wizard component translation for pt_BR</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4748" target="_blank" rel="noopener noreferrer">WICKET-4748</a> - Improve WicketTester to be able to find AjaxBehaviors on second/third/… event name</li>
 </ul>
 
 <h4 id="new-feature">New Feature</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-3969">WICKET-3969</a> - Add CDI integration</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-3969" target="_blank" rel="noopener noreferrer">WICKET-3969</a> - Add CDI integration</li>
 </ul>
 
 <h4 id="task">Task</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-4781">WICKET-4781</a> - Downgrade the warning that a rendering falls back to redirect_to_buffer to a DEBUG</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4781" target="_blank" rel="noopener noreferrer">WICKET-4781</a> - Downgrade the warning that a rendering falls back to redirect_to_buffer to a DEBUG</li>
 </ul>
 
 
@@ -244,17 +283,17 @@ be filtered</li>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

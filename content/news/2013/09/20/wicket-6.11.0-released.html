@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -148,8 +148,8 @@ set to false</li>
 
 <p>This behavior replaces the functionality from 6.10 where HTML5
 attributes were added automatically (see
-<a href="https://issues.apache.org/jira/browse/WICKET-5289">WICKET-5289</a> and
-<a href="https://issues.apache.org/jira/browse/WICKET-5331">WICKET-5331</a>)</p>
+<a href="https://issues.apache.org/jira/browse/WICKET-5289" target="_blank" rel="noopener noreferrer">WICKET-5289</a> and
+<a href="https://issues.apache.org/jira/browse/WICKET-5331" target="_blank" rel="noopener noreferrer">WICKET-5331</a>)</p>
 
 <h4 id="beanvalidation-receives-french-translation">BeanValidation receives french translation</h4>
 
@@ -193,22 +193,22 @@ WELD-000070 Simple bean [EnhancedAnnotatedTypeImpl] private class
 com.example.HomePage$AForm cannot be a non-static inner class</code></pre></figure>
 
 <p>This was reported as
-<a href="https://issues.apache.org/jira/browse/WICKET-5226">WICKET-5226</a>, as
+<a href="https://issues.apache.org/jira/browse/WICKET-5226" target="_blank" rel="noopener noreferrer">WICKET-5226</a>, as
 it became an issue in Glassfish 4, which ships with Weld 2.0.1 (or
 earlier). We implemented a fix for this particular issue by not
 injecting into anonymous inner classes.</p>
 
 <p>Unfortunately this was not a bug that needed fixing on our part, but
 rather in the Weld framework (see
-<a href="https://issues.jboss.org/browse/WELD-1441">WELD-1441</a>)</p>
+<a href="https://issues.jboss.org/browse/WELD-1441" target="_blank" rel="noopener noreferrer">WELD-1441</a>)</p>
 
 <p>Therefore we reverted the commits done for WICKET-5226 and hope that
 Glassfish will upgrade their Weld implementation soon. For the whole
 story read
-<a href="https://issues.apache.org/jira/browse/WICKET-5264">WICKET-5264</a></p>
+<a href="https://issues.apache.org/jira/browse/WICKET-5264" target="_blank" rel="noopener noreferrer">WICKET-5264</a></p>
 
 <p>Glassfish has fixed this in trunk according to
-<a href="https://java.net/jira/browse/GLASSFISH-20619">GLASSFISH-20619</a> but
+<a href="https://java.net/jira/browse/GLASSFISH-20619" target="_blank" rel="noopener noreferrer">GLASSFISH-20619</a> but
 the fix has yet to be integrated into a release.</p>
 
 <h3 id="using-this-release">Using this release</h3>
@@ -226,8 +226,10 @@ update any other dependencies on Wicket projects to the same version):</p>
 convenience binary package</p>
 
 <ul>
-  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.11.0">6.11.0 source download</a></li>
-  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.11.0/binaries">6.11.0 binary download</a></li>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.11.0" target="_blank" rel="noopener noreferrer">6.11.0 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.11.0/binaries" target="_blank" rel="noopener noreferrer">6.11.0 binary download</a>
+</li>
 </ul>
 
 <h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
@@ -237,7 +239,7 @@ you come from a version prior to 6.0.0, please read our Wicket 6
 migration guide found at</p>
 
 <ul>
-  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0">Migration to Wicket 6.0</a></li>
+  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0" target="_blank" rel="noopener noreferrer">Migration to Wicket 6.0</a></li>
 </ul>
 
 <p>Have fun!</p>
@@ -249,30 +251,49 @@ migration guide found at</p>
 <h4 id="bug">Bug</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5313">WICKET-5313</a> - Wrong HTML attribute used in SizeTagModifier (wicket-bean-validation)</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5315">WICKET-5315</a> - PriorityHeaderItem+OnDomReadyHeaderItem has no priority in Ajax response</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5316">WICKET-5316</a> - Wicket Atmosphere CouldNotLockPageException</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5319">WICKET-5319</a> - CryptoMapper encrypts external URLs in ResourceReferences making the resources inaccessible</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5322">WICKET-5322</a> - “Source code” link doesn’t work at wicket-library.com</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5325">WICKET-5325</a> - ComponentRenderer.renderComponent does not render markup for ListView</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5329">WICKET-5329</a> - “Required” flag initialized too early in  PropertyValidator</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5332">WICKET-5332</a> - Autocomplete throws error when initialized in an AjaxLazyLoadPanel</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5334">WICKET-5334</a> - KittenCaptcha example is broken in IE10</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5335">WICKET-5335</a> - After selecting a file MultiFileUploadField does not render properly input field</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5339">WICKET-5339</a> - Broadcast.EXACT does not notify Behaviors of target Component</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5343">WICKET-5343</a> - AutoCompleteTextField suggestions popup position is wrong when its container has scrollbar</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5345">WICKET-5345</a> - Url.canonical() breaks when there are two consecutive “parent” segments followed by a normal segment</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5348">WICKET-5348</a> - JavaDoc for IColumn#getSortProperty() in misleading</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5313" target="_blank" rel="noopener noreferrer">WICKET-5313</a> - Wrong HTML attribute used in SizeTagModifier (wicket-bean-validation)</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5315" target="_blank" rel="noopener noreferrer">WICKET-5315</a> - PriorityHeaderItem+OnDomReadyHeaderItem has no priority in Ajax response</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5316" target="_blank" rel="noopener noreferrer">WICKET-5316</a> - Wicket Atmosphere CouldNotLockPageException</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5319" target="_blank" rel="noopener noreferrer">WICKET-5319</a> - CryptoMapper encrypts external URLs in ResourceReferences making the resources inaccessible</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5322" target="_blank" rel="noopener noreferrer">WICKET-5322</a> - “Source code” link doesn’t work at wicket-library.com</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5325" target="_blank" rel="noopener noreferrer">WICKET-5325</a> - ComponentRenderer.renderComponent does not render markup for ListView</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5329" target="_blank" rel="noopener noreferrer">WICKET-5329</a> - “Required” flag initialized too early in  PropertyValidator</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5332" target="_blank" rel="noopener noreferrer">WICKET-5332</a> - Autocomplete throws error when initialized in an AjaxLazyLoadPanel</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5334" target="_blank" rel="noopener noreferrer">WICKET-5334</a> - KittenCaptcha example is broken in IE10</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5335" target="_blank" rel="noopener noreferrer">WICKET-5335</a> - After selecting a file MultiFileUploadField does not render properly input field</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5339" target="_blank" rel="noopener noreferrer">WICKET-5339</a> - Broadcast.EXACT does not notify Behaviors of target Component</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5343" target="_blank" rel="noopener noreferrer">WICKET-5343</a> - AutoCompleteTextField suggestions popup position is wrong when its container has scrollbar</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5345" target="_blank" rel="noopener noreferrer">WICKET-5345</a> - Url.canonical() breaks when there are two consecutive “parent” segments followed by a normal segment</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5348" target="_blank" rel="noopener noreferrer">WICKET-5348</a> - JavaDoc for IColumn#getSortProperty() in misleading</li>
 </ul>
 
 <h4 id="improvement">Improvement</h4>
 
 <ul>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5327">WICKET-5327</a> - CryptoMapper: insecure default encryption provider</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5331">WICKET-5331</a> - Make html5 form validation configurable</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5333">WICKET-5333</a> - wicket-bean-validation french translation</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5341">WICKET-5341</a> - JavaDoc for IFormValidator</li>
-  <li><a href="https://issues.apache.org/jira/browse/WICKET-5354">WICKET-5354</a> - Make ResourceBundles and related classes easier for extension</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5327" target="_blank" rel="noopener noreferrer">WICKET-5327</a> - CryptoMapper: insecure default encryption provider</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5331" target="_blank" rel="noopener noreferrer">WICKET-5331</a> - Make html5 form validation configurable</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5333" target="_blank" rel="noopener noreferrer">WICKET-5333</a> - wicket-bean-validation french translation</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5341" target="_blank" rel="noopener noreferrer">WICKET-5341</a> - JavaDoc for IFormValidator</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5354" target="_blank" rel="noopener noreferrer">WICKET-5354</a> - Make ResourceBundles and related classes easier for extension</li>
 </ul>
 
 </div>
@@ -285,17 +306,17 @@ migration guide found at</p>
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

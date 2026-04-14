@@ -100,8 +100,8 @@
     
     </div>
     <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
     </div>    
 </nav>
         
@@ -116,7 +116,18 @@
             
         </header>
         <section class="toc left default ">
-            <div id="toc" class="toc"><div id="toc-title"><h2>Table of Contents</h2></div><ul><li class="toc--level-1 toc--section-1"><a href="#getting-your-wicket-version"><span class="toc-number">1</span> <span class="toc-text">Getting your Wicket version</span></a></li><li class="toc--level-1 toc--section-2"><a href="#building-wicket"><span class="toc-number">2</span> <span class="toc-text">Building Wicket</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#coping-with-test-failures"><span class="toc-number">2.1</span> <span class="toc-text">Coping with test failures</span></a></li><li class="toc--level-2 toc--section-4"><a href="#using-your-own-built-artifacts"><span class="toc-number">2.2</span> <span class="toc-text">Using your own built artifacts</span></a></li></ul></li></ul></div>
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#getting-your-wicket-version"><span class="toc-number">1</span> <span class="toc-text">Getting your Wicket version</span></a></li>
+<li class="toc--level-1 toc--section-2">
+<a href="#building-wicket"><span class="toc-number">2</span> <span class="toc-text">Building Wicket</span></a><ul>
+<li class="toc--level-2 toc--section-3"><a href="#coping-with-test-failures"><span class="toc-number">2.1</span> <span class="toc-text">Coping with test failures</span></a></li>
+<li class="toc--level-2 toc--section-4"><a href="#using-your-own-built-artifacts"><span class="toc-number">2.2</span> <span class="toc-text">Using your own built artifacts</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
         </section>
         <section>
             <p>The Wicket projects are built using a multi-module build as proposed by the
@@ -193,12 +204,30 @@ because build javadoc takes a long time).</p>
 
 <p>The following commands are useful:</p>
 <table>
-<tr><th>Commandline</th><th>Description</th></tr>
-<tr><td>`mvn clean`</td><td>cleans up build artifacts</td></tr>
-<tr><td>`mvn compile`</td><td>compiles the projects</td></tr>
-<tr><td>`mvn package`</td><td>creates the jar files in the target/ subdirectories</td></tr>
-<tr><td>`mvn install`</td><td>installs the jar files in your local repository</td></tr>
-<tr><td>`mvn -Prelease package`</td><td>generates the javadoc/source jars as well</td></tr>
+<tr>
+<th>Commandline</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>`mvn clean`</td>
+<td>cleans up build artifacts</td>
+</tr>
+<tr>
+<td>`mvn compile`</td>
+<td>compiles the projects</td>
+</tr>
+<tr>
+<td>`mvn package`</td>
+<td>creates the jar files in the target/ subdirectories</td>
+</tr>
+<tr>
+<td>`mvn install`</td>
+<td>installs the jar files in your local repository</td>
+</tr>
+<tr>
+<td>`mvn -Prelease package`</td>
+<td>generates the javadoc/source jars as well</td>
+</tr>
 </table>
 
 <p>You can just run the install target, as Maven will build the previous stages
@@ -254,17 +283,17 @@ or (for unix buffs) <code class="language-plaintext highlighter-rouge">~/.m2/rep
         <footer>
             <div class="l-container l-flex">
     <div class="l-one-third left">
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
     </div>
     <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
     </div>
 </div>
 <div class="l-container">

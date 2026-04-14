@@ -96,7 +96,7 @@ a {
 }
 
 a:hover {
-  color: rgb(237.6945606695, 148.8075313808, 84.3054393305);
+  color: #ee9554;
 }
 
 small {
@@ -129,7 +129,7 @@ del {
 }
 
 mark {
-  background-color: rgb(255, 255, 178.5);
+  background-color: #ffffb3;
 }
 
 hr {
@@ -399,7 +399,7 @@ button {
 .button:hover,
 input[type=submit]:hover,
 button:hover {
-  background: rgb(237.6945606695, 148.8075313808, 84.3054393305);
+  background: #ee9554;
   color: #fff;
 }
 
@@ -1051,7 +1051,7 @@ a {
 }
 
 a:hover {
-  color: rgb(237.6945606695, 148.8075313808, 84.3054393305);
+  color: #ee9554;
 }
 
 h1 a, h2 a, h3 a {
