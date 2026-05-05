@@ -3,13 +3,102 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2026-04-14T09:01:58+00:00</updated>
+    <updated>2026-05-05T08:36:32+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
         <email>dev@wicket.apache.org</email>
     </author>
  
+
+    <entry>
+        <title>Apache Wicket 10.9.0 released</title>
+        <link href="http://wicket.apache.org/news/2026/05/05/wicket-10.9.0-released.html"/>
+        <updated>2026-05-05T00:00:00+00:00</updated>
+        <id>http://wicket.apache.org/news/2026/05/05/wicket-10.9.0-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 10.9.0!&lt;/p&gt;
+
+&lt;p&gt;Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
+
+&lt;p&gt;This release marks another minor release of Wicket 10. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present in this release compared to 10.0.0.&lt;/p&gt;
+
+&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
+
+&lt;p&gt;This release fixes the following security issue:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CVE-2026-43646 crafted URLs can bypass PackageResourceGuard&lt;/li&gt;
+  &lt;li&gt;CVE-2026-42509 crafted strings can break out of the JavaScript sequence&lt;/li&gt;
+  &lt;li&gt;CVE-2026-40010 possible session fixation using AuthenticatedWebSession&lt;/li&gt;
+  &lt;li&gt;CVE-2026-43975 Possible malicious path traversal in FolderUploadsFileManager&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
+
+&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;10.9.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or download and build the distribution yourself, or use our
+convenience binary package you can find here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-10.x.html#manually&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
+
+&lt;p&gt;If you upgrade from 10.y.z this release is a drop in replacement. If
+you come from a version prior to 10.0.0, please read our Wicket 10
+migration guide found at&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://s.apache.org/wicket10migrate&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Have fun!&lt;/p&gt;
+
+&lt;p&gt;— The Wicket team&lt;/p&gt;
+
+&lt;p&gt;========================================================================&lt;/p&gt;
+
+&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
+
+&lt;h4 id=&quot;changelog-for-1090&quot;&gt;CHANGELOG for 10.9.0:&lt;/h4&gt;
+
+&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-7174] - DefaultSecureRandomSupplier does not work for FIPS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;new-feature&quot;&gt;New Feature&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-7169] - Make partHeaderSizeMax in AbstractFileUpload configurable&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-7172] - Support new CSP style, script directives&lt;/li&gt;
+  &lt;li&gt;[WICKET-7179] - add support for jQuery 4.0.0&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+    </entry>
 
     <entry>
         <title>Apache Wicket 10.8.0 released</title>
@@ -720,86 +809,6 @@ migration guide found at&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;[WICKET-7139] - Update OSGi imports for Wicket 9.x&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 9.19.0 released</title>
-        <link href="http://wicket.apache.org/news/2024/12/26/wicket-9.19.0-released.html"/>
-        <updated>2024-12-26T00:00:00+00:00</updated>
-        <id>http://wicket.apache.org/news/2024/12/26/wicket-9.19.0-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 9.19.0!&lt;/p&gt;
-
-&lt;p&gt;Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
-
-&lt;p&gt;This release marks another minor release of Wicket 9. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present in this release compared to 9.0.0.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;CVE-2024-53299 ‘An attacker can intentionally trigger a memory leak’ Reported by Pedro Santos.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;9.19.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package you can find here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-9.x.html#manually&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
-
-&lt;p&gt;If you upgrade from 9.y.z this release is a drop in replacement. If
-you come from a version prior to 9.0.0, please read our Wicket 9
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://s.apache.org/wicket9migrate&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
-
-&lt;h4 id=&quot;changelog-for-9190&quot;&gt;CHANGELOG for 9.19.0:&lt;/h4&gt;
-
-&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-7024] - Wrong static resource urls when their generation is triggered by &lt;wicket:link&gt;&lt;/wicket:link&gt;&lt;/li&gt;
-  &lt;li&gt;[WICKET-7124] - The quickstart archetype fails to build&lt;/li&gt;
-  &lt;li&gt;[WICKET-7132] - Tabbing from AutoComplete fields and back doesn’t work as expected&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-7131] - Improve accessibility and screen reader support for auto-complete component&lt;/li&gt;
-  &lt;li&gt;[WICKET-7133] - Ability move focus back to the autocomplete field when selecting an item using the Tab key&lt;/li&gt;
 &lt;/ul&gt;
 
 </content>
