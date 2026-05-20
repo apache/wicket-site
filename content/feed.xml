@@ -1,4 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2026-05-15T10:57:45+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Apache Wicket</title><entry><title type="html">Apache Wicket 8.18.0 released</title><link href="http://0.0.0.0:4000/news/2026/05/15/wicket-8.18.0-released.html" rel="alternate" type="text/html" title="Apache Wicket 8.18.0 released" /><published>2026-05-15T00:00:00+00:00</published><updated>2026-05-15T00:00:00+00:00</updated><id>http://0.0.0.0:4000/news/2026/05/15/wicket-8.18.0-released</id><content type="html" xml:base="http://0.0.0.0:4000/news/2026/05/15/wicket-8.18.0-released.html"><![CDATA[<p>The Apache Wicket PMC is proud to announce Apache Wicket 8.18.0!</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2026-05-20T20:25:28+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Apache Wicket</title><entry><title type="html">Apache Wicket 10.9.1 released</title><link href="http://0.0.0.0:4000/news/2026/05/20/wicket-10.9.1-released.html" rel="alternate" type="text/html" title="Apache Wicket 10.9.1 released" /><published>2026-05-20T00:00:00+00:00</published><updated>2026-05-20T00:00:00+00:00</updated><id>http://0.0.0.0:4000/news/2026/05/20/wicket-10.9.1-released</id><content type="html" xml:base="http://0.0.0.0:4000/news/2026/05/20/wicket-10.9.1-released.html"><![CDATA[<p>The Apache Wicket PMC is proud to announce Apache Wicket 10.9.1!</p>
+
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
+<p>This release marks another minor release of Wicket 10. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present in this release compared to 10.0.0.</p>
+
+<h2 id="using-this-release">Using this release</h2>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>10.9.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package you can find here:</p>
+
+<ul>
+  <li>Download: http://wicket.apache.org/start/wicket-10.x.html#manually</li>
+</ul>
+
+<!--more-->
+
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
+
+<p>If you upgrade from 10.y.z this release is a drop in replacement. If
+you come from a version prior to 10.0.0, please read our Wicket 10
+migration guide found at</p>
+
+<ul>
+  <li>http://s.apache.org/wicket10migrate</li>
+</ul>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<p>========================================================================</p>
+
+<h3 id="this-release">This Release</h3>
+
+<h4 id="changelog-for-1091">CHANGELOG for 10.9.1:</h4>
+
+<p>[WICKET-7179] - fix broken focus functionality</p>]]></content><author><name></name></author><category term="2026" /><summary type="html"><![CDATA[The Apache Wicket PMC is proud to announce Apache Wicket 10.9.1! Apache Wicket is an open source Java component oriented web application framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more. You can find more about Apache Wicket at https://wicket.apache.org This release marks another minor release of Wicket 10. We use semantic versioning for the development of Wicket, and as such no API breaks are present in this release compared to 10.0.0. Using this release With Apache Maven update your dependency to (and don’t forget to update any other dependencies on Wicket projects to the same version): &lt;dependency&gt; &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt; &lt;artifactId&gt;wicket-core&lt;/artifactId&gt; &lt;version&gt;10.9.1&lt;/version&gt; &lt;/dependency&gt; Or download and build the distribution yourself, or use our convenience binary package you can find here: Download: http://wicket.apache.org/start/wicket-10.x.html#manually]]></summary></entry><entry><title type="html">Apache Wicket 8.18.0 released</title><link href="http://0.0.0.0:4000/news/2026/05/15/wicket-8.18.0-released.html" rel="alternate" type="text/html" title="Apache Wicket 8.18.0 released" /><published>2026-05-15T00:00:00+00:00</published><updated>2026-05-15T00:00:00+00:00</updated><id>http://0.0.0.0:4000/news/2026/05/15/wicket-8.18.0-released</id><content type="html" xml:base="http://0.0.0.0:4000/news/2026/05/15/wicket-8.18.0-released.html"><![CDATA[<p>The Apache Wicket PMC is proud to announce Apache Wicket 8.18.0!</p>
 
 <p>Apache Wicket is an open source Java component oriented web application
 framework that powers thousands of web applications and web sites for
@@ -625,120 +676,4 @@ migration guide found at</p>
 
 <ul>
   <li>[WICKET-7153] - [Resources] modify RootMapper in order to allow to define a refferent ResourceReferenceMapper</li>
-</ul>]]></content><author><name></name></author><category term="2025" /><summary type="html"><![CDATA[The Apache Wicket PMC is proud to announce Apache Wicket 9.21.0! Apache Wicket is an open source Java component oriented web application framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more. You can find more about Apache Wicket at https://wicket.apache.org This release marks another minor release of Wicket 9. We use semantic versioning for the development of Wicket, and as such no API breaks are present in this release compared to 9.0.0. Using this release With Apache Maven update your dependency to (and don’t forget to update any other dependencies on Wicket projects to the same version): &lt;dependency&gt; &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt; &lt;artifactId&gt;wicket-core&lt;/artifactId&gt; &lt;version&gt;9.21.0&lt;/version&gt; &lt;/dependency&gt; Or download and build the distribution yourself, or use our convenience binary package you can find here: Download: http://wicket.apache.org/start/wicket-9.x.html#manually]]></summary></entry><entry><title type="html">Apache Wicket 8.17.0 released</title><link href="http://0.0.0.0:4000/news/2025/01/31/wicket-8.17.0-released.html" rel="alternate" type="text/html" title="Apache Wicket 8.17.0 released" /><published>2025-01-31T00:00:00+00:00</published><updated>2025-01-31T00:00:00+00:00</updated><id>http://0.0.0.0:4000/news/2025/01/31/wicket-8.17.0-released</id><content type="html" xml:base="http://0.0.0.0:4000/news/2025/01/31/wicket-8.17.0-released.html"><![CDATA[<p>The Apache Wicket PMC is proud to announce Apache Wicket 8.17.0!</p>
-
-<p>Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org</p>
-
-<p>This release marks another minor release of Wicket 8. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present in this release compared to 8.0.0.</p>
-
-<h2 id="new-and-noteworthy">New and noteworthy</h2>
-
-<p>This release fixes the following security issue:</p>
-
-<ul>
-  <li>CVE-2024-53299 ‘An attacker can intentionally trigger a memory leak’ Reported by Pedro Santos.</li>
-</ul>
-
-<h2 id="using-this-release">Using this release</h2>
-
-<p>With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):</p>
-
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>8.17.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
-
-<p>Or download and build the distribution yourself, or use our
-convenience binary package you can find here:</p>
-
-<ul>
-  <li>Download: http://wicket.apache.org/start/wicket-8.x.html#manually</li>
-</ul>
-
-<!--more-->
-
-<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
-
-<p>If you upgrade from 8.y.z this release is a drop in replacement. If
-you come from a version prior to 8.0.0, please read our Wicket 8
-migration guide found at</p>
-
-<ul>
-  <li>http://s.apache.org/wicket8migrate</li>
-</ul>
-
-<p>Have fun!</p>
-
-<p>— The Wicket team</p>
-
-<p>========================================================================</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
-</code></pre></div></div>
-
-<p>Signature for apache-wicket-8.17.0.zip:</p>
-
-<div class="highlight"><pre>
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAmeX+qgACgkQh48B+qjT
-VuEg7A/+JKbyIRRIoRMXwMcpWkmm0btNW0I9ZBftqzbPAfus853VloRTPiu5D1Ly
-s8zs9rTEM76ftOnLlWexM9z8KzytDOZ68qtQz0q42A0+tCS1G3NnKgl7iHJ4kEBp
-Ft1l50lCMsAoeU9YC3f+9i/sjx1PPuodVi1WANwE9oo7Lf9jPq+X0yI9Z2dzaFpf
-pc5eGELaesD5nWNC3Rqwn65xSsWHBesw4xeUXbVm8Sk0wUstxaonA9umR8iQal8/
-vcVMWO5eLqDyCsOq1F6+PziA/PDV/Fav8Ekxaq3RdcmA/JfrEbQI16ruUGYEhRRH
-29fec0wwj11gsOSC84jg34OdN1OkhzAqc3RqGLOHMJuxZR5h0ytemhzlASfHanRa
-q+CTDUw6FuNNWQSfNOxw2+9qiOoDul5tbxqA1j6VoFx8qGE3yPjdA868rV62TTmD
-1JFfBLyRF5Knc+t0hX0baovNV1Uhf5P99St0ZKRzo3gch5zmVxdNDRAw6027rXTq
-F2aSG/GSUoNWHKr0A3p22ahE7enj+eqV6n7hfYxvS3uQ1n7EDBqAUp1OO0ftnEfB
-caujs+o0CoT1Yu11KLPfPOw4W+rMhqqQtZEa3I97ac+CFYMUfNDZdxGk33XretYS
-Vn1WNRD+en1LxAtgNIzqb3JOfqaQMWxuqrm92yhG80BEZ9jf7NQ=
-=+HWr
------END PGP SIGNATURE-----
-</pre></div>
-
-<p>Signature for apache-wicket-8.17.0.tar.gz:</p>
-
-<div class="highlight"><pre>
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAmeX+qgACgkQh48B+qjT
-VuFMKg//XEZrO5VUpcllihLXBPlAke3APED6xx7vKBbytYH4tNp6kO2X/JBRlI0E
-UNbSzB09QHHkK02uoNp2dfmwiKKzqlavIy+5RaSw0XBkJas4Iz/J+7eugjExBVbu
-/iekdlp6Zy+UN8kzjT0QiW6rnWxhoqBoZip6jGCiQCAZnwVuQ35RkhN19KNebBjk
-upfEQ5+2Xf9xGS4EoSzgH8s122gZDADUD3WlSRd1ZXu8d1ai9d3jySao/isiMZeM
-+8xb2ztbRJ8XBUDuSTL9XX9lnl+FGvXxSfLciQ0rPCEsmYZKmOymnV4hUWZw28yk
-JizA1/rqiTmno65I9Hp6+Ky9VwMFM/6+DMby/20EpwKbwjr5kZ1BNJ9rTzR3wPEf
-PDBc7+3JHkxP0GUrYLo3pi1zxP3xXPdohEW3ZyNchsBmUG0vha8WGQqADg9Jy4My
-EPURVQX9yu280CrvT3aZWjWVtr6tVwvZ6BzZ2p9gTkyd9kiL/4z0PGe/tEolnVvM
-+6VXyohFb+bzp/RU1pppYYgCP4mEpwJH2OD4Zew1PjDtLOdYbWZN7GNvxlJiahE8
-jMbkfQlOUl+CxZvbUBh2MfyE+RQGCiu7oNKPuFHbShiKylaCVf0goXzWfbJWRz7y
-8XggIsKla00iXwenVnW6mz2wchkj7g3fXwitB0JlrlOwd1scPS4=
-=uQT+
------END PGP SIGNATURE-----
-</pre></div>
-
-<p>========================================================================</p>
-
-<h3 id="this-release">This Release</h3>
-
-<h4 id="changelog-for-8170">CHANGELOG for 8.17.0:</h4>
-
-<h5 id="bug">Bug</h5>
-
-<ul>
-  <li>[WICKET-7024] - Wrong static resource urls when their generation is triggered by <wicket:link></wicket:link></li>
-</ul>
-
-<h5 id="improvement">Improvement</h5>
-
-<ul>
-  <li>[WICKET-7137] - Make resource URL sanitization extendable</li>
-</ul>]]></content><author><name></name></author><category term="2025" /><summary type="html"><![CDATA[The Apache Wicket PMC is proud to announce Apache Wicket 8.17.0! Apache Wicket is an open source Java component oriented web application framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more. You can find more about Apache Wicket at https://wicket.apache.org This release marks another minor release of Wicket 8. We use semantic versioning for the development of Wicket, and as such no API breaks are present in this release compared to 8.0.0. New and noteworthy This release fixes the following security issue: CVE-2024-53299 ‘An attacker can intentionally trigger a memory leak’ Reported by Pedro Santos. Using this release With Apache Maven update your dependency to (and don’t forget to update any other dependencies on Wicket projects to the same version): &lt;dependency&gt; &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt; &lt;artifactId&gt;wicket-core&lt;/artifactId&gt; &lt;version&gt;8.17.0&lt;/version&gt; &lt;/dependency&gt; Or download and build the distribution yourself, or use our convenience binary package you can find here: Download: http://wicket.apache.org/start/wicket-8.x.html#manually]]></summary></entry></feed>
+</ul>]]></content><author><name></name></author><category term="2025" /><summary type="html"><![CDATA[The Apache Wicket PMC is proud to announce Apache Wicket 9.21.0! Apache Wicket is an open source Java component oriented web application framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more. You can find more about Apache Wicket at https://wicket.apache.org This release marks another minor release of Wicket 9. We use semantic versioning for the development of Wicket, and as such no API breaks are present in this release compared to 9.0.0. Using this release With Apache Maven update your dependency to (and don’t forget to update any other dependencies on Wicket projects to the same version): &lt;dependency&gt; &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt; &lt;artifactId&gt;wicket-core&lt;/artifactId&gt; &lt;version&gt;9.21.0&lt;/version&gt; &lt;/dependency&gt; Or download and build the distribution yourself, or use our convenience binary package you can find here: Download: http://wicket.apache.org/start/wicket-9.x.html#manually]]></summary></entry></feed>
