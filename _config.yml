@@ -17,7 +17,7 @@ sass:
 wicket:
   version:    10.9.1
   version_90: 9.23.0
-  version_10: 10.9.0
+  version_10: 10.9.1
   version_80: 8.18.0
   version_70: 7.18.0
   version_60: 6.30.0
