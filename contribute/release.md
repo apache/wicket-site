@@ -189,10 +189,10 @@ See also [managing nexus](#nexus) for the steps needed to publish the artifacts 
 
 #### Preparing #####
 
-* Ask the dev@ mailing list if there are any issues that still need to be in the release (looking at JIRA is a good start)
-* [Release](https://issues.apache.org/jira/plugins/servlet/project-config/WICKET/versions) the version in JIRA
+* Ask the dev@ mailing list if there are any issues that still need to be in the release (the [milestone](https://github.com/apache/wicket/milestones) for the version is a good start)
+* Close the [milestone](https://github.com/apache/wicket/milestones) for the version once its issues are done
 * Assuming there are none, and you are now in build mode, update the CHANGELOG-x.y file
-(you can use JIRA for this list: go to "releases", and under "unreleased", next to your version, there's a release notes link)
+(you can use the closed milestone for this list, or let GitHub generate release notes for the release tag)
 
 Make sure your ```~/.m2/settings.xml``` contains the following definition
 
