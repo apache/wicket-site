@@ -124,7 +124,7 @@
 <li class="toc--level-1 toc--section-2">
 <a href="#security"><span class="toc-number">2</span> <span class="toc-text">Report A Security Problem</span></a><ul>
 <li class="toc--level-2 toc--section-3"><a href="#contact-the-wicket-pmc-privately"><span class="toc-number">2.1</span> <span class="toc-text">Contact the Wicket PMC privately</span></a></li>
-<li class="toc--level-2 toc--section-4"><a href="#report-normal-bugs-in-jira"><span class="toc-number">2.2</span> <span class="toc-text">Report normal bugs in JIRA</span></a></li>
+<li class="toc--level-2 toc--section-4"><a href="#report-normal-bugs-in-our-issue-tracker"><span class="toc-number">2.2</span> <span class="toc-text">Report normal bugs in our issue tracker</span></a></li>
 </ul>
 </li>
 <li class="toc--level-1 toc--section-5">
@@ -221,7 +221,7 @@ private without leaking the info to any bad guys.</p>
 <p>We treat all security issues seriously and will try to fix them as soon
 as possible in all affected versions that we still support.</p>
 
-<h3 id="report-normal-bugs-in-jira">Report normal bugs in JIRA</h3>
+<h3 id="report-normal-bugs-in-our-issue-tracker">Report normal bugs in our issue tracker</h3>
 
 <p>The Security Team cannot accept regular bug reports or other queries,
 we ask that you use our <a href="/help/#reportbug">bug reporting page</a>
@@ -232,7 +232,7 @@ for normal, non-security bugs.</p>
 <h2 id="reportbug">Report a Bug for Apache Wicket</h2>
 
 <p>If you are experiencing problems using Wicket please report your
-problem via the <a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue
+problem via the <a href="https://github.com/apache/wicket/issues" target="_blank" rel="noopener noreferrer">Issue
 Tracker</a>. You may also
 find it useful to discuss your issues with the community on one of the
 Mailing Lists.</p>
@@ -264,7 +264,11 @@ anyway, so you might as well get them out of the way.</p>
 encountered your issue. So please search for some keywords of your
 problem using a search engine,
 <a href="http://stackoverflow.com/questions/tagged/wicket" target="_blank" rel="noopener noreferrer">stackoverflow</a> and our
-<a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">issue tracker</a>.</p>
+<a href="https://github.com/apache/wicket/issues?q=is%3Aissue" target="_blank" rel="noopener noreferrer">issue tracker</a>.</p>
+
+<p>Note that issues reported before 2026 live in our read-only <a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">JIRA
+archive</a>, so it is worth
+searching there as well.</p>
 
 <p>If someone already found your bug, look at how the bug was resolved. If
 it wasn’t resolved, note what they already tried and add your own
@@ -384,7 +388,7 @@ demonstrate the bug?</li>
   <li>Submit a patch fixing the bug! (We also buy you beer when we meet you
 if you submit bug fixes for memory leaks or performance related
 issues, if you can run a profiler on your test case and attach the
-output as a file (or zipped file if its huge) to the JIRA we can
+output as a file (or zipped file if its huge) to the issue we can
 normally fix things much faster. e.g. run JProfiler or YourKit on
 your code and send us the output. To find memory leaks its quicker to
 resolve if you can tell us what classes are taking up all of the RAM;

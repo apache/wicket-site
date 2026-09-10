@@ -62,7 +62,7 @@ way](http://www.catb.org/esr/faqs/smart-questions.html).
 
 If you are experiencing problems using Wicket please report your
 problem via the [Issue
-Tracker](https://issues.apache.org/jira/browse/WICKET). You may also
+Tracker](https://github.com/apache/wicket/issues). You may also
 find it useful to discuss your issues with the community on one of the
 Mailing Lists. 
 
@@ -91,7 +91,11 @@ A lot of developers use Wicket, and chances are someone already
 encountered your issue. So please search for some keywords of your
 problem using a search engine,
 [stackoverflow](http://stackoverflow.com/questions/tagged/wicket) and our
-[issue tracker](https://issues.apache.org/jira/browse/WICKET).
+[issue tracker](https://github.com/apache/wicket/issues?q=is%3Aissue).
+
+Note that issues reported before 2026 live in our read-only [JIRA
+archive](https://issues.apache.org/jira/browse/WICKET), so it is worth
+searching there as well.
 
 If someone already found your bug, look at how the bug was resolved. If
 it wasn't resolved, note what they already tried and add your own
@@ -195,7 +199,7 @@ We can help you much quicker if you try the following
 * Submit a patch fixing the bug! (We also buy you beer when we meet you
   if you submit bug fixes for memory leaks or performance related
   issues, if you can run a profiler on your test case and attach the
-  output as a file (or zipped file if its huge) to the JIRA we can
+  output as a file (or zipped file if its huge) to the issue we can
   normally fix things much faster. e.g. run JProfiler or YourKit on
   your code and send us the output. To find memory leaks its quicker to
   resolve if you can tell us what classes are taking up all of the RAM;

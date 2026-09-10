@@ -24,7 +24,7 @@ private without leaking the info to any bad guys.
 We treat all security issues seriously and will try to fix them as soon
 as possible in all affected versions that we still support.
 
-### Report normal bugs in JIRA
+### Report normal bugs in our issue tracker
 
 The Security Team cannot accept regular bug reports or other queries,
 we ask that you use our [bug reporting page]({{site.baseurl}}/help/#reportbug)

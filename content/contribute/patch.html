@@ -119,12 +119,9 @@
             <div id="toc" class="toc">
 <div id="toc-title"><h2>Table of Contents</h2></div>
 <ul>
-<li class="toc--level-1 toc--section-1"><a href="#create-and-set-an-issue-on-jira"><span class="toc-number">1</span> <span class="toc-text">Create and set an issue on JIRA</span></a></li>
+<li class="toc--level-1 toc--section-1"><a href="#create-an-issue"><span class="toc-number">1</span> <span class="toc-text">Create an issue</span></a></li>
 <li class="toc--level-1 toc--section-2">
-<a href="#time-for-some-coding"><span class="toc-number">2</span> <span class="toc-text">Time for some coding</span></a><ul>
-<li class="toc--level-2 toc--section-3"><a href="#github"><span class="toc-number">2.1</span> <span class="toc-text">Create a pull request</span></a></li>
-<li class="toc--level-2 toc--section-4"><a href="#create-a-patch"><span class="toc-number">2.2</span> <span class="toc-text">Create a patch</span></a></li>
-</ul>
+<a href="#time-for-some-coding"><span class="toc-number">2</span> <span class="toc-text">Time for some coding</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#github"><span class="toc-number">2.1</span> <span class="toc-text">Create a pull request</span></a></li></ul>
 </li>
 </ul>
 </div>
@@ -134,10 +131,9 @@
 
 <p>As developers we all strive to produce a flawless software. However, in
 the real world we might find that our code contains errors or bugs.
-Wicket like many other Apache projects uses
-<a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">JIRA</a> to track bugs and
-new feature. If you think you have found a bug follow these simple
-steps before opening a new issue on JIRA:</p>
+Wicket tracks bugs and new features in <a href="https://github.com/apache/wicket/issues" target="_blank" rel="noopener noreferrer">GitHub
+Issues</a>. If you think you have
+found a bug follow these simple steps before opening a new issue:</p>
 
 <ul>
   <li>
@@ -145,8 +141,11 @@ steps before opening a new issue on JIRA:</p>
 fixed</p>
   </li>
   <li>
-    <p>Search <a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">JIRA</a> and the
-mailing list to see if it’s already been discussed</p>
+    <p>Search <a href="https://github.com/apache/wicket/issues?q=is%3Aissue" target="_blank" rel="noopener noreferrer">our issues</a>
+and the mailing list to see if it’s already been discussed. Issues
+reported before 2026 live in our read-only <a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">JIRA
+archive</a>, which is worth
+searching too.</p>
   </li>
   <li>
     <p>Simply ask to the <a href="mailto:dev@wicket.apache.org">devs</a> mailing list
@@ -154,17 +153,15 @@ if you are unsure.</p>
   </li>
 </ul>
 
-<h2 id="create-and-set-an-issue-on-jira">Create and set an issue on JIRA</h2>
+<h2 id="create-an-issue">Create an issue</h2>
 
 <p>Either you have spotted a bug or you want to propose a new feature, the
-first thing to do is to create and set an issue on JIRA with the
-following steps:</p>
+first thing to do is to create an issue with the following steps:</p>
 
 <ul>
   <li>
-    <p>Create a new <a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">JIRA
-issue</a>. The issue might
-alredy exist if you have found a regression.</p>
+    <p>Create a new <a href="https://github.com/apache/wicket/issues/new" target="_blank" rel="noopener noreferrer">issue</a>. The
+issue might already exist if you have found a regression.</p>
   </li>
   <li>
     <p>Write a short description of the issue. If this one is a bug, report
@@ -180,12 +177,9 @@ prototyping the feature or demonstrating the bug.</p>
 
 <p>Wicket uses <a href="http://git-scm.com/" target="_blank" rel="noopener noreferrer">Git</a> as versioning system, so you
 need to have it properly installed and configured to start work on
-Wicket code base. The main git repository is hosted on <a href="https://git-wip-us.apache.org/repos/asf/wicket.git" target="_blank" rel="noopener noreferrer">Apache git
-server</a> but is
-mirrored on <a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a>. To work on
-Wicket code you can decide to create a pull request forking the GitHub
-mirror or you can clone the official repository and generate a patch
-file.</p>
+Wicket code base. The repository lives on
+<a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a>, and contributions reach us
+as pull requests against it.</p>
 
 <p><strong>NOTE:</strong> when you are working on Wicket code, please follow our code
 format rules. You can find them inside wicket-core module as Eclipse code formatter profile.</p>
@@ -197,27 +191,15 @@ the format rules.</p>
 <h3 id="github">Create a pull request</h3>
 
 <p>To create a pull request on GitHub follow the instructions you can find
-<a href="https://help.github.com/articles/creating-a-pull-request/" target="_blank" rel="noopener noreferrer">here</a>. Once
-you have finished to work on you pull request, send us an email using
+<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork" target="_blank" rel="noopener noreferrer">here</a>.
+Mention the issue your work addresses in the description, so that the
+pull request and the issue link up. Once you have finished to work on
+your pull request, send us an email using the
 <a href="mailto:dev@wicket.apache.org">devs</a> mailing list.</p>
 
 <p>All Pull Requests are automatically tested at 
 <a href="https://github.com/apache/wicket/actions" target="_blank" rel="noopener noreferrer">Github Actions</a> on AMD64 and
 at <a href="https://travis-ci.com/github/apache/wicket/" target="_blank" rel="noopener noreferrer">TravisCI</a> on ARM64 platform.</p>
-
-<h3 id="create-a-patch">Create a patch</h3>
-
-<p>If you prefer to work on our main repository, <a href="../start/download.html#snapshots-and-latest-bleeding-edge-code">clone it with
-Git</a>
-and when you have finished your work create a patch with the following
-commands:</p>
-
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">git add any_files_you_created_modified_or_deleted
-</span><span class="gp">git diff --cached &gt;</span><span class="w"> </span>/tmp/WICKET-NNNN.patch</code></pre></figure>
-
-<p>where NNNN is the issue number. Finally, attach that file
-(/tmp/WICKET-NNNN.patch) to the
-<a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">JIRA</a></p>
 
 
         </section>

@@ -324,11 +324,10 @@ cd ..
 <h4 id="preparing-1">Preparing</h4>
 
 <ul>
-  <li>Ask the dev@ mailing list if there are any issues that still need to be in the release (looking at JIRA is a good start)</li>
-  <li>
-<a href="https://issues.apache.org/jira/plugins/servlet/project-config/WICKET/versions" target="_blank" rel="noopener noreferrer">Release</a> the version in JIRA</li>
+  <li>Ask the dev@ mailing list if there are any issues that still need to be in the release (the <a href="https://github.com/apache/wicket/milestones" target="_blank" rel="noopener noreferrer">milestone</a> for the version is a good start)</li>
+  <li>Close the <a href="https://github.com/apache/wicket/milestones" target="_blank" rel="noopener noreferrer">milestone</a> for the version once its issues are done</li>
   <li>Assuming there are none, and you are now in build mode, update the CHANGELOG-x.y file
-(you can use JIRA for this list: go to “releases”, and under “unreleased”, next to your version, there’s a release notes link)</li>
+(you can use the closed milestone for this list, or let GitHub generate release notes for the release tag)</li>
 </ul>
 
 <p>Make sure your <code class="language-plaintext highlighter-rouge">~/.m2/settings.xml</code> contains the following definition</p>
