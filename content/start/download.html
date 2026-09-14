@@ -120,9 +120,10 @@
 <div id="toc-title"><h2>Table of Contents</h2></div>
 <ul>
 <li class="toc--level-1 toc--section-1"><a href="#supported-versions"><span class="toc-number">1</span> <span class="toc-text">Supported Versions</span></a></li>
-<li class="toc--level-1 toc--section-2"><a href="#unsupported-releases"><span class="toc-number">2</span> <span class="toc-text">Unsupported Releases</span></a></li>
-<li class="toc--level-1 toc--section-3"><a href="#release-archives"><span class="toc-number">3</span> <span class="toc-text">Release Archives</span></a></li>
-<li class="toc--level-1 toc--section-4"><a href="#snapshot-repository"><span class="toc-number">4</span> <span class="toc-text">SNAPSHOT Repository</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#release-policy"><span class="toc-number">2</span> <span class="toc-text">Release Policy</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#unsupported-releases"><span class="toc-number">3</span> <span class="toc-text">Unsupported Releases</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#release-archives"><span class="toc-number">4</span> <span class="toc-text">Release Archives</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#snapshot-repository"><span class="toc-number">5</span> <span class="toc-text">SNAPSHOT Repository</span></a></li>
 </ul>
 </div>
         </section>
@@ -169,17 +170,76 @@
 	<tr>
 		<td><a href="wicket-9.x.html">Wicket 9.x</a></td>
 		<td>9.24.0</td>
-		<td>supported</td>
+		<td>one final release, then end of life — upgrade to 10.x or 11.x</td>
 	</tr>
 	<tr>
 		<td><a href="wicket-8.x.html">Wicket 8.x</a></td>
 		<td>8.19.0</td>
-		<td>security fixes only, upgrade to 9.x or 10.x</td>
+		<td>one final release, then end of life — upgrade to 10.x or 11.x</td>
 	</tr>	
 </table>
 
 <p>However, if your application is not on the current branch, you should
 consider upgrading at your earliest convenience.</p>
+
+<hr>
+
+<h2 id="release-policy">Release Policy</h2>
+
+<p>With the release of Wicket 11.0.0, in the first week of October 2026, Wicket moves to a
+time-based release schedule: a new major release every three months, and every fourth
+major release — once a year — is a long term support (LTS) release. The table
+above describes the situation today; the schedule below takes effect when 11.0.0 is
+released.</p>
+
+<p>Two release lines are maintained at any time:</p>
+
+<ul>
+  <li>the current <strong>LTS</strong> release, which receives security fixes and applicable bug fixes
+until the next LTS release;</li>
+  <li>the current <strong>quarterly</strong> release, which receives fixes until the next quarterly
+release supersedes it. Fixes normally ride along with that next release; a serious
+issue may warrant a patch release, for example 13.0.1.</li>
+</ul>
+
+<p>The support window applies to the release line, not to individual features. Features are
+developed on <code class="language-plaintext highlighter-rouge">main</code> and carry over into every following release, so a feature introduced
+in Wicket 11 is also present in 12, 13 and in the next LTS, Wicket 14.</p>
+
+<p>Wicket 10 is the current LTS and stays supported until Wicket 14 is released in the first
+week of July 2027. Wicket 8.x and 9.x each receive one final release and are then end of
+life, and with them Wicket’s support for the <code class="language-plaintext highlighter-rouge">javax.servlet</code> API.</p>
+
+<table style="width:100%">
+	<tr>
+		<th style="width:30%">Version</th>
+		<th style="width:30%">Expected</th>
+		<th style="width:40%">Line</th>
+	</tr>
+	<tr>
+		<td>Wicket 11.0.0</td>
+		<td>first week of October 2026</td>
+		<td>quarterly</td>
+	</tr>
+	<tr>
+		<td>Wicket 12.0.0</td>
+		<td>January 2027</td>
+		<td>quarterly</td>
+	</tr>
+	<tr>
+		<td>Wicket 13.0.0</td>
+		<td>April 2027</td>
+		<td>quarterly</td>
+	</tr>
+	<tr>
+		<td>Wicket 14.0.0</td>
+		<td>first week of July 2027</td>
+		<td>LTS, supported until Wicket 18</td>
+	</tr>
+</table>
+
+<p>The full announcement is in our news archive:
+<a href="/news/2026/09/11/release-cadence.html">A new release cadence for Apache Wicket</a>.</p>
 
 <hr>
 

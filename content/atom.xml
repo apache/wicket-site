@@ -3,13 +3,107 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2026-08-30T11:26:36+00:00</updated>
+    <updated>2026-09-11T16:41:49+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
         <email>dev@wicket.apache.org</email>
     </author>
  
+
+    <entry>
+        <title>A new release cadence for Apache Wicket</title>
+        <link href="http://wicket.apache.org/news/2026/09/11/release-cadence.html"/>
+        <updated>2026-09-11T00:00:00+00:00</updated>
+        <id>http://wicket.apache.org/news/2026/09/11/release-cadence</id>
+        <content type="html">&lt;p&gt;Starting with Apache Wicket 11.0, due in the first week of October 2026, Wicket moves to
+time-based releases: a new major release every three months, and an LTS release once a
+year. We will do one more release of the 8.x and 9.x branches and then stop supporting
+those versions entirely, and with them the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javax.servlet&lt;/code&gt; API. Wicket 10 is our current
+LTS and remains supported until the release of Wicket 14, expected in the first week of
+July 2027.&lt;/p&gt;
+
+&lt;p&gt;Nothing changes before 11.0 is out. Until then, 10.x, 9.x and 8.x are supported as they
+are today.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;why-we-are-changing-this&quot;&gt;Why we are changing this&lt;/h2&gt;
+
+&lt;p&gt;Wicket has been around for over twenty years. Where it used to have a very vibrant and
+active community, development and contributions have slowed down over the past ten years.
+Partly this is because Wicket has a stable and solid core that simply doesn’t need that
+much maintenance, but it is also caused by the world moving more to JavaScript-heavy,
+client-side frameworks. That slowdown also slowed the release cadence, which in turn made
+it less attractive to contribute, causing even more slowdown.&lt;/p&gt;
+
+&lt;p&gt;Over the past six months we have seen a sharp rise in LLM-generated security reports. This
+helps improve security, but dealing with CVEs takes a lot of time, and that time is
+currently multiplied by four because of the old versions we support. Time spent on
+backporting, releasing and documenting those old versions is time not spent on improving
+Wicket itself.&lt;/p&gt;
+
+&lt;p&gt;At the same time, LLMs allow us to perform cleanups and improvements at a larger scale.
+With major versions years apart, our promise of semantic versioning makes it impossible to
+deliver those changes to our community in a timely manner.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-new-cadence&quot;&gt;The new cadence&lt;/h2&gt;
+
+&lt;p&gt;One major release every three months, each bringing new features. Every fourth major
+release — once a year — is an LTS release with bugfix and security support until the next
+LTS. This means we only need to support two active versions at the same time.&lt;/p&gt;
+
+&lt;p&gt;In practice that gives the following schedule:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Wicket 11.0.0 — first week of October 2026&lt;/li&gt;
+  &lt;li&gt;Wicket 12.0.0 — January 2027&lt;/li&gt;
+  &lt;li&gt;Wicket 13.0.0 — April 2027&lt;/li&gt;
+  &lt;li&gt;Wicket 14.0.0 — first week of July 2027, our second LTS release, supported
+until Wicket 18&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Wicket 10 is our first LTS release line and stays supported until Wicket 14 is released.
+Wicket 8 and Wicket 9 each get one more release, after which both are end of life, and
+with them our support for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javax.servlet&lt;/code&gt; API. Applications on 8.x or 9.x should plan
+their move to 10.x or 11.x now; the &lt;a href=&quot;https://s.apache.org/wicket10migrate&quot;&gt;migration guide&lt;/a&gt;
+covers the step to Wicket 10.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-supported-until-the-next-major-release-means&quot;&gt;What “supported until the next major release” means&lt;/h2&gt;
+
+&lt;p&gt;A question from the user list, worth answering here as well: if there is a major release
+every quarter, is a feature introduced in one quarter supported for only three months?&lt;/p&gt;
+
+&lt;p&gt;No. The support period applies to the release line, not to individual features. New
+features are developed on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; and will normally remain part of subsequent releases, so
+a feature introduced in Wicket 11 will also be present in 12, 13 and eventually in the
+next LTS release, Wicket 14. What changes is which release lines receive fixes.&lt;/p&gt;
+
+&lt;p&gt;We will develop on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; and on the current LTS branch. The LTS branch receives security
+fixes and applicable bug fixes until the next LTS release. For the quarterly non-LTS
+releases, only the latest release receives fixes: when Wicket 12 is released we will no
+longer release fixes for Wicket 11, and when Wicket 13 is released the same applies to
+Wicket 12.&lt;/p&gt;
+
+&lt;p&gt;Bug fixes and security fixes on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; will normally be included in the next quarterly
+release. If an issue is serious enough that it cannot wait, we may do a patch release for
+the current non-LTS version, for example 13.0.1.&lt;/p&gt;
+
+&lt;p&gt;So at any point we expect to maintain at most two release lines: the current LTS and the
+current quarterly release.&lt;/p&gt;
+
+&lt;h2 id=&quot;stability&quot;&gt;Stability&lt;/h2&gt;
+
+&lt;p&gt;A large number of applications build on the stability of the Wicket API. This is no
+different for our community than it is for the team of core developers. That stability is
+important to the entire Wicket ecosystem and something we do not take lightly. For some
+changes we do need to break the API, but it is something we will only do if it is really
+needed. Where possible we will keep the old API as a deprecated alternative for some time
+to ease migration. API changes are documented in our migration guide.&lt;/p&gt;
+
+&lt;p&gt;— The Apache Wicket PMC&lt;/p&gt;
+</content>
+    </entry>
 
     <entry>
         <title>Apache Wicket 9.24.0 released</title>
@@ -788,79 +882,6 @@ migration guide found at&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;[WICKET-7167] - Submited Form with wantSubmitOnParentFormSubmit false does not cascade process.&lt;/li&gt;
   &lt;li&gt;[WICKET-7170] - SpringInjector / AnnotProxyFieldValueFactory does not consider defaultCandidate&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 9.22.0 released</title>
-        <link href="http://wicket.apache.org/news/2025/12/19/wicket-9.22.0-released.html"/>
-        <updated>2025-12-19T00:00:00+00:00</updated>
-        <id>http://wicket.apache.org/news/2025/12/19/wicket-9.22.0-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 9.22.0!&lt;/p&gt;
-
-&lt;p&gt;Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
-
-&lt;p&gt;This release marks another minor release of Wicket 9. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present in this release compared to 9.0.0.&lt;/p&gt;
-
-&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;9.22.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package you can find here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-9.x.html#manually&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
-
-&lt;p&gt;If you upgrade from 9.y.z this release is a drop in replacement. If
-you come from a version prior to 9.0.0, please read our Wicket 9
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://s.apache.org/wicket9migrate&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
-
-&lt;h4 id=&quot;changelog-for-9220&quot;&gt;CHANGELOG for 9.22.0:&lt;/h4&gt;
-
-&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-7090] - Files in release jars do not have a modification timestamp set&lt;/li&gt;
-  &lt;li&gt;[WICKET-7156] - wicket-ioc: dependency on objenesis is optional in pom but not in module-info&lt;/li&gt;
-  &lt;li&gt;[WICKET-7163] - Missing imports for javax.servlet.http in wicket-extensions&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;wish&quot;&gt;Wish&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-7142] - Allow public access for AbstractAjaxBehavior#getComponent()&lt;/li&gt;
 &lt;/ul&gt;
 
 </content>
