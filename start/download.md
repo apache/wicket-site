@@ -47,17 +47,74 @@ The following releases are supported by the Wicket team.
 	<tr>
 		<td><a href="wicket-9.x.html">Wicket 9.x</a></td>
 		<td>{{site.wicket.version_90}}</td>
-		<td>supported</td>
+		<td>one final release, then end of life &mdash; upgrade to 10.x or 11.x</td>
 	</tr>
 	<tr>
 		<td><a href="wicket-8.x.html">Wicket 8.x</a></td>
 		<td>{{site.wicket.version_80}}</td>
-		<td>security fixes only, upgrade to 9.x or 10.x</td>
+		<td>one final release, then end of life &mdash; upgrade to 10.x or 11.x</td>
 	</tr>	
 </table>
 
 However, if your application is not on the current branch, you should
 consider upgrading at your earliest convenience.
+
+---
+
+## Release Policy
+
+With the release of Wicket 11.0.0, in the first week of October 2026, Wicket moves to a
+time-based release schedule: a new major release every three months, and every fourth
+major release &mdash; once a year &mdash; is a long term support (LTS) release. The table
+above describes the situation today; the schedule below takes effect when 11.0.0 is
+released.
+
+Two release lines are maintained at any time:
+
+* the current **LTS** release, which receives security fixes and applicable bug fixes
+  until the next LTS release;
+* the current **quarterly** release, which receives fixes until the next quarterly
+  release supersedes it. Fixes normally ride along with that next release; a serious
+  issue may warrant a patch release, for example 13.0.1.
+
+The support window applies to the release line, not to individual features. Features are
+developed on `main` and carry over into every following release, so a feature introduced
+in Wicket 11 is also present in 12, 13 and in the next LTS, Wicket 14.
+
+Wicket 10 is the current LTS and stays supported until Wicket 14 is released in the first
+week of July 2027. Wicket 8.x and 9.x each receive one final release and are then end of
+life, and with them Wicket's support for the `javax.servlet` API.
+
+<table style="width:100%">
+	<tr>
+		<th style="width:30%">Version</th>
+		<th style="width:30%">Expected</th>
+		<th style="width:40%">Line</th>
+	</tr>
+	<tr>
+		<td>Wicket 11.0.0</td>
+		<td>first week of October 2026</td>
+		<td>quarterly</td>
+	</tr>
+	<tr>
+		<td>Wicket 12.0.0</td>
+		<td>January 2027</td>
+		<td>quarterly</td>
+	</tr>
+	<tr>
+		<td>Wicket 13.0.0</td>
+		<td>April 2027</td>
+		<td>quarterly</td>
+	</tr>
+	<tr>
+		<td>Wicket 14.0.0</td>
+		<td>first week of July 2027</td>
+		<td>LTS, supported until Wicket 18</td>
+	</tr>
+</table>
+
+The full announcement is in our news archive:
+[A new release cadence for Apache Wicket]({{site.baseurl}}/news/2026/09/11/release-cadence.html).
 
 ---
 
