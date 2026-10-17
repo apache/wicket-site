@@ -12,14 +12,7 @@ layout: base
 </div>
 {% include post-kind.html post=page %}
 {% assign year = page.date | date: "%Y" %}
-{% comment %} The release line of a release post: "10" from wicket-10.11.0-released, "1.5" from wicket-1.5.3-released. {% endcomment %}
-{% assign line_page = nil %}
-{% if post_kind == 'release' or post_kind == 'major' %}
-    {% assign parts = page.url | split: '/wicket-' | last | split: '-released' | first | split: '.' %}
-    {% assign series = parts[0] %}{% if series == '1' %}{% assign series = parts[0] | append: '.' | append: parts[1] %}{% endif %}
-    {% assign line_url = '/versions/wicket-' | append: series | append: '.x/' %}
-    {% assign line_page = site.pages | where: "url", line_url | first %}
-{% endif %}
+{% include post-line.html post=page %}
 {% capture toc %}{{ content | toc_generate }}{% endcapture %}{% assign toc = toc | strip %}
 <div class="page-sign">
     <div class="page-sign-inner">
@@ -32,7 +25,7 @@ layout: base
             {% when 'release' %}<span class="tag tag-post">Release</span>
             {% when 'security' %}<span class="tag tag-post tag-security">Security advisory</span>
             {% endcase %}
-            {% if line_page %}<a href="{{ site.baseurl }}{{ line_page.url }}">Wicket {{ series }}.x: status, downloads and documentation</a>{% endif %}
+            {% if line_page %}<a href="{{ site.baseurl }}{{ line_page.url }}">Wicket {{ line_series }}.x: status, downloads and documentation</a>{% endif %}
         </p>
     </div>
 </div>

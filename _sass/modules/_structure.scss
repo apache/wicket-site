@@ -432,23 +432,6 @@ nav.mainmenu {
     }
 }
 
-.blog-years {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 0.5rem;
-    margin: 1rem 0 2rem;
-
-    a {
-        border: 1px solid $rule;
-        border-radius: settings.$border-radius-20;
-        color: $ink;
-        font-variant-numeric: tabular-nums;
-        padding: 0.1rem 0.6rem;
-
-        &:hover { border-color: $brand; color: $brand-text; }
-        &.is-current { background: $navy; border-color: $navy; color: #fff; }
-    }
-}
 
 // ---------- User guide
 
@@ -1163,4 +1146,63 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
     font-weight: 600;
     margin: 1.5rem 0 0.25rem;
     padding-top: 0;
+}
+
+// The archives' pager sits under the list, like the pager under a post.
+.section-body > .post-pager {
+    border-top: 1px solid $rule;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+}
+
+// The blog page: the newest posts in full, one after another.
+.blog-entry {
+    max-width: 48rem;
+
+    & + .blog-entry {
+        border-top: 1px solid $rule;
+        margin-top: 3rem;
+        padding-top: 2.5rem;
+    }
+}
+.blog-entry-head {
+    margin-bottom: 1.25rem;
+
+    .post-sign-meta { margin-top: 0; }
+    h2 {
+        font-size: 2rem;
+        font-weight: 300;
+        line-height: 1.2;
+        margin: 0.4rem 0 0;
+
+        a { border: none; color: settings.$color-neutral-90; }
+        a:hover { color: $brand-text; }
+    }
+}
+.blog-entry .post-content h2 {
+    font-size: settings.$font-size-50;
+    font-weight: 600;
+}
+.section-body > .blog-entry + .post-pager,
+.section-body > .post-pager {
+    max-width: 48rem;
+}
+
+// The posts after the newest: a title and a sentence each.
+.blog-entry--short {
+    & + .blog-entry--short {
+        margin-top: 1.75rem;
+        padding-top: 1.5rem;
+    }
+    .blog-entry-head { margin-bottom: 0.4rem; }
+    .blog-entry-head h2 { font-size: settings.$font-size-60; font-weight: 400; }
+}
+.blog-entry-summary {
+    color: $ink-soft;
+}
+
+.reading-rail .toc .toc-gap {
+    border-top: 1px solid $rule;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
 }

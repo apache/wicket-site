@@ -1,0 +1,10 @@
+{% comment %} The blog page's rail: the posts on the page, older posts and the archive. {% endcomment %}
+<div class="toc"><div id="toc-title"><h2>{{ site.contentsLabel }}</h2></div><ul>
+{% for post in site.posts limit: 5 %}
+    <li class="toc--level-1"><a href="#post-{{ post.date | date: '%Y%m%d' }}-{{ post.slug }}"><span class="toc-text">{{ post.title }}</span></a></li>
+{% endfor %}
+{% assign older = site.posts[5] %}{% if older %}{% assign older_year = older.date | date: "%Y" %}{% assign older_month = older.date | date: "%m" %}
+    <li class="toc--level-1 toc-gap"><a href="{{ site.baseurl }}/news/{{ older_year }}/#{{ older_month }}"><span class="toc-text">Older posts</span></a></li>
+{% endif %}
+    <li class="toc--level-1"><a href="#archive"><span class="toc-text">Archive</span></a></li>
+</ul></div>

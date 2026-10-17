@@ -5,7 +5,8 @@ layout: base
   A section's front page (release lines, blog, community, contribute, learn):
   the title and `summary` front matter on a sign, then the content.
   `lead`: an include shown full width above the content;
-  `toc: true`: an "On this page" rail of the content's headings.
+  `toc: true`: an "On this page" rail of the content's headings;
+  `rail`: an include that renders the rail itself, instead of the headings.
 {% endcomment %}
 <div class="header default">
     <div class="l-container">
@@ -24,8 +25,8 @@ layout: base
         {% include {{ page.lead }} %}
     </div>
     {% endif %}
-    {% if page.toc %}
-    {% capture toc %}{{ content | toc_generate }}{% endcapture %}
+    {% if page.toc or page.rail %}
+    {% if page.rail %}{% capture toc %}{% include {{ page.rail }} %}{% endcapture %}{% else %}{% capture toc %}{{ content | toc_generate }}{% endcapture %}{% endif %}
     <div class="reading has-rail guide-reading">
         <nav class="reading-rail" aria-label="On this page">{{ toc }}</nav>
         <div class="reading-main section-body">

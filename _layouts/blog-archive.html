@@ -22,11 +22,6 @@ active_link: blog
 </div>
 <main id="main" tabindex="-1">
     <div class="reading section-body">
-        <nav class="blog-years" aria-label="Years">
-            {% for y in site.years %}{% assign yy = y.first.first.date | date: "%Y" %}
-            <a href="{{ site.baseurl }}/news/{{ yy }}/"{% if yy == year %} class="is-current" aria-current="page"{% endif %}>{{ yy }}</a>
-            {% endfor %}
-        </nav>
         {% assign current_month = '' %}
         {% for post in posts %}
             {% assign m = post.date | date: "%B" %}
@@ -47,5 +42,28 @@ active_link: blog
             </li>
             {% if forloop.last %}</ul>{% endif %}
         {% endfor %}
+        {% comment %} Older and newer: the neighbouring year, or month, that has posts. {% endcomment %}
+        {% assign keys = '' | split: '' %}{% assign labels = '' | split: '' %}
+        {% for y in site.years %}{% assign yy = y.first.first.date | date: "%Y" %}
+            {% if page.month %}
+                {% for month in y %}{% assign mm = month.first.date | date: "%m" %}
+                    {% assign key = yy | append: '/' | append: mm %}{% assign keys = keys | push: key %}
+                    {% assign label = month.first.date | date: "%B %Y" %}{% assign labels = labels | push: label %}
+                {% endfor %}
+            {% else %}
+                {% assign keys = keys | push: yy %}{% assign labels = labels | push: yy %}
+            {% endif %}
+        {% endfor %}
+        {% if page.month %}{% assign here = page.date | date: "%Y/%m" %}{% else %}{% assign here = year %}{% endif %}
+        {% assign newer_key = nil %}{% assign older_key = nil %}
+        {% for k in keys %}{% if k == here %}
+            {% assign i = forloop.index0 %}
+            {% if i > 0 %}{% assign n = i | minus: 1 %}{% assign newer_key = keys[n] %}{% assign newer_label = labels[n] %}{% endif %}
+            {% assign o = i | plus: 1 %}{% if keys[o] %}{% assign older_key = keys[o] %}{% assign older_label = labels[o] %}{% endif %}
+        {% endif %}{% endfor %}
+        <nav class="post-pager" aria-label="Other {% if page.month %}months{% else %}years{% endif %}">
+            {% if older_key %}<a class="post-pager-older" href="{{ site.baseurl }}/news/{{ older_key }}/"><span>Older</span>{{ older_label }}</a>{% endif %}
+            {% if newer_key %}<a class="post-pager-newer" href="{{ site.baseurl }}/news/{{ newer_key }}/"><span>Newer</span>{{ newer_label }}</a>{% endif %}
+        </nav>
     </div>
 </main>

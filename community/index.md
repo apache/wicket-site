@@ -32,9 +32,11 @@ A failing test with [WicketTester]({{ site.baseurl }}/docs/first-test.html), or 
 
 ## Report a vulnerability {#security}
 
-Never report a security problem in the issue tracker or on a mailing list: both are public. Send it to **[private@wicket.apache.org](mailto:private@wicket.apache.org?subject=Security%20issue)**, the private list of the Wicket PMC. Describe the problem, the versions it affects, and how to reproduce it.
+Never report a security problem in the issue tracker, on GitHub or on a mailing list: all are public. Send it privately to **[security@apache.org](mailto:security@apache.org?subject=Wicket)**, the ASF security team, who forward it to the Wicket PMC. This follows Wicket's [security policy](https://github.com/apache/wicket/blob/master/SECURITY.md).
 
-The PMC follows the [ASF's process for vulnerabilities](https://www.apache.org/security/): it confirms the problem, fixes it in the lines in service, and publishes an advisory with a CVE on the [blog]({{ site.baseurl }}/news/) and the announce list once a fixed release is out. Only security reports belong on this list; for anything else, use the users list or the issue tracker.
+Describe the problem, the versions it affects, how an attacker reaches the code, and how to reproduce it, verified against the current tip of a supported branch. The security policy explains what makes a useful report, what is in scope, and the security model Wicket works from.
+
+The PMC follows the [ASF's process for vulnerabilities](https://www.apache.org/security/): it confirms the problem, fixes it in the lines in service, and publishes an advisory with a CVE on the [blog]({{ site.baseurl }}/news/) and the announce list once a fixed release is out.
 
 ## Mailing lists {#lists}
 
