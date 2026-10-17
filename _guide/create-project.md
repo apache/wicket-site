@@ -26,7 +26,7 @@ mvn archetype:generate \
   -DinteractiveMode=false
 ```
 
-Set `archetypeVersion` to the Wicket version you build on: {% if site.wicket.version_11 %}{{ site.wicket.version_11 }} for Wicket 11, which needs Java 21, or {% endif %}{{ site.wicket.version_10 }} for Wicket 10, which needs Java 17. To try an unreleased `-SNAPSHOT` version, Maven must know the Apache snapshot repository: add it to a profile in your `~/.m2/settings.xml`, as described under [snapshot versions]({{ site.baseurl }}/docs/maven-setup.html#snapshot-versions).
+Set `archetypeVersion` to the Wicket version you build on: {% if site.wicket.version_11 %}{{ site.wicket.version_11 }} for Wicket 11, which needs Java 21, or {% endif %}{{ site.wicket.version_10 }} for Wicket 10, which needs Java 17. The [quick start]({{ site.baseurl }}/start/quickstart.html) writes the command for you. To try an unreleased `-SNAPSHOT` version, Maven must know the Apache snapshot repository: add it to a profile in your `~/.m2/settings.xml`, as described under [snapshot versions]({{ site.baseurl }}/docs/maven-setup.html#snapshot-versions).
 
 ## What the project contains
 

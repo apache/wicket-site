@@ -6,8 +6,7 @@ Redirect 301 /help/irc.html /help/#questions
 
 Redirect 301 /learn/blogs.html /news/
 
-# The restructured site: release lines under /versions/, the quick start in the user guide.
+# The restructured site: release lines under /versions/, the documentation under /docs/.
 Redirect 301 /start/download.html /versions/
-Redirect 301 /start/quickstart.html /guide/create-project.html
 RedirectMatch 301 ^/start/wicket-([0-9.]+)\.x\.html$ /versions/wicket-$1.x/
 RedirectMatch 301 ^/guide/(.*)$ /docs/$1

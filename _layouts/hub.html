@@ -61,7 +61,7 @@ layout: base
     <version>{{ version }}</version>
 </dependency>{% endcapture %}
 <pre id="hub-maven-snippet"><code class="language-xml">{{ snippet | xml_escape }}</code></pre>
-                {% if in_service %}<p class="hub-maven-more">New project? <a href="{{ site.baseurl }}/docs/create-project.html">Start from the quickstart archetype</a>.</p>{% endif %}
+                {% if in_service %}<p class="hub-maven-more">New project? <a href="{{ site.baseurl }}/start/quickstart.html?v={{ page.series }}">Generate one with the quick start</a>.</p>{% endif %}
             </div>
         </header>
 

@@ -69,7 +69,7 @@ additionalContents:
   <div class="l-half">
     <h2>Getting started with Wicket</h2>
     <p>
-      Create a project from the <a href="{{ site.baseurl }}/docs/create-project.html">quickstart archetype</a>
+      Generate a project with the <a href="{{ site.baseurl }}/start/quickstart.html">quick start</a>
       and follow the <a href="{{ site.baseurl }}/docs/first-application.html">first tutorial</a> in the documentation,
       or add Wicket to an existing project with the dependency below.
     </p>

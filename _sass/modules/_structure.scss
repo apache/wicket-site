@@ -995,3 +995,45 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
 .header.default nav.mainmenu > .nav-container:last-child .nav-items {
     padding-right: 0;
 }
+
+// The quick start wizard.
+.quickstart {
+    margin-bottom: 2rem;
+    max-width: 46rem;
+}
+.quickstart-fields {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    label {
+        display: block;
+        font-size: settings.$font-size-20;
+        font-weight: 400;
+    }
+    input, select {
+        border: 1px solid settings.$color-neutral-50;
+        border-radius: settings.$border-radius-20;
+        display: block;
+        font: inherit;
+        font-size: settings.$font-size-30;
+        margin-top: 0.25rem;
+        padding: 0.45rem 0.6rem;
+        width: 100%;
+
+        &:focus { border-color: $brand; outline: 2px solid color.adjust($brand, $alpha: -0.6); }
+    }
+}
+.quickstart-command pre {
+    background: $tint;
+    border-radius: settings.$border-radius-20;
+    margin: 0.5rem 0;
+    overflow-x: auto;
+    padding: 1rem;
+}
+.quickstart-needs {
+    color: $ink-soft;
+    font-size: settings.$font-size-20;
+}

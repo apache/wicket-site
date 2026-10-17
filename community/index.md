@@ -23,7 +23,7 @@ Several companies offer training, consultancy and development for Wicket applica
 
 ## Report a bug {#bugs}
 
-Report bugs in the [issue tracker on GitHub](https://github.com/apache/wicket/issues). A report that comes with a small project that shows the problem gets fixed fastest: [create one from the quickstart archetype]({{ site.baseurl }}/docs/create-project.html) and attach it. The [bug report checklist]({{ site.baseurl }}/help/#reportbug) covers what else to include. Issues reported before 2026 are in the read-only [JIRA archive](https://issues.apache.org/jira/browse/WICKET).
+Report bugs in the [issue tracker on GitHub](https://github.com/apache/wicket/issues). A report that comes with a small project that shows the problem gets fixed fastest: [generate one with the quick start]({{ site.baseurl }}/start/quickstart.html) and attach it. The [bug report checklist]({{ site.baseurl }}/help/#reportbug) covers what else to include. Issues reported before 2026 are in the read-only [JIRA archive](https://issues.apache.org/jira/browse/WICKET).
 
 ## Report a security problem {#security}
 

@@ -38,7 +38,7 @@ active_link: documentation
         <div class="reading-main">
         <section class="guide-front-section" id="start">
             <h2>Start here</h2>
-            <p class="guide-group-intro">Five lessons that build one application, from an empty project to a tested page with Ajax.</p>
+            <p class="guide-group-intro">Five lessons that build one application, from an empty project to a tested page with Ajax. To get a running project in a minute first, use the <a href="{{ site.baseurl }}/start/quickstart.html">quick start</a>.</p>
             {% assign tutorials = site.guide | where: "type", "tutorial" | sort: "order", "last" %}
             <ol class="guide-route">
             {% for doc in tutorials %}
