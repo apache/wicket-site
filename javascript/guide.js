@@ -335,7 +335,9 @@
     Array.prototype.forEach.call(document.querySelectorAll('.guide-content pre'), function (pre) {
         if (!navigator.clipboard) return;
         var box = pre.closest('.highlight') || pre;
-        box.classList.add('has-copy');
+        // The button sits in a bar above the code, as on the release line pages, so it covers no code.
+        var bar = document.createElement('div');
+        bar.className = 'guide-copy-bar';
         var button = document.createElement('button');
         button.type = 'button';
         button.className = 'hub-copy guide-copy';
@@ -348,6 +350,7 @@
                 setTimeout(function () { button.textContent = 'Copy'; }, 2000);
             });
         });
-        box.insertBefore(button, box.firstChild);
+        bar.appendChild(button);
+        box.parentNode.insertBefore(bar, box);
     });
 })();

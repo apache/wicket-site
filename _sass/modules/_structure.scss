@@ -111,6 +111,17 @@ nav.mainmenu {
     border: 1px solid $navy;
     color: $navy;
 }
+.release-lines-latest {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+    font-variant-numeric: tabular-nums;
+    font-weight: 400;
+}
+.tag-post.tag-security {
+    border-color: $navy;
+    color: $navy;
+}
 .release-lines-role {
     color: $ink-soft;
     display: block;
@@ -1764,17 +1775,11 @@ body > footer {
     font-weight: 600;
 }
 
-// The copy button of a code sample in the documentation, at its top right corner.
-.has-copy {
-    position: relative;
-
-    .guide-copy {
-        background: #fff;
-        position: absolute;
-        right: 0.5rem;
-        top: 0.5rem;
-        z-index: 1;
-    }
+// The copy button of a code sample in the documentation, in a bar above the code.
+.guide-copy-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0.75rem 0 -0.5rem;
 }
 
 // A section page that opens with a heading needs no rule above it: the sign already ends in one.

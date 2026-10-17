@@ -35,7 +35,8 @@
             {% if line.config %}{% assign version = site.wicket[line.config] %}{% else %}{% assign version = line.version %}{% endif %}
         <tr class="is-{{ line.status }}">
             <th scope="row">
-                {% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">{{ version }}</a>{% else %}{{ version }}{% endif %}
+                {% comment %} A line with a page leads with its name, its latest release under it; a scheduled release is its version. {% endcomment %}
+                {% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">Wicket {{ line.series }}</a><span class="release-lines-latest">Latest {{ version }}</span>{% else %}{{ version }}{% endif %}
                 {% if line.service == 'lts' and line.status != 'lts' %}<span class="tag tag-lts" title="Long-term support">LTS</span>{% endif %}
             </th>
             <td>{{ line.when }}</td>
