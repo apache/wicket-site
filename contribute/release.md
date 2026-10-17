@@ -10,7 +10,6 @@ Learn how to build and release one of the Wicket branches.
 
 * [Releasing Apache Wicket 6.x](#release-60)
 * [Releasing Apache Wicket 1.4.x+](#release-14)
-* [Releasing Apache Wicket 1.3.x](#release-13)
 * [Staging Releases using the Apache Nexus Repository](#nexus)
 * [Announcing the release](#announcing)
 * [Additional tasks](#additional)
@@ -287,7 +286,7 @@ the changes to the site: the versions in `_config.yml`, the release lines in
 
 * Send the announcement to: users@wicket.apache.org, dev@wicket.apache.org, announce@wicket.apache.org, announce@apache.org
 
-## Additional tasks ## { #additional }
+## Additional tasks ## {#additional}
 
 * Commit the JavaDocs to
   [https://svn.apache.org/repos/asf/wicket/common/site/apidocs/1.4](https://svn.apache.org/repos/asf/wicket/common/site/apidocs/1.4)

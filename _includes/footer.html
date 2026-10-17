@@ -1,18 +1,38 @@
-<div class="l-container l-flex">
-    <div class="l-one-third left">
-        <a href="{{ site.baseurl }}/apache/">Wicket at the ASF</a><br>
-        <a href="https://www.apache.org">Apache</a><br>
-        <a href="https://www.apache.org/licenses/">License</a><br>
-        <a href="https://events.apache.org/x/current-event">Events</a><br>
-    </div>
-    <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks">Thanks</a><br>
-    </div>
-    <div class="l-one-third">
-        <a href="https://www.apache.org/security">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a><br>
-    </div>
+{% comment %}
+  The footer: the site's own sections, the ASF links the ASF requires, and the legal line
+  with the ASF logo. Every column starts on the content edge of the menu.
+{% endcomment %}
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="{{ site.baseurl }}/versions/">Releases and downloads</a></li>
+            <li><a href="{{ site.baseurl }}/start/quickstart.html">Quick start</a></li>
+            <li><a href="{{ site.baseurl }}/docs/">Documentation</a></li>
+            <li><a href="{{ site.baseurl }}/learn/">Books, talks and examples</a></li>
+        </ul>
+        <ul>
+            <li><a href="{{ site.baseurl }}/news/">Blog</a></li>
+            <li><a href="{{ site.baseurl }}/community/">Community and support</a></li>
+            <li><a href="{{ site.baseurl }}/community/#security">Report a vulnerability</a></li>
+            <li><a href="{{ site.baseurl }}/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="{{ site.baseurl }}/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks">Thanks</a></li>
+            <li><a href="https://www.apache.org/security">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
+        </ul>
+    </nav>
 </div>
 <div class="l-container footer-legal">
     <a class="footer-asf" href="https://www.apache.org/"><img src="{{ site.baseurl }}/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>

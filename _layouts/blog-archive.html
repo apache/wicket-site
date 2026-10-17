@@ -36,7 +36,7 @@ active_link: blog
                 <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b" }}</time>
                 <span class="post-row-body">
                     <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-                    {% case post_kind %}{% when 'major' %}<span class="tag tag-post">Major release</span>{% when 'security' %}<span class="tag tag-post tag-security">Security</span>{% endcase %}
+                    {% case post_kind %}{% when 'major' %}<span class="tag tag-post">Major release</span>{% when 'security' %}<span class="tag tag-post tag-security">Security advisory</span>{% when 'release' %}{% if post_fixes %}<span class="tag tag-security">Security fixes</span>{% endif %}{% endcase %}
                     {% if post_kind != 'release' %}<span class="post-row-summary">{% include post-summary.html post=post %}</span>{% endif %}
                 </span>
             </li>

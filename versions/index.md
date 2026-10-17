@@ -75,7 +75,7 @@ life, and with them Wicket's support for the `javax.servlet` API.
 The full announcement is in our news archive:
 [A new release cadence for Apache Wicket]({{site.baseurl}}/news/2026/09/11/release-cadence.html).
 
-## Out of service {#unsupported}
+## End of life {#unsupported}
 
 The following releases are no longer supported by the Wicket team. You
 should upgrade your project if it still depends on any of these

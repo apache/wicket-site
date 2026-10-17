@@ -22,13 +22,13 @@ summary: Generate a Wicket project with Maven in a minute, run it, and open it i
             <select name="version">
             {% for line in choices %}
                 {% assign hub = site.pages | where: "url", line.page | first %}
-                <option value="{{ site.wicket[line.config] }}" data-series="{{ line.series }}" data-java="{{ hub.java }}">{{ site.wicket[line.config] }}{% if line.role %} — {{ line.role | downcase }}{% endif %}{% if line.status == 'last-call' %} — end of life soon{% endif %}</option>
+                <option value="{{ site.wicket[line.config] }}" data-series="{{ line.series }}" data-java="{{ hub.java }}">{{ site.wicket[line.config] }}{% if line.role %} — {{ line.role | downcase }}{% endif %}{% if line.status == 'last-call' %} — last release coming{% endif %}</option>
             {% endfor %}
             </select>
         </label>
     </div>
     <div class="quickstart-command">
-        <p class="hub-maven-label"><span>Run this in a terminal</span><button type="button" class="hub-copy" data-copy="quickstart-cmd">Copy</button></p>
+        <p class="hub-maven-label"><span>Run this in a terminal</span><button type="button" class="hub-copy" data-copy="quickstart-cmd" aria-live="polite">Copy</button></p>
         {% assign first = choices | first %}<pre id="quickstart-cmd"><code class="language-shell">mvn archetype:generate \
   -DarchetypeGroupId=org.apache.wicket \
   -DarchetypeArtifactId=wicket-archetype-quickstart \

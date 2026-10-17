@@ -18,9 +18,6 @@ active_link: documentation
     </div>
 </div>
 <main id="main" tabindex="-1">
-    <div class="reading guide-front guide-front-lines">
-        {% include line-panels.html anchor="#docs" label="Documentation by release line" %}
-    </div>
     <div class="reading has-rail guide-reading guide-front">
         <div class="reading-rail">
             <nav aria-label="On this page">
@@ -31,7 +28,7 @@ active_link: documentation
                     <li class="toc--level-1"><a href="#lookup"><span class="toc-text">Look it up</span></a></li>
                     <li class="toc--level-1"><a href="#api"><span class="toc-text">API documentation</span></a></li>
                     <li class="toc--level-1"><a href="#upgrading"><span class="toc-text">Upgrading</span></a></li>
-                    <li class="toc--level-1"><a href="#older"><span class="toc-text">Older versions</span></a></li>
+                    <li class="toc--level-1"><a href="#older"><span class="toc-text">By release line</span></a></li>
                 </ul></div>
             </nav>
         </div>
@@ -100,12 +97,13 @@ active_link: documentation
 
         <section class="guide-front-section" id="upgrading">
             <h2>Upgrading</h2>
-            <p>Every major release has a migration guide on the wiki with the API changes and what to do about them, linked from its <a href="{{ site.baseurl }}/versions/">release line page</a>. The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> show the route from a line out of service to one that is supported.</p>
+            <p>Every major release has a migration guide on the wiki with the API changes and what to do about them, linked from its <a href="{{ site.baseurl }}/versions/">release line page</a>. The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> show the route from a line that is ending or has ended to one that is supported.</p>
         </section>
 
         <section class="guide-front-section guide-older" id="older">
-            <h2>Older versions</h2>
-            <p>The documentation covers the release lines in service. Pages marked with a version, like <span class="guide-list-since">Wicket 11+</span>, need that version or later. Every line also has its reference guide as one document; for lines out of service it is their only guide:
+            <h2>By release line</h2>
+            {% include line-panels.html anchor="#docs" label="Documentation by release line" %}
+            <p>The documentation covers Wicket {{ site.data.guide_lines | first }} and later. Pages marked with a version, like <span class="guide-list-since">Wicket 11+</span>, need that version or later. Every line also has its reference guide as one document; for older lines it is their only guide:
             {% assign older = "9,8,7" | split: "," %}{% for v in older %}<a href="https://nightlies.apache.org/wicket/guide/{{ v }}.x/single.html">Wicket {{ v }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}.</p>
             <p>Books, courses, talks and the libraries the community builds on Wicket are on <a href="{{ site.baseurl }}/learn/">Learn Wicket</a>.</p>
         </section>

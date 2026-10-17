@@ -1,5 +1,5 @@
 {% comment %}
-  The release lines: in service, scheduled, and just out of service.
+  The release lines: in service, scheduled, and just reached end of life.
   Reads _data/releases.yml and the versions in _config.yml.
 {% endcomment %}
 {% assign releases = site.data.releases %}
@@ -14,7 +14,7 @@
         </tr>
     </thead>
     {% for group in (1..3) %}
-    {% comment %} A group without lines (no line has just gone out of service) is left out. {% endcomment %}
+    {% comment %} A group without lines (no line has just reached end of life) is left out. {% endcomment %}
     {% assign group_size = 0 %}
     {% for line in releases.lines %}
         {% assign line_group = 1 %}
@@ -25,7 +25,7 @@
     {% if group_size == 0 %}{% continue %}{% endif %}
     <tbody>
         <tr class="release-lines-group">
-            <th scope="rowgroup" colspan="4">{% case group %}{% when 1 %}In service{% when 2 %}Scheduled{% else %}Out of service{% endcase %}</th>
+            <th scope="rowgroup" colspan="4">{% case group %}{% when 1 %}In service{% when 2 %}Scheduled{% else %}End of life{% endcase %}</th>
         </tr>
         {% for line in releases.lines %}
             {% assign line_group = 1 %}
@@ -41,16 +41,7 @@
             <td data-label="When">{{ line.when }}</td>
             <td data-label="Supported">{{ line.support }}</td>
             <td>
-                {% if line.role %}{{ line.role }}{% else %}
-                {% case line.status %}
-                {% when 'boarding' %}Next up
-                {% when 'scheduled' %}Scheduled
-                {% when 'last-call' %}<span class="tag tag-ending">Ending</span> One final release
-                {% when 'superseded' %}Superseded
-                {% when 'eol' %}<span class="tag tag-eol">End of life</span>
-                {% else %}In service
-                {% endcase %}
-                {% endif %}
+                {% if line.role %}{{ line.role }}{% else %}{% include line-status.html status=line.status style="tag" %}{% endif %}
             </td>
         </tr>
         {% endfor %}

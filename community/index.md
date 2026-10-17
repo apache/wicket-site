@@ -24,7 +24,7 @@ Several companies offer training, consulting and development for Wicket applicat
 Report bugs in the [issue tracker on GitHub](https://github.com/apache/wicket/issues). A report the committers can reproduce gets fixed first:
 
 1. **Search first.** Look for your problem in the [open and closed issues](https://github.com/apache/wicket/issues?q=is%3Aissue), and in the [JIRA archive](https://issues.apache.org/jira/browse/WICKET) for issues from before 2026.
-2. **Try the latest release of your line.** Your bug may already be fixed. If your line is [out of service]({{ site.baseurl }}/versions/), it gets no more fixes; reproduce it on a line in service.
+2. **Try the latest release of your line.** Your bug may already be fixed. If your line has reached [end of life]({{ site.baseurl }}/versions/#unsupported), it gets no more fixes; reproduce it on a line in service.
 3. **Reproduce it in a quickstart.** Generate a small project with the [quick start]({{ site.baseurl }}/start/quickstart.html) and add only what shows the problem. Often this alone reveals the cause; otherwise it is the fastest way for a committer to see it.
 4. **Open the issue** with the Wicket version, the Java version and servlet container, the steps to reproduce, what you expected, the full stack trace, and a link to your quickstart, for example as a GitHub repository.
 

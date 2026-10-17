@@ -1,0 +1,14 @@
+{% comment %}
+  The one wording of a release line's status, used by every page that shows it.
+  include.status: lts | current | last-call | superseded | eol | boarding | scheduled
+  include.style:  "text" (default) for plain words, "tag" for the status as a label.
+{% endcomment %}
+{%- case include.status -%}
+{%- when 'lts' or 'current' -%}In service
+{%- when 'last-call' -%}{% if include.style == 'tag' %}<span class="tag tag-ending">Last release coming</span>{% else %}Last release coming{% endif %}
+{%- when 'superseded' -%}Superseded
+{%- when 'eol' -%}{% if include.style == 'tag' %}<span class="tag tag-eol">End of life</span>{% else %}End of life{% endif %}
+{%- when 'boarding' -%}Next release
+{%- when 'scheduled' -%}Scheduled
+{%- else -%}In service
+{%- endcase -%}

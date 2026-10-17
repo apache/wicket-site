@@ -62,28 +62,10 @@ To see what changed in these releases you can read the
 
 ## Requirements
 
-Apache Wicket has few requirements in order to work properly. In this
-section you'll find the minimum requirements for all Wicket modules.
+The Java and Servlet API versions this line needs are at the [top of the page](#status).
 Specific modules may need additional libraries, such as file upload,
 date time APIs, CDI specifications, and more. See the module's POM for
 more details on the necessary libraries.
-
-### Java version
-
-This Wicket version requires at least the following Java version: **JDK 8.0 or newer**.
-
-Not only is a particular version of Java necessary, Wicket also needs
-access to specific APIs.
-
-### Servlet API
-
-This Wicket version requires at least the following Servlet API
-version: **Servlet API 3.1 or newer**. This is provided by your
-container, please see the documentation of your container to see which
-version of the Servlet specification is supported.
-
-In addition to the Servlet API, Wicket uses SLF4J to let you choose
-your own implementation of a logging framework.
 
 ### Logging
 
@@ -104,15 +86,3 @@ always use the artifacts from a particular release. For example it is
 Wicket CDI 7.x in a Wicket 8 project. The same goes for 3rd party
 libraries: make sure you always use a compatible version of your 3rd
 party library.
-
-## Migrating from earlier versions {#migrate}
-
-If you are migrating an existing application from earlier versions of
-Wicket you may find our migration guides invaluable:
-
- * Migrating from [Wicket 1.2 to Wicket 1.3](https://cwiki.apache.org/confluence/display/WICKET/Migrating+to+Wicket+1.3)
- * Migrating from [Wicket 1.3 to Wicket 1.4](https://cwiki.apache.org/confluence/display/WICKET/Migrating+to+Wicket+1.4)
- * Migrating from [Wicket 1.4 to Wicket 1.5](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+1.5)
- * Migrating from [Wicket 1.5 to Wicket 6.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0)
- * Migrating from [Wicket 6.x to Wicket 7.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+7.0)
- * Migrating from [Wicket 7.x to Wicket 8.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+8.0)

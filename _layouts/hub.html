@@ -42,6 +42,11 @@ layout: base
 {% endif %}
 {% assign post_key = '/wicket-' | append: page.series | append: '.' %}
 {% assign post_major = '/wicket-' | append: page.series | append: '-released' %}
+{% assign highlights = site.data.highlights[page.series] %}
+{% assign line_posts = '' | split: '' %}
+{% for post in site.posts %}
+    {% if post.url contains post_key or post.url contains post_major or post.lines contains page.series %}{% assign line_posts = line_posts | push: post %}{% endif %}
+{% endfor %}
 <div class="header default">
     <div class="l-container">
         {% include mainmenu.html %}
@@ -57,14 +62,14 @@ layout: base
                 {% case status %}
                 {% when 'lts' %}The long-term support release.
                 {% when 'current' %}The current quarterly release.
-                {% when 'eol' %}Out of service: no more releases, not even security fixes.
-                {% when 'last-call' %}One final release, then end of life: supported {{ support | replace: 'Until', 'until' }}.
+                {% when 'eol' %}End of life: no more releases, not even security fixes.
+                {% when 'last-call' %}Last release coming: one more Wicket {{ page.series }} release is planned, then the line reaches end of life when {{ support | remove: 'Until ' | split: ',' | first }} ships.
                 {% else %}In service.
                 {% endcase %}
             </p>
             <dl class="hub-facts">
                 <div><dt>Latest release</dt><dd class="hub-version">{{ version }}</dd></div>
-                <div><dt>Status</dt><dd>{% case status %}{% when 'lts' %}<span class="tag tag-lts">LTS</span> In service{% when 'eol' %}<span class="tag tag-eol">End of life</span>{% when 'last-call' %}<span class="tag tag-ending">Ending</span> One final release{% else %}In service{% endcase %}</dd></div>
+                <div><dt>Status</dt><dd>{% case status %}{% when 'lts' %}<span class="tag tag-lts">LTS</span> In service{% else %}{% include line-status.html status=status style="tag" %}{% endcase %}</dd></div>
                 <div><dt>Supported</dt><dd>{{ support }}</dd></div>
                 <div><dt>Java</dt><dd>{{ page.java }} or newer</dd></div>
                 <div><dt>Servlet API</dt><dd>{{ page.servlet }}</dd></div>
@@ -72,7 +77,7 @@ layout: base
             {% if recommended == false %}
             <div class="hub-eol{% if status == 'last-call' %} is-ending{% endif %}" id="upgrade">
                 <p class="hub-eol-title">{% if status == 'last-call' %}Wicket {{ page.series }} reaches end of life when {{ support | remove: 'Until ' | split: ',' | first }} ships{% else %}Wicket {{ page.series }} gets no more releases, not even security fixes{% endif %}</p>
-                <p>Plan the move to Wicket {{ lts.series }} <abbr title="Long-term support">LTS</abbr>, supported {{ lts.support | replace: 'Until', 'until' }}.{% if route.size > 1 %} Take one major version at a time:{% endif %}</p>
+                <p>Plan the move to Wicket {{ lts.series }} LTS, supported {{ lts.support | replace: 'Until', 'until' }}.{% if route.size > 1 %} Take one major version at a time:{% endif %}</p>
                 {% if route.size == 1 %}{% assign step = route | first %}
                 <p class="hub-route-one"><a href="{{ step.migration.url }}">Migrating from Wicket {{ step.migration.from }} to {{ step.series }}</a></p>
                 {% elsif route.size > 1 %}
@@ -86,18 +91,28 @@ layout: base
             </div>
             {% endif %}
             <div class="hub-maven" id="maven">
-                <p class="hub-maven-label"><span>Maven dependency</span><button type="button" class="hub-copy" data-copy="hub-maven-snippet">Copy</button></p>
+                <p class="hub-maven-label"><span>Maven dependency</span><button type="button" class="hub-copy" data-copy="hub-maven-snippet" aria-live="polite">Copy</button></p>
 {% capture snippet %}<dependency>
     <groupId>org.apache.wicket</groupId>
     <artifactId>wicket-core</artifactId>
     <version>{{ version }}</version>
 </dependency>{% endcapture %}
 <pre id="hub-maven-snippet"><code class="language-xml">{{ snippet | xml_escape }}</code></pre>
-                {% if recommended %}<p class="hub-maven-more">New project? <a href="{{ site.baseurl }}/start/quickstart.html?v={{ page.series }}">Generate one with the quick start</a>.</p>{% endif %}
+                <p class="hub-maven-more"><a href="#manually">Download the source and binaries</a>{% if recommended %} · New project? <a href="{{ site.baseurl }}/start/quickstart.html?v={{ page.series }}">Generate one with the quick start</a>{% endif %}</p>
             </div>
         </header>
 
-        {% assign highlights = site.data.highlights[page.series] %}
+{% comment %} The page's sections, as a row of links under the head. {% endcomment %}
+        <nav class="hub-jump" aria-label="On this page">
+            <ul>
+                {% if highlights %}<li><a href="#new">New in Wicket {{ page.series }}</a></li>{% endif %}
+                <li><a href="#docs">Documentation</a></li>
+                {% if line_posts.size > 0 %}<li><a href="#news">Blog posts</a></li>{% endif %}
+                <li><a href="#download">Download</a></li>
+                <li><a href="#requirements">Requirements</a></li>
+            </ul>
+        </nav>
+
         {% if highlights %}
         <section class="hub-section" id="new">
             <h2>New in Wicket {{ page.series }}</h2>
@@ -119,7 +134,7 @@ layout: base
                     <p>Wicket {{ page.series }} has no reference guide of its own; the <a href="https://cwiki.apache.org/WICKET">wiki</a> and the <a href="{{ site.baseurl }}/learn/books/">books</a> cover it.</p>
                     {% endif %}
                 </li>
-                <li>
+                <li id="migrate">
                     <h3>Migration guide</h3>
                     {% if route.size > 0 %}{% assign next_step = route | first %}
                     <p><a href="{{ next_step.migration.url }}">Migrating from Wicket {{ page.series }} to {{ next_step.series }}</a>: the next step up.</p>
@@ -141,13 +156,9 @@ layout: base
             </ul>
         </section>
 
-        {% assign line_posts = '' | split: '' %}
-        {% for post in site.posts %}
-            {% if post.url contains post_key or post.url contains post_major or post.lines contains page.series %}{% assign line_posts = line_posts | push: post %}{% endif %}
-        {% endfor %}
         {% if line_posts.size > 0 %}
         <section class="hub-section" id="news">
-            <h2>News about Wicket {{ page.series }}</h2>
+            <h2>Blog posts about Wicket {{ page.series }}</h2>
             {% include post-list.html posts=line_posts featured=3 rows=8 %}
             <p class="hub-more"><a href="{{ site.baseurl }}/news/">All posts on the blog</a></p>
         </section>
