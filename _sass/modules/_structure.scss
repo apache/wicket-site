@@ -596,11 +596,15 @@ nav.mainmenu {
     padding-bottom: 3rem;
     padding-top: 2rem;
 
+    // The rail sits right of the text, so title and text share the left edge.
     &.has-rail {
         @include mixins.breakpoint(settings.$breakpoint-40) {
             display: grid;
             gap: 3rem;
-            grid-template-columns: 14rem minmax(0, 1fr);
+            grid-template-columns: minmax(0, 1fr) 14rem;
+
+            > .reading-rail { grid-column: 2; grid-row: 1; }
+            > .reading-main { grid-column: 1; grid-row: 1; }
         }
     }
 }
