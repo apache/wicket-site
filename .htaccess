@@ -1,8 +1,8 @@
 Redirect 301 /2018/05/22/wicket-8-released.html /news/2018/05/22/wicket-8-released.html
 
-Redirect 301 /help/reportabug.html /help/#reportbug
+Redirect 301 /help/reportabug.html /community/#reportbug
 
-Redirect 301 /help/irc.html /help/#questions
+Redirect 301 /help/irc.html /community/#questions
 
 Redirect 301 /learn/blogs.html /news/
 
@@ -10,3 +10,11 @@ Redirect 301 /learn/blogs.html /news/
 Redirect 301 /start/download.html /versions/
 RedirectMatch 301 ^/start/wicket-([0-9.]+)\.x\.html$ /versions/wicket-$1.x/
 RedirectMatch 301 ^/guide/(.*)$ /docs/$1
+Redirect 301 /contribute/write.html /contribute/site-first-change.html
+Redirect 301 /contribute/userguide.html /contribute/site-docs-page.html
+
+# Getting help moved into the community page.
+RedirectMatch 301 ^/help/?$ /community/
+Redirect 301 /help/index.html /community/
+Redirect 301 /help/email.html /community/#lists
+Redirect 301 /help/security.html /community/#security

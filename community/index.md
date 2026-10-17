@@ -1,49 +1,74 @@
 ---
 layout: section
 title: Community
-summary: Ask a question, report a problem, and help build Apache Wicket with the people who use and maintain it.
+summary: Ask the people who build with Wicket, report what is broken, and help make it better.
 ---
-<nav class="section-index" aria-label="On this page">
-    <a href="#help">Get help</a>
-    <a href="#bugs">Report a bug</a>
-    <a href="#security">Report a security problem</a>
-    <a href="#contribute">Contribute</a>
-    <a href="#built-with-wicket">Built with Wicket</a>
+<nav class="line-panels" aria-label="What brings you here">
+    <ul>
+        <li><a href="#questions"><span class="line-panel-name">Ask a question</span><span class="line-panel-role">Mailing list, Slack or Stack Overflow</span></a></li>
+        <li><a href="#reportbug"><span class="line-panel-name">Report a bug</span><span class="line-panel-role">In the issue tracker, with a quickstart</span></a></li>
+        <li class="is-security"><a href="#security"><span class="line-panel-name">Report a vulnerability</span><span class="line-panel-role">Privately, to the PMC</span></a></li>
+        <li><a href="{{ site.baseurl }}/contribute/"><span class="line-panel-name">Contribute</span><span class="line-panel-role">Code, documentation or this site</span></a></li>
+    </ul>
 </nav>
 
-## Get help {#help}
+## Ask a question {#questions}
 
-Search engines and the [documentation]({{ site.baseurl }}/docs/) answer most questions. When they don't, ask the people who build with Wicket every day:
+The [documentation]({{ site.baseurl }}/docs/) answers most questions; its search finds a class, a task or an error message. When it does not, ask the people who build with Wicket every day:
 
-- The [users mailing list]({{ site.baseurl }}/help/email.html#user) is where most Wicket developers answer questions, including the committers.
-- The **#wicket** channel on the [ASF Slack](https://the-asf.slack.com/) is for a quicker conversation. Time zones can make it quiet at times. Committers sign in with their apache.org account; anyone else joins as a guest by invitation, so ask for one on the [users list]({{ site.baseurl }}/help/email.html#user). The ASF explains how this works in its [Slack guidelines](https://infra.apache.org/slack.html).
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/wicket) has years of answered Wicket questions under the `wicket` tag.
+- **The users list**, [users@wicket.apache.org](mailto:users@wicket.apache.org), is where most questions get answered, by users and committers alike. Subscribe first by mailing [users-subscribe@wicket.apache.org](mailto:users-subscribe@wicket.apache.org); only subscribers can post. Twenty years of answers are in [its archive](https://lists.apache.org/list.html?users@wicket.apache.org).
+- **Slack**: the **#wicket** channel on the [ASF Slack](https://the-asf.slack.com/) is for a quicker conversation, though time zones can make it quiet. Committers sign in with their apache.org account; anyone else joins as a guest by invitation, so ask for one on the users list. The ASF's [Slack guidelines](https://infra.apache.org/slack.html) explain how guest access works.
+- **Stack Overflow** has years of answered questions under the [`wicket` tag](https://stackoverflow.com/questions/tagged/wicket).
 
-Several companies offer training, consultancy and development for Wicket applications; the wiki keeps a [list of service providers](https://cwiki.apache.org/confluence/display/WICKET/Companies+that+provide+services).
+Include your Wicket and Java versions and what you tried. A question with a few lines of code and the full stack trace gets a better answer, sooner.
 
-## Report a bug {#bugs}
+### Commercial support {#commercial}
 
-Report bugs in the [issue tracker on GitHub](https://github.com/apache/wicket/issues). A report that comes with a small project that shows the problem gets fixed fastest: [generate one with the quick start]({{ site.baseurl }}/start/quickstart.html) and attach it. The [bug report checklist]({{ site.baseurl }}/help/#reportbug) covers what else to include. Issues reported before 2026 are in the read-only [JIRA archive](https://issues.apache.org/jira/browse/WICKET).
+Several companies offer training, consulting and development for Wicket applications. The wiki keeps a [list of service providers](https://cwiki.apache.org/confluence/display/WICKET/Companies+that+provide+services). The Wicket project does not endorse or rank them.
 
-## Report a security problem {#security}
+## Report a bug {#reportbug}
 
-Never report a security problem in the issue tracker, which is public. Send it to **private@wicket.apache.org**, a private list of the Wicket PMC, so it can be fixed before anyone learns of it. The [security page]({{ site.baseurl }}/help/security.html) describes how the PMC handles a report, and the [blog]({{ site.baseurl }}/news/) publishes the advisories.
+Report bugs in the [issue tracker on GitHub](https://github.com/apache/wicket/issues). A report the committers can reproduce gets fixed first:
+
+1. **Search first.** Look for your problem in the [open and closed issues](https://github.com/apache/wicket/issues?q=is%3Aissue), and in the [JIRA archive](https://issues.apache.org/jira/browse/WICKET) for issues from before 2026.
+2. **Try the latest release of your line.** Your bug may already be fixed. If your line is [out of service]({{ site.baseurl }}/versions/), it gets no more fixes; reproduce it on a line in service.
+3. **Reproduce it in a quickstart.** Generate a small project with the [quick start]({{ site.baseurl }}/start/quickstart.html) and add only what shows the problem. Often this alone reveals the cause; otherwise it is the fastest way for a committer to see it.
+4. **Open the issue** with the Wicket version, the Java version and servlet container, the steps to reproduce, what you expected, the full stack trace, and a link to your quickstart, for example as a GitHub repository.
+
+A failing test with [WicketTester]({{ site.baseurl }}/docs/first-test.html), or a pull request with the fix, is better still: see [Contribute]({{ site.baseurl }}/contribute/).
+
+## Report a vulnerability {#security}
+
+Never report a security problem in the issue tracker or on a mailing list: both are public. Send it to **[private@wicket.apache.org](mailto:private@wicket.apache.org?subject=Security%20issue)**, the private list of the Wicket PMC. Describe the problem, the versions it affects, and how to reproduce it.
+
+The PMC follows the [ASF's process for vulnerabilities](https://www.apache.org/security/): it confirms the problem, fixes it in the lines in service, and publishes an advisory with a CVE on the [blog]({{ site.baseurl }}/news/) and the announce list once a fixed release is out. Only security reports belong on this list; for anything else, use the users list or the issue tracker.
+
+## Mailing lists {#lists}
+
+The project's lists, with their archives on [lists.apache.org](https://lists.apache.org/list.html?wicket.apache.org). Subscribe to a list by sending an empty mail to its subscribe address; only subscribers can post.
+
+<table class="community-lists">
+    <thead>
+        <tr><th scope="col">List</th><th scope="col">For</th><th scope="col">Subscribe</th><th scope="col">Archive</th></tr>
+    </thead>
+    <tbody>
+        <tr id="user"><th scope="row">users@</th><td>Questions and answers about using Wicket.</td><td><a href="mailto:users-subscribe@wicket.apache.org">users-subscribe@</a></td><td><a href="https://lists.apache.org/list.html?users@wicket.apache.org">Archive</a></td></tr>
+        <tr id="dev"><th scope="row">dev@</th><td>Wicket's development: plans, changes, releases and votes.</td><td><a href="mailto:dev-subscribe@wicket.apache.org">dev-subscribe@</a></td><td><a href="https://lists.apache.org/list.html?dev@wicket.apache.org">Archive</a></td></tr>
+        <tr id="announce"><th scope="row">announce@</th><td>Releases and security advisories only; only the PMC posts.</td><td><a href="mailto:announce-subscribe@wicket.apache.org">announce-subscribe@</a></td><td><a href="https://lists.apache.org/list.html?announce@wicket.apache.org">Archive</a></td></tr>
+        <tr id="commit"><th scope="row">commits@</th><td>Every commit and issue update, sent automatically. Read only.</td><td><a href="mailto:commits-subscribe@wicket.apache.org">commits-subscribe@</a></td><td><a href="https://lists.apache.org/list.html?commits@wicket.apache.org">Archive</a></td></tr>
+    </tbody>
+</table>
+
+Releases and advisories also appear on the [blog]({{ site.baseurl }}/news/) and in its [Atom feed]({{ site.baseurl }}/atom.xml).
 
 ## Contribute {#contribute}
 
-Wicket is built by its users. You can help without writing a line of Java:
-
-- answer questions on the [users list]({{ site.baseurl }}/help/email.html#user) or [Stack Overflow](https://stackoverflow.com/questions/tagged/wicket);
-- [improve the documentation]({{ site.baseurl }}/contribute/userguide.html) or [this site]({{ site.baseurl }}/contribute/write.html);
-- [report bugs](#bugs) with a quickstart that shows them;
-- [fix a bug or build a feature]({{ site.baseurl }}/contribute/patch.html) and send a pull request on [GitHub](https://github.com/apache/wicket).
-
-[How to contribute]({{ site.baseurl }}/contribute/) explains how to build Wicket, set up your IDE and send your first pull request. The [developers list]({{ site.baseurl }}/help/email.html#dev) is where the project discusses its plans.
+Wicket is built by the people who use it, and help is welcome at every level: answering a question, improving a page of the documentation, fixing a bug. [Contribute]({{ site.baseurl }}/contribute/) shows where to start.
 
 ## Built with Wicket {#built-with-wicket}
 
-Many applications run on Wicket without saying so. Show yours: post a screenshot on [Built with Wicket](https://builtwithwicket.tumblr.com/), and it may appear on the homepage of this site.
+Many applications run on Wicket without saying so. Show yours on [Built with Wicket](https://builtwithwicket.tumblr.com/).
 
-## Stay informed {#news}
+## The project {#project}
 
-Releases and security advisories are announced on the [blog]({{ site.baseurl }}/news/), in its [Atom feed]({{ site.baseurl }}/atom.xml) and on the [announcements list]({{ site.baseurl }}/help/email.html#announce).
+Apache Wicket is a project of the [Apache Software Foundation]({{ site.baseurl }}/apache/), run by its [Project Management Committee](https://projects.apache.org/committee.html?wicket) and developed in the open by its committers and contributors. Everyone taking part follows the ASF's [code of conduct](https://www.apache.org/foundation/policies/conduct).

@@ -7,7 +7,7 @@ summary: Releases, security advisories and articles from the Apache Wicket proje
 
 ## Archive {#archive}
 
-Every announcement since 2009, by year. All posts are also in the [Atom feed]({{ site.baseurl }}/atom.xml) and on the [announce mailing list]({{ site.baseurl }}/help/email.html#announce).
+Every announcement since 2009, by year. All posts are also in the [Atom feed]({{ site.baseurl }}/atom.xml) and on the [announce mailing list]({{ site.baseurl }}/community/#announce).
 
 <ul class="blog-years">
 {% for year in site.years %}{% assign y = year.first.first.date | date: "%Y" %}

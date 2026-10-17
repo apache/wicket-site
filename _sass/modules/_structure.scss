@@ -1052,3 +1052,9 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
         padding: 0.6rem 2rem;
     }
 }
+
+// The mailing lists on the community page.
+.community-lists th[scope=row] {
+    white-space: nowrap;
+}
+.line-panels .is-security a { border-top-color: $eol; }
