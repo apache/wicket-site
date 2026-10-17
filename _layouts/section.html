@@ -2,8 +2,10 @@
 layout: base
 ---
 {% comment %}
-  A section's front page (release lines, blog, documentation, community):
+  A section's front page (release lines, blog, community, contribute, learn):
   the title and `summary` front matter on a sign, then the content.
+  `lead`: an include shown full width above the content;
+  `toc: true`: an "On this page" rail of the content's headings.
 {% endcomment %}
 <div class="header default">
     <div class="l-container">
@@ -17,7 +19,22 @@ layout: base
     </div>
 </div>
 <main id="main" tabindex="-1">
+    {% if page.lead %}
+    <div class="reading section-lead">
+        {% include {{ page.lead }} %}
+    </div>
+    {% endif %}
+    {% if page.toc %}
+    {% capture toc %}{{ content | toc_generate }}{% endcapture %}
+    <div class="reading has-rail guide-reading">
+        <nav class="reading-rail" aria-label="On this page">{{ toc }}</nav>
+        <div class="reading-main section-body">
+            {{ content }}
+        </div>
+    </div>
+    {% else %}
     <div class="reading section-body">
         {{ content }}
     </div>
+    {% endif %}
 </main>

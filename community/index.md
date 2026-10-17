@@ -2,16 +2,9 @@
 layout: section
 title: Community
 summary: Ask the people who build with Wicket, report what is broken, and help make it better.
+toc: true
+lead: community-panels.html
 ---
-<nav class="line-panels" aria-label="What brings you here">
-    <ul>
-        <li><a href="#questions"><span class="line-panel-name">Ask a question</span><span class="line-panel-role">Mailing list, Slack or Stack Overflow</span></a></li>
-        <li><a href="#reportbug"><span class="line-panel-name">Report a bug</span><span class="line-panel-role">In the issue tracker, with a quickstart</span></a></li>
-        <li class="is-security"><a href="#security"><span class="line-panel-name">Report a vulnerability</span><span class="line-panel-role">Privately, to the PMC</span></a></li>
-        <li><a href="{{ site.baseurl }}/contribute/"><span class="line-panel-name">Contribute</span><span class="line-panel-role">Code, documentation or this site</span></a></li>
-    </ul>
-</nav>
-
 ## Ask a question {#questions}
 
 The [documentation]({{ site.baseurl }}/docs/) answers most questions; its search finds a class, a task or an error message. When it does not, ask the people who build with Wicket every day:

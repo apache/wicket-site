@@ -1058,3 +1058,16 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
     white-space: nowrap;
 }
 .line-panels .is-security a { border-top-color: $eol; }
+
+// A section page with a lead above its rail: the lead sits closer to the content.
+.section-lead {
+    padding-bottom: 0;
+
+    .line-panels { margin-bottom: 1rem; }
+}
+// In a rail layout the first heading needs no rule above it.
+.has-rail .section-body > h2:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+}
