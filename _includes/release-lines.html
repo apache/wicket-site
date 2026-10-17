@@ -36,12 +36,14 @@
         <tr class="is-{{ line.status }}">
             <th scope="row">
                 {% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">{{ version }}</a>{% else %}{{ version }}{% endif %}
-                {% if line.service == 'lts' %}<span class="tag tag-lts" title="Long-term support">LTS</span>{% endif %}
+                {% if line.service == 'lts' and line.status != 'lts' %}<span class="tag tag-lts" title="Long-term support">LTS</span>{% endif %}
             </th>
             <td data-label="When">{{ line.when }}</td>
             <td data-label="Supported">{{ line.support }}</td>
             <td>
-                {% if line.role %}{{ line.role }}{% else %}{% include line-status.html status=line.status style="tag" %}{% endif %}
+                {% comment %} The state first, the role of a line in service under it. {% endcomment %}
+                {% include line-status.html status=line.status style="tag" %}{% if line.service == 'lts' and line.status == 'lts' %} <span class="tag tag-lts">LTS</span>{% endif %}
+                {% if line.role %}<span class="release-lines-role">{{ line.role }}</span>{% endif %}
             </td>
         </tr>
         {% endfor %}

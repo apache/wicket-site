@@ -8,7 +8,7 @@
 {%- when 'last-call' -%}{% if include.style == 'tag' %}<span class="tag tag-ending">Last release coming</span>{% else %}Last release coming{% endif %}
 {%- when 'superseded' -%}Superseded
 {%- when 'eol' -%}{% if include.style == 'tag' %}<span class="tag tag-eol">End of life</span>{% else %}End of life{% endif %}
-{%- when 'boarding' -%}Next release
+{%- when 'boarding' -%}Announced, not yet released
 {%- when 'scheduled' -%}Scheduled
 {%- else -%}In service
 {%- endcase -%}

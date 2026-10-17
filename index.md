@@ -36,7 +36,7 @@ additionalContents:
             {% if next %}
             <div>
                 <dt>Next release</dt>
-                <dd>{{ next.version }} <span class="home-release-note">{{ next.when }}</span></dd>
+                <dd><span class="home-release-next">{{ next.version }}</span> <span class="home-release-note">Announced for {{ next.when }}, not yet released</span></dd>
             </div>
             {% endif %}
             <div class="home-release-all">

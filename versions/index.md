@@ -1,14 +1,14 @@
 ---
 layout: section
-title: Release lines
-summary: Wicket ships a long-term support release once a year for production, and a major release with new features every quarter. Each line has its own page with Maven coordinates, downloads, what is new and documentation.
+title: Releases
+summary: From Wicket 11 on, a long-term support release ships once a year for production, and a major release with new features every quarter. Each release line has its own page with Maven coordinates, downloads, what is new and documentation.
 ---
 
-{% include line-panels.html %}
+## Release lines {#lines}
 
 {% include release-lines.html %}
 
-If your application is not on a line in service, plan the upgrade: the [upgrade paths](#upgrade-paths) show the route. Every release line links to its own page.
+If your application runs on a line with its last release coming, or one past its end of life, plan the upgrade: the [upgrade paths](#upgrade-paths) show the route. Every release line links to its own page.
 
 ---
 

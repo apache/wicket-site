@@ -55,7 +55,7 @@ layout: base
 <main class="hub" id="main" tabindex="-1">
     <div class="l-container">
         <header class="hub-head" id="status">
-            <p class="hub-crumbs"><a href="{{ site.baseurl }}/versions/">Release lines</a></p>
+            <p class="hub-crumbs"><a href="{{ site.baseurl }}/versions/">Releases</a></p>
             <h1>Apache Wicket {{ page.series }}.x</h1>
             <p class="hub-role">
                 {% if line.role %}{{ line.role }}.{% endif %}
@@ -92,12 +92,15 @@ layout: base
             {% endif %}
             <div class="hub-maven" id="maven">
                 <p class="hub-maven-label"><span>Maven dependency</span><button type="button" class="hub-copy" data-copy="hub-maven-snippet" aria-live="polite">Copy</button></p>
-{% capture snippet %}<dependency>
+<div id="hub-maven-snippet">
+{% highlight xml %}
+<dependency>
     <groupId>org.apache.wicket</groupId>
     <artifactId>wicket-core</artifactId>
     <version>{{ version }}</version>
-</dependency>{% endcapture %}
-<pre id="hub-maven-snippet"><code class="language-xml">{{ snippet | xml_escape }}</code></pre>
+</dependency>
+{% endhighlight %}
+</div>
                 <p class="hub-maven-more"><a href="#manually">Download the source and binaries</a>{% if recommended %} · New project? <a href="{{ site.baseurl }}/start/quickstart.html?v={{ page.series }}">Generate one with the quick start</a>{% endif %}</p>
             </div>
         </header>

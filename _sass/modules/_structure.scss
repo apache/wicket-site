@@ -101,14 +101,20 @@ nav.mainmenu {
     border: 1px solid $eol;
     color: $eol;
 }
-// A line with one final release left.
+// A line with one release left: a filled amber label, apart from the red of end of life.
 .tag-ending {
-    border: 1px solid $brand-text;
-    color: $brand-text;
+    background: #fdebd3;
+    color: #7a3510;
 }
+// A release that fixes vulnerabilities: a reason to upgrade, not a warning.
 .tag-security {
-    border: 1px solid $eol;
-    color: $eol;
+    border: 1px solid $navy;
+    color: $navy;
+}
+.release-lines-role {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
 }
 
 // ---------- Release lines table
@@ -200,6 +206,7 @@ nav.mainmenu {
 .hub-role {
     font-size: settings.$font-size-50;
     line-height: 1.4;
+    max-width: 60ch;
     margin-bottom: 1.5rem;
 }
 
@@ -567,7 +574,7 @@ nav.mainmenu {
     position: relative;
 
     input {
-        border: 1px solid settings.$color-neutral-50;
+        border: 1px solid $ink-soft;
         border-radius: settings.$border-radius-20;
         font: inherit;
         padding: 0.5rem 2.5rem 0.5rem 0.75rem;
@@ -994,7 +1001,7 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
 // Taiga strips borders from header links, so the plate shows its link through colour.
 // Taiga strips borders from header links; the plate keeps its outline.
 .header.default nav.mainmenu a.nav-plate {
-    border: 1px solid settings.$color-neutral-50;
+    border: 1px solid $ink-soft;
 
     &:hover,
     &.active { border-color: $navy; }
@@ -1006,7 +1013,8 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
     font-weight: 600;
     padding-left: 0.5rem;
 }
-.header.default .nav-plate:hover .nav-plate-label { color: $navy; }
+.header.default .nav-plate:hover .nav-plate-label,
+.header.default .nav-plate.active .nav-plate-label { color: $navy; }
 
 // Release line panels on the docs front page.
 .line-panels {
@@ -1353,8 +1361,19 @@ main:focus-visible { outline: none; }
     }
     .hub-copy { min-height: 44px; min-width: 44px; }
     .reading-rail a,
-    .footer-sitemap a { display: inline-block; padding: 0.6rem 0; }
-    .guide-search-hint select { min-height: 44px; }
+    .footer-sitemap a,
+    .hub-jump a,
+    .section-index a { display: inline-block; padding: 0.7rem 0; }
+    .hub-crumbs a,
+    .guide-crumbs a,
+    .hub-maven-more a,
+    .post-sign-meta a,
+    .home-action-alt,
+    .home-more a,
+    .hub-more a { display: inline-block; padding: 0.7rem 0; }
+    .guide-search-hint select,
+    .guide-search-field input { min-height: 44px; }
+    .guide-search-key { display: none; }
 }
 
 // ---------- Footer
@@ -1422,11 +1441,23 @@ body > footer {
     img { display: block; height: 4.5rem; width: auto; }
 }
 
-// ---------- Docs search: a version the documentation does not cover
+// ---------- Docs: a version the documentation does not cover
 
-.guide-search-notice {
-    display: block;
-    margin-top: 0.4rem;
+.guide-uncovered {
+    padding-bottom: 0;
+}
+.guide-uncovered-inner {
+    border: 1px solid $navy;
+    border-radius: settings.$border-radius-20;
+    max-width: 48rem;
+    padding: 1rem 1.25rem;
+
+    p { margin: 0; }
+}
+.guide-uncovered-title {
+    font-size: settings.$font-size-40;
+    font-weight: 600;
+    margin-bottom: 0.25rem !important;
 }
 
 // ---------- Release lines table on phones: each cell names its column
@@ -1619,7 +1650,7 @@ body > footer {
 }
 .home-also {
     border-top: 1px solid $rule;
-    max-width: 52rem;
+    max-width: 68ch;
     padding-top: 1rem;
 
     span { font-weight: 600; }
@@ -1641,11 +1672,19 @@ body > footer {
 #builtwithwicket {
     padding-bottom: 2rem;
 
+    // slick's own theme removes focus outlines; bring them back, and give its controls contrast.
+    .slick-list:focus-visible,
+    .slick-arrow:focus-visible,
+    .slick-dots li button:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+    .slick-prev::before,
+    .slick-next::before { opacity: 1; }
+    .slick-dots li button::before { color: $ink-soft; opacity: 1; }
+    .slick-dots li.slick-active button::before { color: $navy; opacity: 1; }
+
     .builtwithwicket-slider { margin-top: 1rem; }
     .builtwithwicket-caption { font-size: settings.$font-size-20; }
     .slick-prev::before,
     .slick-next::before { color: $brand-text; }
-    .slick-dots li button::before { color: $navy; }
 }
 .builtwithwicket-slider.is-strip {
     display: flex;
@@ -1706,4 +1745,34 @@ body > footer {
     }
     a { font-weight: 600; }
     span { color: $ink-soft; display: block; font-size: settings.$font-size-20; }
+}
+
+// A page that opens with its own panels (community) needs no compact rail above the text on phones.
+.section-lead + .has-rail .reading-rail {
+    @include mixins.breakpoint(settings.$breakpoint-40, 'max-width') { display: none; }
+}
+
+.home-release-next {
+    font-size: settings.$font-size-50;
+    font-weight: 600;
+}
+
+// The copy button of a code sample in the documentation, at its top right corner.
+.has-copy {
+    position: relative;
+
+    .guide-copy {
+        background: #fff;
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+        z-index: 1;
+    }
+}
+
+// A section page that opens with a heading needs no rule above it: the sign already ends in one.
+.section-body > h2:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
 }

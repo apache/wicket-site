@@ -44,6 +44,13 @@
                 return;
             }
 
+            // Links in slides out of view leave the tab order, so Tab does not land off screen.
+            $('.builtwithwicket-slider').on('init afterChange', function () {
+                $(this).find('.slick-slide').each(function () {
+                    var hidden = this.getAttribute('aria-hidden') === 'true';
+                    $(this).find('a').attr('tabindex', hidden ? -1 : null);
+                });
+            });
             // No autoplay: a moving carousel cannot be paused by every visitor.
             $('.builtwithwicket-slider').slick({
                 arrows: true,
