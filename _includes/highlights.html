@@ -1,0 +1,31 @@
+{% comment %}
+  The highlights of a release line, from _data/highlights.yml.
+  Parameters: series (default: the featured line of releases.yml),
+  home = true to leave out highlights marked `home: false`.
+{% endcomment %}
+{%- assign series = include.series | default: site.data.releases.featured -%}
+{%- assign highlights = site.data.highlights[series] -%}
+<ul class="features">
+{%- for item in highlights.items -%}
+    {%- if include.home and item.home == false %}{% continue %}{% endif %}
+    <li class="feature">
+        <h3>{{ item.title }}</h3>
+        {{ item.text | markdownify }}
+        {%- if item.facts %}
+        <dl class="feature-facts">
+            {%- for fact in item.facts %}
+            <div><dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd></div>
+            {%- endfor %}
+        </dl>
+        {%- endif %}
+        {%- if item.code %}
+        <div class="feature-code route-code">
+            {%- if item.file %}<p class="route-file">{{ item.file }}</p>{% endif -%}
+{% capture fence %}~~~ {{ item.lang }}
+{{ item.code }}~~~{% endcapture %}
+            {{ fence | markdownify }}
+        </div>
+        {%- endif %}
+    </li>
+{%- endfor %}
+</ul>

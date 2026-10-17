@@ -1,0 +1,50 @@
+{% comment %}
+  The release lines: in service, scheduled, and just out of service.
+  Reads _data/releases.yml and the versions in _config.yml.
+{% endcomment %}
+{% assign releases = site.data.releases %}
+<table class="release-lines">
+    <caption class="visually-hidden">Apache Wicket release lines: when they arrive, how long they are supported, and their status</caption>
+    <thead>
+        <tr>
+            <th scope="col">Release</th>
+            <th scope="col">When</th>
+            <th scope="col">Supported</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    {% for group in (1..3) %}
+    <tbody>
+        <tr class="release-lines-group">
+            <th scope="rowgroup" colspan="4">{% case group %}{% when 1 %}In service{% when 2 %}Scheduled{% else %}Out of service{% endcase %}</th>
+        </tr>
+        {% for line in releases.lines %}
+            {% assign line_group = 1 %}
+            {% if line.status == 'boarding' or line.status == 'scheduled' %}{% assign line_group = 2 %}{% endif %}
+            {% if line.status == 'eol' %}{% assign line_group = 3 %}{% endif %}
+            {% if line_group != group %}{% continue %}{% endif %}
+            {% if line.config %}{% assign version = site.wicket[line.config] %}{% else %}{% assign version = line.version %}{% endif %}
+        <tr class="is-{{ line.status }}">
+            <th scope="row">
+                {% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">{{ version }}</a>{% else %}{{ version }}{% endif %}
+                {% if line.service == 'lts' %}<span class="tag tag-lts" title="Long-term support">LTS</span>{% endif %}
+            </th>
+            <td>{{ line.when }}</td>
+            <td>{{ line.support }}</td>
+            <td>
+                {% if line.role %}{{ line.role }}{% else %}
+                {% case line.status %}
+                {% when 'boarding' %}Next up
+                {% when 'scheduled' %}Scheduled
+                {% when 'last-call' %}One final release, then end of life
+                {% when 'superseded' %}Superseded
+                {% when 'eol' %}<span class="tag tag-eol">End of life</span>
+                {% else %}In service
+                {% endcase %}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    {% endfor %}
+</table>

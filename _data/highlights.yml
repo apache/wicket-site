@@ -1,0 +1,273 @@
+# What is new per release line. The homepage shows the highlights of the
+# featured line (`featured` in releases.yml); the line's own download page
+# shows all of them.
+#
+# Per highlight:
+#   title: short name of the feature
+#   text:  one or two sentences, Markdown allowed
+#   facts: optional list of { label, value } pairs, shown as board figures
+#   code:  optional code sample, with `lang` (java, xml, html) and `file`
+#   home:  false keeps a highlight off the homepage (default: shown)
+
+"11":
+  intro: >
+    Wicket 11 opens the quarterly release schedule. It moves to a current Java
+    and Jakarta baseline, tightens security, makes every component leaner and
+    lets Ajax run without jQuery.
+  items:
+    - title: A new baseline
+      text: >
+        Wicket 11 requires Java 21 and runs on Jakarta Servlet 6.1, and its
+        Spring integration moves to Spring 7. Applications on Wicket 10 already
+        use `jakarta.servlet`, so the step up is your JDK and your container.
+      facts:
+        - label: Java
+          value: "21"
+        - label: Jakarta Servlet
+          value: "6.1"
+        - label: Spring
+          value: "7"
+
+    - title: More secure by default
+      text: >
+        Encryption is rebuilt on one authenticated scheme: encrypted URLs and
+        stored pages cannot be altered unnoticed, the scheme generates its own
+        key, and encrypted URLs stay cacheable. Components that write model
+        values into markup escape them consistently, and the content security
+        policy now covers `script-src-attr` and `style-src-attr`.
+
+    - title: Leaner components
+      text: >
+        A component keeps its model, behaviors and metadata in one compact
+        state object instead of a packed array. In the benchmarks, reading that
+        state is 30 to 45% faster, and a component tree with Ajax behaviors
+        serializes about 40% smaller, so sessions and the page store carry less.
+
+    - title: Ajax without jQuery
+      text: >
+        A second, plain JavaScript implementation of the Ajax engine with the
+        same client-side API. Opt in, and your pages, including autocomplete,
+        palette and the upload progress bar, no longer download jQuery. jQuery
+        remains the default and now supports jQuery 4.
+      file: WicketApplication.java
+      lang: java
+      code: |
+        @Override
+        protected void init() {
+            super.init();
+            getJavaScriptLibrarySettings().setWicketAjaxReference(
+                WicketAjaxResourceReference.get());
+        }
+
+    - title: Ajax veils
+      home: false
+      text: >
+        `PageVeilBehavior` and `LocalVeilBehavior` in wicket-extensions cover a
+        page or a single component while an Ajax request runs, so a second
+        click on a slow button does not send the request twice. A spinner
+        appears only when the request takes longer than 300 ms.
+      file: BasePage.java
+      lang: java
+      code: |
+        public abstract class BasePage extends WebPage {
+            public BasePage() {
+                add(new PageVeilBehavior());
+            }
+        }
+
+"10":
+  items:
+    - title: Jakarta EE
+      text: >
+        Wicket 10 moves from the `javax` to the `jakarta` namespace. It requires
+        Java 17 and Servlet 5 or newer, and its integrations move along: Spring 6,
+        Guice 7 and Commons FileUpload 2.
+      facts:
+        - label: Java
+          value: "17"
+        - label: Jakarta Servlet
+          value: "5.0"
+        - label: Spring
+          value: "6"
+
+    - title: Automatic migration
+      text: >
+        The `wicket-migration` module brings OpenRewrite recipes that take care
+        of the repetitive part of the upgrade: the `jakarta` imports, the Java 17
+        baseline and the moved Wicket classes.
+      file: Terminal
+      lang: shell
+      code: |
+        mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
+          -Drewrite.recipeArtifactCoordinates=org.apache.wicket:wicket-migration:LATEST \
+          -DactiveRecipes=org.apache.wicket.BestPractices
+
+    - title: WicketTester in its own module
+      text: >
+        `WicketTester` and the other testers move to `wicket-tester`, so
+        `wicket-core` no longer depends on JUnit and works cleanly as a Java
+        module. Add it as a test dependency and fix the imports.
+      file: pom.xml
+      lang: xml
+      code: |
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-tester</artifactId>
+            <version>${wicket.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    - title: Ready for current JDKs
+      text: >
+        Serializable proxies for Spring and CDI beans are now built with
+        ByteBuddy instead of CGLib, which no longer works on JDK 17. Nothing
+        changes in your code.
+
+"9":
+  items:
+    - title: Modern Java
+      text: >
+        Wicket 9 requires Java 11, supports the Java module system, and moves
+        `WicketTester` to JUnit 5.
+      facts:
+        - label: Java
+          value: "11"
+        - label: Servlet
+          value: "3.1"
+        - label: JUnit
+          value: "5"
+
+    - title: Content Security Policy
+      text: >
+        Wicket 9 ships a content security policy that needs no `unsafe-inline`:
+        every header contribution gets a nonce, and the policy allows exactly
+        that nonce. You can add directives to the policy or switch it off.
+
+    - title: Keeping up with Java
+      text: >
+        Wicket takes part in the OpenJDK Quality Outreach, so every new Java
+        release and early-access build is tested against it.
+
+"8":
+  items:
+    - title: Java 8
+      text: >
+        Wicket 8 requires Java 8 and Servlet 3.1, so it runs on Tomcat 8,
+        Jetty 9.1 or any Java EE 7 server.
+      facts:
+        - label: Java
+          value: "8"
+        - label: Servlet
+          value: "3.1"
+
+    - title: Models as lambdas
+      text: >
+        `IModel` is a functional interface: a method reference or a lambda is a
+        model. `LambdaModel` replaces string-based property expressions with
+        type-safe, refactoring-safe bindings that also run faster.
+      file: PersonPanel.java
+      lang: java
+      code: |
+        add(new Label("name1", person::getName));
+        add(new Label("name2", () -> person.getName()));
+        add(new Label("name3", LambdaModel.of(personModel, Person::getName)));
+
+    - title: Optional where null was possible
+      text: >
+        The API uses `Optional` where a value may be absent. An
+        `AjaxFallbackLink` now tells you whether it was clicked through Ajax.
+      file: HomePage.java
+      lang: java
+      code: |
+        add(new AjaxFallbackLink<Void>("link") {
+            @Override
+            public void onClick(Optional<AjaxRequestTarget> target) {
+                target.ifPresent(t -> t.add(counter));
+            }
+        });
+
+    - title: Java date and time
+      text: >
+        The `java.time` types are converted, validated and bound to components
+        out of the box.
+
+"7":
+  items:
+    - title: Java 7
+      text: >
+        Wicket 7 requires Java 7 and Servlet 3.0.
+      facts:
+        - label: Java
+          value: "7"
+        - label: Servlet
+          value: "3.0"
+
+    - title: Component queuing
+      text: >
+        `queue()` lets the markup decide where a component goes. Queue
+        components in any order, and Wicket nests them the way the markup does,
+        instead of mirroring the markup hierarchy in `add()` calls.
+      file: HomePage.java
+      lang: java
+      code: |
+        queue(new Form<Void>("form"));
+        queue(new TextField<String>("name"));
+        queue(new Label("greeting", "Hello"));
+
+    - title: CSRF protection
+      text: >
+        Wicket bundles a measure against cross-site request forgery that checks
+        the origin of requests to your pages.
+      file: WicketApplication.java
+      lang: java
+      code: |
+        getRequestCycleListeners()
+            .add(new CsrfPreventionRequestCycleListener());
+
+    - title: Inline images
+      text: >
+        Images can be embedded in the page itself with the `data:` protocol,
+        saving a request per image.
+
+"6":
+  items:
+    - title: Java 6
+      text: >
+        Wicket 6 requires Java 6 and Servlet 2.5.
+      facts:
+        - label: Java
+          value: "6"
+        - label: Servlet
+          value: "2.5"
+
+    - title: Ajax built on jQuery
+      text: >
+        The Ajax library is reimplemented on jQuery, which makes jQuery plugins
+        easy to integrate. Ajax components register browser events instead of
+        writing inline event attributes, so a tag can have several listeners
+        and the markup stays clean.
+
+    - title: Control over every Ajax request
+      text: >
+        `AjaxRequestAttributes` lets you change any aspect of an Ajax request:
+        the HTTP method, multipart submission, throttling and more.
+      file: SaveBehavior.java
+      lang: java
+      code: |
+        @Override
+        protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
+            super.updateAjaxAttributes(attributes);
+            attributes.setMethod(AjaxRequestAttributes.Method.POST);
+        }
+
+    - title: Resources with dependencies
+      text: >
+        A resource can declare what it depends on, such as a jQuery plugin on
+        jQuery, and Wicket renders the dependencies in the right order. In
+        deployment mode packaged resources switch to their `.min.js` versions
+        automatically.
+
+    - title: Large datasets
+      text: >
+        `IDataProvider` uses `long` instead of `int` for indexes and sizes,
+        lining up with the Java Persistence API.

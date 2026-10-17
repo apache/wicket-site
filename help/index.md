@@ -38,9 +38,13 @@ maybe even answer a couple) about Wicket:
   questions to our grander community. Many Wicket developers have
   subscribed to our User list and want to help you!
 
-- [Our IRC channel](irc.html) **##wicket** at _irc.freenode.net_
+- The **#wicket** channel on the [ASF Slack](https://the-asf.slack.com/)
   provides a more direct discussion platform. Note that time zones can
-  make it difficult to find activity in the channel.
+  make it difficult to find activity in the channel. Without an
+  apache.org account you join as a guest by invitation: ask for one on
+  the [users list](email.html#user). The ASF's
+  [Slack guidelines](https://infra.apache.org/slack.html) explain how
+  guest access works.
 
 - <a href="http://stackoverflow.com/questions/tagged/wicket" 
   rel="nofollow" title="Goes to Stackoverflow website">Stackoverflow</a> provides a

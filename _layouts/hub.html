@@ -1,0 +1,136 @@
+---
+layout: base
+---
+{% comment %}
+  The page of one release line under /versions/. Front matter:
+    series:     "11", "1.5"
+    config:     key under `wicket:` in _config.yml with the latest version
+    java:       minimum Java version
+    servlet:    Servlet API the line needs
+    migration:  { from, url } the migration guide to this line, if published
+    status, support: only for lines no longer in _data/releases.yml
+  The line's status, support and role come from _data/releases.yml when it lists the line.
+  The page's own content follows the generated sections: manual download, requirements, migration.
+{% endcomment %}
+{% assign line = nil %}
+{% for l in site.data.releases.lines %}
+    {% if l.series == page.series and l.status != 'scheduled' and l.status != 'boarding' %}{% assign line = l %}{% break %}{% endif %}
+{% endfor %}
+{% assign status = line.status | default: page.status %}
+{% assign support = line.support | default: page.support %}
+{% assign version = site.wicket[page.config] %}
+{% assign major = page.series | split: '.' | first | plus: 0 %}
+{% assign in_service = true %}{% if status == 'eol' %}{% assign in_service = false %}{% endif %}
+{% assign post_key = '/wicket-' | append: page.series | append: '.' %}
+{% assign post_major = '/wicket-' | append: page.series | append: '-released' %}
+<div class="header default">
+    <div class="l-container">
+        {% include mainmenu.html %}
+    </div>
+</div>
+<main class="hub">
+    <div class="l-container">
+        <header class="hub-head" id="status">
+            <p class="hub-crumbs"><a href="{{ site.baseurl }}/versions/">Release lines</a></p>
+            <h1>Apache Wicket {{ page.series }}.x</h1>
+            <p class="hub-role">
+                {% if line.role %}{{ line.role }}.{% endif %}
+                {% case status %}
+                {% when 'lts' %}The long-term support release.
+                {% when 'current' %}The current quarterly release.
+                {% when 'eol' %}Out of service: no more releases, not even security fixes.
+                {% when 'last-call' %}One final release, then end of life: supported {{ support | replace: 'Until', 'until' }}.
+                {% else %}In service.
+                {% endcase %}
+            </p>
+            <dl class="hub-facts">
+                <div><dt>Latest release</dt><dd class="hub-version">{{ version }}</dd></div>
+                <div><dt>Status</dt><dd>{% case status %}{% when 'lts' %}<span class="tag tag-lts">LTS</span> In service{% when 'eol' %}<span class="tag tag-eol">End of life</span>{% else %}In service{% endcase %}</dd></div>
+                <div><dt>Supported</dt><dd>{{ support }}</dd></div>
+                <div><dt>Java</dt><dd>{{ page.java }} or newer</dd></div>
+                <div><dt>Servlet API</dt><dd>{{ page.servlet }}</dd></div>
+            </dl>
+            {% unless in_service %}
+            <p class="hub-eol">Move to a line in service: the <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> show the route from Wicket {{ page.series }}.</p>
+            {% endunless %}
+            <div class="hub-maven" id="maven">
+                <p class="hub-maven-label"><span>Maven dependency</span><button type="button" class="hub-copy" data-copy="hub-maven-snippet">Copy</button></p>
+{% capture snippet %}<dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-core</artifactId>
+    <version>{{ version }}</version>
+</dependency>{% endcapture %}
+<pre id="hub-maven-snippet"><code class="language-xml">{{ snippet | xml_escape }}</code></pre>
+                {% if in_service %}<p class="hub-maven-more">New project? <a href="{{ site.baseurl }}/docs/create-project.html">Start from the quickstart archetype</a>.</p>{% endif %}
+            </div>
+        </header>
+
+        {% assign highlights = site.data.highlights[page.series] %}
+        {% if highlights %}
+        <section class="hub-section" id="new">
+            <h2>New in Wicket {{ page.series }}</h2>
+            {% include highlights.html series=page.series %}
+        </section>
+        {% endif %}
+
+        <section class="hub-section" id="docs">
+            <h2>Documentation</h2>
+            <ul class="hub-panels">
+                <li>
+                    <h3>Docs</h3>
+                    {% if in_service %}
+                    <p><a href="{{ site.baseurl }}/docs/?v={{ major }}">The documentation for Wicket {{ page.series }}</a>: tutorials, how-to guides, reference and explanation.</p>
+                    <p class="hub-panel-alt"><a href="https://nightlies.apache.org/wicket/guide/{{ page.series }}.x/single.html">The reference guide as one document</a></p>
+                    {% elsif major >= 7 %}
+                    <p><a href="https://nightlies.apache.org/wicket/guide/{{ page.series }}.x/single.html">The reference guide for Wicket {{ page.series }}</a>, as one document.</p>
+                    {% else %}
+                    <p>Wicket {{ page.series }} has no reference guide of its own; the <a href="https://cwiki.apache.org/WICKET">wiki</a> and the <a href="{{ site.baseurl }}/learn/books/">books</a> cover it.</p>
+                    {% endif %}
+                </li>
+                <li>
+                    <h3>Migration guide</h3>
+                    {% if page.migration %}
+                    <p><a href="{{ page.migration.url }}">Migrating from Wicket {{ page.migration.from }} to {{ page.series }}</a>: what changed and what to adjust in your application.</p>
+                    {% else %}
+                    <p>The migration guide from Wicket {{ major | minus: 1 }} is not published yet. Until it is, <a href="#new">New in Wicket {{ page.series }}</a> lists the changes.</p>
+                    {% endif %}
+                </li>
+                <li>
+                    <h3>API documentation</h3>
+                    {% if major >= 7 %}
+                    <p><a href="https://nightlies.apache.org/wicket/apidocs/{{ page.series }}.x/index.html">Javadoc for Wicket {{ page.series }}</a>: every class, method and setting.</p>
+                    {% else %}
+                    <p>The Javadoc for Wicket {{ page.series }} ships in the <a href="#manually">binary download</a>.</p>
+                    {% endif %}
+                </li>
+            </ul>
+        </section>
+
+        {% assign line_posts = '' | split: '' %}
+        {% for post in site.posts %}
+            {% if post.url contains post_key or post.url contains post_major or post.lines contains page.series %}{% assign line_posts = line_posts | push: post %}{% endif %}
+        {% endfor %}
+        {% if line_posts.size > 0 %}
+        <section class="hub-section" id="news">
+            <h2>News about Wicket {{ page.series }}</h2>
+            {% include post-list.html posts=line_posts featured=3 rows=8 %}
+            <p class="hub-more"><a href="{{ site.baseurl }}/news/">All posts on the blog</a></p>
+        </section>
+        {% endif %}
+
+        <section class="hub-section hub-body">
+            {{ content }}
+        </section>
+    </div>
+</main>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (button) {
+    button.addEventListener('click', function () {
+        var text = document.getElementById(button.getAttribute('data-copy')).textContent;
+        navigator.clipboard.writeText(text).then(function () {
+            button.textContent = 'Copied';
+            setTimeout(function () { button.textContent = 'Copy'; }, 2000);
+        });
+    });
+});
+</script>

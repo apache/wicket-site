@@ -1,0 +1,40 @@
+{% comment %}
+  Posts as featured panels followed by compact dated rows.
+  include.posts: the posts, newest first; include.featured: how many featured panels
+  to show at most (default 4); include.rows: how many rows at most (default all);
+  include.days: only posts from the last this many days become panels (default: all).
+{% endcomment %}
+{%- assign max_featured = include.featured | default: 4 -%}
+{%- assign cutoff = 0 -%}
+{%- if include.days -%}{%- assign seconds = include.days | times: 86400 -%}{%- assign cutoff = site.time | date: '%s' | plus: 0 | minus: seconds -%}{%- endif -%}
+{%- assign shown = 0 -%}
+{%- assign featured_urls = '' -%}
+{%- capture panels -%}
+{%- for post in include.posts -%}
+    {%- include post-kind.html post=post -%}
+    {%- unless post_featured %}{% continue %}{% endunless -%}
+    {%- assign post_time = post.date | date: '%s' | plus: 0 -%}
+    {%- if post_time < cutoff %}{% continue %}{% endif -%}
+    {%- if shown >= max_featured %}{% break %}{% endif -%}
+    {%- assign shown = shown | plus: 1 -%}
+    {%- assign featured_urls = featured_urls | append: post.url | append: ' ' -%}
+    <li class="post-panel is-{{ post_kind }}">
+        <a href="{{ site.baseurl }}{{ post.url }}">
+            <span class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>{% case post_kind %}{% when 'major' %} · Major release{% when 'security' %} · Security{% endcase %}</span>
+            <span class="post-title">{{ post.title }}</span>
+            <span class="post-summary">{% include post-summary.html post=post %}</span>
+        </a>
+    </li>
+{%- endfor -%}
+{%- endcapture -%}
+{%- if shown > 0 %}<ul class="post-panels">{{ panels }}</ul>{% endif -%}
+{%- assign row_count = 0 -%}
+<ul class="post-rows">
+{%- for post in include.posts -%}
+    {%- assign key = post.url | append: ' ' -%}
+    {%- if featured_urls contains key %}{% continue %}{% endif -%}
+    {%- if include.rows and row_count >= include.rows %}{% break %}{% endif -%}
+    {%- assign row_count = row_count | plus: 1 -%}
+    <li><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time> <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+{%- endfor -%}
+</ul>

@@ -1,26 +1,16 @@
 ---
-layout: news_archive
-title: Apache Wicket News
-subtitle: Releases, Security updates and more&mdash;all in one neat feed.
-preamble: The news is published in several venues. All announcements are sent to the Apache announcement mailing list, our announcement, user and development mailing lists, the news feed of this website and of course this website.
+layout: section
+title: Blog
+summary: Releases, security advisories and articles from the Apache Wicket project.
 ---
-{% for year in site.years %}
-<div class="l-first" markdown="1">
+{% include post-list.html posts=site.posts featured=4 rows=15 days=1100 %}
 
-# All News for {{ year.first.first.date | date: "%Y" }}
+## Archive {#archive}
 
-This section contains all news items published in <a href="{{site.baseurl}}/news/{{ year.first.first.date | date: '%Y' }}">{{ year.first.first.date | date: "%Y" }}</a>.
+Every announcement since 2009, by year. All posts are also in the [Atom feed]({{ site.baseurl }}/atom.xml) and on the [announce mailing list]({{ site.baseurl }}/help/email.html#announce).
 
-{% for month in year %}
-    {% for post in month %}
-<article>
-	<h3 id="{{ site.baseurl }}{{post.url}}">{{post.title}}</h3>
-    <small>{{post.date | date_to_string}}</small>
-	<p>{{ post.content | markdownify | strip_html | truncatewords:50 }}
-	<a href="{{ site.baseurl }}{{post.url}}">more</a></p>
-</article>
-    {% endfor %}
+<ul class="blog-years">
+{% for year in site.years %}{% assign y = year.first.first.date | date: "%Y" %}
+    <li><a href="{{ site.baseurl }}/news/{{ y }}">{{ y }}</a></li>
 {% endfor %}
-<div class="l-first"></div>
----
-{% endfor %}
+</ul>

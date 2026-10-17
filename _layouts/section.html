@@ -1,0 +1,23 @@
+---
+layout: base
+---
+{% comment %}
+  A section's front page (release lines, blog, documentation, community):
+  the title and `summary` front matter on a sign, then the content.
+{% endcomment %}
+<div class="header default">
+    <div class="l-container">
+        {% include mainmenu.html %}
+    </div>
+</div>
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <h1>{{ page.title }}</h1>
+        {% if page.summary %}<p class="page-sign-sub">{{ page.summary }}</p>{% endif %}
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading section-body">
+        {{ content }}
+    </div>
+</main>

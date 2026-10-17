@@ -1,0 +1,92 @@
+# Release lines: the release lines page, the version plate in the menu, the
+# line pages under /versions/ and the panels on the docs front page.
+#
+# On release day:
+#   - set `status` of the released line to `current` (or `lts`), and give it
+#     `config`, `page` and `role` like the other lines in service
+#   - update the matching version in _config.yml (wicket.version_xx)
+#   - set the previous quarterly line to `superseded`
+#   - for a new major line, publish its page (versions/wicket-N.x/index.md has
+#     `published: false` until then)
+#   - the next announced major gets `status: boarding`; docs pages for it say
+#     it is upcoming until it ships
+#
+# Upcoming releases are listed in date order: the homepage board shows only
+# those sharing the earliest `when`, so give releases that ship together the
+# same `when`. An LTS patch release that rides along is its own entry.
+#
+# A line that reaches end of life gets `status: eol`; the board shows it under
+# "Out of service". Remove it from this file after a release or two and keep it
+# in the Unsupported releases table on versions/index.md.
+#
+# service: lts | quarterly | major (pre-2026 release lines)
+# status: boarding | scheduled | current | lts | last-call | superseded | eol
+# config: key under `wicket:` in _config.yml that holds the latest version
+#         of the line; leave empty for lines that have no release yet.
+# role:   what a line in service is for, shown instead of its status, e.g.
+#         "For production" on the LTS and "For new features" on the quarterly.
+#
+# Lines in service are shown in the order listed here: the LTS first.
+
+featured: "10"
+
+lines:
+  - series: "10"
+    config: version_10
+    service: lts
+    status: lts
+    when: "Since Mar 2024"
+    support: "Until 14.0.0, Jul 2027"
+    page: /versions/wicket-10.x/
+    role: "For production"
+
+  - series: "9"
+    config: version_90
+    service: major
+    status: last-call
+    when: "Since Jul 2020"
+    support: "Until 11.0.0, Oct 2026"
+    page: /versions/wicket-9.x/
+
+  - series: "8"
+    config: version_80
+    service: major
+    status: last-call
+    when: "Since May 2018"
+    support: "Until 11.0.0, Oct 2026"
+    page: /versions/wicket-8.x/
+
+  - series: "11"
+    version: "11.0.0"
+    service: quarterly
+    status: boarding
+    when: "Oct 2026"
+    support: "Until 12.0.0, Jan 2027"
+
+  - series: "12"
+    version: "12.0.0"
+    service: quarterly
+    status: scheduled
+    when: "Jan 2027"
+    support: "Until 13.0.0, Apr 2027"
+
+  - series: "10"
+    version: "10.12.0"
+    service: lts
+    status: scheduled
+    when: "Jan 2027"
+    support: "Until 14.0.0, Jul 2027"
+
+  - series: "13"
+    version: "13.0.0"
+    service: quarterly
+    status: scheduled
+    when: "Apr 2027"
+    support: "Until 14.0.0, Jul 2027"
+
+  - series: "14"
+    version: "14.0.0"
+    service: lts
+    status: scheduled
+    when: "Jul 2027"
+    support: "Until 18.0.0, Jul 2028"

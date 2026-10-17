@@ -67,22 +67,19 @@ additionalContents:
 
 <div class="l-first l-flex">
   <div class="l-half">
-    <h2>Getting Started with Wicket 10</h2>
+    <h2>Getting started with Wicket</h2>
     <p>
-      It is very easy to get started with Wicket: use our <a href="/start/quickstart.html">quick-start wizard</a> or 
-      use one of the options below.
+      Create a project from the <a href="{{ site.baseurl }}/docs/create-project.html">quickstart archetype</a>
+      and follow the <a href="{{ site.baseurl }}/docs/first-application.html">first tutorial</a> in the documentation,
+      or add Wicket to an existing project with the dependency below.
     </p>
   </div>
   <div class="l-half">
-    <h3>Migrating to Wicket 10</h3>
+    <h3>Upgrading</h3>
     <p>
-      When you migrate from a previous Wicket version to Wicket 10, a full list of changes and migrations is available at the following page:
-    </p>
-    <p>
-      <a href="https://s.apache.org/wicket10migrate">https://s.apache.org/wicket10migrate</a>
-    </p>
-    <p>
-      Please consult this migration guide when you are moving towards Wicket 10.
+      Every <a href="{{ site.baseurl }}/versions/">release line</a> has its own page with what is new,
+      its migration guide and how long it is supported. The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a>
+      show the route from your version to a supported one.
     </p>
   </div>
 </div>

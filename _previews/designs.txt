@@ -1,0 +1,27 @@
+# Designs published side by side on https://dashorst.github.io/wicket-site/
+#
+# One design per line, fields separated by |:
+#   slug | source | gemfile | title | date | description
+#
+# source:  a git ref to build with Jekyll, or ref:path for a static folder
+#          (a sketch) committed at that path in that ref
+# gemfile: site (the ref's own Gemfile), old (_previews/Gemfile.old, for the
+#          2018 and 2020 attempts), or static
+#
+# Run _previews/publish.sh to build all designs and push the gh-pages branch.
+
+structure | dashorst/structure | site | The new structure | October 2026 | The current look with the restructured navigation: Docs, Blog and Community, a page per release line under /versions/, and the user guide as documentation by topic and kind. Content as on wicket.apache.org today: Wicket 10.11 LTS, with 11 announced.
+departure-board | dashorst/departure-board | site | The departure board | October 2026 | Station hall with a departure board of release lines, built for Wicket 11.0 and the quarterly release model, with the user guide as tutorials, how-to guides, reference and explanation.
+reveal-site | dashorst/reveal | site | The reveal | October 2026 | The reveal as a complete site: monochrome with Wicket orange, a homepage that builds a page's component tree step by step, every page restyled, and the user guide on the component tree.
+ribbon-site | dashorst/ribbon | site | The ribbon as component tree | October 2026 | The component-tree ribbon as a complete site: a seasonal photograph opens every page, one orange ribbon runs through a page's component tree on bookcloth and through every page's sections, and the user guide hangs on it. Switch the season on the photo.
+grid | dashorst/directions:.impeccable/directions/grid | static | Sketch: grid system | October 2026 | Homepage sketch in the Swiss International Typographic Style: a module grid with one committed field colour.
+drawing | dashorst/directions:.impeccable/directions/drawing | static | Sketch: drawing sheet | October 2026 | Homepage sketch as an engineering drawing: Wicket drawn as a part in two views, releases in the revision table.
+reveal | dashorst/directions:.impeccable/directions/reveal | static | Sketch: reveal | October 2026 | Monochrome with Wicket orange, after vercel.com/eve: scroll through seven steps that build a page's component tree in real code.
+ribbon-tree | dashorst/directions:.impeccable/directions/ribbon-tree | static | Sketch: component tree on bookcloth | October 2026 | The original provenance ribbon's world without a photo: the component-tree ribbon enters from the left edge and opens the page.
+ribbon-components | dashorst/directions:.impeccable/directions/ribbon-components | static | Sketch: ribbon as component tree | October 2026 | The ribbon runs through a page's component tree, joining each Java component to its tag; release facts shrink to one small block.
+ribbon-seasons | dashorst/directions:.impeccable/directions/ribbon-seasons | static | Sketch: ribbon with seasons | October 2026 | The provenance ribbon under a seasonal photograph, with the big logo lockup and a light body. Try ?season=summer or ?occasion=halloween.
+ribbon | dashorst/directions:.impeccable/directions/ribbon | static | Sketch: provenance ribbon | October 2026 | Homepage sketch that follows Wicket's release lines as one ribbon through twenty years, splitting at the present.
+april-2026 | dashorst/jekyll-site | site | The April attempt | April 2026 | The previous redesign, published at this address until October 2026.
+current | origin/asf-site | site | The current site | 2015 to today | wicket.apache.org as it is live today, on the Taiga theme.
+2020 | origin/gh-pages | old | The 2020 layout | June 2020 | Andrea Del Bene's new layout for Wicket 9, with content as of June 2020.
+2018 | dashorst/master | old | The Wicket 8 draft | May 2018 | A first draft for the Wicket 8 site, with content as of May 2018.

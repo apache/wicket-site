@@ -1,0 +1,997 @@
+@use "sass:color";
+@use "../taiga/mixins";
+@use "../taiga/settings";
+
+// The parts the restructured site adds to the Taiga theme: the version plate in the menu,
+// the release line pages, the release lines table, the blog listings and the user guide.
+
+$rule: settings.$color-neutral-30;
+$tint: settings.$color-neutral-10;
+$ink: settings.$color-neutral-70;
+$ink-soft: #5d6662;
+$brand: settings.$color-brand-50;
+$brand-text: #b4531a;   // brand orange dark enough for text on white
+$navy: #303284;         // the "WICKET" of the logo
+$eol: #b3261e;
+
+// One width for the whole site: 66rem of content between the 5rem gutters of the
+// Taiga container, so the menu, page headings, panels, tables and footer share both edges.
+$content-width: 66rem;
+$site-width: $content-width + 10rem;
+
+.l-container {
+    max-width: $site-width;
+}
+
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+// ---------- Main menu
+
+nav.mainmenu {
+    .nav-items.active {
+        box-shadow: inset 0 -2px 0 $brand;
+        color: $navy;
+    }
+}
+
+.nav-plate {
+    align-items: baseline;
+    border: 1px solid $rule;
+    border-radius: settings.$border-radius-20;
+    display: inline-flex;
+    gap: 0.5rem;
+    margin-right: 1.25rem;
+    padding: 0.15rem 0.6rem;
+    text-transform: none;
+    white-space: nowrap;
+
+    .nav-plate-current {
+        color: $navy;
+        font-weight: 600;
+    }
+    .nav-plate-lts {
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+        font-weight: 400;
+    }
+    &:hover,
+    &.active {
+        border-color: $brand;
+    }
+}
+
+// ---------- Small labels
+
+.tag {
+    border-radius: settings.$border-radius-10;
+    display: inline-block;
+    font-size: settings.$font-size-10;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    padding: 0 0.4em;
+    text-transform: uppercase;
+    vertical-align: 0.15em;
+}
+.tag-lts {
+    background: $navy;
+    color: #fff;
+}
+.tag-eol {
+    border: 1px solid $eol;
+    color: $eol;
+}
+
+// ---------- Release lines table
+
+.release-lines {
+    border-collapse: collapse;
+    margin: 1rem 0 2rem;
+    width: 100%;
+
+    th, td {
+        border-bottom: 1px solid $rule;
+        padding: 0.6rem 1rem 0.6rem 0;
+        text-align: left;
+        vertical-align: baseline;
+    }
+    thead th {
+        border-bottom: 2px solid $ink;
+        font-weight: 600;
+    }
+    tbody th[scope=row] {
+        font-weight: 600;
+        white-space: nowrap;
+
+        a { font-weight: 600; }
+        .tag { margin-left: 0.4rem; }
+    }
+    .release-lines-group th {
+        border-bottom: 1px solid $rule;
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        padding-top: 1.5rem;
+        text-transform: uppercase;
+    }
+    .is-eol th[scope=row],
+    .is-eol th[scope=row] a {
+        color: $ink-soft;
+        text-decoration: line-through;
+        text-decoration-color: $eol;
+    }
+
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        thead { display: none; }
+        tr { display: grid; grid-template-columns: 1fr 1fr; padding: 0.5rem 0; border-bottom: 1px solid $rule; }
+        th, td { border: none; padding: 0.15rem 0; }
+        .release-lines-group { display: block; border-bottom: none; }
+    }
+}
+
+// ---------- Release line page
+
+.hub {
+    padding-bottom: 3rem;
+
+    .hub-head,
+    .hub-section { max-width: 66rem; }
+}
+
+// Signs and reading columns line up with the menu's container.
+@mixin container-gutters {
+    margin: 0 auto;
+    max-width: $site-width;
+    padding-left: settings.$spacing;
+    padding-right: settings.$spacing;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        padding-left: settings.$spacing * 5;
+        padding-right: settings.$spacing * 5;
+    }
+}
+
+.hub-head {
+    margin: 2rem 0 1rem;
+
+    h1 {
+        color: settings.$color-neutral-90;
+        font-size: 2.6rem;
+        font-weight: 300;
+        line-height: 1.15;
+        margin: 0.25rem 0 0.5rem;
+    }
+}
+
+.hub-crumbs {
+    font-size: settings.$font-size-20;
+}
+
+.hub-role {
+    font-size: settings.$font-size-50;
+    margin-bottom: 1.5rem;
+}
+
+.hub-facts {
+    border-bottom: 1px solid $rule;
+    border-top: 1px solid $rule;
+    display: grid;
+    gap: 1rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+
+    dt {
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+    }
+    dd {
+        color: settings.$color-neutral-90;
+        font-weight: 400;
+        margin: 0;
+    }
+    .hub-version {
+        font-size: settings.$font-size-60;
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+}
+
+.hub-eol {
+    border: 1px solid $eol;
+    border-radius: settings.$border-radius-20;
+    color: settings.$color-neutral-90;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+}
+
+.hub-maven {
+    max-width: 36rem;
+
+    pre {
+        background: $tint;
+        border-radius: settings.$border-radius-20;
+        margin: 0.5rem 0;
+        overflow-x: auto;
+        padding: 1rem;
+    }
+}
+
+.hub-maven-label {
+    align-items: center;
+    display: flex;
+    font-weight: 400;
+    justify-content: space-between;
+}
+
+.hub-copy {
+    background: none;
+    border: 1px solid $brand;
+    border-radius: settings.$border-radius-20;
+    color: $brand-text;
+    cursor: pointer;
+    font: inherit;
+    font-size: settings.$font-size-20;
+    font-weight: 600;
+    padding: 0.1rem 0.75rem;
+
+    &:hover { background: $brand; color: #fff; }
+    &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+}
+
+.hub-maven-more,
+.hub-more {
+    font-size: settings.$font-size-20;
+}
+
+.hub-section {
+    border-top: 1px solid $rule;
+    margin-top: 3rem;
+    padding-top: 2rem;
+
+    > h2 {
+        color: settings.$color-neutral-90;
+        font-weight: 300;
+        font-size: 1.9rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.hub-panels {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    li {
+        border-top: 3px solid $brand;
+        padding-top: 0.75rem;
+    }
+    h3 {
+        color: settings.$color-neutral-90;
+        font-weight: 600;
+        font-size: settings.$font-size-40;
+    }
+    p + p { margin-top: 0.5rem; }
+}
+
+.hub-panel-alt {
+    font-size: settings.$font-size-20;
+}
+
+.hub-body {
+    h2 {
+        color: settings.$color-neutral-90;
+        font-weight: 300;
+        font-size: 1.9rem;
+        margin-top: 2.5rem;
+
+        &:first-child { margin-top: 0; }
+    }
+    h3 {
+        font-weight: 600;
+        font-size: settings.$font-size-40;
+        margin-top: 1.5rem;
+    }
+    p, ul { max-width: 46rem; }
+}
+
+// ---------- Highlights ("New in Wicket n")
+
+.features {
+    display: grid;
+    gap: 2rem 3rem;
+    grid-template-columns: minmax(0, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .feature {
+        margin: 0;
+
+        h3 {
+            color: settings.$color-neutral-90;
+            font-weight: 600;
+            font-size: settings.$font-size-40;
+        }
+    }
+    .feature-facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+        margin-top: 0.75rem;
+
+        dt { color: $ink-soft; font-size: settings.$font-size-20; }
+        dd { font-weight: 600; margin: 0; }
+    }
+    .feature-code {
+        margin-top: 0.75rem;
+
+        pre {
+            background: $tint;
+            border-radius: settings.$border-radius-20;
+            overflow-x: auto;
+            padding: 0.75rem 1rem;
+        }
+    }
+    .route-file {
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+        font-style: italic;
+    }
+}
+
+// ---------- Blog listings
+
+.post-panels,
+.post-rows,
+.blog-years {
+    > li { margin-left: 0; padding-left: 0; }
+}
+
+.post-panels {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    }
+
+    a {
+        border: none;
+        border-top: 3px solid $brand;
+        color: $ink;
+        display: block;
+        height: 100%;
+        padding-top: 0.75rem;
+
+        &:hover .post-title { color: $brand-text; }
+    }
+    .is-security a { border-top-color: $eol; }
+}
+
+.post-meta {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+}
+
+.post-title {
+    color: settings.$color-neutral-90;
+    display: block;
+    font-size: settings.$font-size-50;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0.25rem 0 0.5rem;
+}
+
+.post-summary {
+    display: block;
+}
+
+.post-rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        border-bottom: 1px solid $rule;
+        display: flex;
+        gap: 1.5rem;
+        padding: 0.4rem 0;
+    }
+    time {
+        color: $ink-soft;
+        flex: 0 0 7rem;
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+.blog-years {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+}
+
+// ---------- User guide
+
+.page-sign {
+    border-bottom: 1px solid $rule;
+    padding: 2rem 0 1.5rem;
+}
+
+.page-sign-inner {
+    @include container-gutters;
+
+    h1 {
+        color: settings.$color-neutral-90;
+        font-size: 2.4rem;
+        font-weight: 300;
+        line-height: 1.15;
+        margin: 0.25rem 0 0.5rem;
+    }
+}
+
+.guide-sign-inner {
+    display: grid;
+    gap: 1.5rem 3rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-40) {
+        align-items: end;
+        grid-template-columns: minmax(0, 1fr) 22rem;
+    }
+}
+
+.page-sign-sub {
+    font-size: settings.$font-size-50;
+    max-width: 46rem;
+}
+
+.guide-crumbs {
+    font-size: settings.$font-size-20;
+}
+
+.guide-plates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.guide-kind,
+.guide-since,
+.guide-list-kind,
+.guide-list-since {
+    border: 1px solid $rule;
+    border-radius: settings.$border-radius-10;
+    color: $ink-soft;
+    display: inline-block;
+    font-size: settings.$font-size-10;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+    padding: 0 0.45em;
+    text-transform: uppercase;
+}
+.guide-kind {
+    background: $navy;
+    border-color: $navy;
+    color: #fff;
+}
+
+// Search
+.guide-search {
+    position: relative;
+}
+.guide-search-label {
+    display: block;
+    font-size: settings.$font-size-20;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+}
+.guide-search-field {
+    position: relative;
+
+    input {
+        border: 1px solid settings.$color-neutral-50;
+        border-radius: settings.$border-radius-20;
+        font: inherit;
+        padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+        width: 100%;
+
+        &:focus { border-color: $brand; outline: 2px solid color.adjust($brand, $alpha: -0.6); }
+    }
+}
+.guide-search--large .guide-search-field input {
+    font-size: settings.$font-size-50;
+    padding: 0.75rem 3rem 0.75rem 1rem;
+}
+.guide-search-key {
+    border: 1px solid $rule;
+    border-radius: settings.$border-radius-10;
+    color: $ink-soft;
+    font-size: settings.$font-size-10;
+    padding: 0 0.4em;
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.guide-search-hint {
+    font-size: settings.$font-size-20;
+    margin-top: 0.4rem;
+
+    select { font: inherit; }
+}
+.guide-results {
+    background: #fff;
+    border: 1px solid $rule;
+    border-radius: settings.$border-radius-20;
+    box-shadow: 0 0.5rem 1.5rem rgba(35, 39, 37, 0.15);
+    left: 0;
+    list-style: none;
+    margin: 0.25rem 0 0;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 0.25rem 0;
+    position: absolute;
+    right: 0;
+    z-index: settings.$z-index-30;
+
+    li { margin: 0; }
+    a {
+        border: none;
+        color: $ink;
+        display: block;
+        padding: 0.5rem 0.75rem;
+    }
+    .is-active a,
+    a:hover { background: $tint; }
+}
+.guide-result-title { color: settings.$color-neutral-90; display: block; font-weight: 400; }
+.guide-result-meta { color: $ink-soft; display: block; font-size: settings.$font-size-10; text-transform: uppercase; letter-spacing: 0.04em; }
+.guide-result-text { display: block; font-size: settings.$font-size-20; }
+.guide-results-empty { padding: 0.5rem 0.75rem; }
+
+// Reading
+.reading {
+    @include container-gutters;
+    padding-bottom: 3rem;
+    padding-top: 2rem;
+
+    &.has-rail {
+        @include mixins.breakpoint(settings.$breakpoint-40) {
+            display: grid;
+            gap: 3rem;
+            grid-template-columns: 14rem minmax(0, 1fr);
+        }
+    }
+}
+
+.reading-rail {
+    display: none;
+
+    @include mixins.breakpoint(settings.$breakpoint-40) {
+        display: block;
+
+        .toc,
+        > nav > .toc,
+        > .toc {
+            display: block;
+            font-size: settings.$font-size-20;
+            position: sticky;
+            top: 1rem;
+
+            ul { margin: 0; padding: 0; }
+            li { margin: 0 0 0.4rem; }
+            ul ul { margin: 0.4rem 0 0 0.75rem; }
+            a { border: none; color: $ink; }
+            a:hover { color: $brand-text; }
+            h2 { font-size: settings.$font-size-20; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        }
+    }
+}
+
+.reading-main {
+    max-width: 48rem;
+    min-width: 0;
+}
+
+.guide-version-note {
+    background: $tint;
+    border-radius: settings.$border-radius-20;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+}
+
+.guide-content {
+    h2 {
+        color: settings.$color-neutral-90;
+        font-weight: 400;
+        margin-top: 2rem;
+    }
+    h3 {
+        font-weight: 600;
+        font-size: settings.$font-size-40;
+        margin-top: 1.5rem;
+    }
+    p, ul, ol, table, pre, blockquote { margin-bottom: 1rem; }
+    ul, ol { padding-left: 1.5rem; }
+    pre {
+        background: $tint;
+        border-radius: settings.$border-radius-20;
+        overflow-x: auto;
+        padding: 0.75rem 1rem;
+    }
+    :not(pre) > code {
+        overflow-wrap: anywhere;
+        background: $tint;
+        border-radius: settings.$border-radius-10;
+        padding: 0 0.25em;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border-bottom: 1px solid $rule;
+        padding: 0.4rem 0.75rem 0.4rem 0;
+        text-align: left;
+        vertical-align: top;
+    }
+    blockquote.since,
+    .since {
+        border: 1px solid $rule;
+        border-radius: settings.$border-radius-20;
+        padding: 0.5rem 1rem;
+    }
+}
+
+.guide-foot {
+    border-top: 1px solid $rule;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+}
+.guide-foot-title { font-weight: 300; }
+.guide-foot-kinds {
+    display: grid;
+    gap: 1rem 2rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    h3 { font-size: settings.$font-size-30; font-weight: 600; margin-top: 1rem; }
+}
+.guide-edit {
+    font-size: settings.$font-size-20;
+    margin-top: 2rem;
+}
+
+// Lists of pages
+.guide-list,
+.guide-route,
+.guide-topics,
+.guide-lookup {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        border-bottom: 1px solid $rule;
+        padding: 0.6rem 0;
+    }
+}
+.guide-route {
+    counter-reset: route;
+
+    li {
+        counter-increment: route;
+        padding-left: 2.25rem;
+        position: relative;
+
+        &::before {
+            color: $brand-text;
+            content: counter(route);
+            font-size: settings.$font-size-50;
+            font-weight: 600;
+            left: 0;
+            position: absolute;
+            top: 0.45rem;
+        }
+    }
+}
+.guide-list-title {
+    font-weight: 400;
+}
+.guide-list .is-current .guide-list-title {
+    color: settings.$color-neutral-90;
+    font-weight: 600;
+}
+.guide-list-meta {
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-left: 0.5rem;
+}
+.guide-list-summary {
+    display: block;
+    font-size: settings.$font-size-20;
+}
+.guide-topic-counts {
+    color: $ink-soft;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: settings.$font-size-10;
+    gap: 0 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+.guide-topics {
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        column-gap: 3rem;
+        columns: 2;
+
+        li { break-inside: avoid; }
+    }
+}
+
+.guide-front > * {
+    max-width: 66rem;
+}
+.guide-front-section {
+    margin-bottom: 3rem;
+
+    h2 {
+        color: settings.$color-neutral-90;
+        font-weight: 300;
+        font-size: 1.9rem;
+    }
+}
+.guide-group {
+    margin-bottom: 2.5rem;
+
+    h2 { color: settings.$color-neutral-90; font-weight: 300; }
+}
+.guide-group-intro {
+    margin-bottom: 0.75rem;
+}
+.guide-topics-other {
+    border-top: 1px solid $rule;
+    padding-top: 1.5rem;
+
+    h2 { font-size: settings.$font-size-40; font-weight: 600; }
+    ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; list-style: none; margin: 0.5rem 0 0; padding: 0; }
+}
+
+// A-Z
+.guide-letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin: 0.5rem 0 1.5rem;
+
+    a { font-weight: 600; }
+}
+.guide-letter {
+    border-bottom: 1px solid $rule;
+    color: $brand-text;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+.guide-classes {
+    dt { font-weight: 400; margin-top: 0.5rem; }
+    dd { font-size: settings.$font-size-20; margin: 0; }
+}
+
+// ---------- Section front pages
+
+.section-body {
+    > * { max-width: 66rem; }
+
+    table {
+        border-collapse: collapse;
+        margin: 1rem 0 1.5rem;
+        width: 100%;
+    }
+    th, td {
+        border-bottom: 1px solid $rule;
+        padding: 0.6rem 1rem 0.6rem 0;
+        text-align: left;
+        vertical-align: top;
+    }
+    thead th {
+        border-bottom: 2px solid $ink;
+        font-weight: 600;
+    }
+    tbody th[scope=row] { font-weight: 600; }
+    td p + p { margin-top: 0.5rem; }
+    .connections-route { color: settings.$color-neutral-90; font-weight: 400; }
+    pre {
+        background: $tint;
+        border-radius: settings.$border-radius-20;
+        overflow-x: auto;
+        padding: 0.75rem 1rem;
+    }
+
+    > h2 {
+        border-top: 1px solid $rule;
+        color: settings.$color-neutral-90;
+        font-size: 1.9rem;
+        font-weight: 300;
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+    }
+    > p,
+    > ul:not([class]) {
+        margin-bottom: 1rem;
+        max-width: 46rem;
+    }
+    > ul:not([class]) { padding-left: 1.25rem; }
+    > ul:not([class]) li + li { margin-top: 0.35rem; }
+    > hr { display: none; }
+}
+
+.section-index {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: settings.$font-size-20;
+    gap: 0.25rem 1.5rem;
+    margin-bottom: 1rem;
+}
+
+// The active marker spans the label only.
+nav.mainmenu .nav-container > a.nav-items {
+    margin-right: 1rem;
+    padding-right: 0;
+}
+
+// The ASF mark before GitHub, at the height of the GitHub icon.
+.nav-asf {
+    border: none;
+    display: inline-flex;
+    margin-right: 1rem;
+
+    img {
+        display: block;
+        height: 2.1rem;
+        width: auto;
+    }
+    &:hover img { opacity: 0.8; }
+}
+
+// The menu: logo and version plate on the left, the sections centred on the page,
+// the ASF mark and GitHub on the right.
+.header.default nav.mainmenu {
+    @include mixins.breakpoint(settings.$breakpoint-20) {
+        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        padding-right: 0;
+
+        > .nav-container:last-child { justify-content: flex-end; }
+    }
+}
+
+.nav-brand {
+    align-items: center;
+    display: flex;
+    gap: 0.25rem;
+
+    .nav-logo { padding-right: 0.75rem; }
+    .nav-plate { margin-right: 0; }
+
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .nav-logo { padding-right: 0; }
+    }
+}
+
+nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
+
+// Taiga strips borders from header links, so the plate shows its link through colour.
+.header.default .nav-plate:hover .nav-plate-current,
+.header.default .nav-plate.active .nav-plate-current {
+    color: $brand-text;
+}
+
+// Release line panels on the docs front page.
+.line-panels {
+    margin-bottom: 3rem;
+
+    ul {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: minmax(0, 1fr);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        @include mixins.breakpoint(settings.$breakpoint-10) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        @include mixins.breakpoint(settings.$breakpoint-30) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    li { margin: 0; }
+    a {
+        border: 1px solid $rule;
+        border-radius: settings.$border-radius-20;
+        border-top: 3px solid $brand;
+        color: $ink;
+        display: block;
+        height: 100%;
+        padding: 0.9rem 1rem 1rem;
+
+        &:hover {
+            border-color: $brand;
+            .line-panel-name { color: $brand-text; }
+        }
+        &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+    }
+    .is-eol a { border-top-color: settings.$color-neutral-50; }
+}
+.line-panel-name {
+    color: settings.$color-neutral-90;
+    display: block;
+    font-size: settings.$font-size-60;
+    font-weight: 400;
+    line-height: 1.2;
+
+    .tag { margin-left: 0.25rem; }
+}
+.line-panel-role {
+    display: block;
+    margin-top: 0.25rem;
+}
+.line-panel-meta {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+    font-variant-numeric: tabular-nums;
+    margin-top: 0.5rem;
+}
+
+.guide-front-lines {
+    padding-bottom: 0;
+
+    .line-panels { margin-bottom: 1rem; }
+}
+
+.guide-upcoming {
+    border: 1px solid $brand;
+    border-radius: settings.$border-radius-20;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+}
+
+// The last icon ends on the right edge, without the padding of the menu links.
+.header.default nav.mainmenu > .nav-container:last-child .nav-items {
+    padding-right: 0;
+}

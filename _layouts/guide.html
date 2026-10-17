@@ -1,0 +1,61 @@
+---
+layout: base
+---
+<div class="header default">
+    <div class="l-container">
+        {% include mainmenu.html %}
+    </div>
+</div>
+{% capture toc %}{{ content | toc_generate }}{% endcapture %}{% assign toc = toc | strip %}
+{% assign topic = site.data.guide.topics | where: "id", page.topic | first %}
+{% assign kind = site.data.guide.kinds | where: "id", page.type | first %}
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="{{ site.baseurl }}/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="{{ site.baseurl }}/docs/topics/{{ topic.id }}.html">{{ topic.title }}</a></p>
+            <h1>{{ page.title }}</h1>
+            <p class="page-sign-sub">{{ page.summary }}</p>
+            <p class="guide-plates"><span class="guide-kind">{{ kind.label }}</span><span class="guide-since">Wicket <span class="guide-since-figure">{{ page.since }}</span> and later</span></p>
+        </div>
+        {% include guide-search.html id="-sign" %}
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading{% if toc != '' %} has-rail{% endif %} guide-reading">
+        {% if toc != '' %}
+        <nav class="reading-rail" aria-label="On this page">{{ toc }}</nav>
+        {% endif %}
+        <div class="reading-main">
+            {% assign upcoming = site.data.guide_upcoming %}
+            {% if upcoming and page.since >= upcoming.series %}
+            <p class="guide-upcoming">Wicket {{ page.since }} is not released yet; it is due {{ upcoming.when }}. This page describes what it brings. For Wicket {{ site.data.guide_lines | last }}, see the <a href="https://nightlies.apache.org/wicket/guide/{{ site.data.guide_lines | last }}.x/single.html">reference guide for Wicket {{ site.data.guide_lines | last }}</a>.</p>
+            {% else %}
+            <p class="guide-version-note" data-since="{{ page.since }}" hidden>
+                This page describes Wicket {{ page.since }} and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            {% endif %}
+            <section class="page-content guide-content">
+                {{ content }}
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="{{ site.baseurl }}/docs/topics/{{ topic.id }}.html">{{ topic.title }}</a></h2>
+                {% assign siblings = site.guide | where: "topic", page.topic %}
+                <div class="guide-foot-kinds">
+                {% for k in site.data.guide.kinds %}
+                    {% assign pages = siblings | where: "type", k.id | sort: "order", "last" %}
+                    {% if pages.size > 0 %}
+                    <section>
+                        <h3>{{ k.title }}</h3>
+                        {% include guide-list.html pages=pages current=page.url %}
+                    </section>
+                    {% endif %}
+                {% endfor %}
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/{{ page.relative_path }}">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="{{ site.baseurl }}/javascript/guide.js?v={{ site.time | date: '%s' }}" defer></script>

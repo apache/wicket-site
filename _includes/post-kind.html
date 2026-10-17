@@ -1,0 +1,27 @@
+{% comment %}
+  Classifies include.post and assigns, in the including page's scope:
+    post_kind:     major | release | security | article
+    post_featured: true for articles, x.0.0 releases and security advisories;
+                   the post's own `featured` front matter overrides it.
+{% endcomment %}
+{%- assign post_url = include.post.url | downcase -%}
+{%- if post_url contains 'cve-' -%}
+    {%- assign post_kind = 'security' -%}
+{%- elsif post_url contains '-released' -%}
+    {%- comment %} The version between /wicket- and -released: "9", "10.0.0" and "6.0.0" are majors, "9.0.0-M1" is not. {% endcomment -%}
+    {%- assign post_version = post_url | split: '/wicket-' | last | split: '-released' | first | split: '.' -%}
+    {%- if post_version.size == 1 or post_version.size == 3 and post_version[1] == '0' and post_version[2] == '0' -%}
+        {%- assign post_kind = 'major' -%}
+    {%- else -%}
+        {%- assign post_kind = 'release' -%}
+    {%- endif -%}
+{%- else -%}
+    {%- assign post_kind = 'article' -%}
+{%- endif -%}
+{%- if include.post.featured == true or include.post.featured == false -%}
+    {%- assign post_featured = include.post.featured -%}
+{%- elsif post_kind == 'release' -%}
+    {%- assign post_featured = false -%}
+{%- else -%}
+    {%- assign post_featured = true -%}
+{%- endif -%}

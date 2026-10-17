@@ -1,0 +1,115 @@
+---
+layout: base
+title: Documentation
+description: The Apache Wicket documentation, by topic, with tutorials, how-to guides, reference and explanation.
+active_link: documentation
+---
+<div class="header default">
+    <div class="l-container">
+        {% include mainmenu.html %}
+    </div>
+</div>
+{% assign oldest = site.data.guide_oldest %}
+<div class="page-sign guide-sign guide-sign--front">
+    <div class="page-sign-inner">
+        <h1>Documentation</h1>
+        <p class="page-sign-sub">Building web applications with Apache Wicket {{ site.data.guide_lines | join: " and " }}{% if site.data.guide_upcoming %}, and what the upcoming Wicket {{ site.data.guide_upcoming.series }} brings{% endif %}.</p>
+        {% include guide-search.html size="large" id="-front" %}
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading guide-front guide-front-lines">
+        {% include line-panels.html anchor="#docs" label="Documentation by release line" %}
+    </div>
+    <div class="reading has-rail guide-reading guide-front">
+        <div class="reading-rail">
+            <nav aria-label="On this page">
+                <div id="toc" class="toc"><div id="toc-title"><h2>{{ site.contentsLabel }}</h2></div><ul>
+                    <li class="toc--level-1"><a href="#start"><span class="toc-text">Start here</span></a></li>
+                    <li class="toc--level-1"><a href="#topics"><span class="toc-text">Topics</span></a></li>
+                    <li class="toc--level-1"><a href="#kinds"><span class="toc-text">By kind</span></a></li>
+                    <li class="toc--level-1"><a href="#lookup"><span class="toc-text">Look it up</span></a></li>
+                    <li class="toc--level-1"><a href="#api"><span class="toc-text">API documentation</span></a></li>
+                    <li class="toc--level-1"><a href="#upgrading"><span class="toc-text">Upgrading</span></a></li>
+                    <li class="toc--level-1"><a href="#older"><span class="toc-text">Older versions</span></a></li>
+                </ul></div>
+            </nav>
+        </div>
+        <div class="reading-main">
+        <section class="guide-front-section" id="start">
+            <h2>Start here</h2>
+            <p class="guide-group-intro">Five lessons that build one application, from an empty project to a tested page with Ajax.</p>
+            {% assign tutorials = site.guide | where: "type", "tutorial" | sort: "order", "last" %}
+            <ol class="guide-route">
+            {% for doc in tutorials %}
+                <li>
+                    <a class="guide-list-title" href="{{ site.baseurl }}{{ doc.url }}">{{ doc.title }}</a>
+                    <span class="guide-list-summary">{{ doc.summary }}</span>
+                </li>
+            {% endfor %}
+            </ol>
+        </section>
+
+        <section class="guide-front-section" id="topics">
+            <h2>Topics</h2>
+            <p class="guide-group-intro">Each topic gathers its lessons, how-to guides, reference and explanation on one page.</p>
+            <ul class="guide-topics">
+            {% for t in site.data.guide.topics %}
+                {% assign pages = site.guide | where: "topic", t.id %}
+                <li>
+                    <a class="guide-list-title" href="{{ site.baseurl }}/docs/topics/{{ t.id }}.html">{{ t.title }}</a>
+                    <span class="guide-list-summary">{{ t.summary }}</span>
+                    <span class="guide-topic-counts">{% for k in site.data.guide.kinds %}{% assign n = pages | where: "type", k.id %}{% if n.size > 0 %}<span>{{ n.size }} {% if n.size == 1 %}{{ k.label | downcase }}{% else %}{{ k.title | downcase }}{% endif %}</span>{% endif %}{% endfor %}</span>
+                </li>
+            {% endfor %}
+            </ul>
+        </section>
+
+        <section class="guide-front-section" id="kinds">
+            <h2>By kind</h2>
+            <p class="guide-group-intro">Every page of the documentation does one of four jobs. Each kind has its own list, by topic.</p>
+            <ul class="guide-topics">
+            {% for k in site.data.guide.kinds %}
+                {% assign n = site.guide | where: "type", k.id %}
+                <li>
+                    <a class="guide-list-title" href="{{ site.baseurl }}{{ k.url }}">{{ k.title }}</a>
+                    <span class="guide-list-summary">{{ k.intro }}</span>
+                    <span class="guide-topic-counts"><span>{{ n.size }} {% if n.size == 1 %}page{% else %}pages{% endif %}</span></span>
+                </li>
+            {% endfor %}
+            </ul>
+        </section>
+
+        <section class="guide-front-section" id="lookup">
+            <h2>Look it up</h2>
+            <ul class="guide-lookup">
+                <li><a class="guide-list-title" href="{{ site.baseurl }}/docs/a-z.html">A–Z index</a><span class="guide-list-summary">Every Wicket class the documentation explains, and every page by title.</span></li>
+                {% assign refs = "wicket-tags,component-lifecycle,form-components,model-types,header-items,glossary" | split: "," %}
+                {% for slug in refs %}{% assign doc = site.guide | where_exp: "d", "d.url contains slug" | first %}{% if doc %}
+                <li><a class="guide-list-title" href="{{ site.baseurl }}{{ doc.url }}">{{ doc.title }}</a><span class="guide-list-summary">{{ doc.summary }}</span></li>
+                {% endif %}{% endfor %}
+            </ul>
+        </section>
+
+        <section class="guide-front-section" id="api">
+            <h2>API documentation</h2>
+            <p>Maven downloads the sources with every Wicket release, so your IDE shows the Javadoc when you hover over a class. To link to it, use the Javadoc online:
+            {% assign apidocs = '' | split: '' %}{% for line in site.data.releases.lines %}{% if line.status == 'lts' or line.status == 'current' %}{% capture a %}<a href="https://nightlies.apache.org/wicket/apidocs/{{ line.series }}.x/index.html">Wicket {{ line.series }}</a>{% if line.status == 'lts' %} (LTS){% endif %}{% endcapture %}{% assign apidocs = apidocs | push: a %}{% endif %}{% endfor %}{{ apidocs | join: ' and ' }}.
+            Older lines link to theirs from their <a href="{{ site.baseurl }}/versions/">release line page</a>.</p>
+        </section>
+
+        <section class="guide-front-section" id="upgrading">
+            <h2>Upgrading</h2>
+            <p>Every major release has a migration guide on the wiki with the API changes and what to do about them, linked from its <a href="{{ site.baseurl }}/versions/">release line page</a>. The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> show the route from a line out of service to one that is supported.</p>
+        </section>
+
+        <section class="guide-front-section guide-older" id="older">
+            <h2>Older versions</h2>
+            <p>The documentation covers the release lines in service. Pages marked with a version, like <span class="guide-list-since">Wicket 11+</span>, need that version or later. Every line also has its reference guide as one document; for lines out of service it is their only guide:
+            {% assign older = "9,8,7" | split: "," %}{% for v in older %}<a href="https://nightlies.apache.org/wicket/guide/{{ v }}.x/single.html">Wicket {{ v }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}.</p>
+            <p>Books, courses, talks and the libraries the community builds on Wicket are on <a href="{{ site.baseurl }}/learn/">Learn Wicket</a>.</p>
+        </section>
+        </div>
+    </div>
+</main>
+<script src="{{ site.baseurl }}/javascript/guide.js?v={{ site.time | date: '%s' }}" defer></script>
