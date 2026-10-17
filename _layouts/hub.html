@@ -21,6 +21,25 @@ layout: base
 {% assign version = site.wicket[page.config] %}
 {% assign major = page.series | split: '.' | first | plus: 0 %}
 {% assign in_service = true %}{% if status == 'eol' %}{% assign in_service = false %}{% endif %}
+{% comment %} A line to recommend for new work: the LTS or the current quarterly release. {% endcomment %}
+{% assign recommended = false %}{% if status == 'lts' or status == 'current' %}{% assign recommended = true %}{% endif %}
+{% comment %}
+  For a line that is ending or has ended: the route to the LTS, one migration guide per major
+  step, taken from the line pages under /versions/ (Wicket 6 and later; 1.x lines link to the
+  upgrade paths only).
+{% endcomment %}
+{% assign lts = site.data.releases.lines | where: "status", "lts" | first %}
+{% assign lts_major = lts.series | plus: 0 %}
+{% assign route = '' | split: '' %}
+{% assign dotted = false %}{% if page.series contains '.' %}{% assign dotted = true %}{% endif %}
+{% if recommended == false and dotted == false and major >= 6 and major < lts_major %}
+    {% assign first_step = major | plus: 1 %}
+    {% for n in (first_step..lts_major) %}
+        {% assign step_url = '/versions/wicket-' | append: n | append: '.x/' %}
+        {% assign step_page = site.pages | where: "url", step_url | first %}
+        {% if step_page.migration %}{% assign route = route | push: step_page %}{% endif %}
+    {% endfor %}
+{% endif %}
 {% assign post_key = '/wicket-' | append: page.series | append: '.' %}
 {% assign post_major = '/wicket-' | append: page.series | append: '-released' %}
 <div class="header default">
@@ -28,7 +47,7 @@ layout: base
         {% include mainmenu.html %}
     </div>
 </div>
-<main class="hub">
+<main class="hub" id="main" tabindex="-1">
     <div class="l-container">
         <header class="hub-head" id="status">
             <p class="hub-crumbs"><a href="{{ site.baseurl }}/versions/">Release lines</a></p>
@@ -45,14 +64,27 @@ layout: base
             </p>
             <dl class="hub-facts">
                 <div><dt>Latest release</dt><dd class="hub-version">{{ version }}</dd></div>
-                <div><dt>Status</dt><dd>{% case status %}{% when 'lts' %}<span class="tag tag-lts">LTS</span> In service{% when 'eol' %}<span class="tag tag-eol">End of life</span>{% else %}In service{% endcase %}</dd></div>
+                <div><dt>Status</dt><dd>{% case status %}{% when 'lts' %}<span class="tag tag-lts">LTS</span> In service{% when 'eol' %}<span class="tag tag-eol">End of life</span>{% when 'last-call' %}<span class="tag tag-ending">Ending</span> One final release{% else %}In service{% endcase %}</dd></div>
                 <div><dt>Supported</dt><dd>{{ support }}</dd></div>
                 <div><dt>Java</dt><dd>{{ page.java }} or newer</dd></div>
                 <div><dt>Servlet API</dt><dd>{{ page.servlet }}</dd></div>
             </dl>
-            {% unless in_service %}
-            <p class="hub-eol">Move to a line in service: the <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> show the route from Wicket {{ page.series }}.</p>
-            {% endunless %}
+            {% if recommended == false %}
+            <div class="hub-eol{% if status == 'last-call' %} is-ending{% endif %}" id="upgrade">
+                <p class="hub-eol-title">{% if status == 'last-call' %}Wicket {{ page.series }} reaches end of life when {{ support | remove: 'Until ' | split: ',' | first }} ships{% else %}Wicket {{ page.series }} gets no more releases, not even security fixes{% endif %}</p>
+                <p>Plan the move to Wicket {{ lts.series }} <abbr title="Long-term support">LTS</abbr>, supported {{ lts.support | replace: 'Until', 'until' }}.{% if route.size > 1 %} Take one major version at a time:{% endif %}</p>
+                {% if route.size == 1 %}{% assign step = route | first %}
+                <p class="hub-route-one"><a href="{{ step.migration.url }}">Migrating from Wicket {{ step.migration.from }} to {{ step.series }}</a></p>
+                {% elsif route.size > 1 %}
+                <ol class="hub-route">
+                    {% for step in route %}{% assign step_from = step.migration.from %}
+                    <li><a href="{{ step.migration.url }}">Migrating from Wicket {{ step_from }} to {{ step.series }}</a>{% if step.series == lts.series %} <span class="tag tag-lts">LTS</span>{% endif %}</li>
+                    {% endfor %}
+                </ol>
+                {% endif %}
+                <p class="hub-eol-more">The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> explain each step and what changes in Java and the Servlet API.</p>
+            </div>
+            {% endif %}
             <div class="hub-maven" id="maven">
                 <p class="hub-maven-label"><span>Maven dependency</span><button type="button" class="hub-copy" data-copy="hub-maven-snippet">Copy</button></p>
 {% capture snippet %}<dependency>
@@ -61,7 +93,7 @@ layout: base
     <version>{{ version }}</version>
 </dependency>{% endcapture %}
 <pre id="hub-maven-snippet"><code class="language-xml">{{ snippet | xml_escape }}</code></pre>
-                {% if in_service %}<p class="hub-maven-more">New project? <a href="{{ site.baseurl }}/start/quickstart.html?v={{ page.series }}">Generate one with the quick start</a>.</p>{% endif %}
+                {% if recommended %}<p class="hub-maven-more">New project? <a href="{{ site.baseurl }}/start/quickstart.html?v={{ page.series }}">Generate one with the quick start</a>.</p>{% endif %}
             </div>
         </header>
 
@@ -78,7 +110,7 @@ layout: base
             <ul class="hub-panels">
                 <li>
                     <h3>Docs</h3>
-                    {% if in_service %}
+                    {% if recommended %}
                     <p><a href="{{ site.baseurl }}/docs/?v={{ major }}">The documentation for Wicket {{ page.series }}</a>: tutorials, how-to guides, reference and explanation.</p>
                     <p class="hub-panel-alt"><a href="https://nightlies.apache.org/wicket/guide/{{ page.series }}.x/single.html">The reference guide as one document</a></p>
                     {% elsif major >= 7 %}
@@ -89,7 +121,10 @@ layout: base
                 </li>
                 <li>
                     <h3>Migration guide</h3>
-                    {% if page.migration %}
+                    {% if route.size > 0 %}{% assign next_step = route | first %}
+                    <p><a href="{{ next_step.migration.url }}">Migrating from Wicket {{ page.series }} to {{ next_step.series }}</a>: the next step up.</p>
+                    {% if page.migration %}<p class="hub-panel-alt"><a href="{{ page.migration.url }}">Migrating from Wicket {{ page.migration.from }} to {{ page.series }}</a></p>{% endif %}
+                    {% elsif page.migration %}
                     <p><a href="{{ page.migration.url }}">Migrating from Wicket {{ page.migration.from }} to {{ page.series }}</a>: what changed and what to adjust in your application.</p>
                     {% else %}
                     <p>The migration guide from Wicket {{ major | minus: 1 }} is not published yet. Until it is, <a href="#new">New in Wicket {{ page.series }}</a> lists the changes.</p>

@@ -37,6 +37,29 @@
     }
 
     var selects = document.querySelectorAll('[data-guide-version]');
+    // A version the documentation does not cover (an older line, or a mistyped link): fall back
+    // to every version and say why, with the reference guide of that line.
+    if (selects.length && storedVersion()) {
+        var wanted = storedVersion();
+        var known = Array.prototype.some.call(selects[0].options, function (o) { return o.value === wanted; });
+        if (!known) {
+            storeVersion('');
+            Array.prototype.forEach.call(selects, function (select) {
+                var hint = select.closest('.guide-search-hint');
+                if (!hint) return;
+                var notice = document.createElement('span');
+                notice.className = 'guide-search-notice';
+                notice.setAttribute('role', 'status');
+                notice.appendChild(document.createTextNode('This documentation starts at Wicket ' + selects[0].options[1].value + '. For Wicket ' + wanted + ', read '));
+                var a = document.createElement('a');
+                a.href = 'https://nightlies.apache.org/wicket/guide/' + wanted + '.x/single.html';
+                a.textContent = 'the reference guide for Wicket ' + wanted;
+                notice.appendChild(a);
+                notice.appendChild(document.createTextNode('.'));
+                hint.appendChild(notice);
+            });
+        }
+    }
     Array.prototype.forEach.call(selects, function (select) {
         select.value = storedVersion();
         select.addEventListener('change', function () {

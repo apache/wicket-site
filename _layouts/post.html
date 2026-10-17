@@ -22,7 +22,7 @@ layout: base
             <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
             {% case post_kind %}
             {% when 'major' %}<span class="tag tag-post">Major release</span>
-            {% when 'release' %}<span class="tag tag-post">Release</span>
+            {% when 'release' %}<span class="tag tag-post">Release</span>{% if post_fixes %}<span class="tag tag-post tag-security">Security fixes</span>{% endif %}
             {% when 'security' %}<span class="tag tag-post tag-security">Security advisory</span>
             {% endcase %}
             {% if line_page %}<a href="{{ site.baseurl }}{{ line_page.url }}">Wicket {{ line_series }}.x: status, downloads and documentation</a>{% endif %}
@@ -36,12 +36,24 @@ layout: base
         {% endif %}
         <div class="reading-main">
             <article class="page-content guide-content post-content">
-                {{ content }}
+                {{ content | autolink }}
             </article>
             <footer class="post-foot">
                 <nav class="post-pager" aria-label="Other posts">
-                    {% if page.previous %}<a class="post-pager-older" href="{{ site.baseurl }}{{ page.previous.url }}"><span>Older</span>{{ page.previous.title }}</a>{% endif %}
-                    {% if page.next %}<a class="post-pager-newer" href="{{ site.baseurl }}{{ page.next.url }}"><span>Newer</span>{{ page.next.title }}</a>{% endif %}
+                    {% comment %} A release post pages through the releases of its own line; other posts through all posts. {% endcomment %}
+                    {% assign pager_older = page.previous %}{% assign pager_newer = page.next %}{% assign pager_label = '' %}
+                    {% if line_series and post_kind == 'release' %}
+                        {% assign pager_key = '/wicket-' | append: line_series | append: '.' %}
+                        {% assign pager_older = nil %}{% assign pager_newer = nil %}{% assign pager_self = false %}
+                        {% for p in site.posts %}
+                            {% if p.url == page.url %}{% assign pager_self = true %}{% continue %}{% endif %}
+                            {% unless p.url contains pager_key and p.url contains '-released' %}{% continue %}{% endunless %}
+                            {% if pager_self %}{% assign pager_older = p %}{% break %}{% else %}{% assign pager_newer = p %}{% endif %}
+                        {% endfor %}
+                        {% assign pager_label = ' ' | append: line_series | append: '.x release' %}
+                    {% endif %}
+                    {% if pager_older %}<a class="post-pager-older" href="{{ site.baseurl }}{{ pager_older.url }}"><span>Older{{ pager_label }}</span>{{ pager_older.title }}</a>{% endif %}
+                    {% if pager_newer %}<a class="post-pager-newer" href="{{ site.baseurl }}{{ pager_newer.url }}"><span>Newer{{ pager_label }}</span>{{ pager_newer.title }}</a>{% endif %}
                 </nav>
                 <p class="post-follow">Follow the project on the <a href="{{ site.baseurl }}/news/">blog</a>, in the <a href="{{ site.baseurl }}/atom.xml">Atom feed</a> or on the <a href="{{ site.baseurl }}/community/#announce">announce list</a>.</p>
             </footer>

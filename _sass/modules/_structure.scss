@@ -45,15 +45,24 @@ nav.mainmenu {
 }
 
 .nav-plate {
-    align-items: baseline;
-    border: 1px solid $rule;
+    align-items: center;
+    border: 1px solid settings.$color-neutral-50;
     border-radius: settings.$border-radius-20;
     display: inline-flex;
-    gap: 0.5rem;
+    gap: 0.4rem;
     margin-right: 1.25rem;
-    padding: 0.15rem 0.6rem;
+    min-height: 2.25rem;
+    padding: 0.2rem 0.55rem 0.2rem 0.65rem;
     text-transform: none;
+    transition: border-color 160ms ease-out, background-color 160ms ease-out;
     white-space: nowrap;
+
+    .nav-plate-arrow {
+        color: $ink-soft;
+        transition: transform 160ms ease-out;
+    }
+    &:hover .nav-plate-arrow { color: $brand-text; transform: translateX(2px); }
+    &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
 
     .nav-plate-current {
         color: $navy;
@@ -66,7 +75,8 @@ nav.mainmenu {
     }
     &:hover,
     &.active {
-        border-color: $brand;
+        background: $tint;
+        border-color: $brand-text;
     }
 }
 
@@ -88,6 +98,15 @@ nav.mainmenu {
     color: #fff;
 }
 .tag-eol {
+    border: 1px solid $eol;
+    color: $eol;
+}
+// A line with one final release left.
+.tag-ending {
+    border: 1px solid $brand-text;
+    color: $brand-text;
+}
+.tag-security {
     border: 1px solid $eol;
     color: $eol;
 }
@@ -180,6 +199,7 @@ nav.mainmenu {
 
 .hub-role {
     font-size: settings.$font-size-50;
+    line-height: 1.4;
     margin-bottom: 1.5rem;
 }
 
@@ -214,7 +234,26 @@ nav.mainmenu {
     border-radius: settings.$border-radius-20;
     color: settings.$color-neutral-90;
     margin-bottom: 1.5rem;
-    padding: 0.75rem 1rem;
+    max-width: 46rem;
+    padding: 1rem 1.25rem;
+
+    &.is-ending { border-color: $brand-text; }
+    p { margin: 0; }
+    p + p, p + ol, ol + p { margin-top: 0.5rem; }
+}
+.hub-route-one { font-size: settings.$font-size-40; }
+.hub-eol-title {
+    font-size: settings.$font-size-40;
+    font-weight: 600;
+}
+.hub-eol-more {
+    font-size: settings.$font-size-20;
+}
+.hub-route {
+    margin: 0.5rem 0 0 1.25rem;
+
+    li + li { margin-top: 0.25rem; }
+    .tag { margin-left: 0.25rem; }
 }
 
 .hub-maven {
@@ -464,6 +503,7 @@ nav.mainmenu {
 
 .page-sign-sub {
     font-size: settings.$font-size-50;
+    line-height: 1.4;
     max-width: 46rem;
 }
 
@@ -593,7 +633,30 @@ nav.mainmenu {
 }
 
 .reading-rail {
-    display: none;
+    // The rail lists sections by name; their numbers stay in the headings.
+    .toc-number { display: none; }
+
+    // Below 1152px the rail is a compact row of the top-level sections above the text.
+    @include mixins.breakpoint(settings.$breakpoint-40, 'max-width') {
+        border-bottom: 1px solid $rule;
+        font-size: settings.$font-size-20;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+
+        .toc { display: block; }
+        #toc-title h2,
+        .toc h2 {
+            font-size: settings.$font-size-20;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+        }
+        ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; list-style: none; margin: 0; padding: 0; }
+        li { margin: 0; }
+        ul ul { display: none; }
+        a { border: none; }
+    }
 
     @include mixins.breakpoint(settings.$breakpoint-40) {
         display: block;
@@ -1205,4 +1268,332 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
     border-top: 1px solid $rule;
     margin-top: 0.75rem;
     padding-top: 0.75rem;
+}
+
+// ---------- Browser surfaces
+
+// Hidden until focused, then a plate in the top left corner.
+.skip-link {
+    background: #fff;
+    border: 2px solid $navy;
+    border-radius: settings.$border-radius-20;
+    color: $navy;
+    font-weight: 600;
+    left: 1rem;
+    padding: 0.5rem 0.9rem;
+    position: absolute;
+    top: -4rem;
+    z-index: 10;
+
+    &:focus { top: 1rem; }
+}
+
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid $navy;
+    outline-offset: 2px;
+}
+main:focus-visible { outline: none; }
+
+::selection {
+    background: color.adjust($brand, $lightness: 30%);
+    color: settings.$color-neutral-90;
+}
+
+// Reading text stays near 75 characters a line; tables and code take the full column.
+.guide-content,
+.section-body {
+    > p,
+    > ul:not([class]),
+    > ol:not([class]) { max-width: 42rem; }
+}
+
+// ---------- Footer
+
+.footer-legal {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    margin-top: 1.5rem;
+    padding-bottom: 2rem;
+
+    p {
+        color: settings.$color-neutral-70;
+        flex: 1 1 24rem;
+        font-size: settings.$font-size-20;
+        margin: 0;
+        max-width: 50rem;
+    }
+}
+.footer-asf {
+    border: none;
+
+    img { display: block; height: 4.5rem; width: auto; }
+}
+
+// ---------- Docs search: a version the documentation does not cover
+
+.guide-search-notice {
+    display: block;
+    margin-top: 0.4rem;
+}
+
+// ---------- Release lines table on phones: each cell names its column
+
+.release-lines td[data-label] {
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        &::before {
+            color: $ink-soft;
+            content: attr(data-label) " ";
+            font-size: settings.$font-size-10;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.post-rows .post-row-title .tag { margin-left: 0.35rem; }
+
+// ---------- Homepage
+
+.home {
+    padding-bottom: 2rem;
+}
+
+.home-inner {
+    @include container-gutters;
+}
+
+.home-hero {
+    border-bottom: 1px solid $rule;
+    padding: 3.5rem 0 2.5rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) { padding: 5rem 0 3rem; }
+
+    h1 {
+        color: $navy;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.08;
+        margin: 0 0 1.25rem;
+        max-width: 22ch;
+        text-wrap: balance;
+    }
+}
+
+.home-lead {
+    color: settings.$color-neutral-70;
+    font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+    line-height: 1.5;
+    max-width: 40rem;
+}
+
+.home-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    margin: 1.75rem 0 2.5rem;
+
+    .button {
+        border: none;
+        font-size: settings.$font-size-40;
+        margin: 0;
+        padding: 0.65rem 1.4rem;
+        transition: background-color 160ms ease-out, color 160ms ease-out;
+    }
+}
+.home-action-alt { font-size: settings.$font-size-40; }
+
+// The release facts: one row of what to use now and what comes next.
+.home-release {
+    border-top: 1px solid $rule;
+    display: grid;
+    gap: 1rem 2.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0;
+    padding-top: 1.25rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) {
+        align-items: end;
+        grid-template-columns: repeat(auto-fit, minmax(12rem, auto));
+        justify-content: start;
+    }
+
+    dt {
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+    }
+    dd {
+        font-variant-numeric: tabular-nums;
+        margin: 0.15rem 0 0;
+
+        > a { font-size: settings.$font-size-50; font-weight: 600; }
+        .tag { margin-left: 0.15rem; }
+    }
+}
+.home-release-note {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+}
+.home-release-all dd > a {
+    font-size: settings.$font-size-30;
+    font-weight: 400;
+}
+
+.home-section {
+    padding-top: 4rem;
+
+    h2 {
+        color: settings.$color-neutral-90;
+        font-size: clamp(1.75rem, 3vw, 2.3rem);
+        font-weight: 300;
+        line-height: 1.2;
+        margin-bottom: 1.25rem;
+    }
+}
+.home-section-lead {
+    max-width: 42rem;
+}
+.home-more {
+    font-size: settings.$font-size-20;
+    margin-top: 1rem;
+}
+
+// How a page works: the Java class beside its HTML.
+.home-code-pair {
+    display: grid;
+    gap: 1.5rem 3rem;
+    grid-template-columns: minmax(0, 1fr);
+
+    @include mixins.breakpoint(settings.$breakpoint-30) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+
+    figure { margin: 0; min-width: 0; }
+    figcaption {
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+        margin-bottom: 0.35rem;
+    }
+    .highlight,
+    pre {
+        background: $tint;
+        border-radius: settings.$border-radius-20;
+        margin: 0;
+    }
+    pre {
+        overflow-x: auto;
+        padding: 1rem 1.25rem;
+    }
+}
+.home-code-notes {
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        border-top: 1px solid $rule;
+        margin: 0;
+        padding: 0.6rem 0;
+    }
+    code { background: $tint; border-radius: settings.$border-radius-10; padding: 0 0.25em; }
+}
+
+// Why Wicket: a ruled list in two columns, no boxes.
+.home-why {
+    display: grid;
+    gap: 0 3rem;
+    grid-template-columns: minmax(0, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @include mixins.breakpoint(settings.$breakpoint-40) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    li {
+        border-top: 1px solid $rule;
+        margin: 0;
+        padding: 1rem 0 1.25rem;
+    }
+    h3 {
+        color: settings.$color-neutral-90;
+        font-size: settings.$font-size-40;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+    }
+    p { margin: 0; }
+    code { background: $tint; border-radius: settings.$border-radius-10; padding: 0 0.25em; }
+}
+.home-also {
+    border-top: 1px solid $rule;
+    max-width: 52rem;
+    padding-top: 1rem;
+
+    span { font-weight: 600; }
+}
+
+// Learn: the introduction beside the five lessons.
+.home-split {
+    display: grid;
+    gap: 1rem 4rem;
+    grid-template-columns: minmax(0, 1fr);
+
+    @include mixins.breakpoint(settings.$breakpoint-30) { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
+}
+.home-lessons { margin: 0; }
+
+.home-section .line-panels { margin-bottom: 0; }
+
+// Built with Wicket on the homepage: no grey band, the strip on phones.
+#builtwithwicket {
+    padding-bottom: 2rem;
+
+    .builtwithwicket-slider { margin-top: 1rem; }
+    .builtwithwicket-caption { font-size: settings.$font-size-20; }
+    .slick-prev::before,
+    .slick-next::before { color: $brand-text; }
+    .slick-dots li button::before { color: $navy; }
+}
+.builtwithwicket-slider.is-strip {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+    .builtwithwicket-post {
+        flex: 0 0 80%;
+        padding: 0;
+        scroll-snap-align: start;
+    }
+    .builtwithwicket-screenshot { min-height: 0; min-width: 0; width: 100%; }
+}
+.bww-count {
+    color: $ink-soft;
+    font-size: settings.$font-size-20;
+    margin-top: 0.5rem;
+}
+
+// ---------- The menu on phones: logo and plate on one row, sections and icons on the next
+
+.header.default nav.mainmenu {
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        justify-content: center;
+        padding: 0.75rem 0 0.5rem;
+
+        .nav-brand { flex: 1 0 100%; flex-direction: row; justify-content: center; gap: 0.75rem; }
+        .nav-logo img { width: 9.5rem; }
+        .nav-container { flex: 0 0 auto; }
+        .nav-container:last-child { flex-grow: 0; font-size: 1.5rem; }
+        .nav-asf img { height: 1.6rem; }
+        .nav-container > a.nav-items { padding-bottom: 0.15rem; padding-top: 0.15rem; }
+    }
 }

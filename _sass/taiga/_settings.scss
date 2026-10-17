@@ -62,6 +62,8 @@ $color-brand-40: color.adjust(#E97826, $lightness: -25%);
 $color-brand-50: #E97826; // Default
 $color-brand-60: color.adjust(#E97826, $lightness: 10%);
 $color-brand-70: #FF9925; //old default
+$color-brand-text: #b4531a; // brand orange dark enough for text on white (5:1)
+$color-navy: #303284;       // the "WICKET" of the logo
 
 
 // Color success

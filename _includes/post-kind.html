@@ -3,6 +3,7 @@
     post_kind:     major | release | security | article
     post_featured: true for articles, x.0.0 releases and security advisories;
                    the post's own `featured` front matter overrides it.
+    post_fixes:    true for a release whose announcement lists CVEs it fixes.
 {% endcomment %}
 {%- assign post_url = include.post.url | downcase -%}
 {%- if post_url contains 'cve-' -%}
@@ -18,6 +19,8 @@
 {%- else -%}
     {%- assign post_kind = 'article' -%}
 {%- endif -%}
+{%- assign post_fixes = false -%}
+{%- if post_kind == 'release' and include.post.content contains 'CVE-20' -%}{%- assign post_fixes = true -%}{%- endif -%}
 {%- if include.post.featured == true or include.post.featured == false -%}
     {%- assign post_featured = include.post.featured -%}
 {%- elsif post_kind == 'release' -%}
