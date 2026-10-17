@@ -16,13 +16,11 @@ additionalContents:
     <a class="acevent"></a>
     <br/>
     <h1 id="introduction" class="announce">Announcing Apache Wicket <span class="color-brand">1</span><span class="color-brand" style="font-family: Wicket font;font-size: 46px;">0</span> : build modern web applications with Java!</h1>
-    <div>
-      <img src="{{ site.baseurl }}/img/logo.svg" alt="Apache Wicket" class="responsive-logo">
-    </div>
     <p>
       The Apache Wicket project announces the 10th major release of the open source Java web framework servicing websites and applications across the globe since 2004.
       Built on top of Java 17, this version of Wicket brings web development into the modern Java world, offering a fundamental tool to write modern and robust web applications.
     </p>
+    <p class="home-start"><a class="button" href="{{ site.baseurl }}/start/quickstart.html">Get started</a></p>
 </div>
 <div class="l-first">
   <div class="l-full">
@@ -59,7 +57,7 @@ additionalContents:
      You either risk leaving holes in the defense of your application or you break certain functionality. Protecting against unwanted inline scripts is the most important target to attain. In CSP this is called 'unsafe-inline' and it's the most common cause of cross-site scripting vulnerabilities.
     </p>
     <p>
-     Wicket 10 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need for a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Lookup our <a href="http://wicket.apache.org/learn/#guide" target="_blank">documentation</a> for more information.
+     Wicket 10 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need for a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Look it up in our <a href="{{ site.baseurl }}/docs/">documentation</a> for more information.
     </p>
   </div>
 </div>

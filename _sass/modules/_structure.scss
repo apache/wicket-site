@@ -1014,13 +1014,17 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
         font-weight: 400;
     }
     input, select {
+        background-color: #fff;
         border: 1px solid settings.$color-neutral-50;
         border-radius: settings.$border-radius-20;
+        box-sizing: border-box;
         display: block;
         font: inherit;
         font-size: settings.$font-size-30;
+        height: 2.6rem;
+        line-height: 1.4;
         margin-top: 0.25rem;
-        padding: 0.45rem 0.6rem;
+        padding: 0 0.6rem;
         width: 100%;
 
         &:focus { border-color: $brand; outline: 2px solid color.adjust($brand, $alpha: -0.6); }
@@ -1036,4 +1040,15 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
 .quickstart-needs {
     color: $ink-soft;
     font-size: settings.$font-size-20;
+}
+
+// The homepage's call to action, under the announcement.
+.home-start {
+    margin-top: 1.5rem;
+    text-align: center;
+
+    .button {
+        font-size: settings.$font-size-50;
+        padding: 0.6rem 2rem;
+    }
 }
