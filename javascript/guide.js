@@ -340,6 +340,7 @@
         button.type = 'button';
         button.className = 'hub-copy guide-copy';
         button.setAttribute('aria-live', 'polite');
+        button.setAttribute('aria-label', 'Copy code');
         button.textContent = 'Copy';
         button.addEventListener('click', function () {
             navigator.clipboard.writeText(pre.textContent).then(function () {

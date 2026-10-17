@@ -8,7 +8,7 @@
     <thead>
         <tr>
             <th scope="col">Release</th>
-            <th scope="col">When</th>
+            <th scope="col">Since or due</th>
             <th scope="col">Supported</th>
             <th scope="col">Status</th>
         </tr>
@@ -38,7 +38,7 @@
                 {% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">{{ version }}</a>{% else %}{{ version }}{% endif %}
                 {% if line.service == 'lts' and line.status != 'lts' %}<span class="tag tag-lts" title="Long-term support">LTS</span>{% endif %}
             </th>
-            <td data-label="When">{{ line.when }}</td>
+            <td>{{ line.when }}</td>
             <td data-label="Supported">{{ line.support }}</td>
             <td>
                 {% comment %} The state first, the role of a line in service under it. {% endcomment %}

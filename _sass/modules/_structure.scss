@@ -158,6 +158,11 @@ nav.mainmenu {
     }
 
     @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        // One release is one block: no rule between its two rows of cells.
+        &,
+        .section-body & {
+            th, td { border: none; }
+        }
         thead { display: none; }
         tr { display: grid; grid-template-columns: 1fr 1fr; padding: 0.5rem 0; border-bottom: 1px solid $rule; }
         th, td { border: none; padding: 0.15rem 0; }
@@ -1178,10 +1183,6 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
     color: $ink-soft;
     vertical-align: baseline;
 }
-.tag-security {
-    border-color: $eol;
-    color: $eol;
-}
 .post-content {
     overflow-wrap: break-word;
 
@@ -1363,7 +1364,12 @@ main:focus-visible { outline: none; }
     .reading-rail a,
     .footer-sitemap a,
     .hub-jump a,
-    .section-index a { display: inline-block; padding: 0.7rem 0; }
+    .section-index a { display: inline-block; padding: 0.75rem 0; }
+    .release-lines th[scope=row] a,
+    .home-release a,
+    .guide-foot a { display: inline-block; padding: 0.75rem 0; }
+    .quickstart input,
+    .quickstart select { min-height: 44px; }
     .hub-crumbs a,
     .guide-crumbs a,
     .hub-maven-more a,
@@ -1674,7 +1680,8 @@ body > footer {
 
     // slick's own theme removes focus outlines; bring them back, and give its controls contrast.
     .slick-list:focus-visible,
-    .slick-arrow:focus-visible,
+    .slick-prev:focus-visible,
+    .slick-next:focus-visible,
     .slick-dots li button:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
     .slick-prev::before,
     .slick-next::before { opacity: 1; }

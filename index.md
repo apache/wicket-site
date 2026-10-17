@@ -36,12 +36,12 @@ additionalContents:
             {% if next %}
             <div>
                 <dt>Next release</dt>
-                <dd><span class="home-release-next">{{ next.version }}</span> <span class="home-release-note">Announced for {{ next.when }}, not yet released</span></dd>
+                <dd><span class="home-release-next">{{ next.version }}</span> <span class="home-release-note">Announced for {{ next.when }}, not yet released. Hear when it ships on the <a href="{{ site.baseurl }}/community/#announce">announce list</a>.</span></dd>
             </div>
             {% endif %}
             <div class="home-release-all">
                 <dt class="visually-hidden">Everything else</dt>
-                <dd><a href="{{ site.baseurl }}/versions/">All release lines and downloads</a></dd>
+                <dd><a href="{{ site.baseurl }}/versions/">All releases and downloads</a></dd>
             </div>
         </dl>
     </div>
@@ -73,8 +73,8 @@ public class HomePage extends WebPage {
                 <figcaption>HomePage.html</figcaption>
 {% highlight html %}
 <p>
-  <a wicket:id="count">Click me</a>.
   You clicked <span wicket:id="clicks">0</span> times.
+  <a wicket:id="count">Click me</a>
 </p>
 {% endhighlight %}
                 <ul class="home-code-notes">

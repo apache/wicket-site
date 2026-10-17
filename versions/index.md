@@ -8,6 +8,8 @@ summary: From Wicket 11 on, a long-term support release ships once a year for pr
 
 {% include release-lines.html %}
 
+Every release is announced on the [announce list]({{ site.baseurl }}/community/#announce), on the [blog]({{ site.baseurl }}/news/) and in its [Atom feed]({{ site.baseurl }}/atom.xml).
+
 If your application runs on a line with its last release coming, or one past its end of life, plan the upgrade: the [upgrade paths](#upgrade-paths) show the route. Every release line links to its own page.
 
 ---

@@ -18,7 +18,7 @@
 <nav class="mainmenu" aria-label="Main">
     <div class="nav-brand">
         {% include logo.html %}
-        <a class="nav-plate{% if page.active_link == 'versions' %} active{% endif %}" href="{{ site.baseurl }}/versions/"{% if page.active_link == 'versions' %} aria-current="page"{% endif %} aria-label="Releases: Wicket {{ plate_current }}{% if plate_lts != '' %} {{ plate_lts }}{% endif %} is current, with downloads" title="Releases and downloads">
+        <a class="nav-plate{% if page.active_link == 'versions' %} active{% endif %}" href="{{ site.baseurl }}/versions/"{% if page.active_link == 'versions' %} aria-current="page"{% endif %} aria-label="{{ plate_current }}{% if plate_lts != '' %} {{ plate_lts }}{% endif %} Releases: the current release lines and downloads" title="Releases and downloads">
             <span class="nav-plate-current">{{ plate_current }}</span>{% if plate_lts != '' %}<span class="nav-plate-lts">{{ plate_lts }}</span>{% endif %}<span class="nav-plate-label">Releases</span><svg class="nav-plate-arrow" viewBox="0 0 8 12" width="7" height="11" aria-hidden="true" focusable="false"><path d="M1.5 1.5 6 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
     </div>
