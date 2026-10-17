@@ -8,9 +8,9 @@ highlighter:    rouge
 markdown:    Kramdown
 monthly_archive:
     path:   news
-    layout: news_archive
+    layout: blog-archive
 yearly_archive:
-    layout: news_archive
+    layout: blog-archive
 permalink:   news/:year/:month/:day/:title.html
 exclude:      [readme.md, PRODUCT.md, DESIGN.md, GUIDE.md, .impeccable, .previews]
 excerpt_separator: <!--more-->
@@ -75,7 +75,7 @@ navigation:
 - id: blog
   text: Blog
   url: /news/
-  layout: news_archive
+  layout: blog-archive
 - id: community
   text: Community
   url: /community/

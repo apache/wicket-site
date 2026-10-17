@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: home
 title: 
 pageclasses: index
 additionalContents:

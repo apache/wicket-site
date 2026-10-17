@@ -366,8 +366,7 @@ nav.mainmenu {
 // ---------- Blog listings
 
 .post-panels,
-.post-rows,
-.blog-years {
+.post-rows {
     > li { margin-left: 0; padding-left: 0; }
 }
 
@@ -436,10 +435,19 @@ nav.mainmenu {
 .blog-years {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1rem;
-    list-style: none;
-    margin: 1rem 0 0;
-    padding: 0;
+    gap: 0.25rem 0.5rem;
+    margin: 1rem 0 2rem;
+
+    a {
+        border: 1px solid $rule;
+        border-radius: settings.$border-radius-20;
+        color: $ink;
+        font-variant-numeric: tabular-nums;
+        padding: 0.1rem 0.6rem;
+
+        &:hover { border-color: $brand; color: $brand-text; }
+        &.is-current { background: $navy; border-color: $navy; color: #fff; }
+    }
 }
 
 // ---------- User guide
@@ -1069,5 +1077,86 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
 .has-rail .section-body > h2:first-child {
     border-top: none;
     margin-top: 0;
+    padding-top: 0;
+}
+
+// Blog posts and archives.
+.post-sign-meta {
+    align-items: center;
+    color: $ink-soft;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-top: 0.75rem;
+}
+.tag-post {
+    border: 1px solid $rule;
+    color: $ink-soft;
+    vertical-align: baseline;
+}
+.tag-security {
+    border-color: $eol;
+    color: $eol;
+}
+.post-content {
+    overflow-wrap: break-word;
+
+    h2 { font-size: 1.6rem; }
+    blockquote {
+        border-left: 1px solid $rule;
+        color: $ink-soft;
+        padding-left: 1rem;
+    }
+    img { max-width: 100%; height: auto; }
+}
+.post-foot {
+    border-top: 1px solid $rule;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+}
+.post-pager {
+    display: grid;
+    gap: 1rem 2rem;
+    margin-bottom: 1.5rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: 1fr 1fr; }
+
+    a {
+        border: none;
+        display: block;
+
+        span {
+            color: $ink-soft;
+            display: block;
+            font-size: settings.$font-size-20;
+        }
+    }
+    .post-pager-newer { text-align: right; grid-column: 2; }
+}
+.post-follow {
+    color: $ink-soft;
+    font-size: settings.$font-size-20;
+}
+.post-rows--archive {
+    margin-bottom: 2rem;
+
+    li { align-items: baseline; }
+    time { flex: 0 0 4rem; }
+    .tag { margin-left: 0.4rem; }
+}
+.post-row-body {
+    display: block;
+}
+.post-row-summary {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+}
+.section-body > h2.archive-month {
+    border-top: none;
+    color: $ink-soft;
+    font-size: settings.$font-size-40;
+    font-weight: 600;
+    margin: 1.5rem 0 0.25rem;
     padding-top: 0;
 }
