@@ -1,37 +1,19 @@
-# Wicket new site
+# wicket.apache.org
 
-This repository contains the site of [Apache Wicket
-framework](http://wicket.apache.org).
+The source of the [Apache Wicket](https://wicket.apache.org) website, built with
+[Jekyll](https://jekyllrb.com/). The branch `asf-site` holds the source and, in
+`content/`, the built site that the ASF web servers publish.
 
-## Project info
-
-The site is based on [Jekyll](http://jekyllrb.com/). So you have to be
-familiar with Markdown template language and have Jekyll (ver. 3+)
-installed to contribute to the project.
-
-## Run the project
-
-Just go on project root folder and execute `jekyll serve -w` to generate
-the static HTML and start the local server. The project comes with all
-the dependencies you need (css, js, pictures, etc.) so you don't need
-any preliminary operation before running Jekyll.
-
-If Jekyll is missing any dependency then run `bundle install`.
-
-### Using Docker (thanks Apache Arrow!)
-
-If you don't wish to change or install `ruby` and `nodejs` locally, you can use docker to build and preview the site with a command like:
+Run it on your machine with Docker or Podman:
 
 ```shell
-cd path/to/wicket-site
-docker run -v $PWD:/wicket-site -p 4000:4000 -it ruby bash
-cd /wicket-site
-apt-get update
-apt-get install -y npm
-gem install bundler
-bundle install
-# Serve using local container address
-jekyll serve -H 0.0.0.0
+docker run --rm -it -p 4000:4000 -v "$PWD":/site:z -w /site ruby:3.3 \
+  bash -c "bundle install && bundle exec jekyll serve -H 0.0.0.0 -d /tmp/site"
 ```
 
-Then open http://localhost:4000 locally
+and open http://localhost:4000. Build the site for publishing with
+`bundle exec jekyll build`, which writes `content/`.
+
+The contributor documentation on the site explains the rest:
+https://wicket.apache.org/contribute/, starting with
+[Make your first change to the site](https://wicket.apache.org/contribute/site-first-change.html).

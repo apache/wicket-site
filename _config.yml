@@ -1,4 +1,5 @@
 name: Apache Wicket
+url: https://wicket.apache.org
 description: Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.
 destination: ./content
 lsi:         false
@@ -21,6 +22,11 @@ collections:
   guide:
     output: true
     permalink: /docs/:name.html
+  # The contributor documentation: one page per file in _contribute/, by kind like the
+  # user guide, listed on contribute/index.md.
+  contribute:
+    output: true
+    permalink: /contribute/:name.html
 
 defaults:
   - scope:
@@ -29,6 +35,11 @@ defaults:
       layout: guide
       active_link: documentation
   - scope:
+      type: contribute
+    values:
+      layout: contribute
+      active_link: community
+  - scope:
       type: posts
     values:
       active_link: blog
@@ -36,10 +47,6 @@ defaults:
       path: versions
     values:
       active_link: versions
-  - scope:
-      path: help
-    values:
-      active_link: community
   - scope:
       path: contribute
     values:

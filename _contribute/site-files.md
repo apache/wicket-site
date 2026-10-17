@@ -1,0 +1,87 @@
+---
+title: Site files and data
+type: reference
+topic: site
+summary: What each folder and data file of the site holds, the version settings in _config.yml, and the fields of the release lines.
+order: 70
+---
+
+## Folders
+
+| Folder or file | Holds |
+|---|---|
+| `_config.yml` | Site settings, the versions of every release line, the main menu, and the collections. |
+| `_data/` | The release lines, the highlights per release and the topics of the documentation. |
+| `_guide/` | The documentation, one Markdown file per page, published under `/docs/`. |
+| `_contribute/` | The contributor documentation, published under `/contribute/`. |
+| `2009/` … `2026/` | The blog: `_posts/` in each year's folder, published under `/news/`. |
+| `versions/` | The release lines page and one page per line, `wicket-<series>.x/index.md`. |
+| `docs/` | The front page of the documentation and the A–Z index. |
+| `community/`, `contribute/`, `learn/`, `apache/` | Pages of those sections. |
+| `start/quickstart.md` | The quick start wizard. |
+| `_layouts/` | Page layouts. |
+| `_includes/` | Fragments that layouts and pages include. |
+| `_plugins/` | Jekyll plugins: the documentation's topic and kind pages, search index and A–Z index, the news archives, the table of contents. |
+| `_sass/`, `css/` | The stylesheets; `css/style.scss` compiles `_sass/`. |
+| `javascript/`, `img/`, `fonts/` | Scripts, images and fonts, served as they are. |
+| `.htaccess` | Redirects of old URLs. |
+| `content/` | The built site, which the web server publishes. Generated: do not edit. |
+| `_previews/` | Scripts for maintainers: design previews and `guide-changes.sh`. |
+| `GUIDE.md` | The rules for writing the documentation. |
+
+## Layouts
+
+| Layout | Used by |
+|---|---|
+| `default` | Most pages in the older sections, with a title, subtitle and preamble. |
+| `section` | The front pages of the release lines, the blog, Community and Learn. Front matter: `title`, `summary`. |
+| `hub` | The page of one release line under `/versions/`. |
+| `guide`, `guide-topic`, `guide-kind` | A documentation page, a topic page and a kind page. |
+| `contribute` | A page of the contributor documentation. |
+| `post` | A blog post. |
+| `news_archive` | The blog's archive per year and month. |
+
+## Versions in `_config.yml`
+
+| Key | Holds |
+|---|---|
+| `wicket.version` | The latest release of the newest line, used where a page needs "the current version". |
+| `wicket.version_<nn>` | The latest release of each line: `version_10`, `version_90` for 9, `version_80` for 8, `version_15` for 1.5. |
+| `wicket.released` | The date of the latest release. |
+| `wicket.versions` | Released and `-SNAPSHOT` versions for `archetype-catalog.xml` and `doap.rdf`. |
+| `live_examples_url` | Where the live examples run. |
+
+## Release lines: `_data/releases.yml`
+
+`featured` names the line whose highlights a page shows when it names none. `lines` lists every release line in service, upcoming or recently out of service:
+
+| Field | Holds |
+|---|---|
+| `series` | The line, as a string: `"10"`. |
+| `config` | The key under `wicket:` in `_config.yml` with the line's latest version. Lines with a release. |
+| `version` | The version of an upcoming release, for lines without `config`. |
+| `service` | `lts`, `quarterly`, or `major` for lines from before the release schedule. |
+| `status` | `boarding` (the next release), `scheduled`, `current`, `lts`, `last-call`, `superseded` or `eol`. |
+| `when` | When the line arrived, or when a release is due: `"Since Mar 2024"`, `"Jan 2027"`. |
+| `support` | How long the line is supported: `"Until 14.0.0, Jul 2027"`. |
+| `page` | The line's page: `/versions/wicket-10.x/`. Only lines with a page appear in the panels and the quick start. |
+| `role` | What a line in service is for: `"For production"`, `"For new features"`. |
+
+## A release line's page
+
+The front matter of `versions/wicket-<series>.x/index.md`:
+
+| Field | Holds |
+|---|---|
+| `layout` | `hub` |
+| `series`, `config` | As in `_data/releases.yml`. |
+| `java`, `servlet` | The minimum Java version and Servlet API. |
+| `migration` | `from` and `url` of the migration guide to this line. |
+| `status`, `support` | Only for lines no longer in `_data/releases.yml`. |
+| `published` | `false` until the line's first release. |
+
+The page's own Markdown follows the generated sections: manual downloads, requirements and migration guides.
+
+## Highlights: `_data/highlights.yml`
+
+Per series, an `intro` and `items`, each with a `title`, a `text` in Markdown, and optionally `facts` (label and value pairs) and a `code` sample with its `lang` and `file`.

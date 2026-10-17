@@ -1,0 +1,47 @@
+---
+layout: base
+---
+{% comment %} A page of the contributor documentation (_contribute/). {% endcomment %}
+<div class="header default">
+    <div class="l-container">
+        {% include mainmenu.html %}
+    </div>
+</div>
+{% capture toc %}{{ content | toc_generate }}{% endcapture %}{% assign toc = toc | strip %}
+{% assign kind = site.data.guide.kinds | where: "id", page.type | first %}
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="{{ site.baseurl }}/community/">Community</a><span aria-hidden="true"> / </span><a href="{{ site.baseurl }}/contribute/">Contribute</a></p>
+        <h1>{{ page.title }}</h1>
+        <p class="page-sign-sub">{{ page.summary }}</p>
+        <p class="guide-plates"><span class="guide-kind">{{ kind.label }}</span></p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading{% if toc != '' %} has-rail{% endif %} guide-reading">
+        {% if toc != '' %}
+        <nav class="reading-rail" aria-label="On this page">{{ toc }}</nav>
+        {% endif %}
+        <div class="reading-main">
+            <section class="page-content guide-content">
+                {{ content }}
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="{{ site.baseurl }}/contribute/">Contribute</a></h2>
+                {% assign siblings = site.contribute | where: "topic", page.topic %}
+                <div class="guide-foot-kinds">
+                {% for k in site.data.guide.kinds %}
+                    {% assign pages = siblings | where: "type", k.id | sort: "order", "last" %}
+                    {% if pages.size > 0 %}
+                    <section>
+                        <h3>{{ k.title }}</h3>
+                        {% include guide-list.html pages=pages current=page.url %}
+                    </section>
+                    {% endif %}
+                {% endfor %}
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/{{ page.relative_path }}">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
