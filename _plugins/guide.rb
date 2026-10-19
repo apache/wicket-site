@@ -166,7 +166,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
            'title' => 'Reference guide and Javadoc', 'page' => 'Documentation', 'kind' => 'reference',
            'topic' => '', 'since' => 0,
            'text' => 'The complete Wicket user guide of each release line as one page or PDF, and its Javadoc.',
-           'keywords' => 'user guide reference guide single page pdf javadoc api', 'apis' => '', 'body' => '' }
+           'keywords' => 'user guide userguide user-guide manual reference guide single page pdf javadoc api', 'apis' => '', 'body' => '' }
   # Upgrading lives on the releases page and in the announcement of the newest major release.
   upgrade = { 'id' => '/versions/#upgrade-paths', 'url' => "#{base}/versions/#upgrade-paths",
               'title' => 'Upgrade paths', 'page' => 'Releases', 'kind' => 'reference', 'topic' => '', 'since' => 0,
@@ -176,11 +176,11 @@ Jekyll::Hooks.register :site, :post_write do |site|
   # The one-page reference guide of every line, so "user guide" finds the document itself.
   lines = (site.data.dig('releases', 'lines') || []).select { |l| l['page'] && l['config'] }.map { |l| l['series'].to_i }.uniq
   ((lines.min || 7) - 1).downto(7) { |n| lines << n } if lines.any?
-  lines.each do |n|
-    extra << { 'id' => "/docs/#reference-guide-#{n}", 'url' => "https://nightlies.apache.org/wicket/guide/#{n}.x/single.html",
+  lines.each_with_index do |n, i|
+    extra << { 'id' => "/docs/#reference-guide-#{i}-#{n}", 'url' => "https://nightlies.apache.org/wicket/guide/#{n}.x/single.html",
                'title' => "Wicket #{n} reference guide, one page", 'page' => 'Reference guide', 'kind' => 'reference',
                'topic' => '', 'since' => 0, 'text' => "The complete user guide of Wicket #{n} in one document, on nightlies.apache.org.",
-               'keywords' => "user guide reference guide single page wicket #{n}", 'apis' => '', 'body' => '' }
+               'keywords' => "user guide userguide user-guide manual reference guide single page wicket #{n}", 'apis' => '', 'body' => '' }
   end
   major = site.posts.docs.map { |post| [post, post.url[%r{/wicket-(\d+)\.0\.0-released}, 1].to_i] }
                     .select { |post, n| n.positive? && post.output.to_s.include?("id=\"upgrading-from-wicket-#{n - 1}\"") }

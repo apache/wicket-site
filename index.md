@@ -131,6 +131,7 @@ public class HomePage extends WebPage {
                 <p>Open source under the Apache License since 2004. Breaking changes only when needed, deprecated alternatives kept where possible, and every change documented in the migration guide.</p>
             </li>
         </ul>
+        <p class="home-also">Coming from another framework? The <a href="{{ site.baseurl }}/docs/glossary.html">glossary</a> explains Wicket's terms and what other web frameworks call them.</p>
         <p class="home-also"><span>Also included:</span> translations in over 25 languages, safe use of multiple tabs and windows, injection with CDI, Spring and Guice, Jakarta EE integration, and component-local JavaScript and CSS.</p>
     </div>
 </section>
