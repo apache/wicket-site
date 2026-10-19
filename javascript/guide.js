@@ -265,7 +265,12 @@
                 items.push(li);
             });
             empty.hidden = results.length > 0;
-            empty.textContent = 'Nothing matches “' + query + '”. Try a class name, or fewer words.';
+            empty.textContent = 'Nothing matches “' + query + '”. Try a class name, or fewer words. For versions, support and downloads, see ';
+            var releasesLink = document.createElement('a');
+            releasesLink.href = (form.getAttribute('data-base') || '') + '/versions/';
+            releasesLink.textContent = 'Releases';
+            empty.appendChild(releasesLink);
+            empty.appendChild(document.createTextNode('.'));
             status.textContent = results.length ? results.length + ' results' : 'No results';
             panel.hidden = false;
             input.setAttribute('aria-expanded', 'true');

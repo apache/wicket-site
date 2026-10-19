@@ -192,6 +192,42 @@ Jekyll::Hooks.register :site, :post_write do |site|
                'topic' => '', 'since' => 0, 'text' => "The steps from Wicket #{n - 1} to Wicket #{n}, in the release announcement.",
                'keywords' => 'upgrade upgrading migrate migration guide', 'apis' => '', 'body' => '' }
   end
+  # Releases: readers search the docs for support, end of life and migration as well.
+  data_lines = site.data.dig('releases', 'lines') || []
+  extra << { 'id' => '/versions/', 'url' => "#{base}/versions/", 'title' => 'Release lines and support', 'page' => 'Releases',
+             'kind' => 'reference', 'topic' => '', 'since' => 0,
+             'text' => 'Every release line with its status, how long it is supported, and the upgrade paths.',
+             'keywords' => 'LTS long-term support supported support end of life EOL release lines versions download', 'apis' => '', 'body' => '' }
+  extra << { 'id' => '/versions/#release-policy', 'url' => "#{base}/versions/#release-policy", 'title' => 'Release policy', 'page' => 'Releases',
+             'kind' => 'explanation', 'topic' => '', 'since' => 0,
+             'text' => 'Which release lines are maintained, the LTS and the quarterly releases, and for how long.',
+             'keywords' => 'LTS long-term support quarterly cadence schedule supported support policy', 'apis' => '', 'body' => '' }
+  site.pages.select { |pg| pg.data['layout'] == 'hub' && pg.data['series'] }.each do |pg|
+    series = pg.data['series'].to_s
+    line = data_lines.find { |l| l['series'].to_s == series && l['config'] }
+    status = line ? line['status'] : 'eol'
+    support = line ? line['support'] : 'No longer supported'
+    words = ['release line', 'version', "wicket #{series}", "#{series}.x", 'download', 'maven dependency', 'javadoc']
+    words += ['supported', 'support'] unless status == 'eol'
+    words += ['LTS', 'long-term support'] if status == 'lts'
+    words += ['end of life', 'EOL', 'final release'] if %w[last-call eol].include?(status)
+    extra << { 'id' => pg.url, 'url' => "#{base}#{pg.url}", 'title' => "Wicket #{series} release line", 'page' => 'Releases',
+               'kind' => 'reference', 'topic' => '', 'since' => 0,
+               'text' => "#{(line && line['role']) || status.tr('-', ' ').capitalize}. #{support}.",
+               'keywords' => words.join(' '), 'apis' => '', 'body' => '' }
+    mig = pg.data['migration']
+    next unless mig.is_a?(Hash) && mig['url']
+    extra << { 'id' => "#{pg.url}#migrate", 'url' => mig['url'], 'title' => "Migrate from Wicket #{mig['from']} to #{series}",
+               'page' => 'Migration guide', 'kind' => 'howto', 'topic' => '', 'since' => 0,
+               'text' => "The migration guide on the wiki: what changed from Wicket #{mig['from']} to #{series} and what to adjust.",
+               'keywords' => "migrate migration upgrade wicket #{mig['from']} #{series}", 'apis' => '', 'body' => '' }
+  end
+  site.posts.docs.select { |post| post.data['announces'] == 'end-of-life' }.each do |post|
+    extra << { 'id' => post.url, 'url' => "#{base}#{post.url}", 'title' => post.data['title'], 'page' => 'Blog',
+               'kind' => 'explanation', 'topic' => '', 'since' => 0, 'text' => post.data['description'].to_s,
+               'keywords' => 'end of life EOL final release support javax ' + Array(post.data['lines']).map { |l| "wicket #{l}" }.join(' '),
+               'apis' => '', 'body' => '' }
+  end
   File.write(File.join(dir, 'search.json'), JSON.generate((WicketGuide.records + extra).sort_by { |r| r['id'] }))
 
   # Links to guide pages that do not exist.
