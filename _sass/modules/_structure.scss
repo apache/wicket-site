@@ -1097,6 +1097,7 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
         &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
     }
     .is-eol a { border-top-color: settings.$color-neutral-50; }
+    .is-ending a { border-top-color: $brand-text; }
 }
 .line-panel-name {
     color: settings.$color-neutral-90;
@@ -1860,3 +1861,43 @@ body > footer {
     height: 1.9rem;
     width: 1.9rem;
 }
+
+// The plate split in two when the newest line is not the LTS: a link to each line.
+.header.default nav.mainmenu .nav-plate--split {
+    border: 1px solid $ink-soft;
+    gap: 0;
+    padding: 0;
+
+    &:hover { background: none; }
+
+    a {
+        align-items: center;
+        border: none;
+        display: inline-flex;
+        min-height: 2.25rem;
+        padding: 0.2rem 0.6rem;
+
+        &:hover, &.active { background: $tint; }
+        &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+    }
+    a + a { border-left: 1px solid $rule; }
+    .nav-plate-current { color: $navy; font-weight: 600; }
+    .nav-plate-lts { color: $ink-soft; font-size: settings.$font-size-20; }
+}
+@media (pointer: coarse) {
+    .header.default nav.mainmenu .nav-plate--split a { min-height: 44px; min-width: 44px; }
+}
+
+// Docs search: a focus ring as strong as everywhere else.
+.guide-search-field input:focus { border-color: $navy; outline: 2px solid $navy; outline-offset: 1px; }
+
+// Search results: the kind and the topic apart.
+.guide-result-meta span + span::before { content: " · "; }
+
+// Small links in rows and strips reach 44px on touch screens.
+@media (pointer: coarse) {
+    .guide-refs a,
+    .builtwithwicket-post > a,
+    .reading-rail .toc a { display: inline-block; padding: 0.7rem 0.5rem; margin-left: -0.5rem; }
+}
+.guide-results ul { list-style: none; margin: 0; padding: 0; }

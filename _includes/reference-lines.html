@@ -1,0 +1,15 @@
+{% comment %}
+  Assigns ref_lines: the release lines with a reference guide on nightlies, in the order of
+  _data/releases.yml (the LTS first), then the end-of-life lines below them down to 7, the
+  oldest line with a guide. Used by the docs front page, /learn/ and llms.txt.
+{% endcomment %}
+{%- assign ref_lines = '' | split: '' -%}
+{%- assign ref_lowest = 40 -%}
+{%- for line in site.data.releases.lines -%}
+    {%- unless line.page and line.config %}{% continue %}{% endunless -%}
+    {%- if ref_lines contains line.series %}{% continue %}{% endif -%}
+    {%- assign ref_lines = ref_lines | push: line.series -%}
+    {%- assign n = line.series | plus: 0 -%}{%- if n < ref_lowest %}{% assign ref_lowest = n %}{% endif -%}
+{%- endfor -%}
+{%- assign ref_from = ref_lowest | minus: 1 -%}
+{%- if ref_from >= 7 -%}{%- for n in (7..ref_from) reversed -%}{%- assign s = n | append: '' -%}{%- assign ref_lines = ref_lines | push: s -%}{%- endfor -%}{%- endif -%}

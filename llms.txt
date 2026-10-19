@@ -6,7 +6,7 @@ permalink: /llms.txt
   An index for language models and agents (llmstxt.org): what Wicket is, which release to use,
   and where the complete documentation is. Everything comes from _data/releases.yml, the
   release line pages and _data/guide.yml.
-{% endcomment %}{% assign root = site.url | append: site.baseurl %}{% assign with_page = site.data.releases.lines | where_exp: "l", "l.page" | map: "series" %}{% assign lowest = 40 %}{% for v in with_page %}{% assign n = v | plus: 0 %}{% if n < lowest %}{% assign lowest = n %}{% endif %}{% endfor %}{% assign next = site.data.releases.lines | where: "status", "boarding" | first %}# Apache Wicket
+{% endcomment %}{% assign root = site.url | append: site.baseurl %}{% include reference-lines.html %}{% assign next = site.data.releases.lines | where: "status", "boarding" | first %}# Apache Wicket
 
 > Apache Wicket is an open source, component-oriented Java web framework of the Apache Software Foundation. Every component keeps its behaviour and state in Java and its markup in plain HTML; there is no JavaScript build chain. Maven coordinates: groupId `org.apache.wicket`, artifactId `wicket-core`.
 
@@ -20,12 +20,12 @@ Wicket 10 and later use the `jakarta.*` namespace; Wicket 9 and earlier use `jav
 ## Reference guide
 
 The complete user guide of each release line in one document.
-{% for n in (7..40) reversed %}{% assign series = n | append: '' %}{% assign line = site.data.releases.lines | where: "series", series | where_exp: "l", "l.page" | first %}{% unless line or n < lowest %}{% continue %}{% endunless %}
+{% for n in ref_lines %}
 - [Wicket {{ n }}.x Reference Guide](https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.html): one HTML page{% endfor %}{% if next %}
 - [Wicket {{ next.series }}.x Reference Guide](https://nightlies.apache.org/wicket/guide/{{ next.series }}.x/single.html): one HTML page, for the upcoming release{% endif %}
 
 ## Javadoc
-{% for n in (7..40) reversed %}{% assign series = n | append: '' %}{% assign line = site.data.releases.lines | where: "series", series | where_exp: "l", "l.page" | first %}{% unless line or n < lowest %}{% continue %}{% endunless %}
+{% for n in ref_lines %}
 - [Wicket {{ n }}.x Javadoc](https://nightlies.apache.org/wicket/apidocs/{{ n }}.x/index.html){% endfor %}
 
 ## Documentation

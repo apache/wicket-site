@@ -17,7 +17,9 @@ until July 2027, or on to Wicket 11 for new features every quarter.
 What end of life means
 ----------------------
 
-Until their final release, 8.x and 9.x are supported as they are today. After it:
+Until their final release, 8.x and 9.x are supported as they are today. Its date will be
+announced on the [announce list]({{ site.baseurl }}/community/#announce) and on this blog.
+After it:
 
  * no new 8.x or 9.x release ships, for bugs or for vulnerabilities;
  * every release stays available: on Maven Central, and in the

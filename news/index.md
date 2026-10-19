@@ -14,7 +14,7 @@ summary: Releases, security advisories and articles from the Apache Wicket proje
 Every release announcement lists what changed and where to download it. The page of each [release line]({{ site.baseurl }}/versions/) has the current version and its Maven coordinates.
 
 {% assign releases = '' | split: '' %}
-{% for post in site.posts %}{% include post-kind.html post=post %}{% if post_kind == 'release' %}{% assign releases = releases | push: post %}{% endif %}{% if releases.size >= 12 %}{% break %}{% endif %}{% endfor %}
+{% for post in site.posts %}{% include post-kind.html post=post %}{% if post_kind == 'release' or post_kind == 'major' %}{% assign releases = releases | push: post %}{% endif %}{% if releases.size >= 12 %}{% break %}{% endif %}{% endfor %}
 {% include post-list.html posts=releases featured=0 %}
 
 {% assign older = releases | last %}{% assign older_year = older.date | date: "%Y" %}{% assign older_month = older.date | date: "%m" %}

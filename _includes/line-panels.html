@@ -1,18 +1,20 @@
 {% comment %}
-  A row of panels for the three newest lines with a page in _data/releases.yml, newest
-  first, then the older releases. include.anchor: the section of the line's page to open,
-  such as "#docs" (default: the top); include.label: the navigation's accessible name.
+  The release lines as panels, in the order of _data/releases.yml (the LTS first): every
+  line with a page that is not at end of life, the lines with their last release coming
+  together in one panel, then the older releases. include.anchor: the section of the
+  line's page to open, such as "#docs" (default: the top); include.label: the
+  navigation's accessible name.
 {% endcomment %}
-{% assign shown = 0 %}{% assign oldest = '' %}
+{% assign ending = site.data.releases.lines | where: "status", "last-call" | where_exp: "l", "l.page" %}
+{% assign lowest = 40 %}
+{% assign lts = site.data.releases.lines | where: "status", "lts" | first %}
 <nav class="line-panels" aria-label="{{ include.label | default: 'Release lines' }}">
     <ul>
-    {% for n in (1..40) reversed %}
-        {% if shown >= 3 %}{% break %}{% endif %}
-        {% assign series = n | append: '' %}
-        {% assign line = site.data.releases.lines | where: "series", series | where_exp: "l", "l.page" | first %}
-        {% unless line %}{% continue %}{% endunless %}
-        {% assign shown = shown | plus: 1 %}{% assign oldest = n %}
-        <li{% if line.status == 'eol' or line.status == 'last-call' %} class="is-eol"{% endif %}>
+    {% for line in site.data.releases.lines %}
+        {% unless line.page and line.config %}{% continue %}{% endunless %}
+        {% if line.status == 'eol' or line.status == 'last-call' %}{% continue %}{% endif %}
+        {% assign n = line.series | plus: 0 %}{% if n < lowest %}{% assign lowest = n %}{% endif %}
+        <li>
             <a href="{{ site.baseurl }}{{ line.page }}{{ include.anchor }}">
                 <span class="line-panel-name">Wicket {{ line.series }}{% if line.service == 'lts' %} <span class="tag tag-lts">LTS</span>{% endif %}</span>
                 <span class="line-panel-role">{% if line.role %}{{ line.role }}{% else %}{% include line-status.html status=line.status %}{% endif %}</span>
@@ -20,10 +22,21 @@
             </a>
         </li>
     {% endfor %}
+    {% if ending.size > 0 %}
+        {% assign names = ending | map: "series" | join: " and " %}
+        {% assign versions = '' | split: '' %}{% for line in ending %}{% assign n = line.series | plus: 0 %}{% if n < lowest %}{% assign lowest = n %}{% endif %}{% assign versions = versions | push: site.wicket[line.config] %}{% endfor %}
+        <li class="is-ending">
+            <a href="{% if ending.size == 1 %}{{ site.baseurl }}{{ ending.first.page }}{{ include.anchor }}{% else %}{{ site.baseurl }}/versions/#upgrade-paths{% endif %}">
+                <span class="line-panel-name">Wicket {{ names }}</span>
+                <span class="line-panel-role">Last release coming, then end of life</span>
+                <span class="line-panel-meta">{{ versions | join: " · " }} · the route to Wicket {{ lts.series }} LTS</span>
+            </a>
+        </li>
+    {% endif %}
         <li class="is-eol">
             <a href="{{ site.baseurl }}/versions/#unsupported">
                 <span class="line-panel-name">Older releases</span>
-                <span class="line-panel-role">End of life: Wicket {{ oldest | minus: 1 }} and earlier</span>
+                <span class="line-panel-role">End of life: Wicket {{ lowest | minus: 1 }} and earlier</span>
                 <span class="line-panel-meta">Reference guides, Javadoc and downloads</span>
             </a>
         </li>

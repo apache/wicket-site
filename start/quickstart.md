@@ -4,15 +4,13 @@ title: Quick start
 summary: Generate a Wicket project with Maven in a minute, run it, and open it in your browser.
 ---
 {% comment %}
-  The versions offered are the latest releases of the lines in service (_data/releases.yml),
-  newest first; their Java requirement comes from the line's page under /versions/.
+  The versions offered are the latest releases of the lines in service, in the order of
+  _data/releases.yml, so the LTS comes first and is the default; their Java requirement comes from the line's page under /versions/.
   ?v=10 preselects a line.
 {% endcomment %}
 {% assign choices = '' | split: '' %}
-{% for n in (1..40) reversed %}
-    {% assign series = n | append: '' %}
-    {% assign line = site.data.releases.lines | where: "series", series | where_exp: "l", "l.page" | first %}
-    {% if line and line.status != 'eol' %}{% assign choices = choices | push: line %}{% endif %}
+{% for line in site.data.releases.lines %}
+    {% if line.page and line.config and line.status != 'eol' %}{% assign choices = choices | push: line %}{% endif %}
 {% endfor %}
 <form class="quickstart" id="quickstart" autocomplete="off">
     <div class="quickstart-fields">

@@ -15,12 +15,11 @@ active_link: documentation
         <h1>Documentation</h1>
         <p class="page-sign-sub">Building web applications with Apache Wicket {{ site.data.guide_lines | join: " and " }}{% if site.data.guide_upcoming %}, and what the upcoming Wicket {{ site.data.guide_upcoming.series }} brings{% endif %}.</p>
         {% include guide-search.html size="large" id="-front" %}
-        {% comment %} The reference guide of each line, as readers know it: the lines with a page, newest first, then the end-of-life lines down to 7, then the announced line. {% endcomment %}
-        {% assign with_page = site.data.releases.lines | where_exp: "l", "l.page" | map: "series" %}
-        {% assign lowest = 40 %}{% for v in with_page %}{% assign n = v | plus: 0 %}{% if n < lowest %}{% assign lowest = n %}{% endif %}{% endfor %}
+        {% comment %} The reference guide of each line, as readers know it, in the order of the release lines, then the announced line. {% endcomment %}
+        {% include reference-lines.html %}
         {% assign next = site.data.releases.lines | where: "status", "boarding" | first %}
         <p class="guide-sign-refs"><span class="guide-sign-refs-label">The reference guide (formerly the User Guide), one page per release line:</span>
-            {% for n in (7..40) reversed %}{% assign series = n | append: '' %}{% assign line = site.data.releases.lines | where: "series", series | where_exp: "l", "l.page" | first %}{% unless line or n < lowest %}{% continue %}{% endunless %}<a href="https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.html">Wicket {{ n }}</a>{% if line.status == 'lts' %} <span class="tag tag-lts">LTS</span>{% endif %} · {% endfor %}{% if next %}<a href="https://nightlies.apache.org/wicket/guide/{{ next.series }}.x/single.html">Wicket {{ next.series }}</a> (upcoming) · {% endif %}<a href="#reference-guide">PDF and Javadoc</a></p>
+            {% for n in ref_lines %}{% assign line = site.data.releases.lines | where: "series", n | where_exp: "l", "l.page" | first %}<a href="https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.html">Wicket {{ n }}</a>{% if line.status == 'lts' %} <span class="tag tag-lts">LTS</span>{% endif %} · {% endfor %}{% if next %}<a href="https://nightlies.apache.org/wicket/guide/{{ next.series }}.x/single.html">Wicket {{ next.series }}</a> (upcoming) · {% endif %}<a href="#reference-guide">PDF and Javadoc</a></p>
         <p class="guide-sign-scope">These pages cover Wicket {{ site.data.guide_lines | join: " and " }}. On an older line, use its reference guide.</p>
     </div>
 </div>
@@ -78,14 +77,12 @@ active_link: documentation
             </ul>
             <h3 id="reference-guide">Reference guide and Javadoc</h3>
             <p class="guide-group-intro">The reference guide is the complete Wicket user guide of one release line, in a single document to read through or search. The Javadoc lists every class, method and setting; Maven downloads the sources with every release, so your IDE also shows it when you hover over a class.</p>
-            {% comment %} Every line with a release or an announced one, newest first, then the end-of-life lines down to 7, the oldest with a guide on nightlies. {% endcomment %}
+            {% comment %} The release lines in their order, then the end-of-life lines down to 7, the oldest with a guide on nightlies. {% endcomment %}
             <table class="guide-refs">
                 <thead><tr><th scope="col">Release line</th><th scope="col">Reference guide</th><th scope="col">Javadoc</th></tr></thead>
                 <tbody>
-                {% for n in (7..40) reversed %}
-                    {% assign series = n | append: '' %}
-                    {% assign line = site.data.releases.lines | where: "series", series | where_exp: "l", "l.page or l.status == 'boarding'" | first %}
-                    {% unless line or n < lowest %}{% continue %}{% endunless %}
+                {% for n in ref_lines %}
+                    {% assign line = site.data.releases.lines | where: "series", n | where_exp: "l", "l.page" | first %}
                     <tr>
                         <th scope="row">{% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">Wicket {{ n }}</a>{% elsif line %}Wicket {{ n }}{% else %}<a href="{{ site.baseurl }}/versions/wicket-{{ n }}.x/">Wicket {{ n }}</a>{% endif %}{% if line.status == 'lts' %} <span class="tag tag-lts">LTS</span>{% endif %}
                             <span class="guide-refs-status">{% if line.role %}{{ line.role }}{% elsif line.status == 'boarding' %}Announced for {{ line.when }}, not yet released{% elsif line %}{% include line-status.html status=line.status %}{% else %}End of life{% endif %}</span></th>

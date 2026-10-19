@@ -63,9 +63,11 @@ Two release lines are maintained at any time:
 * the current **LTS** release, which receives security fixes and applicable bug fixes until the next LTS release;
 * the current **quarterly** release, which receives fixes until the next quarterly release supersedes it. Fixes normally ride along with that next release; a serious issue may warrant a patch release, for example 13.0.1.
 
+Until their final release, Wicket 8.x and 9.x are maintained as well.
+
 The support window applies to the release line, not to individual features. Features are developed on `main` and carry over into every following release, so a feature introduced in Wicket 11 is also present in 12, 13 and in the next LTS, Wicket 14.
 
-Wicket 10 is the current LTS and stays supported until Wicket 14 is released in July 2027. Wicket 8.x and 9.x each receive one final release and then reach end of life, and with them Wicket's support for the `javax.servlet` API: [Wicket 8 and 9 reach end of life]({{ site.baseurl }}/news/2026/10/19/wicket-8-and-9-end-of-life.html). The schedule was announced in [A new release cadence for Apache Wicket]({{site.baseurl}}/news/2026/09/11/release-cadence.html).
+Wicket 10 is the current LTS and stays supported until Wicket 14 is released in July 2027. Wicket 8.x and 9.x each receive one final release and then reach end of life, and with them Wicket's support for the `javax.servlet` API. The date of that release is announced on the [announce list]({{ site.baseurl }}/community/#announce) and the blog: [Wicket 8 and 9 reach end of life]({{ site.baseurl }}/news/2026/10/19/wicket-8-and-9-end-of-life.html). The schedule was announced in [A new release cadence for Apache Wicket]({{site.baseurl}}/news/2026/09/11/release-cadence.html).
 
 ## End of life {#unsupported}
 

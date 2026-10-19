@@ -18,10 +18,17 @@
 <nav class="mainmenu" aria-label="Main">
     <div class="nav-brand">
         {% include logo.html %}
+        {% comment %} One line in service: one link. The newest line and an older LTS: a link to each. {% endcomment %}
+        {% if lts_line and lts_line.series != plate_line.series %}
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current{% if page.url == plate_line.page %} active{% endif %}" href="{{ site.baseurl }}{{ plate_line.page }}"{% if page.url == plate_line.page %} aria-current="page"{% endif %} aria-label="{{ plate_current }}: Wicket {{ plate_line.series }}, the newest release line" title="Wicket {{ plate_line.series }}: Maven dependency, downloads and documentation">{{ plate_current }}</a><a class="nav-plate-lts{% if page.url == lts_line.page %} active{% endif %}" href="{{ site.baseurl }}{{ lts_line.page }}"{% if page.url == lts_line.page %} aria-current="page"{% endif %} aria-label="LTS {{ lts_line.series }}: Wicket {{ lts_line.series }}, the long-term support release" title="Wicket {{ lts_line.series }} LTS: Maven dependency, downloads and documentation">LTS {{ lts_line.series }}</a>
+        </span>
+        {% else %}
         {% assign plate_here = false %}{% if page.url == plate_line.page %}{% assign plate_here = true %}{% endif %}
         <a class="nav-plate{% if plate_here %} active{% endif %}" href="{{ site.baseurl }}{{ plate_line.page }}"{% if plate_here %} aria-current="page"{% endif %} aria-label="{{ plate_current }}{% if plate_lts != '' %} {{ plate_lts }}{% endif %}: Wicket {{ plate_line.series }}, its Maven dependency, downloads and documentation" title="Wicket {{ plate_line.series }}: Maven dependency, downloads and documentation">
             <span class="nav-plate-current">{{ plate_current }}</span>{% if plate_lts != '' %}<span class="nav-plate-lts">{{ plate_lts }}</span>{% endif %}
         </a>
+        {% endif %}
     </div>
     <div class="nav-container nav-sections">
     {% for link in site.navigation %}

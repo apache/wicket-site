@@ -63,7 +63,7 @@ layout: base
                 {% when 'lts' %}The long-term support release.
                 {% when 'current' %}The current quarterly release.
                 {% when 'eol' %}End of life: no more releases, not even security fixes.
-                {% when 'last-call' %}Last release coming: {{ version }} is not the last. One more Wicket {{ page.series }} release is planned; after it the line reaches end of life.
+                {% when 'last-call' %}One more Wicket {{ page.series }} release follows {{ version }}; after it the line reaches end of life. Its date is announced on the <a href="{{ site.baseurl }}/community/#announce">announce list</a> and the <a href="{{ site.baseurl }}/news/">blog</a>.
                 {% else %}In service.
                 {% endcase %}
             </p>
@@ -71,6 +71,8 @@ layout: base
                 <div><dt>Latest release</dt><dd class="hub-version">{{ version }}</dd></div>
                 <div><dt>Status</dt><dd>{% case status %}{% when 'lts' %}<span class="tag tag-lts">LTS</span> In service{% else %}{% include line-status.html status=status style="tag" %}{% endcase %}</dd></div>
                 <div><dt>Supported</dt><dd>{{ support }}</dd></div>
+                {% assign next_release = site.data.releases.lines | where: "series", page.series | where: "status", "scheduled" | first %}
+                {% if next_release %}<div><dt>Next release</dt><dd>{{ next_release.version }}, {{ next_release.when }}</dd></div>{% endif %}
                 <div><dt>Java</dt><dd>{{ page.java }} or newer</dd></div>
                 <div><dt>Servlet API</dt><dd>{{ page.servlet }}</dd></div>
             </dl>
@@ -151,7 +153,8 @@ layout: base
                     {% elsif page.migration %}
                     <p><a href="{{ page.migration.url }}">Migrating from Wicket {{ page.migration.from }} to {{ page.series }}</a>: what changed and what to adjust in your application.</p>
                     {% else %}
-                    <p>The migration guide from Wicket {{ major | minus: 1 }} is not published yet. Until it is, <a href="#new">New in Wicket {{ page.series }}</a> lists the changes.</p>
+                    {% assign release_post = nil %}{% assign release_key = '/wicket-' | append: page.series | append: '.0.0-released' %}{% for post in site.posts %}{% if post.url contains release_key %}{% assign release_post = post %}{% break %}{% endif %}{% endfor %}
+                    <p>The migration guide from Wicket {{ major | minus: 1 }} is not published on the wiki yet.{% if release_post %} The <a href="{{ site.baseurl }}{{ release_post.url }}">release announcement</a> lists the steps up from Wicket {{ major | minus: 1 }}, and{% else %} Until it is,{% endif %} <a href="#new">New in Wicket {{ page.series }}</a> lists the changes.</p>
                     {% endif %}
                 </li>
                 <li>
@@ -185,6 +188,15 @@ document.querySelectorAll('[data-copy]').forEach(function (button) {
         navigator.clipboard.writeText(text).then(function () {
             button.textContent = 'Copied';
             setTimeout(function () { button.textContent = 'Copy'; }, 2000);
+        }).catch(function () {
+            // No clipboard access: select the code, so the reader can copy it themselves.
+            var range = document.createRange();
+            range.selectNodeContents(document.getElementById(button.getAttribute('data-copy')));
+            var selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            button.textContent = 'Selected, copy it';
+            setTimeout(function () { button.textContent = 'Copy'; }, 4000);
         });
     });
 });
