@@ -1,12 +1,18 @@
 ---
 layout: section
 title: Learn Wicket
-summary: Books, courses and talks about Wicket, and the libraries the community builds on it.
+summary: The reference guide, books, courses and talks about Wicket, and the libraries the community builds on it.
 ---
 <nav class="section-index" aria-label="On this page">
+    <a href="#guide">Reference guide</a>
     <a href="#learning">Books, courses and talks</a>
     <a href="#ecosystem">Libraries and integrations</a>
 </nav>
+
+## Reference guide {#guide}
+
+The reference guide, called the User Guide on this site before, is the complete guide to Wicket in one document per release line. The [Documentation]({{ site.baseurl }}/docs/#reference-guide) links it for every line, as one page or PDF, with the Javadoc next to it:
+{% assign with_page = site.data.releases.lines | where_exp: "l", "l.page" | map: "series" %}{% assign lowest = 40 %}{% for v in with_page %}{% assign n = v | plus: 0 %}{% if n < lowest %}{% assign lowest = n %}{% endif %}{% endfor %}{% assign refs = '' | split: '' %}{% for n in (7..40) reversed %}{% assign series = n | append: '' %}{% assign line = site.data.releases.lines | where: "series", series | where_exp: "l", "l.page" | first %}{% unless line or n < lowest %}{% continue %}{% endunless %}{% capture a %}[Wicket {{ n }}](https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.html){% endcapture %}{% assign refs = refs | push: a %}{% endfor %}{{ refs | join: ", " }}.
 
 ## Books, courses and talks {#learning}
 

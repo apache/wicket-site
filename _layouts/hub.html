@@ -94,6 +94,7 @@ layout: base
                 <p class="hub-maven-label"><span>Maven dependency</span><button type="button" class="hub-copy" data-copy="hub-maven-snippet" aria-live="polite">Copy</button></p>
 <div id="hub-maven-snippet">
 {% highlight xml %}
+<!-- Apache Wicket {{ page.series }}.x{% if status == 'lts' %} LTS{% endif %}: Java {{ page.java }}+, {{ page.servlet | replace: ' or newer', '+' }} -->
 <dependency>
     <groupId>org.apache.wicket</groupId>
     <artifactId>wicket-core</artifactId>

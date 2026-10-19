@@ -1,0 +1,47 @@
+---
+layout: null
+permalink: /llms.txt
+---
+{% comment %}
+  An index for language models and agents (llmstxt.org): what Wicket is, which release to use,
+  and where the complete documentation is. Everything comes from _data/releases.yml, the
+  release line pages and _data/guide.yml.
+{% endcomment %}{% assign root = site.url | append: site.baseurl %}{% assign with_page = site.data.releases.lines | where_exp: "l", "l.page" | map: "series" %}{% assign lowest = 40 %}{% for v in with_page %}{% assign n = v | plus: 0 %}{% if n < lowest %}{% assign lowest = n %}{% endif %}{% endfor %}{% assign next = site.data.releases.lines | where: "status", "boarding" | first %}# Apache Wicket
+
+> Apache Wicket is an open source, component-oriented Java web framework of the Apache Software Foundation. Every component keeps its behaviour and state in Java and its markup in plain HTML; there is no JavaScript build chain. Maven coordinates: groupId `org.apache.wicket`, artifactId `wicket-core`.
+
+Release lines in service:
+{% for line in site.data.releases.lines %}{% if line.page %}{% unless line.status == 'eol' %}{% assign hub = site.pages | where: "url", line.page | first %}
+- Wicket {{ line.series }}{% if line.status == 'lts' %} (LTS){% endif %}: latest {{ site.wicket[line.config] }}, Java {{ hub.java }}+, {{ hub.servlet | replace: ' or newer', '+' }}. {% include line-status.html status=line.status %}, {{ line.support | replace: 'Until', 'supported until' }}.{% endunless %}{% endif %}{% endfor %}{% if next %}
+- Wicket {{ next.series }}: announced for {{ next.when }}, not yet released.{% endif %}
+
+Wicket 10 and later use the `jakarta.*` namespace; Wicket 9 and earlier use `javax.*`.
+
+## Reference guide
+
+The complete user guide of each release line in one document.
+{% for n in (7..40) reversed %}{% assign series = n | append: '' %}{% assign line = site.data.releases.lines | where: "series", series | where_exp: "l", "l.page" | first %}{% unless line or n < lowest %}{% continue %}{% endunless %}
+- [Wicket {{ n }}.x Reference Guide](https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.html): one HTML page{% endfor %}{% if next %}
+- [Wicket {{ next.series }}.x Reference Guide](https://nightlies.apache.org/wicket/guide/{{ next.series }}.x/single.html): one HTML page, for the upcoming release{% endif %}
+
+## Javadoc
+{% for n in (7..40) reversed %}{% assign series = n | append: '' %}{% assign line = site.data.releases.lines | where: "series", series | where_exp: "l", "l.page" | first %}{% unless line or n < lowest %}{% continue %}{% endunless %}
+- [Wicket {{ n }}.x Javadoc](https://nightlies.apache.org/wicket/apidocs/{{ n }}.x/index.html){% endfor %}
+
+## Documentation
+
+Tutorials, how-to guides, reference and explanation for Wicket {{ site.data.guide_lines | first }} and later, by topic.
+
+- [Documentation]({{ root }}/docs/): the front page, with the five tutorial lessons
+- [A–Z index]({{ root }}/docs/a-z.html): every Wicket class the documentation explains
+{% for t in site.data.guide.topics %}- [{{ t.title }}]({{ root }}/docs/topics/{{ t.id }}.html): {{ t.summary }}
+{% endfor %}
+## Releases
+
+- [Releases]({{ root }}/versions/): release lines, support, upgrade paths and the release policy
+{% for line in site.data.releases.lines %}{% if line.page %}- [Wicket {{ line.series }}]({{ root }}{{ line.page }}): Maven dependency, downloads, what is new and migration
+{% endif %}{% endfor %}
+## Optional
+
+- [Blog]({{ root }}/news/): release announcements and articles ([Atom feed]({{ root }}/atom.xml))
+- [Community]({{ root }}/community/): mailing lists, Slack, issues and security reports

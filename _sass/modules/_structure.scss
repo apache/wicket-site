@@ -866,6 +866,27 @@ nav.mainmenu {
         font-size: 1.9rem;
     }
 }
+// The reference guide of each line, under the search on the docs front page.
+.guide-sign-refs {
+    font-size: settings.$font-size-20;
+    grid-column: 1 / -1;
+    line-height: 1.8;
+    margin: 0;
+
+    .tag { vertical-align: 0.1em; }
+}
+.guide-sign-refs-label {
+    color: settings.$color-neutral-90;
+    font-weight: 600;
+    margin-right: 0.25rem;
+}
+.guide-kinds-line { margin-top: 1rem; }
+.guide-front-section h3 {
+    font-size: settings.$font-size-40;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+}
+
 // The reference guide and Javadoc of every release line
 .guide-refs {
     border-collapse: collapse;

@@ -142,10 +142,16 @@ Jekyll::Hooks.register :site, :post_write do |site|
   next unless site.collections['guide']
   dir = File.join(site.dest, 'docs')
   FileUtils.mkdir_p(dir)
-  File.write(File.join(dir, 'search.json'), JSON.generate(WicketGuide.records.sort_by { |r| r['id'] }))
+  # The reference guide is not a guide page; readers search for it as "user guide" too.
+  base = site.config['baseurl'].to_s
+  refs = { 'id' => '/docs/#reference-guide', 'url' => "#{base}/docs/#reference-guide",
+           'title' => 'Reference guide and Javadoc', 'page' => 'Documentation', 'kind' => 'reference',
+           'topic' => '', 'since' => 0,
+           'text' => 'The complete Wicket user guide of each release line as one page or PDF, and its Javadoc.',
+           'keywords' => 'user guide reference guide single page pdf javadoc api', 'apis' => '', 'body' => '' }
+  File.write(File.join(dir, 'search.json'), JSON.generate((WicketGuide.records + [refs]).sort_by { |r| r['id'] }))
 
   # Links to guide pages that do not exist.
-  base = site.config['baseurl'].to_s
   site.collections['guide'].docs.each do |doc|
     doc.output.to_s.scan(%r{href="#{Regexp.escape(base)}(/docs/[^"#?]+)}).flatten.uniq.each do |url|
       file = File.join(site.dest, url.end_with?('/') ? "#{url}index.html" : url)
