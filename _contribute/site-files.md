@@ -66,7 +66,7 @@ order: 70
 | `when` | When the line arrived, or when a release is due: `"Since Mar 2024"`, `"Jan 2027"`. |
 | `support` | How long the line is supported: `"Until Jul 2027"`. |
 | `page` | The line's page: `/versions/wicket-10.x/`. Only lines with a page appear in the panels and the quick start. |
-| `role` | What a line in service is for: `"For production"`, `"For new features"`. |
+| `role` | The name of a line in service next to its version: `"Current"` on the quarterly line. The LTS has none; its LTS plate names it. |
 
 ## A release line's page
 

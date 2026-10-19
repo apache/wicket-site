@@ -58,7 +58,6 @@ layout: base
             <p class="hub-crumbs"><a href="{{ site.baseurl }}/versions/">Releases</a></p>
             <h1>Apache Wicket {{ page.series }}.x</h1>
             <p class="hub-role">
-                {% if line.role %}{{ line.role }}.{% endif %}
                 {% case status %}
                 {% when 'lts' %}The long-term support release.
                 {% when 'current' %}The current quarterly release.

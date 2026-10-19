@@ -23,7 +23,7 @@ summary: Generate a Wicket project with Maven in a minute, run it, and open it i
             <select name="version">
             {% for line in choices %}
                 {% assign hub = site.pages | where: "url", line.page | first %}
-                <option value="{{ site.wicket[line.config] }}" data-series="{{ line.series }}" data-java="{{ hub.java }}" data-support="Wicket {{ line.series }} is supported {{ line.support | replace: 'Until', 'until' }}.">{{ site.wicket[line.config] }}{% if line.role %} — {{ line.role | downcase }}{% endif %}{% if line.status == 'last-call' %} — last release coming, not for new projects{% endif %}</option>
+                <option value="{{ site.wicket[line.config] }}" data-series="{{ line.series }}" data-java="{{ hub.java }}" data-support="Wicket {{ line.series }} is supported {{ line.support | replace: 'Until', 'until' }}.">{{ site.wicket[line.config] }}{% if line.status == 'lts' %} — LTS{% elsif line.role %} — {{ line.role }}{% endif %}{% if line.status == 'last-call' %} — last release coming, not for new projects{% endif %}</option>
             {% endfor %}
             </select>
         </label>

@@ -1,7 +1,7 @@
 ---
 layout: section
 title: Releases
-summary: From Wicket 11 on, a long-term support release ships once a year for production, and a major release with new features every quarter. Each release line has its own page with Maven coordinates, downloads, what is new and documentation.
+summary: From Wicket 11 on, a long-term support (LTS) release ships once a year, and a current release with new features every quarter. Each release line has its own page with Maven coordinates, downloads, what is new and documentation.
 ---
 
 ## Release lines {#lines}
@@ -31,7 +31,7 @@ How to move an application to a line that stays supported.
             <th scope="row">Wicket 9.x</th>
             <td>
                 <p class="connections-route">9 &rarr; 10 LTS (Java 17) &rarr; 14 LTS, July 2027</p>
-                <p>Wicket 9 <a href="{{ site.baseurl }}/news/2026/10/26/wicket-8-and-9-end-of-life.html">reached end of life</a> with its final release, 9.25.0, on 26 October 2026, and with it Wicket's support for <code>javax.servlet</code>. Move to 10 LTS for production: it brings <code>jakarta.servlet</code>, is supported until July 2027, and hands over to 14, the next LTS.</p>
+                <p>Wicket 9 <a href="{{ site.baseurl }}/news/2026/10/26/wicket-8-and-9-end-of-life.html">reached end of life</a> with its final release, 9.25.0, on 26 October 2026, and with it Wicket's support for <code>javax.servlet</code>. Move to 10 LTS: it brings <code>jakarta.servlet</code>, is supported until July 2027, and hands over to 14, the next LTS.</p>
                 <p>For the step to 10, the <a href="{{ site.baseurl }}/versions/wicket-10.x/#automatic-migration">OpenRewrite recipes of <code>wicket-migration</code></a> do the repetitive part: the <code>jakarta</code> imports, the Java 17 baseline and the moved Wicket classes. If you need help or more time, <a href="{{ site.baseurl }}/community/#commercial">companies that offer Wicket support</a> are listed on the wiki.</p>
             </td>
             <td>
@@ -65,7 +65,7 @@ How to move an application to a line that stays supported.
         </tr>
         <tr>
             <th scope="row">Starting out</th>
-            <td>Start on 10 LTS for production, or on 11 for new features every quarter.</td>
+            <td>Start on 10 LTS, or on 11, the current release, for new features every quarter.</td>
             <td><a href="{{ site.baseurl }}/start/quickstart.html">Quick start</a></td>
         </tr>
     </tbody>

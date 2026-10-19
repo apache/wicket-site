@@ -23,8 +23,8 @@
 # status: boarding | scheduled | current | lts | last-call | superseded | eol
 # config: key under `wicket:` in _config.yml that holds the latest version
 #         of the line; leave empty for lines that have no release yet.
-# role:   what a line in service is for, shown instead of its status, e.g.
-#         "For production" on the LTS and "For new features" on the quarterly.
+# role:   the name of a line in service next to its version: "Current" on the
+#         quarterly line. The LTS has none; its LTS plate names it.
 #
 # Lines in service are shown in the order listed here: the LTS first.
 
@@ -38,7 +38,6 @@ lines:
     when: "Since Mar 2024"
     support: "Until 14.0.0, Jul 2027"
     page: /versions/wicket-10.x/
-    role: "For production"
 
   - series: "11"
     config: version_11
@@ -47,7 +46,7 @@ lines:
     when: "Since Oct 2026"
     support: "Until 12.0.0, Jan 2027"
     page: /versions/wicket-11.x/
-    role: "For new features"
+    role: "Current"
 
   - series: "9"
     config: version_90

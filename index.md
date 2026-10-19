@@ -23,12 +23,12 @@ additionalContents:
         </p>
         <dl class="home-release" aria-label="Releases">
             <div>
-                <dt>For production</dt>
+                <dt>LTS</dt>
                 <dd><a href="{{ site.baseurl }}{{ lts.page }}">{{ site.wicket[lts.config] }}</a> <span class="tag tag-lts">LTS</span> <span class="home-release-note">{{ lts.support | replace: 'Until', 'supported until' }}</span></dd>
             </div>
             {% if current %}
             <div>
-                <dt>For new features</dt>
+                <dt>Current</dt>
                 <dd><a href="{{ site.baseurl }}{{ current.page }}">{{ site.wicket[current.config] }}</a> <span class="home-release-note">{{ current.support | replace: 'Until', 'supported until' }}</span></dd>
             </div>
             {% endif %}
