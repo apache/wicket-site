@@ -1,6 +1,6 @@
 {% comment %}
   The main menu: the logo, the version plate (the release lines in service, linking to
-  /versions/), the sections from site.navigation, the ASF mark, and GitHub
+  the page of the newest), the sections from site.navigation (Releases leads to /versions/), the ASF mark, and GitHub
   (img/asf_mark.svg is feather.svg from the ASF press kit, apache.org/foundation/press/kit/).
 {% endcomment %}
 {% assign url = page.url | remove: '/index.html' %}
@@ -18,8 +18,9 @@
 <nav class="mainmenu" aria-label="Main">
     <div class="nav-brand">
         {% include logo.html %}
-        <a class="nav-plate{% if page.active_link == 'versions' %} active{% endif %}" href="{{ site.baseurl }}/versions/"{% if page.active_link == 'versions' %} aria-current="page"{% endif %} aria-label="{{ plate_current }}{% if plate_lts != '' %} {{ plate_lts }}{% endif %} Releases: the current release lines and downloads" title="Releases and downloads">
-            <span class="nav-plate-current">{{ plate_current }}</span>{% if plate_lts != '' %}<span class="nav-plate-lts">{{ plate_lts }}</span>{% endif %}<span class="nav-plate-label">Releases</span><svg class="nav-plate-arrow" viewBox="0 0 8 12" width="7" height="11" aria-hidden="true" focusable="false"><path d="M1.5 1.5 6 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        {% assign plate_here = false %}{% if page.url == plate_line.page %}{% assign plate_here = true %}{% endif %}
+        <a class="nav-plate{% if plate_here %} active{% endif %}" href="{{ site.baseurl }}{{ plate_line.page }}"{% if plate_here %} aria-current="page"{% endif %} aria-label="{{ plate_current }}{% if plate_lts != '' %} {{ plate_lts }}{% endif %}: Wicket {{ plate_line.series }}, its Maven dependency, downloads and documentation" title="Wicket {{ plate_line.series }}: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">{{ plate_current }}</span>{% if plate_lts != '' %}<span class="nav-plate-lts">{{ plate_lts }}</span>{% endif %}
         </a>
     </div>
     <div class="nav-container nav-sections">
@@ -33,7 +34,7 @@
         {% elsif url == linkurl or page.url == link.url %}
             {% assign active = 'active' %}
         {% endif %}
-        <a href="{{ site.baseurl }}{{ link.url }}" class="nav-items {{ active }}"{% if active %} aria-current="page"{% endif %}>{{ link.text }}</a>
+        <a href="{{ site.baseurl }}{{ link.url }}" class="nav-items {{ active }}"{% if active %} aria-current="{% if url == linkurl %}page{% else %}true{% endif %}"{% endif %}>{{ link.text }}</a>
     {% endfor %}
     </div>
     <div class="nav-container">

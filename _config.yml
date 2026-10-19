@@ -72,6 +72,9 @@ navigation:
 - id: documentation
   text: Docs
   url: /docs/
+- id: versions
+  text: Releases
+  url: /versions/
 - id: blog
   text: Blog
   url: /news/

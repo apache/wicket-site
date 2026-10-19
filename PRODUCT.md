@@ -45,7 +45,7 @@ What a visitor should remember Wicket for, compared to Spring MVC/Thymeleaf, Vaa
 - **Version data is centralized** in `_config.yml` (`wicket.version`, per-branch versions, release date, version list). Pages must keep reading versions from there instead of hard-coding them.
 - **Volunteer-maintained.** Committers edit pages in Markdown. Design work must keep pages easy to author and update without bespoke, fragile markup; release-day edits must stay mechanical.
 - **ASF website policy applies:** required links to the Apache license, security, sponsorship/thanks, events and privacy policy; Apache trademark attribution; no third-party trackers; no externally hosted fonts or scripts that leak visitor data.
-- Site sections: Docs (`docs/`, the documentation from `_guide/`), Blog (the news archive), Community (`community/`: getting help, bugs, security, mailing lists) with Contribute (`contribute/` and `_contribute/`), the release lines under `versions/` behind the version plate, the quick start (`start/quickstart.md`), Learn (`learn/`), and the Apache page in the footer.
+- Site sections: Docs (`docs/`, the documentation from `_guide/`), Blog (the news archive), Community (`community/`: getting help, bugs, security, mailing lists) with Contribute (`contribute/` and `_contribute/`), Releases (`versions/`: the release lines, with a page per line; the version plate leads to the newest line in service), the quick start (`start/quickstart.md`), Learn (`learn/`), and the Apache page in the footer.
 
 ## Brand Commitments
 

@@ -57,11 +57,6 @@ nav.mainmenu {
     transition: border-color 160ms ease-out, background-color 160ms ease-out;
     white-space: nowrap;
 
-    .nav-plate-arrow {
-        color: $ink-soft;
-        transition: transform 160ms ease-out;
-    }
-    &:hover .nav-plate-arrow { color: $brand-text; transform: translateX(2px); }
     &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
 
     .nav-plate-current {
@@ -1038,7 +1033,6 @@ nav.mainmenu .nav-container > a.nav-items {
 
 nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
 
-// Taiga strips borders from header links, so the plate shows its link through colour.
 // Taiga strips borders from header links; the plate keeps its outline.
 .header.default nav.mainmenu a.nav-plate {
     border: 1px solid $ink-soft;
@@ -1046,15 +1040,6 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
     &:hover,
     &.active { border-color: $navy; }
 }
-.nav-plate-label {
-    border-left: 1px solid $rule;
-    color: $brand-text;
-    font-size: settings.$font-size-20;
-    font-weight: 600;
-    padding-left: 0.5rem;
-}
-.header.default .nav-plate:hover .nav-plate-label,
-.header.default .nav-plate.active .nav-plate-label { color: $navy; }
 
 // Release line panels on the docs front page.
 .line-panels {
