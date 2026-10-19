@@ -10,7 +10,6 @@ summary: Wicket is built by the people who use it. Help with questions, bugs, th
     <a href="#without-code">Without writing code</a>
     <a href="#site">The site and its documentation</a>
     <a href="#lists">Mailing lists</a>
-    <a href="#committers">For committers</a>
 </nav>
 
 ## Wicket itself {#wicket}
@@ -22,6 +21,7 @@ Wicket's code is in [apache/wicket](https://github.com/apache/wicket) on GitHub.
 - [Build from source]({{ site.baseurl }}/contribute/build.html): check out a branch, build it with Maven and use your own build.
 - [Set up your IDE]({{ site.baseurl }}/contribute/ides.html): import the projects into Eclipse, IntelliJ IDEA or NetBeans, with the code format.
 - [Fix a bug or add a feature]({{ site.baseurl }}/contribute/patch.html): from an issue to a pull request.
+- For committers, [Build a release]({{ site.baseurl }}/contribute/release.html) still describes the release process of Wicket 6 and older and needs an update.
 
 ## Without writing code {#without-code}
 
@@ -39,7 +39,3 @@ This site and its documentation are Markdown files in [apache/wicket-site](https
 ## Mailing lists {#lists}
 
 The project discusses its plans, changes and releases on the [developers list]({{ site.baseurl }}/community/#dev), [dev@wicket.apache.org](mailto:dev@wicket.apache.org), with [its archive](https://lists.apache.org/list.html?dev@wicket.apache.org). Subscribe by sending a mail to [dev-subscribe@wicket.apache.org](mailto:dev-subscribe@wicket.apache.org).
-
-## For committers {#committers}
-
-[Build a release]({{ site.baseurl }}/contribute/release.html) still describes the release process of Wicket 6 and older and needs an update.

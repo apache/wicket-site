@@ -148,7 +148,7 @@ layout: base
                 </li>
                 <li id="migrate">
                     <h3>Migration guide</h3>
-                    {% assign newer = nil %}{% for l in site.data.releases.lines %}{% assign n = l.series | plus: 0 %}{% if l.status == 'current' and l.page and n > major %}{% assign newer = l %}{% endif %}{% endfor %}
+                    {% assign newer = nil %}{% for l in site.data.releases.lines %}{% assign n = l.series | plus: 0 %}{% if line.status == 'lts' and l.status == 'current' and l.page and n > major %}{% assign newer = l %}{% endif %}{% endfor %}
                     {% if newer %}{% assign newer_page = site.pages | where: "url", newer.page | first %}{% assign newer_key = '/wicket-' | append: newer.series | append: '.0.0-released' %}{% assign newer_post = nil %}{% for post in site.posts %}{% if post.url contains newer_key %}{% assign newer_post = post %}{% break %}{% endif %}{% endfor %}
                     <p class="hub-next-line">Moving on to <a href="{{ site.baseurl }}{{ newer.page }}">Wicket {{ newer.series }}</a>: it needs Java {{ newer_page.java }} and {{ newer_page.servlet }}.{% if newer_post %} <a href="{{ site.baseurl }}{{ newer_post.url }}#upgrading-from-wicket-{{ page.series }}">Upgrading from Wicket {{ page.series }}</a> in its release announcement lists the steps.{% endif %}</p>
                     {% endif %}

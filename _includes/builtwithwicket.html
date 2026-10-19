@@ -16,6 +16,10 @@
             for(var postIndex in posts) {
                 var post = posts[postIndex];
                 var text = jQuery('<div>' + post['photo-caption'] + '</div>').text().replace(/\s+/g, ' ').trim();
+                // The caption without web addresses, cut after its first sentence: feed entries carry notes to the curators.
+                var caption = text.replace(/\(?https?:\/\/\S+\)?/g, '').replace(/\s+([,.;:!?])/g, '$1').replace(/\s+/g, ' ').trim();
+                var firstStop = caption.search(/[.!?](\s|$)/);
+                if (firstStop > 0) caption = caption.substring(0, firstStop + 1);
                 // The caption opens with the project's name, followed by its address or a description.
                 var name = text.split(/\s*\(?https?:\/\//)[0].split(/\s+[-–—]\s+|\s*\(|[.:;!?](?:\s|$)/)[0].trim();
                 if (name.length > 60) name = name.substring(0, name.lastIndexOf(' ', 60));
@@ -27,7 +31,7 @@
                 $('.builtwithwicket-slider').append(
                     $('<div class="builtwithwicket-post">').append(
                         $('<img class="builtwithwicket-screenshot">').attr({ 'data-lazy': image, alt: 'Screenshot of ' + name }),
-                        $('<p class="builtwithwicket-caption">').text(text.length > 150 ? text.substring(0, 150) + '…' : text),
+                        $('<p class="builtwithwicket-caption">').text(caption.length > 150 ? caption.substring(0, 150) + '…' : caption),
                         $('<a rel="nofollow">').attr('href', post['url']).text('More').append(
                             $('<span class="visually-hidden">').text(' about ' + name))));
             }

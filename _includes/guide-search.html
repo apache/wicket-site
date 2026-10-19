@@ -6,7 +6,7 @@ Without JavaScript the form opens the A-Z index. Pass size="large" for the guide
     <label class="guide-search-label" for="guide-q{{ include.id }}">Search the documentation</label>
     <div class="guide-search-field">
         <input id="guide-q{{ include.id }}" name="q" type="search" autocomplete="off" spellcheck="false"
-               placeholder="{% if include.size == 'large' %}A task, a class or a tag{% else %}Task, class or tag{% endif %}">
+               placeholder="A task, a class or a tag">
         <kbd class="guide-search-key" aria-hidden="true">/</kbd>
     </div>
     {% comment %} With one line covered there is nothing to choose; the select stays for guide.js, which reads it. {% endcomment %}
