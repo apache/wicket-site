@@ -13,16 +13,12 @@ support: No longer supported
 ---
 ## Download
 
-The most recent release in this branch is: **{{site.wicket.version_14}}**. 
-
-You can get the release using Maven or download it manually.
-
 ### Download manually {#manually}
 
 Use the following links to download Wicket manually to build Wicket
 from source:
 
-- Download source [apache-wicket-{{site.wicket.version_14}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_14}}/apache-wicket-{{site.wicket.version_14}}-source.tgz)
+- Download source [apache-wicket-{{site.wicket.version_14}}.tar.gz](https://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_14}}/apache-wicket-{{site.wicket.version_14}}-source.tgz)
 ([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}-source.tgz.asc),
 [MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}-source.tgz.md5),
 [SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}-source.tgz.sha)
@@ -30,12 +26,12 @@ from source:
 
 Or use the following links to get the pre-packaged binaries instead:
 
-- Download binaries [apache-wicket-{{site.wicket.version_14}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}.tar.gz)
+- Download binaries [apache-wicket-{{site.wicket.version_14}}-bin.tar.gz](https://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}.tar.gz)
 ([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}.tar.gz.asc),
 [MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}.tar.gz.md5),
 [SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}.tar.gz.sha)
 )
-- Download binaries [apache-wicket-{{site.wicket.version_14}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}.zip)
+- Download binaries [apache-wicket-{{site.wicket.version_14}}-bin.zip](https://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}.zip)
 ([PGP](http://archive.apache.org/dist/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}.zip.asc),
 [MD5](http://archive.apache.org/dist/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}.zip.md5),
 [SHA](http://archive.apache.org/dist/wicket/{{site.wicket.version_14}}/binaries/apache-wicket-{{site.wicket.version_14}}.zip.sha)

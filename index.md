@@ -20,7 +20,6 @@ additionalContents:
         <p class="home-lead">Apache Wicket is an open source, component-oriented Java web framework, developed at the Apache Software Foundation since 2004. Every component keeps its behaviour and state in Java and its markup in plain HTML, so there is no JavaScript build chain to maintain.</p>
         <p class="home-actions">
             <a class="button" href="{{ site.baseurl }}/start/quickstart.html">Get started</a>
-            <a class="home-action-alt" href="{{ site.baseurl }}/docs/first-application.html">Build your first application</a>
         </p>
         <dl class="home-release" aria-label="Releases">
             <div>
@@ -88,6 +87,7 @@ public class HomePage extends WebPage {
                     <li>The <code>wicket:id</code> joins each tag to the Java component with the same id. The HTML stays plain HTML that any editor opens.</li>
                     <li>A click runs <code>onClick()</code> on the server, and Wicket renders the page again.</li>
                     <li>The field <code>clicks</code> keeps its value between requests, because Wicket keeps the page object for you.</li>
+                    <li>A part you reuse on many pages is a <code>Panel</code>: again a Java class and an HTML file. <a href="{{ site.baseurl }}/docs/topics/components.html">Components and markup</a> shows how.</li>
                 </ul>
                 <p class="home-more"><a href="{{ site.live_examples_url }}">See the examples running</a></p>
             </figure>

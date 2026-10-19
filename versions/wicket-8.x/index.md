@@ -11,30 +11,27 @@ migration:
 ---
 ## Download
 
-The most recent release in this branch is: **{{site.wicket.version_80}}**. 
-You can get the release using [Maven](#maven) or [download it manually](#manually).
-
 ### Download manually {#manually}
 
 Use the following links to download Wicket manually to build Wicket
 from source:
 
-- Download source [apache-wicket-{{site.wicket.version_80}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz)
+- Download source [apache-wicket-{{site.wicket.version_80}}.tar.gz](https://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz)
 ([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz.asc),
 [SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.tar.gz.sha256)
 )
-- Download source [apache-wicket-{{site.wicket.version_80}}.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip)
+- Download source [apache-wicket-{{site.wicket.version_80}}.zip](https://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip)
 ([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip.asc),
 [SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/apache-wicket-{{site.wicket.version_80}}.zip.sha256)
 )
 
 Or use the following links to get the pre-packaged binaries instead:
 
-- Download binaries [apache-wicket-{{site.wicket.version_80}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz)
+- Download binaries [apache-wicket-{{site.wicket.version_80}}-bin.tar.gz](https://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz)
 ([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz.asc),
 [SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.tar.gz.sha256)
 )
-- Download binaries [apache-wicket-{{site.wicket.version_80}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip)
+- Download binaries [apache-wicket-{{site.wicket.version_80}}-bin.zip](https://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip)
 ([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip.asc),
 [SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/binaries/apache-wicket-{{site.wicket.version_80}}-bin.zip.sha256)
 )

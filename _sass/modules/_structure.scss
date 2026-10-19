@@ -1911,3 +1911,10 @@ body > footer {
         th, td { border: 0; padding: 0.25rem 0; }
     }
 }
+
+// Touch screens: the links in the release tables reach 44px.
+@media (pointer: coarse) {
+    .connections-guides a,
+    .connections-table td > a,
+    .eol-table td > a { display: inline-block; padding: 0.75rem 0; }
+}

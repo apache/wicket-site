@@ -8,30 +8,27 @@ servlet: Jakarta Servlet 6.1 or newer
 ---
 ## Download
 
-The most recent release in this branch is: **{{site.wicket.version_11}}**. 
-You can get the release using [Maven](#maven) or [download it manually](#manually).
-
 ### Download manually {#manually}
 
 Use the following links to download Wicket manually to build Wicket
 from source:
 
-- Download source [apache-wicket-{{site.wicket.version_11}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.tar.gz)
+- Download source [apache-wicket-{{site.wicket.version_11}}.tar.gz](https://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.tar.gz)
 ([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.tar.gz.asc),
 [SHA-512](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.tar.gz.sha512)
 )
-- Download source [apache-wicket-{{site.wicket.version_11}}.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.zip)
+- Download source [apache-wicket-{{site.wicket.version_11}}.zip](https://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.zip)
 ([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.zip.asc),
 [SHA-512](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.zip.sha512)
 )
 
 Or use the following links to get the pre-packaged binaries instead:
 
-- Download binaries [apache-wicket-{{site.wicket.version_11}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.tar.gz)
+- Download binaries [apache-wicket-{{site.wicket.version_11}}-bin.tar.gz](https://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.tar.gz)
 ([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.tar.gz.asc),
 [SHA-512](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.tar.gz.sha512)
 )
-- Download binaries [apache-wicket-{{site.wicket.version_11}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.zip)
+- Download binaries [apache-wicket-{{site.wicket.version_11}}-bin.zip](https://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.zip)
 ([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.zip.asc),
 [SHA-512](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.zip.sha512)
 )

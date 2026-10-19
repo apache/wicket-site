@@ -13,10 +13,6 @@ support: No longer supported
 ---
 ## Download
 
-The most recent release in this branch is: **{{site.wicket.version_15}}**. 
-
-You can get the release using Maven or download it manually.
-
 ### Download manually {#manually}
 
 Use the following links to download Wicket manually to build Wicket

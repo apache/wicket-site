@@ -22,7 +22,7 @@
     <li class="post-panel is-{{ post_kind }}">
         <a href="{{ site.baseurl }}{{ post.url }}">
             <span class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>{% case post_kind %}{% when 'major' %} · Major release{% when 'security' %} · Security{% endcase %}</span>
-            <span class="post-title">{{ post.title }}</span>
+            <h3 class="post-title">{{ post.title }}</h3>
             <span class="post-summary">{% include post-summary.html post=post %}</span>
         </a>
     </li>

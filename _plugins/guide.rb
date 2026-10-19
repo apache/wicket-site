@@ -173,6 +173,15 @@ Jekyll::Hooks.register :site, :post_write do |site|
               'text' => 'The route from your Wicket version to one that is supported, with the migration guides.',
               'keywords' => 'upgrade upgrading migrate migration guide move javax jakarta', 'apis' => '', 'body' => '' }
   extra = [refs, upgrade]
+  # The one-page reference guide of every line, so "user guide" finds the document itself.
+  lines = (site.data.dig('releases', 'lines') || []).select { |l| l['page'] && l['config'] }.map { |l| l['series'].to_i }.uniq
+  ((lines.min || 7) - 1).downto(7) { |n| lines << n } if lines.any?
+  lines.each do |n|
+    extra << { 'id' => "/docs/#reference-guide-#{n}", 'url' => "https://nightlies.apache.org/wicket/guide/#{n}.x/single.html",
+               'title' => "Wicket #{n} reference guide, one page", 'page' => 'Reference guide', 'kind' => 'reference',
+               'topic' => '', 'since' => 0, 'text' => "The complete user guide of Wicket #{n} in one document, on nightlies.apache.org.",
+               'keywords' => "user guide reference guide single page wicket #{n}", 'apis' => '', 'body' => '' }
+  end
   major = site.posts.docs.map { |post| [post, post.url[%r{/wicket-(\d+)\.0\.0-released}, 1].to_i] }
                     .select { |post, n| n.positive? && post.output.to_s.include?("id=\"upgrading-from-wicket-#{n - 1}\"") }
                     .max_by { |_, n| n }
