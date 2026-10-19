@@ -1,6 +1,9 @@
 ---
 layout: section
 title: Quick start
+parent:
+  title: Releases
+  url: /versions/
 summary: Generate a Wicket project with Maven in a minute, run it, and open it in your browser.
 ---
 {% comment %}

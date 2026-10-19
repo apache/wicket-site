@@ -40,6 +40,9 @@
             {% assign active = 'active' %}
         {% elsif url == linkurl or page.url == link.url %}
             {% assign active = 'active' %}
+        {% elsif page.parent and page.parent.url == link.url %}
+            {% comment %} A page under a section, by its breadcrumb (quick start under Releases, Learn under Docs). {% endcomment %}
+            {% assign active = 'active' %}
         {% endif %}
         <a href="{{ site.baseurl }}{{ link.url }}" class="nav-items {{ active }}"{% if active %} aria-current="{% if url == linkurl %}page{% else %}true{% endif %}"{% endif %}>{{ link.text }}</a>
     {% endfor %}
