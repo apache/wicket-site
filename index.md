@@ -8,7 +8,7 @@ additionalContents:
 ---
 {% comment %}
   The homepage: what Wicket is, how a page works, why to choose it, where to start,
-  where existing users find their release line, the projects built with it, the latest releases and how to take part. The blog's featured posts follow the hero, so the project's news is on the first screens.
+  the projects built with it, the blog and how to take part. The release lines sit in the hero; the code pair follows it, then the blog.
   The release facts come from _data/releases.yml and _config.yml; nothing here changes on release day.
 {% endcomment %}
 {% assign lts = site.data.releases.lines | where: "status", "lts" | first %}
@@ -39,18 +39,18 @@ additionalContents:
                 <dd><span class="home-release-next">{{ next.version }}</span> <span class="home-release-note">Announced for {{ next.when }}, not yet released. Hear when it ships on the <a href="{{ site.baseurl }}/community/#announce">announce list</a>.</span></dd>
             </div>
             {% endif %}
+            {% assign ending = site.data.releases.lines | where: "status", "last-call" | where_exp: "l", "l.page" %}
+            {% if ending.size > 0 %}
+            <div>
+                <dt>Last release coming</dt>
+                <dd>{% for line in ending %}<a href="{{ site.baseurl }}{{ line.page }}">{{ site.wicket[line.config] }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %} <span class="home-release-note">one final release each, then end of life. See the <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a>.</span></dd>
+            </div>
+            {% endif %}
             <div class="home-release-all">
                 <dt class="visually-hidden">Everything else</dt>
                 <dd><a href="{{ site.baseurl }}/versions/">All releases and downloads</a></dd>
             </div>
         </dl>
-    </div>
-</section>
-
-<section class="home-section home-news" aria-labelledby="blog">
-    <div class="home-inner">
-        <h2 id="blog">From the blog</h2>
-        {% include post-list.html posts=site.posts featured=3 rows=0 days=400 %}
     </div>
 </section>
 
@@ -92,6 +92,13 @@ public class HomePage extends WebPage {
                 <p class="home-more"><a href="{{ site.baseurl }}/docs/first-application.html">Build this page in the first lesson</a> · <a href="{{ site.live_examples_url }}">See the examples running</a></p>
             </figure>
         </div>
+    </div>
+</section>
+
+<section class="home-section home-news" aria-labelledby="blog">
+    <div class="home-inner">
+        <h2 id="blog">From the blog</h2>
+        {% include post-list.html posts=site.posts featured=3 rows=0 days=400 %}
     </div>
 </section>
 
@@ -149,24 +156,6 @@ public class HomePage extends WebPage {
             </li>
         {% endfor %}
         </ol>
-    </div>
-</section>
-
-<section class="home-section" aria-labelledby="running">
-    <div class="home-inner">
-        <h2 id="running">Already running Wicket?</h2>
-        <p class="home-section-lead">Each release line has its own page with its support status, Maven coordinates, migration guides and documentation. The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> show the route from your version to one that stays supported.</p>
-        {% include line-panels.html %}
-    </div>
-</section>
-
-<section class="home-section" aria-labelledby="releases">
-    <div class="home-inner">
-        <h2 id="releases">Latest releases</h2>
-        {% assign release_posts = '' | split: '' %}
-        {% for post in site.posts %}{% include post-kind.html post=post %}{% if post_kind == 'release' or post_kind == 'major' %}{% assign release_posts = release_posts | push: post %}{% endif %}{% if release_posts.size >= 4 %}{% break %}{% endif %}{% endfor %}
-        {% include post-list.html posts=release_posts featured=0 rows=4 %}
-        <p class="home-more"><a href="{{ site.baseurl }}/news/">All posts on the blog</a> · <a href="{{ site.baseurl }}/atom.xml">Atom feed</a></p>
     </div>
 </section>
 
