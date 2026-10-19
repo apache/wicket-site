@@ -8,7 +8,7 @@ additionalContents:
 ---
 {% comment %}
   The homepage: what Wicket is, how a page works, why to choose it, where to start,
-  where existing users find their release line, the projects built with it, the blog and how to take part.
+  where existing users find their release line, the projects built with it, the latest releases and how to take part. The blog's featured posts follow the hero, so the project's news is on the first screens.
   The release facts come from _data/releases.yml and _config.yml; nothing here changes on release day.
 {% endcomment %}
 {% assign lts = site.data.releases.lines | where: "status", "lts" | first %}
@@ -44,6 +44,13 @@ additionalContents:
                 <dd><a href="{{ site.baseurl }}/versions/">All releases and downloads</a></dd>
             </div>
         </dl>
+    </div>
+</section>
+
+<section class="home-section home-news" aria-labelledby="blog">
+    <div class="home-inner">
+        <h2 id="blog">From the blog</h2>
+        {% include post-list.html posts=site.posts featured=3 rows=0 days=400 %}
     </div>
 </section>
 
@@ -153,10 +160,12 @@ public class HomePage extends WebPage {
     </div>
 </section>
 
-<section class="home-section" aria-labelledby="blog">
+<section class="home-section" aria-labelledby="releases">
     <div class="home-inner">
-        <h2 id="blog">From the blog</h2>
-        {% include post-list.html posts=site.posts featured=3 rows=4 days=400 %}
+        <h2 id="releases">Latest releases</h2>
+        {% assign release_posts = '' | split: '' %}
+        {% for post in site.posts %}{% include post-kind.html post=post %}{% if post_kind == 'release' or post_kind == 'major' %}{% assign release_posts = release_posts | push: post %}{% endif %}{% if release_posts.size >= 4 %}{% break %}{% endif %}{% endfor %}
+        {% include post-list.html posts=release_posts featured=0 rows=4 %}
         <p class="home-more"><a href="{{ site.baseurl }}/news/">All posts on the blog</a> · <a href="{{ site.baseurl }}/atom.xml">Atom feed</a></p>
     </div>
 </section>
