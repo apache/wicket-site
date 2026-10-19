@@ -81,7 +81,8 @@ layout: base
                 <p class="hub-eol-title">{% if status == 'last-call' %}Wicket {{ page.series }} reaches end of life with its final release{% else %}Wicket {{ page.series }} gets no more releases, not even security fixes{% endif %}</p>
                 {% assign eol_post = nil %}{% for post in site.posts %}{% if post.announces == 'end-of-life' and post.lines contains page.series %}{% assign eol_post = post %}{% break %}{% endif %}{% endfor %}
                 {% if eol_post %}<p><a href="{{ site.baseurl }}{{ eol_post.url }}">{{ eol_post.title }}</a>: what end of life means, why, and how to move.</p>{% endif %}
-                <p>Plan the move to Wicket {{ lts.series }} LTS, supported {{ lts.support | replace: 'Until', 'until' }}.{% if route.size > 1 %} Take one major version at a time:{% endif %}</p>
+                {% assign next_lts = site.data.releases.lines | where: "service", "lts" | where: "status", "scheduled" | where_exp: "l", "l.series != lts.series" | first %}
+                <p>Plan the move to Wicket {{ lts.series }} LTS, supported {{ lts.support | replace: 'Until', 'until' }}.{% if next_lts %} After it comes Wicket {{ next_lts.series }}, the next LTS, due {{ next_lts.when }}.{% endif %}{% if route.size > 1 %} Take one major version at a time:{% endif %}</p>
                 {% if route.size == 1 %}{% assign step = route | first %}
                 <p class="hub-route-one"><a href="{{ step.migration.url }}">Migrating from Wicket {{ step.migration.from }} to {{ step.series }}</a></p>
                 {% elsif route.size > 1 %}
@@ -154,7 +155,7 @@ layout: base
                     <p><a href="{{ page.migration.url }}">Migrating from Wicket {{ page.migration.from }} to {{ page.series }}</a>: what changed and what to adjust in your application.</p>
                     {% else %}
                     {% assign release_post = nil %}{% assign release_key = '/wicket-' | append: page.series | append: '.0.0-released' %}{% for post in site.posts %}{% if post.url contains release_key %}{% assign release_post = post %}{% break %}{% endif %}{% endfor %}
-                    <p>The migration guide from Wicket {{ major | minus: 1 }} is not published on the wiki yet.{% if release_post %} The <a href="{{ site.baseurl }}{{ release_post.url }}">release announcement</a> lists the steps up from Wicket {{ major | minus: 1 }}, and{% else %} Until it is,{% endif %} <a href="#new">New in Wicket {{ page.series }}</a> lists the changes.</p>
+                    <p>The migration guide from Wicket {{ major | minus: 1 }} is not published on the wiki yet.{% if release_post %} <a href="{{ site.baseurl }}{{ release_post.url }}#upgrading-from-wicket-{{ major | minus: 1 }}">Upgrading from Wicket {{ major | minus: 1 }}</a> in the release announcement lists the steps, and{% else %} Until it is,{% endif %} <a href="#new">New in Wicket {{ page.series }}</a> lists the changes.</p>
                     {% endif %}
                 </li>
                 <li>

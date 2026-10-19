@@ -89,7 +89,7 @@ public class HomePage extends WebPage {
                     <li>A click runs <code>onClick()</code> on the server, and Wicket renders the page again.</li>
                     <li>The field <code>clicks</code> keeps its value between requests, because Wicket keeps the page object for you.</li>
                 </ul>
-                <p class="home-more"><a href="{{ site.baseurl }}/docs/first-application.html">Build this page in the first lesson</a> · <a href="{{ site.live_examples_url }}">See the examples running</a></p>
+                <p class="home-more"><a href="{{ site.live_examples_url }}">See the examples running</a></p>
             </figure>
         </div>
     </div>

@@ -1901,3 +1901,13 @@ body > footer {
     .reading-rail .toc a { display: inline-block; padding: 0.7rem 0.5rem; margin-left: -0.5rem; }
 }
 .guide-results ul { list-style: none; margin: 0; padding: 0; }
+
+// The upgrade paths stack on phones: each line of the table becomes a block.
+@include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+    .connections-table {
+        thead { height: 1px; left: -9999px; overflow: hidden; position: absolute; width: 1px; }
+        tbody, tr, th, td { display: block; width: auto; }
+        tr { border-bottom: 1px solid $rule; padding: 0.75rem 0; }
+        th, td { border: 0; padding: 0.25rem 0; }
+    }
+}

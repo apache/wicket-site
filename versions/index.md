@@ -44,7 +44,12 @@ How to move an application to a line that stays supported.
         <tr>
             <th scope="row">Wicket 10.x</th>
             <td>Stay on the LTS until Wicket 14, the next LTS, ships in July 2027. For new features every quarter, move to 11: it needs Java 21 and Jakarta Servlet 6.1.</td>
-            <td><a href="{{ site.baseurl }}/news/2026/09/11/release-cadence.html">The new release cadence</a></td>
+            <td>
+                <ul class="connections-guides">
+                    <li><a href="{{ site.baseurl }}/news/2026/10/04/wicket-11.0.0-released.html#upgrading-from-wicket-10">Upgrading from Wicket 10 to 11</a></li>
+                    <li><a href="{{ site.baseurl }}/news/2026/09/11/release-cadence.html">The new release cadence</a></li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <th scope="row">Starting out</th>
