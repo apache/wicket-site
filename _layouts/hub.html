@@ -82,7 +82,7 @@ layout: base
                 {% assign eol_post = nil %}{% for post in site.posts %}{% if post.announces == 'end-of-life' and post.lines contains page.series %}{% assign eol_post = post %}{% break %}{% endif %}{% endfor %}
                 {% if eol_post %}<p><a href="{{ site.baseurl }}{{ eol_post.url }}">{{ eol_post.title }}</a>: what end of life means, why, and how to move.</p>{% endif %}
                 {% assign next_lts = site.data.releases.lines | where: "service", "lts" | where: "status", "scheduled" | where_exp: "l", "l.series != lts.series" | first %}
-                <p>Plan the move to Wicket {{ lts.series }} LTS{% if next_lts %}, supported until Wicket {{ next_lts.series }}, the next LTS, ships in {{ next_lts.when }}{% else %}, supported {{ lts.support | replace: 'Until', 'until' }}{% endif %}.{% if route.size > 1 %} Take one major version at a time:{% endif %}</p>
+                <p>Plan the move to Wicket {{ lts.series }} LTS. {% if next_lts %}It is supported until Wicket {{ next_lts.series }}, the next LTS, ships in {{ next_lts.when }}.{% else %}It is supported {{ lts.support | replace: 'Until', 'until' }}.{% endif %}{% if route.size > 1 %} Take one major version at a time:{% endif %}</p>
                 {% if route.size == 1 %}{% assign step = route | first %}
                 <p class="hub-route-one"><a href="{{ step.migration.url }}">Migrating from Wicket {{ step.migration.from }} to {{ step.series }}</a></p>
                 {% elsif route.size > 1 %}

@@ -28,11 +28,23 @@ How to move an application to a line that stays supported.
     </thead>
     <tbody>
         <tr>
-            <th scope="row">Wicket 8.x or 9.x</th>
+            <th scope="row">Wicket 9.x</th>
             <td>
-                <p class="connections-route">8.x &rarr; 9 (Java 11) &rarr; 10 LTS (Java 17) &rarr; 14 LTS, July 2027</p>
-                <p>Both lines get one final release and then <a href="{{ site.baseurl }}/news/2026/10/19/wicket-8-and-9-end-of-life.html">reach end of life</a>, and with them Wicket's support for <code>javax.servlet</code>. Move to 10 LTS for production: it brings <code>jakarta.servlet</code>, is supported until July 2027, and hands over to 14, the next LTS. 9.x moves to 10 directly. 8.x takes the Wicket 9 step first, because each migration guide covers one major version.</p>
+                <p class="connections-route">9 &rarr; 10 LTS (Java 17) &rarr; 14 LTS, July 2027</p>
+                <p>Wicket 9 gets one final release and then <a href="{{ site.baseurl }}/news/2026/10/19/wicket-8-and-9-end-of-life.html">reaches end of life</a>, and with it Wicket's support for <code>javax.servlet</code>. Move to 10 LTS for production: it brings <code>jakarta.servlet</code>, is supported until July 2027, and hands over to 14, the next LTS.</p>
                 <p>For the step to 10, the <a href="{{ site.baseurl }}/versions/wicket-10.x/#automatic-migration">OpenRewrite recipes of <code>wicket-migration</code></a> do the repetitive part: the <code>jakarta</code> imports, the Java 17 baseline and the moved Wicket classes. If you need help or more time, <a href="{{ site.baseurl }}/community/#commercial">companies that offer Wicket support</a> are listed on the wiki.</p>
+            </td>
+            <td>
+                <ul class="connections-guides">
+                    <li><a href="https://s.apache.org/wicket10migrate">Migration to Wicket 10</a></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Wicket 8.x</th>
+            <td>
+                <p class="connections-route">8 &rarr; 9 (Java 11) &rarr; 10 LTS (Java 17)</p>
+                <p>Wicket 8 gets one final release and then reaches end of life. Take the Wicket 9 step first, because each migration guide covers one major version, then continue as for 9.x.</p>
             </td>
             <td>
                 <ul class="connections-guides">

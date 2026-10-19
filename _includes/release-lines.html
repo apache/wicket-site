@@ -10,7 +10,7 @@
     <thead>
         <tr>
             <th scope="col">Release line</th>
-            <th scope="col">Line since</th>
+            <th scope="col">First release</th>
             <th scope="col">Supported</th>
             <th scope="col">Status</th>
         </tr>
@@ -51,7 +51,7 @@
                 {% if line.config %}<span class="release-lines-latest">Latest {{ version }}</span>{% else %}<span class="release-lines-latest">{{ version }}</span>{% endif %}
                 {% if next %}<span class="release-lines-latest">Next {{ next.version }}, {{ next.when }}</span>{% endif %}
             </th>
-            <td data-label="{% if line.config %}Line since{% else %}Due{% endif %}">{% if line.config %}{{ line.when | remove: 'Since ' }}{% else %}{{ line.when }}{% endif %}</td>
+            <td data-label="{% if line.config %}First release{% else %}Due{% endif %}">{% if line.config %}{{ line.when | remove: 'Since ' }}{% else %}{{ line.when }}{% endif %}</td>
             <td data-label="Supported">{{ line.support }}</td>
             <td>
                 {% comment %} The state first, the role of a line in service under it. {% endcomment %}

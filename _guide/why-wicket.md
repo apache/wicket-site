@@ -24,8 +24,6 @@ It also means the web is never hidden from you. A form that a user edits over th
 
 A component-oriented framework keeps a model of the page on the server. In Wicket, a page is an instance of a `WebPage` subclass. It contains components, such as labels, links, forms and text fields, and containers that hold other components. Together they form a tree. When a request comes in, Wicket finds or creates the page, lets the components handle the request, and then asks each component to render its part of the HTML.
 
-![A request for a page: the framework builds the page model, generates HTML from it and returns it]({{ site.baseurl }}/img/guide/requesthandling-general.png)
-
 You can think of this tree as a DOM that lives on the server: it exists before any HTML does, and the HTML is generated from it, not the other way around. A link is not a URL you construct, but a component with an `onClick()` method. A text field is not a request parameter, but an object that converts and validates its input and writes it to your Java object.
 
 Wicket shares this idea with other component frameworks. Jakarta Faces builds a component tree from its view definitions, and Vaadin builds the whole user interface in Java and renders it with its own client-side widgets. Wicket's version keeps the HTML in plain HTML files and the behavior in plain Java classes.

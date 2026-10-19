@@ -1,6 +1,9 @@
 ---
 layout: section
 title: Learn Wicket
+parent:
+  title: Documentation
+  url: /docs/
 summary: The reference guide, books, courses and talks about Wicket, and the libraries the community builds on it.
 ---
 <nav class="section-index" aria-label="On this page">

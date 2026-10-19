@@ -1,6 +1,9 @@
 ---
 layout: section
 title: Contribute
+parent:
+  title: Community
+  url: /community/
 summary: Wicket is built by the people who use it. Help with questions, bugs, the documentation, this site or the code.
 ---
 {% assign site_pages = site.contribute | where: "topic", "site" | sort: "order" %}
@@ -14,7 +17,7 @@ summary: Wicket is built by the people who use it. Help with questions, bugs, th
 
 ## Wicket itself {#wicket}
 
-Wicket's code is in [apache/wicket](https://github.com/apache/wicket) on GitHub. Pick an [open issue](https://github.com/apache/wicket/issues) or one you ran into yourself, and send the fix as a pull request: a committer reviews and merges it, and it goes out with the next release of its line. Since Wicket 11 a major release ships [every three months]({{ site.baseurl }}/versions/#release-policy), so a change merged today reaches users within a quarter. New features go to `master`, the next major release; fixes the LTS needs go to `wicket-10.x` as well.
+Wicket's code is in [apache/wicket](https://github.com/apache/wicket) on GitHub. Pick an [open issue](https://github.com/apache/wicket/issues) or one you ran into yourself, and send the fix as a pull request: a committer reviews and merges it, and it goes out with the next release of its line. Since Wicket 11 a major release ships [every three months]({{ site.baseurl }}/versions/#release-policy), so a change merged today reaches users within a quarter. New features go to `master`, the next major release. Fixes that the LTS needs also go to `wicket-10.x`.
 
 {% include guide-list.html pages=wicket_pages kind=true %}
 
