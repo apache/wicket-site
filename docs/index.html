@@ -26,7 +26,7 @@ active_link: documentation
                     <li class="toc--level-1"><a href="#topics"><span class="toc-text">Topics</span></a></li>
                     <li class="toc--level-1"><a href="#kinds"><span class="toc-text">By kind</span></a></li>
                     <li class="toc--level-1"><a href="#lookup"><span class="toc-text">Look it up</span></a></li>
-                    <li class="toc--level-1"><a href="#api"><span class="toc-text">API documentation</span></a></li>
+                    <li class="toc--level-1"><a href="#reference-guide"><span class="toc-text">Reference guide</span></a></li>
                     <li class="toc--level-1"><a href="#upgrading"><span class="toc-text">Upgrading</span></a></li>
                     <li class="toc--level-1"><a href="#older"><span class="toc-text">By release line</span></a></li>
                 </ul></div>
@@ -88,11 +88,28 @@ active_link: documentation
             </ul>
         </section>
 
-        <section class="guide-front-section" id="api">
-            <h2>API documentation</h2>
-            <p>Maven downloads the sources with every Wicket release, so your IDE shows the Javadoc when you hover over a class. To link to it, use the Javadoc online:
-            {% assign apidocs = '' | split: '' %}{% for line in site.data.releases.lines %}{% if line.status == 'lts' or line.status == 'current' %}{% capture a %}<a href="https://nightlies.apache.org/wicket/apidocs/{{ line.series }}.x/index.html">Wicket {{ line.series }}</a>{% if line.status == 'lts' %} (LTS){% endif %}{% endcapture %}{% assign apidocs = apidocs | push: a %}{% endif %}{% endfor %}{{ apidocs | join: ' and ' }}.
-            Older lines link to theirs from their <a href="{{ site.baseurl }}/versions/">release line page</a>.</p>
+        <section class="guide-front-section" id="reference-guide">
+            <h2>Reference guide</h2>
+            <p class="guide-group-intro">The reference guide is the complete Wicket user guide of one release line, in a single document to read through or search. The Javadoc lists every class, method and setting; Maven downloads the sources with every release, so your IDE also shows it when you hover over a class.</p>
+            {% comment %} Every line with a release or an announced one, newest first, then the end-of-life lines down to 7, the oldest with a guide on nightlies. {% endcomment %}
+            {% assign listed = site.data.releases.lines | where_exp: "l", "l.page or l.status == 'boarding'" | map: "series" %}
+            {% assign lowest = 40 %}{% for v in listed %}{% assign n = v | plus: 0 %}{% if n < lowest %}{% assign lowest = n %}{% endif %}{% endfor %}
+            <table class="guide-refs">
+                <thead><tr><th scope="col">Release line</th><th scope="col">Reference guide</th><th scope="col">Javadoc</th></tr></thead>
+                <tbody>
+                {% for n in (7..40) reversed %}
+                    {% assign series = n | append: '' %}
+                    {% assign line = site.data.releases.lines | where: "series", series | where_exp: "l", "l.page or l.status == 'boarding'" | first %}
+                    {% unless line or n < lowest %}{% continue %}{% endunless %}
+                    <tr>
+                        <th scope="row">{% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">Wicket {{ n }}</a>{% elsif line %}Wicket {{ n }}{% else %}<a href="{{ site.baseurl }}/versions/wicket-{{ n }}.x/">Wicket {{ n }}</a>{% endif %}{% if line.status == 'lts' %} <span class="tag tag-lts">LTS</span>{% endif %}
+                            <span class="guide-refs-status">{% if line.role %}{{ line.role }}{% elsif line.status == 'boarding' %}Announced for {{ line.when }}, not yet released{% elsif line %}{% include line-status.html status=line.status %}{% else %}End of life{% endif %}</span></th>
+                        <td><a href="https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.html">One page<span class="visually-hidden">, Wicket {{ n }}</span></a> · <a href="https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.pdf">PDF<span class="visually-hidden">, Wicket {{ n }}</span></a></td>
+                        <td><a href="https://nightlies.apache.org/wicket/apidocs/{{ n }}.x/index.html">Javadoc<span class="visually-hidden"> for Wicket {{ n }}</span></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </section>
 
         <section class="guide-front-section" id="upgrading">
@@ -103,8 +120,7 @@ active_link: documentation
         <section class="guide-front-section guide-older" id="older">
             <h2>By release line</h2>
             {% include line-panels.html anchor="#docs" label="Documentation by release line" %}
-            <p>The documentation covers Wicket {{ site.data.guide_lines | first }} and later. Pages marked with a version, like <span class="guide-list-since">Wicket 11+</span>, need that version or later. Every line also has its reference guide as one document; for older lines it is their only guide:
-            {% assign older = "9,8,7" | split: "," %}{% for v in older %}<a href="https://nightlies.apache.org/wicket/guide/{{ v }}.x/single.html">Wicket {{ v }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}.</p>
+            <p>The documentation covers Wicket {{ site.data.guide_lines | first }} and later. Pages marked with a version, like <span class="guide-list-since">Wicket 11+</span>, need that version or later. For older lines, the <a href="#reference-guide">reference guide</a> is their only guide.</p>
             <p>Books, courses, talks and the libraries the community builds on Wicket are on <a href="{{ site.baseurl }}/learn/">Learn Wicket</a>.</p>
         </section>
         </div>

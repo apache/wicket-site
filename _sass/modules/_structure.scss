@@ -871,6 +871,30 @@ nav.mainmenu {
         font-size: 1.9rem;
     }
 }
+// The reference guide and Javadoc of every release line
+.guide-refs {
+    border-collapse: collapse;
+    width: 100%;
+
+    th, td {
+        border-bottom: 1px solid $rule;
+        padding: 0.6rem 1rem 0.6rem 0;
+        text-align: left;
+        vertical-align: top;
+    }
+    thead th {
+        border-bottom: 2px solid $ink;
+        font-weight: 600;
+    }
+    tbody th { font-weight: 600; }
+    td { white-space: nowrap; }
+}
+.guide-refs-status {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+    font-weight: 400;
+}
 .guide-group {
     margin-bottom: 2.5rem;
 
