@@ -38,12 +38,11 @@ Or use the following links to get the pre-packaged binaries instead:
 
 Note that the binary packages and the source packages don't contain any
 dependencies necessary to have your project working out of the box. We
-strongly urge you to use Maven (or Buildr, or Gradle) as your
-dependency management system.
+strongly urge you to use Maven or Gradle as your dependency management system.
 
 ### Verify distribution's signature
 
-PGP signatures can be verified as described [on this page](http://www.apache.org/dev/release-signing.html#verifying-signature). The public key used to sign Wicket distributions can be found in the [KEYS file](https://downloads.apache.org/wicket/KEYS). 
+PGP signatures can be verified as described [on this page](https://www.apache.org/info/verification.html). The public key used to sign Wicket distributions can be found in the [KEYS file](https://downloads.apache.org/wicket/KEYS). 
 
 ### Older releases
 
@@ -67,13 +66,7 @@ more details on the necessary libraries.
 ### Logging
 
 You cannot use Wicket without adding an SLF4J logging implementation to
-your classpath. Most people use
-[log4j](http://logging.apache.org/log4j).
-
-If you do, just include **slf4j-log4j12.jar** on your classpath to get
-Wicket to use log4j too. If you want to use commons-logging or JDK14
-logging or something else, please see the [SLF4J site](http://www.slf4j.org/faq.html)
-for more information.
+your classpath. The [SLF4J manual](https://www.slf4j.org/manual.html) lists them.
 
 ### Don't mix Wicket versions
 

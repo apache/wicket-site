@@ -31,8 +31,7 @@ from source:
 
 Note that the binary packages and the source packages don't contain any
 dependencies necessary to have your project working out of the box. We
-strongly urge you to use Maven (or Buildr, or Gradle) as your
-dependency management system.
+strongly urge you to use Maven or Gradle as your dependency management system.
 
 ### Older releases
 

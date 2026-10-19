@@ -8,7 +8,7 @@ additionalContents:
 ---
 {% comment %}
   The homepage: what Wicket is, how a page works, why to choose it, where to start,
-  the projects built with it, the blog and how to take part. The release lines sit in the hero; the code pair follows it, then the blog.
+  the projects built with it, the blog and how to take part. The release lines sit in the hero; the blog follows it, then the code pair.
   The release facts come from _data/releases.yml and _config.yml; nothing here changes on release day.
 {% endcomment %}
 {% assign lts = site.data.releases.lines | where: "status", "lts" | first %}
@@ -50,6 +50,13 @@ additionalContents:
                 <dd><a href="{{ site.baseurl }}/versions/">All releases and downloads</a></dd>
             </div>
         </dl>
+    </div>
+</section>
+
+<section class="home-section home-news" aria-labelledby="blog">
+    <div class="home-inner">
+        <h2 id="blog">From the blog</h2>
+        {% include post-list.html posts=site.posts featured=3 rows=0 days=400 %}
     </div>
 </section>
 
@@ -95,13 +102,6 @@ public class HomePage extends WebPage {
     </div>
 </section>
 
-<section class="home-section home-news" aria-labelledby="blog">
-    <div class="home-inner">
-        <h2 id="blog">From the blog</h2>
-        {% include post-list.html posts=site.posts featured=3 rows=0 days=400 %}
-    </div>
-</section>
-
 <section class="home-section" aria-labelledby="why">
     <div class="home-inner">
         <h2 id="why">Why Wicket</h2>
@@ -131,7 +131,7 @@ public class HomePage extends WebPage {
                 <p>Open source under the Apache License since 2004. Breaking changes only when needed, deprecated alternatives kept where possible, and every change documented in the migration guide.</p>
             </li>
         </ul>
-        <p class="home-also">Coming from another framework? The <a href="{{ site.baseurl }}/docs/glossary.html">glossary</a> explains Wicket's terms and what other web frameworks call them.</p>
+        <p class="home-also">Coming from Spring MVC, Jakarta Faces or Vaadin? <a href="{{ site.baseurl }}/docs/why-wicket.html">Why component-oriented</a> compares Wicket with request-based and other component frameworks, what it gains and what it costs, and the <a href="{{ site.baseurl }}/docs/glossary.html">glossary</a> gives each Wicket term with what other frameworks call it.</p>
         <p class="home-also"><span>Also included:</span> translations in over 25 languages, safe use of multiple tabs and windows, injection with CDI, Spring and Guice, Jakarta EE integration, and component-local JavaScript and CSS.</p>
     </div>
 </section>
