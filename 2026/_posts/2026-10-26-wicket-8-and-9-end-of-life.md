@@ -1,26 +1,25 @@
 ---
 layout: post
-title: "Wicket 8 and 9: one final release, then end of life"
-description: Wicket 8.x and 9.x each get one final release and then reach end of life, and with them Wicket's support for javax.servlet. Move to Wicket 10 LTS, supported until July 2027, or to Wicket 11.
+date: 2026-10-26 11:00:00 +0100
+title: Wicket 8 and 9 have reached end of life
+description: With their final releases 9.25.0 and 8.20.0, Wicket 9 and 8 have reached end of life, and with them Wicket's support for javax.servlet. Move to Wicket 10 LTS, supported until July 2027, or to Wicket 11.
 lines: ["9", "8"]
 announces: end-of-life
 ---
 
-Now that Wicket 11.0.0 is out, Apache Wicket 8.x and 9.x each get one final release, and
-then reach end of life. After that they get no more releases, not even security fixes, and
+Today, together with [Wicket 11.0.0]({{ site.baseurl }}/news/2026/10/26/wicket-11.0.0-released.html),
+we released Apache Wicket 9.25.0 and 8.20.0: the final releases of both lines. Wicket 9 and 8
+have now reached end of life. They get no more releases, not even security fixes, and
 Wicket's support for the `javax.servlet` API ends with them. If your application runs on
-Wicket 8 or 9, plan the move now: to Wicket 10, our long-term support release, supported
-until July 2027, or on to Wicket 11 for new features every quarter.
+Wicket 8 or 9, move to Wicket 10, our long-term support release, supported until July 2027,
+or on to Wicket 11 for new features every quarter.
 
 <!--more-->
 
 What end of life means
 ----------------------
 
-Until their final release, 8.x and 9.x are supported as they are today. Its date will be
-announced on this blog and on the announce list: send a mail to
-[announce-subscribe@wicket.apache.org](mailto:announce-subscribe@wicket.apache.org) to subscribe.
-After it:
+From today:
 
  * no new 8.x or 9.x release ships, for bugs or for vulnerabilities;
  * every release stays available: on Maven Central, and in the
