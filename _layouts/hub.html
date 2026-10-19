@@ -63,7 +63,7 @@ layout: base
                 {% when 'lts' %}The long-term support release.
                 {% when 'current' %}The current quarterly release.
                 {% when 'eol' %}End of life: no more releases, not even security fixes.
-                {% when 'last-call' %}Last release coming: {{ version }} is not the last. One more Wicket {{ page.series }} release is planned, then the line reaches end of life in {{ support | remove: 'Until ' }}.
+                {% when 'last-call' %}Last release coming: {{ version }} is not the last. One more Wicket {{ page.series }} release is planned; after it the line reaches end of life.
                 {% else %}In service.
                 {% endcase %}
             </p>
@@ -76,7 +76,7 @@ layout: base
             </dl>
             {% if recommended == false %}
             <div class="hub-eol{% if status == 'last-call' %} is-ending{% endif %}" id="upgrade">
-                <p class="hub-eol-title">{% if status == 'last-call' %}Wicket {{ page.series }} reaches end of life in {{ support | remove: 'Until ' }}{% else %}Wicket {{ page.series }} gets no more releases, not even security fixes{% endif %}</p>
+                <p class="hub-eol-title">{% if status == 'last-call' %}Wicket {{ page.series }} reaches end of life with its final release{% else %}Wicket {{ page.series }} gets no more releases, not even security fixes{% endif %}</p>
                 {% assign eol_post = nil %}{% for post in site.posts %}{% if post.announces == 'end-of-life' and post.lines contains page.series %}{% assign eol_post = post %}{% break %}{% endif %}{% endfor %}
                 {% if eol_post %}<p><a href="{{ site.baseurl }}{{ eol_post.url }}">{{ eol_post.title }}</a>: what end of life means, why, and how to move.</p>{% endif %}
                 <p>Plan the move to Wicket {{ lts.series }} LTS, supported {{ lts.support | replace: 'Until', 'until' }}.{% if route.size > 1 %} Take one major version at a time:{% endif %}</p>

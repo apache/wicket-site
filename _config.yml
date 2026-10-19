@@ -55,6 +55,7 @@ sass:
     sass_dir: _sass
 wicket:
   version:    10.11.0
+  version_11: 11.0.0
   version_90: 9.24.0
   version_10: 10.11.0
   version_80: 8.19.0
@@ -63,7 +64,7 @@ wicket:
   version_15: 1.5.16
   version_14: 1.4.23
   version_13: 1.3.7
-  released:   2026-08-5
+  released:   2026-10-04
   versions:   [6.30.0, 1.5.16, 1.4.23, 7.18.0, 8.19.0, 9.24.0, 10.11.0, 9.25.0-SNAPSHOT, 10.12.0-SNAPSHOT]
 
 live_examples_url: http://examples10x.wicket.apache.org/

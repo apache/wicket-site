@@ -1,24 +1,23 @@
 ---
 layout: post
-title: Wicket 8 and 9 reach end of life in October 2026
-description: Wicket 8.x and 9.x each get one final release and then reach end of life, and with them Wicket's support for javax.servlet. Move to Wicket 10 LTS, supported until July 2027.
+title: "Wicket 8 and 9: one final release, then end of life"
+description: Wicket 8.x and 9.x each get one final release and then reach end of life, and with them Wicket's support for javax.servlet. Move to Wicket 10 LTS, supported until July 2027, or to Wicket 11.
 lines: ["9", "8"]
 announces: end-of-life
 ---
 
-Apache Wicket 8.x and 9.x each get one final release, and then reach end of life in
-October 2026. After that they get no more releases, not even security fixes, and Wicket's
-support for the `javax.servlet` API ends with them. If your application runs on Wicket 8
-or 9, plan the move to Wicket 10 now: it is our long-term support release, supported until
-July 2027.
+Now that Wicket 11.0.0 is out, Apache Wicket 8.x and 9.x each get one final release, and
+then reach end of life. After that they get no more releases, not even security fixes, and
+Wicket's support for the `javax.servlet` API ends with them. If your application runs on
+Wicket 8 or 9, plan the move now: to Wicket 10, our long-term support release, supported
+until July 2027, or on to Wicket 11 for new features every quarter.
 
 <!--more-->
 
 What end of life means
 ----------------------
 
-Until the end of life, 8.x and 9.x are supported as they are today, and each gets one more
-release. After it:
+Until their final release, 8.x and 9.x are supported as they are today. After it:
 
  * no new 8.x or 9.x release ships, for bugs or for vulnerabilities;
  * every release stays available: on Maven Central, and in the
@@ -32,7 +31,8 @@ Why we stop
 We announced this with the [new release cadence]({{ site.baseurl }}/news/2026/09/11/release-cadence.html).
 Every security report has to be assessed, fixed, backported and released for each line we
 support. With four lines that work is done four times, and that is time not spent on
-improving Wicket itself. Retiring 8 and 9 ends that.
+improving Wicket itself. Retiring 8 and 9 brings it back to two lines: the LTS and the
+current quarterly release.
 
 Wicket 8 and 9 are also the last lines on `javax.servlet`. The Java world moved to the
 `jakarta` namespace, and Wicket 10 moved with it.
@@ -55,6 +55,9 @@ along: Spring 6, Guice 7 and Commons FileUpload 2.
 The [upgrade paths]({{ site.baseurl }}/versions/#upgrade-paths) on the releases page show
 the route, and the pages of [Wicket 9]({{ site.baseurl }}/versions/wicket-9.x/) and
 [Wicket 8]({{ site.baseurl }}/versions/wicket-8.x/) carry it as well.
+
+Once on Wicket 10, the step to [Wicket 11]({{ site.baseurl }}/versions/wicket-11.x/) is your
+JDK and your container: it needs Java 21 and Jakarta Servlet 6.1.
 
 Need help?
 ----------

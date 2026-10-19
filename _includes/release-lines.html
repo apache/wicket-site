@@ -31,7 +31,7 @@
     {% if group_size == 0 %}{% continue %}{% endif %}
     <tbody>
         <tr class="release-lines-group">
-            <th scope="rowgroup" colspan="4">{% case group %}{% when 1 %}In service{% when 2 %}Announced{% else %}End of life{% endcase %}</th>
+            <th scope="rowgroup" colspan="4">{% case group %}{% when 1 %}In service{% when 2 %}Scheduled{% else %}End of life{% endcase %}</th>
         </tr>
         {% for line in releases.lines %}
             {% assign line_group = 1 %}
