@@ -49,11 +49,11 @@ order: 60
 
 Address the reader as "you", in short sentences. Use `##` and `###` headings: `##` sections appear in the page's "On this page" rail and as search results of their own. Show Java and HTML side by side when both are needed, each code block preceded by its file name in italics. Link to other pages with `{{ "{{ site.baseurl " }}}}/docs/<file name>.html`.
 
-When one paragraph differs between the lines in service, mark it instead of copying the page:
+When one paragraph differs between the lines in service, mark it instead of copying the page, with N the newer line:
 
 ```markdown
-> Since Wicket 11, `AjaxFormComponentUpdatingBehavior` also processes the
-> components inside a `FormComponentPanel`.
+> Since Wicket N, what the newer line does differently, in one or two
+> sentences.
 {: .since}
 ```
 

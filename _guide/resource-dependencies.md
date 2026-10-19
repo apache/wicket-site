@@ -74,11 +74,15 @@ public class DatePickerJs extends JQueryPluginResourceReference {
 
 The jQuery version comes from `getJavaScriptLibrarySettings().getJQueryReference()`. Point that setting at another reference to use your own copy of jQuery everywhere, including in Wicket's own components.
 
+{% if site.wicket.version_11 %}
 > Wicket 11 uses jQuery 4 by default; Wicket 10 uses jQuery 3. A plugin that does not work with jQuery 4 can keep jQuery 3 on Wicket 11 with
 > `getJavaScriptLibrarySettings().setJQueryReference(JQueryResourceReference.getV3())`.
 {: .since}
+{% else %}
+By default that is jQuery 3.
+{% endif %}
 
-To depend on Wicket's own Ajax and event functions, such as `Wicket.Event` or `Wicket.Ajax`, add `JavaScriptHeaderItem.forReference(getJavaScriptLibrarySettings().getWicketAjaxReference())` to the dependencies; get the settings with `Application.get()`. That reference follows the application's choice of library, including the jQuery-free one that Wicket 11 offers, see [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html).
+To depend on Wicket's own Ajax and event functions, such as `Wicket.Event` or `Wicket.Ajax`, add `JavaScriptHeaderItem.forReference(getJavaScriptLibrarySettings().getWicketAjaxReference())` to the dependencies; get the settings with `Application.get()`. That reference follows the application's choice of library{% if site.wicket.version_11 %}, including the jQuery-free one that Wicket 11 offers, see [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html){% endif %}.
 
 ## Depend on a library from a CDN
 

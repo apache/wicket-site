@@ -54,6 +54,8 @@ When a single paragraph differs between the lines in service, keep one page and 
 {: .since}
 ```
 
+Text about a release line that is not released yet goes behind `{% if site.wicket.version_N %}`, with the text for the current line in the `{% else %}` branch, so the page is complete either way. Wrap the whole note, `{: .since}` line included. The gate opens when the line's version is set in `_config.yml`. Pages whose `since` is above the newest released line, the highest line in `_data/releases.yml` whose `config` names a version in `_config.yml`, are left out of the build: no page, no listing, no search entry. Gate the links to them the same way.
+
 ## Writing
 
 - Address the reader as "you". Present tense, active voice, short sentences.

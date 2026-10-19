@@ -85,20 +85,31 @@ public class PersonModel extends LoadableDetachableModel<Person> {
     protected Person load() {
         return id == null ? new Person() : personService.findById(id);
     }
-
+{% if site.wicket.version_11 %}
     @Override
     protected void onDetach(Person person) {
         if (person != null) {
             id = person.getId();
         }
-    }
+    }{% else %}
+    @Override
+    protected void onDetach() {
+        Person person = getObject();
+        if (person != null) {
+            id = person.getId();
+        }
+    }{% endif %}
 }
 ```
 
+{% if site.wicket.version_11 %}
 `onDetach(T)` receives the object the model held in this request, or `null` when it held none.
 
 > `onDetach(T)` exists since Wicket 11. On Wicket 10, override `onDetach()` and read the object with `getObject()`, which still returns the held object at that point without loading it again.
 {: .since}
+{% else %}
+`onDetach()` runs only when the model held an object in this request. `getObject()` then returns that object without loading it again.
+{% endif %}
 
 The model does not save anything. Changes made to the object during a request are lost when it is detached, unless your code saved them, usually in the form's `onSubmit()`.
 
@@ -110,7 +121,7 @@ The model does not save anything. Changes made to the object during a request ar
 personModel.setObject(personService.findByEmail(email));
 ```
 
-The next request calls `load()` again. If `load()` uses an id, change the id as well, or the model returns to the old entity. `PersonModel` above does that in `onDetach(Person)`.
+The next request calls `load()` again. If `load()` uses an id, change the id as well, or the model returns to the old entity. `PersonModel` above does that in `onDetach({% if site.wicket.version_11 %}Person{% endif %})`.
 
 ## Use detachable models in repeaters
 

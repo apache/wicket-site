@@ -7,7 +7,7 @@ summary: Releases, security advisories and articles from the Apache Wicket proje
   Articles, major releases and security advisories as panels, then the release
   announcements as dated rows, then the archive by year.
 {% endcomment %}
-{% include post-list.html posts=site.posts featured=6 rows=0 days=1100 %}
+{% include post-list.html posts=site.posts featured=6 rows=0 days=400 %}
 
 ## Releases {#releases}
 

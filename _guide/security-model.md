@@ -40,8 +40,12 @@ What does apply everywhere is checking where a request comes from. Browsers add 
 
 An encrypted URL hides which pages and components exist and makes listener URLs unguessable per session. It is not access control. A URL can leak through a log, a browser history or a `Referer` header, and whoever has it can replay it within the session. Encrypted URLs are deterministic by design: the same URL must encrypt to the same text so that a regenerated URL matches the requested one and resources stay cacheable. Equal URLs are therefore recognisable as equal, and anyone holding the key can confirm a guess. With the default per-session key that stays within one user's session.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, URLs and stored pages are encrypted with authenticated AES-256-GCM, so altered ciphertext is refused instead of decrypted to garbage. Wicket 10 encrypts URLs with `PBEWithMD5AndDES` and stored pages with AES-CBC, neither of which is authenticated. [Encryption in Wicket]({{ site.baseurl }}/docs/crypt-schemes.html) describes the Wicket 11 API.
 {: .since}
+{% else %}
+By default, URLs are encrypted with `PBEWithMD5AndDES` and stored pages with AES-CBC, neither of which is authenticated.
+{% endif %}
 
 ## Authorization belongs in a strategy
 
@@ -53,7 +57,7 @@ Signing in is part of the same picture: `AuthenticatedWebSession.signIn` gives t
 
 Wicket takes its own identity, the scheme, host and port it is served on, from the servlet container. It does not check the `Host` header. Every absolute URL, every redirect to HTTPS, and the fallback Origin check of the resource isolation listener rely on it. The container or proxy has to reject unexpected host names; [Require HTTPS]({{ site.baseurl }}/docs/https.html#make-the-host-in-redirects-trustworthy) lists what to configure. `X-Forwarded-*` headers are ignored unless you install the wrapper that reads them.
 
-Pages and sessions are serialized to the page store, and Java deserialization of untrusted bytes is dangerous. Wicket treats the page store and the session store as trusted, private storage. [Encrypting the page store]({{ site.baseurl }}/docs/configure-page-store.html) keeps stored pages confidential, and since Wicket 11 also tamper-evident, but the key lives in the session, so it protects against someone who can read or write the store, not against someone who holds the session.
+Pages and sessions are serialized to the page store, and Java deserialization of untrusted bytes is dangerous. Wicket treats the page store and the session store as trusted, private storage. [Encrypting the page store]({{ site.baseurl }}/docs/configure-page-store.html) keeps stored pages confidential{% if site.wicket.version_11 %}, and since Wicket 11 also tamper-evident{% endif %}, but the key lives in the session, so it protects against someone who can read or write the store, not against someone who holds the session.
 
 Development mode adds debugging aids and detailed error pages. It is not hardened and must not run in production; see [Switch between development and deployment mode]({{ site.baseurl }}/docs/deployment-mode.html).
 

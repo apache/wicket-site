@@ -10,7 +10,7 @@ order: 20
 source: [ajax/ajax_4.adoc]
 ---
 
-Use this when an Ajax request can take long enough for the user to wonder whether the click registered. Wicket shows an element while the request runs and hides it when the response is in. To also stop the user from clicking again, see [Block the page while a request runs]({{ site.baseurl }}/docs/ajax-veils.html).
+Use this when an Ajax request can take long enough for the user to wonder whether the click registered. Wicket shows an element while the request runs and hides it when the response is in.{% if site.wicket.version_11 %} To also stop the user from clicking again, see [Block the page while a request runs]({{ site.baseurl }}/docs/ajax-veils.html).{% endif %}
 
 ## Use an indicating link or button
 

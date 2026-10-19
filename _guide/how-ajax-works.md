@@ -77,5 +77,7 @@ Because the callback URL addresses a page instance, an Ajax behavior makes its p
 
 The default client library is `wicket-ajax-jquery.js`, which uses jQuery for DOM manipulation and the request itself. The JavaScript API it offers (`Wicket.Ajax`, `Wicket.Event`, `Wicket.DOM` and so on) is what the server-side code relies on, not jQuery.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, Wicket also ships `wicket-ajax.js`, a second implementation of the same API in plain JavaScript that does not need jQuery. Which one a page loads is a single application setting; see [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html).
 {: .since}
+{% endif %}

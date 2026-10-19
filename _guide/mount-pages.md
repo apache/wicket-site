@@ -111,4 +111,4 @@ protected IMapperContext newMapperContext() {
 
 Do not start a mount path with one of these reserved segments.
 
-To give a resource a URL, see [Give a resource a URL]({{ site.baseurl }}/docs/mount-resources.html). To hide the paths behind encrypted URLs, see [Encrypt URLs]({{ site.baseurl }}/docs/encrypt-urls.html).
+To give a resource a URL, see [Give a resource a URL]({{ site.baseurl }}/docs/mount-resources.html).{% if site.wicket.version_11 %} To hide the paths behind encrypted URLs, see [Encrypt URLs]({{ site.baseurl }}/docs/encrypt-urls.html).{% endif %}

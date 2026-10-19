@@ -28,8 +28,10 @@ When the request arrives, the `Form` first finds out what submitted it. That is 
 
 Nested forms are visited innermost first, both when validating and when calling `onSubmit()` and `onError()`. Inside a form, children are visited before their parents. That is why a [`FormComponentPanel`]({{ site.baseurl }}/docs/form-component-panel.html) can read the converted input of its inner fields in its own `convertInput()`: they have already been converted.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, text fields render the HTML attributes `required` and `pattern` when they are required or have a `PatternValidator`. The browser then checks these before it sends the request. Wicket still runs every stage on the server, because a request does not have to come from your page.
 {: .since}
+{% endif %}
 
 ## Why a form updates all models or none
 

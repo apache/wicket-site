@@ -112,7 +112,7 @@ These mappers wrap another mapper, usually the root mapper, with `setRootRequest
 
 | Mapper | Constructor | What it does |
 |---|---|---|
-| `CryptoMapper` | `(IRequestMapper, Application)`, `(IRequestMapper, Supplier<ICrypt>)` | encrypts the URLs of the wrapped mapper; see [Encrypt URLs]({{ site.baseurl }}/docs/encrypt-urls.html) |
+| `CryptoMapper` | `(IRequestMapper, Application)`, `(IRequestMapper, Supplier<ICrypt>)` | encrypts the URLs of the wrapped mapper{% if site.wicket.version_11 %}; see [Encrypt URLs]({{ site.baseurl }}/docs/encrypt-urls.html){% endif %} |
 | `HttpsMapper` | `(IRequestMapper, HttpsConfig)` | redirects to HTTPS for pages annotated with `@RequireHttps`, and back to HTTP for others; see [Require HTTPS]({{ site.baseurl }}/docs/https.html) |
 
 ## Compound mappers

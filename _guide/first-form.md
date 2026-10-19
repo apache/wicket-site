@@ -247,8 +247,10 @@ Import `org.apache.wicket.markup.html.panel.FeedbackPanel`, and put its tag abov
 <div wicket:id="feedback"></div>
 ```
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, a required field also gets the HTML attribute `required`, so the browser stops the empty submit itself and shows its own message at the first empty field. Write the form tag as `<form wicket:id="form" novalidate>` to leave the check to Wicket and see its messages.
 {: .since}
+{% endif %}
 
 Restart and submit the empty form. Nothing is saved, and the page shows:
 

@@ -81,10 +81,12 @@ public void renderHead(IHeaderResponse response) {
 
 Wicket collects the ready scripts of all components into one inline script that runs when the DOM is loaded. When an Ajax request replaces the component, the script runs again after the new markup is in place, so the widget is set up again. Escape values from users before you put them in a script, for example with `JavaScriptUtils.escapeQuotes`.
 
-`OnDomReadyHeaderItem` depends on Wicket's JavaScript library, which Wicket renders first. By default that library is built on jQuery, so the page also loads jQuery: version 3.7.1 in Wicket 10 and 4.0 in Wicket 11.
+`OnDomReadyHeaderItem` depends on Wicket's JavaScript library, which Wicket renders first. By default that library is built on jQuery, so the page also loads jQuery: {% if site.wicket.version_11 %}version 3.7.1 in Wicket 10 and 4.0 in Wicket 11{% else %}version 3.7.1{% endif %}.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, a plain JavaScript version of Wicket's library, `WicketAjaxResourceReference`, can replace the jQuery-based one, so that ready scripts and Ajax work without jQuery. See [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html).
 {: .since}
+{% endif %}
 
 To run code after images and other files have loaded, use `OnLoadHeaderItem`. To attach a handler to an event of an element, use `OnEventHeaderItem.forComponent(component, "click", script)`. All header item types are listed in [Header items]({{ site.baseurl }}/docs/header-items.html).
 

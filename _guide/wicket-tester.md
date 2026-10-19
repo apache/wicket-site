@@ -115,8 +115,10 @@ The `is` and `has` methods return a `Result` instead of failing, for your own as
 
 Each compares the response with the file `filename` in the package of `testClass`. With the system property `wicket.replace.expected.results=true` the file is written instead.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, text fields write `required`, `placeholder` and `pattern` attributes, so expected files of pages with text fields differ between Wicket 10 and 11.
 {: .since}
+{% endif %}
 
 ## Inspect the page and response
 

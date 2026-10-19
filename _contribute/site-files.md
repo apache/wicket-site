@@ -64,7 +64,7 @@ order: 70
 | `service` | `lts`, `quarterly`, or `major` for lines from before the release schedule. |
 | `status` | `boarding` (the next release), `scheduled`, `current`, `lts`, `last-call`, `superseded` or `eol`. |
 | `when` | When the line arrived, or when a release is due: `"Since Mar 2024"`, `"Jan 2027"`. |
-| `support` | How long the line is supported: `"Until 14.0.0, Jul 2027"`. |
+| `support` | How long the line is supported: `"Until Jul 2027"`. |
 | `page` | The line's page: `/versions/wicket-10.x/`. Only lines with a page appear in the panels and the quick start. |
 | `role` | What a line in service is for: `"For production"`, `"For new features"`. |
 

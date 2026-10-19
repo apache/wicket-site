@@ -142,7 +142,7 @@ Code outside a request cannot touch components. It sends a message object, and t
 
    `WebSocketBehavior.onPush(handler, message)` receives the same messages, if you prefer to handle them in the behavior.
 
-A connection that has closed in the meantime is skipped without an error. To show that a component is being recomputed while the server works, see [Block the page while a request runs]({{ site.baseurl }}/docs/ajax-veils.html#veil-a-component-during-a-websocket-push).
+A connection that has closed in the meantime is skipped without an error.{% if site.wicket.version_11 %} To show that a component is being recomputed while the server works, see [Block the page while a request runs]({{ site.baseurl }}/docs/ajax-veils.html#veil-a-component-during-a-websocket-push).{% endif %}
 
 ## Push to many pages at once
 

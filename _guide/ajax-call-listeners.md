@@ -51,8 +51,10 @@ Each `on...` method takes the body of a JavaScript function. Wicket wraps it in 
 
 `attrs` is the attributes object of the request, the same JSON that is passed to `Wicket.Ajax.ajax`; `attrs.c` is the markup id of the component. `jqXHR` is the request object.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, `jqXHR` is a plain `XMLHttpRequest` and `settings` a plain object when the application uses the jQuery-free Ajax implementation; with the default implementation they are the jQuery objects. See [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html).
 {: .since}
+{% endif %}
 
 ## Write a reusable listener
 
@@ -102,7 +104,7 @@ var Busy = {
 };
 ```
 
-Add it with `attributes.getAjaxCallListeners().add(new BusyListener(form))`. `AjaxDisableComponentListener` in wicket-extensions is a ready-made listener of this kind, and for blocking the page there are veils; see [Block the page while a request runs]({{ site.baseurl }}/docs/ajax-veils.html).
+Add it with `attributes.getAjaxCallListeners().add(new BusyListener(form))`. `AjaxDisableComponentListener` in wicket-extensions is a ready-made listener of this kind{% if site.wicket.version_11 %}, and for blocking the page there are veils; see [Block the page while a request runs]({{ site.baseurl }}/docs/ajax-veils.html){% endif %}.
 
 ## Listen to every Ajax request on the page
 

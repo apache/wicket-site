@@ -9,7 +9,7 @@
 {%- for item in highlights.items -%}
     {%- if include.home and item.home == false %}{% continue %}{% endif %}
     <li class="feature">
-        <h3>{{ item.title }}</h3>
+        <h3 id="{{ item.title | slugify }}">{{ item.title }}</h3>
         {{ item.text | markdownify }}
         {%- if item.facts %}
         <dl class="feature-facts">

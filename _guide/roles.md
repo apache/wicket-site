@@ -80,6 +80,7 @@ package com.example.admin;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 ```
 
+{% if site.wicket.version_11 %}
 Wicket resolves the rules for a class like this:
 
 - Annotations on a class replace the annotations on its package. They are not added to them.
@@ -90,6 +91,16 @@ Wicket resolves the rules for a class like this:
 
 > Since Wicket 11 every role annotation follows these rules. In Wicket 10 only `@AuthorizeInstantiation` does: `@AuthorizeAction` on a package is ignored, `@AuthorizeActions` and `@AuthorizeInstantiations` cannot be placed on a package, `@AuthorizeInstantiations` on a class does not replace the package rule, and `@AuthorizeResource` on a class and on its package must both grant access.
 {: .since}
+{% else %}
+Wicket resolves `@AuthorizeInstantiation` for a class like this:
+
+- An annotation on a class replaces the annotation on its package. It is not added to it.
+- Annotations at the same level are combined with AND: each one has to grant access.
+- A package annotation applies to that package only. Annotating `com.example` does not restrict `com.example.admin`.
+- The `package-info.java` file must be compiled, shipped and loaded by the same class loader as the classes in the package.
+
+The other role annotations do not follow these rules. `@AuthorizeAction` on a package is ignored, `@AuthorizeActions` and `@AuthorizeInstantiations` cannot be placed on a package, `@AuthorizeInstantiations` on a class does not replace the package rule, and `@AuthorizeResource` on a class and on its package must both grant access.
+{% endif %}
 
 ### Exempt one class from its package
 

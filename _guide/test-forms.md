@@ -40,8 +40,10 @@ Each `FormTester` submits once. Create a new one for the next submit.
 
 `FormTester` sends the request directly, so the browser's own checks of `required` and `pattern` attributes do not run. A test that submits an empty required field therefore reaches Wicket's server-side validation, which is what you want to test.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, text fields write `required` when they are required, `placeholder` from their label (`setLabel`), and `pattern` for a `PatternValidator`. Tests that compare rendered markup with an expected file, or check the attributes of an `<input>` with `TagTester`, see these attributes on Wicket 11 and not on Wicket 10.
 {: .since}
+{% endif %}
 
 ## Set each kind of field
 

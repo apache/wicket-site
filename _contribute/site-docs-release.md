@@ -13,7 +13,7 @@ The reference guide in apache/wicket, `wicket-user-guide/src/main/asciidoc`, is 
 Clone apache/wicket next to the site's repository, as a folder named `wicket`, and fetch its tags. Then run the script with the tags of the previous and the new release:
 
 ```shell
-_previews/guide-changes.sh rel/wicket-11.0.0 rel/wicket-12.0.0
+_previews/guide-changes.sh rel/wicket-10.10.0 rel/wicket-10.11.0
 ```
 
 It lists every changed file of the reference guide, the pages whose `source` names it, and the pages to review. Add `--diff` to see the changes themselves. Set `WICKET_DIR` when your clone of apache/wicket is elsewhere.

@@ -19,8 +19,9 @@ active_link: documentation
         {% assign with_page = site.data.releases.lines | where_exp: "l", "l.page" | map: "series" %}
         {% assign lowest = 40 %}{% for v in with_page %}{% assign n = v | plus: 0 %}{% if n < lowest %}{% assign lowest = n %}{% endif %}{% endfor %}
         {% assign next = site.data.releases.lines | where: "status", "boarding" | first %}
-        <p class="guide-sign-refs"><span class="guide-sign-refs-label">Reference guide, one page per release line:</span>
+        <p class="guide-sign-refs"><span class="guide-sign-refs-label">The reference guide (formerly the User Guide), one page per release line:</span>
             {% for n in (7..40) reversed %}{% assign series = n | append: '' %}{% assign line = site.data.releases.lines | where: "series", series | where_exp: "l", "l.page" | first %}{% unless line or n < lowest %}{% continue %}{% endunless %}<a href="https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.html">Wicket {{ n }}</a>{% if line.status == 'lts' %} <span class="tag tag-lts">LTS</span>{% endif %} · {% endfor %}{% if next %}<a href="https://nightlies.apache.org/wicket/guide/{{ next.series }}.x/single.html">Wicket {{ next.series }}</a> (upcoming) · {% endif %}<a href="#reference-guide">PDF and Javadoc</a></p>
+        <p class="guide-sign-scope">These pages cover Wicket {{ site.data.guide_lines | join: " and " }}. On an older line, use its reference guide.</p>
     </div>
 </div>
 <main id="main" tabindex="-1">
@@ -31,6 +32,7 @@ active_link: documentation
                     <li class="toc--level-1"><a href="#start"><span class="toc-text">Start here</span></a></li>
                     <li class="toc--level-1"><a href="#topics"><span class="toc-text">Topics</span></a></li>
                     <li class="toc--level-1"><a href="#lookup"><span class="toc-text">Look it up</span></a></li>
+                    <li class="toc--level-2"><a href="#reference-guide"><span class="toc-text">Reference guide and Javadoc</span></a></li>
                     <li class="toc--level-1"><a href="#upgrading"><span class="toc-text">Upgrading</span></a></li>
                 </ul></div>
             </nav>
@@ -55,11 +57,9 @@ active_link: documentation
             <p class="guide-group-intro">Each topic gathers its lessons, how-to guides, reference and explanation on one page.</p>
             <ul class="guide-topics">
             {% for t in site.data.guide.topics %}
-                {% assign pages = site.guide | where: "topic", t.id %}
                 <li>
                     <a class="guide-list-title" href="{{ site.baseurl }}/docs/topics/{{ t.id }}.html">{{ t.title }}</a>
                     <span class="guide-list-summary">{{ t.summary }}</span>
-                    <span class="guide-topic-counts">{% for k in site.data.guide.kinds %}{% assign n = pages | where: "type", k.id %}{% if n.size > 0 %}<span>{{ n.size }} {% if n.size == 1 %}{{ k.label | downcase }}{% else %}{{ k.title | downcase }}{% endif %}</span>{% endif %}{% endfor %}</span>
                 </li>
             {% endfor %}
             </ul>
@@ -100,7 +100,7 @@ active_link: documentation
         <section class="guide-front-section" id="upgrading">
             <h2>Upgrading</h2>
             <p>Every major release has a migration guide on the wiki with the API changes and what to do about them, linked from its <a href="{{ site.baseurl }}/versions/">release line page</a>. The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> show the route from a line that is ending or has ended to one that is supported.</p>
-            <p>The documentation covers Wicket {{ site.data.guide_lines | first }} and later. Pages marked with a version, like <span class="guide-list-since">Wicket 11+</span>, need that version or later. For older lines, the <a href="#reference-guide">reference guide</a> is their only guide.</p>
+            {% if site.data.guide_lines.size > 1 or site.data.guide_upcoming %}<p>Pages marked with a version, like <span class="guide-list-since">Wicket {{ site.data.guide_lines | last }}+</span>, need that version or later.</p>{% endif %}
             <p>Books, courses, talks and the libraries the community builds on Wicket are on <a href="{{ site.baseurl }}/learn/">Learn Wicket</a>.</p>
         </section>
         </div>

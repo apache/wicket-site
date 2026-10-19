@@ -137,15 +137,23 @@ All of them implement `IFormSubmittingComponent`, with `onSubmit()`, `onAfterSub
 
 | Component | Attribute | When |
 |---|---|---|
-| `TextField`, `TextArea` and subclasses | `required` | the component is required |
+{% if site.wicket.version_11 %}| `TextField`, `TextArea` and subclasses | `required` | the component is required |
 | `TextField`, `TextArea` and subclasses | `placeholder` | the component has a label |
 | `TextField`, `TextArea` and subclasses | `pattern` | the component has a `PatternValidator` |
 | `Button` | `formnovalidate` | default form processing is off |
-| any with a `StringValidator` | `maxlength`, `minlength` | on `<input>` and `<textarea>` |
+{% else %}| `TextField`, `TextArea` and subclasses | `required` | the component is required and has the `HTML5Attributes` behavior |
+| `TextField`, `TextArea` and subclasses | `placeholder` | the component has a label and the `HTML5Attributes` behavior |
+| `TextField`, `TextArea` and subclasses | `pattern` | the component has a `PatternValidator` and the `HTML5Attributes` behavior |
+| `Button` | `formnovalidate` | default form processing is off and the button has the `HTML5Attributes` behavior |
+{% endif %}| any with a `StringValidator` | `maxlength`, `minlength` | on `<input>` and `<textarea>` |
 | `NumberTextField`, `RangeTextField` | `min`, `max`, `step` | the values are set |
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, the text components and `Button` render `required`, `placeholder`, `pattern` and `formnovalidate` themselves. In Wicket 10 they only do so when you add the `HTML5Attributes` behavior, for example to every form component with `HTML5Attributes.InstantiationListener`.
 {: .since}
 
 > Since Wicket 11, the scripts of `Palette`, `UploadProgressBar` and `FileUploadToResourceField` no longer need jQuery, so they work with the jQuery-free Ajax implementation.
 {: .since}
+{% else %}
+`HTML5Attributes.InstantiationListener` adds the behavior to every form component.
+{% endif %}

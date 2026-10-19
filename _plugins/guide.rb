@@ -10,8 +10,18 @@ require 'nokogiri'
 #   in javascript/guide.js.
 # - Warns about pages with an unknown topic or kind and about links to guide pages
 #   that do not exist.
+# - Leaves out pages whose `since` is a release line that is not released yet.
 module WicketGuide
   KINDS = %w[tutorial howto reference explanation].freeze
+
+  # The newest released line: the highest series in _data/releases.yml whose `config`
+  # names a version in _config.yml (wicket.version_NN). nil when no line has one.
+  def self.newest_line(site)
+    versions = site.config['wicket'] || {}
+    (site.data.dig('releases', 'lines') || [])
+      .select { |l| l['config'] && versions[l['config']] }
+      .map { |l| l['series'].to_i }.max
+  end
 
   class TopicPage < Jekyll::PageWithoutAFile
     def initialize(site, topic)
@@ -128,6 +138,14 @@ module WicketGuide
                               'apis' => identifiers(nodes).join(' '), 'body' => body)
     end
   end
+end
+
+# Pages for a line that is not released yet are not published: removing them right
+# after reading keeps them out of every listing, the class index and the search index.
+Jekyll::Hooks.register :site, :post_read do |site|
+  guide = site.collections['guide'] or next
+  newest = WicketGuide.newest_line(site) or next
+  guide.docs.reject! { |doc| doc.data['since'].to_i > newest }
 end
 
 Jekyll::Hooks.register :site, :pre_render do |_site|

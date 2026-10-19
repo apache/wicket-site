@@ -38,8 +38,12 @@ form.add(username);
 
 `setLabel` gives the field the name that messages use for `${label}`. Without it, Wicket looks up a resource with the component id as key, and falls back to the id itself.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, a required text field renders the `required` attribute, its label becomes the `placeholder`, and a `PatternValidator` becomes the `pattern` attribute. The browser then blocks an empty submit with its own message before Wicket sees the request. Add `novalidate` to the `<form>` tag if you want Wicket's messages only. In Wicket 10 you get these attributes by adding `HTML5Attributes` to the field.
 {: .since}
+{% else %}
+To let the browser check the field as well, add the `HTML5Attributes` behavior to it. A required text field then renders the `required` attribute, its label becomes the `placeholder`, and a `PatternValidator` becomes the `pattern` attribute. The browser blocks an empty submit with its own message before Wicket sees the request.
+{% endif %}
 
 ## Add a validator
 

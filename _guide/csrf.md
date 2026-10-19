@@ -132,4 +132,4 @@ A connection whose single `Origin` header is not in the list is closed with code
 
 ## Combine it with encrypted URLs
 
-`CryptoMapper` and this listener work independently and can be combined. [Encrypt URLs]({{ site.baseurl }}/docs/encrypt-urls.html) covers the mapper. `CsrfPreventionRequestCycleListener`, the Origin-header check of Wicket 7 to 9, was removed in Wicket 10; `OriginResourceIsolationPolicy` contains its logic.
+`CryptoMapper` and this listener work independently and can be combined.{% if site.wicket.version_11 %} [Encrypt URLs]({{ site.baseurl }}/docs/encrypt-urls.html) covers the mapper.{% endif %} `CsrfPreventionRequestCycleListener`, the Origin-header check of Wicket 7 to 9, was removed in Wicket 10; `OriginResourceIsolationPolicy` contains its logic.

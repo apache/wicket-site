@@ -97,10 +97,12 @@ Without `<wicket:header-items/>`, the items fill the whole `<head>`. With it, th
 | `OnEventHeaderItem` | combined into the `domready` script, which binds the handlers | evaluated with the scripts added with `appendJavaScript` |
 | `OnLoadHeaderItem` | combined into one script, run on the window `load` event | evaluated with the scripts added with `appendJavaScript` |
 
-These three items depend on Wicket's JavaScript library, `getJavaScriptLibrarySettings().getWicketAjaxReference()`, which Wicket renders first. By default that library is built on jQuery, so a page with one of these items also loads jQuery: version 3.7.1 in Wicket 10 and 4.0 in Wicket 11.
+These three items depend on Wicket's JavaScript library, `getJavaScriptLibrarySettings().getWicketAjaxReference()`, which Wicket renders first. By default that library is built on jQuery, so a page with one of these items also loads jQuery: {% if site.wicket.version_11 %}version 3.7.1 in Wicket 10 and 4.0 in Wicket 11{% else %}version 3.7.1{% endif %}.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, Wicket also ships a plain JavaScript version of the library with the same API, `org.apache.wicket.ajax.WicketAjaxResourceReference`. Set it with `getJavaScriptLibrarySettings().setWicketAjaxReference(WicketAjaxResourceReference.get())`, and ready, load and event scripts no longer pull in jQuery. See [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html).
 {: .since}
+{% endif %}
 
 ## Header response decorators
 

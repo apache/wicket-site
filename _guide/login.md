@@ -136,8 +136,12 @@ public class SignInPage extends WebPage {
 
 If the default layout is good enough, return `UsernamePasswordPage.class` from `getSignInPageClass()` and skip your own page.
 
+{% if site.wicket.version_11 %}
 > `UsernamePasswordPanel` and `UsernamePasswordPage` exist since Wicket 10.11.0. Wicket 10 also has `SignInPanel` and `SignInPage`, whose "remember me" option stores the username and password in a cookie. They are deprecated in 10.11.0 and removed in Wicket 11, together with `IAuthenticationStrategy`, its implementations and `SecuritySettings.get/setAuthenticationStrategy()`; signing out no longer clears a remember-me cookie. A persistent login needs your own random, revocable token per device.
 {: .since}
+{% else %}
+`UsernamePasswordPanel` and `UsernamePasswordPage` exist since Wicket 10.11.0. Wicket 10 also has `SignInPanel` and `SignInPage`, whose "remember me" option stores the username and password in a cookie. They are deprecated since 10.11.0.
+{% endif %}
 
 ## Write your own sign-in form
 

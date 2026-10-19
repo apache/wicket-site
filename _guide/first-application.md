@@ -12,7 +12,7 @@ source: [introduction.adoc, howToSource.adoc, helloWorld/helloWorld_1.adoc, hell
 
 In this tutorial you create a Wicket application and write its home page: a greeting, the time on the server, a link that counts your clicks, and a link to a second page. The tutorials after this one continue with the same application.
 
-You need a JDK (Java 17 or newer for Wicket 10, Java 21 or newer for Wicket 11), Apache Maven, and an IDE that opens Maven projects.
+You need a JDK ({% if site.wicket.version_11 %}Java 17 or newer for Wicket 10, Java 21 or newer for Wicket 11{% else %}Java 17 or newer{% endif %}), Apache Maven, and an IDE that opens Maven projects.
 
 ## 1. Generate the project
 

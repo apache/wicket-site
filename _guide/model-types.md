@@ -86,12 +86,16 @@ When the collection passed to a collection model is not `Serializable`, the mode
 | `boolean isAttached()` | whether the model holds a loaded object |
 | `void detach()` | calls `onDetach()` when attached, then drops the object |
 | `protected void onAttach()` | called after `load()` |
-| `protected void onDetach()` | called on detach when the model was attached |
+| `protected void onDetach()` | called on detach when the model was attached |{% if site.wicket.version_11 %}
 | `protected void onDetach(T object)` | called by `onDetach()` with the object that was held; Wicket 11 |
 | `protected void onDetachAlways()` | called on every `detach()`, attached or not, after `onDetach()`; Wicket 11 |
 
 > In Wicket 11, `detach()` is final and calls `onDetachAlways()` at the end. In Wicket 10, `detach()` can be overridden, and `onDetach(T)` and `onDetachAlways()` do not exist.
 {: .since}
+{% else %}
+
+`detach()` is not final, so a subclass can override it.
+{% endif %}
 
 ## StringResourceModel methods
 

@@ -283,8 +283,11 @@ nav.mainmenu {
         margin: 0.5rem 0;
         overflow-x: auto;
         padding: 1rem;
+
+        @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') { white-space: pre-wrap; }
     }
 }
+pre:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
 
 .hub-maven-label {
     align-items: center;
@@ -332,7 +335,7 @@ nav.mainmenu {
 
     > h2 {
         color: settings.$color-neutral-90;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 1.9rem;
         margin-bottom: 1rem;
     }
@@ -371,7 +374,7 @@ nav.mainmenu {
 
     h2 {
         color: settings.$color-neutral-90;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 1.9rem;
         margin-top: 2.5rem;
 
@@ -455,7 +458,7 @@ nav.mainmenu {
 
     a {
         border: none;
-        border-top: 3px solid $brand;
+        border-top: 3px solid $navy;
         color: $ink;
         display: block;
         height: 100%;
@@ -834,7 +837,7 @@ nav.mainmenu {
 }
 .guide-list-summary {
     display: block;
-    font-size: settings.$font-size-20;
+    font-size: settings.$font-size-30;
 }
 .guide-topic-counts {
     color: $ink-soft;
@@ -862,7 +865,7 @@ nav.mainmenu {
 
     h2 {
         color: settings.$color-neutral-90;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 1.9rem;
     }
 }
@@ -914,7 +917,7 @@ nav.mainmenu {
 .guide-group {
     margin-bottom: 2.5rem;
 
-    h2 { color: settings.$color-neutral-90; font-weight: 300; }
+    h2 { color: settings.$color-neutral-90; font-weight: 400; }
 }
 .guide-group-intro {
     margin-bottom: 0.75rem;
@@ -981,7 +984,7 @@ nav.mainmenu {
         border-top: 1px solid $rule;
         color: settings.$color-neutral-90;
         font-size: 1.9rem;
-        font-weight: 300;
+        font-weight: 400;
         margin-top: 2.5rem;
         padding-top: 2rem;
     }
@@ -1417,7 +1420,11 @@ main:focus-visible { outline: none; }
     .post-sign-meta a,
     .home-action-alt,
     .home-more a,
-    .hub-more a { display: inline-block; padding: 0.7rem 0; }
+    .hub-more a,
+    .post-row-title > a,
+    .guide-refs a,
+    .hub-panel-alt a { display: inline-block; padding: 0.7rem 0; }
+    .footer-sitemap a { display: inline-block; min-width: 44px; }
     .guide-search-hint select,
     .guide-search-field input { min-height: 44px; }
     .guide-search-key { display: none; }
@@ -1478,6 +1485,7 @@ body > footer {
         color: settings.$color-neutral-70;
         flex: 1 1 24rem;
         font-size: settings.$font-size-20;
+        max-width: 68ch;
         margin: 0;
         max-width: 80ch;
     }
@@ -1618,7 +1626,7 @@ body > footer {
     h2 {
         color: settings.$color-neutral-90;
         font-size: clamp(1.75rem, 3vw, 2.3rem);
-        font-weight: 300;
+        font-weight: 400;
         line-height: 1.2;
         margin-bottom: 1.25rem;
     }
@@ -1627,7 +1635,6 @@ body > footer {
     max-width: 68ch;
 }
 .home-more {
-    font-size: settings.$font-size-20;
     margin-top: 1rem;
 }
 
@@ -1817,4 +1824,39 @@ body > footer {
     border-top: none;
     margin-top: 0;
     padding-top: 0;
+}
+
+// Phones: a wider gutter than Taiga's 15px, so text does not touch the screen edge.
+@include mixins.breakpoint(settings.$breakpoint-30, 'max-width') {
+    .l-container,
+    .page-sign-inner,
+    .reading,
+    .home-inner { padding-left: 20px; padding-right: 20px; }
+}
+
+// The scope of the docs, under the reference guide line.
+.guide-sign-scope {
+    color: $ink-soft;
+    font-size: settings.$font-size-20;
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+// Upgrade paths: one guide per line.
+.connections-guides {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li + li { margin-top: 0.4rem; }
+}
+
+// The invitation that closes the homepage.
+.home-involved { padding-bottom: 2rem; }
+
+// The GitHub mark in the menu, inline instead of an icon font, at the height of the ASF mark.
+.nav-github {
+    display: block;
+    height: 1.9rem;
+    width: 1.9rem;
 }

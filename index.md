@@ -8,7 +8,7 @@ additionalContents:
 ---
 {% comment %}
   The homepage: what Wicket is, how a page works, why to choose it, where to start,
-  where existing users find their release line, the blog and the projects built with it.
+  where existing users find their release line, the projects built with it, the blog and how to take part.
   The release facts come from _data/releases.yml and _config.yml; nothing here changes on release day.
 {% endcomment %}
 {% assign lts = site.data.releases.lines | where: "status", "lts" | first %}
@@ -121,6 +121,12 @@ public class HomePage extends WebPage {
     </div>
 </section>
 
+<section class="home-section" id="builtwithwicket" aria-labelledby="bww-title">
+    <div class="home-inner">
+        {% include builtwithwicket.html %}
+    </div>
+</section>
+
 <section class="home-section" aria-labelledby="learn">
     <div class="home-inner home-split">
         <div>
@@ -155,8 +161,10 @@ public class HomePage extends WebPage {
     </div>
 </section>
 
-<section class="home-section" id="builtwithwicket" aria-labelledby="bww-title">
+<section class="home-section home-involved" aria-labelledby="involved">
     <div class="home-inner">
-        {% include builtwithwicket.html %}
+        <h2 id="involved">Built by the people who use it</h2>
+        <p class="home-section-lead">Apache Wicket is developed in the open by volunteers. Answer a question on the users list, report a bug with a quickstart, improve the documentation, or send a pull request to <a href="https://github.com/apache/wicket">apache/wicket</a>: a committer reviews it, and it goes out with the next release of its line.</p>
+        <p class="home-more"><a href="{{ site.baseurl }}/contribute/">How to contribute</a> · <a href="{{ site.baseurl }}/community/">Community and support</a></p>
     </div>
 </section>

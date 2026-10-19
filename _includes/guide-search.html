@@ -9,7 +9,8 @@ Without JavaScript the form opens the A-Z index. Pass size="large" for the guide
                placeholder="{% if include.size == 'large' %}A task, a class or a tag{% else %}Task, class or tag{% endif %}">
         <kbd class="guide-search-key" aria-hidden="true">/</kbd>
     </div>
-    <p class="guide-search-hint">
+    {% comment %} With one line covered there is nothing to choose; the select stays for guide.js, which reads it. {% endcomment %}
+    <p class="guide-search-hint"{% if site.data.guide_lines.size < 2 and site.data.guide_upcoming == nil %} hidden{% endif %}>
         <label>For <select name="v" data-guide-version>
             <option value="">every version</option>
             {% for line in site.data.guide_lines %}<option value="{{ line }}">Wicket {{ line }}</option>{% endfor %}

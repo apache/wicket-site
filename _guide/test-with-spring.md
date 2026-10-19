@@ -80,8 +80,12 @@ class OrderPageTest {
 
 For an integration test, let Spring's TestContext framework build the context from your configuration and give it to the injector. Add `spring-test` with test scope, in the version of your Spring Framework.
 
+{% if site.wicket.version_11 %}
 > Wicket 11 is built against Spring 7 and JUnit 6, Wicket 10 against Spring 6.2 and JUnit 5. The annotations and the test code on this page are the same for both.
 {: .since}
+{% else %}
+Wicket 10 is built against Spring 6.2 and JUnit 5.
+{% endif %}
 
 *OrderPageIT.java*
 

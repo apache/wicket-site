@@ -66,7 +66,11 @@ The session holds only the last page used, as a live object. When the servlet co
 
 Wicket deserializes whatever it reads back from the store. Treat the store as private storage either way: on a disk only the application can read, or in a database only the application can write to.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, `CryptingPageStore` uses the crypt scheme of `SecuritySettings`, by default authenticated AES-256-GCM, so a page that was altered in the store fails to decrypt and is treated as missing. In Wicket 10 the cipher comes from `StoreSettings.setCrypter`: the default `DefaultCrypter` (AES-256-CBC) is not authenticated, and `GCMSIVCrypter` is the authenticated option.
 {: .since}
+{% else %}
+The cipher comes from `StoreSettings.setCrypter`. The default `DefaultCrypter` (AES-256-CBC) is not authenticated; `GCMSIVCrypter` is the authenticated option.
+{% endif %}
 
 [Configure the page store]({{ site.baseurl }}/docs/configure-page-store.html) shows how to change the size, the folder, encryption and the stores in the chain.

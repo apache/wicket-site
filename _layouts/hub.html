@@ -63,7 +63,7 @@ layout: base
                 {% when 'lts' %}The long-term support release.
                 {% when 'current' %}The current quarterly release.
                 {% when 'eol' %}End of life: no more releases, not even security fixes.
-                {% when 'last-call' %}Last release coming: one more Wicket {{ page.series }} release is planned, then the line reaches end of life when {{ support | remove: 'Until ' | split: ',' | first }} ships.
+                {% when 'last-call' %}Last release coming: {{ version }} is not the last. One more Wicket {{ page.series }} release is planned, then the line reaches end of life in {{ support | remove: 'Until ' }}.
                 {% else %}In service.
                 {% endcase %}
             </p>
@@ -76,7 +76,7 @@ layout: base
             </dl>
             {% if recommended == false %}
             <div class="hub-eol{% if status == 'last-call' %} is-ending{% endif %}" id="upgrade">
-                <p class="hub-eol-title">{% if status == 'last-call' %}Wicket {{ page.series }} reaches end of life when {{ support | remove: 'Until ' | split: ',' | first }} ships{% else %}Wicket {{ page.series }} gets no more releases, not even security fixes{% endif %}</p>
+                <p class="hub-eol-title">{% if status == 'last-call' %}Wicket {{ page.series }} reaches end of life in {{ support | remove: 'Until ' }}{% else %}Wicket {{ page.series }} gets no more releases, not even security fixes{% endif %}</p>
                 <p>Plan the move to Wicket {{ lts.series }} LTS, supported {{ lts.support | replace: 'Until', 'until' }}.{% if route.size > 1 %} Take one major version at a time:{% endif %}</p>
                 {% if route.size == 1 %}{% assign step = route | first %}
                 <p class="hub-route-one"><a href="{{ step.migration.url }}">Migrating from Wicket {{ step.migration.from }} to {{ step.series }}</a></p>
@@ -87,7 +87,9 @@ layout: base
                     {% endfor %}
                 </ol>
                 {% endif %}
-                <p class="hub-eol-more">The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> explain each step and what changes in Java and the Servlet API.</p>
+                {% assign lts_page = site.pages | where: "url", lts.page | first %}
+                <p>For the step to {{ lts.series }}, the <a href="{{ site.baseurl }}{{ lts.page }}#automatic-migration">OpenRewrite recipes of <code>wicket-migration</code></a> do the repetitive part: the <code>jakarta</code> imports, the Java {{ lts_page.java }} baseline and the moved Wicket classes.</p>
+                <p class="hub-eol-more">The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> explain each step and what changes in Java and the Servlet API. If you need help or more time, <a href="{{ site.baseurl }}/community/#commercial">companies that offer Wicket support</a> are listed on the wiki.</p>
             </div>
             {% endif %}
             <div class="hub-maven" id="maven">
@@ -102,6 +104,7 @@ layout: base
 </dependency>
 {% endhighlight %}
 </div>
+                {% if recommended %}<p class="hub-maven-more">Other modules, such as <code>wicket-extensions</code> and <code>wicket-spring</code>, take the same group id and version. <a href="{{ site.baseurl }}/docs/modules.html">Wicket's modules</a> lists them all.</p>{% endif %}
                 <p class="hub-maven-more"><a href="#manually">Download the source and binaries</a>{% if recommended %} · New project? <a href="{{ site.baseurl }}/start/quickstart.html?v={{ page.series }}">Generate one with the quick start</a>{% endif %}</p>
             </div>
         </header>

@@ -36,9 +36,14 @@ Tutorials, how-to guides, reference and explanation for Wicket {{ site.data.guid
 - [A–Z index]({{ root }}/docs/a-z.html): every Wicket class the documentation explains
 {% for t in site.data.guide.topics %}- [{{ t.title }}]({{ root }}/docs/topics/{{ t.id }}.html): {{ t.summary }}
 {% endfor %}
+## Start
+
+- [Quick start]({{ root }}/start/quickstart.html): the Maven command that generates a new Wicket project
+
 ## Releases
 
-- [Releases]({{ root }}/versions/): release lines, support, upgrade paths and the release policy
+- [Releases]({{ root }}/versions/): release lines, support and the release policy
+- [Upgrade paths]({{ root }}/versions/#upgrade-paths): the route from an older line to one that is supported, with the migration guides
 {% for line in site.data.releases.lines %}{% if line.page %}- [Wicket {{ line.series }}]({{ root }}{{ line.page }}): Maven dependency, downloads, what is new and migration
 {% endif %}{% endfor %}
 ## Optional

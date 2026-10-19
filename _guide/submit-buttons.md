@@ -82,8 +82,10 @@ form.add(new Button("cancel") {
 
 The user's input is neither validated nor stored.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, a `Button` with default form processing turned off renders `formnovalidate`, so the browser does not block it on empty required fields either.
 {: .since}
+{% endif %}
 
 ## Submit a form from a link
 

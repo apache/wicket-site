@@ -121,6 +121,7 @@ getCspSettings().reporting()
 
 ## Exclude pages from the policy
 
+{% if site.wicket.version_11 %}
 A page writes the header while it configures its response, after asking `getCspSettings().mustProtect(page)`. That method returns `true` when a policy is set and the protected filter accepts the page. Change the filter to leave pages out:
 
 ```java
@@ -129,6 +130,16 @@ getCspSettings().setProtectedFilter(page -> !(page instanceof LegacyReportPage))
 
 > Since Wicket 11, every `WebPage` response asks `mustProtect(page)`, and the filter is a `Predicate<WebPage>`, as shown. In Wicket 10 a page writes the header only when the request is handled by a `RenderPageRequestHandler`, and the filter is a `Predicate<IRequestHandler>` that tests that handler, for example `handler -> !(handler instanceof RenderPageRequestHandler h && h.getPageClass() == LegacyReportPage.class)`. `setProtectedFilter(Predicate<IRequestHandler>)` is deprecated since 10.11.0. Wicket 10 also has a `CSPRequestCycleListener` for responses other than page renders; Wicket 11 removes it, so only pages send the header.
 {: .since}
+{% else %}
+A page writes the header only when the request is handled by a `RenderPageRequestHandler`. The protected filter decides which of those requests get it: a `Predicate<IRequestHandler>` that tests the handler. Change the filter to leave pages out:
+
+```java
+getCspSettings().setProtectedFilter(handler ->
+    !(handler instanceof RenderPageRequestHandler h && h.getPageClass() == LegacyReportPage.class));
+```
+
+`setProtectedFilter(Predicate<IRequestHandler>)` is deprecated since 10.11.0. For responses other than page renders, Wicket also has a `CSPRequestCycleListener`.
+{% endif %}
 
 ## Loosen or turn off the policy
 

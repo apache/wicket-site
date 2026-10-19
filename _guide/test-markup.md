@@ -67,8 +67,10 @@ void showsTotalAsWarningWhenOverLimit() {
 | `hasChildTag(name)` | Whether a tag with that name is nested inside |
 | `getChild(name)`, `getChild(attribute, value)` | The first nested tag that matches, as a `TagTester` |
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, text fields write `required`, `placeholder` (from `setLabel`) and `pattern` (from a `PatternValidator`) on their `<input>` tag. Assertions on the attributes of an input see them on Wicket 11 only.
 {: .since}
+{% endif %}
 
 ## Check the whole response
 

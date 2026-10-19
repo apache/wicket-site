@@ -29,7 +29,7 @@ Some modules, among them `wicket-core`, `wicket-extensions`, `wicket-devutils`, 
 
 | Artifact | Contains | Depends on |
 |---|---|---|
-| `wicket-extensions` | More components: `DataTable` and its sortable, filterable variants, `ModalDialog`, tabs, the wizard, `Palette`, `AutoCompleteTextField`, `AjaxLazyLoadPanel`, `UploadProgressBar`, Ajax veils (Wicket 11), and more. | `wicket-core` |
+| `wicket-extensions` | More components: `DataTable` and its sortable, filterable variants, `ModalDialog`, tabs, the wizard, `Palette`, `AutoCompleteTextField`, `AjaxLazyLoadPanel`, `UploadProgressBar`, {% if site.wicket.version_11 %}Ajax veils (Wicket 11), {% endif %}and more. | `wicket-core` |
 | `wicket-auth-roles` | Sign-in and role-based authorization: `AuthenticatedWebApplication`, `AuthenticatedWebSession`, `SignInPanel`, `@AuthorizeInstantiation` and `@AuthorizeAction`. | `wicket-core` |
 | `wicket-bean-validation` | Jakarta Bean Validation for form components: `PropertyValidator` and `BeanValidationConfiguration`. | `wicket-core` |
 | `wicket-native-websocket-core` | WebSocket support independent of the container: `WebSocketBehavior`, `WebSocketResource`, pushing messages to clients. | `wicket-core` |
@@ -46,8 +46,8 @@ Some modules, among them `wicket-core`, `wicket-extensions`, `wicket-devutils`, 
 | Artifact | Contains | Depends on |
 |---|---|---|
 | `wicket-ioc` | The shared base for injection: lazy, serializable proxies for injected beans (`LazyInitProxyFactory`) and the field injection that `wicket-spring` and `wicket-guice` build on. | `wicket-core` |
-| `wicket-spring` | Spring integration: `SpringComponentInjector`, the `@SpringBean` annotation and `SpringWebApplicationFactory`. Wicket 10 works with Spring 6, Wicket 11 with Spring 7. | `wicket-core`, `wicket-ioc` |
-| `wicket-cdi` | Jakarta CDI integration: `CdiConfiguration` injects CDI beans into components, behaviors and sessions. Wicket 10 builds against CDI 4.0 (tested with Weld 5), Wicket 11 against CDI 5.0 (Weld 7). | `wicket-core` |
+| `wicket-spring` | Spring integration: `SpringComponentInjector`, the `@SpringBean` annotation and `SpringWebApplicationFactory`. Wicket 10 works with Spring 6{% if site.wicket.version_11 %}, Wicket 11 with Spring 7{% endif %}. | `wicket-core`, `wicket-ioc` |
+| `wicket-cdi` | Jakarta CDI integration: `CdiConfiguration` injects CDI beans into components, behaviors and sessions. Wicket 10 builds against CDI 4.0 (tested with Weld 5){% if site.wicket.version_11 %}, Wicket 11 against CDI 5.0 (Weld 7){% endif %}. | `wicket-core` |
 | `wicket-guice` | Google Guice integration: `GuiceComponentInjector`. | `wicket-core`, `wicket-ioc` |
 
 ## Test modules
@@ -60,23 +60,23 @@ Add these with `<scope>test</scope>`.
 | `wicket-extensions-tester` | Test helpers for `wicket-extensions`, such as `AjaxLazyLoadPanelTester`. | `wicket-core`, `wicket-extensions`, `wicket-tester` |
 | `wicket-native-websocket-tester` | `WebSocketTester`, to test WebSocket behaviors and resources without a container. | `wicket-native-websocket-core`, `wicket-tester` |
 
-`wicket-tester` brings JUnit Jupiter and AssertJ along. In Wicket 10 that is JUnit 5; Wicket 11 builds against JUnit 6.
+`wicket-tester` brings JUnit Jupiter and AssertJ along. In Wicket 10 that is JUnit 5{% if site.wicket.version_11 %}; Wicket 11 builds against JUnit 6{% endif %}.
 
 ## Tooling and experimental modules
 
 | Artifact | Contains |
 |---|---|
-| `wicket-migration` | OpenRewrite recipes for upgrades: `org.apache.wicket.MigrateToWicket10`, `org.apache.wicket.BestPractices` and, in Wicket 11, `org.apache.wicket.MigrateToWicket11`. You run it with the `rewrite-maven-plugin`; it is not a dependency of your application. |
+| `wicket-migration` | OpenRewrite recipes for upgrades: `org.apache.wicket.MigrateToWicket10`{% if site.wicket.version_11 %}, `org.apache.wicket.BestPractices` and, in Wicket 11, `org.apache.wicket.MigrateToWicket11`{% else %} and `org.apache.wicket.BestPractices`{% endif %}. You run it with the `rewrite-maven-plugin`; it is not a dependency of your application. |
 | `wicket-archetype-quickstart` | The Maven archetype for new projects. See [Create a project from the quickstart archetype]({{ site.baseurl }}/docs/create-project.html). |
-| `wicket-metrics` | Experimental. Measures Wicket internals with Dropwizard Metrics and AspectJ. Its group id is `org.apache.wicket.experimental.wicket10` in both Wicket 10 and Wicket 11. See [Measure with Wicket metrics]({{ site.baseurl }}/docs/metrics.html). |
+| `wicket-metrics` | Experimental. Measures Wicket internals with Dropwizard Metrics and AspectJ. Its group id is `org.apache.wicket.experimental.wicket10`{% if site.wicket.version_11 %} in both Wicket 10 and Wicket 11{% endif %}. See [Measure with Wicket metrics]({{ site.baseurl }}/docs/metrics.html). |
 
 ## Third-party libraries the core modules use
 
 | Library | Used by | Needed |
 |---|---|---|
 | SLF4J API | all modules | Always. Add an SLF4J back end, such as `slf4j-simple` or Logback, to see log output. |
-| Jakarta Servlet API | `wicket-core` | Provided by the servlet container. Wicket 10 needs Servlet 5.0 or newer, Wicket 11 needs Servlet 6.1. |
+| Jakarta Servlet API | `wicket-core` | Provided by the servlet container. Wicket 10 needs Servlet 5.0 or newer{% if site.wicket.version_11 %}, Wicket 11 needs Servlet 6.1{% endif %}. |
 | Apache Commons FileUpload, Commons IO, Commons Collections | `wicket-util` | Always; they come along with `wicket-util`. |
 | OpenJSON, jdk-serializable-functional | `wicket-core` | Always; they come along with `wicket-core`. |
-| Bouncy Castle (`org.bouncycastle:bcprov-jdk18on`) | `wicket-core` | Optional. Only for the AES-GCM-SIV encryption: `GCMSIVCrypter` in Wicket 10, `AesGcmSivCryptScheme` in Wicket 11. See [Encryption in Wicket]({{ site.baseurl }}/docs/crypt-schemes.html). |
-| Jackson databind | `wicket-extensions` | Optional. Only for `JsonRequestLogger`. Wicket 10 uses Jackson 2 (`com.fasterxml.jackson.core`), Wicket 11 uses Jackson 3 (`tools.jackson.core`). |
+| Bouncy Castle (`org.bouncycastle:bcprov-jdk18on`) | `wicket-core` | Optional. Only for the AES-GCM-SIV encryption: {% if site.wicket.version_11 %}`GCMSIVCrypter` in Wicket 10, `AesGcmSivCryptScheme` in Wicket 11. See [Encryption in Wicket]({{ site.baseurl }}/docs/crypt-schemes.html).{% else %}`GCMSIVCrypter`. See [Configure the page store]({{ site.baseurl }}/docs/configure-page-store.html#encrypt-stored-pages).{% endif %} |
+| Jackson databind | `wicket-extensions` | Optional. Only for `JsonRequestLogger`. Wicket 10 uses Jackson 2 (`com.fasterxml.jackson.core`){% if site.wicket.version_11 %}, Wicket 11 uses Jackson 3 (`tools.jackson.core`){% endif %}. |

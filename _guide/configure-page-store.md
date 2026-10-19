@@ -45,6 +45,7 @@ Turn on encryption when the stored pages hold data that others with access to th
 getStoreSettings().setEncrypted(true);
 ```
 
+{% if site.wicket.version_11 %}
 Each session gets a random key, kept in the session. Pages are encrypted with the application's crypt scheme, by default AES-256-GCM, which also detects pages that were altered in the store. To use AES-256-GCM-SIV instead, add Bouncy Castle to the classpath, register its provider and set the scheme:
 
 ```java
@@ -63,6 +64,13 @@ The scheme also applies to encrypted URLs. [Encryption in Wicket]({{ site.baseur
 >
 > Since Wicket 11, `setCrypter`, `DefaultCrypter` and `GCMSIVCrypter` no longer exist, and the page store uses the crypt scheme from `SecuritySettings`.
 {: .since}
+{% else %}
+Each session gets a random key, kept in the session. The cipher comes from `StoreSettings.setCrypter`. The default `DefaultCrypter` uses AES-256-CBC, which is not authenticated. For tamper detection, use the GCM-SIV crypter, which needs Bouncy Castle:
+
+```java
+getStoreSettings().setEncrypted(true).setCrypter(GCMSIVCrypter::new);
+```
+{% endif %}
 
 ## Replace the disk store
 

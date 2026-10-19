@@ -106,7 +106,11 @@ public class FullNameModel implements IModel<String> {
 
 The models made by `map`, `combineWith`, `LambdaModel.of(target, ...)` and the other model methods in Wicket already do this. `first.combineWith(last, (f, l) -> f + " " + l)` replaces the whole class above.
 
+{% if site.wicket.version_11 %}
 A `LoadableDetachableModel` that uses other models detaches them in `onDetachAlways()`, which runs on every detach, also in requests where the model itself was never loaded:
+{% else %}
+A `LoadableDetachableModel` that uses other models overrides `detach()`, calls `super.detach()` and detaches the other models there, so they are detached also in requests where the model itself was never loaded:
+{% endif %}
 
 ```java
 public class OrdersModel extends LoadableDetachableModel<List<Order>> {
@@ -124,15 +128,24 @@ public class OrdersModel extends LoadableDetachableModel<List<Order>> {
     protected List<Order> load() {
         return orderService.findByCustomer(person.getObject());
     }
-
+{% if site.wicket.version_11 %}
     @Override
     protected void onDetachAlways() {
         person.detach();
-    }
+    }{% else %}
+    @Override
+    public void detach() {
+        super.detach();
+        person.detach();
+    }{% endif %}
 }
 ```
 
+{% if site.wicket.version_11 %}
 > `onDetachAlways()` exists since Wicket 11, where `LoadableDetachableModel.detach()` is final. On Wicket 10, override `detach()` instead, call `super.detach()` and detach the other models there. `onDetach()` is the wrong place on both versions: it only runs when the model itself was loaded in the request.
 {: .since}
+{% else %}
+`onDetach()` is the wrong place: it only runs when the model itself was loaded in the request.
+{% endif %}
 
 [Load data once per request with detachable models]({{ site.baseurl }}/docs/detachable-models.html) covers `LoadableDetachableModel` itself.

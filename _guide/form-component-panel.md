@@ -105,6 +105,7 @@ Messages about the inner fields, such as an amount that is not a number, are rep
 
 ## Update the panel with Ajax
 
+{% if site.wicket.version_11 %}
 Attach an `AjaxFormComponentUpdatingBehavior` to the panel to react when any of its inputs changes:
 
 ```java
@@ -116,3 +117,6 @@ The `change` event of an inner input bubbles up to the panel's tag. The behavior
 
 > Since Wicket 11, `AjaxFormComponentUpdatingBehavior` processes the inner components of a `FormComponentPanel`. In Wicket 10 it only processes the panel itself, so attach the behavior to the inner fields instead and call `processInput()` on the panel in `onUpdate()`. To get the Wicket 10 behavior back in Wicket 11, override `updateInnerComponents()` to return `false`.
 {: .since}
+{% else %}
+An `AjaxFormComponentUpdatingBehavior` on the panel processes only the panel itself, not the inner fields. To react when any of its inputs changes, attach the behavior to the inner fields instead, and call `processInput()` on the panel in `onUpdate()`. `processInput()` runs the required check, conversion, validation and model update of the panel.
+{% endif %}

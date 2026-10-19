@@ -2,7 +2,7 @@
 title: Maven dependencies
 type: reference
 topic: start
-summary: The Maven dependencies, versions, scopes and build settings a Wicket project needs, for Wicket 10 and Wicket 11.
+summary: The Maven dependencies, versions, scopes and build settings a Wicket project needs.
 since: 10
 apis: [WicketTester]
 keywords: [pom.xml, dependency, artifactId, groupId, version, scope, test scope, provided, snapshot repository, resources in src/main/java, HTML files not found, MarkupNotFoundException, SLF4J, Java version, Jakarta Servlet, Gradle]
@@ -12,6 +12,7 @@ source: [helloWorld/helloWorld_1.adoc, maven/maven_1.adoc, maven/maven_2.adoc]
 
 ## Requirements per release line
 
+{% if site.wicket.version_11 %}
 | | Wicket 10 | Wicket 11 |
 |---|---|---|
 | Java | 17 or newer | 21 or newer |
@@ -20,6 +21,16 @@ source: [helloWorld/helloWorld_1.adoc, maven/maven_1.adoc, maven/maven_2.adoc]
 | Jakarta CDI, for `wicket-cdi` | 4.0 | 5.0 |
 | JUnit, used by `wicket-tester` | 5 | 6 |
 | Latest release | {{ site.wicket.version_10 }} | {{ site.wicket.version_11 | default: "Not released yet" }} |
+{% else %}
+| | Wicket 10 |
+|---|---|
+| Java | 17 or newer |
+| Jakarta Servlet | 5.0 or newer (built against 6.0) |
+| Spring, for `wicket-spring` | 6 (built against 6.2) |
+| Jakarta CDI, for `wicket-cdi` | 4.0 |
+| JUnit, used by `wicket-tester` | 5 |
+| Latest release | {{ site.wicket.version_10 }} |
+{% endif %}
 
 ## Version property
 
@@ -85,7 +96,7 @@ The test dependency:
 |---|---|---|
 | An SLF4J back end, such as `org.slf4j:slf4j-simple` or `ch.qos.logback:logback-classic` | compile or runtime | Wicket logs through the SLF4J API. Without a back end you see no log output. |
 | `jakarta.servlet:jakarta.servlet-api` | provided | Only if your own code uses servlet classes. The container provides the API at run time, and `wicket-core` does not pass it on to your project. |
-| `org.bouncycastle:bcprov-jdk18on` | compile | Only for AES-GCM-SIV encryption, see [Encryption in Wicket]({{ site.baseurl }}/docs/crypt-schemes.html). |
+| `org.bouncycastle:bcprov-jdk18on` | compile | Only for AES-GCM-SIV encryption, see {% if site.wicket.version_11 %}[Encryption in Wicket]({{ site.baseurl }}/docs/crypt-schemes.html){% else %}[Configure the page store]({{ site.baseurl }}/docs/configure-page-store.html#encrypt-stored-pages){% endif %}. |
 | A servlet container for development, such as Jetty | test | To start the application from your IDE, as the quickstart's `Start` class does. |
 
 ## HTML files next to the Java classes

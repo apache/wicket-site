@@ -12,8 +12,12 @@ source: [jee.adoc, jee/jee_2.adoc, jee/jee_5.adoc]
 
 Use this when your services live in a Spring application context and your pages need them. Spring does not create Wicket components, so `@Autowired` has no effect in them. Module wicket-spring fills fields annotated with `@SpringBean` instead, as each component is constructed.
 
+{% if site.wicket.version_11 %}
 > Wicket 11 works with Spring 7; Wicket 10 with Spring 6.
 {: .since}
+{% else %}
+Wicket 10 works with Spring 6.
+{% endif %}
 
 ## Add the dependencies
 

@@ -39,8 +39,12 @@ Validators run only on a non-`null` converted value, unless they implement `INul
 
 `StringValidator` also writes `maxlength` and `minlength` on the `<input>` or `<textarea>` it validates, so the browser enforces the length as the user types.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, a text field with a `PatternValidator` renders its regular expression as the `pattern` attribute, and the browser checks it before submitting. `EmailAddressValidator` is a `PatternValidator`, so `EmailTextField` gets the attribute too. In Wicket 10 only the `HTML5Attributes` behavior renders it.
 {: .since}
+{% else %}
+The `HTML5Attributes` behavior renders the regular expression of a `PatternValidator` as the `pattern` attribute, and the browser checks it before submitting.
+{% endif %}
 
 ## Form validators
 

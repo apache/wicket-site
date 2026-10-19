@@ -30,15 +30,19 @@ All in wicket-core, package `org.apache.wicket.ajax` and its `form` subpackage.
 
 `AjaxFormComponentUpdatingBehavior` does not work for radio buttons and check boxes in a group; use `AjaxFormChoiceComponentUpdatingBehavior` there. Override its `getUpdateModel()` to return `false` when you want the input validated but the model left alone.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, `AjaxFormComponentUpdatingBehavior` on a `FormComponentPanel` also converts, validates and updates the inner form components of the panel, so the panel's model is up to date when `onUpdate` runs. The inner components' input is then sent along with the request. Override `updateInnerComponents()` and return `false` for the Wicket 10 behavior.
 {: .since}
+{% endif %}
 
 `AjaxFormSubmitBehavior` does not prevent the browser's default action. On an `<input type="submit">` or a `<button>` in the form, call `attributes.setPreventDefault(true)` in `updateAjaxAttributes`, or the form is submitted twice.
 
 When `shouldTriggerJavaScriptSubmitEvent()` returns `true`, on `AjaxFormSubmitBehavior`, `AjaxButton` or `AjaxFallbackButton`, the behavior fires a JavaScript `submit` event on the form before it sends the request, so that the form's submit handlers run. A handler that cancels the event cancels the Ajax request. The default is `false`.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, that `submit` event is a native DOM event fired with `Wicket.Event.triggerSubmit`. Listeners added with `addEventListener` run as well, not only jQuery handlers. Calling `preventDefault()` in a listener on the form, or in one that captures the event on its way to the form, cancels the Ajax request; listeners further up the document see the event cancelled already. The browser never submits the form for this event; the Ajax request does.
 {: .since}
+{% endif %}
 
 ## Timers
 
@@ -70,8 +74,10 @@ add(clock);
 | `AutoCompleteBehavior<T>` | Adds a suggestion list to any text field; `AutoCompleteTextField` uses it. | `getChoices(String input)` |
 | `AjaxIndicatorAppender` | Renders a hidden busy indicator image after its component. See [Show that a request is running]({{ site.baseurl }}/docs/activity-indicator.html). | none |
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, the package `org.apache.wicket.extensions.ajax.veil` has `PageVeilBehavior` and `LocalVeilBehavior`, which cover the page or one component while an Ajax request runs. See [Block the page while a request runs]({{ site.baseurl }}/docs/ajax-veils.html).
 {: .since}
+{% endif %}
 
 ## Call listeners
 

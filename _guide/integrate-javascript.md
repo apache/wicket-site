@@ -165,5 +165,9 @@ The callback does not submit the form, so the field's model is not updated by it
 
 A jQuery plugin needs jQuery on the page. Add `getJavaScriptLibrarySettings().getJQueryReference()` to the dependencies of your reference, before the plugin. Wicket's own Ajax library does not guarantee jQuery is there.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, `getJQueryReference()` returns jQuery 4.0 by default instead of 3.7.1, and an application can run Wicket's Ajax without loading jQuery at all; see [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html).
 {: .since}
+{% else %}
+By default `getJQueryReference()` returns jQuery 3.7.1.
+{% endif %}

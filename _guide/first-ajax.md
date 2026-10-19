@@ -194,8 +194,10 @@ Restart and open the guestbook in two browsers, or in a normal and a private win
 
 Your application now updates parts of its pages over Ajax: from a link, from a form, and on a timer, and it shows a hidden component without a reload.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, the same code runs without jQuery if you switch the application to Wicket's plain JavaScript Ajax implementation. See [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html).
 {: .since}
+{% endif %}
 
 ## Continue with tests
 

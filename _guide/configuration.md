@@ -155,8 +155,8 @@ Each setter returns its settings object, so calls on one object can be chained. 
 
 | Setting | Default | Meaning |
 |---|---|---|
-| `setJQueryReference(ResourceReference)` | jQuery 3 in Wicket 10, jQuery 4 in Wicket 11 | The jQuery version Wicket loads. |
-| `setWicketAjaxReference(ResourceReference)` | `WicketAjaxJQueryResourceReference` | Wicket's Ajax library. In Wicket 11, `WicketAjaxResourceReference` selects the implementation without jQuery. |
+| `setJQueryReference(ResourceReference)` | {% if site.wicket.version_11 %}jQuery 3 in Wicket 10, jQuery 4 in Wicket 11{% else %}jQuery 3{% endif %} | The jQuery version Wicket loads. |
+| `setWicketAjaxReference(ResourceReference)` | `WicketAjaxJQueryResourceReference` | Wicket's Ajax library.{% if site.wicket.version_11 %} In Wicket 11, `WicketAjaxResourceReference` selects the implementation without jQuery.{% endif %} |
 
 ### MarkupSettings
 
@@ -234,13 +234,15 @@ Each setter returns its settings object, so calls on one object can be chained. 
 | `setUnauthorizedComponentInstantiationListener(...)` | throws `UnauthorizedInstantiationException` | Called when a component may not be created. |
 | `setEnforceMounts(boolean)` | `false` | Refuse requests for a mounted page through its generic bookmarkable URL instead of its mount path. |
 | `setCryptFactory(ICryptFactory)` | key in session | Creates the objects that encrypt URLs. |
-| `setCryptScheme(ICryptScheme)` | `AesGcmCryptScheme` | Wicket 11. The cipher for encrypted URLs and the page store. |
+{% if site.wicket.version_11 %}| `setCryptScheme(ICryptScheme)` | `AesGcmCryptScheme` | Wicket 11. The cipher for encrypted URLs and the page store. |
 | `setWhitelistedCryptSchemes(Collection)` | the crypt scheme | Wicket 11. Schemes accepted for decryption. |
-| `setRandomSupplier(ISecureRandomSupplier)` | `DefaultSecureRandomSupplier` | Source of secure random data. |
+{% endif %}| `setRandomSupplier(ISecureRandomSupplier)` | `DefaultSecureRandomSupplier` | Source of secure random data. |
 | `setCrossOriginOpenerPolicyConfiguration(...)` | `SAME_ORIGIN` | The `Cross-Origin-Opener-Policy` header. |
 | `setCrossOriginEmbedderPolicyConfiguration(...)` | `REPORTING` | The `Cross-Origin-Embedder-Policy` header. |
 
+{% if site.wicket.version_11 %}
 [Encryption in Wicket]({{ site.baseurl }}/docs/crypt-schemes.html) describes the encryption settings of both release lines.
+{% endif %}
 
 ### StoreSettings
 
@@ -253,7 +255,7 @@ Each setter returns its settings object, so calls on one object can be chained. 
 | `setAsynchronous(boolean)` | `true` | Write pages to disk on a background thread. |
 | `setAsynchronousQueueCapacity(int)` | 100 | Pages waiting to be written before writes become synchronous. |
 | `setEncrypted(boolean)` | `false` | Encrypt pages before they are written. |
-| `setCrypter(Supplier<ICrypter>)` | `DefaultCrypter` | Wicket 10 only. The cipher for encrypted pages; Wicket 11 uses the crypt scheme of the security settings. |
+| `setCrypter(Supplier<ICrypter>)` | `DefaultCrypter` | {% if site.wicket.version_11 %}Wicket 10 only. The cipher for encrypted pages; Wicket 11 uses the crypt scheme of the security settings.{% else %}The cipher for encrypted pages.{% endif %} |
 
 ### Content security policy
 

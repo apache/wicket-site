@@ -12,8 +12,12 @@ source: [jee/jee_3.adoc, jee/jee_5.adoc]
 
 Use this when your application runs with a CDI container, on a Jakarta EE server or on a servlet container with Weld, and your pages need CDI beans. Module wicket-cdi injects every component, behavior and session that Wicket creates, so fields annotated with `@Inject` work as they do in CDI beans.
 
+{% if site.wicket.version_11 %}
 > Wicket 11 is built against CDI 5.0 and tested with Weld 7; Wicket 10 against CDI 4.0 and Weld 5.
 {: .since}
+{% else %}
+Wicket 10 is built against CDI 4.0 and tested with Weld 5.
+{% endif %}
 
 ## Add wicket-cdi
 
