@@ -1,4 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wicket.apache.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wicket.apache.org/" rel="alternate" type="text/html" /><updated>2026-10-21T08:23:43+00:00</updated><id>https://wicket.apache.org/feed.xml</id><title type="html">Apache Wicket</title><subtitle>Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.</subtitle><entry><title type="html">A new release cadence for Apache Wicket</title><link href="https://wicket.apache.org/news/2026/09/11/release-cadence.html" rel="alternate" type="text/html" title="A new release cadence for Apache Wicket" /><published>2026-09-11T00:00:00+00:00</published><updated>2026-09-11T00:00:00+00:00</updated><id>https://wicket.apache.org/news/2026/09/11/release-cadence</id><content type="html" xml:base="https://wicket.apache.org/news/2026/09/11/release-cadence.html"><![CDATA[<p>Starting with Apache Wicket 11.0, due in the first week of October 2026, Wicket moves to
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wicket.apache.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wicket.apache.org/" rel="alternate" type="text/html" /><updated>2026-10-21T08:29:46+00:00</updated><id>https://wicket.apache.org/feed.xml</id><title type="html">Apache Wicket</title><subtitle>Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.</subtitle><entry><title type="html">Wicket 8 and 9 reach end of life soon</title><link href="https://wicket.apache.org/news/2026/10/21/wicket-8-and-9-end-of-life.html" rel="alternate" type="text/html" title="Wicket 8 and 9 reach end of life soon" /><published>2026-10-21T00:00:00+00:00</published><updated>2026-10-21T00:00:00+00:00</updated><id>https://wicket.apache.org/news/2026/10/21/wicket-8-and-9-end-of-life</id><content type="html" xml:base="https://wicket.apache.org/news/2026/10/21/wicket-8-and-9-end-of-life.html"><![CDATA[<p>Apache Wicket 8.x and 9.x each get one final release, and then reach end of life. After
+that they get no more releases, not even security fixes, and Wicket’s support for the
+<code class="language-plaintext highlighter-rouge">javax.servlet</code> API ends with them. We announce the final releases on the
+<a href="/community/#announce">announce list</a> and here on the blog. If your
+application runs on Wicket 8 or 9, plan the move to Wicket 10 now: it is our long-term
+support release, supported until July 2027.</p>
+
+<!--more-->
+
+<h2 id="what-end-of-life-means">What end of life means</h2>
+
+<p>Until their final release, 8.x and 9.x are supported as they are today. After it:</p>
+
+<ul>
+  <li>no new 8.x or 9.x release ships, for bugs or for vulnerabilities;</li>
+  <li>every release stays available: on Maven Central, and in the
+<a href="https://archive.apache.org/dist/wicket">Apache archives</a>;</li>
+  <li>the <a href="/community/#user">users list</a> still helps with questions, but a
+fix for a problem in 8 or 9 only ships in the lines we still support.</li>
+</ul>
+
+<h2 id="why-we-stop">Why we stop</h2>
+
+<p>We announced this with the <a href="/news/2026/09/11/release-cadence.html">new release cadence</a>.
+Every security report has to be assessed, fixed, backported and released for each line we
+support. With four lines that work is done four times, and that is time not spent on
+improving Wicket itself. Retiring 8 and 9 ends that.</p>
+
+<p>Wicket 8 and 9 are also the last lines on <code class="language-plaintext highlighter-rouge">javax.servlet</code>. The Java world moved to the
+<code class="language-plaintext highlighter-rouge">jakarta</code> namespace, and Wicket 10 moved with it.</p>
+
+<h2 id="how-to-move-to-wicket-10">How to move to Wicket 10</h2>
+
+<p>Wicket 10 requires Java 17 and Jakarta Servlet 5.0 or newer, and its integrations move
+along: Spring 6, Guice 7 and Commons FileUpload 2.</p>
+
+<ul>
+  <li><strong>From Wicket 9</strong>, move to 10 directly with the
+<a href="https://s.apache.org/wicket10migrate">migration guide to Wicket 10</a>. The
+<a href="/versions/wicket-10.x/#automatic-migration">OpenRewrite recipes of <code class="language-plaintext highlighter-rouge">wicket-migration</code></a>
+do the repetitive part: the <code class="language-plaintext highlighter-rouge">jakarta</code> imports, the Java 17 baseline and the moved Wicket
+classes.</li>
+  <li><strong>From Wicket 8</strong>, take the Wicket 9 step first, with the
+<a href="https://s.apache.org/wicket9migration">migration guide to Wicket 9</a> and Java 11. Each
+migration guide covers one major version, so the step to 10 follows from there.</li>
+</ul>
+
+<p>The <a href="/versions/#upgrade-paths">upgrade paths</a> on the releases page show
+the route, and the pages of <a href="/versions/wicket-9.x/">Wicket 9</a> and
+<a href="/versions/wicket-8.x/">Wicket 8</a> carry it as well.</p>
+
+<h2 id="need-help">Need help?</h2>
+
+<p>Ask on the <a href="/community/#user">users list</a> when the migration raises
+questions; include your Wicket and Java versions. If you need more hands or more time,
+<a href="https://cwiki.apache.org/confluence/display/WICKET/Companies+that+provide+services">several companies</a>
+offer training, consulting and development for Wicket applications. The Wicket project
+does not endorse or rank them.</p>]]></content><author><name></name></author><category term="2026" /><summary type="html"><![CDATA[Wicket 8.x and 9.x each get one final release and then reach end of life, and with them Wicket's support for javax.servlet. Move to Wicket 10 LTS, supported until July 2027.]]></summary></entry><entry><title type="html">A new release cadence for Apache Wicket</title><link href="https://wicket.apache.org/news/2026/09/11/release-cadence.html" rel="alternate" type="text/html" title="A new release cadence for Apache Wicket" /><published>2026-09-11T00:00:00+00:00</published><updated>2026-09-11T00:00:00+00:00</updated><id>https://wicket.apache.org/news/2026/09/11/release-cadence</id><content type="html" xml:base="https://wicket.apache.org/news/2026/09/11/release-cadence.html"><![CDATA[<p>Starting with Apache Wicket 11.0, due in the first week of October 2026, Wicket moves to
 time-based releases: a new major release every three months, and an LTS release once a
 year. We will do one more release of the 8.x and 9.x branches and then stop supporting
 those versions entirely, and with them the <code class="language-plaintext highlighter-rouge">javax.servlet</code> API. Wicket 10 is our current
@@ -716,83 +773,4 @@ migration guide found at</p>
 
 <ul>
   <li>[WICKET-7174] - DefaultSecureRandomSupplier does not work for FIPS</li>
-</ul>]]></content><author><name></name></author><category term="2026" /><summary type="html"><![CDATA[The Apache Wicket PMC is proud to announce Apache Wicket 9.23.0! Apache Wicket is an open source Java component oriented web application framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more. You can find more about Apache Wicket at https://wicket.apache.org This release marks another minor release of Wicket 9. We use semantic versioning for the development of Wicket, and as such no API breaks are present in this release compared to 9.0.0. New and noteworthy This release fixes the following security issue: CVE-2026-43646 crafted URLs can bypass PackageResourceGuard CVE-2026-42509 crafted strings can break out of the JavaScript sequence CVE-2026-40010 possible session fixation using AuthenticatedWebSession CVE-2026-43975 Possible malicious path traversal in FolderUploadsFileManager Using this release With Apache Maven update your dependency to (and don’t forget to update any other dependencies on Wicket projects to the same version): &lt;dependency&gt; &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt; &lt;artifactId&gt;wicket-core&lt;/artifactId&gt; &lt;version&gt;9.23.0&lt;/version&gt; &lt;/dependency&gt; Or download and build the distribution yourself, or use our convenience binary package you can find here: Download: http://wicket.apache.org/start/wicket-9.x.html#manually]]></summary></entry><entry><title type="html">Apache Wicket 10.9.0 released</title><link href="https://wicket.apache.org/news/2026/05/05/wicket-10.9.0-released.html" rel="alternate" type="text/html" title="Apache Wicket 10.9.0 released" /><published>2026-05-05T00:00:00+00:00</published><updated>2026-05-05T00:00:00+00:00</updated><id>https://wicket.apache.org/news/2026/05/05/wicket-10.9.0-released</id><content type="html" xml:base="https://wicket.apache.org/news/2026/05/05/wicket-10.9.0-released.html"><![CDATA[<p>The Apache Wicket PMC is proud to announce Apache Wicket 10.9.0!</p>
-
-<p>Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org</p>
-
-<p>This release marks another minor release of Wicket 10. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present in this release compared to 10.0.0.</p>
-
-<h2 id="new-and-noteworthy">New and noteworthy</h2>
-
-<p>This release fixes the following security issue:</p>
-
-<ul>
-  <li>CVE-2026-43646 crafted URLs can bypass PackageResourceGuard</li>
-  <li>CVE-2026-42509 crafted strings can break out of the JavaScript sequence</li>
-  <li>CVE-2026-40010 possible session fixation using AuthenticatedWebSession</li>
-  <li>CVE-2026-43975 Possible malicious path traversal in FolderUploadsFileManager</li>
-</ul>
-
-<h2 id="using-this-release">Using this release</h2>
-
-<p>With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):</p>
-
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>10.9.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
-
-<p>Or download and build the distribution yourself, or use our
-convenience binary package you can find here:</p>
-
-<ul>
-  <li>Download: http://wicket.apache.org/start/wicket-10.x.html#manually</li>
-</ul>
-
-<!--more-->
-
-<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
-
-<p>If you upgrade from 10.y.z this release is a drop in replacement. If
-you come from a version prior to 10.0.0, please read our Wicket 10
-migration guide found at</p>
-
-<ul>
-  <li>http://s.apache.org/wicket10migrate</li>
-</ul>
-
-<p>Have fun!</p>
-
-<p>— The Wicket team</p>
-
-<p>========================================================================</p>
-
-<h3 id="this-release">This Release</h3>
-
-<h4 id="changelog-for-1090">CHANGELOG for 10.9.0:</h4>
-
-<h5 id="bug">Bug</h5>
-
-<ul>
-  <li>[WICKET-7174] - DefaultSecureRandomSupplier does not work for FIPS</li>
-</ul>
-
-<h5 id="new-feature">New Feature</h5>
-
-<ul>
-  <li>[WICKET-7169] - Make partHeaderSizeMax in AbstractFileUpload configurable</li>
-</ul>
-
-<h5 id="improvement">Improvement</h5>
-
-<ul>
-  <li>[WICKET-7172] - Support new CSP style, script directives</li>
-  <li>[WICKET-7179] - add support for jQuery 4.0.0</li>
-</ul>]]></content><author><name></name></author><category term="2026" /><summary type="html"><![CDATA[The Apache Wicket PMC is proud to announce Apache Wicket 10.9.0! Apache Wicket is an open source Java component oriented web application framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more. You can find more about Apache Wicket at https://wicket.apache.org This release marks another minor release of Wicket 10. We use semantic versioning for the development of Wicket, and as such no API breaks are present in this release compared to 10.0.0. New and noteworthy This release fixes the following security issue: CVE-2026-43646 crafted URLs can bypass PackageResourceGuard CVE-2026-42509 crafted strings can break out of the JavaScript sequence CVE-2026-40010 possible session fixation using AuthenticatedWebSession CVE-2026-43975 Possible malicious path traversal in FolderUploadsFileManager Using this release With Apache Maven update your dependency to (and don’t forget to update any other dependencies on Wicket projects to the same version): &lt;dependency&gt; &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt; &lt;artifactId&gt;wicket-core&lt;/artifactId&gt; &lt;version&gt;10.9.0&lt;/version&gt; &lt;/dependency&gt; Or download and build the distribution yourself, or use our convenience binary package you can find here: Download: http://wicket.apache.org/start/wicket-10.x.html#manually]]></summary></entry></feed>
+</ul>]]></content><author><name></name></author><category term="2026" /><summary type="html"><![CDATA[The Apache Wicket PMC is proud to announce Apache Wicket 9.23.0! Apache Wicket is an open source Java component oriented web application framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more. You can find more about Apache Wicket at https://wicket.apache.org This release marks another minor release of Wicket 9. We use semantic versioning for the development of Wicket, and as such no API breaks are present in this release compared to 9.0.0. New and noteworthy This release fixes the following security issue: CVE-2026-43646 crafted URLs can bypass PackageResourceGuard CVE-2026-42509 crafted strings can break out of the JavaScript sequence CVE-2026-40010 possible session fixation using AuthenticatedWebSession CVE-2026-43975 Possible malicious path traversal in FolderUploadsFileManager Using this release With Apache Maven update your dependency to (and don’t forget to update any other dependencies on Wicket projects to the same version): &lt;dependency&gt; &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt; &lt;artifactId&gt;wicket-core&lt;/artifactId&gt; &lt;version&gt;9.23.0&lt;/version&gt; &lt;/dependency&gt; Or download and build the distribution yourself, or use our convenience binary package you can find here: Download: http://wicket.apache.org/start/wicket-9.x.html#manually]]></summary></entry></feed>

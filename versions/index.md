@@ -31,7 +31,7 @@ How to move an application to a line that stays supported.
             <th scope="row">Wicket 8.x or 9.x</th>
             <td>
                 <p class="connections-route">8.x &rarr; 9 (Java 11) &rarr; 10 LTS (Java 17)</p>
-                <p>Both lines get one final release and then reach end of life, and with them Wicket's support for <code>javax.servlet</code>. Move to 10 LTS: it brings <code>jakarta.servlet</code> and is supported until July 2027. 9.x moves to 10 directly. 8.x takes the Wicket 9 step first, because each migration guide covers one major version.</p>
+                <p>Both lines get one final release and then <a href="{{ site.baseurl }}/news/2026/10/21/wicket-8-and-9-end-of-life.html">reach end of life</a>, and with them Wicket's support for <code>javax.servlet</code>. Move to 10 LTS: it brings <code>jakarta.servlet</code> and is supported until July 2027. 9.x moves to 10 directly. 8.x takes the Wicket 9 step first, because each migration guide covers one major version.</p>
                 <p>For the step to 10, the <a href="{{ site.baseurl }}/versions/wicket-10.x/#automatic-migration">OpenRewrite recipes of <code>wicket-migration</code></a> do the repetitive part: the <code>jakarta</code> imports, the Java 17 baseline and the moved Wicket classes. If you need help or more time, <a href="{{ site.baseurl }}/community/#commercial">companies that offer Wicket support</a> are listed on the wiki.</p>
             </td>
             <td>
@@ -58,7 +58,7 @@ How to move an application to a line that stays supported.
 
 Wicket 10 is the current long-term support (LTS) release. It receives security fixes and applicable bug fixes until July 2027. Wicket 8.x and 9.x each receive one final release and then reach end of life, and with them Wicket's support for the `javax.servlet` API.
 
-The release schedule after that, with its new release model, is in [A new release cadence for Apache Wicket]({{site.baseurl}}/news/2026/09/11/release-cadence.html).
+What end of life means for 8 and 9, and how to move, is in [Wicket 8 and 9 reach end of life soon]({{ site.baseurl }}/news/2026/10/21/wicket-8-and-9-end-of-life.html). The release schedule after that, with its new release model, is in [A new release cadence for Apache Wicket]({{site.baseurl}}/news/2026/09/11/release-cadence.html).
 
 ## End of life {#unsupported}
 
