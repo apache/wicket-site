@@ -36,52 +36,21 @@ lines:
     service: lts
     status: lts
     when: "Since Mar 2024"
-    support: "Until 14.0.0, Jul 2027"
+    support: "Until Jul 2027"
     page: /versions/wicket-10.x/
-
-  - series: "11"
-    config: version_11
-    service: quarterly
-    status: current
-    when: "Since Oct 2026"
-    support: "Until 12.0.0, Jan 2027"
-    page: /versions/wicket-11.x/
-    role: "Current"
 
   - series: "9"
     config: version_90
     service: major
-    status: eol
-    when: "Jul 2020 to Oct 2026"
-    support: "Ended with 11.0.0"
+    status: last-call
+    when: "Since Jul 2020"
+    support: "Until its final release"
     page: /versions/wicket-9.x/
 
   - series: "8"
     config: version_80
     service: major
-    status: eol
-    when: "May 2018 to Oct 2026"
-    support: "Ended with 11.0.0"
+    status: last-call
+    when: "Since May 2018"
+    support: "Until its final release"
     page: /versions/wicket-8.x/
-
-  - series: "12"
-    version: "12.0.0"
-    service: quarterly
-    status: scheduled
-    when: "Jan 2027"
-    support: "Until 13.0.0, Apr 2027"
-
-
-  - series: "13"
-    version: "13.0.0"
-    service: quarterly
-    status: scheduled
-    when: "Apr 2027"
-    support: "Until 14.0.0, Jul 2027"
-
-  - series: "14"
-    version: "14.0.0"
-    service: lts
-    status: scheduled
-    when: "Jul 2027"
-    support: "Until 18.0.0, Jul 2028"
