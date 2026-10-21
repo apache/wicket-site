@@ -8,10 +8,11 @@
 
         <title> Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Apache Wicket is an open source, component-oriented Java web framework. Pages are Java components bound to plain HTML, with no JavaScript build chain." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
 
         <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
-        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
-        <link href="/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/slick-1.5.5.css"/>
@@ -21,378 +22,273 @@
 
 
     </head>
-    <body class="index">
-        <div class="header default">
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
     <div class="l-container">
         
-<nav class="mainmenu">
-    <div class="nav-logo">
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
 
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
     <div class="nav-container">
-    
-		
-    	
-        
-        
-		<!-- /start/quickstart.html || / -->
-		
-    	
-        
-    	<a href="/start/quickstart.html" class=" nav-items">Quick Start</a>
-    
-		
-    	
-        
-        
-		<!-- /start/download.html || / -->
-		
-    	
-        
-    	<a href="/start/download.html" class=" nav-items">Download</a>
-    
-		
-    	
-        
-        
-		<!-- /learn || / -->
-		
-    	
-        
-    	<a href="/learn" class=" nav-items">Documentation</a>
-    
-		
-    	
-        
-        
-		<!-- /help || / -->
-		
-    	
-        
-    	<a href="/help" class=" nav-items">Support</a>
-    
-		
-    	
-        
-        
-		<!-- /contribute || / -->
-		
-    	
-        
-    	<a href="/contribute" class=" nav-items">Contribute</a>
-    
-		
-    	
-        
-        
-		<!-- /community || / -->
-		
-    	
-        
-    	<a href="/community" class=" nav-items">Community</a>
-    
-		
-    	
-        
-        
-		<!-- /apache || / -->
-		
-    	
-        
-    	<a href="/apache" class=" nav-items">Apache</a>
-    
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
     </div>
-    <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
-    </div>    
 </nav>
-        
+
     </div>
 </div>
-<main>
-    <div class="l-container">
-        <header class="l-full preamble">
-            <h1></h1>
+<main id="main" class="home" tabindex="-1">
+    
+<section class="home-hero">
+    <div class="home-inner">
+        <h1>Build web applications from Java components and plain HTML</h1>
+        <p class="home-lead">Apache Wicket is a component-oriented Java web framework, open source since 2004 and a project of the Apache Software Foundation since 2007. Every component keeps its behaviour and state in Java and its markup in plain HTML, so there is no JavaScript build chain to maintain.</p>
+        <p class="home-actions">
+            <a class="button" href="/start/quickstart.html">Get started</a>
+        </p>
+        <dl class="home-release" aria-label="Releases">
+            <div>
+                <dt>LTS</dt>
+                <dd>
+<a href="/versions/wicket-10.x/">10.11.0</a> <span class="tag tag-lts">LTS</span> <span class="home-release-note">supported until Jul 2027</span>
+</dd>
+            </div>
             
             
             
-        </header>
-        <section class="toc left post index">
-            <div id="toc" class="toc">
-<div id="toc-title"><h2>Table of Contents</h2></div>
-<ul><li class="toc--level-1 toc--section-1"><a href="#"><span class="toc-number">1</span> <span class="toc-text">Getting Started with Wicket 10</span></a></li></ul>
-</div>
-        </section>
-        <section>
-            <div class="l-full">
-    <p class="meta"></p>
-    <div class="l-full l-first preamble">
-    <a class="acevent"></a>
-    <br>
-    <h1 id="introduction" class="announce">Announcing Apache Wicket <span class="color-brand">1</span><span class="color-brand" style="font-family: Wicket font;font-size: 46px;">0</span> : build modern web applications with Java!</h1>
-    <div>
-      <img src="/img/logo.svg" alt="Apache Wicket" class="responsive-logo">
+            
+            <div>
+                <dt>Last release coming</dt>
+                <dd>
+<a href="/versions/wicket-9.x/">9.24.0</a> · <a href="/versions/wicket-8.x/">8.19.0</a> <span class="home-release-note">one final release each, then end of life. See the <a href="/versions/#upgrade-paths">upgrade paths</a>.</span>
+</dd>
+            </div>
+            
+            <div class="home-release-all">
+                <dt class="visually-hidden">Everything else</dt>
+                <dd><a href="/versions/">All releases and downloads</a></dd>
+            </div>
+        </dl>
     </div>
-    <p>
-      The Apache Wicket project announces the 10th major release of the open source Java web framework servicing websites and applications across the globe since 2004.
-      Built on top of Java 17, this version of Wicket brings web development into the modern Java world, offering a fundamental tool to write modern and robust web applications.
-    </p>
-</div>
-<div class="l-first">
-  <div class="l-full">
-    <h3>Use Java to build modern and mantainable web applications</h3>
-    <p>
-     Building robust and manteinable web applications is not a trivial task, especially for Java developers who might feel lost with modern web technologies. With Wicket you can use the rock-solid Java platform to reach this goal without the burden of the complexity that comes with modern JavaScript development stack. 
-    </p>
-    <p>
-     Using Wicket and other familiar tools like Apache Maven you can finally make the most of modern UI frameworks and JavaScript libraries without leaving the Java ecosystem!
-    </p>
-  </div>
-</div>
+</section>
 
-<div class="l-first l-flex">
-  <div class="l-half">
-    <h3>Stay up to date with the Java release cycle</h3>
-    <p>
-      Wicket 10 is built on top of Java 17 and is compatible with Java 21. In addtion Wicket takes part in the <a href="https://wiki.openjdk.java.net/display/quality/Quality+Outreach" target="_blank" rel="noopener noreferrer">OpenJDK Quality Outreach</a> to further improve the effort to test compatibility with both the latest OpenJDK release and the Early Access release.
-    </p>
-  </div>
-  <div class="l-half">
-    <h3>Fast migration with OpenRewrite</h3>
-    <p>
-     Wicket 10 comes with a migration tool based on OpenRewrite to speed up migration from Wicket 9 and avoid repetitive and error-prone manual changes to your code. For more details on this tool see <a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+10.0#MigrationtoWicket10.0-AddmigrationrecipestoWicket10WICKET-7029" target="_blank" rel="noopener noreferrer">migration guide</a>.
-    </p>
-  </div>
-</div>
-
-<div class="l-first l-flex">
-  <div class="l-full">
-    <h3>Protect your web apps with Content Security Policy (CSP)</h3>
-    <p>
-     As the number of security threats grows, it's crucial for web applications to adopt the latest security standards and countermeasures. CSP is a modern standard that allows applications to declare approved origins of content (such as JavaScript, CSS, images, etc...) for the browser to load. Constructing a safe and at the same time complete CSP can be challenging. 
-     You either risk leaving holes in the defense of your application or you break certain functionality. Protecting against unwanted inline scripts is the most important target to attain. In CSP this is called 'unsafe-inline' and it's the most common cause of cross-site scripting vulnerabilities.
-    </p>
-    <p>
-     Wicket 10 comes with full support for CSP and does not need any unsafe directives. Wicket will automatically add a nonce to every header contribution and whitelist this nonce. This allows for flexible loading of resources without the need for a complex CSP. Of course it is possible to modify and customize the CSP, add additional directives or disable it entirely. Lookup our <a href="http://wicket.apache.org/learn/#guide" target="_blank" rel="noopener noreferrer">documentation</a> for more information.
-    </p>
-  </div>
-</div>
-
-<div class="l-first l-flex">
-  <div class="l-half">
-    <h2>Getting Started with Wicket 10</h2>
-    <p>
-      It is very easy to get started with Wicket: use our <a href="/start/quickstart.html">quick-start wizard</a> or 
-      use one of the options below.
-    </p>
-  </div>
-  <div class="l-half">
-    <h3>Migrating to Wicket 10</h3>
-    <p>
-      When you migrate from a previous Wicket version to Wicket 10, a full list of changes and migrations is available at the following page:
-    </p>
-    <p>
-      <a href="https://s.apache.org/wicket10migrate" target="_blank" rel="noopener noreferrer">https://s.apache.org/wicket10migrate</a>
-    </p>
-    <p>
-      Please consult this migration guide when you are moving towards Wicket 10.
-    </p>
-  </div>
-</div>
-<div class="l-first l-flex">
-  <div class="l-half">
-    <h3>Download using Apache Maven</h3>
-    <p>
-      With Apache Maven update your dependency to (and don't forget to
-      update any other dependencies on Wicket projects to the same version):
-    </p>
-
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>10.11.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
-
-  </div>
-  <div class="l-half">
-    <h3>Download sources/binaries manually</h3>
-    <p>
-      You can download and build the distribution yourself, or use our
-      convenient binary package:
-    </p>
-    <ul>
-      <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/10.11.0" target="_blank" rel="noopener noreferrer">10.11.0 source download</a>
-</li>
-      <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/10.11.0/binaries" target="_blank" rel="noopener noreferrer">10.11.0 binary download</a>
-</li>
-    </ul>
-  </div>
-</div>
-
-<hr>
-
-<div class="l-full l-first preamble">
-    <h1 id="introduction">Introducing Apache Wicket</h1>
-    <p>Invented in 2004, Wicket is one of the few survivors of the Java
-    serverside web framework wars of the mid 2000's. Wicket is an open
-    source, component oriented, serverside, Java web application framework.
-    With a history of over a decade, it is still going strong and has a
-    solid future ahead. Learn why you should consider Wicket for your next
-    web application.</p>
-</div>
-
-<div class="l-first l-flex">
-    <div class="l-one-third">
-        <img src="/img/java-wicket-html5.png" class="l-full">
-        <h3>Just Java &amp; HTML</h3>
-        <p>Leverage what you know about Java or your favourite HTML 
-        editor to write Wicket applications. With pure Java code and HTML 
-        markup Wicket is the go-to web framework for purists.</p>
+<section class="home-section home-news" aria-labelledby="blog">
+    <div class="home-inner">
+        <h2 id="blog">From the blog</h2>
+        <ul class="post-panels">
+<li class="post-panel is-article">
+        <a href="/news/2026/09/11/release-cadence.html">
+            <span class="post-meta"><time datetime="2026-09-11T00:00:00+00:00">11 Sep 2026</time></span>
+            <h3 class="post-title">A new release cadence for Apache Wicket</h3>
+            <span class="post-summary">Starting with Apache Wicket 11.0, due in the first week of October 2026, Wicket moves to time-based releases: a new major release every three months, and an LTS...</span>
+        </a>
+    </li>
+<li class="post-panel is-article">
+        <a href="/news/2026/09/08/security-policy.html">
+            <span class="post-meta"><time datetime="2026-09-08T00:00:00+00:00">8 Sep 2026</time></span>
+            <h3 class="post-title">A security policy for Apache Wicket</h3>
+            <span class="post-summary">Wicket now documents how to report a vulnerability, what is in scope, and which inputs the framework trusts, in a SECURITY.md on every supported branch.</span>
+        </a>
+    </li>
+</ul>
     </div>
-    <div class="l-one-third">
-        <img src="/img/wicket-safe.png" class="l-full">
-        <h3>Secure by Default</h3>
-        <p>URLs do not expose sensitive information and all component paths are
-        session-relative. Wicket keeps your model private except those parts
-        you explicitly expose.</p>
-    </div>
-    <div class="l-one-third">
-        <img src="/img/wicket-components.png" class="l-full">
-        <h3>AJAX Components</h3>
-        <p>Write Ajax applications without having to write a single line 
-        of JavaScript code. Wicket's Ajax functionality makes it trivial 
-        to update selected parts of a UI, and comes with a great selection 
-        of basic Ajax components.</p>
-    </div>
-</div>
-<div class="l-first l-flex">
-    <div class="l-one-third">
-        <h3>Open Source with Apache License</h3>
-        <p>Since its inception in 2004 Wicket has been an open source
-        project and remains available under one of the most permissive
-        licenses: the Apache Software License.</p>
-    </div>
-    <div class="l-one-third">
-        <h3>Maintainable code</h3>
-        <p>Pages and Components in Wicket are real Java objects that support
-        encapsulation, inheritance and events. Create high level components
-        with ease and bundle its stylesheets, JavaScript and other resources
-        into one reusable package.</p>
-    </div>
-    <div class="l-one-third">
-        <h3>Internationalized to take on the world</h3>
-        <p>With support of over 25 languages out-of-the-box, Wicket let's 
-        you get started in your own language, or a second language with no 
-        effort. You can provide alternative languages on the application, 
-        page, or even component level.</p>
-    </div>
-</div>
-<div class="l-first l-flex">
-    <div class="l-one-third">
-        <h3>Multi-tab and window support</h3>
-        <p>No more pain while keeping tabs on multiple tabs and windows. 
-        Wicket's automatic state storage ensures that your users can open 
-        pages in new tabs and windows without causing problems.</p>
-    </div>
-    <div class="l-two-third">
-        <h3>Work with JavaScript and CSS</h3>
-        <p>Global JavaScript libraries and CSS styling mix properly with 
-        component local JavaScript and CSS resources. You can use custom 
-        component libraries that ship with default JavaScript behaviour and 
-        CSS styling, without having to do anything yourself. Creating such 
-        self-contained component libraries is as easy as creating a JAR 
-        file.</p>
-    </div>
-</div>
-<div class="l-first l-flex">
-    <div class="l-one-third">
-        <h3>Test your pages and components</h3>
-        <p>With WicketTester you can achieve testing coverage your QA 
-        department can only dream of. Test your pages without having to run 
-        inside a browser, or start a container. Test your components directly, 
-        check their rendered markup tags, attributes and contents with ease.</p>
-    </div>
-    <div class="l-one-third">
-        <h3>Injection support</h3>
-        <p>Inject your services into your pages and components with the 
-        technology of your choosing: Wicket provides integration with CDI 
-        (JSR-305), Spring and Guice.</p>
-    </div>
-    <div class="l-one-third">
-        <h3>Jakarta EE integration</h3>
-        <p>If you are using the Jakarta EE, you can leverage JPA, EJBs, 
-        Bean Validation and CDI with Wicket's integrations for these specifications.</p>
-    </div>
-</div>
-<div class="l-first">
-</div>
-<hr>
+</section>
 
+<section class="home-section home-code" aria-labelledby="how">
+    <div class="home-inner">
+        <h2 id="how">A page is a Java class and an HTML file</h2>
+        <div class="home-code-pair">
+            <figure>
+                <figcaption>HomePage.java</figcaption>
 
-</div>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">clicks</span><span class="o">;</span>
 
+    <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Link</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"count"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">clicks</span><span class="o">++;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"clicks"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">clicks</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
 
-            <article id="builtwithwicket" class="builtwithwicket">
-                <header class="preamble">
-    <h1 id="poweredby">Projects Using Apache Wicket</h1>
-    <p>
-        Many projects use Wicket but are not known for it. 
-        Below you find a list of projects that are <a href="http://builtwithwicket.tumblr.com" rel="nofollow noopener noreferrer" target="_blank">Powered by Wicket</a>.
-    </p>
-</header>
-<article class="l-full">
-    <div class="builtwithwicket-slider"></div>
-    <br><br>
-    <p>
-        This list is generated from our Tumblr feed 'Built with Wicket'. 
-        You can submit your own project to this list through 
-        <a href="http://builtwithwicket.tumblr.com/submit" rel="nofollow noopener noreferrer" target="_blank">this form</a>.
-    </p>
-</article>
-<div class="l-first"></div>
-<!-- Only display the blog image, title and post URL -->   
-<script type="text/javascript"> 
+            </figure>
+            <figure>
+                <figcaption>HomePage.html</figcaption>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>
+  You clicked <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"clicks"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/span&gt;</span> times.
+  <span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">"count"</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/p&gt;</span></code></pre></figure>
+
+                <ul class="home-code-notes">
+                    <li>The <code>wicket:id</code> joins each tag to the Java component with the same id. The HTML stays plain HTML that any editor opens.</li>
+                    <li>A click runs <code>onClick()</code> on the server, and Wicket renders the page again.</li>
+                    <li>The field <code>clicks</code> keeps its value between requests, because Wicket keeps the page object for you.</li>
+                    <li>A part you reuse on many pages is a <code>Panel</code>: again a Java class and an HTML file. <a href="/docs/topics/components.html">Components and markup</a> shows how.</li>
+                </ul>
+                <p class="home-more"><a href="http://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">See the examples running</a></p>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section class="home-section" aria-labelledby="why">
+    <div class="home-inner">
+        <h2 id="why">Why Wicket</h2>
+        <ul class="home-why">
+            <li>
+                <h3>Just Java and HTML</h3>
+                <p>Use what you know about Java and your favourite HTML editor. Behaviour lives in Java, markup stays plain HTML, and no JavaScript build is needed.</p>
+            </li>
+            <li>
+                <h3>Secure by default</h3>
+                <p>URLs do not expose sensitive information and component paths are session-relative. Wicket supports a Content Security Policy without <code>unsafe-inline</code>: it adds a nonce to every header contribution itself.</p>
+            </li>
+            <li>
+                <h3>Ajax without writing JavaScript</h3>
+                <p>Update selected parts of a page without a single line of JavaScript, with a large set of ready-made Ajax components.</p>
+            </li>
+            <li>
+                <h3>Components you can reuse</h3>
+                <p>Pages and components are real Java objects with encapsulation, inheritance and events. Bundle a component with its stylesheets, JavaScript and other resources into one reusable package.</p>
+            </li>
+            <li>
+                <h3>Tests without a browser</h3>
+                <p>WicketTester renders your pages and components in a unit test, without a browser or a container, and checks their markup, attributes and contents.</p>
+            </li>
+            <li>
+                <h3>Stable for the long run</h3>
+                <p>Open source under the Apache License since 2004. Breaking changes only when needed, deprecated alternatives kept where possible, and every change documented in the migration guide.</p>
+            </li>
+        </ul>
+        <p class="home-also">Coming from Spring MVC, Jakarta Faces or Vaadin? <a href="/docs/why-wicket.html">Why component-oriented</a> compares Wicket with request-based and other component frameworks, what it gains and what it costs, and the <a href="/docs/glossary.html">glossary</a> gives each Wicket term with what other frameworks call it.</p>
+        <p class="home-also"><span>Also included:</span> translations in over 25 languages, safe use of multiple tabs and windows, injection with CDI, Spring and Guice, Jakarta EE integration, and component-local JavaScript and CSS.</p>
+    </div>
+</section>
+
+<section class="home-section" id="builtwithwicket" aria-labelledby="bww-title">
+    <div class="home-inner">
+        <h2 id="bww-title">Built with Wicket</h2>
+<p class="home-section-lead">Many applications run on Wicket without saying so. These say so, collected through the <a href="https://builtwithwicket.tumblr.com" rel="nofollow noopener noreferrer" target="_blank">Built with Wicket</a> feed. <a href="https://builtwithwicket.tumblr.com/submit" rel="nofollow noopener noreferrer" target="_blank">Submit your own project</a>.</p>
+<div class="builtwithwicket-slider"></div>
+<!-- Only display the blog image, title and post URL -->
+<script type="text/javascript">
     function randomIntFromInterval(min,max)
     {
         return Math.floor(Math.random()*(max-min+1)+min);
     }
 
-    fetch('./tumblr.json') // Call the fetch function passing the url of the API as a parameter
+    fetch('/tumblr.json')
         .then(res => res.json())
         .then(function (response) {
-            var posts = response.posts;  
+            var posts = response.posts;
 
             for(var postIndex in posts) {
                 var post = posts[postIndex];
-                var caption = jQuery('<div>' + post['photo-caption'] + '</div>').text().substring(0,150) + "...";
-                var newSlide = $('.builtwithwicket-slider').append(
-                    '<div class="builtwithwicket-post">\n' +
-                    '  <img class="builtwithwicket-screenshot" data-lazy="' + post['photo-url-500'] + '">\n' +
-                    '  <p class="builtwithwicket-caption">' + caption + '</p>\n' +
-                    '  <a href="' + post['url'] + '" target="_blank" rel="nofollow">More</a>\n' + 
-                    '</div>');
+                var text = jQuery('<div>' + post['photo-caption'] + '</div>').text().replace(/\s+/g, ' ').trim();
+                // The caption without web addresses, cut after its first sentence: feed entries carry notes to the curators.
+                var caption = text.replace(/\(?https?:\/\/\S+\)?/g, '').replace(/\s+([,.;:!?])/g, '$1').replace(/\s+/g, ' ').trim();
+                var firstStop = caption.search(/[.!?](\s|$)/);
+                if (firstStop > 0) caption = caption.substring(0, firstStop + 1);
+                // The caption opens with the project's name, followed by its address or a description.
+                var name = text.split(/\s*\(?https?:\/\//)[0].split(/\s+[-–—]\s+|\s*\(|[.:;!?](?:\s|$)/)[0].trim();
+                if (name.length > 60) name = name.substring(0, name.lastIndexOf(' ', 60));
+                if (!name) name = 'this project';
+                var image = post['photo-url-500'];
+                // Root-relative paths get the baseurl, unless a preview build already added it.
+                var base = '';
+                if (image.charAt(0) === '/' && image.indexOf(base + '/') !== 0) image = base + image;
+                $('.builtwithwicket-slider').append(
+                    $('<div class="builtwithwicket-post">').append(
+                        $('<img class="builtwithwicket-screenshot">').attr({ 'data-lazy': image, alt: 'Screenshot of ' + name }),
+                        $('<p class="builtwithwicket-caption">').text(caption.length > 150 ? caption.substring(0, 150) + '…' : caption),
+                        $('<a rel="nofollow">').attr('href', post['url']).text('More').append(
+                            $('<span class="visually-hidden">').text(' about ' + name))));
             }
 
+            if (window.matchMedia('(max-width: 589px)').matches) {
+                // Phones get a swipeable strip; images load as they scroll in.
+                $('.builtwithwicket-slider').addClass('is-strip')
+                    .attr({ role: 'region', tabindex: 0, 'aria-label': 'Built with Wicket projects, swipe for more' })
+                    .after('<p class="bww-count">' + posts.length + ' projects, swipe for more</p>');
+                $('.builtwithwicket-screenshot').each(function () {
+                    this.loading = 'lazy';
+                    this.src = this.getAttribute('data-lazy');
+                });
+                return;
+            }
+
+            // Links in slides out of view leave the tab order, so Tab does not land off screen.
+            $('.builtwithwicket-slider').on('init afterChange', function () {
+                $(this).find('.slick-slide').each(function () {
+                    var hidden = this.getAttribute('aria-hidden') === 'true';
+                    $(this).find('a').attr('tabindex', hidden ? -1 : null);
+                });
+            });
+            // No autoplay: a moving carousel cannot be paused by every visitor.
             $('.builtwithwicket-slider').slick({
                 arrows: true,
-                autoplay: true,
-                autoplaySpeed: 5000,
+                autoplay: false,
                 dots: true,
                 draggable: true,
                 infinite: true,
-                initialSlide: randomIntFromInterval(0, posts.length),
+                initialSlide: randomIntFromInterval(0, posts.length - 1),
                 lazyLoad: 'ondemand',
-                pauseOnDotsHover: true,
                 responsive: [    {
-                        breakpoint: 590,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    },
-                    {
                         breakpoint: 960,
                         settings: {
                             slidesToShow: 2,
@@ -410,169 +306,94 @@
         });
 </script>
 
-            </article>
-
-            <article id="news" class="">
-                <div class="l-full l-first preamble">
-    <h1 id="news">News about Apache Wicket</h1>
-    <p>Get the latest updates to releases, security bulletins, community 
-    news and more.</p>
-</div>
-
-
-<div class="l-flex"> 
-	<div class="l-two-third">
-	
-	    <article>
-	        <h2>A new release cadence for Apache Wicket</h2>
-	        <small>11 Sep 2026</small>
-	        <p>Starting with Apache Wicket 11.0, due in the first week of October 2026, Wicket moves to
-time-based releases: a new major release every three months, and an LTS release once a
-year. We will do one more release of the 8.x and 9.x branches and then stop supporting
-those versions entirely, and with them the <code class="language-plaintext highlighter-rouge">javax.servlet</code> API. Wicket 10 is our current
-LTS and remains supported until the release of Wicket 14, expected in the first week of
-July 2027.</p>
-
-<p>Nothing changes before 11.0 is out. Until then, 10.x, 9.x and 8.x are supported as they
-are today.</p>
-
-
-	        <a href="/news/2026/09/11/release-cadence.html">Read more...</a> 
-	    </article>
-	
-	    <article>
-	        <h2>Apache Wicket 9.24.0 released</h2>
-	        <small>30 Aug 2026</small>
-	        <p>The Apache Wicket PMC is proud to announce Apache Wicket 9.24.0!</p>
-
-<p>Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org</p>
-
-<p>This release marks another minor release of Wicket 9. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present in this release compared to 9.0.0.</p>
-
-<h2 id="new-and-noteworthy">New and noteworthy</h2>
-
-<p>This release fixes the following CVE:</p>
-
-<ul>
-  <li>CVE-2026-70449 Path traversal in resource style/variation/locale</li>
-  <li>CVE-2026-71257 Configured file upload limits are not enforced when the multipart request has already been parsed</li>
-  <li>CVE-2026-71378 Cross-Site Request Forgery (CSRF) protection bypass in ResourceIsolationRequestCycleListener</li>
-  <li>CVE-2026-75802 XSS in AjaxEditableLabel and its subclasses via IChoiceRenderer and defaultNullLabel</li>
-  <li>CVE-2026-76982 XSS in Button via its model object</li>
-  <li>CVE-2026-76983 XSS in AutoLabelTextResolver via FormComponent.setLabel</li>
-  <li>CVE-2026-76984 XSS in MetaDataHeaderItem via addTagAttribute</li>
-  <li>CVE-2026-76985 XSS in Palette via getAdditionalAttributes</li>
-  <li>CVE-2026-76986 XSS in AbstractSingleSelectChoice via getNullValidDisplayValue</li>
-</ul>
-
-<h2 id="using-this-release">Using this release</h2>
-
-<p>With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):</p>
-
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>9.24.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
-
-<p>Or download and build the distribution yourself, or use our
-convenience binary package you can find here:</p>
-
-<ul>
-  <li>Download: http://wicket.apache.org/start/wicket-9.x.html#manually</li>
-</ul>
-
-
-	        <a href="/news/2026/08/30/wicket-9.24.0-released.html">Read more...</a> 
-	    </article>
-	
-	</div>
-
-    <div class="l-one-third news">
-        
-		<h2>Older news</h2>
-		
-		<p>See the <a href="/news">archives</a> for all news
-		articles concerning release, security and community updates.</p>
-		
-		<p>Note that you can subscribe to our <a type="application/atom+xml" title="Atom 1.0 feed" href="/atom.xml">RSS feed</a> to
-		get updates in your favorite RSS reader the moment they happen.</p>
-		
-		<ul>
-		
-		<li>
-		    <h3>Apache Wicket 9.24.0 released</h3>
-		    <small>30 Aug 2026</small>
-		    The Apache Wicket PMC is proud to announce Apache Wicket 9.24.0! Apache Wicket is an open source Java component oriented web application framework that powers...
-		    <a href="/news/2026/08/30/wicket-9.24.0-released.html">more</a>
-		</li>
-		
-		<li>
-		    <h3>Apache Wicket 8.19.0 released</h3>
-		    <small>30 Aug 2026</small>
-		    The Apache Wicket PMC is proud to announce Apache Wicket 8.19.0! Apache Wicket is an open source Java component oriented web application framework that powers...
-		    <a href="/news/2026/08/30/wicket-8.19.0-released.html">more</a>
-		</li>
-		
-		<li>
-		    <h3>Apache Wicket 10.11.0 released</h3>
-		    <small>30 Aug 2026</small>
-		    The Apache Wicket PMC is proud to announce Apache Wicket 10.11.0! Apache Wicket is an open source Java component oriented web application framework that powers...
-		    <a href="/news/2026/08/30/wicket-10.11.0-released.html">more</a>
-		</li>
-		
-		<li>
-		    <h3>Apache Wicket 10.10.0 released</h3>
-		    <small>26 Jul 2026</small>
-		    The Apache Wicket PMC is proud to announce Apache Wicket 10.10.0! Apache Wicket is an open source Java component oriented web application framework that powers...
-		    <a href="/news/2026/07/26/wicket-10.10.0-released.html">more</a>
-		</li>
-		
-		<li>
-		    <h3>Apache Wicket 10.9.1 released</h3>
-		    <small>20 May 2026</small>
-		    The Apache Wicket PMC is proud to announce Apache Wicket 10.9.1! Apache Wicket is an open source Java component oriented web application framework that powers...
-		    <a href="/news/2026/05/20/wicket-10.9.1-released.html">more</a>
-		</li>
-		
-		</ul>
-	</div>
-</div>
-<div class="l-first"></div>
-
-            </article>
-
-        </section>
     </div>
+</section>
+
+<section class="home-section" aria-labelledby="learn">
+    <div class="home-inner home-split">
+        <div>
+            <h2 id="learn">Learn Wicket in five lessons</h2>
+            <p>The lessons build one application, from an empty project to a tested page with Ajax. Every page of the <a href="/docs/">documentation</a> says which Wicket versions it covers.</p>
+        </div>
+        
+        <ol class="guide-route home-lessons">
+        
+            <li>
+                <a class="guide-list-title" href="/docs/first-application.html">Build your first application</a>
+                <span class="guide-list-summary">Generate a project from the quickstart, run it, and build a home page with a label, a click counter and a link to a second page.</span>
+            </li>
+        
+            <li>
+                <a class="guide-list-title" href="/docs/page-layout.html">Give every page the same layout</a>
+                <span class="guide-list-summary">Move the header, navigation and footer of your application into a base page and two panels, so every page shares one layout.</span>
+            </li>
+        
+            <li>
+                <a class="guide-list-title" href="/docs/first-form.html">Build a form that saves data</a>
+                <span class="guide-list-summary">Add a guestbook page with a form that validates its input, saves entries and lists them, and shows errors and a confirmation.</span>
+            </li>
+        
+            <li>
+                <a class="guide-list-title" href="/docs/first-ajax.html">Update a page with Ajax</a>
+                <span class="guide-list-summary">Make the click counter and the guestbook form update only the parts of the page that change, open the form without a reload, and refresh the guestbook every ten seconds.</span>
+            </li>
+        
+            <li>
+                <a class="guide-list-title" href="/docs/first-test.html">Test a page with WicketTester</a>
+                <span class="guide-list-summary">Write JUnit tests that render your pages, click links, submit the guestbook form and check Ajax updates, without a browser or a server.</span>
+            </li>
+        
+        </ol>
+    </div>
+</section>
+
+<section class="home-section home-involved" aria-labelledby="involved">
+    <div class="home-inner">
+        <h2 id="involved">Built by the people who use it</h2>
+        <p class="home-section-lead">Apache Wicket is developed in the open by volunteers. Answer a question on the users list, report a bug with a quickstart, improve the documentation, or send a pull request to <a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">apache/wicket</a>: a committer reviews it, and it goes out with the next release of its line.</p>
+        <p class="home-more"><a href="/contribute/">How to contribute</a> · <a href="/community/">Community and support</a></p>
+    </div>
+</section>
+
 </main>
 
         <footer>
-            <div class="l-container l-flex">
-    <div class="l-one-third left">
-        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
-        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
-        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
-    </div>
-    <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
-    </div>
-    <div class="l-one-third">
-        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
-    </div>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
 </div>
-<div class="l-container">
-    <div class="left">
-        <img src="https://www.apache.org/img/asf_logo.png" style="height:90px; float:left; margin-right:10px;">
-        <div style="margin-top:12px;">Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
-    </div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
 </div>
 
         </footer>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Inject EJBs | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Inject session beans, JNDI resources and persistence units into Wicket components with @EJB, @Resource and @PersistenceUnit, through WicketStuff's javaee-inj..." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/integration.html">Integration</a></p>
+            <h1>Inject EJBs</h1>
+            <p class="page-sign-sub">Inject session beans, JNDI resources and persistence units into Wicket components with @EJB, @Resource and @PersistenceUnit, through WicketStuff's javaee-inject module.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#add-the-dependency"><span class="toc-number">1</span> <span class="toc-text">Add the dependency</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#register-the-injector"><span class="toc-number">2</span> <span class="toc-text">Register the injector</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#inject-a-session-bean"><span class="toc-number">3</span> <span class="toc-text">Inject a session bean</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#choose-the-jndi-names"><span class="toc-number">4</span> <span class="toc-text">Choose the JNDI names</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#stateful-session-beans"><span class="toc-number">5</span> <span class="toc-text">Stateful session beans</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use this when your business logic lives in Enterprise JavaBeans on a Jakarta EE server and you want to inject them with <code class="language-plaintext highlighter-rouge">@EJB</code>. Wicket components are not managed by the server, so the server ignores these annotations on them. The module wicketstuff-javaee-inject from <a href="/docs/wicketstuff.html">WicketStuff</a> looks the beans up in JNDI when a component is constructed.</p>
+
+<p>If your server supports CDI, as every Jakarta EE server does, you can also inject stateless and singleton session beans with <code class="language-plaintext highlighter-rouge">@Inject</code> through <a href="/docs/cdi.html">wicket-cdi</a>, without an extra module.</p>
+
+<h2 id="add-the-dependency">Add the dependency</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.wicketstuff<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicketstuff-javaee-inject<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${wicketstuff.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>WicketStuff releases follow the Wicket version numbers: use the WicketStuff release that matches your Wicket version. The module is maintained by the WicketStuff community, not by the Apache Wicket project, so check that a release exists for your Wicket version.</p>
+
+<h2 id="register-the-injector">Register the injector</h2>
+
+<p><em>WicketApplication.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getComponentInstantiationListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JavaEEComponentInjector</span><span class="o">(</span><span class="k">this</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="inject-a-session-bean">Inject a session bean</h2>
+
+<p><em>OrderService.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Stateless</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderService</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">&gt;</span> <span class="nf">openOrders</span><span class="o">()</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><em>OrdersPage.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrdersPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+
+    <span class="nd">@EJB</span>
+    <span class="kd">private</span> <span class="nc">OrderService</span> <span class="n">orders</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">OrdersPage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ListView</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">&gt;(</span><span class="s">"orders"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">orders</span><span class="o">.</span><span class="na">openOrders</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="nc">ListItem</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"number"</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">Order:</span><span class="o">:</span><span class="n">getNumber</span><span class="o">)));</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The field holds a serializable proxy, not the bean, so the page can be stored between requests. The proxy looks the bean up again after deserialization.</p>
+
+<p>The module also handles two other annotations:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Annotation</th>
+      <th>Injects</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@EJB</code></td>
+      <td>A session bean, looked up in JNDI.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@Resource(name = "...")</code></td>
+      <td>Any object bound in JNDI under <em>java:comp/env/</em> plus that name, such as a <code class="language-plaintext highlighter-rouge">DataSource</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">@PersistenceUnit(unitName = "...")</code></td>
+      <td>An <code class="language-plaintext highlighter-rouge">EntityManagerFactory</code> for the persistence unit, created with <code class="language-plaintext highlighter-rouge">Persistence.createEntityManagerFactory()</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="choose-the-jndi-names">Choose the JNDI names</h2>
+
+<p>By default the injector looks up <code class="language-plaintext highlighter-rouge">@EJB</code> fields under <em>java:comp/env/</em> followed by the <code class="language-plaintext highlighter-rouge">name</code> of the annotation, or the fully qualified class name of the field type when the name is empty. Most servers bind session beans under the portable global names instead. Pass a naming strategy that builds those names:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getComponentInstantiationListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">JavaEEComponentInjector</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ModuleJndiNamingStrategy</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Strategy</th>
+      <th>Looks up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">StandardJndiNamingStrategy</code> (default)</td>
+      <td><em>java:comp/env/&lt;name or class name&gt;</em></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ModuleJndiNamingStrategy</code></td>
+      <td><em>java:module/&lt;name or class name&gt;</em></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AppJndiNamingStrategy(moduleName)</code></td>
+      <td><em>java:app/&lt;module&gt;/&lt;name or class name&gt;</em></td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">GlobalJndiNamingStrategy(moduleName)</code> or <code class="language-plaintext highlighter-rouge">(appName, moduleName)</code>
+</td>
+      <td>
+<em>java:global/[&lt;app&gt;/]&lt;module&gt;/&lt;class name&gt;</em>, or <em>&lt;name&gt;!&lt;class name&gt;</em> when a name is given</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The strategies are in package <code class="language-plaintext highlighter-rouge">org.wicketstuff.javaee.naming</code> and its subpackage <code class="language-plaintext highlighter-rouge">global</code>. Your server logs the JNDI names of each session bean when it deploys the application; pick the strategy that matches them.</p>
+
+<h2 id="stateful-session-beans">Stateful session beans</h2>
+
+<p>A stateful session bean belongs to one user. The injector keeps one instance per HTTP session for fields whose type is annotated with <code class="language-plaintext highlighter-rouge">@Stateful</code>, or whose <code class="language-plaintext highlighter-rouge">@EJB</code> annotation has <code class="language-plaintext highlighter-rouge">description = "stateful"</code>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/integration.html">Integration</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/spring.html">Inject Spring beans</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Inject beans from a Spring application context into pages, components, behaviors and other objects with @SpringBean.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/cdi.html">Inject CDI beans</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Configure wicket-cdi so pages, components, behaviors and the session get CDI beans with @Inject, and choose beans that survive serialization.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Inject EJBs</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Inject session beans, JNDI resources and persistence units into Wicket components with @EJB, @Resource and @PersistenceUnit, through WicketStuff's javaee-inject module.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/jsr330.html">Inject with JSR-330 annotations</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use the standard @Inject and @Named annotations instead of @SpringBean, with the Spring, Guice and CDI integrations.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/karaf.html">Run on Apache Karaf</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install Wicket in Apache Karaf or another OSGi container with the Karaf feature that every Wicket release publishes.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/jmx.html">Inspect and change settings with JMX</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add wicket-jmx to see a running application's settings and session counts in JConsole, clear the markup cache, and change some settings without a restart.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/metrics.html">Measure with Wicket metrics</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Count requests and time component creation, rendering and model loading with the experimental wicket-metrics module, AspectJ and Dropwizard Metrics.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/wicketstuff.html">WicketStuff</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The community modules of the WicketStuff project, what each one adds to Wicket, and how to add one to a Maven build.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/ejb.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

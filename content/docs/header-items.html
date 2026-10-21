@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Header items | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Every header item type with its factory methods, the tag it renders and where it ends up, the rendering order, Ajax behaviour and the header response decorat..." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/resources.html">Resources</a></p>
+            <h1>Header items</h1>
+            <p class="page-sign-sub">Every header item type with its factory methods, the tag it renders and where it ends up, the rendering order, Ajax behaviour and the header response decorators.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#where-header-items-come-from"><span class="toc-number">1</span> <span class="toc-text">Where header items come from</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#header-item-types"><span class="toc-number">2</span> <span class="toc-text">Header item types</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#options-of-script-and-stylesheet-items"><span class="toc-number">3</span> <span class="toc-text">Options of script and stylesheet items</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#duplicates"><span class="toc-number">4</span> <span class="toc-text">Duplicates</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#rendering-order"><span class="toc-number">5</span> <span class="toc-text">Rendering order</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#ready-load-and-event-scripts"><span class="toc-number">6</span> <span class="toc-text">Ready, load and event scripts</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#header-response-decorators"><span class="toc-number">7</span> <span class="toc-text">Header response decorators</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#header-markup-tags"><span class="toc-number">8</span> <span class="toc-text">Header markup tags</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Header items are what components and behaviors hand to the <code class="language-plaintext highlighter-rouge">IHeaderResponse</code> in <code class="language-plaintext highlighter-rouge">renderHead</code>. Wicket collects them for the whole page, removes duplicates, adds dependencies, and writes them into the <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> or into a bucket elsewhere in the page. All classes are in <code class="language-plaintext highlighter-rouge">org.apache.wicket.markup.head</code> unless stated otherwise.</p>
+
+<h2 id="where-header-items-come-from">Where header items come from</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>Method</th>
+      <th>Called for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Component</code></td>
+      <td><code class="language-plaintext highlighter-rouge">renderHead(IHeaderResponse)</code></td>
+      <td>every visible component on the page, and every component in an Ajax update</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Behavior</code></td>
+      <td><code class="language-plaintext highlighter-rouge">renderHead(Component, IHeaderResponse)</code></td>
+      <td>every enabled behavior of those components</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IHeaderContributor</code></td>
+      <td><code class="language-plaintext highlighter-rouge">renderHead(IHeaderResponse)</code></td>
+      <td>contributors registered with <code class="language-plaintext highlighter-rouge">Application#getHeaderContributorListeners().add(…)</code>, on every page</td>
+    </tr>
+    <tr>
+      <td>Markup</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;wicket:head&gt;</code></td>
+      <td>once per component class; written as markup, not as a header item</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Call <code class="language-plaintext highlighter-rouge">super.renderHead(response)</code> when you override the method in a component.</p>
+
+<h2 id="header-item-types">Header item types</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Create with</th>
+      <th>Renders</th>
+      <th>Nonce</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CssReferenceHeaderItem</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">CssHeaderItem.forReference(reference)</code>, <code class="language-plaintext highlighter-rouge">forReference(reference, media)</code>, <code class="language-plaintext highlighter-rouge">forReference(reference, pageParameters, media)</code>, <code class="language-plaintext highlighter-rouge">forReference(reference, pageParameters, media, rel)</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;link rel="stylesheet"&gt;</code> with the URL of the resource reference</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CssUrlReferenceHeaderItem</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">CssHeaderItem.forUrl(url)</code>, <code class="language-plaintext highlighter-rouge">forUrl(url, media)</code>, <code class="language-plaintext highlighter-rouge">forUrl(url, media, rel)</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;link rel="stylesheet"&gt;</code> with the given URL; a relative URL is resolved against the context root</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CssContentHeaderItem</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CssHeaderItem.forCSS(css, id)</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;style&gt;</code> with the given CSS; <code class="language-plaintext highlighter-rouge">id</code> may be <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">JavaScriptReferenceHeaderItem</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">JavaScriptHeaderItem.forReference(reference)</code>, <code class="language-plaintext highlighter-rouge">forReference(reference, id)</code>, <code class="language-plaintext highlighter-rouge">forReference(reference, pageParameters, id)</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;script src&gt;</code> with the URL of the resource reference</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">JavaScriptUrlReferenceHeaderItem</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">JavaScriptHeaderItem.forUrl(url)</code>, <code class="language-plaintext highlighter-rouge">forUrl(url, id)</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;script src&gt;</code> with the given URL; a relative URL is resolved against the context root</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">JavaScriptContentHeaderItem</code></td>
+      <td><code class="language-plaintext highlighter-rouge">JavaScriptHeaderItem.forScript(javascript, id)</code></td>
+      <td>inline <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> with the given code; <code class="language-plaintext highlighter-rouge">id</code> may be <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnDomReadyHeaderItem</code></td>
+      <td><code class="language-plaintext highlighter-rouge">OnDomReadyHeaderItem.forScript(javascript)</code></td>
+      <td>code that runs when the DOM is loaded; see <a href="#ready-load-and-event-scripts">Ready, load and event scripts</a>
+</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnLoadHeaderItem</code></td>
+      <td><code class="language-plaintext highlighter-rouge">OnLoadHeaderItem.forScript(javascript)</code></td>
+      <td>code that runs on the window <code class="language-plaintext highlighter-rouge">load</code> event, after images and other files</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnEventHeaderItem</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">OnEventHeaderItem.forComponent(component, event, javascript)</code>, <code class="language-plaintext highlighter-rouge">forMarkupId(markupId, event, javascript)</code>, <code class="language-plaintext highlighter-rouge">forScript(target, event, javascript)</code>
+</td>
+      <td>code bound to a DOM event with <code class="language-plaintext highlighter-rouge">Wicket.Event.add</code>; <code class="language-plaintext highlighter-rouge">target</code> in <code class="language-plaintext highlighter-rouge">forScript</code> is a JavaScript expression, such as <code class="language-plaintext highlighter-rouge">"'myId'"</code> or <code class="language-plaintext highlighter-rouge">"window"</code>
+</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StringHeaderItem</code></td>
+      <td><code class="language-plaintext highlighter-rouge">StringHeaderItem.forString(text)</code></td>
+      <td>the text as it is, without escaping</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MetaDataHeaderItem</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">MetaDataHeaderItem.forMetaTag(name, content)</code>, <code class="language-plaintext highlighter-rouge">forHttpEquiv(httpEquiv, content)</code>, <code class="language-plaintext highlighter-rouge">forLinkTag(rel, href)</code>, or <code class="language-plaintext highlighter-rouge">new MetaDataHeaderItem(tagName).addTagAttribute(name, value)</code>; the factories also take models</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;meta&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;link&gt;</code> with escaped attribute values</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PriorityHeaderItem</code></td>
+      <td><code class="language-plaintext highlighter-rouge">new PriorityHeaderItem(item)</code></td>
+      <td>the wrapped item, moved to the front; see <a href="#rendering-order">Rendering order</a>
+</td>
+      <td>as wrapped item</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">FilteredHeaderItem</code> (package <code class="language-plaintext highlighter-rouge">…head.filter</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">new FilteredHeaderItem(item, filterName)</code></td>
+      <td>the wrapped item, in the bucket named <code class="language-plaintext highlighter-rouge">filterName</code> of a <code class="language-plaintext highlighter-rouge">FilteringHeaderResponse</code>
+</td>
+      <td>as wrapped item</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PageHeaderItem</code></td>
+      <td>created by Wicket</td>
+      <td>the markup inside the page’s own <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>
+</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">MetaDataHeaderItem</code> from <code class="language-plaintext highlighter-rouge">HtmlImportHeaderItem</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">HtmlImportHeaderItem.forImportLinkTag(…)</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;link rel="import"&gt;</code>; browsers no longer support HTML imports</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NoHeaderItem</code></td>
+      <td><code class="language-plaintext highlighter-rouge">NoHeaderItem.get()</code></td>
+      <td>nothing; used by Wicket as a placeholder</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>“Nonce” says whether Wicket adds the Content Security Policy nonce to the rendered tag. The items with a nonce extend <code class="language-plaintext highlighter-rouge">AbstractCspHeaderItem</code>. The default policy blocks scripts and stylesheets without a nonce, so a <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;link rel="stylesheet"&gt;</code> written with <code class="language-plaintext highlighter-rouge">StringHeaderItem</code>, <code class="language-plaintext highlighter-rouge">MetaDataHeaderItem</code> or in markup does not load. See <a href="/docs/csp.html">Configure the Content Security Policy</a>.</p>
+
+<h2 id="options-of-script-and-stylesheet-items">Options of script and stylesheet items</h2>
+
+<p>The reference and URL items have setters that return the item, so they chain after the factory method.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>On</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setDefer(boolean)</code></td>
+      <td>script reference and URL items</td>
+      <td>adds <code class="language-plaintext highlighter-rouge">defer</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setAsync(boolean)</code></td>
+      <td>script reference and URL items</td>
+      <td>adds <code class="language-plaintext highlighter-rouge">async</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setType(JavaScriptReferenceType)</code></td>
+      <td>script reference and URL items</td>
+      <td>sets <code class="language-plaintext highlighter-rouge">type</code>; <code class="language-plaintext highlighter-rouge">JavaScriptReferenceType.MODULE</code> loads an ES module</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setType(JavaScriptContentType)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">JavaScriptContentHeaderItem</code></td>
+      <td>sets <code class="language-plaintext highlighter-rouge">type</code> of an inline script: <code class="language-plaintext highlighter-rouge">JavaScriptBrowserProcessedContentType.MODULE</code>, <code class="language-plaintext highlighter-rouge">IMPORT_MAP</code> or <code class="language-plaintext highlighter-rouge">SPECULATION_RULES</code>, or <code class="language-plaintext highlighter-rouge">new JavaScriptDataBlockType("application/json")</code> for a data block</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setIntegrity(String)</code></td>
+      <td>script and stylesheet reference and URL items</td>
+      <td>adds <code class="language-plaintext highlighter-rouge">integrity</code> for subresource integrity; for a reference item, the default comes from <code class="language-plaintext highlighter-rouge">ResourceReference#getIntegrity()</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setCrossOrigin(CrossOrigin)</code></td>
+      <td>script and stylesheet reference and URL items</td>
+      <td>adds <code class="language-plaintext highlighter-rouge">crossorigin</code>; <code class="language-plaintext highlighter-rouge">CrossOrigin</code> is in <code class="language-plaintext highlighter-rouge">org.apache.wicket.markup.html</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setCharset(String)</code></td>
+      <td>script reference and URL items</td>
+      <td>adds <code class="language-plaintext highlighter-rouge">charset</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setId(String)</code></td>
+      <td>all <code class="language-plaintext highlighter-rouge">CssHeaderItem</code> and <code class="language-plaintext highlighter-rouge">JavaScriptHeaderItem</code> types</td>
+      <td>adds <code class="language-plaintext highlighter-rouge">id</code>; for script items and inline CSS the id also counts in duplicate detection</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setNonce(String)</code></td>
+      <td>items with a nonce</td>
+      <td>sets the nonce; Wicket overwrites it when the Content Security Policy is enabled</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="duplicates">Duplicates</h2>
+
+<p>Wicket renders an item only once per page and per Ajax response. Two items count as the same when they share a render token:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Token</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CSS reference and URL items</td>
+      <td>the URL and the media</td>
+    </tr>
+    <tr>
+      <td>script reference and URL items</td>
+      <td>the URL, and the id if set</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">CssContentHeaderItem</code>, <code class="language-plaintext highlighter-rouge">JavaScriptContentHeaderItem</code>
+</td>
+      <td>the content, and the id if set</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">OnDomReadyHeaderItem</code>, <code class="language-plaintext highlighter-rouge">OnLoadHeaderItem</code>, <code class="language-plaintext highlighter-rouge">OnEventHeaderItem</code>
+</td>
+      <td>the script, and for <code class="language-plaintext highlighter-rouge">OnEventHeaderItem</code> the target and event</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">StringHeaderItem</code>, <code class="language-plaintext highlighter-rouge">PageHeaderItem</code>
+</td>
+      <td>the text</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>An item whose id was already rendered is skipped even if its content differs. A file that a component requests again in an Ajax response is not loaded a second time if the page already has it.</p>
+
+<h2 id="rendering-order">Rendering order</h2>
+
+<p><code class="language-plaintext highlighter-rouge">ResourceAggregator</code> collects the items and writes them in this order:</p>
+
+<ol>
+  <li>
+<code class="language-plaintext highlighter-rouge">PriorityHeaderItem</code>s, those of parent components before those of their children, each with its dependencies.</li>
+  <li>All other items in the order they were rendered, each after its dependencies: items of application-level contributors, items of components from the deepest child up, and the page’s items last. The page’s own <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> markup is a <code class="language-plaintext highlighter-rouge">PageHeaderItem</code> of the page.</li>
+  <li>One inline script that contains the code of all <code class="language-plaintext highlighter-rouge">OnDomReadyHeaderItem</code>s and <code class="language-plaintext highlighter-rouge">OnEventHeaderItem</code>s.</li>
+  <li>One inline script that contains the code of all <code class="language-plaintext highlighter-rouge">OnLoadHeaderItem</code>s.</li>
+</ol>
+
+<p>Members of a resource bundle are replaced by the bundle before sorting. Steps 1 and 2 come from the comparator in <code class="language-plaintext highlighter-rouge">ResourceSettings#setHeaderItemComparator</code>; the default is <code class="language-plaintext highlighter-rouge">new PriorityFirstComparator(false)</code>, and <code class="language-plaintext highlighter-rouge">new PriorityFirstComparator(true)</code> moves the page’s items before those of its components. The content of <code class="language-plaintext highlighter-rouge">&lt;wicket:head&gt;</code> is written as Wicket meets it, outside this order. See <a href="/docs/header-order.html">Control the order of header items</a>.</p>
+
+<p>Without <code class="language-plaintext highlighter-rouge">&lt;wicket:header-items/&gt;</code>, the items fill the whole <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>. With it, they go where the tag stands, between the markup before and after it.</p>
+
+<h2 id="ready-load-and-event-scripts">Ready, load and event scripts</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Full page render</th>
+      <th>Ajax response</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnDomReadyHeaderItem</code></td>
+      <td>combined into one script, run on <code class="language-plaintext highlighter-rouge">domready</code> through <code class="language-plaintext highlighter-rouge">Wicket.Event</code>
+</td>
+      <td>run after the new markup is inserted, before scripts added with <code class="language-plaintext highlighter-rouge">appendJavaScript</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnEventHeaderItem</code></td>
+      <td>combined into the <code class="language-plaintext highlighter-rouge">domready</code> script, which binds the handlers</td>
+      <td>evaluated with the scripts added with <code class="language-plaintext highlighter-rouge">appendJavaScript</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnLoadHeaderItem</code></td>
+      <td>combined into one script, run on the window <code class="language-plaintext highlighter-rouge">load</code> event</td>
+      <td>evaluated with the scripts added with <code class="language-plaintext highlighter-rouge">appendJavaScript</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These three items depend on Wicket’s JavaScript library, <code class="language-plaintext highlighter-rouge">getJavaScriptLibrarySettings().getWicketAjaxReference()</code>, which Wicket renders first. By default that library is built on jQuery, so a page with one of these items also loads jQuery: version 3.7.1.</p>
+
+<h2 id="header-response-decorators">Header response decorators</h2>
+
+<p>A decorator wraps the <code class="language-plaintext highlighter-rouge">IHeaderResponse</code> and changes what happens to items. Register them on <code class="language-plaintext highlighter-rouge">Application#getHeaderResponseDecorators()</code>, a <code class="language-plaintext highlighter-rouge">HeaderResponseDecoratorCollection</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Position of the new decorator</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">add(decorator)</code></td>
+      <td>inside the resource aggregation: it receives items after dependencies, bundles and sorting are applied</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">addPreResourceAggregationDecorator(decorator)</code></td>
+      <td>directly inside the resource aggregation, outside decorators added with <code class="language-plaintext highlighter-rouge">add</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">addPostProcessingDecorator(decorator)</code></td>
+      <td>outside everything registered so far, before resource aggregation</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">replaceAll(decorator)</code></td>
+      <td>replaces all decorators, including the <code class="language-plaintext highlighter-rouge">ResourceAggregator</code>; dependencies and bundles stop working</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Decorators that Wicket provides:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceAggregator</code></td>
+      <td>dependencies, bundles, duplicates and sorting; registered by default</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">CSPNonceHeaderResponseDecorator</code> (package <code class="language-plaintext highlighter-rouge">org.apache.wicket.csp</code>)</td>
+      <td>adds the nonce; registered when the Content Security Policy is enabled</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">FilteringHeaderResponse</code> (package <code class="language-plaintext highlighter-rouge">…head.filter</code>)</td>
+      <td>sorts items into named buckets; items that no filter accepts go into the <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>; renders <code class="language-plaintext highlighter-rouge">FilteredHeaderItem</code>s into their bucket; a <code class="language-plaintext highlighter-rouge">HeaderResponseContainer</code> renders a bucket in the page</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">JavaScriptFilteredIntoFooterHeaderResponse</code> (package <code class="language-plaintext highlighter-rouge">…head.filter</code>)</td>
+      <td>a <code class="language-plaintext highlighter-rouge">FilteringHeaderResponse</code> that sends every script item, including ready, load and event scripts, to one bucket; see <a href="/docs/javascript-in-body.html">Put JavaScript at the end of the body</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">JavaScriptDeferHeaderResponse</code> (package <code class="language-plaintext highlighter-rouge">…head.filter</code>)</td>
+      <td>defers all script reference items and delays inline scripts until they have loaded; marked experimental</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">SubresourceHeaderResponse</code> (package <code class="language-plaintext highlighter-rouge">…head.filter</code>)</td>
+      <td>abstract; calls <code class="language-plaintext highlighter-rouge">configure(ISubresourceHeaderItem)</code> for every script and stylesheet reference item, to set <code class="language-plaintext highlighter-rouge">integrity</code> and <code class="language-plaintext highlighter-rouge">crossorigin</code> in one place</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>During an Ajax request, <code class="language-plaintext highlighter-rouge">FilteringHeaderResponse</code> does not sort into buckets; all items go into the Ajax response.</p>
+
+<h2 id="header-markup-tags">Header markup tags</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;wicket:head&gt;</code></td>
+      <td>in the markup of a panel, border or page: its content goes into the page header, once per component class; inline scripts and styles in it get no nonce</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;wicket:header-items/&gt;</code></td>
+      <td>in the <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> of a page: the place where Wicket writes the header items; at most one per page</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Both are described with the other tags in <a href="/docs/wicket-tags.html">Wicket tags and attributes</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/resources.html">Resources</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/package-resources.html">Serve files from your Java packages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep images, media and other files next to the component that uses them and serve them with PackageResourceReference, from Java or from markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/add-css-javascript.html">Add CSS and JavaScript to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component or behavior add its stylesheets, script files and start-up code to the page header with renderHead and header items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/context-resources.html">Use files from the web application root</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add stylesheets, scripts and images that live in the web application folder, such as src/main/webapp, to your pages with ContextRelativeResourceReference and ContextImage.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-dependencies.html">Declare dependencies between resources</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make a script or stylesheet pull in the libraries it needs by overriding getDependencies, so Wicket always renders them first and only once.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-bundles.html">Combine resources into one bundle</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve several package stylesheets or scripts as one file with ResourceBundles, and replace a resource throughout the application with addResourceReplacement.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/javascript-in-body.html">Put JavaScript at the end of the body</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render all script header items in a container just before the closing body tag with JavaScriptFilteredIntoFooterHeaderResponse and HeaderResponseContainer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/header-order.html">Control the order of header items</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a header item first with PriorityHeaderItem, let the page's own items come before those of its components, and fix where Wicket inserts items with wicket:header-items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/custom-resources.html">Generate a resource in code</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build files on request, such as a CSV export, a PDF or an image, by extending AbstractResource or writing a lambda, and offer them for download with ResourceLink.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/mount-resources.html">Give a resource a URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Mount a resource reference on a path of your choice with mountResource, read path and query parameters in the resource, and link to the mounted URL.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/shared-resources.html">Share a resource across the application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Register a resource once under an application-wide key with getSharedResources and refer to it from any component with SharedResourceReference.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-loading.html">Customize where resources are loaded from</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make Wicket find markup, properties and package files in a folder of the web application or the file system by adding resource finders.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/compress-resources.html">Minify and compress CSS and JavaScript</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve pre-minified .min files, strip JavaScript in deployment mode, plug in your own CSS or JavaScript compressor, and rewrite URLs inside stylesheets with CssUrlReplacer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nio-resources.html">Serve files with NIO</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve files from the file system or from inside a ZIP archive through java.nio.file.Path with FileSystemResourceReference and FileSystemResource, including byte ranges for media.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/model-resources.html">Show images from an external URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render img and source tags whose URL comes from a model with ExternalImage and ExternalSource, for images on another server or a CDN.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Header items</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every header item type with its factory methods, the tag it renders and where it ends up, the rendering order, Ajax behaviour and the header response decorators.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-resources.html">How Wicket serves resources</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What resources and resource references are, why components carry their own CSS and JavaScript, and how Wicket gives every file a cacheable URL.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/header-items.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

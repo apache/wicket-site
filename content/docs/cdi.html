@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Inject CDI beans | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Configure wicket-cdi so pages, components, behaviors and the session get CDI beans with @Inject, and choose beans that survive serialization." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/integration.html">Integration</a></p>
+            <h1>Inject CDI beans</h1>
+            <p class="page-sign-sub">Configure wicket-cdi so pages, components, behaviors and the session get CDI beans with @Inject, and choose beans that survive serialization.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#add-wicket-cdi"><span class="toc-number">1</span> <span class="toc-text">Add wicket-cdi</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#configure-the-application"><span class="toc-number">2</span> <span class="toc-text">Configure the application</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#inject-a-bean"><span class="toc-number">3</span> <span class="toc-text">Inject a bean</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#inject-only-beans-that-survive-serialization"><span class="toc-number">4</span> <span class="toc-text">Inject only beans that survive serialization</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#find-the-beanmanager"><span class="toc-number">5</span> <span class="toc-text">Find the BeanManager</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#keep-a-conversation-across-pages"><span class="toc-number">6</span> <span class="toc-text">Keep a conversation across pages</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use this when your application runs with a CDI container, on a Jakarta EE server or on a servlet container with Weld, and your pages need CDI beans. Module wicket-cdi injects every component, behavior and session that Wicket creates, so fields annotated with <code class="language-plaintext highlighter-rouge">@Inject</code> work as they do in CDI beans.</p>
+
+<p>Wicket 10 is built against CDI 4.0 and tested with Weld 5.</p>
+
+<h2 id="add-wicket-cdi">Add wicket-cdi</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-cdi<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${wicket.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>A Jakarta EE server provides the CDI container. On Tomcat or Jetty, add Weld and start it with its servlet listener in <em>web.xml</em>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.jboss.weld.servlet<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>weld-servlet-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${weld.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;listener&gt;</span>
+    <span class="nt">&lt;listener-class&gt;</span>org.jboss.weld.environment.servlet.Listener<span class="nt">&lt;/listener-class&gt;</span>
+<span class="nt">&lt;/listener&gt;</span>
+</code></pre></div></div>
+
+<p>Mark the jar or war with your beans as a bean archive with a <em>beans.xml</em> in <em>META-INF</em> (or <em>WEB-INF</em> for a war):</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"https://jakarta.ee/xml/ns/jakartaee"</span>
+       <span class="na">version=</span><span class="s">"4.0"</span>
+       <span class="na">bean-discovery-mode=</span><span class="s">"annotated"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h2 id="configure-the-application">Configure the application</h2>
+
+<p>Call <code class="language-plaintext highlighter-rouge">CdiConfiguration.configure()</code> in <code class="language-plaintext highlighter-rouge">init()</code>:</p>
+
+<p><em>WicketApplication.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="k">new</span> <span class="nf">CdiConfiguration</span><span class="o">().</span><span class="na">configure</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>From then on Wicket injects the application itself, every session, every component and every behavior when it is created.</p>
+
+<h2 id="inject-a-bean">Inject a bean</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">@Inject</code>, with qualifiers if you need them:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@ApplicationScoped</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductService</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">Product</span> <span class="nf">find</span><span class="o">(</span><span class="kt">long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span> <span class="cm">/* ... */</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+
+    <span class="nd">@Inject</span>
+    <span class="kd">private</span> <span class="nc">ProductService</span> <span class="n">products</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">ProductPage</span><span class="o">(</span><span class="nc">PageParameters</span> <span class="n">parameters</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">parameters</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">id</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">toLong</span><span class="o">();</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">products</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">id</span><span class="o">).</span><span class="na">getName</span><span class="o">()));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The field is filled in the <code class="language-plaintext highlighter-rouge">Component</code> constructor, so you can use it in the constructor of your page.</p>
+
+<p>To inject an object that Wicket does not create, such as a model, use <code class="language-plaintext highlighter-rouge">NonContextual</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">ProductModel</span><span class="o">(</span><span class="kt">long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="nc">NonContextual</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">inject</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="inject-only-beans-that-survive-serialization">Inject only beans that survive serialization</h2>
+
+<p>Wicket serializes pages, and with them the injected fields. wicket-cdi does not wrap beans in proxies of its own, as the Spring and Guice integrations do. It relies on CDI, which guarantees serializable references only for passivation capable beans:</p>
+
+<ul>
+  <li>beans with a normal scope (<code class="language-plaintext highlighter-rouge">@ApplicationScoped</code>, <code class="language-plaintext highlighter-rouge">@SessionScoped</code>, <code class="language-plaintext highlighter-rouge">@ConversationScoped</code>, <code class="language-plaintext highlighter-rouge">@RequestScoped</code>): CDI injects a serializable client proxy that finds the bean again after deserialization;</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">@Dependent</code> beans that are themselves serializable;</li>
+  <li>stateless and singleton session beans;</li>
+  <li>resources declared through a producer field with <code class="language-plaintext highlighter-rouge">@Resource</code>, <code class="language-plaintext highlighter-rouge">@EJB</code>, <code class="language-plaintext highlighter-rouge">@PersistenceContext</code>, <code class="language-plaintext highlighter-rouge">@PersistenceUnit</code> or <code class="language-plaintext highlighter-rouge">@WebServiceRef</code>;</li>
+  <li>built-in beans such as <code class="language-plaintext highlighter-rouge">BeanManager</code>, <code class="language-plaintext highlighter-rouge">Instance</code> and <code class="language-plaintext highlighter-rouge">Event</code>.</li>
+</ul>
+
+<p>Give services a normal scope, usually <code class="language-plaintext highlighter-rouge">@ApplicationScoped</code>. The container also fills fields annotated with <code class="language-plaintext highlighter-rouge">@EJB</code>, <code class="language-plaintext highlighter-rouge">@PersistenceContext</code> or <code class="language-plaintext highlighter-rouge">@Resource</code> directly, but those references are not guaranteed to be serializable.</p>
+
+<p>For anything else, make the field <code class="language-plaintext highlighter-rouge">transient</code> or keep it out of the component. wicket-cdi does not inject a component again after it is deserialized, so a transient field is <code class="language-plaintext highlighter-rouge">null</code> when the page comes back from the page store, and the component may only use it during the request in which it was constructed.</p>
+
+<h2 id="find-the-beanmanager">Find the BeanManager</h2>
+
+<p>wicket-cdi looks up the <code class="language-plaintext highlighter-rouge">BeanManager</code> in JNDI under <em>java:comp/BeanManager</em>, then under <em>java:comp/env/BeanManager</em>, then through <code class="language-plaintext highlighter-rouge">CDI.current()</code>. When none of these work in your environment, pass it in:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nc">CdiConfiguration</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setBeanManager</span><span class="o">(</span><span class="n">beanManager</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">setFallbackBeanManager()</code> sets one that is used only when every lookup fails.</p>
+
+<h2 id="keep-a-conversation-across-pages">Keep a conversation across pages</h2>
+
+<p>wicket-cdi propagates the CDI conversation from page to page. The <code class="language-plaintext highlighter-rouge">ConversationPropagation</code> mode decides when:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mode</th>
+      <th>The conversation follows</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">NONBOOKMARKABLE</code> (default)</td>
+      <td>Links and redirects to page instances, such as <code class="language-plaintext highlighter-rouge">setResponsePage(new NextPage())</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ALL</code></td>
+      <td>Those and links to bookmarkable pages.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NONE</code></td>
+      <td>Nothing; turn propagation off.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nc">CdiConfiguration</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setPropagation</span><span class="o">(</span><span class="nc">ConversationPropagation</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Start a long-running conversation with <code class="language-plaintext highlighter-rouge">conversation.begin()</code> on an injected <code class="language-plaintext highlighter-rouge">Conversation</code>. To let Wicket begin and end it for you, let a component on the page implement the marker interface <code class="language-plaintext highlighter-rouge">ConversationalComponent</code>: Wicket begins the conversation when such a page renders and ends it when the user reaches a page without one.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/integration.html">Integration</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/spring.html">Inject Spring beans</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Inject beans from a Spring application context into pages, components, behaviors and other objects with @SpringBean.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Inject CDI beans</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Configure wicket-cdi so pages, components, behaviors and the session get CDI beans with @Inject, and choose beans that survive serialization.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ejb.html">Inject EJBs</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Inject session beans, JNDI resources and persistence units into Wicket components with @EJB, @Resource and @PersistenceUnit, through WicketStuff's javaee-inject module.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/jsr330.html">Inject with JSR-330 annotations</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use the standard @Inject and @Named annotations instead of @SpringBean, with the Spring, Guice and CDI integrations.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/karaf.html">Run on Apache Karaf</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install Wicket in Apache Karaf or another OSGi container with the Karaf feature that every Wicket release publishes.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/jmx.html">Inspect and change settings with JMX</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add wicket-jmx to see a running application's settings and session counts in JConsole, clear the markup cache, and change some settings without a restart.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/metrics.html">Measure with Wicket metrics</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Count requests and time component creation, rendering and model loading with the experimental wicket-metrics module, AspectJ and Dropwizard Metrics.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/wicketstuff.html">WicketStuff</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The community modules of the WicketStuff project, what each one adds to Wicket, and how to add one to a Maven build.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/cdi.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

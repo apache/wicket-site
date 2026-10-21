@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>How Wicket serves resources | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="What resources and resource references are, why components carry their own CSS and JavaScript, and how Wicket gives every file a cacheable URL." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/resources.html">Resources</a></p>
+            <h1>How Wicket serves resources</h1>
+            <p class="page-sign-sub">What resources and resource references are, why components carry their own CSS and JavaScript, and how Wicket gives every file a cacheable URL.</p>
+            <p class="guide-plates"><span class="guide-kind">Explanation</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#a-resource-answers-a-request-of-its-own"><span class="toc-number">1</span> <span class="toc-text">A resource answers a request of its own</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#resource-references-name-a-resource"><span class="toc-number">2</span> <span class="toc-text">Resource references name a resource</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#package-resources-make-components-self-contained"><span class="toc-number">3</span> <span class="toc-text">Package resources make components self-contained</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#urls-that-browsers-can-cache-forever"><span class="toc-number">4</span> <span class="toc-text">URLs that browsers can cache forever</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#components-ask-for-what-they-need"><span class="toc-number">5</span> <span class="toc-text">Components ask for what they need</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#resources-and-page-state"><span class="toc-number">6</span> <span class="toc-text">Resources and page state</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>A web page is more than its HTML. The browser also fetches stylesheets, scripts, images and fonts, and an application often hands out files it builds on request: a CSV export, a PDF invoice, a chart. Wicket calls all of these <em>resources</em>, and it serves them through the same request handling that serves pages.</p>
+
+<h2 id="a-resource-answers-a-request-of-its-own">A resource answers a request of its own</h2>
+
+<p>A resource is an object that implements <code class="language-plaintext highlighter-rouge">IResource</code>. That interface has one method, <code class="language-plaintext highlighter-rouge">respond(IResource.Attributes)</code>, and the attributes give the resource the request, the response and the page parameters. Whatever the resource writes to the response is what the browser receives.</p>
+
+<p>Resources come in two flavours, and the difference is only in how much work <code class="language-plaintext highlighter-rouge">respond</code> does:</p>
+
+<ul>
+  <li>A <strong>static</strong> resource sends a file that already exists, such as a stylesheet on the classpath or an image in the web application folder. Wicket ships these as <code class="language-plaintext highlighter-rouge">PackageResource</code>, <code class="language-plaintext highlighter-rouge">ContextRelativeResource</code> and <code class="language-plaintext highlighter-rouge">FileSystemResource</code>.</li>
+  <li>A <strong>dynamic</strong> resource builds its content when the request comes in. <code class="language-plaintext highlighter-rouge">CaptchaImageResource</code> in wicket-extensions draws a new captcha image every time, and an export that writes the rows of a database query is dynamic too. You build these by extending <code class="language-plaintext highlighter-rouge">AbstractResource</code>, see <a href="/docs/custom-resources.html">Generate a resource in code</a>.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">AbstractResource</code> handles the HTTP side for both: content type, <code class="language-plaintext highlighter-rouge">Content-Disposition</code>, <code class="language-plaintext highlighter-rouge">Last-Modified</code>, cache headers and byte ranges for media files. A subclass only describes the response in a <code class="language-plaintext highlighter-rouge">ResourceResponse</code> and supplies the bytes.</p>
+
+<h2 id="resource-references-name-a-resource">Resource references name a resource</h2>
+
+<p>Components rarely hold a resource directly. They hold a <code class="language-plaintext highlighter-rouge">ResourceReference</code>: a small, serializable name for a resource, made of a scope class, a name, and optionally a locale, a style and a variation. The reference creates the actual resource only when it is needed, in <code class="language-plaintext highlighter-rouge">getResource()</code>.</p>
+
+<p>Separating the name from the thing has three effects:</p>
+
+<ul>
+  <li>Wicket can write a URL for a resource while it renders a page, without loading or generating the resource.</li>
+  <li>The URL contains the scope and the name, so a later request for that URL can find the reference again. The application keeps references in its <code class="language-plaintext highlighter-rouge">ResourceReferenceRegistry</code>, and for package files it creates a reference on the fly when a request names one it has not seen yet. A URL for a package resource keeps working after a restart.</li>
+  <li>Pages stay small when they are serialized: a component stores a few strings, not file contents.</li>
+</ul>
+
+<h2 id="package-resources-make-components-self-contained">Package resources make components self-contained</h2>
+
+<p>The usual home for a component’s CSS, JavaScript and images is its own Java package, next to its class and its markup. These are <em>package resources</em>, served through <code class="language-plaintext highlighter-rouge">PackageResourceReference</code> and its subclasses <code class="language-plaintext highlighter-rouge">CssResourceReference</code> and <code class="language-plaintext highlighter-rouge">JavaScriptResourceReference</code>.</p>
+
+<p>When a component brings its own files, using it means adding it to a page and nothing more. Nobody has to know which stylesheet a date picker needs or copy files into the web application folder. The files travel inside the JAR with the class, and a component library is one dependency. See <a href="/docs/package-resources.html">Serve files from your Java packages</a>.</p>
+
+<p>A package also holds class files and configuration that must never reach a browser. The package resource guard decides which files Wicket serves at all; by default only common web file types such as <code class="language-plaintext highlighter-rouge">.css</code>, <code class="language-plaintext highlighter-rouge">.js</code>, <code class="language-plaintext highlighter-rouge">.png</code> and <code class="language-plaintext highlighter-rouge">.woff2</code> pass. See <a href="/docs/package-resource-guard.html">Control which package resources are served</a>.</p>
+
+<h2 id="urls-that-browsers-can-cache-forever">URLs that browsers can cache forever</h2>
+
+<p>The URL of a package resource looks like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./wicket/resource/com.example.CalendarPanel/calendar-ver-1712345678000.css
+</code></pre></div></div>
+
+<p>After the <code class="language-plaintext highlighter-rouge">wicket/resource</code> prefix come the scope class and the file name, and Wicket inserts a version into the file name. In development mode the version is the file’s last-modified time; in deployment mode it is an MD5 digest of the content, computed once. When a request carries the current version, Wicket answers with headers that let browsers and proxies cache the file for a year.</p>
+
+<p>The version makes that long cache safe. A changed file gets a new version and so a new URL, and the browser fetches it on the next page view. You never rename files to break a cache, and a deployment never serves a stale stylesheet. The caching strategy is a setting, <code class="language-plaintext highlighter-rouge">ResourceSettings#setCachingStrategy</code>, if you need a different scheme.</p>
+
+<h2 id="components-ask-for-what-they-need">Components ask for what they need</h2>
+
+<p>A component declares the files it needs in <code class="language-plaintext highlighter-rouge">renderHead(IHeaderResponse)</code>, and a behavior does the same in <code class="language-plaintext highlighter-rouge">renderHead(Component, IHeaderResponse)</code>. They do not write <code class="language-plaintext highlighter-rouge">&lt;link&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> tags; they hand <em>header items</em> to the header response, and Wicket decides what ends up in the page.</p>
+
+<p>Behind the header response sits the <code class="language-plaintext highlighter-rouge">ResourceAggregator</code>. It collects the items of every visible component on the page and then:</p>
+
+<ul>
+  <li>renders each file once, however many components ask for it;</li>
+  <li>renders the dependencies of an item before the item itself, see <a href="/docs/resource-dependencies.html">Declare dependencies between resources</a>;</li>
+  <li>swaps members of a bundle for the bundle, see <a href="/docs/resource-bundles.html">Combine resources into one bundle</a>;</li>
+  <li>sorts the items, with priority items first, see <a href="/docs/header-order.html">Control the order of header items</a>.</li>
+</ul>
+
+<p>Because the header is assembled from items rather than written as text, Wicket can also secure it. Its default Content Security Policy allows only scripts and styles that carry the nonce of the current response, and Wicket adds that nonce to every script and style item it renders. A <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> you type into the markup gets no nonce, and the browser blocks it. That is why the pages in this topic add JavaScript through header items; see <a href="/docs/csp.html">Configure the Content Security Policy</a>. The full list of items is in <a href="/docs/header-items.html">Header items</a>.</p>
+
+<p>During an Ajax request the same mechanism runs for the components being updated. Wicket sends their header items along with the new markup, and the browser loads only the files that the page does not have yet.</p>
+
+<h2 id="resources-and-page-state">Resources and page state</h2>
+
+<p>A URL for a resource reference does not involve a page: Wicket finds the reference by its key and lets the resource respond. Such URLs work on stateless pages and from anywhere, including another site.</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">ResourceLink</code> that you give an <code class="language-plaintext highlighter-rouge">IResource</code> object instead of a reference works differently. The resource is stored in the link, the link’s URL points at the page instance, and the page becomes stateful. Use a reference, a mount or a shared resource when the page must stay stateless; <a href="/docs/stateful-stateless.html">Stateful and stateless pages</a> explains the difference.</p>
+
+<p>A mounted or shared resource is one object for the whole application, used by all users and threads at once. It must not keep state about the current user in its fields; it reads what it needs from the request, the session or a service while it responds.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/resources.html">Resources</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/package-resources.html">Serve files from your Java packages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep images, media and other files next to the component that uses them and serve them with PackageResourceReference, from Java or from markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/add-css-javascript.html">Add CSS and JavaScript to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component or behavior add its stylesheets, script files and start-up code to the page header with renderHead and header items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/context-resources.html">Use files from the web application root</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add stylesheets, scripts and images that live in the web application folder, such as src/main/webapp, to your pages with ContextRelativeResourceReference and ContextImage.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-dependencies.html">Declare dependencies between resources</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make a script or stylesheet pull in the libraries it needs by overriding getDependencies, so Wicket always renders them first and only once.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-bundles.html">Combine resources into one bundle</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve several package stylesheets or scripts as one file with ResourceBundles, and replace a resource throughout the application with addResourceReplacement.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/javascript-in-body.html">Put JavaScript at the end of the body</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render all script header items in a container just before the closing body tag with JavaScriptFilteredIntoFooterHeaderResponse and HeaderResponseContainer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/header-order.html">Control the order of header items</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a header item first with PriorityHeaderItem, let the page's own items come before those of its components, and fix where Wicket inserts items with wicket:header-items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/custom-resources.html">Generate a resource in code</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build files on request, such as a CSV export, a PDF or an image, by extending AbstractResource or writing a lambda, and offer them for download with ResourceLink.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/mount-resources.html">Give a resource a URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Mount a resource reference on a path of your choice with mountResource, read path and query parameters in the resource, and link to the mounted URL.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/shared-resources.html">Share a resource across the application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Register a resource once under an application-wide key with getSharedResources and refer to it from any component with SharedResourceReference.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-loading.html">Customize where resources are loaded from</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make Wicket find markup, properties and package files in a folder of the web application or the file system by adding resource finders.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/compress-resources.html">Minify and compress CSS and JavaScript</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve pre-minified .min files, strip JavaScript in deployment mode, plug in your own CSS or JavaScript compressor, and rewrite URLs inside stylesheets with CssUrlReplacer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nio-resources.html">Serve files with NIO</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve files from the file system or from inside a ZIP archive through java.nio.file.Path with FileSystemResourceReference and FileSystemResource, including byte ranges for media.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/model-resources.html">Show images from an external URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render img and source tags whose URL comes from a model with ExternalImage and ExternalSource, for images on another server or a CDN.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/header-items.html">Header items</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every header item type with its factory methods, the tag it renders and where it ends up, the rendering order, Ajax behaviour and the header response decorators.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">How Wicket serves resources</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What resources and resource references are, why components carry their own CSS and JavaScript, and how Wicket gives every file a cacheable URL.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/about-resources.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

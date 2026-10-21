@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Apache Wicket 7.x | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Apache Wicket, the open source component-oriented Java web framework." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+
+
+    
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items active" aria-current="true">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+<main class="hub" id="main" tabindex="-1">
+    <div class="l-container">
+        <header class="hub-head" id="status">
+            <p class="hub-crumbs"><a href="/versions/">Releases</a></p>
+            <h1>Apache Wicket 7.x</h1>
+            <p class="hub-role">
+                End of life: no more releases, not even security fixes.
+                
+            </p>
+            <dl class="hub-facts">
+                <div>
+<dt>Latest release</dt>
+<dd class="hub-version">7.18.0</dd>
+</div>
+                <div>
+<dt>Status</dt>
+<dd><span class="tag tag-eol">End of life</span></dd>
+</div>
+                <div>
+<dt>Supported</dt>
+<dd>No longer supported</dd>
+</div>
+                
+                
+                <div>
+<dt>Java</dt>
+<dd>7 or newer</dd>
+</div>
+                <div>
+<dt>Servlet API</dt>
+<dd>Servlet 3.0 or newer</dd>
+</div>
+            </dl>
+            
+            <div class="hub-eol" id="upgrade">
+                <p class="hub-eol-title">Wicket 7 gets no more releases, not even security fixes</p>
+                
+                
+                
+                <p>Plan the move to Wicket 10 LTS. It is supported until Jul 2027. Take one major version at a time:</p>
+                
+                <ol class="hub-route">
+                    
+                    <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+8.0" target="_blank" rel="noopener noreferrer">Migrating from Wicket 7 to 8</a></li>
+                    
+                    <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+9.0" target="_blank" rel="noopener noreferrer">Migrating from Wicket 8 to 9</a></li>
+                    
+                    <li>
+<a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+10.0" target="_blank" rel="noopener noreferrer">Migrating from Wicket 9 to 10</a> <span class="tag tag-lts">LTS</span>
+</li>
+                    
+                </ol>
+                
+                
+                <p>For the step to 10, the <a href="/versions/wicket-10.x/#automatic-migration">OpenRewrite recipes of <code>wicket-migration</code></a> do the repetitive part: the <code>jakarta</code> imports, the Java 17 baseline and the moved Wicket classes.</p>
+                <p class="hub-eol-more">The <a href="/versions/#upgrade-paths">upgrade paths</a> explain each step and what changes in Java and the Servlet API. If you need help or more time, <a href="/community/#commercial">companies that offer Wicket support</a> are listed on the wiki.</p>
+            </div>
+            
+            <div class="hub-maven" id="maven">
+                <p class="hub-maven-label"><span>Maven dependency</span><button type="button" class="hub-copy" data-copy="hub-maven-snippet" aria-live="polite">Copy</button></p>
+<div id="hub-maven-snippet">
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- Apache Wicket 7.x: Java 7+, Servlet 3.0+ --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>7.18.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+</div>
+                
+                <p class="hub-maven-more"><a href="#manually">Download the source and binaries</a></p>
+            </div>
+        </header>
+
+
+        <nav class="hub-jump" aria-label="On this page">
+            <ul>
+                <li><a href="#new">New in Wicket 7</a></li>
+                <li><a href="#docs">Documentation</a></li>
+                <li><a href="#news">Blog posts</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#requirements">Requirements</a></li>
+            </ul>
+        </nav>
+
+        
+        <section class="hub-section" id="new">
+            <h2>New in Wicket 7</h2>
+            <ul class="features">
+    <li class="feature">
+        <h3 id="java-7">Java 7</h3>
+        <p>Wicket 7 requires Java 7 and Servlet 3.0.</p>
+
+        <dl class="feature-facts">
+            <div>
+<dt>Java</dt>
+<dd>7</dd>
+</div>
+            <div>
+<dt>Servlet</dt>
+<dd>3.0</dd>
+</div>
+        </dl>
+    </li>
+    <li class="feature">
+        <h3 id="component-queuing">Component queuing</h3>
+        <p><code class="language-plaintext highlighter-rouge">queue()</code> lets the markup decide where a component goes. Queue components in any order, and Wicket nests them the way the markup does, instead of mirroring the markup hierarchy in <code class="language-plaintext highlighter-rouge">add()</code> calls.</p>
+
+        <div class="feature-code route-code">
+<p class="route-file">HomePage.java</p>
+            <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">queue</span><span class="o">(</span><span class="k">new</span> <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"form"</span><span class="o">));</span>
+<span class="n">queue</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="s">"name"</span><span class="o">));</span>
+<span class="n">queue</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"greeting"</span><span class="o">,</span> <span class="s">"Hello"</span><span class="o">));</span>
+</code></pre></div></div>
+
+        </div>
+    </li>
+    <li class="feature">
+        <h3 id="csrf-protection">CSRF protection</h3>
+        <p>Wicket bundles a measure against cross-site request forgery that checks the origin of requests to your pages.</p>
+
+        <div class="feature-code route-code">
+<p class="route-file">WicketApplication.java</p>
+            <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getRequestCycleListeners</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">CsrfPreventionRequestCycleListener</span><span class="o">());</span>
+</code></pre></div></div>
+
+        </div>
+    </li>
+    <li class="feature">
+        <h3 id="inline-images">Inline images</h3>
+        <p>Images can be embedded in the page itself with the <code class="language-plaintext highlighter-rouge">data:</code> protocol, saving a request per image.</p>
+
+    </li>
+</ul>
+
+        </section>
+        
+
+        <section class="hub-section" id="docs">
+            <h2>Documentation</h2>
+            <ul class="hub-panels">
+                <li>
+                    <h3>Docs</h3>
+                    
+                    <p><a href="https://nightlies.apache.org/wicket/guide/7.x/single.html" target="_blank" rel="noopener noreferrer">The reference guide for Wicket 7</a>, as one document.</p>
+                    
+                </li>
+                <li id="migrate">
+                    <h3>Migration guide</h3>
+                    
+                    
+                    
+                    <p><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+8.0" target="_blank" rel="noopener noreferrer">Migrating from Wicket 7 to 8</a>: the next step up.</p>
+                    <p class="hub-panel-alt"><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+7.0" target="_blank" rel="noopener noreferrer">Migrating from Wicket 6 to 7</a></p>
+                    
+                </li>
+                <li>
+                    <h3>API documentation</h3>
+                    
+                    <p><a href="https://nightlies.apache.org/wicket/apidocs/7.x/index.html" target="_blank" rel="noopener noreferrer">Javadoc for Wicket 7</a>: every class, method and setting.</p>
+                    
+                </li>
+            </ul>
+        </section>
+
+        
+        <section class="hub-section" id="news">
+            <h2>Blog posts about Wicket 7</h2>
+            <ul class="post-rows">
+    <li>
+<time datetime="2021-04-06T00:00:00+00:00">6 Apr 2021</time> <span class="post-row-title"><a href="/news/2021/04/06/wicket-7.18.0-released.html">Apache Wicket 7.18.0 released</a></span>
+</li>
+    <li>
+<time datetime="2020-07-20T00:00:00+00:00">20 Jul 2020</time> <span class="post-row-title"><a href="/news/2020/07/20/wicket-7.17.0-released.html">Apache Wicket 7.17.0 released</a></span>
+</li>
+    <li>
+<time datetime="2020-01-08T00:00:00+00:00">8 Jan 2020</time> <span class="post-row-title"><a href="/news/2020/01/08/wicket-7.16.0-released.html">Apache Wicket 7.16.0 released</a></span>
+</li>
+    <li>
+<time datetime="2019-09-07T00:00:00+00:00">7 Sep 2019</time> <span class="post-row-title"><a href="/news/2019/09/07/wicket-7.15.0-released.html">Apache Wicket 7.15.0 released</a></span>
+</li>
+    <li>
+<time datetime="2019-05-28T00:00:00+00:00">28 May 2019</time> <span class="post-row-title"><a href="/news/2019/05/28/wicket-7.14.0-released.html">Apache Wicket 7.14.0 released</a></span>
+</li>
+    <li>
+<time datetime="2019-04-06T00:00:00+00:00">6 Apr 2019</time> <span class="post-row-title"><a href="/news/2019/04/06/wicket-7.13.0-released.html">Apache Wicket 7.13.0 released</a></span>
+</li>
+    <li>
+<time datetime="2019-02-06T00:00:00+00:00">6 Feb 2019</time> <span class="post-row-title"><a href="/news/2019/02/06/wicket-7.12.0-released.html">Apache Wicket 7.12.0 released</a></span>
+</li>
+    <li>
+<time datetime="2018-12-01T00:00:00+00:00">1 Dec 2018</time> <span class="post-row-title"><a href="/news/2018/12/01/wicket-7.11.0-released.html">Apache Wicket 7.11.0 released</a></span>
+</li>
+</ul>
+            <p class="hub-more"><a href="/news/">All posts on the blog</a></p>
+        </section>
+        
+
+        <section class="hub-section hub-body">
+            <h2 id="download">Download</h2>
+
+<h3 id="manually">Source and binaries</h3>
+
+<p>Most projects get Wicket through Maven or Gradle, with the dependency at the top of this page. To build Wicket yourself, or to use it without a build tool, download the source:</p>
+
+<ul>
+  <li>Download source <a href="https://www.apache.org/dyn/closer.cgi/wicket/7.18.0/apache-wicket-7.18.0.tar.gz" target="_blank" rel="noopener noreferrer">apache-wicket-7.18.0.tar.gz</a>
+(<a href="https://www.apache.org/dist/wicket/7.18.0/apache-wicket-7.18.0.tar.gz.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
+<a href="https://www.apache.org/dist/wicket/7.18.0/apache-wicket-7.18.0.tar.gz.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
+)</li>
+  <li>Download source <a href="https://www.apache.org/dyn/closer.cgi/wicket/7.18.0/apache-wicket-7.18.0.zip" target="_blank" rel="noopener noreferrer">apache-wicket-7.18.0.zip</a>
+(<a href="https://www.apache.org/dist/wicket/7.18.0/apache-wicket-7.18.0.zip.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
+<a href="https://www.apache.org/dist/wicket/7.18.0/apache-wicket-7.18.0.zip.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
+)</li>
+</ul>
+
+<p>Or the binaries:</p>
+
+<ul>
+  <li>Download binaries <a href="https://www.apache.org/dyn/closer.cgi/wicket/7.18.0/binaries/apache-wicket-7.18.0-bin.tar.gz" target="_blank" rel="noopener noreferrer">apache-wicket-7.18.0-bin.tar.gz</a>
+(<a href="https://www.apache.org/dist/wicket/7.18.0/binaries/apache-wicket-7.18.0-bin.tar.gz.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
+<a href="https://www.apache.org/dist/wicket/7.18.0/binaries/apache-wicket-7.18.0-bin.tar.gz.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
+)</li>
+  <li>Download binaries <a href="https://www.apache.org/dyn/closer.cgi/wicket/7.18.0/binaries/apache-wicket-7.18.0-bin.zip" target="_blank" rel="noopener noreferrer">apache-wicket-7.18.0-bin.zip</a>
+(<a href="https://www.apache.org/dist/wicket/7.18.0/binaries/apache-wicket-7.18.0-bin.zip.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
+<a href="https://www.apache.org/dist/wicket/7.18.0/binaries/apache-wicket-7.18.0-bin.zip.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
+)</li>
+</ul>
+
+<p>Neither package contains the libraries Wicket depends on; a build tool such as Maven or Gradle brings those in.</p>
+
+<h3 id="verify-a-download">Verify a download</h3>
+
+<p>Check its PGP signature with the keys in the <a href="https://www.apache.org/dist/wicket/KEYS" target="_blank" rel="noopener noreferrer">KEYS file</a>, as the <a href="https://www.apache.org/info/verification.html" target="_blank" rel="noopener noreferrer">ASF explains</a>.</p>
+
+<h3 id="older-releases">Older releases</h3>
+
+<p>The mirrors carry only the latest release of each line in service. Every older release is in <a href="https://archive.apache.org/dist/wicket" target="_blank" rel="noopener noreferrer">the Apache archives</a>.</p>
+
+<h3 id="change-log">Change log</h3>
+
+<p>What changed in each release of this line is in the <a href="https://www.apache.org/dist/wicket/7.18.0/CHANGELOG-7.x" target="_blank" rel="noopener noreferrer">change log</a>.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>The Java and Servlet API versions this line needs are at the <a href="#status">top of the page</a>.
+Some modules need more libraries, such as file upload, date and time APIs or the CDI specification; each module’s POM lists them.</p>
+
+<h3 id="logging">Logging</h3>
+
+<p>Wicket logs through SLF4J, so your application needs an SLF4J implementation on the classpath. The <a href="https://www.slf4j.org/manual.html" target="_blank" rel="noopener noreferrer">SLF4J manual</a> lists them.</p>
+
+<h3 id="dont-mix-wicket-versions">Don’t mix Wicket versions</h3>
+
+<p>Use one Wicket version for every Wicket module in a project: <code class="language-plaintext highlighter-rouge">wicket-core</code>, <code class="language-plaintext highlighter-rouge">wicket-extensions</code>, <code class="language-plaintext highlighter-rouge">wicket-spring</code> and the others are released together and only work with the same version. Libraries built on Wicket are made for one Wicket line; use the version made for yours.</p>
+
+        </section>
+    </div>
+</main>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (button) {
+    button.addEventListener('click', function () {
+        var text = document.getElementById(button.getAttribute('data-copy')).textContent;
+        navigator.clipboard.writeText(text).then(function () {
+            button.textContent = 'Copied';
+            setTimeout(function () { button.textContent = 'Copy'; }, 2000);
+        }).catch(function () {
+            // No clipboard access: select the code, so the reader can copy it themselves.
+            var range = document.createRange();
+            range.selectNodeContents(document.getElementById(button.getAttribute('data-copy')));
+            var selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            button.textContent = 'Selected, copy it';
+            setTimeout(function () { button.textContent = 'Copy'; }, 4000);
+        });
+    });
+});
+</script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Stateful and stateless pages | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Why Wicket keeps pages between requests, how page versions serve the back button, and what a stateless page gives up and gains." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/state.html">Pages and state</a></p>
+            <h1>Stateful and stateless pages</h1>
+            <p class="page-sign-sub">Why Wicket keeps pages between requests, how page versions serve the back button, and what a stateless page gives up and gains.</p>
+            <p class="guide-plates"><span class="guide-kind">Explanation</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#why-wicket-keeps-pages"><span class="toc-number">1</span> <span class="toc-text">Why Wicket keeps pages</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#page-ids-and-versions"><span class="toc-number">2</span> <span class="toc-text">Page ids and versions</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#what-keeping-pages-costs"><span class="toc-number">3</span> <span class="toc-text">What keeping pages costs</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#what-a-stateless-page-gives-up"><span class="toc-number">4</span> <span class="toc-text">What a stateless page gives up</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#how-wicket-decides"><span class="toc-number">5</span> <span class="toc-text">How Wicket decides</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#choosing"><span class="toc-number">6</span> <span class="toc-text">Choosing</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Most web frameworks create a fresh page for every request and throw it away after the response. Wicket can do that too, but by default it keeps the page. A stateful page is a Java object that survives between requests: the user clicks a link on it, and Wicket calls <code class="language-plaintext highlighter-rouge">onClick()</code> on the very <code class="language-plaintext highlighter-rouge">Link</code> object that rendered that link, in the same page, with the same fields and models. A stateless page is created for a request and forgotten afterwards, like a page in most other frameworks.</p>
+
+<h2 id="why-wicket-keeps-pages">Why Wicket keeps pages</h2>
+
+<p>Keeping the page is what lets you program a web page like a desktop screen. A component can hold state in its fields and models, and an event handler can change the component tree, and none of that has to be written into URLs or hidden fields. A <code class="language-plaintext highlighter-rouge">Link</code> needs no parameters to know which row it belongs to: it is a Java object in that row.</p>
+
+<p>The URLs show this. A stateful page renders links like <code class="language-plaintext highlighter-rouge">./orders?3-1.-table-rows-2-delete</code>: page instance 3, render count 1, then the path of the component to call. The request goes back to that instance and that component. A stateless page renders links that carry everything needed to build the page again, such as <code class="language-plaintext highlighter-rouge">./orders?status=open</code>.</p>
+
+<h2 id="page-ids-and-versions">Page ids and versions</h2>
+
+<p>Every stateful page instance gets a page id from the session, the number after the <code class="language-plaintext highlighter-rouge">?</code> in its URL. When a request changes a stateful page, for example by replacing a component, adding one, or changing a model through <code class="language-plaintext highlighter-rouge">setDefaultModelObject()</code>, Wicket gives the page a new id before rendering it. The previous state stays in the store under the old id.</p>
+
+<p>That is what makes the back button work. The browser goes back to the URL with the old id, and Wicket renders the page as it was then, not as it is now. A click on that old page acts on the old version. Without versions, the back button would show a page whose components no longer match what the server holds.</p>
+
+<p>Versioning can be switched off per page with <code class="language-plaintext highlighter-rouge">setVersioned(false)</code>, or for all pages with <code class="language-plaintext highlighter-rouge">PageSettings.setVersionPagesByDefault(false)</code>. The page then keeps one id for its whole life, and the back button shows the current state.</p>
+
+<p><code class="language-plaintext highlighter-rouge">getPageReference()</code> returns a <code class="language-plaintext highlighter-rouge">PageReference</code> that can fetch the page instance later, for example to return to the calling page after an edit. Asking for a reference makes the page stateful.</p>
+
+<h2 id="what-keeping-pages-costs">What keeping pages costs</h2>
+
+<p>A stateful page lives in the user’s HTTP session and in the page store. Wicket creates the session the first time it has to store a page. From then on:</p>
+
+<ul>
+  <li>Every object reachable from the page is serialized after each request. Components, models and their objects must be serializable, and large objects make every request slower. <a href="/docs/about-models.html">Models and component data</a> explains how detachable models keep pages small.</li>
+  <li>Memory and disk grow with the number of users and the pages they open. Every version goes to disk, up to a size limit per session, and the last page used also stays in the session. <a href="/docs/page-storage.html">How pages are stored</a> describes the layers.</li>
+  <li>A page can disappear: the session expires, or the store drops old versions when the limit is reached. A request for it then ends in a <code class="language-plaintext highlighter-rouge">PageExpiredException</code> and the page-expired error page. For a bookmarkable page, Wicket creates a new instance from the URL instead (<code class="language-plaintext highlighter-rouge">PageSettings.setRecreateBookmarkablePagesAfterExpiry</code>, on by default), but the old instance’s state is gone and a click on a component of it is not executed.</li>
+  <li>In a cluster, the session must reach the node that handles the next request, through sticky sessions or session replication.</li>
+  <li>Every visitor of a stateful page gets a session, including search engine crawlers.</li>
+</ul>
+
+<h2 id="what-a-stateless-page-gives-up">What a stateless page gives up</h2>
+
+<p>A stateless page needs no session and can be cached and shared like any other URL. In exchange, nothing survives the response. Wicket has to be able to create the page again for every request, from its class and its <code class="language-plaintext highlighter-rouge">PageParameters</code>, so the page must be bookmarkable: a public constructor without arguments or with a single <code class="language-plaintext highlighter-rouge">PageParameters</code> argument. Anything the page needs must come from the URL, a cookie, the session or the database.</p>
+
+<p>The components that normally keep state have stateless versions with the same limitation. A <code class="language-plaintext highlighter-rouge">StatelessLink</code> or <code class="language-plaintext highlighter-rouge">StatelessForm</code> makes Wicket create a new page instance when it is clicked or submitted, run the handler on the new instance, and render that. Ajax behaviors can be stateless too, as described in <a href="/docs/stateless-ajax.html">Use Ajax on stateless pages</a>.</p>
+
+<h2 id="how-wicket-decides">How Wicket decides</h2>
+
+<p>You do not declare a page stateful or stateless; Wicket works it out before rendering. <code class="language-plaintext highlighter-rouge">Page.isPageStateless()</code> returns <code class="language-plaintext highlighter-rouge">true</code> when:</p>
+
+<ul>
+  <li>the page class is bookmarkable,</li>
+  <li>the page’s stateless hint is not switched off, and</li>
+  <li>every visible and enabled component on the page, and every behavior on those components, reports that it is stateless.</li>
+</ul>
+
+<p>One <code class="language-plaintext highlighter-rouge">Link</code>, <code class="language-plaintext highlighter-rouge">Form</code> or Ajax behavior anywhere on the page makes the whole page stateful. A hidden or disabled one does not count, since it renders no callback. Because a single component can change the outcome, pages tend to turn stateful by accident; <a href="/docs/keep-stateless.html">Keep a page stateless</a> shows how to check.</p>
+
+<p>A session exists for stateless requests too, but it is temporary: Wicket creates it for the request and drops it at the end, unless something binds it. <a href="/docs/use-session.html#temporary-and-permanent-sessions">Keep data in the session</a> describes when that happens.</p>
+
+<h2 id="choosing">Choosing</h2>
+
+<p>Make pages stateless that are public, visited by many people who do not log in, or meant to be bookmarked and shared: the home page, product pages, search results, the login page. Their state fits in the URL, and a session per visitor would be waste.</p>
+
+<p>Let pages be stateful when they behave like an application: multi-step forms, editors, pages with Ajax interaction, anything behind a login. That is where the programming model pays off, and the user has a session anyway.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/state.html">Pages and state</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/keep-stateless.html">Keep a page stateless</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a page that Wicket does not store in the session, find the component that makes it stateful, and guard it with a test.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/configure-page-store.html">Configure the page store</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Change how much page history Wicket keeps per session and where, encrypt stored pages, or replace the disk store with another store.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-session.html">Keep data in the session</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Store per-user data in a typed Wicket session, in session attributes or as metadata, control when the session is created, and end it on logout.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Stateful and stateless pages</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why Wicket keeps pages between requests, how page versions serve the back button, and what a stateless page gives up and gains.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-storage.html">How pages are stored</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket finds the page for a request, and the chain of stores that keeps stateful pages in the request, the session and on disk.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/stateful-stateless.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

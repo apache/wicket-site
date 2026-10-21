@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Repeat markup with RepeatingView | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Render a tag once for every child you add in code, for menus, button bars and other short lists you build in the constructor." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/repeaters.html">Lists and tables</a></p>
+            <h1>Repeat markup with RepeatingView</h1>
+            <p class="page-sign-sub">Render a tag once for every child you add in code, for menus, button bars and other short lists you build in the constructor.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#repeat-a-single-tag"><span class="toc-number">1</span> <span class="toc-text">Repeat a single tag</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#repeat-a-fragment-with-components-inside"><span class="toc-number">2</span> <span class="toc-text">Repeat a fragment with components inside</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#change-the-items-later"><span class="toc-number">3</span> <span class="toc-text">Change the items later</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use <code class="language-plaintext highlighter-rouge">RepeatingView</code> when you build a small, fixed set of items in code: a menu, a row of buttons, a set of badges. You add one child per item, and each child renders with the repeater’s tag. For items that come from a list or a database, use <a href="/docs/list-items.html">ListView</a> or a <a href="/docs/paginate-data.html">data view</a>, which build the children for you.</p>
+
+<h2 id="repeat-a-single-tag">Repeat a single tag</h2>
+
+<p>Attach the repeater to the tag to repeat, and add children with ids from <code class="language-plaintext highlighter-rouge">newChildId()</code>:</p>
+
+<p><em>HomePage.html</em></p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">wicket:id=</span><span class="s">"colors"</span><span class="nt">&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></div></div>
+
+<p><em>HomePage.java</em></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">RepeatingView</span> <span class="n">colors</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RepeatingView</span><span class="o">(</span><span class="s">"colors"</span><span class="o">);</span>
+<span class="n">colors</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="n">colors</span><span class="o">.</span><span class="na">newChildId</span><span class="o">(),</span> <span class="s">"green"</span><span class="o">));</span>
+<span class="n">colors</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="n">colors</span><span class="o">.</span><span class="na">newChildId</span><span class="o">(),</span> <span class="s">"blue"</span><span class="o">));</span>
+<span class="n">colors</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="n">colors</span><span class="o">.</span><span class="na">newChildId</span><span class="o">(),</span> <span class="s">"red"</span><span class="o">));</span>
+<span class="n">add</span><span class="o">(</span><span class="n">colors</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Output:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;</span>green<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>blue<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>red<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></div></div>
+
+<p>The repeater itself writes no tag. Each child renders with the repeater’s markup, <code class="language-plaintext highlighter-rouge">&lt;li wicket:id="colors"&gt;</code>, as if it were its own. The ids only need to be unique within the repeater; <code class="language-plaintext highlighter-rouge">newChildId()</code> returns a new number each time.</p>
+
+<h2 id="repeat-a-fragment-with-components-inside">Repeat a fragment with components inside</h2>
+
+<p>When the repeated markup contains components, make each child a <code class="language-plaintext highlighter-rouge">WebMarkupContainer</code> and add the inner components to it:</p>
+
+<p><em>BasePage.html</em></p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;nav&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">"menu"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"label"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+</code></pre></div></div>
+
+<p><em>BasePage.java</em></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">BasePage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">RepeatingView</span> <span class="n">menu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RepeatingView</span><span class="o">(</span><span class="s">"menu"</span><span class="o">);</span>
+    <span class="n">addMenuItem</span><span class="o">(</span><span class="n">menu</span><span class="o">,</span> <span class="s">"Home"</span><span class="o">,</span> <span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">addMenuItem</span><span class="o">(</span><span class="n">menu</span><span class="o">,</span> <span class="s">"Orders"</span><span class="o">,</span> <span class="nc">OrdersPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">addMenuItem</span><span class="o">(</span><span class="n">menu</span><span class="o">,</span> <span class="s">"Settings"</span><span class="o">,</span> <span class="nc">SettingsPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">add</span><span class="o">(</span><span class="n">menu</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addMenuItem</span><span class="o">(</span><span class="nc">RepeatingView</span> <span class="n">menu</span><span class="o">,</span> <span class="nc">String</span> <span class="n">label</span><span class="o">,</span>
+        <span class="nc">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">Page</span><span class="o">&gt;</span> <span class="n">page</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">BookmarkablePageLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;</span> <span class="n">link</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BookmarkablePageLink</span><span class="o">&lt;&gt;(</span><span class="n">menu</span><span class="o">.</span><span class="na">newChildId</span><span class="o">(),</span> <span class="n">page</span><span class="o">);</span>
+    <span class="n">link</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"label"</span><span class="o">,</span> <span class="n">label</span><span class="o">));</span>
+    <span class="n">menu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">link</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Here the child is a link, which is itself a container. Any <code class="language-plaintext highlighter-rouge">MarkupContainer</code> can serve as the child, including a <code class="language-plaintext highlighter-rouge">Panel</code> or a <code class="language-plaintext highlighter-rouge">Fragment</code> when the items need different markup.</p>
+
+<h2 id="change-the-items-later">Change the items later</h2>
+
+<p><code class="language-plaintext highlighter-rouge">RepeatingView</code> keeps its children until you change them. It does not rebuild them when it renders, so the items stay as you added them for the life of the page. To change the list, call <code class="language-plaintext highlighter-rouge">removeAll()</code>, <code class="language-plaintext highlighter-rouge">remove(component)</code> or <code class="language-plaintext highlighter-rouge">add(component)</code>, for example in an event handler.</p>
+
+<p>When the items depend on data that changes between requests, rebuilding them yourself gets tedious. A <code class="language-plaintext highlighter-rouge">ListView</code> or <code class="language-plaintext highlighter-rouge">RefreshingView</code> rebuilds its items on every render by default; see <a href="/docs/repeaters.html">Repeaters</a> for how each repeater treats its items.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/repeaters.html">Lists and tables</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Repeat markup with RepeatingView</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render a tag once for every child you add in code, for menus, button bars and other short lists you build in the constructor.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/list-items.html">Show a list with ListView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render markup for every element of a java.util.List, keep form input in the rows, and avoid the pitfalls of index-based items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/refreshing-view.html">Control how items are reused with RefreshingView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build repeater items from models you supply, and keep an item's components across renders as long as its model stays in the list.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/paginate-data.html">Page through data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Load one page of rows at a time with an IDataProvider, show them in a DataView or DataTable, and let users move between pages.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/repeaters.html">Repeaters</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The repeaters of wicket-core and wicket-extensions compared, what each needs and when it re-creates items, plus data providers, navigators and table parts.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/repeat-markup.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

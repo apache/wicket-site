@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Form components | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Every form, input, choice, upload and submit component in wicket-core and wicket-extensions, with the markup tag it needs and the type of its model." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/forms.html">Forms</a></p>
+            <h1>Form components</h1>
+            <p class="page-sign-sub">Every form, input, choice, upload and submit component in wicket-core and wicket-extensions, with the markup tag it needs and the type of its model.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#forms"><span class="toc-number">1</span> <span class="toc-text">Forms</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#text-input"><span class="toc-number">2</span> <span class="toc-text">Text input</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#dates-and-times"><span class="toc-number">3</span> <span class="toc-text">Dates and times</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#choices"><span class="toc-number">4</span> <span class="toc-text">Choices</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#checkboxes-and-radio-buttons"><span class="toc-number">5</span> <span class="toc-text">Checkboxes and radio buttons</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#file-uploads"><span class="toc-number">6</span> <span class="toc-text">File uploads</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#submitting"><span class="toc-number">7</span> <span class="toc-text">Submitting</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#composite-components"><span class="toc-number">8</span> <span class="toc-text">Composite components</span></a></li>
+<li class="toc--level-1 toc--section-9"><a href="#labels-and-feedback"><span class="toc-number">9</span> <span class="toc-text">Labels and feedback</span></a></li>
+<li class="toc--level-1 toc--section-10"><a href="#methods-on-every-form-component"><span class="toc-number">10</span> <span class="toc-text">Methods on every form component</span></a></li>
+<li class="toc--level-1 toc--section-11"><a href="#html-attributes-rendered-from-java"><span class="toc-number">11</span> <span class="toc-text">HTML attributes rendered from Java</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>All form components extend <code class="language-plaintext highlighter-rouge">FormComponent</code> and must be inside a <code class="language-plaintext highlighter-rouge">Form</code>, except where noted. A component checks its tag when it renders and throws a <code class="language-plaintext highlighter-rouge">MarkupException</code> if the tag or its <code class="language-plaintext highlighter-rouge">type</code> attribute does not match. “Any” means any tag that can have a body, such as <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code>.</p>
+
+<p>Packages: wicket-core components are in <code class="language-plaintext highlighter-rouge">org.apache.wicket.markup.html.form</code> (uploads in its <code class="language-plaintext highlighter-rouge">upload</code> subpackage, Ajax buttons in <code class="language-plaintext highlighter-rouge">org.apache.wicket.ajax.markup.html.form</code>). wicket-extensions components are in <code class="language-plaintext highlighter-rouge">org.apache.wicket.extensions.markup.html.form</code> and its subpackages, and <code class="language-plaintext highlighter-rouge">UploadProgressBar</code> in <code class="language-plaintext highlighter-rouge">org.apache.wicket.extensions.ajax.markup.html.form.upload</code>.</p>
+
+<h2 id="forms">Forms</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Module</th>
+      <th>Tag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Form</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;form&gt;</code></td>
+      <td>Processes its components on submit. A nested <code class="language-plaintext highlighter-rouge">Form</code> renders as <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StatelessForm</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;form&gt;</code></td>
+      <td>A <code class="language-plaintext highlighter-rouge">Form</code> that keeps its page stateless.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="text-input">Text input</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Module</th>
+      <th>Tag</th>
+      <th>Model object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TextField</code></td>
+      <td>core</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> with <code class="language-plaintext highlighter-rouge">type</code> <code class="language-plaintext highlighter-rouge">text</code>, <code class="language-plaintext highlighter-rouge">search</code> or no type</td>
+      <td>any type with a converter</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RequiredTextField</code></td>
+      <td>core</td>
+      <td>as <code class="language-plaintext highlighter-rouge">TextField</code>
+</td>
+      <td>as <code class="language-plaintext highlighter-rouge">TextField</code>; required from the start</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PasswordTextField</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="password"&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">String</code>; required by default, model set to <code class="language-plaintext highlighter-rouge">null</code> after each request</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HiddenField</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="hidden"&gt;</code></td>
+      <td>any type with a converter</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EmailTextField</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="email"&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">String</code>; has an <code class="language-plaintext highlighter-rouge">EmailAddressValidator</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UrlTextField</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="url"&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">String</code>; has a <code class="language-plaintext highlighter-rouge">UrlValidator</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NumberTextField</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="number"&gt;</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">Number</code>; renders <code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">max</code> and <code class="language-plaintext highlighter-rouge">step</code> from <code class="language-plaintext highlighter-rouge">setMinimum</code>, <code class="language-plaintext highlighter-rouge">setMaximum</code>, <code class="language-plaintext highlighter-rouge">setStep</code> and validates the range</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RangeTextField</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="range"&gt;</code></td>
+      <td>as <code class="language-plaintext highlighter-rouge">NumberTextField</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TextArea</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code></td>
+      <td>any type with a converter</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="dates-and-times">Dates and times</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Module</th>
+      <th>Tag</th>
+      <th>Model object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DateTextField</code></td>
+      <td>extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> with <code class="language-plaintext highlighter-rouge">type</code> <code class="language-plaintext highlighter-rouge">text</code>, <code class="language-plaintext highlighter-rouge">date</code>, <code class="language-plaintext highlighter-rouge">datetime</code>, <code class="language-plaintext highlighter-rouge">datetime-local</code>, <code class="language-plaintext highlighter-rouge">month</code>, <code class="language-plaintext highlighter-rouge">time</code> or <code class="language-plaintext highlighter-rouge">week</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">java.util.Date</code>; pattern from the constructor, <code class="language-plaintext highlighter-rouge">MM/dd/yyyy</code> by default</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LocalDateTextField</code></td>
+      <td>extensions</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="text"&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">LocalDate</code>; pattern or <code class="language-plaintext highlighter-rouge">FormatStyle</code> from the constructor</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LocalDateTimeTextField</code></td>
+      <td>extensions</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="text"&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">LocalDateTime</code>; pattern or date and time <code class="language-plaintext highlighter-rouge">FormatStyle</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LocalTimeTextField</code></td>
+      <td>extensions</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="text"&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">LocalTime</code>; pattern or <code class="language-plaintext highlighter-rouge">FormatStyle</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TimeField</code></td>
+      <td>extensions</td>
+      <td>any</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">LocalTime</code>; a panel with hours, minutes and, when the locale uses a 12-hour clock, an AM/PM choice</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LocalDateTimeField</code></td>
+      <td>extensions</td>
+      <td>any</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">LocalDateTime</code>; a panel with a date field and a <code class="language-plaintext highlighter-rouge">TimeField</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ZonedDateTimeField</code></td>
+      <td>extensions</td>
+      <td>any</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">ZonedDateTime</code>; as <code class="language-plaintext highlighter-rouge">LocalDateTimeField</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="choices">Choices</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Module</th>
+      <th>Tag</th>
+      <th>Model object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DropDownChoice</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;select&gt;</code></td>
+      <td>one choice</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GroupedDropDownChoice</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;select&gt;</code></td>
+      <td>one choice; abstract, renders <code class="language-plaintext highlighter-rouge">&lt;optgroup&gt;</code> elements</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ListChoice</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;select&gt;</code></td>
+      <td>one choice; renders a <code class="language-plaintext highlighter-rouge">size</code> from <code class="language-plaintext highlighter-rouge">setMaxRows</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ListMultipleChoice</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;select&gt;</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">Collection</code> of choices; adds <code class="language-plaintext highlighter-rouge">multiple</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RadioChoice</code></td>
+      <td>core</td>
+      <td>any</td>
+      <td>one choice; renders a radio button and label per choice</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CheckBoxMultipleChoice</code></td>
+      <td>core</td>
+      <td>any</td>
+      <td>a <code class="language-plaintext highlighter-rouge">Collection</code> of choices; renders a checkbox and label per choice</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Palette</code></td>
+      <td>extensions</td>
+      <td>any</td>
+      <td>a <code class="language-plaintext highlighter-rouge">Collection</code> of choices; two lists with buttons to move choices between them</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Select</code></td>
+      <td>extensions</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;select&gt;</code></td>
+      <td>one value, or a <code class="language-plaintext highlighter-rouge">Collection</code> with <code class="language-plaintext highlighter-rouge">multiple</code>; options come from <code class="language-plaintext highlighter-rouge">SelectOption</code> or <code class="language-plaintext highlighter-rouge">SelectOptions</code> children</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The choice components take their choices as a <code class="language-plaintext highlighter-rouge">List</code> or an <code class="language-plaintext highlighter-rouge">IModel</code> of a <code class="language-plaintext highlighter-rouge">List</code>, and an <code class="language-plaintext highlighter-rouge">IChoiceRenderer</code> for the option text and id: <code class="language-plaintext highlighter-rouge">ChoiceRenderer</code>, <code class="language-plaintext highlighter-rouge">LambdaChoiceRenderer</code> or <code class="language-plaintext highlighter-rouge">EnumChoiceRenderer</code>.</p>
+
+<h2 id="checkboxes-and-radio-buttons">Checkboxes and radio buttons</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Module</th>
+      <th>Tag</th>
+      <th>Model object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CheckBox</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="checkbox"&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Boolean</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RadioGroup</code></td>
+      <td>core</td>
+      <td>any</td>
+      <td>the value of the selected <code class="language-plaintext highlighter-rouge">Radio</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Radio</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="radio"&gt;</code></td>
+      <td>the value it stands for; must be inside a <code class="language-plaintext highlighter-rouge">RadioGroup</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CheckGroup</code></td>
+      <td>core</td>
+      <td>any</td>
+      <td>a <code class="language-plaintext highlighter-rouge">Collection</code> of the values of the ticked <code class="language-plaintext highlighter-rouge">Check</code> components</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Check</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="checkbox"&gt;</code></td>
+      <td>the value it stands for; must be inside a <code class="language-plaintext highlighter-rouge">CheckGroup</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CheckBoxSelector</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="checkbox"&gt;</code></td>
+      <td>none; ticks or clears a set of <code class="language-plaintext highlighter-rouge">CheckBox</code> components</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CheckGroupSelector</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="checkbox"&gt;</code></td>
+      <td>none; ticks or clears the <code class="language-plaintext highlighter-rouge">Check</code> components of a <code class="language-plaintext highlighter-rouge">CheckGroup</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CheckboxMultipleChoiceSelector</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="checkbox"&gt;</code></td>
+      <td>none; ticks or clears the boxes of a <code class="language-plaintext highlighter-rouge">CheckBoxMultipleChoice</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">Radio</code>, <code class="language-plaintext highlighter-rouge">Check</code> and the selectors are not form components themselves.</p>
+
+<h2 id="file-uploads">File uploads</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Module</th>
+      <th>Tag</th>
+      <th>Model object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FileUploadField</code></td>
+      <td>core</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;input type="file"&gt;</code>, optionally <code class="language-plaintext highlighter-rouge">multiple</code>
+</td>
+      <td>a <code class="language-plaintext highlighter-rouge">List</code> of <code class="language-plaintext highlighter-rouge">FileUpload</code>; switches the form to multipart</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MultiFileUploadField</code></td>
+      <td>core</td>
+      <td>any</td>
+      <td>a <code class="language-plaintext highlighter-rouge">Collection</code> of <code class="language-plaintext highlighter-rouge">FileUpload</code>; lets the user add and remove files before submitting</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FileUploadToResourceField</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="file"&gt;</code></td>
+      <td>uploads to a mounted resource with Ajax and does not need a form</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UploadProgressBar</code></td>
+      <td>extensions</td>
+      <td>any</td>
+      <td>none; shows the progress of an upload when <code class="language-plaintext highlighter-rouge">setUploadProgressUpdatesEnabled(true)</code> is set</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="submitting">Submitting</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Module</th>
+      <th>Tag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Button</code></td>
+      <td>core</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;button&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;input type="submit"&gt;</code>
+</td>
+      <td>Submits its form; the model sets the text</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ImageButton</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;input type="image"&gt;</code></td>
+      <td>A <code class="language-plaintext highlighter-rouge">Button</code> that shows an image</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SubmitLink</code></td>
+      <td>core</td>
+      <td>any clickable tag, usually <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>
+</td>
+      <td>Submits with JavaScript; can be outside the form when the form is passed to it</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxButton</code></td>
+      <td>core</td>
+      <td>as <code class="language-plaintext highlighter-rouge">Button</code>
+</td>
+      <td>Submits with Ajax</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxSubmitLink</code></td>
+      <td>core</td>
+      <td>as <code class="language-plaintext highlighter-rouge">SubmitLink</code>
+</td>
+      <td>Submits with Ajax</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxFallbackButton</code></td>
+      <td>core</td>
+      <td>as <code class="language-plaintext highlighter-rouge">Button</code>
+</td>
+      <td>Submits with Ajax, or with a normal request when JavaScript is off</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>All of them implement <code class="language-plaintext highlighter-rouge">IFormSubmittingComponent</code>, with <code class="language-plaintext highlighter-rouge">onSubmit()</code>, <code class="language-plaintext highlighter-rouge">onAfterSubmit()</code>, <code class="language-plaintext highlighter-rouge">onError()</code> and <code class="language-plaintext highlighter-rouge">setDefaultFormProcessing(boolean)</code>. In <code class="language-plaintext highlighter-rouge">AjaxButton</code> and <code class="language-plaintext highlighter-rouge">AjaxSubmitLink</code> you override <code class="language-plaintext highlighter-rouge">onSubmit(AjaxRequestTarget)</code> and <code class="language-plaintext highlighter-rouge">onError(AjaxRequestTarget)</code> instead; <code class="language-plaintext highlighter-rouge">AjaxFallbackButton</code> passes an <code class="language-plaintext highlighter-rouge">Optional&lt;AjaxRequestTarget&gt;</code>.</p>
+
+<h2 id="composite-components">Composite components</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Module</th>
+      <th>Tag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FormComponentPanel</code></td>
+      <td>core</td>
+      <td>any; markup in <code class="language-plaintext highlighter-rouge">&lt;wicket:panel&gt;</code>
+</td>
+      <td>Base class for a form component made of other form components</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="labels-and-feedback">Labels and feedback</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component or tag</th>
+      <th>Module</th>
+      <th>Tag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">wicket:for</code> attribute</td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;label&gt;</code></td>
+      <td>Points the label at a form component, adds the classes <code class="language-plaintext highlighter-rouge">required</code>, <code class="language-plaintext highlighter-rouge">error</code> and <code class="language-plaintext highlighter-rouge">disabled</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;wicket:label&gt;</code></td>
+      <td>core</td>
+      <td>-</td>
+      <td>Writes the label of a form component, or sets it from its body or <code class="language-plaintext highlighter-rouge">key</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FormComponentLabel</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;label&gt;</code></td>
+      <td>A label component for a form component</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SimpleFormComponentLabel</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;label&gt;</code></td>
+      <td>A <code class="language-plaintext highlighter-rouge">FormComponentLabel</code> that writes the component’s label as its body</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FeedbackPanel</code></td>
+      <td>core</td>
+      <td>any</td>
+      <td>Lists feedback messages, optionally filtered</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FencedFeedbackPanel</code></td>
+      <td>core</td>
+      <td>any</td>
+      <td>Lists the messages from inside one container, without those of nested fences</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ComponentFeedbackPanel</code></td>
+      <td>core</td>
+      <td>any</td>
+      <td>Lists the messages of one component</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FormComponentFeedbackBorder</code></td>
+      <td>core</td>
+      <td>any</td>
+      <td>A border that shows a <code class="language-plaintext highlighter-rouge">*</code> when its child has an error</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FormComponentFeedbackIndicator</code></td>
+      <td>core</td>
+      <td>any</td>
+      <td>Shows a <code class="language-plaintext highlighter-rouge">*</code> when a given component has an error</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="methods-on-every-form-component">Methods on every form component</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setRequired(boolean)</code></td>
+      <td>An empty input fails with the <code class="language-plaintext highlighter-rouge">Required</code> message</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setLabel(IModel&lt;String&gt;)</code></td>
+      <td>The name used for <code class="language-plaintext highlighter-rouge">${label}</code> in messages and by <code class="language-plaintext highlighter-rouge">&lt;wicket:label&gt;</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">add(IValidator...)</code></td>
+      <td>Adds validators, run in order after conversion</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setType(Class)</code></td>
+      <td>The type the input is converted to</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getInput()</code></td>
+      <td>The input as submitted in this request</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getConvertedInput()</code></td>
+      <td>The converted input, after conversion succeeded</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getValue()</code></td>
+      <td>The value the component renders: the raw input after a failed submit, otherwise the model value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isValid()</code></td>
+      <td>Whether the component has no error messages</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">processInput()</code></td>
+      <td>Runs required check, conversion, validation and model update for this component only</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="html-attributes-rendered-from-java">HTML attributes rendered from Java</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Attribute</th>
+      <th>When</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">TextField</code>, <code class="language-plaintext highlighter-rouge">TextArea</code> and subclasses</td>
+      <td><code class="language-plaintext highlighter-rouge">required</code></td>
+      <td>the component is required and has the <code class="language-plaintext highlighter-rouge">HTML5Attributes</code> behavior</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">TextField</code>, <code class="language-plaintext highlighter-rouge">TextArea</code> and subclasses</td>
+      <td><code class="language-plaintext highlighter-rouge">placeholder</code></td>
+      <td>the component has a label and the <code class="language-plaintext highlighter-rouge">HTML5Attributes</code> behavior</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">TextField</code>, <code class="language-plaintext highlighter-rouge">TextArea</code> and subclasses</td>
+      <td><code class="language-plaintext highlighter-rouge">pattern</code></td>
+      <td>the component has a <code class="language-plaintext highlighter-rouge">PatternValidator</code> and the <code class="language-plaintext highlighter-rouge">HTML5Attributes</code> behavior</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Button</code></td>
+      <td><code class="language-plaintext highlighter-rouge">formnovalidate</code></td>
+      <td>default form processing is off and the button has the <code class="language-plaintext highlighter-rouge">HTML5Attributes</code> behavior</td>
+    </tr>
+    <tr>
+      <td>any with a <code class="language-plaintext highlighter-rouge">StringValidator</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">maxlength</code>, <code class="language-plaintext highlighter-rouge">minlength</code>
+</td>
+      <td>on <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code>
+</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">NumberTextField</code>, <code class="language-plaintext highlighter-rouge">RangeTextField</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">step</code>
+</td>
+      <td>the values are set</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">HTML5Attributes.InstantiationListener</code> adds the behavior to every form component.</p>
+
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/forms.html">Forms</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/validate-input.html">Validate input and show errors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make fields required, check their values with validators, show the error messages and change their text.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/convert-input.html">Convert input to your types</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Tell a field which type its input becomes, write a converter for your own type and register it for one field or the whole application.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bean-validation.html">Validate with Bean Validation</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Check form input against the Jakarta Bean Validation annotations on your domain classes with the wicket-bean-validation module.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/dropdown-choice.html">Let the user pick from a list</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show a drop-down list with DropDownChoice, render objects and enums as options, and control the empty "Choose One" option.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/checkboxes-radios.html">Use checkboxes and radio buttons</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Bind a checkbox to a boolean, let the user tick several options or pick one with radio buttons, and add a "select all" checkbox.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/select-multiple.html">Select several values</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let the user select several values from a list with ListMultipleChoice, or move them between two lists with Palette.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/submit-buttons.html">Use more than one submit button</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a form several buttons that each run their own code, pick the button for the Enter key, and add a Cancel button that skips validation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nest-forms.html">Nest forms</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a form inside another form, submit and validate the inner form on its own, and decide which forms take part in a submit.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/upload-files.html">Upload files</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let users upload one or more files with FileUploadField, limit their size and number, and show upload progress.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-component-panel.html">Combine fields into one form component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a FormComponentPanel that shows several inputs but converts, validates and stores them as one value.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-forms.html">Build a stateless form</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use StatelessForm so a page with a form stays stateless, never expires and does not create a session until it must.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Form components</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every form, input, choice, upload and submit component in wicket-core and wicket-extensions, with the markup tag it needs and the type of its model.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/validators.html">Validators and converters</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The built-in validators, form validators and converters, with their message keys, the variables in their messages and their default texts.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-processing.html">How a form is processed</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The order in which Wicket checks, converts, validates and stores submitted input, and why a form updates all its models or none.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/form-components.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

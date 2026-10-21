@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Give every page the same layout | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Move the header, navigation and footer of your application into a base page and two panels, so every page shares one layout." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/start.html">Getting started</a></p>
+            <h1>Give every page the same layout</h1>
+            <p class="page-sign-sub">Move the header, navigation and footer of your application into a base page and two panels, so every page shares one layout.</p>
+            <p class="guide-plates"><span class="guide-kind">Tutorial</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#1-create-a-base-page"><span class="toc-number">1</span> <span class="toc-text">1. Create a base page</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#2-move-the-about-page-onto-the-layout"><span class="toc-number">2</span> <span class="toc-text">2. Move the about page onto the layout</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#3-put-the-navigation-in-a-header-panel"><span class="toc-number">3</span> <span class="toc-text">3. Put the navigation in a header panel</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#4-add-a-footer-panel"><span class="toc-number">4</span> <span class="toc-text">4. Add a footer panel</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#5-let-each-page-set-its-title"><span class="toc-number">5</span> <span class="toc-text">5. Let each page set its title</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#continue-with-a-form"><span class="toc-number">6</span> <span class="toc-text">Continue with a form</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>In this tutorial you give the application from <a href="/docs/first-application.html">Build your first application</a> one layout for all its pages: a header with navigation, a footer, and a page title that each page fills in. You build it with a base page that other pages extend, and with panels for the header and the footer.</p>
+
+<p>Start from the <code class="language-plaintext highlighter-rouge">myapp</code> project as you left it at the end of the previous tutorial, with <code class="language-plaintext highlighter-rouge">HomePage</code> and <code class="language-plaintext highlighter-rouge">AboutPage</code> in the package <code class="language-plaintext highlighter-rouge">com.example</code>.</p>
+
+<h2 id="1-create-a-base-page">1. Create a base page</h2>
+
+<p>Create <em>BasePage.java</em> in <code class="language-plaintext highlighter-rouge">com.example</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.example</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebPage</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BasePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Create <em>BasePage.html</em> next to it. It holds everything the pages share, and a <code class="language-plaintext highlighter-rouge">&lt;wicket:child/&gt;</code> tag where each page puts its own content:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">"http://wicket.apache.org"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>My App<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"style.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"hd"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"logo"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"logo.png"</span> <span class="na">width=</span><span class="s">"50"</span> <span class="na">height=</span><span class="s">"50"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1&gt;</span>My App<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"bd"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;wicket:child/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"ft"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Now let <code class="language-plaintext highlighter-rouge">HomePage</code> extend <code class="language-plaintext highlighter-rouge">BasePage</code> instead of <code class="language-plaintext highlighter-rouge">WebPage</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="nc">BasePage</span> <span class="o">{</span>
+</code></pre></div></div>
+
+<p>A page that extends another page also inherits its markup. The page’s own HTML file then only provides what goes in place of <code class="language-plaintext highlighter-rouge">&lt;wicket:child/&gt;</code>, inside a <code class="language-plaintext highlighter-rouge">&lt;wicket:extend&gt;</code> tag. Replace <em>HomePage.html</em> with:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">"http://wicket.apache.org"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;wicket:extend&gt;</span>
+    <span class="nt">&lt;h2</span> <span class="na">wicket:id=</span><span class="s">"greeting"</span><span class="nt">&gt;</span>Greeting goes here<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>The time on the server is <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"time"</span><span class="nt">&gt;</span>12:00:00<span class="nt">&lt;/span&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">wicket:id=</span><span class="s">"count"</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/a&gt;</span>. You clicked <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"clicks"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/span&gt;</span> times.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">wicket:id=</span><span class="s">"about"</span><span class="nt">&gt;</span>About this application<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/wicket:extend&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Wicket ignores everything outside <code class="language-plaintext highlighter-rouge">&lt;wicket:extend&gt;</code>, so the <code class="language-plaintext highlighter-rouge">&lt;html&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> tags are only there to keep the file valid HTML for your editor.</p>
+
+<p>Run <code class="language-plaintext highlighter-rouge">Start</code> and open <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>. The home page now has a blue header with the Wicket logo and a footer. The greeting, time and counter work as before.</p>
+
+<h2 id="2-move-the-about-page-onto-the-layout">2. Move the about page onto the layout</h2>
+
+<p>Change <code class="language-plaintext highlighter-rouge">AboutPage</code> to extend <code class="language-plaintext highlighter-rouge">BasePage</code>, and replace <em>AboutPage.html</em>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">"http://wicket.apache.org"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;wicket:extend&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>About this application<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>It was built with Apache Wicket.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">wicket:id=</span><span class="s">"home"</span><span class="nt">&gt;</span>Back to the home page<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/wicket:extend&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Restart and click through to the about page. It has the same header and footer as the home page, and its HTML file only contains what is different.</p>
+
+<h2 id="3-put-the-navigation-in-a-header-panel">3. Put the navigation in a header panel</h2>
+
+<p>A panel is a component with its own HTML file, which you can place on any page. Use one for the header, so it can hold links to every page.</p>
+
+<p>Create <em>HeaderPanel.java</em>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.example</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.link.BookmarkablePageLink</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.panel.Panel</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HeaderPanel</span> <span class="kd">extends</span> <span class="nc">Panel</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">HeaderPanel</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">BookmarkablePageLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"home"</span><span class="o">,</span> <span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">BookmarkablePageLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"about"</span><span class="o">,</span> <span class="nc">AboutPage</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>A <code class="language-plaintext highlighter-rouge">BookmarkablePageLink</code> points straight at a page class. Unlike a <code class="language-plaintext highlighter-rouge">Link</code>, it needs no <code class="language-plaintext highlighter-rouge">onClick()</code>, and its URL works when you bookmark it or open it in a new tab.</p>
+
+<p>Create <em>HeaderPanel.html</em>. The markup of a panel goes inside a <code class="language-plaintext highlighter-rouge">&lt;wicket:panel&gt;</code> tag:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">"http://wicket.apache.org"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;wicket:panel&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"logo"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"logo.png"</span> <span class="na">width=</span><span class="s">"50"</span> <span class="na">height=</span><span class="s">"50"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>My App<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;nav</span> <span class="na">id=</span><span class="s">"nav"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">"home"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">"about"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/nav&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/wicket:panel&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>In <em>BasePage.html</em>, replace the content of the header <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> with a tag for the panel:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"hd"</span> <span class="na">wicket:id=</span><span class="s">"header"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Add the panel in a constructor of <code class="language-plaintext highlighter-rouge">BasePage</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BasePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="nf">BasePage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">HeaderPanel</span><span class="o">(</span><span class="s">"header"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The navigation replaces the links between the pages, so remove the <code class="language-plaintext highlighter-rouge">about</code> link from <code class="language-plaintext highlighter-rouge">HomePage</code> and the <code class="language-plaintext highlighter-rouge">home</code> link from <code class="language-plaintext highlighter-rouge">AboutPage</code>, in both the Java class and the HTML file. <code class="language-plaintext highlighter-rouge">AboutPage</code> keeps an empty constructor, or none at all.</p>
+
+<p>Make the navigation readable on the blue header by adding these lines to <code class="language-plaintext highlighter-rouge">src/main/webapp/style.css</code>:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#nav</span> <span class="p">{</span> <span class="nl">float</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span> <span class="nl">padding-top</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span> <span class="p">}</span>
+<span class="nf">#nav</span> <span class="nt">a</span><span class="o">,</span> <span class="nf">#nav</span> <span class="nt">a</span><span class="nd">:visited</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="nx">white</span><span class="p">;</span> <span class="nl">margin-left</span><span class="p">:</span> <span class="m">1em</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Restart and reload. The header shows “Home” and “About” on every page, and the links take you between them.</p>
+
+<h2 id="4-add-a-footer-panel">4. Add a footer panel</h2>
+
+<p>Create <em>FooterPanel.java</em>. It shows which Wicket version the application runs on:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.example</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.basic.Label</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.panel.Panel</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FooterPanel</span> <span class="kd">extends</span> <span class="nc">Panel</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">FooterPanel</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"version"</span><span class="o">,</span>
+                <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">getApplication</span><span class="o">().</span><span class="na">getFrameworkSettings</span><span class="o">().</span><span class="na">getVersion</span><span class="o">()));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Create <em>FooterPanel.html</em>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">"http://wicket.apache.org"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;wicket:panel&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Powered by Apache Wicket <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"version"</span><span class="nt">&gt;</span>10.0.0<span class="nt">&lt;/span&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/wicket:panel&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>In <em>BasePage.html</em>, give the footer <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> a <code class="language-plaintext highlighter-rouge">wicket:id</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"ft"</span> <span class="na">wicket:id=</span><span class="s">"footer"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Add the panel in the constructor of <code class="language-plaintext highlighter-rouge">BasePage</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">FooterPanel</span><span class="o">(</span><span class="s">"footer"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>And add a style for it to <em>style.css</em>:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#ft</span> <span class="nt">p</span> <span class="p">{</span> <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span> <span class="nx">white</span><span class="p">;</span> <span class="nl">padding-top</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Restart and reload. The footer at the bottom of every page shows the Wicket version.</p>
+
+<h2 id="5-let-each-page-set-its-title">5. Let each page set its title</h2>
+
+<p>Every page still has the title “My App” in the browser tab. Make the title a label whose text comes from a method that pages can override.</p>
+
+<p>In <em>BasePage.html</em>, give the <code class="language-plaintext highlighter-rouge">&lt;title&gt;</code> tag a <code class="language-plaintext highlighter-rouge">wicket:id</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;title</span> <span class="na">wicket:id=</span><span class="s">"title"</span><span class="nt">&gt;</span>My App<span class="nt">&lt;/title&gt;</span>
+</code></pre></div></div>
+
+<p>In <code class="language-plaintext highlighter-rouge">BasePage</code>, add the label and the method:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BasePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="nf">BasePage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"title"</span><span class="o">,</span> <span class="k">this</span><span class="o">::</span><span class="n">getPageTitle</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">HeaderPanel</span><span class="o">(</span><span class="s">"header"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">FooterPanel</span><span class="o">(</span><span class="s">"footer"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getPageTitle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"My App"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Import <code class="language-plaintext highlighter-rouge">org.apache.wicket.markup.html.basic.Label</code>. The method reference is a model, like the lambdas in the previous tutorial: Wicket calls <code class="language-plaintext highlighter-rouge">getPageTitle()</code> when it renders the title, so an override in a subclass is used.</p>
+
+<p>Override the method in <code class="language-plaintext highlighter-rouge">AboutPage</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AboutPage</span> <span class="kd">extends</span> <span class="nc">BasePage</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getPageTitle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"About - My App"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Restart and open the about page. The browser tab shows “About - My App”, and the home page keeps “My App”.</p>
+
+<p>Your application now has one layout. A new page only needs to extend <code class="language-plaintext highlighter-rouge">BasePage</code> and put its content in a <code class="language-plaintext highlighter-rouge">&lt;wicket:extend&gt;</code> tag.</p>
+
+<h2 id="continue-with-a-form">Continue with a form</h2>
+
+<p>In the next tutorial, <a href="/docs/first-form.html">Build a form that saves data</a>, you add a guestbook page to this layout.</p>
+
+<p><a href="/docs/markup-inheritance.html">Markup inheritance</a> explains how Wicket merges the markup of a page with that of its parent, <a href="/docs/build-panel.html">Build a reusable panel</a> shows more of what panels can do, and <a href="/docs/wicket-tags.html">Wicket tags and attributes</a> lists <code class="language-plaintext highlighter-rouge">wicket:child</code>, <code class="language-plaintext highlighter-rouge">wicket:extend</code> and <code class="language-plaintext highlighter-rouge">wicket:panel</code> with the other Wicket tags.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/start.html">Getting started</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-application.html">Build your first application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a project from the quickstart, run it, and build a home page with a label, a click counter and a link to a second page.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Give every page the same layout</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Move the header, navigation and footer of your application into a base page and two panels, so every page shares one layout.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-form.html">Build a form that saves data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a guestbook page with a form that validates its input, saves entries and lists them, and shows errors and a confirmation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-ajax.html">Update a page with Ajax</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make the click counter and the guestbook form update only the parts of the page that change, open the form without a reload, and refresh the guestbook every ten seconds.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-test.html">Test a page with WicketTester</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write JUnit tests that render your pages, click links, submit the guestbook form and check Ajax updates, without a browser or a server.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/create-project.html">Create a project from the quickstart archetype</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a ready-to-run Wicket project with Maven, know what is in it, and open it in your IDE.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/deployment-mode.html">Switch between development and deployment mode</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run Wicket in deployment mode on production servers, with a system property, a web.xml parameter or code, and check which mode is active.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ide-plugins.html">Add Wicket support to your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install WicketForge in IntelliJ IDEA or QWickie in Eclipse to jump between Java and markup and complete wicket:id values.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/modules.html">Wicket modules</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The artifacts Wicket is released as, what each one contains, which Wicket modules it depends on, and which you need for testing and tooling.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/maven-setup.html">Maven dependencies</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Maven dependencies, versions, scopes and build settings a Wicket project needs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/configuration.html">Application settings</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a Wicket application is started and configured, the settings objects with their main options and defaults, and what development and deployment mode change.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/glossary.html">Glossary</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Plain-English definitions of the Wicket terms used in this guide, each compared with what other web frameworks call it.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/why-wicket.html">Why component-oriented</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What a component-oriented framework does differently from request-based MVC frameworks, what Wicket gains from it, and what it costs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/best-practices.html">Best practices</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The habits that keep a Wicket application easy to change and to test, each with the reason it follows from how Wicket works.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/page-layout.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

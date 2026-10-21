@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>How Wicket Ajax works | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="What happens between a click in the browser and the updated components on the page, and why components need a markup id." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/ajax.html">Ajax and JavaScript</a></p>
+            <h1>How Wicket Ajax works</h1>
+            <p class="page-sign-sub">What happens between a click in the browser and the updated components on the page, and why components need a markup id.</p>
+            <p class="guide-plates"><span class="guide-kind">Explanation</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#the-pieces-involved"><span class="toc-number">1</span> <span class="toc-text">The pieces involved</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#the-round-trip"><span class="toc-number">2</span> <span class="toc-text">The round trip</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#why-components-need-a-markup-id"><span class="toc-number">3</span> <span class="toc-text">Why components need a markup id</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#ordering-channels-and-state"><span class="toc-number">4</span> <span class="toc-text">Ordering, channels and state</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#two-implementations-of-the-client-library"><span class="toc-number">5</span> <span class="toc-text">Two implementations of the client library</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Wicket Ajax lets a component handle a browser event on the server and send back new markup for only the parts of the page that changed. You write no JavaScript for this. The component and its behavior generate the script, a JavaScript library that comes with Wicket sends the request and applies the response, and the server side works with the same component tree that rendered the page.</p>
+
+<h2 id="the-pieces-involved">The pieces involved</h2>
+
+<p>Every Ajax component is built on an Ajax behavior. An <code class="language-plaintext highlighter-rouge">AjaxLink</code> is a link with an <code class="language-plaintext highlighter-rouge">AjaxEventBehavior</code> for the <code class="language-plaintext highlighter-rouge">click</code> event; an <code class="language-plaintext highlighter-rouge">AjaxButton</code> carries an <code class="language-plaintext highlighter-rouge">AjaxFormSubmitBehavior</code>. All of them extend <code class="language-plaintext highlighter-rouge">AbstractDefaultAjaxBehavior</code>, which does three things:</p>
+
+<ul>
+  <li>it makes its component output a markup id, so the browser can find the element;</li>
+  <li>it contributes Wicket’s client library, <code class="language-plaintext highlighter-rouge">wicket-ajax.js</code>, to the page header;</li>
+  <li>it renders a script that tells the library which event to listen to and which URL to call.</li>
+</ul>
+
+<p>That script is a single call with a JSON object of request attributes:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Wicket</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nf">ajax</span><span class="p">({</span><span class="dl">"</span><span class="s2">u</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">./home?2-1.0-counter</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">counter1</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">e</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">});</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">u</code> is the callback URL of the behavior, <code class="language-plaintext highlighter-rouge">c</code> the markup id of the element, <code class="language-plaintext highlighter-rouge">e</code> the event. The URL points at one behavior of one component in one page instance: page id <code class="language-plaintext highlighter-rouge">2</code>, render count <code class="language-plaintext highlighter-rouge">1</code>, behavior index <code class="language-plaintext highlighter-rouge">0</code>, component path <code class="language-plaintext highlighter-rouge">counter</code>. Wicket renders this call as a DOM-ready script in the page header, so the library binds the event handler once the document is loaded. Other attributes, such as the HTTP method, a form to submit, throttling or JavaScript handlers, are only written when they differ from the default. You change them by overriding <code class="language-plaintext highlighter-rouge">updateAjaxAttributes(AjaxRequestAttributes)</code>; see <a href="/docs/ajax-request-attributes.html">Change how an Ajax request is sent</a>.</p>
+
+<h2 id="the-round-trip">The round trip</h2>
+
+<p>When the user clicks, the library builds an <code class="language-plaintext highlighter-rouge">XMLHttpRequest</code> to the callback URL. It adds the header <code class="language-plaintext highlighter-rouge">Wicket-Ajax: true</code> and the base URL of the page in <code class="language-plaintext highlighter-rouge">Wicket-Ajax-BaseURL</code>, and for a form submit it serializes the form fields into the request.</p>
+
+<p>On the server the request is an ordinary request to a page instance. Wicket fetches the page from the page store by its id, locks it so that no other request for the same page runs at the same time, and calls the behavior. The behavior calls its callback method, such as <code class="language-plaintext highlighter-rouge">onClick</code> or <code class="language-plaintext highlighter-rouge">onEvent</code>, with an <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code> collects what goes back to the browser. Your callback changes models and component state as in any other request, then adds the components that need to be rendered again with <code class="language-plaintext highlighter-rouge">target.add(...)</code>, and adds JavaScript with <code class="language-plaintext highlighter-rouge">appendJavaScript</code> and <code class="language-plaintext highlighter-rouge">prependJavaScript</code>. Wicket’s default target is <code class="language-plaintext highlighter-rouge">AjaxRequestHandler</code>. Before it responds, it sends itself as an event payload to the application, which passes it on breadth-first to the session, the request cycle, the page and all its components. A component that should be refreshed after every Ajax request can add itself to the target in its <code class="language-plaintext highlighter-rouge">onEvent</code>, without the component that handled the click knowing about it.</p>
+
+<p>The response is XML:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ajax-response&gt;</span>
+  <span class="nt">&lt;header-contribution&gt;</span>...<span class="nt">&lt;/header-contribution&gt;</span>
+  <span class="nt">&lt;component</span> <span class="na">id=</span><span class="s">"counter1"</span><span class="nt">&gt;</span><span class="cp">&lt;![CDATA[&lt;span id="counter1"&gt;3&lt;/span&gt;]]&gt;</span><span class="nt">&lt;/component&gt;</span>
+  <span class="nt">&lt;priority-evaluate&gt;</span>...<span class="nt">&lt;/priority-evaluate&gt;</span>
+  <span class="nt">&lt;evaluate&gt;</span>...<span class="nt">&lt;/evaluate&gt;</span>
+<span class="nt">&lt;/ajax-response&gt;</span>
+</code></pre></div></div>
+
+<p>Each added component renders on its own, with its complete tag, and ends up in a <code class="language-plaintext highlighter-rouge">component</code> element. The header contributions of those components, such as CSS and JavaScript references and their DOM-ready scripts, travel along; the library loads only the references the page does not have yet. Prepended JavaScript ends up in <code class="language-plaintext highlighter-rouge">priority-evaluate</code> and runs before the components are replaced; appended JavaScript ends up in <code class="language-plaintext highlighter-rouge">evaluate</code> and runs after.</p>
+
+<p>Back in the browser, the library finds each element by its id and replaces it with the new markup. It publishes the events <code class="language-plaintext highlighter-rouge">/dom/node/removing</code> and <code class="language-plaintext highlighter-rouge">/dom/node/added</code> while doing so, and runs the scripts. If the server answered with a redirect instead, the library follows the URL in the <code class="language-plaintext highlighter-rouge">Ajax-Location</code> header and the browser loads a new page.</p>
+
+<h2 id="why-components-need-a-markup-id">Why components need a markup id</h2>
+
+<p>The browser knows nothing about the component tree. It only has the HTML, and the only way the library can find “the label” again is by its <code class="language-plaintext highlighter-rouge">id</code> attribute. Wicket does not render an <code class="language-plaintext highlighter-rouge">id</code> for every component, because ids it generates would clutter the markup and could clash with ids you write yourself. A component that is updated through Ajax has to render one, which you ask for with <code class="language-plaintext highlighter-rouge">setOutputMarkupId(true)</code>, or by writing the id in the markup yourself. See <a href="/docs/markup-ids.html">Give a component a markup id</a>.</p>
+
+<p>When a component is added to the target, Wicket switches the markup id on for it, but that is too late for the markup already in the browser: if the component did not render its id the first time, the library cannot find the element and logs that the component “was not found while trying to perform markup update”.</p>
+
+<p>An invisible component renders nothing at all, so there is no element to replace when it becomes visible. <code class="language-plaintext highlighter-rouge">setOutputMarkupPlaceholderTag(true)</code> makes an invisible component render an empty, hidden tag with its id in its place:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"message2"</span> <span class="na">hidden=</span><span class="s">""</span> <span class="na">data-wicket-placeholder=</span><span class="s">""</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre></div></div>
+
+<p>The next Ajax update replaces this placeholder with the real markup. Placeholder tags imply <code class="language-plaintext highlighter-rouge">setOutputMarkupId(true)</code>.</p>
+
+<p>Repeaters such as <code class="language-plaintext highlighter-rouge">ListView</code> and <code class="language-plaintext highlighter-rouge">RepeatingView</code> have no tag of their own: their markup is the repeated markup of their items. <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code> refuses them with an exception. To refresh a list, you add a container around it. The same goes for a component with <code class="language-plaintext highlighter-rouge">setRenderBodyOnly(true)</code>, which renders no tag either.</p>
+
+<h2 id="ordering-channels-and-state">Ordering, channels and state</h2>
+
+<p>The library sends Ajax requests one after the other per channel. By default all requests share one channel that queues them, so a second click waits until the first response has been applied. A channel can also drop all but the last waiting request, or discard a new request while one is running. Combined with the page lock on the server, this keeps the page instance and the DOM in step: the server never processes two requests for the same page at once, and the browser never applies two responses in an unknown order.</p>
+
+<p>Because the callback URL addresses a page instance, an Ajax behavior makes its page stateful: the page has to be kept in the page store so the next request can find it. This is the same reason a <code class="language-plaintext highlighter-rouge">Link</code> makes a page stateful; see <a href="/docs/stateful-stateless.html">Stateful and stateless pages</a>. Ajax components and behaviors can be made stateless when the page can be rebuilt from its URL alone; see <a href="/docs/stateless-ajax.html">Use Ajax on stateless pages</a>.</p>
+
+<h2 id="two-implementations-of-the-client-library">Two implementations of the client library</h2>
+
+<p>The default client library is <code class="language-plaintext highlighter-rouge">wicket-ajax-jquery.js</code>, which uses jQuery for DOM manipulation and the request itself. The JavaScript API it offers (<code class="language-plaintext highlighter-rouge">Wicket.Ajax</code>, <code class="language-plaintext highlighter-rouge">Wicket.Event</code>, <code class="language-plaintext highlighter-rouge">Wicket.DOM</code> and so on) is what the server-side code relies on, not jQuery.</p>
+
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/ajax.html">Ajax and JavaScript</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/update-components.html">Update components with Ajax</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Re-render components, show hidden ones, refresh lists and run JavaScript in response to an Ajax request.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/activity-indicator.html">Show that a request is running</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show a busy indicator while an Ajax request runs, with the indicating components, your own component or your own spinner element.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-request-attributes.html">Change how an Ajax request is sent</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Override updateAjaxAttributes to throttle requests, send them as POST, pass extra parameters, drop outdated ones or stop the browser's default action.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-call-listeners.html">React to Ajax requests in JavaScript</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run your own JavaScript before, during and after Ajax requests, for one component with a call listener or for the whole page with global events.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-ajax.html">Use Ajax on stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make Ajax components and behaviors stateless with getStatelessHint, so a page such as a login page keeps working without a stored page instance.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-lambdas.html">Write Ajax handlers as lambdas</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Create Ajax behaviors from lambdas with their static factory methods instead of anonymous subclasses, and do the same for Ajax links and buttons.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/integrate-javascript.html">Wrap a JavaScript widget in a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Package a JavaScript library with a component, initialize it with the component's markup id, keep it working after Ajax updates and call back to the server.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-components.html">Ajax components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Ajax components in wicket-core and wicket-extensions, what each does and which callback you override.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-behaviors.html">Ajax behaviors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Ajax behaviors and call listeners in wicket-core and wicket-extensions, the callback each one calls and its lambda factory method.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">How Wicket Ajax works</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What happens between a click in the browser and the updated components on the page, and why components need a markup id.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/how-ajax-works.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

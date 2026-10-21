@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Use checkboxes and radio buttons | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Bind a checkbox to a boolean, let the user tick several options or pick one with radio buttons, and add a "select all" checkbox." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/forms.html">Forms</a></p>
+            <h1>Use checkboxes and radio buttons</h1>
+            <p class="page-sign-sub">Bind a checkbox to a boolean, let the user tick several options or pick one with radio buttons, and add a "select all" checkbox.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#bind-a-checkbox-to-a-boolean"><span class="toc-number">1</span> <span class="toc-text">Bind a checkbox to a boolean</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#let-the-user-tick-several-options"><span class="toc-number">2</span> <span class="toc-text">Let the user tick several options</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#let-the-user-pick-one-option"><span class="toc-number">3</span> <span class="toc-text">Let the user pick one option</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#lay-out-the-options"><span class="toc-number">4</span> <span class="toc-text">Lay out the options</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#place-each-radio-button-or-checkbox-yourself"><span class="toc-number">5</span> <span class="toc-text">Place each radio button or checkbox yourself</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#add-a-select-all-checkbox"><span class="toc-number">6</span> <span class="toc-text">Add a “select all” checkbox</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#react-to-a-click-with-ajax"><span class="toc-number">7</span> <span class="toc-text">React to a click with Ajax</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>You need this when a form asks yes or no, offers a handful of options to tick, or asks the user to pick exactly one of a few options that should all be visible.</p>
+
+<h2 id="bind-a-checkbox-to-a-boolean">Bind a checkbox to a boolean</h2>
+
+<p>A <code class="language-plaintext highlighter-rouge">CheckBox</code> writes <code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code> to its model. Bind it to <code class="language-plaintext highlighter-rouge">&lt;input type="checkbox"&gt;</code>.</p>
+
+<p><em>RegistrationPage.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">CheckBox</span><span class="o">(</span><span class="s">"newsletter"</span><span class="o">,</span>
+    <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">registration</span><span class="o">,</span> <span class="nl">Registration:</span><span class="o">:</span><span class="n">isNewsletter</span><span class="o">,</span> <span class="nl">Registration:</span><span class="o">:</span><span class="n">setNewsletter</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p><em>RegistrationPage.html</em></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">wicket:id=</span><span class="s">"newsletter"</span><span class="nt">&gt;</span> Send me the newsletter<span class="nt">&lt;/label&gt;</span>
+</code></pre></div></div>
+
+<p>The box is ticked when the model is <code class="language-plaintext highlighter-rouge">true</code> at render time.</p>
+
+<h2 id="let-the-user-tick-several-options">Let the user tick several options</h2>
+
+<p>A <code class="language-plaintext highlighter-rouge">CheckBoxMultipleChoice</code> renders a checkbox with a label for each choice. Its model holds the collection of ticked choices. Bind it to a container tag such as <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>; Wicket replaces the content.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">toppings</span> <span class="o">=</span> <span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"Cheese"</span><span class="o">,</span> <span class="s">"Mushrooms"</span><span class="o">,</span> <span class="s">"Olives"</span><span class="o">,</span> <span class="s">"Peppers"</span><span class="o">);</span>
+<span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">CheckBoxMultipleChoice</span><span class="o">&lt;&gt;(</span><span class="s">"toppings"</span><span class="o">,</span>
+    <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">pizza</span><span class="o">,</span> <span class="nl">Pizza:</span><span class="o">:</span><span class="n">getToppings</span><span class="o">,</span> <span class="nl">Pizza:</span><span class="o">:</span><span class="n">setToppings</span><span class="o">),</span> <span class="n">toppings</span><span class="o">));</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">"toppings"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>For objects, pass an <code class="language-plaintext highlighter-rouge">IChoiceRenderer</code> as fourth argument, as for a <a href="/docs/dropdown-choice.html#show-objects-with-a-choice-renderer"><code class="language-plaintext highlighter-rouge">DropDownChoice</code></a>.</p>
+
+<h2 id="let-the-user-pick-one-option">Let the user pick one option</h2>
+
+<p>A <code class="language-plaintext highlighter-rouge">RadioChoice</code> renders a radio button with a label for each choice, and puts the chosen one in its model. It takes the same arguments as a <code class="language-plaintext highlighter-rouge">DropDownChoice</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Delivery</span><span class="o">&gt;</span> <span class="n">options</span> <span class="o">=</span> <span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="nc">Delivery</span><span class="o">.</span><span class="na">values</span><span class="o">());</span>
+<span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">RadioChoice</span><span class="o">&lt;&gt;(</span><span class="s">"delivery"</span><span class="o">,</span>
+    <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">order</span><span class="o">,</span> <span class="nl">Order:</span><span class="o">:</span><span class="n">getDelivery</span><span class="o">,</span> <span class="nl">Order:</span><span class="o">:</span><span class="n">setDelivery</span><span class="o">),</span>
+    <span class="n">options</span><span class="o">,</span> <span class="k">new</span> <span class="nc">EnumChoiceRenderer</span><span class="o">&lt;&gt;(</span><span class="k">this</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">"delivery"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Call <code class="language-plaintext highlighter-rouge">setRequired(true)</code> if the user must pick one.</p>
+
+<h2 id="lay-out-the-options">Lay out the options</h2>
+
+<p>Both components write each option as an <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> followed by its <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code>. Change that with:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">setLabelPosition(LabelPosition)</code>: <code class="language-plaintext highlighter-rouge">BEFORE</code> or <code class="language-plaintext highlighter-rouge">AFTER</code> the input, or <code class="language-plaintext highlighter-rouge">WRAP_BEFORE</code> and <code class="language-plaintext highlighter-rouge">WRAP_AFTER</code> to put the input inside the label.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">setPrefix(String)</code> and <code class="language-plaintext highlighter-rouge">setSuffix(String)</code>: markup before and after each option, such as <code class="language-plaintext highlighter-rouge">"&lt;li&gt;"</code> and <code class="language-plaintext highlighter-rouge">"&lt;/li&gt;"</code>.</li>
+</ul>
+
+<p>The prefix and suffix are written as they are, without escaping. Do not build them from user input.</p>
+
+<h2 id="place-each-radio-button-or-checkbox-yourself">Place each radio button or checkbox yourself</h2>
+
+<p>When the options must sit in your own markup, for example one per table row, use a <code class="language-plaintext highlighter-rouge">RadioGroup</code> with a <code class="language-plaintext highlighter-rouge">Radio</code> per option, or a <code class="language-plaintext highlighter-rouge">CheckGroup</code> with a <code class="language-plaintext highlighter-rouge">Check</code> per option. The group holds the model; each <code class="language-plaintext highlighter-rouge">Radio</code> or <code class="language-plaintext highlighter-rouge">Check</code> holds the value it stands for.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">RadioGroup</span><span class="o">&lt;</span><span class="nc">Plan</span><span class="o">&gt;</span> <span class="n">plan</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RadioGroup</span><span class="o">&lt;&gt;(</span><span class="s">"plan"</span><span class="o">,</span>
+    <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">subscription</span><span class="o">,</span> <span class="nl">Subscription:</span><span class="o">:</span><span class="n">getPlan</span><span class="o">,</span> <span class="nl">Subscription:</span><span class="o">:</span><span class="n">setPlan</span><span class="o">));</span>
+<span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">plan</span><span class="o">);</span>
+<span class="n">plan</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ListView</span><span class="o">&lt;&gt;(</span><span class="s">"plans"</span><span class="o">,</span> <span class="n">plans</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="nc">ListItem</span><span class="o">&lt;</span><span class="nc">Plan</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Radio</span><span class="o">&lt;&gt;(</span><span class="s">"radio"</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">()));</span>
+        <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">Plan:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span>
+        <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"price"</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">Plan:</span><span class="o">:</span><span class="n">getPrice</span><span class="o">)));</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table</span> <span class="na">wicket:id=</span><span class="s">"plan"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr</span> <span class="na">wicket:id=</span><span class="s">"plans"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">wicket:id=</span><span class="s">"radio"</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;td</span> <span class="na">wicket:id=</span><span class="s">"name"</span><span class="nt">&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;td</span> <span class="na">wicket:id=</span><span class="s">"price"</span><span class="nt">&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">Radio</code> and <code class="language-plaintext highlighter-rouge">Check</code> components must be inside their group in the component tree.</p>
+
+<h2 id="add-a-select-all-checkbox">Add a “select all” checkbox</h2>
+
+<p>Add a selector bound to an extra <code class="language-plaintext highlighter-rouge">&lt;input type="checkbox"&gt;</code>. It ticks or clears all boxes of a group in the browser:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Selector</th>
+      <th>Works with</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CheckboxMultipleChoiceSelector</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">CheckBoxMultipleChoice</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CheckGroupSelector</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">CheckGroup</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CheckBoxSelector</code></td>
+      <td>a list of single <code class="language-plaintext highlighter-rouge">CheckBox</code> components</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">CheckBoxMultipleChoice</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">toppingsChoice</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CheckBoxMultipleChoice</span><span class="o">&lt;&gt;(</span><span class="s">"toppings"</span><span class="o">,</span> <span class="o">...);</span>
+<span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">toppingsChoice</span><span class="o">);</span>
+<span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">CheckboxMultipleChoiceSelector</span><span class="o">(</span><span class="s">"allToppings"</span><span class="o">,</span> <span class="n">toppingsChoice</span><span class="o">));</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">wicket:id=</span><span class="s">"allToppings"</span><span class="nt">&gt;</span> All toppings<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">"toppings"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>The selector also ticks itself when the user has ticked every box.</p>
+
+<h2 id="react-to-a-click-with-ajax">React to a click with Ajax</h2>
+
+<p>For <code class="language-plaintext highlighter-rouge">RadioChoice</code>, <code class="language-plaintext highlighter-rouge">CheckBoxMultipleChoice</code>, <code class="language-plaintext highlighter-rouge">RadioGroup</code> and <code class="language-plaintext highlighter-rouge">CheckGroup</code>, use <code class="language-plaintext highlighter-rouge">AjaxFormChoiceComponentUpdatingBehavior</code>; it updates the model of the whole group:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deliveryChoice</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">AjaxFormChoiceComponentUpdatingBehavior</span><span class="o">.</span><span class="na">onUpdateChoice</span><span class="o">(</span>
+    <span class="n">target</span> <span class="o">-&gt;</span> <span class="n">target</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">totalPrice</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p>For a single <code class="language-plaintext highlighter-rouge">CheckBox</code>, use <code class="language-plaintext highlighter-rouge">AjaxFormComponentUpdatingBehavior</code> on the <code class="language-plaintext highlighter-rouge">change</code> event, or an <code class="language-plaintext highlighter-rouge">AjaxCheckBox</code>. See <a href="/docs/ajax-behaviors.html">Ajax behaviors</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/forms.html">Forms</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/validate-input.html">Validate input and show errors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make fields required, check their values with validators, show the error messages and change their text.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/convert-input.html">Convert input to your types</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Tell a field which type its input becomes, write a converter for your own type and register it for one field or the whole application.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bean-validation.html">Validate with Bean Validation</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Check form input against the Jakarta Bean Validation annotations on your domain classes with the wicket-bean-validation module.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/dropdown-choice.html">Let the user pick from a list</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show a drop-down list with DropDownChoice, render objects and enums as options, and control the empty "Choose One" option.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Use checkboxes and radio buttons</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Bind a checkbox to a boolean, let the user tick several options or pick one with radio buttons, and add a "select all" checkbox.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/select-multiple.html">Select several values</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let the user select several values from a list with ListMultipleChoice, or move them between two lists with Palette.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/submit-buttons.html">Use more than one submit button</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a form several buttons that each run their own code, pick the button for the Enter key, and add a Cancel button that skips validation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nest-forms.html">Nest forms</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a form inside another form, submit and validate the inner form on its own, and decide which forms take part in a submit.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/upload-files.html">Upload files</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let users upload one or more files with FileUploadField, limit their size and number, and show upload progress.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-component-panel.html">Combine fields into one form component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a FormComponentPanel that shows several inputs but converts, validates and stores them as one value.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-forms.html">Build a stateless form</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use StatelessForm so a page with a form stays stateless, never expires and does not create a session until it must.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-components.html">Form components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every form, input, choice, upload and submit component in wicket-core and wicket-extensions, with the markup tag it needs and the type of its model.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/validators.html">Validators and converters</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The built-in validators, form validators and converters, with their message keys, the variables in their messages and their default texts.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-processing.html">How a form is processed</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The order in which Wicket checks, converts, validates and stores submitted input, and why a form updates all its models or none.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/checkboxes-radios.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

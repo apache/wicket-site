@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Inspect and change settings with JMX | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Add wicket-jmx to see a running application's settings and session counts in JConsole, clear the markup cache, and change some settings without a restart." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/integration.html">Integration</a></p>
+            <h1>Inspect and change settings with JMX</h1>
+            <p class="page-sign-sub">Add wicket-jmx to see a running application's settings and session counts in JConsole, clear the markup cache, and change some settings without a restart.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#add-wicket-jmx"><span class="toc-number">1</span> <span class="toc-text">Add wicket-jmx</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#connect-with-jconsole"><span class="toc-number">2</span> <span class="toc-text">Connect with JConsole</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#publish-a-markup-or-text-fix-without-a-restart"><span class="toc-number">3</span> <span class="toc-text">Publish a markup or text fix without a restart</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#change-a-setting-at-runtime"><span class="toc-number">4</span> <span class="toc-text">Change a setting at runtime</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#see-session-and-request-counts"><span class="toc-number">5</span> <span class="toc-text">See session and request counts</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use this when you want to look into a running Wicket application, or fix a typo in markup or a properties file in production without restarting it. Module wicket-jmx publishes the application’s settings as JMX MBeans, which any JMX client can read and change.</p>
+
+<h2 id="add-wicket-jmx">Add wicket-jmx</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-jmx<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${wicket.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>There is nothing to configure. The module has an <a href="/docs/initializers.html">initializer</a> that registers the MBeans with the platform MBean server when the application starts.</p>
+
+<p>To register them with another MBean server, set one of these system properties:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Selects</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket.mbean.server.agentid</code></td>
+      <td>The MBean server with this agent id.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket.mbean.server.class</code></td>
+      <td>The first MBean server of this class.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="connect-with-jconsole">Connect with JConsole</h2>
+
+<p>Start <code class="language-plaintext highlighter-rouge">jconsole</code>, which comes with the JDK, and connect to the process of your servlet container. For a server on another machine, start that JVM with the standard <code class="language-plaintext highlighter-rouge">com.sun.management.jmxremote</code> options and connect remotely. Open the <em>MBeans</em> tab. The Wicket MBeans are in the domain <em>org.apache.wicket.app.&lt;name&gt;</em>, where the name is the name of the Wicket filter, as returned by <code class="language-plaintext highlighter-rouge">Application.getName()</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>MBean</th>
+      <th>Shows</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type=Application</code></td>
+      <td>Application class, home page class, configuration type, Wicket version, size of the markup cache.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type=Application,name=ApplicationSettings</code></td>
+      <td>Error pages, unexpected exception display, default maximum upload size.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type=Application,name=DebugSettings</code></td>
+      <td>Ajax debug mode, component use check, component path attribute, development utilities.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type=Application,name=MarkupSettings</code></td>
+      <td>Automatic linking, whitespace compression, comment and Wicket tag stripping, markup encoding.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type=Application,name=PageSettings</code></td>
+      <td>Whether pages are versioned by default.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type=Application,name=RequestCycleSettings</code></td>
+      <td>Response buffering, request timeout, character encoding, exception retry count.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type=Application,name=ResourceSettings</code></td>
+      <td>Localizer, resource finders, string resource loaders, poll frequency, missing resource behavior.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type=Application,name=SecuritySettings</code></td>
+      <td>Authorization strategy, crypt factory, unauthorized instantiation listener.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type=Application,name=SessionSettings</code></td>
+      <td>Page factory and session store.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type=Application,name=StoreSettings</code></td>
+      <td>Maximum page store size per session, file store folder, asynchronous storing.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type=RequestLogger</code></td>
+      <td>Created, live and peak sessions, current and peak active requests.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="publish-a-markup-or-text-fix-without-a-restart">Publish a markup or text fix without a restart</h2>
+
+<p>In deployment mode Wicket caches markup and localized texts and does not look at the files again. After you replace an HTML or properties file in the deployed application, run these operations on the <code class="language-plaintext highlighter-rouge">type=Application</code> MBean:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clearMarkupCache</code></td>
+      <td>Wicket reads the markup files again when it next needs them.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clearLocalizerCache</code></td>
+      <td>Wicket looks up localized texts again.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="change-a-setting-at-runtime">Change a setting at runtime</h2>
+
+<p>Attributes with a setter can be changed from JConsole. For example:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>MBean</th>
+      <th>Attribute</th>
+      <th>Example value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ApplicationSettings</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DefaultMaximumUploadSize</code></td>
+      <td><code class="language-plaintext highlighter-rouge">20MB</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DebugSettings</code></td>
+      <td><code class="language-plaintext highlighter-rouge">AjaxDebugModeEnabled</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MarkupSettings</code></td>
+      <td><code class="language-plaintext highlighter-rouge">StripComments</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RequestCycleSettings</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Timeout</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">PT1M</code> (an ISO-8601 duration)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceSettings</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ThrowExceptionOnMissingResource</code></td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The change lasts until the application restarts; put permanent settings in <code class="language-plaintext highlighter-rouge">init()</code>.</p>
+
+<h2 id="see-session-and-request-counts">See session and request counts</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">RequestLogger</code> MBean reads its numbers from Wicket’s request logger, which is off by default. Turn it on in <code class="language-plaintext highlighter-rouge">init()</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getRequestLoggerSettings</span><span class="o">().</span><span class="na">setRequestLoggerEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Its <code class="language-plaintext highlighter-rouge">restart</code> operation restarts the request logger and <code class="language-plaintext highlighter-rouge">stop</code> turns it off.</p>
+
+<p>Anyone who can connect to the JMX port can change these settings. Do not open it to untrusted networks.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/integration.html">Integration</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/spring.html">Inject Spring beans</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Inject beans from a Spring application context into pages, components, behaviors and other objects with @SpringBean.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/cdi.html">Inject CDI beans</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Configure wicket-cdi so pages, components, behaviors and the session get CDI beans with @Inject, and choose beans that survive serialization.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ejb.html">Inject EJBs</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Inject session beans, JNDI resources and persistence units into Wicket components with @EJB, @Resource and @PersistenceUnit, through WicketStuff's javaee-inject module.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/jsr330.html">Inject with JSR-330 annotations</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use the standard @Inject and @Named annotations instead of @SpringBean, with the Spring, Guice and CDI integrations.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/karaf.html">Run on Apache Karaf</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install Wicket in Apache Karaf or another OSGi container with the Karaf feature that every Wicket release publishes.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Inspect and change settings with JMX</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add wicket-jmx to see a running application's settings and session counts in JConsole, clear the markup cache, and change some settings without a restart.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/metrics.html">Measure with Wicket metrics</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Count requests and time component creation, rendering and model loading with the experimental wicket-metrics module, AspectJ and Dropwizard Metrics.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/wicketstuff.html">WicketStuff</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The community modules of the WicketStuff project, what each one adds to Wicket, and how to add one to a Maven build.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/jmx.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

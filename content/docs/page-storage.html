@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>How pages are stored | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="How Wicket finds the page for a request, and the chain of stores that keeps stateful pages in the request, the session and on disk." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/state.html">Pages and state</a></p>
+            <h1>How pages are stored</h1>
+            <p class="page-sign-sub">How Wicket finds the page for a request, and the chain of stores that keeps stateful pages in the request, the session and on disk.</p>
+            <p class="guide-plates"><span class="guide-kind">Explanation</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#finding-the-page-for-a-request"><span class="toc-number">1</span> <span class="toc-text">Finding the page for a request</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#the-default-chain"><span class="toc-number">2</span> <span class="toc-text">The default chain</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#why-the-pages-are-serialized"><span class="toc-number">3</span> <span class="toc-text">Why the pages are serialized</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#the-disk-store"><span class="toc-number">4</span> <span class="toc-text">The disk store</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#the-session-cache-and-clustering"><span class="toc-number">5</span> <span class="toc-text">The session cache and clustering</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#encrypted-pages"><span class="toc-number">6</span> <span class="toc-text">Encrypted pages</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>A stateful page has to outlive the request that created it, and earlier versions of it have to stay available for the back button. Wicket keeps them in a chain of page stores, each handling one concern: holding pages during the request, caching the last one in the session, serializing, writing in the background, encrypting, and writing to disk.</p>
+
+<h2 id="finding-the-page-for-a-request">Finding the page for a request</h2>
+
+<p>For each request that targets a page, Wicket asks an <code class="language-plaintext highlighter-rouge">IPageProvider</code> for the instance. The provider uses an <code class="language-plaintext highlighter-rouge">IPageSource</code>, which takes one of two routes:</p>
+
+<p><img src="/img/guide/page-storage.png" alt="IPageProvider asks IPageSource, which uses IPageManager when there is a page id and IPageFactory when there is not"></p>
+
+<ul>
+  <li>The URL has a page id, such as <code class="language-plaintext highlighter-rouge">?3</code>: the <code class="language-plaintext highlighter-rouge">IPageManager</code> looks the page up in the stores.</li>
+  <li>The URL has no page id, or the page is gone: the <code class="language-plaintext highlighter-rouge">IPageFactory</code> creates a new instance from the page class and its <code class="language-plaintext highlighter-rouge">PageParameters</code>.</li>
+</ul>
+
+<p>The <code class="language-plaintext highlighter-rouge">IPageManager</code> is the session’s entry point to the stores. It records every page that the request touches, which can be more than one when a handler calls <code class="language-plaintext highlighter-rouge">setResponsePage()</code>, and at the end of the request passes the stateful ones to the stores. Stateless pages are never stored.</p>
+
+<h2 id="the-default-chain">The default chain</h2>
+
+<p><code class="language-plaintext highlighter-rouge">DefaultPageManagerProvider</code> builds this chain, from the request to the disk:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Store</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RequestPageStore</code></td>
+      <td>holds the pages used in this request; adds them to the next store when the request is detached</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">CachingPageStore</code> with an <code class="language-plaintext highlighter-rouge">InSessionPageStore</code>
+</td>
+      <td>keeps the last page used, as a live object, in the HTTP session</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SerializingPageStore</code></td>
+      <td>turns pages into <code class="language-plaintext highlighter-rouge">SerializedPage</code>s: page id, page class and bytes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AsynchronousPageStore</code></td>
+      <td>hands the bytes to a background thread, so the request does not wait for the disk; on by default</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CryptingPageStore</code></td>
+      <td>encrypts the bytes with a key kept in the session; off by default</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DiskPageStore</code></td>
+      <td>writes the bytes to a file per session</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The three levels a page can be found on look like this:</p>
+
+<p><img src="/img/guide/wicket-cache.png" alt="Request level cache inside the session level cache, inside the persistent store"></p>
+
+<p>Reading goes the same way. A page used again in the same request comes from the request store. A click on the page the user just saw finds it in the session cache, without deserializing. Only the back button, or a second browser tab on another page, reaches the disk, and those pages are deserialized from bytes.</p>
+
+<h2 id="why-the-pages-are-serialized">Why the pages are serialized</h2>
+
+<p>The back button needs the earlier state of a page, not the current one. Keeping a live object is not enough, because the next request changes that same object. Serializing after each request freezes a copy. A chain needs at least one store that makes such copies, or the back button shows the current state.</p>
+
+<p>Serialization is also what turns a page into bytes for the disk, or for a database or cache in other stores. Wicket uses the <code class="language-plaintext highlighter-rouge">ISerializer</code> from <code class="language-plaintext highlighter-rouge">FrameworkSettings.getSerializer()</code>, by default <code class="language-plaintext highlighter-rouge">JavaSerializer</code> with standard Java serialization. This is why everything a page references must be serializable, and why <a href="/docs/detachable-models.html">detachable models</a> matter: their data is dropped before this step.</p>
+
+<h2 id="the-disk-store">The disk store</h2>
+
+<p><code class="language-plaintext highlighter-rouge">DiskPageStore</code> keeps one file named <code class="language-plaintext highlighter-rouge">data</code> per session, in a folder named after the application followed by <code class="language-plaintext highlighter-rouge">-filestore</code>. That folder is created in the folder from <code class="language-plaintext highlighter-rouge">StoreSettings.getFileStoreFolder()</code>, by default the servlet container’s temporary directory. The file has a maximum size per session, 10 MB by default; when it is full, new pages overwrite the oldest ones. Pages that have been overwritten are gone, and a request for them ends in a <code class="language-plaintext highlighter-rouge">PageExpiredException</code> or, for bookmarkable pages, a new instance.</p>
+
+<p>When the HTTP session ends, the store removes the session’s pages.</p>
+
+<p>The disk store keeps the pages of a session in one file, with the most recent ones winning. Several browser tabs with Ajax timers can push each other’s pages out. <code class="language-plaintext highlighter-rouge">FilePageStore</code>, which writes a file per page, avoids that.</p>
+
+<h2 id="the-session-cache-and-clustering">The session cache and clustering</h2>
+
+<p>The session holds only the last page used, as a live object. When the servlet container serializes the session, to replicate it to another node or to save it on shutdown, the cached page is left out. The next request finds it in the persistent store instead. In a cluster, that store must be reachable from every node: a shared disk, a database or a distributed cache. The WicketStuff project has stores for distributed caches and databases.</p>
+
+<h2 id="encrypted-pages">Encrypted pages</h2>
+
+<p><code class="language-plaintext highlighter-rouge">CryptingPageStore</code> encrypts the bytes of every page before they reach the disk, with a random key per session that is kept in the session. Anyone who can read the store without the session sees only ciphertext. The key does not protect against someone who controls the session itself.</p>
+
+<p>Wicket deserializes whatever it reads back from the store. Treat the store as private storage either way: on a disk only the application can read, or in a database only the application can write to.</p>
+
+<p>The cipher comes from <code class="language-plaintext highlighter-rouge">StoreSettings.setCrypter</code>. The default <code class="language-plaintext highlighter-rouge">DefaultCrypter</code> (AES-256-CBC) is not authenticated; <code class="language-plaintext highlighter-rouge">GCMSIVCrypter</code> is the authenticated option.</p>
+
+<p><a href="/docs/configure-page-store.html">Configure the page store</a> shows how to change the size, the folder, encryption and the stores in the chain.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/state.html">Pages and state</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/keep-stateless.html">Keep a page stateless</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a page that Wicket does not store in the session, find the component that makes it stateful, and guard it with a test.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/configure-page-store.html">Configure the page store</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Change how much page history Wicket keeps per session and where, encrypt stored pages, or replace the disk store with another store.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-session.html">Keep data in the session</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Store per-user data in a typed Wicket session, in session attributes or as metadata, control when the session is created, and end it on logout.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateful-stateless.html">Stateful and stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why Wicket keeps pages between requests, how page versions serve the back button, and what a stateless page gives up and gains.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">How pages are stored</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket finds the page for a request, and the chain of stores that keeps stateful pages in the request, the session and on disk.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/page-storage.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

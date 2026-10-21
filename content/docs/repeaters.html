@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Repeaters | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The repeaters of wicket-core and wicket-extensions compared, what each needs and when it re-creates items, plus data providers, navigators and table parts." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/repeaters.html">Lists and tables</a></p>
+            <h1>Repeaters</h1>
+            <p class="page-sign-sub">The repeaters of wicket-core and wicket-extensions compared, what each needs and when it re-creates items, plus data providers, navigators and table parts.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#repeaters-at-a-glance"><span class="toc-number">1</span> <span class="toc-text">Repeaters at a glance</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#when-items-are-re-created"><span class="toc-number">2</span> <span class="toc-text">When items are re-created</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#item-reuse-strategies"><span class="toc-number">3</span> <span class="toc-text">Item reuse strategies</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#item-classes"><span class="toc-number">4</span> <span class="toc-text">Item classes</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#data-providers"><span class="toc-number">5</span> <span class="toc-text">Data providers</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#paging"><span class="toc-number">6</span> <span class="toc-text">Paging</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#tables"><span class="toc-number">7</span> <span class="toc-text">Tables</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#sort-links"><span class="toc-number">8</span> <span class="toc-text">Sort links</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>A repeater renders its markup once for each of its children. It writes no tag of its own: every child renders with the repeater’s tag as if it were the child’s. All repeaters extend <code class="language-plaintext highlighter-rouge">AbstractRepeater</code>, which calls <code class="language-plaintext highlighter-rouge">onPopulate()</code> before each render to create or update the children.</p>
+
+<h2 id="repeaters-at-a-glance">Repeaters at a glance</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Repeater</th>
+      <th>Module</th>
+      <th>Data from</th>
+      <th>You implement</th>
+      <th>Item</th>
+      <th>Item model</th>
+      <th>Pageable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RepeatingView</code></td>
+      <td>core</td>
+      <td>the children you add</td>
+      <td>nothing</td>
+      <td>any component, id from <code class="language-plaintext highlighter-rouge">newChildId()</code>
+</td>
+      <td>none of its own</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RefreshingView&lt;T&gt;</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">getItemModels()</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getItemModels()</code>, <code class="language-plaintext highlighter-rouge">populateItem(Item&lt;T&gt;)</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">Item&lt;T&gt;</code></td>
+      <td>the model from the iterator</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ListView&lt;T&gt;</code></td>
+      <td>core</td>
+      <td>a <code class="language-plaintext highlighter-rouge">List&lt;T&gt;</code> or <code class="language-plaintext highlighter-rouge">IModel&lt;List&lt;T&gt;&gt;</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">populateItem(ListItem&lt;T&gt;)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ListItem&lt;T&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">ListItemModel</code>: element <em>n</em> of the list</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PropertyListView&lt;T&gt;</code></td>
+      <td>core</td>
+      <td>as <code class="language-plaintext highlighter-rouge">ListView</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">populateItem(ListItem&lt;T&gt;)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ListItem&lt;T&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">CompoundPropertyModel</code> around <code class="language-plaintext highlighter-rouge">ListItemModel</code>
+</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PageableListView&lt;T&gt;</code></td>
+      <td>core</td>
+      <td>as <code class="language-plaintext highlighter-rouge">ListView</code>, plus items per page</td>
+      <td><code class="language-plaintext highlighter-rouge">populateItem(ListItem&lt;T&gt;)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ListItem&lt;T&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ListItemModel</code></td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Loop</code></td>
+      <td>core</td>
+      <td>an <code class="language-plaintext highlighter-rouge">int</code> or <code class="language-plaintext highlighter-rouge">IModel&lt;Integer&gt;</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">populateItem(LoopItem)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">LoopItem</code></td>
+      <td>none</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DataView&lt;T&gt;</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">IDataProvider&lt;T&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">populateItem(Item&lt;T&gt;)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Item&lt;T&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">IDataProvider.model(T)</code></td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GridView&lt;T&gt;</code></td>
+      <td>core</td>
+      <td><code class="language-plaintext highlighter-rouge">IDataProvider&lt;T&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">populateItem(Item&lt;T&gt;)</code>, <code class="language-plaintext highlighter-rouge">populateEmptyItem(Item&lt;T&gt;)</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Item&lt;T&gt;</code> in rows of <code class="language-plaintext highlighter-rouge">setColumns(n)</code> cells</td>
+      <td><code class="language-plaintext highlighter-rouge">IDataProvider.model(T)</code></td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DataGridView&lt;T&gt;</code></td>
+      <td>extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">IDataProvider&lt;T&gt;</code> and a list of <code class="language-plaintext highlighter-rouge">ICellPopulator&lt;T&gt;</code>
+</td>
+      <td>the populators</td>
+      <td>a row <code class="language-plaintext highlighter-rouge">Item&lt;T&gt;</code> with a cell per populator</td>
+      <td><code class="language-plaintext highlighter-rouge">IDataProvider.model(T)</code></td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DataTable&lt;T, S&gt;</code></td>
+      <td>extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">IDataProvider&lt;T&gt;</code> and a list of <code class="language-plaintext highlighter-rouge">IColumn&lt;T, S&gt;</code>
+</td>
+      <td>the columns</td>
+      <td>a <code class="language-plaintext highlighter-rouge">&lt;tr&gt;</code> with a <code class="language-plaintext highlighter-rouge">&lt;td&gt;</code> per column</td>
+      <td><code class="language-plaintext highlighter-rouge">IDataProvider.model(T)</code></td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DefaultDataTable&lt;T, S&gt;</code></td>
+      <td>extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">ISortableDataProvider&lt;T, S&gt;</code> and columns</td>
+      <td>the columns</td>
+      <td>as <code class="language-plaintext highlighter-rouge">DataTable</code>, rows are <code class="language-plaintext highlighter-rouge">OddEvenItem</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">IDataProvider.model(T)</code></td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxFallbackDefaultDataTable&lt;T, S&gt;</code></td>
+      <td>extensions</td>
+      <td>as <code class="language-plaintext highlighter-rouge">DefaultDataTable</code>
+</td>
+      <td>the columns</td>
+      <td>as <code class="language-plaintext highlighter-rouge">DefaultDataTable</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">IDataProvider.model(T)</code></td>
+      <td>yes, with Ajax</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">NestedTree&lt;T&gt;</code>, <code class="language-plaintext highlighter-rouge">DefaultNestedTree&lt;T&gt;</code>
+</td>
+      <td>extensions</td>
+      <td><code class="language-plaintext highlighter-rouge">ITreeProvider&lt;T&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">newContentComponent</code> (for <code class="language-plaintext highlighter-rouge">NestedTree</code>)</td>
+      <td>nested branches</td>
+      <td><code class="language-plaintext highlighter-rouge">ITreeProvider.model(T)</code></td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">TableTree&lt;T, S&gt;</code>, <code class="language-plaintext highlighter-rouge">DefaultTableTree&lt;T, S&gt;</code>
+</td>
+      <td>extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">ITreeProvider&lt;T&gt;</code> and columns</td>
+      <td>the columns, and <code class="language-plaintext highlighter-rouge">newContentComponent</code> (for <code class="language-plaintext highlighter-rouge">TableTree</code>)</td>
+      <td>table rows, one per visible node</td>
+      <td><code class="language-plaintext highlighter-rouge">ITreeProvider.model(T)</code></td>
+      <td>through its <code class="language-plaintext highlighter-rouge">DataTable</code>, <code class="language-plaintext highlighter-rouge">getTable()</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="when-items-are-re-created">When items are re-created</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Repeater</th>
+      <th>On every render</th>
+      <th>Keeps existing items when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RepeatingView</code></td>
+      <td>does nothing; the children stay until you remove them</td>
+      <td>always</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">ListView</code>, <code class="language-plaintext highlighter-rouge">PropertyListView</code>, <code class="language-plaintext highlighter-rouge">PageableListView</code>
+</td>
+      <td>removes all items and creates new ones</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">setReuseItems(true)</code>: keeps items by index, creates missing ones, removes those past the end</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Loop</code></td>
+      <td>removes all items and creates new ones</td>
+      <td>never</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">RefreshingView</code>, <code class="language-plaintext highlighter-rouge">DataView</code>, <code class="language-plaintext highlighter-rouge">GridView</code>, <code class="language-plaintext highlighter-rouge">DataGridView</code>, <code class="language-plaintext highlighter-rouge">DataTable</code>
+</td>
+      <td>asks the <code class="language-plaintext highlighter-rouge">IItemReuseStrategy</code> for the items</td>
+      <td>the strategy keeps them; <code class="language-plaintext highlighter-rouge">ReuseIfModelsEqualStrategy</code> keeps items whose model equals a new model</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">populateItem</code> runs only for newly created items. Form components inside a repeater need kept items, or they lose their input and error messages after a failed submit.</p>
+
+<h2 id="item-reuse-strategies">Item reuse strategies</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Strategy</th>
+      <th>Behavior</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DefaultItemReuseStrategy</code></td>
+      <td>the default; creates a new item for every model, every render</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ReuseIfModelsEqualStrategy</code></td>
+      <td>keeps an existing item when its model <code class="language-plaintext highlighter-rouge">equals</code> a model returned for this render; the models must implement <code class="language-plaintext highlighter-rouge">equals</code> and <code class="language-plaintext highlighter-rouge">hashCode</code>
+</td>
+    </tr>
+    <tr>
+      <td>your own <code class="language-plaintext highlighter-rouge">IItemReuseStrategy</code>
+</td>
+      <td>implements <code class="language-plaintext highlighter-rouge">getItems(factory, newModels, existingItems)</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Set a strategy with <code class="language-plaintext highlighter-rouge">setItemReuseStrategy</code> on <code class="language-plaintext highlighter-rouge">RefreshingView</code> and its subclasses, on <code class="language-plaintext highlighter-rouge">DataTable</code> and on <code class="language-plaintext highlighter-rouge">TableTree</code>. <code class="language-plaintext highlighter-rouge">getInstance()</code> returns the shared instance of either built-in strategy.</p>
+
+<h2 id="item-classes">Item classes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Extends</th>
+      <th>Used by</th>
+      <th>Adds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ListItem&lt;T&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">WebMarkupContainer</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ListView</code></td>
+      <td><code class="language-plaintext highlighter-rouge">getIndex()</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OddEvenListItem&lt;T&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ListItem&lt;T&gt;</code></td>
+      <td>your <code class="language-plaintext highlighter-rouge">ListView.newItem</code> override</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">class="odd"</code> or <code class="language-plaintext highlighter-rouge">class="even"</code> by default</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Item&lt;T&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ListItem&lt;T&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">RefreshingView</code> and subclasses</td>
+      <td><code class="language-plaintext highlighter-rouge">getPrimaryKey()</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OddEvenItem&lt;T&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Item&lt;T&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">DefaultDataTable</code> rows</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">class="odd"</code> or <code class="language-plaintext highlighter-rouge">class="even"</code> by default; the class names are resource keys</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LoopItem</code></td>
+      <td><code class="language-plaintext highlighter-rouge">WebMarkupContainer</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Loop</code></td>
+      <td><code class="language-plaintext highlighter-rouge">getIndex()</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Override <code class="language-plaintext highlighter-rouge">newItem</code> in a repeater to use another item class.</p>
+
+<h2 id="data-providers">Data providers</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Module</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IDataProvider&lt;T&gt;</code></td>
+      <td>core</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">iterator(first, count)</code> returns one page of objects, <code class="language-plaintext highlighter-rouge">size()</code> the total, <code class="language-plaintext highlighter-rouge">model(T)</code> a model per object; <code class="language-plaintext highlighter-rouge">detach()</code> is called at the end of the request</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ListDataProvider&lt;T&gt;</code></td>
+      <td>core</td>
+      <td>serves a <code class="language-plaintext highlighter-rouge">List&lt;T&gt;</code> held in the provider; <code class="language-plaintext highlighter-rouge">model(T)</code> returns a <code class="language-plaintext highlighter-rouge">Model</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EmptyDataProvider&lt;T&gt;</code></td>
+      <td>core</td>
+      <td>always empty; <code class="language-plaintext highlighter-rouge">getInstance()</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ISortableDataProvider&lt;T, S&gt;</code></td>
+      <td>extensions</td>
+      <td>an <code class="language-plaintext highlighter-rouge">IDataProvider</code> that is also an <code class="language-plaintext highlighter-rouge">ISortStateLocator&lt;S&gt;</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SortableDataProvider&lt;T, S&gt;</code></td>
+      <td>extensions</td>
+      <td>base class keeping a single sort property; <code class="language-plaintext highlighter-rouge">setSort(property, order)</code>, <code class="language-plaintext highlighter-rouge">getSort()</code> returns a <code class="language-plaintext highlighter-rouge">SortParam&lt;S&gt;</code> with <code class="language-plaintext highlighter-rouge">getProperty()</code> and <code class="language-plaintext highlighter-rouge">isAscending()</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ITreeProvider&lt;T&gt;</code></td>
+      <td>extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getRoots()</code>, <code class="language-plaintext highlighter-rouge">hasChildren(T)</code>, <code class="language-plaintext highlighter-rouge">getChildren(T)</code>, <code class="language-plaintext highlighter-rouge">model(T)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SortableTreeProvider&lt;T, S&gt;</code></td>
+      <td>extensions</td>
+      <td>an <code class="language-plaintext highlighter-rouge">ITreeProvider</code> with a sort state</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="paging">Paging</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IPageable</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getCurrentPage()</code>, <code class="language-plaintext highlighter-rouge">setCurrentPage(long)</code>, <code class="language-plaintext highlighter-rouge">getPageCount()</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IPageableItems</code></td>
+      <td>adds <code class="language-plaintext highlighter-rouge">getItemCount()</code>, <code class="language-plaintext highlighter-rouge">getItemsPerPage()</code>, <code class="language-plaintext highlighter-rouge">setItemsPerPage(long)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AbstractPageableView&lt;T&gt;</code></td>
+      <td>base of <code class="language-plaintext highlighter-rouge">DataView</code> and <code class="language-plaintext highlighter-rouge">GridView</code>; shows every item until <code class="language-plaintext highlighter-rouge">setItemsPerPage</code> is called</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PagingNavigator</code></td>
+      <td>panel with links to the first, previous, numbered, next and last pages of an <code class="language-plaintext highlighter-rouge">IPageable</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxPagingNavigator</code></td>
+      <td>the same with Ajax links; updates the nearest parent of the pageable with <code class="language-plaintext highlighter-rouge">setOutputMarkupId(true)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PagingNavigation</code></td>
+      <td>the numbered links alone, as a <code class="language-plaintext highlighter-rouge">Loop</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NavigatorLabel</code></td>
+      <td>shows “Showing 1 to 10 of 42” for an <code class="language-plaintext highlighter-rouge">IPageableItems</code>; the text is the resource <code class="language-plaintext highlighter-rouge">NavigatorLabel</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="tables">Tables</h2>
+
+<p><code class="language-plaintext highlighter-rouge">DataTable</code> is attached to a <code class="language-plaintext highlighter-rouge">&lt;table&gt;</code> tag and generates its caption, <code class="language-plaintext highlighter-rouge">&lt;colgroup&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;thead&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;tbody&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;tfoot&gt;</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IColumn&lt;T, S&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getHeader(id)</code>, <code class="language-plaintext highlighter-rouge">getSortProperty()</code>, <code class="language-plaintext highlighter-rouge">populateItem(cellItem, componentId, rowModel)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AbstractColumn&lt;T, S&gt;</code></td>
+      <td>base class with a display model for the header and an optional sort property</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LambdaColumn&lt;T, S&gt;</code></td>
+      <td>shows the result of a function on the row object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PropertyColumn&lt;T, S&gt;</code></td>
+      <td>shows a property of the row object by property expression</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HeaderlessColumn&lt;T, S&gt;</code></td>
+      <td>a column without header text</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IStyledColumn&lt;T, S&gt;</code></td>
+      <td>adds <code class="language-plaintext highlighter-rouge">getCssClass()</code> for the cells</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">FilteredPropertyColumn</code>, <code class="language-plaintext highlighter-rouge">TextFilteredPropertyColumn</code>, <code class="language-plaintext highlighter-rouge">ChoiceFilteredPropertyColumn</code>
+</td>
+      <td>property columns with a filter field for <code class="language-plaintext highlighter-rouge">FilterToolbar</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AbstractExportableColumn</code></td>
+      <td>a column that <code class="language-plaintext highlighter-rouge">ExportToolbar</code> can export</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TreeColumn</code></td>
+      <td>the column of a <code class="language-plaintext highlighter-rouge">TableTree</code> that shows the node with its junction</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Columns that return a sort property get a sortable header in <code class="language-plaintext highlighter-rouge">HeadersToolbar</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Toolbar</th>
+      <th>Added by</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HeadersToolbar</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">DefaultDataTable</code>, top</td>
+      <td>column headers; sortable headers use <code class="language-plaintext highlighter-rouge">OrderByBorder</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxFallbackHeadersToolbar</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">AjaxFallbackDefaultDataTable</code>, top</td>
+      <td>the same, sorting with Ajax</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NavigationToolbar</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">DefaultDataTable</code>, top</td>
+      <td>a <code class="language-plaintext highlighter-rouge">PagingNavigator</code> and a <code class="language-plaintext highlighter-rouge">NavigatorLabel</code>; hidden when there is one page</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxNavigationToolbar</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">AjaxFallbackDefaultDataTable</code>, top</td>
+      <td>the same with an <code class="language-plaintext highlighter-rouge">AjaxPagingNavigator</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NoRecordsToolbar</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">DefaultDataTable</code>, bottom</td>
+      <td>a row with a message when there are no rows</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FilterToolbar</code></td>
+      <td>you</td>
+      <td>a row of filter fields, inside a <code class="language-plaintext highlighter-rouge">FilterForm</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ExportToolbar</code></td>
+      <td>you</td>
+      <td>links to download the data, for example as CSV with <code class="language-plaintext highlighter-rouge">CSVDataExporter</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Add toolbars with <code class="language-plaintext highlighter-rouge">addTopToolbar(toolbar)</code> and <code class="language-plaintext highlighter-rouge">addBottomToolbar(toolbar)</code>.</p>
+
+<h2 id="sort-links">Sort links</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OrderByLink</code></td>
+      <td>a link that sets the sort property of an <code class="language-plaintext highlighter-rouge">ISortStateLocator</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OrderByBorder</code></td>
+      <td>a border around a header that adds an <code class="language-plaintext highlighter-rouge">OrderByLink</code> and CSS classes for the sort state</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">AjaxOrderByLink</code>, <code class="language-plaintext highlighter-rouge">AjaxFallbackOrderByBorder</code>
+</td>
+      <td>the same with Ajax</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Use these to make the headers of a <code class="language-plaintext highlighter-rouge">DataView</code> sortable when you write the table markup yourself.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/repeaters.html">Lists and tables</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/repeat-markup.html">Repeat markup with RepeatingView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render a tag once for every child you add in code, for menus, button bars and other short lists you build in the constructor.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/list-items.html">Show a list with ListView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render markup for every element of a java.util.List, keep form input in the rows, and avoid the pitfalls of index-based items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/refreshing-view.html">Control how items are reused with RefreshingView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build repeater items from models you supply, and keep an item's components across renders as long as its model stays in the list.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/paginate-data.html">Page through data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Load one page of rows at a time with an IDataProvider, show them in a DataView or DataTable, and let users move between pages.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Repeaters</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The repeaters of wicket-core and wicket-extensions compared, what each needs and when it re-creates items, plus data providers, navigators and table parts.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/repeaters.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

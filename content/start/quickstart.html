@@ -6,369 +6,215 @@
 	
 	
 
-        <title>Create a Wicket Quickstart | Apache Wicket</title>
+        <title>Quick start | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Generate a Wicket project with Maven in a minute, run it, and open it in your browser." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
 
         <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
-        <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
-        <link href="/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
 
     </head>
-    <body class="quickstart">
-        <div class="header default">
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
     <div class="l-container">
         
-<nav class="mainmenu">
-    <div class="nav-logo">
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
     <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
 </div>
 
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items active" aria-current="true">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
     <div class="nav-container">
-    
-		
-    	
-        
-        
-		<!-- /start/quickstart.html || /start/quickstart -->
-		
-    	
-        
-    	<a href="/start/quickstart.html" class=" nav-items">Quick Start</a>
-    
-		
-    	
-        
-        
-		<!-- /start/download.html || /start/quickstart -->
-		
-    	
-        
-    	<a href="/start/download.html" class=" nav-items">Download</a>
-    
-		
-    	
-        
-        
-		<!-- /learn || /start/quickstart -->
-		
-    	
-        
-    	<a href="/learn" class=" nav-items">Documentation</a>
-    
-		
-    	
-        
-        
-		<!-- /help || /start/quickstart -->
-		
-    	
-        
-    	<a href="/help" class=" nav-items">Support</a>
-    
-		
-    	
-        
-        
-		<!-- /contribute || /start/quickstart -->
-		
-    	
-        
-    	<a href="/contribute" class=" nav-items">Contribute</a>
-    
-		
-    	
-        
-        
-		<!-- /community || /start/quickstart -->
-		
-    	
-        
-    	<a href="/community" class=" nav-items">Community</a>
-    
-		
-    	
-        
-        
-		<!-- /apache || /start/quickstart -->
-		
-    	
-        
-    	<a href="/apache" class=" nav-items">Apache</a>
-    
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
     </div>
-    <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
-    </div>    
 </nav>
-        
+
     </div>
 </div>
-<main>
-    <div class="l-container">
-        <header class="l-full preamble">
-            <h1>Create a Wicket Quickstart</h1>
-            <h2>With the quickstart you’ll be up and running in seconds</h2>
-            
-            <p>Use the following wizard to generate a Quick Start Project using Maven. Paste the generated command line into a shell (DOS prompt or unix shell) and create a project with Wicket in a jiffy.</p>
-        </header>
-        <section class="toc left default quickstart">
-            <div id="toc" class="toc">
-<div id="toc-title"><h2>Table of Contents</h2></div>
-<ul>
-<li class="toc--level-1 toc--section-1"><a href="#before-you-start"><span class="toc-number">1</span> <span class="toc-text">Before you start</span></a></li>
-<li class="toc--level-1 toc--section-2"><a href="#5-small-steps-to-a-web-application"><span class="toc-number">2</span> <span class="toc-text">5 small steps to a web application</span></a></li>
-<li class="toc--level-1 toc--section-3"><a href="#quick-start-wizard"><span class="toc-number">3</span> <span class="toc-text">Quick Start Wizard</span></a></li>
-<li class="toc--level-1 toc--section-4">
-<a href="#import-the-quick-start-in-your-ide"><span class="toc-number">4</span> <span class="toc-text">Import the Quick Start in your IDE</span></a><ul>
-<li class="toc--level-2 toc--section-5"><a href="#eclipse"><span class="toc-number">4.1</span> <span class="toc-text">Eclipse</span></a></li>
-<li class="toc--level-2 toc--section-6"><a href="#intellij-idea"><span class="toc-number">4.2</span> <span class="toc-text">IntelliJ IDEA</span></a></li>
-<li class="toc--level-2 toc--section-7"><a href="#netbeans"><span class="toc-number">4.3</span> <span class="toc-text">Netbeans</span></a></li>
-</ul>
-</li>
-</ul>
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <p class="hub-crumbs"><a href="/versions/">Releases</a></p>
+        <h1>Quick start</h1>
+        <p class="page-sign-sub">Generate a Wicket project with Maven in a minute, run it, and open it in your browser.</p>
+    </div>
 </div>
-        </section>
-        <section>
-            <script type="text/javascript" charset="utf-8" src="/javascript/ZeroClipboard-1.1.7.min.js"></script>
+<main id="main" tabindex="-1">
+    
+    
+    <div class="reading section-body">
+        
+<form class="quickstart" id="quickstart" autocomplete="off">
+    <div class="quickstart-fields">
+        <label>Group ID <input type="text" name="groupId" value="com.mycompany" spellcheck="false"></label>
+        <label>Artifact ID <input type="text" name="artifactId" value="myproject" spellcheck="false"></label>
+        <label>Wicket version
+            <select name="version">
+            
+                
+                <option value="10.11.0" data-series="10" data-java="17" data-support="Wicket 10 is supported until Jul 2027.">10.11.0 — LTS</option>
+            
+                
+                <option value="9.24.0" data-series="9" data-java="11" data-support="Wicket 9 is supported until its final release.">9.24.0 — last release coming, not for new projects</option>
+            
+                
+                <option value="8.19.0" data-series="8" data-java="8" data-support="Wicket 8 is supported until its final release.">8.19.0 — last release coming, not for new projects</option>
+            
+            </select>
+        </label>
+    </div>
+    <div class="quickstart-command">
+        <p class="hub-maven-label"><span>Run this in a terminal</span><button type="button" class="hub-copy" data-copy="quickstart-cmd" aria-live="polite">Copy</button></p>
+        <pre id="quickstart-cmd"><code class="language-shell">mvn archetype:generate \
+  -DarchetypeGroupId=org.apache.wicket \
+  -DarchetypeArtifactId=wicket-archetype-quickstart \
+  -DarchetypeVersion=10.11.0 \
+  -DgroupId=com.mycompany \
+  -DartifactId=myproject \
+  -DinteractiveMode=false</code></pre>
+        <p class="quickstart-needs">Needs Maven and Java <span class="quickstart-java">17</span> or newer. <span class="quickstart-support">Wicket 10 is supported until Jul 2027.</span></p>
+    </div>
+</form>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-      
-      ZeroClipboard.setDefaults( { moviePath: '/javascript/ZeroClipboard-1.1.7.swf' } );
-      var clip = new ZeroClipboard(document.getElementById("cmdLineCopy"));
-      clip.on( 'noflash', function ( client, args ) {
-        document.getElementById("cmdLineCopy").style.display = 'none';
-      });
-      clip.on( 'wrongflash', function ( client, args ) {
-        document.getElementById("cmdLineCopy").style.display = 'none';
-      });
-      $(document).resize(function() {
-        clip.reposition();
-      });
-    });
-
-    function changeIt()
-    {
-		var groupId = document.getElementById("groupId").value;
-		var artifactId = document.getElementById("artifactId").value;
-		var version = document.getElementById("version").value;
-		var appserver = document.getElementById("appserver").value;
-		var cmd;
-				
-		if(version.match(/^1\.[34]/))
-			cmd = 'mvn archetype:create -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;						
-		else
-			cmd = 'mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;			
-
-		if (version.match(/.*SNAPSHOT/))
-			cmd += ' -DarchetypeRepository=https://repository.apache.org/content/repositories/snapshots/';
-		else
-			cmd += ' -DarchetypeRepository=https://repository.apache.org/';
-
-		if (appserver === 'wildfly')
-			cmd += ' -Dlog4j.properties=wildfly-doesnt-need-log4j.properties';
-
-		cmd += ' -DinteractiveMode=false'; 
-		document.getElementById("cmdLine").value = cmd;
-    }
-  </script>
-
-<h2 id="before-you-start">Before you start</h2>
-
-<p>The Quick Start Wizard uses <a href="http://maven.apache.org" target="_blank" rel="noopener noreferrer">Apache Maven</a> to
-make it really fast to get started. You should have Maven installed and
-working before you can use the Quick Start wizard.</p>
-
-<h2 id="5-small-steps-to-a-web-application">5 small steps to a web application</h2>
-
-<p>Use the following steps to quickly generate a project to get you
-started:</p>
+<h2 id="steps">Five steps to a running application</h2>
 
 <ol>
-  <li>Fill in the Maven coordinates for your project in the wizard and 
-select the appropriate Wicket version</li>
-  <li>Copy the generated commandline to your clipboard and paste it in a 
-terminal (or a DOS box)</li>
-  <li>Open the project in your IDE of choice</li>
-  <li>Start the <code class="language-plaintext highlighter-rouge">Start</code> class in the <em>src/test/java</em> folder</li>
-  <li>Open your browser to <a target="_blank" href="http://localhost:8080" rel="noopener noreferrer">http://localhost:8080</a>
-</li>
+  <li>Fill in the Maven coordinates of your project and pick a Wicket version. The group ID also becomes the Java package.</li>
+  <li>Copy the command and run it in a terminal. Maven creates a folder named after the artifact ID.</li>
+  <li>Open the project in your IDE. Every current Java IDE imports Maven projects directly.</li>
+  <li>Run the <code class="language-plaintext highlighter-rouge">main</code> method of the <code class="language-plaintext highlighter-rouge">Start</code> class in <code class="language-plaintext highlighter-rouge">src/test/java</code>.</li>
+  <li>Open <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>.</li>
 </ol>
 
-<p>And you’re done!</p>
+<p><a href="/docs/create-project.html">Create a project</a> explains what the generated project contains and how to adjust it, and <a href="/docs/first-application.html">Build your first application</a> takes it from there. The same project is what the users list asks for when you report a bug: a small application that shows the problem.</p>
 
-<h2 id="quick-start-wizard">Quick Start Wizard</h2>
+<script>
+(function () {
+    var form = document.getElementById('quickstart');
+    var code = form.querySelector('code');
+    var select = form.elements.version;
+    var wanted = new URLSearchParams(window.location.search).get('v');
+    if (wanted) {
+        Array.prototype.forEach.call(select.options, function (o) { if (o.getAttribute('data-series') === wanted) o.selected = true; });
+    }
+    function update() {
+        var option = select.options[select.selectedIndex];
+        code.textContent = 'mvn archetype:generate \\\n' +
+            '  -DarchetypeGroupId=org.apache.wicket \\\n' +
+            '  -DarchetypeArtifactId=wicket-archetype-quickstart \\\n' +
+            '  -DarchetypeVersion=' + select.value + ' \\\n' +
+            '  -DgroupId=' + (form.elements.groupId.value.trim() || 'com.mycompany') + ' \\\n' +
+            '  -DartifactId=' + (form.elements.artifactId.value.trim() || 'myproject') + ' \\\n' +
+            '  -DinteractiveMode=false';
+        form.querySelector(".quickstart-java").textContent = option.getAttribute("data-java");
+        form.querySelector(".quickstart-support").textContent = option.getAttribute("data-support");
+    }
+    form.addEventListener('input', update);
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+    update();
+    form.querySelector('[data-copy]').addEventListener('click', function (e) {
+        var button = e.currentTarget;
+        navigator.clipboard.writeText(code.textContent).then(function () {
+            button.textContent = 'Copied';
+            setTimeout(function () { button.textContent = 'Copy'; }, 2000);
+        });
+    });
+})();
+</script>
 
-<p>Fill in your project details in the wizard below and copy the generated
-command line to your clipboard.</p>
 
-<div class="l-two-third">
-    <div class="quickstart-wizard">
-      <div>
-        <label title="Base Package" for="groupId">Group ID</label>
-        <input type="text" value="com.mycompany" onkeyup="changeIt();" id="groupId">
-      </div>
-      <div>
-        <label title="Project Name" for="artifactId">Artifact ID</label>
-        <input type="text" value="myproject" onkeyup="changeIt();" id="artifactId">
-      </div>
-      <div>
-        <label title="Wicket Version" for="version">Wicket Version</label>
-        <select onchange="changeIt();" id="version">
-    
-    
-    	<option value="10.12.0-SNAPSHOT">10.12.0-SNAPSHOT</option>
-    
-    
-    
-    	<option value="9.25.0-SNAPSHOT">9.25.0-SNAPSHOT</option>
-    
-    
-    
-    	<option value="10.11.0" selected>10.11.0</option>
-    
-    
-    
-    	<option value="9.24.0">9.24.0</option>
-    
-    
-    
-    	<option value="8.19.0">8.19.0</option>
-    
-    
-    
-    	<option value="7.18.0">7.18.0</option>
-    
-    
-    
-    	<option value="1.4.23">1.4.23</option>
-    
-    
-    
-    	<option value="1.5.16">1.5.16</option>
-    
-    
-    
-    	<option value="6.30.0">6.30.0</option>
-    
-    
-        </select>
-      </div>
-      <div>
-    <label for="appserver" title="Server to deploy on">Server to deploy on</label>
-    <select id="appserver" onchange="changeIt();">
-    	<option value="any" selected>Any but Wild Fly</option>
-    	<option value="wildfly">Wild Fly (JBoss 8.x)</option>
-    </select>
     </div>
-      <div>
-        <label id="cmdLabel" for="cmdLine">generated command line</label>
-        <textarea onfocus="this.select();" id="cmdLine" style="resize: vertical;"></textarea>
-        <script>changeIt();</script>
-      </div>
-      <div>
-        <button data-clipboard-target="cmdLine" class="clip_button" id="cmdLineCopy">copy to clipboard</button>
-      </div>
-    </div>
-  </div>
-<p><br></p>
-
-<p>With the generated command line on your clipboard open up a terminal
-window (or DOS box) and navigate to where you want the project to be
-generated (e.g. for Eclipse users this would be your workspace folder).
-Paste the command line into your terminal window and press «enter» to
-execute the command.</p>
-
-<h4 id="result-of-the-maven-command">Result of the Maven command</h4>
-
-<p>Executing the Maven command line will result the following directory
-structure:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.\myproject
-    |   pom.xml
-    |
-    \---src
-        +---main
-        |   +---java
-        |   |   \---com
-        |   |       \---mycompany
-        |   |               HomePage.html
-        |   |               HomePage.java
-        |   |               WicketApplication.java
-        |   |
-        |   +---resources
-        |   |       log4j.properties
-        |   |
-        |   \---webapp
-        |       \---WEB-INF
-        |               web.xml
-        |
-        \---test
-            \---java
-                \---com
-                    \---mycompany
-                            Start.java
-</code></pre></div></div>
-
-<p>It might be different depending on your settings (and version of
-Wicket), but this is basically the standard layout for web projects.</p>
-
-<h2 id="import-the-quick-start-in-your-ide">Import the Quick Start in your IDE</h2>
-
-<p>The Wicket Quick Start uses Apache Maven to make it really fast to get
-started. You should have Maven installed and working before you can use
-the Quick Start wizard.</p>
-
-<h3 id="eclipse">Eclipse</h3>
-
-<p>Eclipse has native support for Maven projects. To import the project you
-select “Import existing Maven project” from the File menu, and select the
-folder of your generated Quick Start project.</p>
-
-<h3 id="intellij-idea">IntelliJ IDEA</h3>
-
-<p>IntelliJ IDEA has native support for Maven projects. You just point the
-open project dialog to the place where you generated the Quick Start
-project and open the pom.xml file. IDEA will then open the project as
-any other Java project.</p>
-
-<h3 id="netbeans">Netbeans</h3>
-
-<p>Netbeans has native support for Maven projects. You just point the open
-project dialog to the place where you generated the Quick Start project
-and open the pom.xml file. Netbeans will then open the project as any
-other Java project.</p>
-
-
-        </section>
-    </div>
+    
 </main>
 
         <footer>
-            <div class="l-container l-flex">
-    <div class="l-one-third left">
-        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
-        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
-        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
-    </div>
-    <div class="l-one-third">
-        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
-        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
-    </div>
-    <div class="l-one-third">
-        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
-        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
-    </div>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
 </div>
-<div class="l-container">
-    <div class="left">
-        <img src="https://www.apache.org/img/asf_logo.png" style="height:90px; float:left; margin-right:10px;">
-        <div style="margin-top:12px;">Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
-    </div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
 </div>
 
         </footer>

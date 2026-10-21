@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Test a page with WicketTester | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Write JUnit tests that render your pages, click links, submit the guestbook form and check Ajax updates, without a browser or a server." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/start.html">Getting started</a></p>
+            <h1>Test a page with WicketTester</h1>
+            <p class="page-sign-sub">Write JUnit tests that render your pages, click links, submit the guestbook form and check Ajax updates, without a browser or a server.</p>
+            <p class="guide-plates"><span class="guide-kind">Tutorial</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#1-run-the-test-you-already-have"><span class="toc-number">1</span> <span class="toc-text">1. Run the test you already have</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#2-check-what-a-label-shows"><span class="toc-number">2</span> <span class="toc-text">2. Check what a label shows</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#3-click-the-ajax-counter"><span class="toc-number">3</span> <span class="toc-text">3. Click the Ajax counter</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#4-follow-a-link-to-another-page"><span class="toc-number">4</span> <span class="toc-text">4. Follow a link to another page</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#5-test-that-the-form-opens"><span class="toc-number">5</span> <span class="toc-text">5. Test that the form opens</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#6-test-that-the-guestbook-rejects-empty-input"><span class="toc-number">6</span> <span class="toc-text">6. Test that the guestbook rejects empty input</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#7-test-that-the-guestbook-saves-an-entry"><span class="toc-number">7</span> <span class="toc-text">7. Test that the guestbook saves an entry</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#8-submit-through-the-ajax-button"><span class="toc-number">8</span> <span class="toc-text">8. Submit through the Ajax button</span></a></li>
+<li class="toc--level-1 toc--section-9"><a href="#9-fire-the-timer"><span class="toc-number">9</span> <span class="toc-text">9. Fire the timer</span></a></li>
+<li class="toc--level-1 toc--section-10"><a href="#continue-from-here"><span class="toc-number">10</span> <span class="toc-text">Continue from here</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>In this tutorial you write tests for the application you built in the previous tutorials. The tests render the home page, click its links, submit the guestbook form and check what Ajax redraws. They run in JUnit, without a browser and without starting a server.</p>
+
+<p>Start from the <code class="language-plaintext highlighter-rouge">myapp</code> project as you left it at the end of <a href="/docs/first-ajax.html">Update a page with Ajax</a>. The quickstart already put the test dependencies in <em>pom.xml</em>: <code class="language-plaintext highlighter-rouge">wicket-tester</code> and JUnit.</p>
+
+<h2 id="1-run-the-test-you-already-have">1. Run the test you already have</h2>
+
+<p>The quickstart generated <em>TestHomePage.java</em> in <code class="language-plaintext highlighter-rouge">src/test/java/com/example</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestHomePage</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">WicketTester</span> <span class="n">tester</span><span class="o">;</span>
+
+    <span class="nd">@BeforeEach</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">tester</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WicketTester</span><span class="o">(</span><span class="k">new</span> <span class="nc">WicketApplication</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">homepageRendersSuccessfully</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">tester</span><span class="o">.</span><span class="na">assertRenderedPage</span><span class="o">(</span><span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">WicketTester</code> runs your application in memory, with a fake request, response and session. <code class="language-plaintext highlighter-rouge">startPage</code> renders a page the way a browser request would. <code class="language-plaintext highlighter-rouge">assertRenderedPage</code> checks which page came out.</p>
+
+<p>Run the tests from the project folder:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">test</span>
+</code></pre></div></div>
+
+<p>Maven reports <code class="language-plaintext highlighter-rouge">Tests run: 1, Failures: 0</code>. The test still passes after all your changes, so the home page, the base page and both panels render without errors. A test like this catches a <code class="language-plaintext highlighter-rouge">wicket:id</code> in the HTML without a component in Java, and the other way around.</p>
+
+<h2 id="2-check-what-a-label-shows">2. Check what a label shows</h2>
+
+<p>Add a test to <code class="language-plaintext highlighter-rouge">TestHomePage</code> that checks the greeting:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">greetsTheVisitor</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertLabel</span><span class="o">(</span><span class="s">"greeting"</span><span class="o">,</span> <span class="s">"Hello, Wicket!"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The first argument is the path of the component: its id, prefixed with the ids of the containers it sits in, separated by colons. The greeting is added straight to the page, so its path is its id.</p>
+
+<p>Run <code class="language-plaintext highlighter-rouge">mvn test</code>. Two tests pass. Change the expected text to <code class="language-plaintext highlighter-rouge">Hello!</code> and run again: the test fails and tells you what the label showed instead. Change it back.</p>
+
+<h2 id="3-click-the-ajax-counter">3. Click the Ajax counter</h2>
+
+<p><code class="language-plaintext highlighter-rouge">clickLink</code> clicks a link. For an <code class="language-plaintext highlighter-rouge">AjaxLink</code> it sends an Ajax request, as the browser would. Add:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">countsClicks</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertLabel</span><span class="o">(</span><span class="s">"clicks"</span><span class="o">,</span> <span class="s">"0"</span><span class="o">);</span>
+
+    <span class="n">tester</span><span class="o">.</span><span class="na">clickLink</span><span class="o">(</span><span class="s">"count"</span><span class="o">);</span>
+
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertLabel</span><span class="o">(</span><span class="s">"clicks"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">);</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertComponentOnAjaxResponse</span><span class="o">(</span><span class="s">"clicks"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">assertComponentOnAjaxResponse</code> checks that the label was part of the Ajax response, so the browser would have redrawn it. Run <code class="language-plaintext highlighter-rouge">mvn test</code>: three tests pass.</p>
+
+<h2 id="4-follow-a-link-to-another-page">4. Follow a link to another page</h2>
+
+<p>The links in the header sit inside the <code class="language-plaintext highlighter-rouge">HeaderPanel</code>, which has the id <code class="language-plaintext highlighter-rouge">header</code>. Their paths start with that id:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">navigatesToTheAboutPage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="n">tester</span><span class="o">.</span><span class="na">clickLink</span><span class="o">(</span><span class="s">"header:about"</span><span class="o">);</span>
+
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertRenderedPage</span><span class="o">(</span><span class="nc">AboutPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Run <code class="language-plaintext highlighter-rouge">mvn test</code>: four tests pass.</p>
+
+<h2 id="5-test-that-the-form-opens">5. Test that the form opens</h2>
+
+<p>The guestbook form is hidden until the visitor clicks “Write a message”. Create <em>TestGuestbookPage.java</em> in <code class="language-plaintext highlighter-rouge">src/test/java/com/example</code>, and test that link first. Keep the application in a field, so later tests can look at its guestbook:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.example</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">junit</span><span class="o">.</span><span class="na">jupiter</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">Assertions</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.wicket.util.tester.FormTester</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.wicket.util.tester.WicketTester</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.jupiter.api.AfterEach</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.jupiter.api.BeforeEach</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.jupiter.api.Test</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestGuestbookPage</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">WicketApplication</span> <span class="n">application</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">WicketTester</span> <span class="n">tester</span><span class="o">;</span>
+
+    <span class="nd">@BeforeEach</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">application</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WicketApplication</span><span class="o">();</span>
+        <span class="n">tester</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WicketTester</span><span class="o">(</span><span class="n">application</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@AfterEach</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tearDown</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">tester</span><span class="o">.</span><span class="na">destroy</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">opensTheForm</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">GuestbookPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">tester</span><span class="o">.</span><span class="na">assertInvisible</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
+
+        <span class="n">tester</span><span class="o">.</span><span class="na">clickLink</span><span class="o">(</span><span class="s">"write"</span><span class="o">);</span>
+
+        <span class="n">tester</span><span class="o">.</span><span class="na">assertVisible</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
+        <span class="n">tester</span><span class="o">.</span><span class="na">assertInvisible</span><span class="o">(</span><span class="s">"write"</span><span class="o">);</span>
+        <span class="n">tester</span><span class="o">.</span><span class="na">assertComponentOnAjaxResponse</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Each test gets a new application and so a new guestbook, and <code class="language-plaintext highlighter-rouge">destroy()</code> cleans up after each test. <code class="language-plaintext highlighter-rouge">assertInvisible</code> and <code class="language-plaintext highlighter-rouge">assertVisible</code> check the visibility that <code class="language-plaintext highlighter-rouge">onConfigure()</code> decided.</p>
+
+<p>Run <code class="language-plaintext highlighter-rouge">mvn test</code>: five tests pass.</p>
+
+<h2 id="6-test-that-the-guestbook-rejects-empty-input">6. Test that the guestbook rejects empty input</h2>
+
+<p><code class="language-plaintext highlighter-rouge">newFormTester</code> gives you a <code class="language-plaintext highlighter-rouge">FormTester</code> for the form at that path. Its <code class="language-plaintext highlighter-rouge">submit()</code> sends the form with the fields as they are. Add a test that submits the form empty:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">requiresNameAndMessage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">GuestbookPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">clickLink</span><span class="o">(</span><span class="s">"write"</span><span class="o">);</span>
+
+    <span class="nc">FormTester</span> <span class="n">form</span> <span class="o">=</span> <span class="n">tester</span><span class="o">.</span><span class="na">newFormTester</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
+    <span class="n">form</span><span class="o">.</span><span class="na">submit</span><span class="o">();</span>
+
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertErrorMessages</span><span class="o">(</span><span class="s">"'Name' is required."</span><span class="o">,</span> <span class="s">"'Message' is required."</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">application</span><span class="o">.</span><span class="na">getGuestbook</span><span class="o">().</span><span class="na">getEntries</span><span class="o">().</span><span class="na">size</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">assertErrorMessages</code> checks the error messages the submit produced. The guestbook still holds only its welcome entry.</p>
+
+<p>Run <code class="language-plaintext highlighter-rouge">mvn test</code>: six tests pass.</p>
+
+<h2 id="7-test-that-the-guestbook-saves-an-entry">7. Test that the guestbook saves an entry</h2>
+
+<p><code class="language-plaintext highlighter-rouge">setValue</code> fills in a field. Its first argument is the path of the field relative to the form. Add:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">savesAnEntry</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">GuestbookPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">clickLink</span><span class="o">(</span><span class="s">"write"</span><span class="o">);</span>
+
+    <span class="nc">FormTester</span> <span class="n">form</span> <span class="o">=</span> <span class="n">tester</span><span class="o">.</span><span class="na">newFormTester</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
+    <span class="n">form</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"Ann"</span><span class="o">);</span>
+    <span class="n">form</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span> <span class="s">"Nice site!"</span><span class="o">);</span>
+    <span class="n">form</span><span class="o">.</span><span class="na">submit</span><span class="o">();</span>
+
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertNoErrorMessage</span><span class="o">();</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertInfoMessages</span><span class="o">(</span><span class="s">"Thanks for signing, Ann!"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="s">"Ann"</span><span class="o">,</span> <span class="n">application</span><span class="o">.</span><span class="na">getGuestbook</span><span class="o">().</span><span class="na">getEntries</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">getName</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Run <code class="language-plaintext highlighter-rouge">mvn test</code>: seven tests pass.</p>
+
+<h2 id="8-submit-through-the-ajax-button">8. Submit through the Ajax button</h2>
+
+<p><code class="language-plaintext highlighter-rouge">form.submit()</code> submits the form as a plain request. To test the Ajax button, fill in the fields and fire the button’s <code class="language-plaintext highlighter-rouge">click</code> event with <code class="language-plaintext highlighter-rouge">executeAjaxEvent</code>. Wicket then submits the form over Ajax, as the browser does:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">savesAnEntryWithAjax</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">GuestbookPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">clickLink</span><span class="o">(</span><span class="s">"write"</span><span class="o">);</span>
+
+    <span class="nc">FormTester</span> <span class="n">form</span> <span class="o">=</span> <span class="n">tester</span><span class="o">.</span><span class="na">newFormTester</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
+    <span class="n">form</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"Bob"</span><span class="o">);</span>
+    <span class="n">form</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span> <span class="s">"Hello from Ajax."</span><span class="o">);</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">executeAjaxEvent</span><span class="o">(</span><span class="s">"form:save"</span><span class="o">,</span> <span class="s">"click"</span><span class="o">);</span>
+
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertComponentOnAjaxResponse</span><span class="o">(</span><span class="s">"entries"</span><span class="o">);</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertComponentOnAjaxResponse</span><span class="o">(</span><span class="s">"feedback"</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="s">"Bob"</span><span class="o">,</span> <span class="n">application</span><span class="o">.</span><span class="na">getGuestbook</span><span class="o">().</span><span class="na">getEntries</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">getName</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Run <code class="language-plaintext highlighter-rouge">mvn test</code>: eight tests pass.</p>
+
+<h2 id="9-fire-the-timer">9. Fire the timer</h2>
+
+<p>A test does not wait ten seconds for the timer. <code class="language-plaintext highlighter-rouge">executeAllTimerBehaviors</code> fires every timer on a page at once. Add an entry to the guestbook behind the page’s back, as another visitor would, and fire the timers:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">refreshesTheList</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">GuestbookPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">application</span><span class="o">.</span><span class="na">getGuestbook</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Entry</span><span class="o">(</span><span class="s">"Cid"</span><span class="o">,</span> <span class="s">"Signed in another browser."</span><span class="o">));</span>
+
+    <span class="n">tester</span><span class="o">.</span><span class="na">executeAllTimerBehaviors</span><span class="o">(</span><span class="n">tester</span><span class="o">.</span><span class="na">getLastRenderedPage</span><span class="o">());</span>
+
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertComponentOnAjaxResponse</span><span class="o">(</span><span class="s">"entries"</span><span class="o">);</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">assertContains</span><span class="o">(</span><span class="s">"Signed in another browser."</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">assertContains</code> searches the last response, here the Ajax response with the redrawn list.</p>
+
+<p>Run <code class="language-plaintext highlighter-rouge">mvn test</code>: all nine tests pass. Together they cover every page, the counter, the navigation, the hidden form, both ways of submitting the guestbook and the timer, and none of them needs a browser or a server.</p>
+
+<h2 id="continue-from-here">Continue from here</h2>
+
+<p>This is the last of the tutorials. From here, the how-to guides help you with a specific goal: start with <a href="/docs/test-pages.html">Test pages and components</a> and <a href="/docs/test-forms.html">Test forms</a> for more of what you used here, and <a href="/docs/wicket-tester.html">WicketTester</a> lists its methods. <a href="/docs/best-practices.html">Best practices</a> explains how to keep a growing Wicket application easy to change and to test.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/start.html">Getting started</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-application.html">Build your first application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a project from the quickstart, run it, and build a home page with a label, a click counter and a link to a second page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-layout.html">Give every page the same layout</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Move the header, navigation and footer of your application into a base page and two panels, so every page shares one layout.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-form.html">Build a form that saves data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a guestbook page with a form that validates its input, saves entries and lists them, and shows errors and a confirmation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-ajax.html">Update a page with Ajax</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make the click counter and the guestbook form update only the parts of the page that change, open the form without a reload, and refresh the guestbook every ten seconds.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Test a page with WicketTester</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write JUnit tests that render your pages, click links, submit the guestbook form and check Ajax updates, without a browser or a server.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/create-project.html">Create a project from the quickstart archetype</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a ready-to-run Wicket project with Maven, know what is in it, and open it in your IDE.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/deployment-mode.html">Switch between development and deployment mode</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run Wicket in deployment mode on production servers, with a system property, a web.xml parameter or code, and check which mode is active.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ide-plugins.html">Add Wicket support to your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install WicketForge in IntelliJ IDEA or QWickie in Eclipse to jump between Java and markup and complete wicket:id values.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/modules.html">Wicket modules</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The artifacts Wicket is released as, what each one contains, which Wicket modules it depends on, and which you need for testing and tooling.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/maven-setup.html">Maven dependencies</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Maven dependencies, versions, scopes and build settings a Wicket project needs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/configuration.html">Application settings</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a Wicket application is started and configured, the settings objects with their main options and defaults, and what development and deployment mode change.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/glossary.html">Glossary</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Plain-English definitions of the Wicket terms used in this guide, each compared with what other web frameworks call it.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/why-wicket.html">Why component-oriented</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What a component-oriented framework does differently from request-based MVC frameworks, what Wicket gains from it, and what it costs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/best-practices.html">Best practices</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The habits that keep a Wicket application easy to change and to test, each with the reason it follows from how Wicket works.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/first-test.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

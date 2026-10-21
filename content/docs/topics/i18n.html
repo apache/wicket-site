@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Localization | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Translate texts, formats and choices." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a></p>
+            <h1>Localization</h1>
+            <p class="page-sign-sub">Translate texts, formats and choices.</p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        <div class="reading-rail">
+            <nav aria-label="On this page">
+                <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+                
+                    <li class="toc--level-1"><a href="#howto"><span class="toc-text">How-to guides</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#reference"><span class="toc-text">Reference</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#explanation"><span class="toc-text">Explanation</span></a></li>
+                
+                </ul>
+</div>
+            </nav>
+        </div>
+        <div class="reading-main">
+            
+                
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="howto">How-to guides</h2>
+                    <p class="guide-group-intro">Directions for a specific goal.</p>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/localize-components.html">Translate component texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Move the texts of a page or panel into properties files, show them with wicket:message or from Java, and let the user switch the language.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-models.html">Put model values into translated texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show translated texts through ResourceModel and StringResourceModel, fill in property values and MessageFormat parameters, and choose the key from the data.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/localize-choices.html">Translate the options of a choice</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show translated options in a DropDownChoice, RadioChoice or other choice component, translate enum values, and change the "Choose One" text.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/custom-string-loaders.html">Load texts from your own source</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a string resource loader that reads texts from a database or an existing Java ResourceBundle, and change the chain of loaders Wicket searches.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="reference">Reference</h2>
+                    <p class="guide-group-intro">The classes, tags and settings, described.</p>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bundle-lookup.html">Where Wicket looks for texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The exact order in which Wicket searches resource bundles for a key, the file names it tries, and the settings that change the search.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="explanation">Explanation</h2>
+                    <p class="guide-group-intro">Why Wicket works the way it does.</p>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-localization.html">How Wicket localizes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Where the locale of a page comes from, why texts live in properties files next to the components that use them, and why the page can override its panels.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+            <nav class="guide-topics-other" aria-label="Other topics">
+                <h2>Other topics</h2>
+                <ul>
+                
+                    <li><a href="/docs/topics/start.html">Getting started</a></li>
+                
+                    <li><a href="/docs/topics/components.html">Components and markup</a></li>
+                
+                    <li><a href="/docs/topics/models.html">Models</a></li>
+                
+                    <li><a href="/docs/topics/forms.html">Forms</a></li>
+                
+                    <li><a href="/docs/topics/repeaters.html">Lists and tables</a></li>
+                
+                    <li><a href="/docs/topics/ajax.html">Ajax and JavaScript</a></li>
+                
+                    <li><a href="/docs/topics/websockets.html">WebSockets</a></li>
+                
+                    <li><a href="/docs/topics/links.html">Links and URLs</a></li>
+                
+                    <li><a href="/docs/topics/resources.html">Resources</a></li>
+                
+                    <li><a href="/docs/topics/state.html">Pages and state</a></li>
+                
+                    <li><a href="/docs/topics/lifecycle.html">Requests and lifecycle</a></li>
+                
+                    <li><a href="/docs/topics/security.html">Security</a></li>
+                
+                    <li><a href="/docs/topics/testing.html">Testing</a></li>
+                
+                    <li><a href="/docs/topics/integration.html">Integration</a></li>
+                
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

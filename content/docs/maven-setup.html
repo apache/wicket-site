@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Maven dependencies | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The Maven dependencies, versions, scopes and build settings a Wicket project needs." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/start.html">Getting started</a></p>
+            <h1>Maven dependencies</h1>
+            <p class="page-sign-sub">The Maven dependencies, versions, scopes and build settings a Wicket project needs.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#requirements-per-release-line"><span class="toc-number">1</span> <span class="toc-text">Requirements per release line</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#version-property"><span class="toc-number">2</span> <span class="toc-text">Version property</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#dependencies"><span class="toc-number">3</span> <span class="toc-text">Dependencies</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#dependencies-you-add-yourself"><span class="toc-number">4</span> <span class="toc-text">Dependencies you add yourself</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#html-files-next-to-the-java-classes"><span class="toc-number">5</span> <span class="toc-text">HTML files next to the Java classes</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#snapshot-versions"><span class="toc-number">6</span> <span class="toc-text">Snapshot versions</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#gradle"><span class="toc-number">7</span> <span class="toc-text">Gradle</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <h2 id="requirements-per-release-line">Requirements per release line</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Wicket 10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Java</td>
+      <td>17 or newer</td>
+    </tr>
+    <tr>
+      <td>Jakarta Servlet</td>
+      <td>5.0 or newer (built against 6.0)</td>
+    </tr>
+    <tr>
+      <td>Spring, for <code class="language-plaintext highlighter-rouge">wicket-spring</code>
+</td>
+      <td>6 (built against 6.2)</td>
+    </tr>
+    <tr>
+      <td>Jakarta CDI, for <code class="language-plaintext highlighter-rouge">wicket-cdi</code>
+</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <td>JUnit, used by <code class="language-plaintext highlighter-rouge">wicket-tester</code>
+</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Latest release</td>
+      <td>10.11.0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="version-property">Version property</h2>
+
+<p>Declare the Wicket version once and use it for every Wicket module:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;wicket.version&gt;</span>10.11.0<span class="nt">&lt;/wicket.version&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+</code></pre></div></div>
+
+<p>All Wicket modules of a project must have the same version, and libraries built on Wicket, such as WicketStuff modules, must be built for the same release line.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p>The dependency for every application:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${wicket.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>Other modules use the same <code class="language-plaintext highlighter-rouge">groupId</code> and <code class="language-plaintext highlighter-rouge">version</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artifact</th>
+      <th>Scope</th>
+      <th>Add it for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+      <td>compile</td>
+      <td>Every application.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-extensions</code></td>
+      <td>compile</td>
+      <td>Data tables, modal dialogs, tabs, the wizard and other extra components.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-auth-roles</code></td>
+      <td>compile</td>
+      <td>Sign-in pages and role-based authorization.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-bean-validation</code></td>
+      <td>compile</td>
+      <td>Jakarta Bean Validation on form components. Also add a validation provider, such as Hibernate Validator.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-spring</code></td>
+      <td>compile</td>
+      <td>Spring bean injection.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-cdi</code></td>
+      <td>compile</td>
+      <td>CDI bean injection.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-guice</code></td>
+      <td>compile</td>
+      <td>Guice injection.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-native-websocket-javax</code></td>
+      <td>compile</td>
+      <td>WebSocket support on the container’s Jakarta WebSocket implementation.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-devutils</code></td>
+      <td>compile</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">DebugBar</code> and the inspectors, in development mode.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-velocity</code></td>
+      <td>compile</td>
+      <td>Velocity templates.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-jmx</code></td>
+      <td>compile</td>
+      <td>JMX management of the settings.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-tester</code></td>
+      <td>test</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">WicketTester</code> and <code class="language-plaintext highlighter-rouge">FormTester</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-extensions-tester</code></td>
+      <td>test</td>
+      <td>Test helpers for <code class="language-plaintext highlighter-rouge">wicket-extensions</code> components.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-native-websocket-tester</code></td>
+      <td>test</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">WebSocketTester</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="/docs/modules.html">Wicket modules</a> describes what each module contains.</p>
+
+<p>The test dependency:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-tester<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${wicket.version}<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">wicket-tester</code> brings JUnit Jupiter along. Since Wicket 10, <code class="language-plaintext highlighter-rouge">WicketTester</code> is no longer part of <code class="language-plaintext highlighter-rouge">wicket-core</code>; without this dependency the <code class="language-plaintext highlighter-rouge">org.apache.wicket.util.tester</code> package is missing.</p>
+
+<h2 id="dependencies-you-add-yourself">Dependencies you add yourself</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Library</th>
+      <th>Scope</th>
+      <th>Why</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>An SLF4J back end, such as <code class="language-plaintext highlighter-rouge">org.slf4j:slf4j-simple</code> or <code class="language-plaintext highlighter-rouge">ch.qos.logback:logback-classic</code>
+</td>
+      <td>compile or runtime</td>
+      <td>Wicket logs through the SLF4J API. Without a back end you see no log output.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">jakarta.servlet:jakarta.servlet-api</code></td>
+      <td>provided</td>
+      <td>Only if your own code uses servlet classes. The container provides the API at run time, and <code class="language-plaintext highlighter-rouge">wicket-core</code> does not pass it on to your project.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">org.bouncycastle:bcprov-jdk18on</code></td>
+      <td>compile</td>
+      <td>Only for AES-GCM-SIV encryption, see <a href="/docs/configure-page-store.html#encrypt-stored-pages">Configure the page store</a>.</td>
+    </tr>
+    <tr>
+      <td>A servlet container for development, such as Jetty</td>
+      <td>test</td>
+      <td>To start the application from your IDE, as the quickstart’s <code class="language-plaintext highlighter-rouge">Start</code> class does.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="html-files-next-to-the-java-classes">HTML files next to the Java classes</h2>
+
+<p>Wicket loads the markup of a page or panel from the classpath, next to its class. Maven only copies files from <code class="language-plaintext highlighter-rouge">src/main/resources</code> to the classpath by default, so a project that keeps <code class="language-plaintext highlighter-rouge">HomePage.html</code> next to <code class="language-plaintext highlighter-rouge">HomePage.java</code> in <code class="language-plaintext highlighter-rouge">src/main/java</code> needs this in its <code class="language-plaintext highlighter-rouge">&lt;build&gt;</code> section:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;resources&gt;</span>
+    <span class="nt">&lt;resource&gt;</span>
+        <span class="nt">&lt;directory&gt;</span>src/main/resources<span class="nt">&lt;/directory&gt;</span>
+    <span class="nt">&lt;/resource&gt;</span>
+    <span class="nt">&lt;resource&gt;</span>
+        <span class="nt">&lt;directory&gt;</span>src/main/java<span class="nt">&lt;/directory&gt;</span>
+        <span class="nt">&lt;includes&gt;</span>
+            <span class="nt">&lt;include&gt;</span>**<span class="nt">&lt;/include&gt;</span>
+        <span class="nt">&lt;/includes&gt;</span>
+        <span class="nt">&lt;excludes&gt;</span>
+            <span class="nt">&lt;exclude&gt;</span>**/*.java<span class="nt">&lt;/exclude&gt;</span>
+        <span class="nt">&lt;/excludes&gt;</span>
+    <span class="nt">&lt;/resource&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+<span class="nt">&lt;testResources&gt;</span>
+    <span class="nt">&lt;testResource&gt;</span>
+        <span class="nt">&lt;directory&gt;</span>src/test/resources<span class="nt">&lt;/directory&gt;</span>
+    <span class="nt">&lt;/testResource&gt;</span>
+    <span class="nt">&lt;testResource&gt;</span>
+        <span class="nt">&lt;directory&gt;</span>src/test/java<span class="nt">&lt;/directory&gt;</span>
+        <span class="nt">&lt;includes&gt;</span>
+            <span class="nt">&lt;include&gt;</span>**<span class="nt">&lt;/include&gt;</span>
+        <span class="nt">&lt;/includes&gt;</span>
+        <span class="nt">&lt;excludes&gt;</span>
+            <span class="nt">&lt;exclude&gt;</span>**/*.java<span class="nt">&lt;/exclude&gt;</span>
+        <span class="nt">&lt;/excludes&gt;</span>
+    <span class="nt">&lt;/testResource&gt;</span>
+<span class="nt">&lt;/testResources&gt;</span>
+</code></pre></div></div>
+
+<p>Without it, the application compiles but fails at run time with a <code class="language-plaintext highlighter-rouge">MarkupNotFoundException</code>. The second half does the same for markup in the test sources, such as test pages. The alternative is to keep the HTML files in <code class="language-plaintext highlighter-rouge">src/main/resources</code>, in the same package folders as the classes.</p>
+
+<h2 id="snapshot-versions">Snapshot versions</h2>
+
+<p>Builds of the next release are published as <code class="language-plaintext highlighter-rouge">-SNAPSHOT</code> versions in the Apache snapshot repository:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;repositories&gt;</span>
+    <span class="nt">&lt;repository&gt;</span>
+        <span class="nt">&lt;id&gt;</span>apache-snapshots<span class="nt">&lt;/id&gt;</span>
+        <span class="nt">&lt;url&gt;</span>https://repository.apache.org/content/repositories/snapshots/<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;releases&gt;</span>
+            <span class="nt">&lt;enabled&gt;</span>false<span class="nt">&lt;/enabled&gt;</span>
+        <span class="nt">&lt;/releases&gt;</span>
+        <span class="nt">&lt;snapshots&gt;</span>
+            <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+        <span class="nt">&lt;/snapshots&gt;</span>
+    <span class="nt">&lt;/repository&gt;</span>
+<span class="nt">&lt;/repositories&gt;</span>
+</code></pre></div></div>
+
+<p>Releases are on Maven Central and need no repository entry.</p>
+
+<h2 id="gradle">Gradle</h2>
+
+<p>Gradle uses the same coordinates, for example <code class="language-plaintext highlighter-rouge">implementation "org.apache.wicket:wicket-core:$wicketVersion"</code> and <code class="language-plaintext highlighter-rouge">testImplementation "org.apache.wicket:wicket-tester:$wicketVersion"</code>. Gradle also copies only <code class="language-plaintext highlighter-rouge">src/main/resources</code> by default; add <code class="language-plaintext highlighter-rouge">src/main/java</code> to the resources source set, excluding <code class="language-plaintext highlighter-rouge">**/*.java</code>, to keep HTML files next to the classes.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/start.html">Getting started</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-application.html">Build your first application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a project from the quickstart, run it, and build a home page with a label, a click counter and a link to a second page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-layout.html">Give every page the same layout</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Move the header, navigation and footer of your application into a base page and two panels, so every page shares one layout.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-form.html">Build a form that saves data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a guestbook page with a form that validates its input, saves entries and lists them, and shows errors and a confirmation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-ajax.html">Update a page with Ajax</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make the click counter and the guestbook form update only the parts of the page that change, open the form without a reload, and refresh the guestbook every ten seconds.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-test.html">Test a page with WicketTester</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write JUnit tests that render your pages, click links, submit the guestbook form and check Ajax updates, without a browser or a server.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/create-project.html">Create a project from the quickstart archetype</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a ready-to-run Wicket project with Maven, know what is in it, and open it in your IDE.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/deployment-mode.html">Switch between development and deployment mode</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run Wicket in deployment mode on production servers, with a system property, a web.xml parameter or code, and check which mode is active.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ide-plugins.html">Add Wicket support to your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install WicketForge in IntelliJ IDEA or QWickie in Eclipse to jump between Java and markup and complete wicket:id values.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/modules.html">Wicket modules</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The artifacts Wicket is released as, what each one contains, which Wicket modules it depends on, and which you need for testing and tooling.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Maven dependencies</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Maven dependencies, versions, scopes and build settings a Wicket project needs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/configuration.html">Application settings</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a Wicket application is started and configured, the settings objects with their main options and defaults, and what development and deployment mode change.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/glossary.html">Glossary</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Plain-English definitions of the Wicket terms used in this guide, each compared with what other web frameworks call it.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/why-wicket.html">Why component-oriented</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What a component-oriented framework does differently from request-based MVC frameworks, what Wicket gains from it, and what it costs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/best-practices.html">Best practices</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The habits that keep a Wicket application easy to change and to test, each with the reason it follows from how Wicket works.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/maven-setup.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

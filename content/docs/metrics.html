@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Measure with Wicket metrics | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Count requests and time component creation, rendering and model loading with the experimental wicket-metrics module, AspectJ and Dropwizard Metrics." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/integration.html">Integration</a></p>
+            <h1>Measure with Wicket metrics</h1>
+            <p class="page-sign-sub">Count requests and time component creation, rendering and model loading with the experimental wicket-metrics module, AspectJ and Dropwizard Metrics.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#add-the-dependencies"><span class="toc-number">1</span> <span class="toc-text">Add the dependencies</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#start-the-aspectj-weaver"><span class="toc-number">2</span> <span class="toc-text">Start the AspectJ weaver</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#choose-the-measurements"><span class="toc-number">3</span> <span class="toc-text">Choose the measurements</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#read-the-measurements-in-jmx"><span class="toc-number">4</span> <span class="toc-text">Read the measurements in JMX</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#send-the-measurements-elsewhere"><span class="toc-number">5</span> <span class="toc-text">Send the measurements elsewhere</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#turn-measuring-off"><span class="toc-number">6</span> <span class="toc-text">Turn measuring off</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#measure-your-own-code"><span class="toc-number">7</span> <span class="toc-text">Measure your own code</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use this when you want numbers on what your Wicket application does: how many requests it serves, how long components take to construct and render, how often models load. The module wicket-metrics weaves measuring code into Wicket’s classes with AspectJ and collects the results in a <a href="https://metrics.dropwizard.io" target="_blank" rel="noopener noreferrer">Dropwizard Metrics</a> registry.</p>
+
+<p>wicket-metrics is experimental: it lives in the wicket-experimental part of the Wicket build and may change or disappear in a later release. It is published with every Wicket release, with the same version number.</p>
+
+<h2 id="add-the-dependencies">Add the dependencies</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket.experimental.wicket10<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-metrics<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${wicket.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.aspectj<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>aspectjrt<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${aspectj.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>wicket-metrics brings Dropwizard’s <code class="language-plaintext highlighter-rouge">metrics-core</code> and <code class="language-plaintext highlighter-rouge">metrics-jmx</code> along. AspectJ is licensed under the Eclipse Public License; include its license when you distribute it.</p>
+
+<h2 id="start-the-aspectj-weaver">Start the AspectJ weaver</h2>
+
+<p>The measurements are added while classes load, by the AspectJ weaver running as a Java agent. Download <em>aspectjweaver.jar</em> in the same version as <code class="language-plaintext highlighter-rouge">aspectjrt</code> and add it to the JVM options of your servlet container, for example in Tomcat’s <em>setenv.sh</em>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CATALINA_OPTS="$CATALINA_OPTS -javaagent:/opt/aspectj/aspectjweaver-1.9.x.jar"
+</code></pre></div></div>
+
+<h2 id="choose-the-measurements">Choose the measurements</h2>
+
+<p>Create <em>src/main/resources/META-INF/aop.xml</em>. It tells the weaver which Wicket classes to weave and which aspects to apply. <code class="language-plaintext highlighter-rouge">WicketFilterInitAspect</code> is required; the others are optional:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd"&gt;</span>
+<span class="nt">&lt;aspectj&gt;</span>
+    <span class="nt">&lt;weaver</span> <span class="na">options=</span><span class="s">"-nowarn"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;include</span> <span class="na">within=</span><span class="s">"org.apache.wicket..*"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/weaver&gt;</span>
+    <span class="nt">&lt;aspects&gt;</span>
+        <span class="nt">&lt;aspect</span> <span class="na">name=</span><span class="s">"org.apache.wicket.metrics.aspects.WicketFilterInitAspect"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;aspect</span> <span class="na">name=</span><span class="s">"org.apache.wicket.metrics.aspects.request.WicketFilterRequestCycleAspect"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;aspect</span> <span class="na">name=</span><span class="s">"org.apache.wicket.metrics.aspects.component.ComponentCreateAspect"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;aspect</span> <span class="na">name=</span><span class="s">"org.apache.wicket.metrics.aspects.component.ComponentOnRenderAspect"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;aspect</span> <span class="na">name=</span><span class="s">"org.apache.wicket.metrics.aspects.model.LoadableDetachableModelLoadAspect"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/aspects&gt;</span>
+<span class="nt">&lt;/aspectj&gt;</span>
+</code></pre></div></div>
+
+<p>The jar contains <em>wicket-metrics.template.xml</em> with every aspect. The aspects are in subpackages of <code class="language-plaintext highlighter-rouge">org.apache.wicket.metrics.aspects</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aspect</th>
+      <th>Metric</th>
+      <th>Measures</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">request.WicketFilterRequestCycleAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/application/requestCycle</code></td>
+      <td>Time per request.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">request.WicketFilterRequestCycleUrlAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/application/request/…</code></td>
+      <td>Time per request, by URL.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requesthandler.IRequestHandlerRespondAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/requesthandler/respond</code></td>
+      <td>Time per request handler response.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requesthandler.IRequestHandlerDetachAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/requesthandler/detach</code></td>
+      <td>Time per request handler detach.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">component.ComponentCreateAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/component/create</code></td>
+      <td>Time to construct each component class.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">component.ComponentOnInitializeAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/component/initialize</code></td>
+      <td>Time spent in <code class="language-plaintext highlighter-rouge">onInitialize()</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">component.ComponentOnConfigureAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/component/configure</code></td>
+      <td>Time spent in <code class="language-plaintext highlighter-rouge">onConfigure()</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">component.ComponentOnRenderAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/component/render</code></td>
+      <td>Time spent in <code class="language-plaintext highlighter-rouge">onRender()</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">component.ComponentOnDetachAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/component/detach</code></td>
+      <td>Calls of <code class="language-plaintext highlighter-rouge">onDetach()</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">component.ComponentSetResponsePageAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/component/redirect</code></td>
+      <td>Calls of <code class="language-plaintext highlighter-rouge">setResponsePage()</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">model.LoadableDetachableModelLoadAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/model/loadabledetachablemodel/load</code></td>
+      <td>Time spent in <code class="language-plaintext highlighter-rouge">load()</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">behavior.BehaviorCreateAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/behavior/create</code></td>
+      <td>Behaviors created.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">resource.IResourceCreateAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/resource/resource/create</code></td>
+      <td>Resources created.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">resource.ResourceReferenceCreateAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/resource/reference/create</code></td>
+      <td>Resource references created.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">markup.WicketTagCreateAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/tags/wicket/create</code></td>
+      <td>Wicket tags created.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ajax.IPartialPageRequestHandlerAddAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/ajax/add</code></td>
+      <td>Components added to Ajax responses.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ajax.IPartialPageRequestHandlerAppendJavaScriptAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/ajax/appendJavaScript</code></td>
+      <td>Calls of <code class="language-plaintext highlighter-rouge">appendJavaScript()</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ajax.IPartialPageRequestHandlerPrependJavaScriptAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/ajax/prependJavaScript</code></td>
+      <td>Calls of <code class="language-plaintext highlighter-rouge">prependJavaScript()</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">session.SessionCountListenerAspect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">core/session/count</code></td>
+      <td>Live sessions.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each metric name starts with the name of the Wicket filter and, where it measures a class, ends with that class name.</p>
+
+<p>The session count also needs the servlet listener <code class="language-plaintext highlighter-rouge">org.apache.wicket.metrics.aspects.session.SessionCountListener</code>. It is annotated with <code class="language-plaintext highlighter-rouge">@WebListener</code>, so the container finds it, unless your <em>web.xml</em> is <code class="language-plaintext highlighter-rouge">metadata-complete="true"</code>; then declare it in <em>web.xml</em>. The count starts at 0 when the server starts, so clear persisted sessions when you restart, or the number is off.</p>
+
+<p>wicket-metrics supports one Wicket filter per web application.</p>
+
+<h2 id="read-the-measurements-in-jmx">Read the measurements in JMX</h2>
+
+<p>Publish the registry as JMX MBeans in your application’s <code class="language-plaintext highlighter-rouge">init()</code>, then open them in JConsole or VisualVM:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="nc">WicketMetrics</span><span class="o">.</span><span class="na">getSettings</span><span class="o">().</span><span class="na">startJmxReporter</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Timers show count, minimum, maximum, mean and percentiles; meters show counts and rates.</p>
+
+<h2 id="send-the-measurements-elsewhere">Send the measurements elsewhere</h2>
+
+<p><code class="language-plaintext highlighter-rouge">WicketMetrics.getMetricRegistry()</code> returns the Dropwizard <code class="language-plaintext highlighter-rouge">MetricRegistry</code>, so every Dropwizard reporter works. To send the numbers to Graphite every five seconds, add <code class="language-plaintext highlighter-rouge">io.dropwizard.metrics:metrics-graphite</code> in the version that wicket-metrics uses, and start a reporter:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="nc">GraphiteReporter</span> <span class="n">reporter</span><span class="o">;</span>
+
+<span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="kt">var</span> <span class="n">graphite</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Graphite</span><span class="o">(</span><span class="k">new</span> <span class="nc">InetSocketAddress</span><span class="o">(</span><span class="s">"graphite.example.com"</span><span class="o">,</span> <span class="mi">2003</span><span class="o">));</span>
+    <span class="n">reporter</span> <span class="o">=</span> <span class="nc">GraphiteReporter</span><span class="o">.</span><span class="na">forRegistry</span><span class="o">(</span><span class="nc">WicketMetrics</span><span class="o">.</span><span class="na">getMetricRegistry</span><span class="o">())</span>
+        <span class="o">.</span><span class="na">prefixedWith</span><span class="o">(</span><span class="s">"webapps"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">convertRatesTo</span><span class="o">(</span><span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">convertDurationsTo</span><span class="o">(</span><span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">graphite</span><span class="o">);</span>
+    <span class="n">reporter</span><span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">reporter</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="turn-measuring-off">Turn measuring off</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WicketMetrics</span><span class="o">.</span><span class="na">getSettings</span><span class="o">().</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>The woven code stays in place but stops recording. To remove it entirely, start the JVM without the weaver agent.</p>
+
+<h2 id="measure-your-own-code">Measure your own code</h2>
+
+<p>An aspect that extends <code class="language-plaintext highlighter-rouge">WicketMetrics</code> can use its <code class="language-plaintext highlighter-rouge">measureTime()</code>, <code class="language-plaintext highlighter-rouge">mark()</code> and <code class="language-plaintext highlighter-rouge">count()</code> methods:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Aspect</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckoutAspect</span> <span class="kd">extends</span> <span class="nc">WicketMetrics</span> <span class="o">{</span>
+
+    <span class="nd">@Around</span><span class="o">(</span><span class="s">"execution(* com.example.shop.CheckoutPage.onSubmit(..))"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">aroundSubmit</span><span class="o">(</span><span class="nc">ProceedingJoinPoint</span> <span class="n">joinPoint</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Throwable</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">measureTime</span><span class="o">(</span><span class="s">"shop/checkout/submit"</span><span class="o">,</span> <span class="n">joinPoint</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Add the aspect to <em>aop.xml</em>, and add your package to the weaver: <code class="language-plaintext highlighter-rouge">&lt;include within="com.example.shop..*"/&gt;</code>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/integration.html">Integration</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/spring.html">Inject Spring beans</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Inject beans from a Spring application context into pages, components, behaviors and other objects with @SpringBean.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/cdi.html">Inject CDI beans</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Configure wicket-cdi so pages, components, behaviors and the session get CDI beans with @Inject, and choose beans that survive serialization.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ejb.html">Inject EJBs</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Inject session beans, JNDI resources and persistence units into Wicket components with @EJB, @Resource and @PersistenceUnit, through WicketStuff's javaee-inject module.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/jsr330.html">Inject with JSR-330 annotations</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use the standard @Inject and @Named annotations instead of @SpringBean, with the Spring, Guice and CDI integrations.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/karaf.html">Run on Apache Karaf</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install Wicket in Apache Karaf or another OSGi container with the Karaf feature that every Wicket release publishes.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/jmx.html">Inspect and change settings with JMX</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add wicket-jmx to see a running application's settings and session counts in JConsole, clear the markup cache, and change some settings without a restart.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Measure with Wicket metrics</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Count requests and time component creation, rendering and model loading with the experimental wicket-metrics module, AspectJ and Dropwizard Metrics.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/wicketstuff.html">WicketStuff</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The community modules of the WicketStuff project, what each one adds to Wicket, and how to add one to a Maven build.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/metrics.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

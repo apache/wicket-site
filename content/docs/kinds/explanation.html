@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Explanation | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Why Wicket works the way it does." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a></p>
+            <h1>Explanation</h1>
+            <p class="page-sign-sub">Why Wicket works the way it does.</p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        <div class="reading-rail">
+            <nav aria-label="On this page">
+                <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+                
+                    <li class="toc--level-1"><a href="#start"><span class="toc-text">Getting started</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#components"><span class="toc-text">Components and markup</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#models"><span class="toc-text">Models</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#forms"><span class="toc-text">Forms</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#ajax"><span class="toc-text">Ajax and JavaScript</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#websockets"><span class="toc-text">WebSockets</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#links"><span class="toc-text">Links and URLs</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#resources"><span class="toc-text">Resources</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#state"><span class="toc-text">Pages and state</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#lifecycle"><span class="toc-text">Requests and lifecycle</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#i18n"><span class="toc-text">Localization</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#security"><span class="toc-text">Security</span></a></li>
+                
+                </ul>
+</div>
+            </nav>
+        </div>
+        <div class="reading-main">
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="start"><a href="/docs/topics/start.html">Getting started</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/why-wicket.html">Why component-oriented</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What a component-oriented framework does differently from request-based MVC frameworks, what Wicket gains from it, and what it costs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/best-practices.html">Best practices</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The habits that keep a Wicket application easy to change and to test, each with the reason it follows from how Wicket works.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="components"><a href="/docs/topics/components.html">Components and markup</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/markup-inheritance.html">Markup inheritance</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a page or panel subclass inherits its parent's HTML along with its Java code, how wicket:child and wicket:extend merge the two, and when panels are the better tool.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/auto-components.html">How markup becomes components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket loads, parses and caches markup, and how Wicket tags turn into auto components that you never add yourself.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="models"><a href="/docs/topics/models.html">Models</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-models.html">Models and component data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why a component reads its data through a model, what happens to that data between requests, and why wrapping an entity in Model goes wrong.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="forms"><a href="/docs/topics/forms.html">Forms</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-processing.html">How a form is processed</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The order in which Wicket checks, converts, validates and stores submitted input, and why a form updates all its models or none.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="ajax"><a href="/docs/topics/ajax.html">Ajax and JavaScript</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/how-ajax-works.html">How Wicket Ajax works</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What happens between a click in the browser and the updated components on the page, and why components need a markup id.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="websockets"><a href="/docs/topics/websockets.html">WebSockets</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/how-websockets-work.html">How native WebSockets work</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket connects a page to a WebSocket, routes messages to components, pushes updates from other threads, and what that means for sessions and locking.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="links"><a href="/docs/topics/links.html">Links and URLs</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/redirects.html">Redirects after a request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why Wicket answers a form submit or link click with a redirect, how the three render strategies differ, and what that means for stateless pages and clusters.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="resources"><a href="/docs/topics/resources.html">Resources</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-resources.html">How Wicket serves resources</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What resources and resource references are, why components carry their own CSS and JavaScript, and how Wicket gives every file a cacheable URL.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="state"><a href="/docs/topics/state.html">Pages and state</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateful-stateless.html">Stateful and stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why Wicket keeps pages between requests, how page versions serve the back button, and what a stateless page gives up and gains.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-storage.html">How pages are stored</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket finds the page for a request, and the chain of stores that keeps stateful pages in the request, the session and on disk.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="lifecycle"><a href="/docs/topics/lifecycle.html">Requests and lifecycle</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-cycle.html">What happens during a request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket turns an HTTP request into a request handler, runs it, and cleans up afterwards, and why it is built that way.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="i18n"><a href="/docs/topics/i18n.html">Localization</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-localization.html">How Wicket localizes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Where the locale of a page comes from, why texts live in properties files next to the components that use them, and why the page can override its panels.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="security"><a href="/docs/topics/security.html">Security</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/security-model.html">How Wicket keeps applications secure</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What Wicket defends against by default (escaping, a strict CSP, stateful URLs and encryption) and what it leaves to your application and your deployment.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+            
+                
+                
+            
+            <nav class="guide-topics-other" aria-label="Other kinds">
+                <h2>Other kinds</h2>
+                <ul>
+                
+                    <li><a href="/docs/kinds/tutorials.html">Tutorials</a></li>
+                
+                    <li><a href="/docs/kinds/how-to-guides.html">How-to guides</a></li>
+                
+                    <li><a href="/docs/kinds/reference.html">Reference</a></li>
+                
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Test WebSocket behaviors | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Send messages to a page's WebSocket behavior and check what it pushes back with WebSocketTester, without a servlet container." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/websockets.html">WebSockets</a></p>
+            <h1>Test WebSocket behaviors</h1>
+            <p class="page-sign-sub">Send messages to a page's WebSocket behavior and check what it pushes back with WebSocketTester, without a servlet container.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#add-the-test-dependency"><span class="toc-number">1</span> <span class="toc-text">Add the test dependency</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#send-a-message-and-check-the-answer"><span class="toc-number">2</span> <span class="toc-text">Send a message and check the answer</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#test-a-push-from-the-server"><span class="toc-number">3</span> <span class="toc-text">Test a push from the server</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#test-a-websocketresource"><span class="toc-number">4</span> <span class="toc-text">Test a WebSocketResource</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use this to test the <code class="language-plaintext highlighter-rouge">WebSocketBehavior</code> of a page, or a <code class="language-plaintext highlighter-rouge">WebSocketResource</code>, in a unit test. <code class="language-plaintext highlighter-rouge">WebSocketTester</code> opens an emulated connection on top of a <code class="language-plaintext highlighter-rouge">WicketTester</code>, sends messages as the browser would, and hands you every message the server sends back.</p>
+
+<h2 id="add-the-test-dependency">Add the test dependency</h2>
+
+<p><em>pom.xml</em></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-native-websocket-tester<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${wicket.version}<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>The class is <code class="language-plaintext highlighter-rouge">org.apache.wicket.protocol.ws.tester.WebSocketTester</code>. It works with the <code class="language-plaintext highlighter-rouge">WicketTester</code> you already use; see <a href="/docs/test-pages.html">Test pages and components</a>.</p>
+
+<h2 id="send-a-message-and-check-the-answer">Send a message and check the answer</h2>
+
+<p>Start the page, create a <code class="language-plaintext highlighter-rouge">WebSocketTester</code> for it, and override <code class="language-plaintext highlighter-rouge">onOutMessage</code> to collect what the server pushes:</p>
+
+<p><em>ChatPageTest.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">ChatPageTest</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">WicketTester</span> <span class="n">tester</span><span class="o">;</span>
+
+    <span class="nd">@BeforeEach</span>
+    <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">tester</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WicketTester</span><span class="o">(</span><span class="k">new</span> <span class="nc">WicketApplication</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@AfterEach</span>
+    <span class="kt">void</span> <span class="nf">tearDown</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">tester</span><span class="o">.</span><span class="na">destroy</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">echoesMessageInUpperCase</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">ChatPage</span> <span class="n">page</span> <span class="o">=</span> <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">ChatPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">received</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="nc">WebSocketTester</span> <span class="n">webSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WebSocketTester</span><span class="o">(</span><span class="n">tester</span><span class="o">,</span> <span class="n">page</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onOutMessage</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">received</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+
+        <span class="n">webSocket</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+        <span class="n">webSocket</span><span class="o">.</span><span class="na">destroy</span><span class="o">();</span>
+
+        <span class="n">assertEquals</span><span class="o">(</span><span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"HELLO"</span><span class="o">),</span> <span class="n">received</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">sendMessage</code> calls the behavior’s <code class="language-plaintext highlighter-rouge">onMessage</code> in the test thread, so by the time it returns the answers are in. Binary messages work the same way with <code class="language-plaintext highlighter-rouge">sendMessage(byte[], offset, length)</code> and the matching <code class="language-plaintext highlighter-rouge">onOutMessage(byte[], int, int)</code>. <code class="language-plaintext highlighter-rouge">destroy()</code> closes the connection, which calls the behavior’s <code class="language-plaintext highlighter-rouge">onClose</code>.</p>
+
+<p>When the behavior re-renders components with <code class="language-plaintext highlighter-rouge">handler.add(...)</code>, the message you receive is the <code class="language-plaintext highlighter-rouge">&lt;ajax-response&gt;</code> XML. Check that it contains the markup you expect.</p>
+
+<h2 id="test-a-push-from-the-server">Test a push from the server</h2>
+
+<p>Push messages do not come from the browser. Broadcast one to the page’s connection, identified by the application, the session id and the page key:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">webSocket</span><span class="o">.</span><span class="na">broadcast</span><span class="o">(</span><span class="n">tester</span><span class="o">.</span><span class="na">getApplication</span><span class="o">(),</span> <span class="n">tester</span><span class="o">.</span><span class="na">getHttpSession</span><span class="o">().</span><span class="na">getId</span><span class="o">(),</span>
+    <span class="k">new</span> <span class="nf">PageIdKey</span><span class="o">(</span><span class="n">page</span><span class="o">.</span><span class="na">getPageId</span><span class="o">(),</span> <span class="n">page</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getName</span><span class="o">()),</span> <span class="k">new</span> <span class="nc">JobProgress</span><span class="o">(</span><span class="mi">50</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">PageIdKey</code> takes the page class name as second argument, because the connection is registered with it. <code class="language-plaintext highlighter-rouge">broadcastAll(application, message)</code> reaches every connection. The page’s <code class="language-plaintext highlighter-rouge">onEvent</code> or the behavior’s <code class="language-plaintext highlighter-rouge">onPush</code> runs in the test thread, and its answer arrives in <code class="language-plaintext highlighter-rouge">onOutMessage</code>. <code class="language-plaintext highlighter-rouge">WebSocketTester</code> sets a same-thread executor for push messages, so nothing has to be awaited.</p>
+
+<h2 id="test-a-websocketresource">Test a WebSocketResource</h2>
+
+<p>For a shared <code class="language-plaintext highlighter-rouge">WebSocketResource</code>, pass its name instead of a page:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WebSocketTester</span> <span class="n">webSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WebSocketTester</span><span class="o">(</span><span class="n">tester</span><span class="o">,</span> <span class="s">"prices"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onOutMessage</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">received</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">};</span>
+</code></pre></div></div>
+
+<p>The resource must be registered in the application’s <code class="language-plaintext highlighter-rouge">init()</code> as in production. <a href="/docs/use-websockets.html">Push updates over a WebSocket</a> shows the behavior and resource side.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/websockets.html">WebSockets</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-websockets.html">Push updates over a WebSocket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set up wicket-native-websocket, handle messages from the browser and push component updates to a page from a background thread.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Test WebSocket behaviors</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Send messages to a page's WebSocket behavior and check what it pushes back with WebSocketTester, without a servlet container.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/websocket-client-api.html">WebSocket JavaScript API</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Wicket.WebSocket functions and the events your JavaScript can subscribe to on a page with a WebSocket behavior.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/how-websockets-work.html">How native WebSockets work</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket connects a page to a WebSocket, routes messages to components, pushes updates from other threads, and what that means for sessions and locking.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/test-websockets.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

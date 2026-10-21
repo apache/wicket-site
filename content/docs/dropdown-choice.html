@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Let the user pick from a list | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Show a drop-down list with DropDownChoice, render objects and enums as options, and control the empty "Choose One" option." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/forms.html">Forms</a></p>
+            <h1>Let the user pick from a list</h1>
+            <p class="page-sign-sub">Show a drop-down list with DropDownChoice, render objects and enums as options, and control the empty "Choose One" option.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#show-a-list-of-strings"><span class="toc-number">1</span> <span class="toc-text">Show a list of strings</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#show-objects-with-a-choice-renderer"><span class="toc-number">2</span> <span class="toc-text">Show objects with a choice renderer</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#show-enum-values"><span class="toc-number">3</span> <span class="toc-text">Show enum values</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#control-the-empty-option"><span class="toc-number">4</span> <span class="toc-text">Control the empty option</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#react-when-the-user-picks-an-option"><span class="toc-number">5</span> <span class="toc-text">React when the user picks an option</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#group-the-options"><span class="toc-number">6</span> <span class="toc-text">Group the options</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>You need this when the user picks one value out of a known set: a country, a category, a person. A <code class="language-plaintext highlighter-rouge">DropDownChoice</code> renders a <code class="language-plaintext highlighter-rouge">&lt;select&gt;</code> with an option per choice, and puts the chosen object, not a string, into its model.</p>
+
+<h2 id="show-a-list-of-strings">Show a list of strings</h2>
+
+<p>Pass the component a model for the selection and a list of choices, and bind it to a <code class="language-plaintext highlighter-rouge">&lt;select&gt;</code> tag.</p>
+
+<p><em>OrderPage.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">sizes</span> <span class="o">=</span> <span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"Small"</span><span class="o">,</span> <span class="s">"Medium"</span><span class="o">,</span> <span class="s">"Large"</span><span class="o">);</span>
+<span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">DropDownChoice</span><span class="o">&lt;&gt;(</span><span class="s">"size"</span><span class="o">,</span>
+    <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">order</span><span class="o">,</span> <span class="nl">Order:</span><span class="o">:</span><span class="n">getSize</span><span class="o">,</span> <span class="nl">Order:</span><span class="o">:</span><span class="n">setSize</span><span class="o">),</span> <span class="n">sizes</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p><em>OrderPage.html</em></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;select</span> <span class="na">wicket:id=</span><span class="s">"size"</span><span class="nt">&gt;&lt;/select&gt;</span>
+</code></pre></div></div>
+
+<p>Wicket renders the options itself; anything you put between the <code class="language-plaintext highlighter-rouge">&lt;select&gt;</code> tags is replaced.</p>
+
+<h2 id="show-objects-with-a-choice-renderer">Show objects with a choice renderer</h2>
+
+<p>For objects other than strings, tell the component what to show and what to use as option value with an <code class="language-plaintext highlighter-rouge">IChoiceRenderer</code>. <code class="language-plaintext highlighter-rouge">LambdaChoiceRenderer</code> takes a function for the text and one for the id:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Country</span><span class="o">&gt;&gt;</span> <span class="n">countries</span> <span class="o">=</span> <span class="nc">LoadableDetachableModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="nl">countryService:</span><span class="o">:</span><span class="n">findAll</span><span class="o">);</span>
+
+<span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">DropDownChoice</span><span class="o">&lt;&gt;(</span><span class="s">"country"</span><span class="o">,</span>
+    <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">address</span><span class="o">,</span> <span class="nl">Address:</span><span class="o">:</span><span class="n">getCountry</span><span class="o">,</span> <span class="nl">Address:</span><span class="o">:</span><span class="n">setCountry</span><span class="o">),</span>
+    <span class="n">countries</span><span class="o">,</span>
+    <span class="k">new</span> <span class="nc">LambdaChoiceRenderer</span><span class="o">&lt;&gt;(</span><span class="nl">Country:</span><span class="o">:</span><span class="n">getName</span><span class="o">,</span> <span class="nl">Country:</span><span class="o">:</span><span class="n">getIsoCode</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ChoiceRenderer</code> does the same with property expressions: <code class="language-plaintext highlighter-rouge">new ChoiceRenderer&lt;&gt;("name", "isoCode")</code>.</p>
+
+<p>Give the renderer an id whenever the list can change between rendering and submitting, such as a list loaded from a database. Without an id, the option value is the position in the list, and a changed list maps the submitted position to a different object. Without an id, the current model object must also be <code class="language-plaintext highlighter-rouge">equals()</code> to one of the choices for the option to show as selected.</p>
+
+<p>The choices can be a <code class="language-plaintext highlighter-rouge">List</code> or a model of a list, as above. A <code class="language-plaintext highlighter-rouge">LoadableDetachableModel</code> loads them once per request and keeps them out of the session.</p>
+
+<h2 id="show-enum-values">Show enum values</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">EnumChoiceRenderer</code>. It uses the constant name as option value and looks the text up in your resources under <code class="language-plaintext highlighter-rouge">&lt;EnumName&gt;.&lt;CONSTANT&gt;</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">DropDownChoice</span><span class="o">&lt;&gt;(</span><span class="s">"priority"</span><span class="o">,</span>
+    <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">ticket</span><span class="o">,</span> <span class="nl">Ticket:</span><span class="o">:</span><span class="n">getPriority</span><span class="o">,</span> <span class="nl">Ticket:</span><span class="o">:</span><span class="n">setPriority</span><span class="o">),</span>
+    <span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="nc">Priority</span><span class="o">.</span><span class="na">values</span><span class="o">()),</span>
+    <span class="k">new</span> <span class="nc">EnumChoiceRenderer</span><span class="o">&lt;&gt;(</span><span class="k">this</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p><em>TicketPage.properties</em></p>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">Priority.LOW</span><span class="p">=</span><span class="s">Low</span>
+<span class="py">Priority.HIGH</span><span class="p">=</span><span class="s">High</span>
+</code></pre></div></div>
+
+<p>Passing the component (<code class="language-plaintext highlighter-rouge">this</code>) makes the renderer look in the resources of that component and its parents, such as the page’s properties file. <a href="/docs/localize-choices.html">Translate the options of a choice</a> has more on translating options.</p>
+
+<h2 id="control-the-empty-option">Control the empty option</h2>
+
+<p>While the model is <code class="language-plaintext highlighter-rouge">null</code>, the list starts with an option “Choose One”. Once the user has picked a value and the form is saved, that option disappears and the user cannot go back to no value.</p>
+
+<p>To let the user clear the selection, call <code class="language-plaintext highlighter-rouge">setNullValid(true)</code>. The empty option is then always there, with an empty text.</p>
+
+<p>Neither setting makes a choice mandatory. Call <code class="language-plaintext highlighter-rouge">setRequired(true)</code> for that.</p>
+
+<p>Change the texts in your properties file. Wicket tries the key prefixed with the component id first:</p>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">country.null</span><span class="p">=</span><span class="s">Pick a country</span>
+<span class="py">country.nullValid</span><span class="p">=</span><span class="s">No country</span>
+</code></pre></div></div>
+
+<p>The keys without prefix, <code class="language-plaintext highlighter-rouge">null</code> and <code class="language-plaintext highlighter-rouge">nullValid</code>, change the text for every drop-down that uses the file.</p>
+
+<h2 id="react-when-the-user-picks-an-option">React when the user picks an option</h2>
+
+<p>Add an <code class="language-plaintext highlighter-rouge">AjaxFormComponentUpdatingBehavior</code> on the <code class="language-plaintext highlighter-rouge">change</code> event to update other parts of the page as soon as the selection changes, for example to fill a second list with the cities of the chosen country:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">country</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">AjaxFormComponentUpdatingBehavior</span><span class="o">.</span><span class="na">onUpdate</span><span class="o">(</span><span class="s">"change"</span><span class="o">,</span> <span class="n">target</span> <span class="o">-&gt;</span> <span class="n">target</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">city</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p>The behavior validates the drop-down and updates its model before your code runs. See <a href="/docs/ajax-behaviors.html">Ajax behaviors</a>. Without Ajax, <code class="language-plaintext highlighter-rouge">FormComponentUpdatingBehavior</code> does the same with a full page request.</p>
+
+<h2 id="group-the-options">Group the options</h2>
+
+<p><code class="language-plaintext highlighter-rouge">GroupedDropDownChoice</code> renders <code class="language-plaintext highlighter-rouge">&lt;optgroup&gt;</code> elements. Sort the choices by group and implement <code class="language-plaintext highlighter-rouge">isNewGroup</code>, <code class="language-plaintext highlighter-rouge">hasNoGroup</code> and <code class="language-plaintext highlighter-rouge">getGroupLabel</code> to tell where each group starts and what it is called.</p>
+
+<p>To let the user pick more than one value, see <a href="/docs/select-multiple.html">Select several values</a>. For a few options shown at once, a <a href="/docs/checkboxes-radios.html"><code class="language-plaintext highlighter-rouge">RadioChoice</code></a> works the same way as a <code class="language-plaintext highlighter-rouge">DropDownChoice</code>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/forms.html">Forms</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/validate-input.html">Validate input and show errors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make fields required, check their values with validators, show the error messages and change their text.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/convert-input.html">Convert input to your types</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Tell a field which type its input becomes, write a converter for your own type and register it for one field or the whole application.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bean-validation.html">Validate with Bean Validation</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Check form input against the Jakarta Bean Validation annotations on your domain classes with the wicket-bean-validation module.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Let the user pick from a list</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show a drop-down list with DropDownChoice, render objects and enums as options, and control the empty "Choose One" option.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/checkboxes-radios.html">Use checkboxes and radio buttons</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Bind a checkbox to a boolean, let the user tick several options or pick one with radio buttons, and add a "select all" checkbox.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/select-multiple.html">Select several values</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let the user select several values from a list with ListMultipleChoice, or move them between two lists with Palette.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/submit-buttons.html">Use more than one submit button</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a form several buttons that each run their own code, pick the button for the Enter key, and add a Cancel button that skips validation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nest-forms.html">Nest forms</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a form inside another form, submit and validate the inner form on its own, and decide which forms take part in a submit.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/upload-files.html">Upload files</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let users upload one or more files with FileUploadField, limit their size and number, and show upload progress.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-component-panel.html">Combine fields into one form component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a FormComponentPanel that shows several inputs but converts, validates and stores them as one value.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-forms.html">Build a stateless form</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use StatelessForm so a page with a form stays stateless, never expires and does not create a session until it must.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-components.html">Form components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every form, input, choice, upload and submit component in wicket-core and wicket-extensions, with the markup tag it needs and the type of its model.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/validators.html">Validators and converters</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The built-in validators, form validators and converters, with their message keys, the variables in their messages and their default texts.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-processing.html">How a form is processed</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The order in which Wicket checks, converts, validates and stores submitted input, and why a form updates all its models or none.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/dropdown-choice.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

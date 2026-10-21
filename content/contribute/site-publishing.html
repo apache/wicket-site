@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>How the site is built and published | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Why the built site is committed next to its source, how a commit reaches wicket.apache.org, and why release day only changes data." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items active" aria-current="true">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="/community/">Community</a><span aria-hidden="true"> / </span><a href="/contribute/">Contribute</a></p>
+        <h1>How the site is built and published</h1>
+        <p class="page-sign-sub">Why the built site is committed next to its source, how a commit reaches wicket.apache.org, and why release day only changes data.</p>
+        <p class="guide-plates"><span class="guide-kind">Explanation</span></p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#one-branch-with-source-and-result"><span class="toc-number">1</span> <span class="toc-text">One branch with source and result</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#build-and-serve-are-not-the-same"><span class="toc-number">2</span> <span class="toc-text">Build and serve are not the same</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#data-instead-of-pages"><span class="toc-number">3</span> <span class="toc-text">Data instead of pages</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#redirects-keep-old-links-working"><span class="toc-number">4</span> <span class="toc-text">Redirects keep old links working</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            <section class="page-content guide-content">
+                <h2 id="one-branch-with-source-and-result">One branch with source and result</h2>
+
+<p>The site is a <a href="https://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> site in the <code class="language-plaintext highlighter-rouge">asf-site</code> branch of apache/wicket-site. The branch holds two things: the source, Markdown pages with their layouts and data, and in <code class="language-plaintext highlighter-rouge">content/</code> the HTML that Jekyll builds from it. Whoever changes the source builds the site and commits both.</p>
+
+<p>The ASF’s web servers publish <code class="language-plaintext highlighter-rouge">content/</code> as wicket.apache.org. The <code class="language-plaintext highlighter-rouge">.asf.yaml</code> file at the root of the branch asks for this with <code class="language-plaintext highlighter-rouge">publish: whoami: asf-site</code>, and the ASF’s publishing service picks up every commit to the branch within a minute. No build server is involved: what is committed in <code class="language-plaintext highlighter-rouge">content/</code> is what visitors get.</p>
+
+<p>That is why the site is built on your machine and not by the ASF. Many ASF sites use a build service that only knows Pelican, or a GitHub Actions workflow that builds and pushes the result. Wicket’s site uses its own Jekyll plugins, for the documentation’s indexes and the news archives, so it is built locally with the gems in the <code class="language-plaintext highlighter-rouge">Gemfile</code>.</p>
+
+<h2 id="build-and-serve-are-not-the-same">Build and serve are not the same</h2>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll build</code> builds the site for wicket.apache.org: the <code class="language-plaintext highlighter-rouge">url</code> in <code class="language-plaintext highlighter-rouge">_config.yml</code> is <code class="language-plaintext highlighter-rouge">https://wicket.apache.org</code>, and feeds and links that need a full address use it. <code class="language-plaintext highlighter-rouge">jekyll serve</code> builds the site for your machine and replaces that address with <code class="language-plaintext highlighter-rouge">localhost</code>. Anything you commit to <code class="language-plaintext highlighter-rouge">content/</code> has to come from <code class="language-plaintext highlighter-rouge">jekyll build</code>, or the Atom feed would send readers to <code class="language-plaintext highlighter-rouge">localhost</code>. For local previews, <code class="language-plaintext highlighter-rouge">jekyll serve -d /tmp/site</code> keeps that copy out of <code class="language-plaintext highlighter-rouge">content/</code>.</p>
+
+<h2 id="data-instead-of-pages">Data instead of pages</h2>
+
+<p>With a major release every quarter and patch releases in between, the site changes often, and the people who change it are volunteers releasing Wicket, not web developers. So a release is data: the version numbers in <code class="language-plaintext highlighter-rouge">_config.yml</code>, the release lines in <code class="language-plaintext highlighter-rouge">_data/releases.yml</code>, the highlights in <code class="language-plaintext highlighter-rouge">_data/highlights.yml</code>, and a post. The version plate in the menu, the release lines page, the line pages, the panels on the documentation and the quick start are generated from that data. A release updates all of them without anyone editing a page, and none of them can fall behind another.</p>
+
+<p>The documentation follows the same idea with versions. A page states the oldest line it is correct for in <code class="language-plaintext highlighter-rouge">since</code>, and paragraphs that differ between lines carry a note. One page serves every line in service, a reader filters by the version they use, and a line leaving service needs no edit at all.</p>
+
+<h2 id="redirects-keep-old-links-working">Redirects keep old links working</h2>
+
+<p>Release announcements, mailing list archives and answers elsewhere link to the site for years. The web server applies <code class="language-plaintext highlighter-rouge">.htaccess</code>, which Jekyll copies into <code class="language-plaintext highlighter-rouge">content/</code>, so a moved page keeps its old address as a redirect. See <a href="/contribute/site-redirect.html">Redirect an old URL</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/contribute/">Contribute</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-first-change.html">Make your first change to the site</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Clone the site, run it on your machine, change a page, and send the change as a pull request.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-release.html">Update the site for a release</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Announce a release on the site, update its version everywhere it appears, and start a new release line when a major release ships.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-blog-post.html">Write a blog post</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Publish a release announcement, a security advisory or an article on the blog, and decide whether it is featured.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-docs-page.html">Add a page to the documentation</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write a new page for the documentation under /docs/, give it the front matter that files it, and check it in search and on its topic page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-docs-release.html">Carry the reference guide's changes into the documentation</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">At a release, find what changed in the AsciiDoc reference guide in apache/wicket and rewrite those changes into the pages under /docs/.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-redirect.html">Redirect an old URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep links in mails, announcements and other sites working when a page moves or disappears.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-files.html">Site files and data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What each folder and data file of the site holds, the version settings in _config.yml, and the fields of the release lines.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">How the site is built and published</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why the built site is committed next to its source, how a commit reaches wicket.apache.org, and why release day only changes data.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_contribute/site-publishing.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

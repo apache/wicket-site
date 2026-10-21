@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>What happens during a request | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="How Wicket turns an HTTP request into a request handler, runs it, and cleans up afterwards, and why it is built that way." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/lifecycle.html">Requests and lifecycle</a></p>
+            <h1>What happens during a request</h1>
+            <p class="page-sign-sub">How Wicket turns an HTTP request into a request handler, runs it, and cleans up afterwards, and why it is built that way.</p>
+            <p class="guide-plates"><span class="guide-kind">Explanation</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#one-object-per-request-on-the-current-thread"><span class="toc-number">1</span> <span class="toc-text">One object per request, on the current thread</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#from-url-to-request-handler"><span class="toc-number">2</span> <span class="toc-text">From URL to request handler</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#handlers-run-one-after-another"><span class="toc-number">3</span> <span class="toc-text">Handlers run one after another</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#components-see-two-requests-in-one"><span class="toc-number">4</span> <span class="toc-text">Components see two requests in one</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#detach-forgetting-what-is-not-needed"><span class="toc-number">5</span> <span class="toc-text">Detach: forgetting what is not needed</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#exceptions-become-handlers-too"><span class="toc-number">6</span> <span class="toc-text">Exceptions become handlers too</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#listeners-instead-of-filters"><span class="toc-number">7</span> <span class="toc-text">Listeners instead of filters</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>A Wicket application is a servlet filter. Every request that reaches <code class="language-plaintext highlighter-rouge">WicketFilter</code> gets its own <code class="language-plaintext highlighter-rouge">RequestCycle</code>, and that object carries the request from the first byte to the last cleanup. Most of the time you do not see it, because pages, links and forms hide it. It becomes visible when you need the raw request, want to run code around every request, or try to understand why a component behaves differently in the second request than in the first. The classes and hooks named here are listed in <a href="/docs/request-processing.html">Request processing</a>.</p>
+
+<h2 id="one-object-per-request-on-the-current-thread">One object per request, on the current thread</h2>
+
+<p>A servlet container serves each request on one thread. Wicket binds the application, the session and the request cycle to that thread while it works, which is why <code class="language-plaintext highlighter-rouge">RequestCycle.get()</code>, <code class="language-plaintext highlighter-rouge">Session.get()</code> and <code class="language-plaintext highlighter-rouge">Application.get()</code> work anywhere in your code without passing objects around. The same convenience is also the limit: code that runs in another thread, such as a scheduled job or a <code class="language-plaintext highlighter-rouge">CompletableFuture</code>, has no request cycle and no session unless you bind them yourself.</p>
+
+<p>The request cycle owns the <code class="language-plaintext highlighter-rouge">Request</code> and <code class="language-plaintext highlighter-rouge">Response</code> of the request. They are Wicket’s own abstractions, not the servlet classes. Wicket’s request processing does not depend on the servlet API, which is what lets the same machinery run inside <code class="language-plaintext highlighter-rouge">WicketTester</code> without a container and serve WebSocket messages. When you do need the servlet objects, <code class="language-plaintext highlighter-rouge">getContainerRequest()</code> and <code class="language-plaintext highlighter-rouge">getContainerResponse()</code> give them to you.</p>
+
+<h2 id="from-url-to-request-handler">From URL to request handler</h2>
+
+<p>The first thing the request cycle does is decide what the request is for. It does not look at the URL itself. It asks a request mapper, an <code class="language-plaintext highlighter-rouge">IRequestMapper</code>, to turn the request into a request handler, an <code class="language-plaintext highlighter-rouge">IRequestHandler</code>. The application’s root mapper is a list of mappers; each one reports how well it matches the request, and the best match produces the handler.</p>
+
+<p><img src="/img/guide/request-cycle-handler.png" alt="The request cycle asks every mapper for its compatibility score, lets the best one map the request to a handler, and calls respond on that handler"></p>
+
+<p>A request handler is the unit of work: render this page, call this link’s <code class="language-plaintext highlighter-rouge">onClick()</code>, serve this CSS file, answer this Ajax call, redirect to that URL. Separating “what does the URL mean” from “what to do about it” is the core of the design. Because mappers work in both directions, the same mapper that reads <code class="language-plaintext highlighter-rouge">/products/42</code> also writes it when a link to that page renders. Changing your URL scheme means changing mappers; your pages do not notice. See <a href="/docs/request-mappers.html">Request mappers</a> and <a href="/docs/mount-pages.html">Give pages readable URLs</a>.</p>
+
+<p>If no mapper recognizes the request, Wicket hands it back to the filter chain, so the container can serve static files or other servlets.</p>
+
+<h2 id="handlers-run-one-after-another">Handlers run one after another</h2>
+
+<p>Many requests consist of more than one handler. A click on a link first runs a <code class="language-plaintext highlighter-rouge">ListenerRequestHandler</code>, which finds the link on the stored page and calls <code class="language-plaintext highlighter-rouge">onClick()</code>. If <code class="language-plaintext highlighter-rouge">onClick()</code> calls <code class="language-plaintext highlighter-rouge">setResponsePage()</code>, the request cycle schedules a <code class="language-plaintext highlighter-rouge">RenderPageRequestHandler</code> to run next. If it does not, the listener handler schedules a render of the current page itself. The request cycle keeps executing the scheduled handler until none is left.</p>
+
+<p>This is why <code class="language-plaintext highlighter-rouge">setResponsePage()</code> does not render anything when you call it. It only records what should happen after the current handler finishes, and the last call wins. It is also why exceptions such as <code class="language-plaintext highlighter-rouge">RestartResponseException</code> work as flow control: they abandon the current handler and put another one in its place, from wherever in the call stack they are thrown.</p>
+
+<p>Whether the browser gets the page directly or is first redirected to it depends on the render strategy; <a href="/docs/redirects.html">Redirects after a request</a> explains why Wicket redirects after a form post by default.</p>
+
+<h2 id="components-see-two-requests-in-one">Components see two requests in one</h2>
+
+<p>For a stateful page, a click is handled on the page instance that rendered the link, taken from the page store. That gives a request its typical order: first the listener runs on the components as they were left by the previous render; then the page, or the part of it that an Ajax request updates, goes through <code class="language-plaintext highlighter-rouge">onConfigure()</code>, <code class="language-plaintext highlighter-rouge">onBeforeRender()</code> and rendering again. Code in <code class="language-plaintext highlighter-rouge">onClick()</code> changes state; code in <code class="language-plaintext highlighter-rouge">onConfigure()</code> reads that state and decides how the page looks. <a href="/docs/component-lifecycle.html">Component lifecycle</a> lists the hooks in order.</p>
+
+<h2 id="detach-forgetting-what-is-not-needed">Detach: forgetting what is not needed</h2>
+
+<p>When the last handler has run, the request cycle detaches. Every handler detaches what it used; for a page that means calling <code class="language-plaintext highlighter-rouge">detach()</code> on the page and every component in it, which detaches their models. After that the session detaches and the page manager stores the pages the request touched.</p>
+
+<p>Detaching exists because a stateful page outlives the request. Between requests, Wicket keeps the page in the session and serializes it to disk, so the page must not hold the database entities, open connections or large result lists it used while rendering. A <a href="/docs/detachable-models.html">detachable model</a> drops its object in <code class="language-plaintext highlighter-rouge">detach()</code> and loads it again when the next request asks for it. <a href="/docs/page-storage.html">How pages are stored</a> describes what happens to the page after this point.</p>
+
+<p>Detaching happens even when the request failed. The steps that end and detach a request run in <code class="language-plaintext highlighter-rouge">finally</code> blocks, so a database session opened in <code class="language-plaintext highlighter-rouge">onBeginRequest()</code> can be closed in <code class="language-plaintext highlighter-rouge">onEndRequest()</code> or <code class="language-plaintext highlighter-rouge">onDetach()</code> without leaking.</p>
+
+<h2 id="exceptions-become-handlers-too">Exceptions become handlers too</h2>
+
+<p>An exception thrown while a handler runs is not passed to the servlet container. The request cycle turns it into another handler. First every <code class="language-plaintext highlighter-rouge">IRequestCycleListener</code> gets the chance to return one in <code class="language-plaintext highlighter-rouge">onException()</code>; if none does, the application’s exception mapper decides, for example by rendering the page-expired page or the internal error page. Treating an error as just another response keeps the error page inside Wicket, with the same session, localization and layout as the rest of the application. <a href="/docs/handle-exceptions.html">Handle exceptions and error pages</a> shows how to plug into this.</p>
+
+<h2 id="listeners-instead-of-filters">Listeners instead of filters</h2>
+
+<p>You could wrap a Wicket application in servlet filters to time requests or manage transactions. A request cycle listener does the same from inside Wicket, and knows more: which handler was resolved, which page is about to render, which URL is being generated, and which exception happened. Wicket itself uses listeners for features such as protection against cross-site request forgery and the cross-origin isolation headers. A listener is shared by all requests and runs concurrently, so it keeps per-request data in the request cycle’s metadata, not in its own fields.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/lifecycle.html">Requests and lifecycle</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/handle-exceptions.html">Handle exceptions and show error pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Replace Wicket's error pages, choose what users see after an unexpected exception, and map your own exceptions and HTTP errors to pages.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-listeners.html">Handle a callback URL with IRequestListener</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component or behavior answer requests to a URL of its own, read parameters from the request, and respond with the page or anything else.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/send-events.html">Send events between components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component notify others on the page without holding references to them, with send(), onEvent() and a payload class.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/initializers.html">Configure a module with an initializer</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a jar configure every Wicket application it is added to, with an IInitializer registered through the Java ServiceLoader.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/component-lifecycle.html">Component lifecycle</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The stages a component goes through and every hook method Wicket calls on it, in order, with who calls it and when.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-processing.html">Request processing</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The objects that serve a request, the steps of RequestCycle in order, the request cycle listener hooks, and the request handlers Wicket ships.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">What happens during a request</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket turns an HTTP request into a request handler, runs it, and cleans up afterwards, and why it is built that way.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/request-cycle.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

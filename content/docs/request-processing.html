@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Request processing | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The objects that serve a request, the steps of RequestCycle in order, the request cycle listener hooks, and the request handlers Wicket ships." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/lifecycle.html">Requests and lifecycle</a></p>
+            <h1>Request processing</h1>
+            <p class="page-sign-sub">The objects that serve a request, the steps of RequestCycle in order, the request cycle listener hooks, and the request handlers Wicket ships.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#objects-of-a-request"><span class="toc-number">1</span> <span class="toc-text">Objects of a request</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#servlet-request-and-response"><span class="toc-number">2</span> <span class="toc-text">Servlet request and response</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#steps-of-a-request"><span class="toc-number">3</span> <span class="toc-text">Steps of a request</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#requestcycle-methods"><span class="toc-number">4</span> <span class="toc-text">RequestCycle methods</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#irequestcyclelistener"><span class="toc-number">5</span> <span class="toc-text">IRequestCycleListener</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#request-handlers"><span class="toc-number">6</span> <span class="toc-text">Request handlers</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#exceptions-that-change-the-flow"><span class="toc-number">7</span> <span class="toc-text">Exceptions that change the flow</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#request-mappers"><span class="toc-number">8</span> <span class="toc-text">Request mappers</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>How these parts work together, and why, is explained in <a href="/docs/request-cycle.html">What happens during a request</a>.</p>
+
+<h2 id="objects-of-a-request">Objects of a request</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Object</th>
+      <th>Class</th>
+      <th>Lifetime</th>
+      <th>Get it with</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Application</td>
+      <td><code class="language-plaintext highlighter-rouge">WebApplication</code></td>
+      <td>One per Wicket filter, for the life of the web application.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Application.get()</code>, <code class="language-plaintext highlighter-rouge">Component.getApplication()</code>
+</td>
+    </tr>
+    <tr>
+      <td>Session</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">WebSession</code> or your subclass</td>
+      <td>One per user, created by <code class="language-plaintext highlighter-rouge">Application.newSession()</code>.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Session.get()</code>, <code class="language-plaintext highlighter-rouge">Component.getSession()</code>
+</td>
+    </tr>
+    <tr>
+      <td>Request cycle</td>
+      <td><code class="language-plaintext highlighter-rouge">RequestCycle</code></td>
+      <td>One per request.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">RequestCycle.get()</code>, <code class="language-plaintext highlighter-rouge">Component.getRequestCycle()</code>
+</td>
+    </tr>
+    <tr>
+      <td>Request</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">ServletWebRequest</code> (a <code class="language-plaintext highlighter-rouge">WebRequest</code>, a <code class="language-plaintext highlighter-rouge">Request</code>)</td>
+      <td>One per request.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">RequestCycle.get().getRequest()</code>, <code class="language-plaintext highlighter-rouge">Component.getRequest()</code>
+</td>
+    </tr>
+    <tr>
+      <td>Response</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">ServletWebResponse</code> (a <code class="language-plaintext highlighter-rouge">WebResponse</code>, a <code class="language-plaintext highlighter-rouge">Response</code>)</td>
+      <td>One per request; can be swapped during rendering.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">RequestCycle.get().getResponse()</code>, <code class="language-plaintext highlighter-rouge">Component.getResponse()</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The static <code class="language-plaintext highlighter-rouge">get()</code> methods read a thread-local value that Wicket sets while it serves the request. Outside a request, for example in a background thread, <code class="language-plaintext highlighter-rouge">RequestCycle.get()</code> returns <code class="language-plaintext highlighter-rouge">null</code> and <code class="language-plaintext highlighter-rouge">Application.get()</code> throws a <code class="language-plaintext highlighter-rouge">WicketRuntimeException</code>. <code class="language-plaintext highlighter-rouge">Application.exists()</code> and <code class="language-plaintext highlighter-rouge">Session.exists()</code> tell you whether one is bound to the thread.</p>
+
+<h2 id="servlet-request-and-response">Servlet request and response</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Request.getContainerRequest()</code> and <code class="language-plaintext highlighter-rouge">Response.getContainerResponse()</code> return the objects of the servlet container:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">servletRequest</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpServletRequest</span><span class="o">)</span> <span class="n">getRequest</span><span class="o">().</span><span class="na">getContainerRequest</span><span class="o">();</span>
+<span class="kt">var</span> <span class="n">servletResponse</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpServletResponse</span><span class="o">)</span> <span class="n">getResponse</span><span class="o">().</span><span class="na">getContainerResponse</span><span class="o">();</span>
+<span class="nc">String</span> <span class="n">clientIp</span> <span class="o">=</span> <span class="n">servletRequest</span><span class="o">.</span><span class="na">getRemoteAddr</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>Commonly used methods of the Wicket wrappers:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Method</th>
+      <th>Returns</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Request</code></td>
+      <td><code class="language-plaintext highlighter-rouge">getUrl()</code></td>
+      <td>The URL relative to the Wicket filter.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Request</code></td>
+      <td><code class="language-plaintext highlighter-rouge">getClientUrl()</code></td>
+      <td>The URL as the browser sees it, relative to the filter.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Request</code></td>
+      <td><code class="language-plaintext highlighter-rouge">getRequestParameters()</code></td>
+      <td>Query and POST parameters together.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Request</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getQueryParameters()</code>, <code class="language-plaintext highlighter-rouge">getPostParameters()</code>
+</td>
+      <td>One kind of parameters.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Request</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getLocale()</code>, <code class="language-plaintext highlighter-rouge">getCharset()</code>
+</td>
+      <td>Locale and character set of the request.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Request</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getContextPath()</code>, <code class="language-plaintext highlighter-rouge">getFilterPath()</code>
+</td>
+      <td>The context path and the filter path.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WebRequest</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getHeader(name)</code>, <code class="language-plaintext highlighter-rouge">getHeaders(name)</code>, <code class="language-plaintext highlighter-rouge">getDateHeader(name)</code>
+</td>
+      <td>Request headers.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WebRequest</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getCookie(name)</code>, <code class="language-plaintext highlighter-rouge">getCookies()</code>
+</td>
+      <td>Cookies.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WebRequest</code></td>
+      <td><code class="language-plaintext highlighter-rouge">isAjax()</code></td>
+      <td>Whether Wicket’s Ajax engine sent the request.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Response</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">write(CharSequence)</code>, <code class="language-plaintext highlighter-rouge">write(byte[])</code>
+</td>
+      <td>Writes to the response.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Response</code></td>
+      <td><code class="language-plaintext highlighter-rouge">encodeURL(CharSequence)</code></td>
+      <td>Adds the session id to a URL when cookies are off.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WebResponse</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">setHeader()</code>, <code class="language-plaintext highlighter-rouge">addHeader()</code>, <code class="language-plaintext highlighter-rouge">setContentType()</code>, <code class="language-plaintext highlighter-rouge">setStatus()</code>
+</td>
+      <td>Sets headers and status.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WebResponse</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">addCookie()</code>, <code class="language-plaintext highlighter-rouge">clearCookie()</code>
+</td>
+      <td>Sets or removes a cookie.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WebResponse</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">sendRedirect(url)</code>, <code class="language-plaintext highlighter-rouge">sendError(code, message)</code>
+</td>
+      <td>Redirects or sends an error.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WebResponse</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">disableCaching()</code>, <code class="language-plaintext highlighter-rouge">enableCaching(duration, scope)</code>
+</td>
+      <td>Sets cache headers.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="steps-of-a-request">Steps of a request</h2>
+
+<p><code class="language-plaintext highlighter-rouge">WicketFilter</code> receives every request mapped to it and asks the application for a request cycle. <code class="language-plaintext highlighter-rouge">RequestCycle.processRequestAndDetach()</code> then runs these steps:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th>What happens</th>
+      <th>Hooks called</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1. Create</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Application.createRequestCycle(request, response)</code> builds the cycle with the <code class="language-plaintext highlighter-rouge">IRequestCycleProvider</code> set by <code class="language-plaintext highlighter-rouge">setRequestCycleProvider()</code>.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>2. Begin</td>
+      <td>The cycle binds itself to the thread.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">IRequestCycleListener.onBeginRequest()</code>, then <code class="language-plaintext highlighter-rouge">RequestCycle.onBeginRequest()</code>
+</td>
+    </tr>
+    <tr>
+      <td>3. Resolve</td>
+      <td>The root request mapper (<code class="language-plaintext highlighter-rouge">Application.getRootRequestMapper()</code>) maps the request to an <code class="language-plaintext highlighter-rouge">IRequestHandler</code>. If no mapper matches, the filter passes the request on to the rest of the filter chain, so the container can serve it.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>4. Execute</td>
+      <td>The handler’s <code class="language-plaintext highlighter-rouge">respond()</code> runs. If it schedules another handler, that one runs next, until none is left.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">onRequestHandlerResolved()</code> before and <code class="language-plaintext highlighter-rouge">onRequestHandlerExecuted()</code> after each handler; <code class="language-plaintext highlighter-rouge">onRequestHandlerScheduled()</code> when one is scheduled</td>
+    </tr>
+    <tr>
+      <td>5. Handle an exception</td>
+      <td>When a step throws, the listeners can return a handler; otherwise the <code class="language-plaintext highlighter-rouge">IExceptionMapper</code> from <code class="language-plaintext highlighter-rouge">getExceptionMapperProvider()</code> maps the exception to one. Wicket retries up to <code class="language-plaintext highlighter-rouge">getRequestCycleSettings().getExceptionRetryCount()</code> times (default 10) if handling fails again.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">onException()</code>, then <code class="language-plaintext highlighter-rouge">onExceptionRequestHandlerResolved()</code>
+</td>
+    </tr>
+    <tr>
+      <td>6. End</td>
+      <td>Runs also after an exception.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">IRequestCycleListener.onEndRequest()</code>, then <code class="language-plaintext highlighter-rouge">RequestCycle.onEndRequest()</code>
+</td>
+    </tr>
+    <tr>
+      <td>7. Detach</td>
+      <td>Every executed handler is detached; a page handler detaches the page and its components. Then the session detaches and the request logger records the request.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">RequestCycle.onDetach()</code>, <code class="language-plaintext highlighter-rouge">IRequestCycleListener.onDetach()</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="/img/guide/request-cycle-handler.png" alt="The request cycle asks every mapper for its compatibility score, lets the best one map the request to a handler, and calls respond on that handler"></p>
+
+<h2 id="requestcycle-methods">RequestCycle methods</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">get()</code></td>
+      <td>The request cycle bound to the current thread.</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">getRequest()</code>, <code class="language-plaintext highlighter-rouge">getResponse()</code>, <code class="language-plaintext highlighter-rouge">getOriginalResponse()</code>
+</td>
+      <td>The request, the current response, and the response before any swap.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setResponse(Response)</code></td>
+      <td>Replaces the response, returns the old one. Components use this to render into a buffer.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setResponsePage(...)</code></td>
+      <td>Schedules a page to render after the current handler, by class, class and parameters, or instance. <code class="language-plaintext highlighter-rouge">Component.setResponsePage()</code> delegates here.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">urlFor(...)</code></td>
+      <td>The URL of a page class, a resource reference or a request handler, as a <code class="language-plaintext highlighter-rouge">CharSequence</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mapUrlFor(...)</code></td>
+      <td>The same, as a <code class="language-plaintext highlighter-rouge">Url</code> object.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">scheduleRequestHandlerAfterCurrent(IRequestHandler)</code></td>
+      <td>Runs a handler after the current one.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">replaceAllRequestHandlers(IRequestHandler)</code></td>
+      <td>Stops the current handler and runs this one instead.</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">getActiveRequestHandler()</code>, <code class="language-plaintext highlighter-rouge">getRequestHandlerScheduledAfterCurrent()</code>
+</td>
+      <td>The handler running now and the one that runs next.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">find(Class)</code></td>
+      <td>The active or scheduled handler of a type, as an <code class="language-plaintext highlighter-rouge">Optional</code>. <code class="language-plaintext highlighter-rouge">find(AjaxRequestTarget.class)</code> tells whether this is an Ajax request.</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">setMetaData(key, value)</code>, <code class="language-plaintext highlighter-rouge">getMetaData(key)</code>
+</td>
+      <td>Data that lives for this request only.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getStartTime()</code></td>
+      <td>When the cycle started, in milliseconds.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getListeners()</code></td>
+      <td>The listeners of this cycle.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Override <code class="language-plaintext highlighter-rouge">onBeginRequest()</code>, <code class="language-plaintext highlighter-rouge">onEndRequest()</code> and <code class="language-plaintext highlighter-rouge">onDetach()</code> in a subclass to run code at those moments. Install the subclass with a provider, because <code class="language-plaintext highlighter-rouge">createRequestCycle()</code> is final:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">setRequestCycleProvider</span><span class="o">(</span><span class="nl">MyRequestCycle:</span><span class="o">:</span><span class="k">new</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyRequestCycle</span> <span class="kd">extends</span> <span class="nc">RequestCycle</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">MyRequestCycle</span><span class="o">(</span><span class="nc">RequestCycleContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onBeginRequest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onBeginRequest</span><span class="o">();</span>
+        <span class="c1">// ...</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="irequestcyclelistener">IRequestCycleListener</h2>
+
+<p>All methods are default methods; implement the ones you need. Register a listener in <code class="language-plaintext highlighter-rouge">Application.init()</code> with <code class="language-plaintext highlighter-rouge">getRequestCycleListeners().add(listener)</code>. One instance serves all requests at the same time, so it must be thread-safe.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Called</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onBeginRequest(RequestCycle)</code></td>
+      <td>When the cycle starts, before the handler is resolved.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onRequestHandlerResolved(RequestCycle, IRequestHandler)</code></td>
+      <td>Before a handler is executed. Called for each handler in the request.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onRequestHandlerScheduled(RequestCycle, IRequestHandler)</code></td>
+      <td>When a handler is scheduled to run after the current one.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onRequestHandlerExecuted(RequestCycle, IRequestHandler)</code></td>
+      <td>After a handler has run without an exception.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onUrlMapped(RequestCycle, IRequestHandler, Url)</code></td>
+      <td>After Wicket generates a URL for a handler. The listener may change the <code class="language-plaintext highlighter-rouge">Url</code>, for example to add a query parameter.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onException(RequestCycle, Exception)</code></td>
+      <td>When processing throws. Return a handler to take over, or <code class="language-plaintext highlighter-rouge">null</code> to leave the exception to the next listener and the exception mapper.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onExceptionRequestHandlerResolved(RequestCycle, IRequestHandler, Exception)</code></td>
+      <td>When the handler for an exception is chosen.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onEndRequest(RequestCycle)</code></td>
+      <td>When the request is finished, also after an exception.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onDetach(RequestCycle)</code></td>
+      <td>After the handlers are detached.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RequestTimer</span> <span class="kd">implements</span> <span class="nc">IRequestCycleListener</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onEndRequest</span><span class="o">(</span><span class="nc">RequestCycle</span> <span class="n">cycle</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">millis</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">cycle</span><span class="o">.</span><span class="na">getStartTime</span><span class="o">();</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"{} took {} ms"</span><span class="o">,</span> <span class="n">cycle</span><span class="o">.</span><span class="na">getRequest</span><span class="o">().</span><span class="na">getUrl</span><span class="o">(),</span> <span class="n">millis</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">getRequestCycleListeners()</code> returns a <code class="language-plaintext highlighter-rouge">RequestCycleListenerCollection</code>, which is itself an <code class="language-plaintext highlighter-rouge">IRequestCycleListener</code>, so you can group listeners.</p>
+
+<h2 id="request-handlers">Request handlers</h2>
+
+<p><code class="language-plaintext highlighter-rouge">IRequestHandler</code> has two methods: <code class="language-plaintext highlighter-rouge">respond(IRequestCycle)</code> writes the response, and <code class="language-plaintext highlighter-rouge">detach(IRequestCycle)</code> (a default method) releases what it held. The handlers Wicket ships:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Handler</th>
+      <th>Package</th>
+      <th>Responds with</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RenderPageRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.core.request.handler</code></td>
+      <td>A page, rendered directly or after a redirect.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BookmarkablePageRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.core.request.handler</code></td>
+      <td>Nothing: Wicket uses it only to generate the URL of a page class.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ListenerRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.core.request.handler</code></td>
+      <td>Calls an <code class="language-plaintext highlighter-rouge">IRequestListener</code> of a component or behavior, such as a link click, then usually renders the page.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BookmarkableListenerRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.core.request.handler</code></td>
+      <td>The same for a listener on a stateless page.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.ajax</code></td>
+      <td>The Ajax response with the components added to the <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ComponentRenderingRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.core.request.handler</code></td>
+      <td>The markup of a single component.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BufferedResponseRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.core.request.handler</code></td>
+      <td>A response buffered by an earlier request, used by the redirect-after-post strategy.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceReferenceRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.request.handler.resource</code></td>
+      <td>A resource found through a <code class="language-plaintext highlighter-rouge">ResourceReference</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.request.handler.resource</code></td>
+      <td>An <code class="language-plaintext highlighter-rouge">IResource</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceStreamRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.request.handler.resource</code></td>
+      <td>An <code class="language-plaintext highlighter-rouge">IResourceStream</code>, for example a file download.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TextRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.request.handler</code></td>
+      <td>A string with a content type.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RedirectRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.request.http.handler</code></td>
+      <td>A redirect to a URL.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ErrorCodeRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.request.http.handler</code></td>
+      <td>An HTTP error status.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EmptyRequestHandler</code></td>
+      <td><code class="language-plaintext highlighter-rouge">org.apache.wicket.request.handler</code></td>
+      <td>Nothing.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="exceptions-that-change-the-flow">Exceptions that change the flow</h2>
+
+<p>Throw these from a constructor, a listener or a lifecycle hook to stop the current handler and run another:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Exception</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RestartResponseException</code></td>
+      <td>Renders the given page instead.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RestartResponseAtInterceptPageException</code></td>
+      <td>Renders the given page and remembers the current URL, so <code class="language-plaintext highlighter-rouge">continueToOriginalDestination()</code> can return to it, for example after a login.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NonResettingRestartException</code></td>
+      <td>Like <code class="language-plaintext highlighter-rouge">RestartResponseException</code>, but keeps the headers already set on the response, such as cookies.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RedirectToUrlException</code></td>
+      <td>Redirects to a URL.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AbortWithHttpErrorCodeException</code></td>
+      <td>Sends an HTTP error status, such as 404.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="request-mappers">Request mappers</h2>
+
+<p><code class="language-plaintext highlighter-rouge">IRequestMapper</code> turns a request into a handler with <code class="language-plaintext highlighter-rouge">mapRequest(Request)</code> and a handler into a URL with <code class="language-plaintext highlighter-rouge">mapHandler(IRequestHandler)</code>. <code class="language-plaintext highlighter-rouge">getCompatibilityScore(Request)</code> says how well the mapper fits a request; when several mappers can map it, the one with the highest score wins. The root mapper of an application is a <code class="language-plaintext highlighter-rouge">SystemMapper</code> that holds the built-in mappers and the ones you add with <code class="language-plaintext highlighter-rouge">mount()</code> and <code class="language-plaintext highlighter-rouge">mountPage()</code>. The mappers are listed in <a href="/docs/request-mappers.html">Request mappers</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/lifecycle.html">Requests and lifecycle</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/handle-exceptions.html">Handle exceptions and show error pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Replace Wicket's error pages, choose what users see after an unexpected exception, and map your own exceptions and HTTP errors to pages.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-listeners.html">Handle a callback URL with IRequestListener</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component or behavior answer requests to a URL of its own, read parameters from the request, and respond with the page or anything else.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/send-events.html">Send events between components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component notify others on the page without holding references to them, with send(), onEvent() and a payload class.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/initializers.html">Configure a module with an initializer</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a jar configure every Wicket application it is added to, with an IInitializer registered through the Java ServiceLoader.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/component-lifecycle.html">Component lifecycle</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The stages a component goes through and every hook method Wicket calls on it, in order, with who calls it and when.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Request processing</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The objects that serve a request, the steps of RequestCycle in order, the request cycle listener hooks, and the request handlers Wicket ships.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-cycle.html">What happens during a request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket turns an HTTP request into a request handler, runs it, and cleans up afterwards, and why it is built that way.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/request-processing.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>How a form is processed | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The order in which Wicket checks, converts, validates and stores submitted input, and why a form updates all its models or none." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/forms.html">Forms</a></p>
+            <h1>How a form is processed</h1>
+            <p class="page-sign-sub">The order in which Wicket checks, converts, validates and stores submitted input, and why a form updates all its models or none.</p>
+            <p class="guide-plates"><span class="guide-kind">Explanation</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#the-stages-of-a-form-submit"><span class="toc-number">1</span> <span class="toc-text">The stages of a form submit</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#why-a-form-updates-all-models-or-none"><span class="toc-number">2</span> <span class="toc-text">Why a form updates all models or none</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#conversion-before-validation"><span class="toc-number">3</span> <span class="toc-text">Conversion before validation</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#the-exception-late-validation"><span class="toc-number">4</span> <span class="toc-text">The exception: late validation</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#skipping-the-stages"><span class="toc-number">5</span> <span class="toc-text">Skipping the stages</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#where-the-messages-come-from"><span class="toc-number">6</span> <span class="toc-text">Where the messages come from</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>A browser submits a form as a set of strings, one per field. Your code wants typed values in its models: a <code class="language-plaintext highlighter-rouge">LocalDate</code> in the order, an <code class="language-plaintext highlighter-rouge">Integer</code> in the quantity. Between the two, Wicket runs every field through the same stages in a fixed order, and it only touches your models when every field has passed.</p>
+
+<h2 id="the-stages-of-a-form-submit">The stages of a form submit</h2>
+
+<p>When the request arrives, the <code class="language-plaintext highlighter-rouge">Form</code> first finds out what submitted it. That is a submitting component such as a <code class="language-plaintext highlighter-rouge">Button</code> or <code class="language-plaintext highlighter-rouge">SubmitLink</code> (an <code class="language-plaintext highlighter-rouge">IFormSubmitter</code>), or nothing when the user pressed Enter or clicked a plain <code class="language-plaintext highlighter-rouge">&lt;input type="submit"&gt;</code> without a <code class="language-plaintext highlighter-rouge">wicket:id</code>. The submitter decides which form is processed, which matters for <a href="/docs/nest-forms.html">nested forms</a>. Then the form is processed in four stages.</p>
+
+<ol>
+  <li>
+<strong>Validation.</strong> Every visible and enabled form component goes through three checks, in this order:
+    <ul>
+      <li>
+<em>Required.</em> If the component is required and the user left it empty, it gets the <code class="language-plaintext highlighter-rouge">Required</code> error and the other checks are skipped.</li>
+      <li>
+<em>Conversion.</em> The component converts its input string to the type of its model, usually through an <code class="language-plaintext highlighter-rouge">IConverter</code>. If that fails, it gets a conversion error and its validators are skipped.</li>
+      <li>
+<em>Validators.</em> The component’s validators run on the converted value, in the order you added them, until one reports an error. Validators do not run when the value is <code class="language-plaintext highlighter-rouge">null</code>, unless they implement <code class="language-plaintext highlighter-rouge">INullAcceptingValidator</code>.</li>
+    </ul>
+
+    <p>After the components, the form runs its form validators (<code class="language-plaintext highlighter-rouge">IFormValidator</code>), which compare several fields, and then calls its own <code class="language-plaintext highlighter-rouge">onValidate()</code>. A form validator only runs when all the components it depends on passed their own checks.</p>
+  </li>
+  <li>
+<strong>Decision.</strong> If any component or validator reported an error, processing stops here. The submitter’s <code class="language-plaintext highlighter-rouge">onError()</code> is called, then <code class="language-plaintext highlighter-rouge">onError()</code> of each form that has errors. No model is changed.</li>
+  <li>
+<strong>Model update.</strong> If nothing failed, every component writes its converted value to its model. After that the form calls <code class="language-plaintext highlighter-rouge">onValidateModelObjects()</code>, a late check that can look at the updated model objects. An error there still leads to <code class="language-plaintext highlighter-rouge">onError()</code>.</li>
+  <li>
+<strong>Submit.</strong> The submitter’s <code class="language-plaintext highlighter-rouge">onSubmit()</code> runs, then <code class="language-plaintext highlighter-rouge">onSubmit()</code> of each processed form, then the submitter’s <code class="language-plaintext highlighter-rouge">onAfterSubmit()</code>.</li>
+</ol>
+
+<p>Nested forms are visited innermost first, both when validating and when calling <code class="language-plaintext highlighter-rouge">onSubmit()</code> and <code class="language-plaintext highlighter-rouge">onError()</code>. Inside a form, children are visited before their parents. That is why a <a href="/docs/form-component-panel.html"><code class="language-plaintext highlighter-rouge">FormComponentPanel</code></a> can read the converted input of its inner fields in its own <code class="language-plaintext highlighter-rouge">convertInput()</code>: they have already been converted.</p>
+
+<h2 id="why-a-form-updates-all-models-or-none">Why a form updates all models or none</h2>
+
+<p>Wicket could store each valid field as soon as it passed its checks. It does not, for two reasons.</p>
+
+<p>The first is your data. Form components are often bound to a live object: a <code class="language-plaintext highlighter-rouge">PropertyModel</code> on an entity, or a <code class="language-plaintext highlighter-rouge">CompoundPropertyModel</code> on the bean the form edits. If the start date of a booking is valid and the end date is not, storing only the start date leaves the booking in a state that neither the user nor your code asked for. If that object is shared, or flushed to a database at the end of the request, the half-edited state escapes. By holding back every update until the whole form is valid, Wicket keeps your objects as they were before the submit, or as the user wants them after.</p>
+
+<p>The second is the user’s input. When a field fails, the form is rendered again with the error. The user expects to see what they typed, including the mistake, not the old model value. Wicket keeps the raw input of every component until the form is valid. A component that has raw input renders that instead of its model value. When the form succeeds, the raw input is cleared and the components render their models again.</p>
+
+<p>This has consequences for your code:</p>
+
+<ul>
+  <li>In <code class="language-plaintext highlighter-rouge">onError()</code>, the models still hold the old values. To see what the user typed, call <code class="language-plaintext highlighter-rouge">getInput()</code> on the component, or <code class="language-plaintext highlighter-rouge">getConvertedInput()</code> if conversion succeeded.</li>
+  <li>In <code class="language-plaintext highlighter-rouge">onSubmit()</code>, every model holds its new value. That is the place to save, call services and navigate.</li>
+  <li>A validator never sees a half-converted form. It gets one typed value; a form validator gets the converted input of the components it depends on.</li>
+</ul>
+
+<h2 id="conversion-before-validation">Conversion before validation</h2>
+
+<p>Validators run after conversion so that they can work with your types. A <code class="language-plaintext highlighter-rouge">RangeValidator&lt;Integer&gt;</code> compares integers, a <code class="language-plaintext highlighter-rouge">RangeValidator&lt;LocalDate&gt;</code> compares dates. If conversion came after validation, every validator would have to parse the string itself, and each would do it slightly differently.</p>
+
+<p>The type comes from the component: set it with <code class="language-plaintext highlighter-rouge">setType()</code>, or let the component take it from a model that knows its object class, such as <code class="language-plaintext highlighter-rouge">PropertyModel</code>. Without a type, the input stays a <code class="language-plaintext highlighter-rouge">String</code>. <a href="/docs/convert-input.html">Convert input to your types</a> shows how to plug in your own converter.</p>
+
+<h2 id="the-exception-late-validation">The exception: late validation</h2>
+
+<p><code class="language-plaintext highlighter-rouge">onValidateModelObjects()</code> runs after the models are updated, so it breaks the all-or-nothing rule on purpose. It exists for checks that need the complete object, such as class-level constraints in <a href="/docs/bean-validation.html">Bean Validation</a>. If such a check fails, the model objects already contain the new values. Your <code class="language-plaintext highlighter-rouge">onError()</code> should then discard or reload them, for example by not saving and detaching a loadable model.</p>
+
+<h2 id="skipping-the-stages">Skipping the stages</h2>
+
+<p>Sometimes a submit should not validate anything. A “Cancel” button has to work even when required fields are empty. Call <code class="language-plaintext highlighter-rouge">setDefaultFormProcessing(false)</code> on the submitting component, and Wicket skips all four stages: it only calls the submitter’s <code class="language-plaintext highlighter-rouge">onSubmit()</code> and <code class="language-plaintext highlighter-rouge">onAfterSubmit()</code>. The user’s input is neither checked nor stored. See <a href="/docs/submit-buttons.html">Use more than one submit button</a>.</p>
+
+<p>Ajax narrows the stages instead of skipping them. An <code class="language-plaintext highlighter-rouge">AjaxFormComponentUpdatingBehavior</code> runs required check, conversion, validators and model update for the one component it is attached to, without touching the rest of the form. That lets you store a field as the user leaves it, at the price of the all-or-nothing guarantee for that field. See <a href="/docs/ajax-behaviors.html">Ajax behaviors</a>.</p>
+
+<h2 id="where-the-messages-come-from">Where the messages come from</h2>
+
+<p>Every error in the stages above becomes a feedback message on the component that failed. The text is looked up in resource bundles by a key: <code class="language-plaintext highlighter-rouge">Required</code> for the required check, <code class="language-plaintext highlighter-rouge">IConverter</code> for a failed conversion, and the validator’s class name for a validator. Wicket fills in variables such as <code class="language-plaintext highlighter-rouge">${label}</code> and <code class="language-plaintext highlighter-rouge">${input}</code>. <a href="/docs/validate-input.html">Validate input and show errors</a> shows how to display these messages and replace their text; <a href="/docs/validators.html">Validators and converters</a> lists the keys.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/forms.html">Forms</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/validate-input.html">Validate input and show errors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make fields required, check their values with validators, show the error messages and change their text.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/convert-input.html">Convert input to your types</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Tell a field which type its input becomes, write a converter for your own type and register it for one field or the whole application.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bean-validation.html">Validate with Bean Validation</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Check form input against the Jakarta Bean Validation annotations on your domain classes with the wicket-bean-validation module.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/dropdown-choice.html">Let the user pick from a list</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show a drop-down list with DropDownChoice, render objects and enums as options, and control the empty "Choose One" option.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/checkboxes-radios.html">Use checkboxes and radio buttons</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Bind a checkbox to a boolean, let the user tick several options or pick one with radio buttons, and add a "select all" checkbox.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/select-multiple.html">Select several values</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let the user select several values from a list with ListMultipleChoice, or move them between two lists with Palette.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/submit-buttons.html">Use more than one submit button</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a form several buttons that each run their own code, pick the button for the Enter key, and add a Cancel button that skips validation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nest-forms.html">Nest forms</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a form inside another form, submit and validate the inner form on its own, and decide which forms take part in a submit.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/upload-files.html">Upload files</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let users upload one or more files with FileUploadField, limit their size and number, and show upload progress.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-component-panel.html">Combine fields into one form component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a FormComponentPanel that shows several inputs but converts, validates and stores them as one value.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-forms.html">Build a stateless form</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use StatelessForm so a page with a form stays stateless, never expires and does not create a session until it must.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-components.html">Form components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every form, input, choice, upload and submit component in wicket-core and wicket-extensions, with the markup tag it needs and the type of its model.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/validators.html">Validators and converters</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The built-in validators, form validators and converters, with their message keys, the variables in their messages and their default texts.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">How a form is processed</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The order in which Wicket checks, converts, validates and stores submitted input, and why a form updates all its models or none.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/form-processing.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

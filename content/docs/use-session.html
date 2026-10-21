@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Keep data in the session | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Store per-user data in a typed Wicket session, in session attributes or as metadata, control when the session is created, and end it on logout." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/state.html">Pages and state</a></p>
+            <h1>Keep data in the session</h1>
+            <p class="page-sign-sub">Store per-user data in a typed Wicket session, in session attributes or as metadata, control when the session is created, and end it on logout.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#store-typed-data-in-your-own-session-class"><span class="toc-number">1</span> <span class="toc-text">Store typed data in your own session class</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#store-loose-values-as-session-attributes"><span class="toc-number">2</span> <span class="toc-text">Store loose values as session attributes</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#store-values-under-a-typed-key"><span class="toc-number">3</span> <span class="toc-text">Store values under a typed key</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#temporary-and-permanent-sessions"><span class="toc-number">4</span> <span class="toc-text">Temporary and permanent sessions</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#end-the-session-on-logout"><span class="toc-number">5</span> <span class="toc-text">End the session on logout</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#react-to-new-sessions"><span class="toc-number">6</span> <span class="toc-text">React to new sessions</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#reach-the-http-session-directly"><span class="toc-number">7</span> <span class="toc-text">Reach the HTTP session directly</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Keep data in the session when it belongs to the user rather than to one page: the logged-in user, a shopping cart, preferences. Wicket wraps the HTTP session in a <code class="language-plaintext highlighter-rouge">Session</code> object, which you reach from anywhere in a request with <code class="language-plaintext highlighter-rouge">Session.get()</code>.</p>
+
+<p>Everything in the session is serialized when the container stores or replicates it, so keep it small and serializable. Store ids, not entities, and never pages or components.</p>
+
+<h2 id="store-typed-data-in-your-own-session-class">Store typed data in your own session class</h2>
+
+<p>Subclass <code class="language-plaintext highlighter-rouge">WebSession</code>, give it fields with getters and setters, and add a static <code class="language-plaintext highlighter-rouge">get()</code> that casts:</p>
+
+<p><em>AppSession.java</em></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppSession</span> <span class="kd">extends</span> <span class="nc">WebSession</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">userId</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">AppSession</span><span class="o">(</span><span class="nc">Request</span> <span class="n">request</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">AppSession</span> <span class="nf">get</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="nc">AppSession</span><span class="o">)</span> <span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Long</span> <span class="nf">getUserId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">userId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUserId</span><span class="o">(</span><span class="nc">Long</span> <span class="n">userId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">userId</span> <span class="o">=</span> <span class="n">userId</span><span class="o">;</span>
+        <span class="n">dirty</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Tell the application to create it:</p>
+
+<p><em>WicketApplication.java</em></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="nc">Session</span> <span class="nf">newSession</span><span class="o">(</span><span class="nc">Request</span> <span class="n">request</span><span class="o">,</span> <span class="nc">Response</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">AppSession</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Read and write it anywhere in a request: <code class="language-plaintext highlighter-rouge">AppSession.get().getUserId()</code>. Call <code class="language-plaintext highlighter-rouge">dirty()</code> after a change, as the setter does. It tells Wicket to store the session again at the end of the request, which session replication in a cluster needs, and it makes a temporary session permanent.</p>
+
+<h2 id="store-loose-values-as-session-attributes">Store loose values as session attributes</h2>
+
+<p>For a value that does not deserve a field, use attributes. The value must be <code class="language-plaintext highlighter-rouge">Serializable</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"lastSearch"</span><span class="o">,</span> <span class="n">query</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">last</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"lastSearch"</span><span class="o">);</span>
+<span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">removeAttribute</span><span class="o">(</span><span class="s">"lastSearch"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Wicket stores the attributes in the HTTP session, with a prefix in front of the name so that they do not clash with attributes of other applications or filters in the same session.</p>
+
+<h2 id="store-values-under-a-typed-key">Store values under a typed key</h2>
+
+<p>Metadata stores a value under a <code class="language-plaintext highlighter-rouge">MetaDataKey</code>, which gives you type safety without a session subclass. Define the key once, as a constant:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">MetaDataKey</span><span class="o">&lt;</span><span class="nc">Cart</span><span class="o">&gt;</span> <span class="no">CART</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MetaDataKey</span><span class="o">&lt;&gt;()</span> <span class="o">{};</span>
+
+<span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">setMetaData</span><span class="o">(</span><span class="no">CART</span><span class="o">,</span> <span class="n">cart</span><span class="o">);</span>
+<span class="nc">Cart</span> <span class="n">cart</span> <span class="o">=</span> <span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getMetaData</span><span class="o">(</span><span class="no">CART</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>The value must be <code class="language-plaintext highlighter-rouge">Serializable</code>. The same API exists on <code class="language-plaintext highlighter-rouge">Application</code>, <code class="language-plaintext highlighter-rouge">RequestCycle</code> and <code class="language-plaintext highlighter-rouge">Component</code>, for values that live as long as the application, the request or the component. Values stored on <code class="language-plaintext highlighter-rouge">Application</code> and <code class="language-plaintext highlighter-rouge">RequestCycle</code> do not have to be serializable.</p>
+
+<h2 id="temporary-and-permanent-sessions">Temporary and permanent sessions</h2>
+
+<p>As long as a user only sees <a href="/docs/stateful-stateless.html">stateless pages</a>, Wicket does not create an HTTP session. <code class="language-plaintext highlighter-rouge">Session.get()</code> still works, but returns a temporary session that is thrown away at the end of the request. <code class="language-plaintext highlighter-rouge">isTemporary()</code> returns <code class="language-plaintext highlighter-rouge">true</code> and <code class="language-plaintext highlighter-rouge">getId()</code> returns <code class="language-plaintext highlighter-rouge">null</code>.</p>
+
+<p>Wicket makes the session permanent when a stateful page has to be stored. To keep data from a stateless page, make it permanent yourself with <code class="language-plaintext highlighter-rouge">bind()</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LandingPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">LandingPage</span><span class="o">(</span><span class="nc">PageParameters</span> <span class="n">parameters</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"campaign"</span><span class="o">,</span> <span class="n">parameters</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"utm_campaign"</span><span class="o">).</span><span class="na">toString</span><span class="o">());</span>
+        <span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">bind</span><span class="o">();</span>
+        <span class="n">setResponsePage</span><span class="o">(</span><span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Without <code class="language-plaintext highlighter-rouge">bind()</code>, the attribute would be gone in the next request.</p>
+
+<h2 id="end-the-session-on-logout">End the session on logout</h2>
+
+<p><code class="language-plaintext highlighter-rouge">invalidate()</code> ends the session at the end of the current request. The page rendered in this request still works:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Link</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"logout"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">getSession</span><span class="o">().</span><span class="na">invalidate</span><span class="o">();</span>
+        <span class="n">setResponsePage</span><span class="o">(</span><span class="n">getApplication</span><span class="o">().</span><span class="na">getHomePage</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">invalidateNow()</code> ends it immediately and removes all pages of the session, so the rest of the request cannot use them.</p>
+
+<p>After a successful login, give the session a new id with <code class="language-plaintext highlighter-rouge">changeSessionId()</code>, to protect against session fixation. <a href="/docs/login.html">Log users in</a> shows this in context.</p>
+
+<h2 id="react-to-new-sessions">React to new sessions</h2>
+
+<p>Register an <code class="language-plaintext highlighter-rouge">ISessionListener</code> to run code when a session is created or unbound:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getSessionListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ISessionListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreated</span><span class="o">(</span><span class="nc">Session</span> <span class="n">session</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Session created, locale {}"</span><span class="o">,</span> <span class="n">session</span><span class="o">.</span><span class="na">getLocale</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onUnbound</span><span class="o">(</span><span class="nc">String</span> <span class="n">sessionId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Session {} ended"</span><span class="o">,</span> <span class="n">sessionId</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<h2 id="reach-the-http-session-directly">Reach the HTTP session directly</h2>
+
+<p>Some tools need an attribute with an exact name in the <code class="language-plaintext highlighter-rouge">HttpSession</code>, without Wicket’s prefix. Get the servlet session from the request:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">HttpSession</span> <span class="n">httpSession</span> <span class="o">=</span> <span class="o">((</span><span class="nc">ServletWebRequest</span><span class="o">)</span> <span class="nc">RequestCycle</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getRequest</span><span class="o">())</span>
+        <span class="o">.</span><span class="na">getContainerRequest</span><span class="o">().</span><span class="na">getSession</span><span class="o">();</span>
+<span class="n">httpSession</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"userName"</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p>Prefer the Wicket session for everything else: it works the same in tests with <code class="language-plaintext highlighter-rouge">WicketTester</code> and does not tie your code to the servlet API.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/state.html">Pages and state</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/keep-stateless.html">Keep a page stateless</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a page that Wicket does not store in the session, find the component that makes it stateful, and guard it with a test.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/configure-page-store.html">Configure the page store</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Change how much page history Wicket keeps per session and where, encrypt stored pages, or replace the disk store with another store.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Keep data in the session</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Store per-user data in a typed Wicket session, in session attributes or as metadata, control when the session is created, and end it on logout.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateful-stateless.html">Stateful and stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why Wicket keeps pages between requests, how page versions serve the back button, and what a stateless page gives up and gains.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-storage.html">How pages are stored</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket finds the page for a request, and the chain of stores that keeps stateful pages in the request, the session and on disk.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/use-session.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Control which package resources are served | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Allow or block files on the classpath that browsers may request as package resources, with patterns on SecurePackageResourceGuard." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/security.html">Security</a></p>
+            <h1>Control which package resources are served</h1>
+            <p class="page-sign-sub">Allow or block files on the classpath that browsers may request as package resources, with patterns on SecurePackageResourceGuard.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#know-what-is-allowed-by-default"><span class="toc-number">1</span> <span class="toc-text">Know what is allowed by default</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#allow-more-files"><span class="toc-number">2</span> <span class="toc-text">Allow more files</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#write-a-pattern"><span class="toc-number">3</span> <span class="toc-text">Write a pattern</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#block-a-file-the-defaults-allow"><span class="toc-number">4</span> <span class="toc-text">Block a file the defaults allow</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#replace-the-guard"><span class="toc-number">5</span> <span class="toc-text">Replace the guard</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>You need this when a browser gets “access denied” for a file you serve from a Java package, or when you want to make sure a file next to your classes can never be downloaded. Every request for a package resource passes the package resource guard first. The default guard, <code class="language-plaintext highlighter-rouge">SecurePackageResourceGuard</code>, refuses everything that is not explicitly allowed.</p>
+
+<h2 id="know-what-is-allowed-by-default">Know what is allowed by default</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kind</th>
+      <th>Extensions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Scripts and styles</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">.js</code>, <code class="language-plaintext highlighter-rouge">.css</code>, <code class="language-plaintext highlighter-rouge">.map</code>
+</td>
+    </tr>
+    <tr>
+      <td>Images</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">.png</code>, <code class="language-plaintext highlighter-rouge">.jpg</code>, <code class="language-plaintext highlighter-rouge">.jpeg</code>, <code class="language-plaintext highlighter-rouge">.gif</code>, <code class="language-plaintext highlighter-rouge">.ico</code>, <code class="language-plaintext highlighter-rouge">.cur</code>, <code class="language-plaintext highlighter-rouge">.bmp</code>, <code class="language-plaintext highlighter-rouge">.svg</code>, <code class="language-plaintext highlighter-rouge">.avif</code>
+</td>
+    </tr>
+    <tr>
+      <td>Fonts</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">.eot</code>, <code class="language-plaintext highlighter-rouge">.ttf</code>, <code class="language-plaintext highlighter-rouge">.woff</code>, <code class="language-plaintext highlighter-rouge">.woff2</code>
+</td>
+    </tr>
+    <tr>
+      <td>Text and other</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">.html</code>, <code class="language-plaintext highlighter-rouge">.txt</code>, <code class="language-plaintext highlighter-rouge">.swf</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Some files are refused even when their extension is allowed:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">.properties</code>, <code class="language-plaintext highlighter-rouge">.class</code> and <code class="language-plaintext highlighter-rouge">.java</code> files, and files named <code class="language-plaintext highlighter-rouge">applicationContext.xml</code> or <code class="language-plaintext highlighter-rouge">log4j.xml</code>;</li>
+  <li>an <code class="language-plaintext highlighter-rouge">.html</code> file next to a class of the same name, because that is the markup of a component;</li>
+  <li>paths containing <code class="language-plaintext highlighter-rouge">..</code>, unless you configured a parent folder placeholder in the resource settings;</li>
+  <li>files in the root of the classpath.</li>
+</ul>
+
+<p>When the guard refuses a file, Wicket logs a warning such as “Access denied to shared (static) resource because of the file extension”.</p>
+
+<h2 id="allow-more-files">Allow more files</h2>
+
+<p>Add a pattern to the guard in <code class="language-plaintext highlighter-rouge">init()</code>:</p>
+
+<p><em>WicketApplication.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">getResourceSettings</span><span class="o">().</span><span class="na">getPackageResourceGuard</span><span class="o">()</span>
+            <span class="k">instanceof</span> <span class="nc">SecurePackageResourceGuard</span> <span class="n">guard</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">guard</span><span class="o">.</span><span class="na">addPattern</span><span class="o">(</span><span class="s">"+com/example/docs/*.pdf"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The pattern above allows PDF files in the package <code class="language-plaintext highlighter-rouge">com.example.docs</code> and nowhere else.</p>
+
+<p>Common formats missing from the defaults are video and audio (<code class="language-plaintext highlighter-rouge">.mp4</code>, <code class="language-plaintext highlighter-rouge">.webm</code>, <code class="language-plaintext highlighter-rouge">.mp3</code>) and <code class="language-plaintext highlighter-rouge">.webp</code> images. Allow them the same way, for example <code class="language-plaintext highlighter-rouge">guard.addPattern("+com/example/media/*.webp")</code>.</p>
+
+<h2 id="write-a-pattern">Write a pattern</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pattern</th>
+      <th>Matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+*.pdf</code></td>
+      <td>Every PDF file, in any package</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+com/example/docs/*.pdf</code></td>
+      <td>PDF files directly in <code class="language-plaintext highlighter-rouge">com/example/docs</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+com/example/*/*.pdf</code></td>
+      <td>PDF files exactly one level below <code class="language-plaintext highlighter-rouge">com/example</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+com/example/**/*.pdf</code></td>
+      <td>PDF files in <code class="language-plaintext highlighter-rouge">com/example</code> or any package below it</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+**/public/*.pdf</code></td>
+      <td>PDF files in any package whose last part is <code class="language-plaintext highlighter-rouge">public</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-**/secret.txt</code></td>
+      <td>Blocks <code class="language-plaintext highlighter-rouge">secret.txt</code> everywhere</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The rules:</p>
+
+<ul>
+  <li>A pattern starts with <code class="language-plaintext highlighter-rouge">+</code> to allow or <code class="language-plaintext highlighter-rouge">-</code> to block.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">*</code> stands for any characters within one file or directory name, <code class="language-plaintext highlighter-rouge">**</code> for any number of directories.</li>
+  <li>A pattern without a <code class="language-plaintext highlighter-rouge">/</code> is matched against the file name only. A pattern with a <code class="language-plaintext highlighter-rouge">/</code> is matched against the whole path from the classpath root, such as <code class="language-plaintext highlighter-rouge">com/example/docs/manual.pdf</code>.</li>
+  <li>Patterns are checked from the last added to the first, and the first one that matches decides. Add a blocking pattern after the allowing pattern it should override.</li>
+</ul>
+
+<p>Avoid patterns like <code class="language-plaintext highlighter-rouge">+*.pdf</code> that allow an extension everywhere: any PDF on the classpath, including those in libraries, becomes downloadable. Name the package.</p>
+
+<h2 id="block-a-file-the-defaults-allow">Block a file the defaults allow</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">guard</span><span class="o">.</span><span class="na">addPattern</span><span class="o">(</span><span class="s">"-com/example/internal/**/*.html"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="replace-the-guard">Replace the guard</h2>
+
+<p><code class="language-plaintext highlighter-rouge">getResourceSettings().setPackageResourceGuard(guard)</code> installs your own <code class="language-plaintext highlighter-rouge">IPackageResourceGuard</code>. Extend <code class="language-plaintext highlighter-rouge">SecurePackageResourceGuard</code> to keep the default rules, or <code class="language-plaintext highlighter-rouge">PackageResourceGuard</code> for a guard that applies only the fixed refusals listed above and allows every other file.</p>
+
+<p><a href="/docs/package-resources.html">Serve files from your Java packages</a> shows how to reference package resources from your components.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/security.html">Security</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/login.html">Log users in</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a sign-in page with wicket-auth-roles, send anonymous users there when a page needs a signed-in user, and sign them out again.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/roles.html">Restrict access by role</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Allow pages, components, actions and resources only for users with a given role, with annotations on classes and packages or in code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/https.html">Require HTTPS</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve pages over HTTPS with HttpsMapper and @RequireHttps, and set up the container so redirects and absolute URLs use the right host.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/csrf.html">Protect against cross-site request forgery</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Refuse link clicks, form submits and Ajax calls that another site makes on behalf of your users, with ResourceIsolationRequestCycleListener.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/csp.html">Configure the Content Security Policy</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Work with the strict Content Security Policy Wicket sends by default, allow extra sources, report violations, and move inline scripts and styles out of the markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/cross-origin-isolation.html">Isolate the page with COOP and COEP</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set the Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy headers, which Wicket sends by default, to isolate your pages from other origins.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Control which package resources are served</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Allow or block files on the classpath that browsers may request as package resources, with patterns on SecurePackageResourceGuard.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/security-checks.html">Security headers and external checks</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The response headers that scanners such as Mozilla Observatory check, which of them Wicket sends by default, and the Wicket API or hook that sets each one.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/security-model.html">How Wicket keeps applications secure</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What Wicket defends against by default (escaping, a strict CSP, stateful URLs and encryption) and what it leaves to your application and your deployment.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/package-resource-guard.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

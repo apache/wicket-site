@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Combine resources into one bundle | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Serve several package stylesheets or scripts as one file with ResourceBundles, and replace a resource throughout the application with addResourceReplacement." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/resources.html">Resources</a></p>
+            <h1>Combine resources into one bundle</h1>
+            <p class="page-sign-sub">Serve several package stylesheets or scripts as one file with ResourceBundles, and replace a resource throughout the application with addResourceReplacement.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#register-a-bundle"><span class="toc-number">1</span> <span class="toc-text">Register a bundle</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#defer-a-bundled-script"><span class="toc-number">2</span> <span class="toc-text">Defer a bundled script</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#replace-a-resource-throughout-the-application"><span class="toc-number">3</span> <span class="toc-text">Replace a resource throughout the application</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Bundle files that most pages load together, so the browser makes one request instead of several. You register the bundle once in the application; components keep rendering the individual files.</p>
+
+<h2 id="register-a-bundle">Register a bundle</h2>
+
+<p>Call <code class="language-plaintext highlighter-rouge">addJavaScriptBundle</code> or <code class="language-plaintext highlighter-rouge">addCssBundle</code> in <code class="language-plaintext highlighter-rouge">init()</code>, with a scope class, a file name for the bundle and the references it consists of:</p>
+
+<p><em>WicketApplication.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+
+    <span class="n">getResourceBundles</span><span class="o">().</span><span class="na">addJavaScriptBundle</span><span class="o">(</span><span class="nc">WicketApplication</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"app.js"</span><span class="o">,</span>
+        <span class="nc">ChartCoreJs</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span>
+        <span class="nc">ChartJs</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span>
+        <span class="nc">DashboardJs</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+
+    <span class="n">getResourceBundles</span><span class="o">().</span><span class="na">addCssBundle</span><span class="o">(</span><span class="nc">WicketApplication</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"app.css"</span><span class="o">,</span>
+        <span class="nc">ChartCss</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span>
+        <span class="nc">DashboardCss</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>When a component renders any of these references, Wicket renders the bundle instead. The page gets one <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> for <code class="language-plaintext highlighter-rouge">app.js</code> with the three files concatenated in the order you listed them, and later requests for the other members are already satisfied.</p>
+
+<p>Follow these rules:</p>
+
+<ul>
+  <li>Members must be package resources: <code class="language-plaintext highlighter-rouge">JavaScriptResourceReference</code> for a JavaScript bundle, <code class="language-plaintext highlighter-rouge">CssResourceReference</code> for a CSS bundle.</li>
+  <li>List the files in the order they must run. Dependencies on references outside the bundle are kept, and Wicket renders those before the bundle.</li>
+  <li>A reference can be part of one bundle only. Adding it to a second bundle throws an <code class="language-plaintext highlighter-rouge">IllegalArgumentException</code>.</li>
+  <li>The name is the file name in the URL; give a JavaScript bundle a <code class="language-plaintext highlighter-rouge">.js</code> name and a CSS bundle a <code class="language-plaintext highlighter-rouge">.css</code> name.</li>
+</ul>
+
+<h2 id="defer-a-bundled-script">Defer a bundled script</h2>
+
+<p><code class="language-plaintext highlighter-rouge">addJavaScriptBundle</code> has a variant with a <code class="language-plaintext highlighter-rouge">defer</code> flag that renders the bundle’s <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> with the <code class="language-plaintext highlighter-rouge">defer</code> attribute:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getResourceBundles</span><span class="o">().</span><span class="na">addJavaScriptBundle</span><span class="o">(</span><span class="nc">WicketApplication</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"app.js"</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span>
+    <span class="nc">ChartCoreJs</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="nc">ChartJs</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span> <span class="nc">DashboardJs</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p>A bundle is a trade-off: a page that needs one of its files downloads all of them. Put files in a bundle that appear together on most pages, and leave rarely used ones out.</p>
+
+<h2 id="replace-a-resource-throughout-the-application">Replace a resource throughout the application</h2>
+
+<p><code class="language-plaintext highlighter-rouge">WebApplication#addResourceReplacement</code> makes Wicket render a different resource wherever the original is rendered, including in components you cannot change. Use it to serve a library from a CDN or to swap a component’s stylesheet for your own:</p>
+
+<p><em>WicketApplication.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+
+    <span class="n">addResourceReplacement</span><span class="o">(</span><span class="nc">DatePickerCss</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span>
+        <span class="k">new</span> <span class="nf">CssResourceReference</span><span class="o">(</span><span class="nc">WicketApplication</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"datepicker-theme.css"</span><span class="o">));</span>
+
+    <span class="n">addResourceReplacement</span><span class="o">(</span><span class="nc">ChartCoreJs</span><span class="o">.</span><span class="na">get</span><span class="o">(),</span>
+        <span class="k">new</span> <span class="nf">UrlResourceReference</span><span class="o">(</span><span class="nc">Url</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"https://cdn.example.com/chart-core/4.4.0/chart-core.min.js"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The first argument is a <code class="language-plaintext highlighter-rouge">CssResourceReference</code> or a <code class="language-plaintext highlighter-rouge">JavaScriptResourceReference</code>; the replacement can be any reference. A replaced CSS item keeps its media attribute, and a replaced script keeps <code class="language-plaintext highlighter-rouge">defer</code>, <code class="language-plaintext highlighter-rouge">async</code> and the nonce. A replacement is a bundle with one member, so the original cannot also be part of a bundle.</p>
+
+<p>To replace jQuery, set the jQuery reference instead: <code class="language-plaintext highlighter-rouge">getJavaScriptLibrarySettings().setJQueryReference(…)</code>, see <a href="/docs/resource-dependencies.html#depend-on-jquery">Declare dependencies between resources</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/resources.html">Resources</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/package-resources.html">Serve files from your Java packages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep images, media and other files next to the component that uses them and serve them with PackageResourceReference, from Java or from markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/add-css-javascript.html">Add CSS and JavaScript to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component or behavior add its stylesheets, script files and start-up code to the page header with renderHead and header items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/context-resources.html">Use files from the web application root</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add stylesheets, scripts and images that live in the web application folder, such as src/main/webapp, to your pages with ContextRelativeResourceReference and ContextImage.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-dependencies.html">Declare dependencies between resources</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make a script or stylesheet pull in the libraries it needs by overriding getDependencies, so Wicket always renders them first and only once.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Combine resources into one bundle</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve several package stylesheets or scripts as one file with ResourceBundles, and replace a resource throughout the application with addResourceReplacement.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/javascript-in-body.html">Put JavaScript at the end of the body</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render all script header items in a container just before the closing body tag with JavaScriptFilteredIntoFooterHeaderResponse and HeaderResponseContainer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/header-order.html">Control the order of header items</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a header item first with PriorityHeaderItem, let the page's own items come before those of its components, and fix where Wicket inserts items with wicket:header-items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/custom-resources.html">Generate a resource in code</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build files on request, such as a CSV export, a PDF or an image, by extending AbstractResource or writing a lambda, and offer them for download with ResourceLink.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/mount-resources.html">Give a resource a URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Mount a resource reference on a path of your choice with mountResource, read path and query parameters in the resource, and link to the mounted URL.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/shared-resources.html">Share a resource across the application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Register a resource once under an application-wide key with getSharedResources and refer to it from any component with SharedResourceReference.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-loading.html">Customize where resources are loaded from</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make Wicket find markup, properties and package files in a folder of the web application or the file system by adding resource finders.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/compress-resources.html">Minify and compress CSS and JavaScript</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve pre-minified .min files, strip JavaScript in deployment mode, plug in your own CSS or JavaScript compressor, and rewrite URLs inside stylesheets with CssUrlReplacer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nio-resources.html">Serve files with NIO</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve files from the file system or from inside a ZIP archive through java.nio.file.Path with FileSystemResourceReference and FileSystemResource, including byte ranges for media.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/model-resources.html">Show images from an external URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render img and source tags whose URL comes from a model with ExternalImage and ExternalSource, for images on another server or a CDN.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/header-items.html">Header items</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every header item type with its factory methods, the tag it renders and where it ends up, the rendering order, Ajax behaviour and the header response decorators.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-resources.html">How Wicket serves resources</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What resources and resource references are, why components carry their own CSS and JavaScript, and how Wicket gives every file a cacheable URL.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/resource-bundles.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

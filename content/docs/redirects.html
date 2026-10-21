@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Redirects after a request | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Why Wicket answers a form submit or link click with a redirect, how the three render strategies differ, and what that means for stateless pages and clusters." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/links.html">Links and URLs</a></p>
+            <h1>Redirects after a request</h1>
+            <p class="page-sign-sub">Why Wicket answers a form submit or link click with a redirect, how the three render strategies differ, and what that means for stateless pages and clusters.</p>
+            <p class="guide-plates"><span class="guide-kind">Explanation</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#the-problem-a-redirect-solves"><span class="toc-number">1</span> <span class="toc-text">The problem a redirect solves</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#the-three-render-strategies"><span class="toc-number">2</span> <span class="toc-text">The three render strategies</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#how-redirect_to_buffer-works"><span class="toc-number">3</span> <span class="toc-text">How REDIRECT_TO_BUFFER works</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#why-a-stateful-page-gets-an-id-in-its-url"><span class="toc-number">4</span> <span class="toc-text">Why a stateful page gets an id in its URL</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#when-wicket-does-not-redirect"><span class="toc-number">5</span> <span class="toc-text">When Wicket does not redirect</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#redirects-in-a-cluster"><span class="toc-number">6</span> <span class="toc-text">Redirects in a cluster</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>When a user submits a Wicket form or clicks a <code class="language-plaintext highlighter-rouge">Link</code>, the browser usually receives a redirect, followed by a second request that fetches the page. This is the redirect-after-post pattern, also known as post-redirect-get, and Wicket applies it to link clicks as well as form posts. It is why a stateful page has a number in its URL, and why the browser’s reload button shows the page again instead of submitting the form a second time.</p>
+
+<h2 id="the-problem-a-redirect-solves">The problem a redirect solves</h2>
+
+<p>A form submit is a POST to a URL that means “do this”. If the server answers that POST with the page, the browser’s address bar and history hold the POST. Reload, or going back and forward, sends the POST again: the order is placed twice, the row is deleted twice, or the browser asks the user whether to resend data they never knew they sent.</p>
+
+<p>A redirect separates the action from the result. The server performs the action, then tells the browser to fetch the result from another URL with a GET. The address bar and history now hold that GET, and repeating it only shows the result again.</p>
+
+<p>Wicket goes one step further than most frameworks: a click on a <code class="language-plaintext highlighter-rouge">Link</code> also calls code on the server, so it is answered with a redirect too.</p>
+
+<h2 id="the-three-render-strategies">The three render strategies</h2>
+
+<p><code class="language-plaintext highlighter-rouge">RequestCycleSettings</code> has three render strategies. The strategy decides how the two parts of a request, the action and the rendering of the page, map onto HTTP requests.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Strategy</th>
+      <th>Requests</th>
+      <th>Double submit on reload</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">REDIRECT_TO_BUFFER</code> (default)</td>
+      <td>action and rendering in the first, a redirect, the second request returns the stored result</td>
+      <td>prevented</td>
+      <td>the rendered page is kept in memory until the second request fetches it</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">REDIRECT_TO_RENDER</code></td>
+      <td>action in the first, a redirect, rendering in the second</td>
+      <td>prevented</td>
+      <td>models may be loaded and detached twice; two request cycles for one action</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ONE_PASS_RENDER</code></td>
+      <td>action and rendering in one request, no redirect</td>
+      <td>not prevented</td>
+      <td>fewest requests; the address bar keeps the action URL</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You change the strategy in the <code class="language-plaintext highlighter-rouge">init()</code> method of your application:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getRequestCycleSettings</span><span class="o">().</span><span class="na">setRenderStrategy</span><span class="o">(</span><span class="nc">RequestCycleSettings</span><span class="o">.</span><span class="na">RenderStrategy</span><span class="o">.</span><span class="na">ONE_PASS_RENDER</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="how-redirect_to_buffer-works">How REDIRECT_TO_BUFFER works</h2>
+
+<p>With the default strategy, the first request runs the action, for example the <code class="language-plaintext highlighter-rouge">onSubmit</code> of a form, and renders the resulting page completely. Instead of sending the HTML, Wicket stores it in a buffer and answers with a redirect to the URL of the page, such as <code class="language-plaintext highlighter-rouge">/order?3</code>.</p>
+
+<p>The browser follows the redirect. The <code class="language-plaintext highlighter-rouge">BufferedResponseMapper</code> recognizes the URL, finds the stored response for this session and URL, and sends it. No component code runs in the second request.</p>
+
+<p>The page is rendered once, in the same request cycle as the action, so models that the action loaded are still attached and feedback messages from validation are rendered with the page. The browser ends up on a URL that shows the page, and reload asks for that URL. If the buffer is gone by then, Wicket renders the page instance again from the page store.</p>
+
+<p>The buffers live in the <code class="language-plaintext highlighter-rouge">WebApplication</code> object, keyed by session id and URL. They are removed when fetched, and at most 1000 of them are kept for at most a minute.</p>
+
+<h2 id="why-a-stateful-page-gets-an-id-in-its-url">Why a stateful page gets an id in its URL</h2>
+
+<p>A request for <code class="language-plaintext highlighter-rouge">/order</code> creates a new instance of the page. If the page is stateful, its URL has to identify this instance, so that a later click on one of its links reaches the same object. Wicket renders the page, finds that its URL is now <code class="language-plaintext highlighter-rouge">/order?3</code>, stores the response and redirects to <code class="language-plaintext highlighter-rouge">/order?3</code>.</p>
+
+<p>A stateless page has nothing to find again. Wicket renders it directly into the response, without a buffer and without a redirect, and the URL stays <code class="language-plaintext highlighter-rouge">/order</code>. This is one reason to <a href="/docs/keep-stateless.html">keep pages stateless</a> where you can; <a href="/docs/stateful-stateless.html">Stateful and stateless pages</a> explains the difference.</p>
+
+<h2 id="when-wicket-does-not-redirect">When Wicket does not redirect</h2>
+
+<p>The renderer compares the URL of the request with the URL of the page it is about to render. Besides the strategy, these cases decide what happens:</p>
+
+<ul>
+  <li>When the two URLs are equal and the page instance already exists, Wicket renders directly. A reload of <code class="language-plaintext highlighter-rouge">/order?3</code> does not redirect again.</li>
+  <li>When the page is stateless after rendering, Wicket writes it directly, also after a submit of a stateless form. Call <code class="language-plaintext highlighter-rouge">setResponsePage</code> with a page class in <code class="language-plaintext highlighter-rouge">onSubmit</code> when you want the redirect.</li>
+  <li>Ajax requests never render a full page into the response. When an Ajax handler calls <code class="language-plaintext highlighter-rouge">setResponsePage</code>, Wicket sends the browser to the new page with a redirect.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">setResponsePage(OrderPage.class)</code> and <code class="language-plaintext highlighter-rouge">setResponsePage(OrderPage.class, parameters)</code> always redirect, also with <code class="language-plaintext highlighter-rouge">ONE_PASS_RENDER</code>, so the browser ends up on the bookmarkable URL of the new page.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">setResponsePage(page)</code> with an instance redirects only when needed.</li>
+</ul>
+
+<p>The last two are redirect policies, <code class="language-plaintext highlighter-rouge">ALWAYS_REDIRECT</code> and <code class="language-plaintext highlighter-rouge">AUTO_REDIRECT</code>, of the <code class="language-plaintext highlighter-rouge">RenderPageRequestHandler</code> that <code class="language-plaintext highlighter-rouge">setResponsePage</code> schedules. <code class="language-plaintext highlighter-rouge">RequestCycle#setResponsePage(Class, PageParameters, RedirectPolicy)</code> lets you pass <code class="language-plaintext highlighter-rouge">NEVER_REDIRECT</code> to render the page into the current response.</p>
+
+<h2 id="redirects-in-a-cluster">Redirects in a cluster</h2>
+
+<p>The buffer of <code class="language-plaintext highlighter-rouge">REDIRECT_TO_BUFFER</code> is held in the memory of the server that rendered the page. It is not part of the session and is not replicated.</p>
+
+<p><img src="/img/guide/lost-in-redirection-mockup3.png" alt="A load balancer without sticky sessions sends the POST to one node and the GET after the redirect to another"></p>
+
+<p>When a load balancer sends the POST to one node and the redirected GET to another, the second node has no buffer. It handles the GET as a new request for the page, and whatever the first render showed only once is lost. The typical symptom is a form that, now and then, comes back without its validation errors. The same can happen when a node fails between the two requests.</p>
+
+<p><img src="/img/guide/lost-in-redirection-mockup4.png" alt="With sticky sessions both requests of a user go to the same node, and replication is only used for failover"></p>
+
+<p>The fix is sticky sessions: the load balancer sends all requests of a session to the same node, and session replication only serves failover. This keeps the default strategy and its protection against double submits.</p>
+
+<p>Switching to <code class="language-plaintext highlighter-rouge">ONE_PASS_RENDER</code> also removes the problem, because there is no second request. It brings back the double-submit problem and the action URLs in the address bar, so it trades one problem for another. It suits clusters that cannot use sticky sessions, and applications whose pages are mostly stateless or driven by Ajax, where few full-page form posts happen.</p>
+
+<p>How the request cycle resolves handlers and mappers around these redirects is described in <a href="/docs/request-cycle.html">What happens during a request</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/links.html">Links and URLs</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-parameters.html">Pass parameters to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put values in the URL of a page with PageParameters, read them in the page constructor and convert them to the types you need.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bookmarkable-links.html">Link to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Navigate to another page with a Link that runs code on the server first, or with a BookmarkablePageLink that points straight at the page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/wicket-link.html">Turn plain links into page links with wicket:link</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write ordinary anchors to page files in the markup and let wicket:link turn them into links to bookmarkable pages, without Java code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/external-links.html">Link to another site</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render a link to a URL outside your application with ExternalLink, build the URL from a model, and redirect to another site from code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-links.html">Use links on stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Handle clicks on a stateless page with StatelessLink and keep the state the click needs in page parameters, because every click builds a new page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/mount-pages.html">Give pages readable URLs</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Mount pages on paths of your choice, put page parameters in path segments with placeholders, and mount a whole package at once.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-mappers.html">Request mappers</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The request mappers that turn URLs into request handlers and back, the mount methods of WebApplication, and the syntax of mount paths.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Redirects after a request</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why Wicket answers a form submit or link click with a redirect, how the three render strategies differ, and what that means for stateless pages and clusters.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/redirects.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

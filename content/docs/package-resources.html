@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Serve files from your Java packages | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Keep images, media and other files next to the component that uses them and serve them with PackageResourceReference, from Java or from markup." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/resources.html">Resources</a></p>
+            <h1>Serve files from your Java packages</h1>
+            <p class="page-sign-sub">Keep images, media and other files next to the component that uses them and serve them with PackageResourceReference, from Java or from markup.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#put-the-file-next-to-the-class"><span class="toc-number">1</span> <span class="toc-text">Put the file next to the class</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#show-an-image-from-the-package"><span class="toc-number">2</span> <span class="toc-text">Show an image from the package</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#refer-to-package-files-from-markup"><span class="toc-number">3</span> <span class="toc-text">Refer to package files from markup</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#offer-several-image-sizes"><span class="toc-number">4</span> <span class="toc-text">Offer several image sizes</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#embed-a-small-image-in-the-page"><span class="toc-number">5</span> <span class="toc-text">Embed a small image in the page</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#stream-video-and-audio"><span class="toc-number">6</span> <span class="toc-text">Stream video and audio</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#serve-a-localized-file"><span class="toc-number">7</span> <span class="toc-text">Serve a localized file</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Put a file in the Java package of the component that uses it when the component should work wherever it is added, without anyone copying files into the web application. Wicket serves such <em>package resources</em> from the classpath and writes the URLs for you.</p>
+
+<h2 id="put-the-file-next-to-the-class">Put the file next to the class</h2>
+
+<p>Place the file in the same package as the component. In a Maven project, put it in <code class="language-plaintext highlighter-rouge">src/main/java</code> next to the class, or in <code class="language-plaintext highlighter-rouge">src/main/resources</code> under the same package path:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/main/java/com/example/components/
+    CalendarPanel.java
+    CalendarPanel.html
+    calendar.png
+</code></pre></div></div>
+
+<p>Files in subfolders work too: name them with a relative path such as <code class="language-plaintext highlighter-rouge">"img/calendar.png"</code>.</p>
+
+<h2 id="show-an-image-from-the-package">Show an image from the package</h2>
+
+<p>Create a <code class="language-plaintext highlighter-rouge">PackageResourceReference</code> with a class from the package and the file name, and pass it to an <code class="language-plaintext highlighter-rouge">Image</code>:</p>
+
+<p><em>CalendarPanel.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalendarPanel</span> <span class="kd">extends</span> <span class="nc">Panel</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">CalendarPanel</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Image</span><span class="o">(</span><span class="s">"icon"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">PackageResourceReference</span><span class="o">(</span><span class="nc">CalendarPanel</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"calendar.png"</span><span class="o">)));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><em>CalendarPanel.html</em></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;wicket:panel&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">wicket:id=</span><span class="s">"icon"</span> <span class="na">alt=</span><span class="s">"Calendar"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/wicket:panel&gt;</span>
+</code></pre></div></div>
+
+<p>Wicket renders a URL such as <code class="language-plaintext highlighter-rouge">./wicket/resource/com.example.components.CalendarPanel/calendar-ver-1712345678000.png</code>. The version in the name changes when the file changes, so browsers can cache it safely; <a href="/docs/about-resources.html#urls-that-browsers-can-cache-forever">How Wicket serves resources</a> explains the scheme.</p>
+
+<p>Use the class name, not <code class="language-plaintext highlighter-rouge">getClass()</code>, as the scope. A subclass in another package would otherwise look for the file in its own package.</p>
+
+<p>For stylesheets and scripts, use <code class="language-plaintext highlighter-rouge">CssResourceReference</code> and <code class="language-plaintext highlighter-rouge">JavaScriptResourceReference</code> with a header item instead, see <a href="/docs/add-css-javascript.html">Add CSS and JavaScript to a page</a>.</p>
+
+<h2 id="refer-to-package-files-from-markup">Refer to package files from markup</h2>
+
+<p>Inside <code class="language-plaintext highlighter-rouge">&lt;wicket:link&gt;</code>, Wicket turns the <code class="language-plaintext highlighter-rouge">src</code> of <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> and the <code class="language-plaintext highlighter-rouge">href</code> of <code class="language-plaintext highlighter-rouge">&lt;link&gt;</code> into package resource URLs, relative to the package of the markup file:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;wicket:link&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"calendar.png"</span> <span class="na">alt=</span><span class="s">"Calendar"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"calendar.css"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/wicket:link&gt;</span>
+</code></pre></div></div>
+
+<p>Wicket adds the Content Security Policy nonce to the <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;link&gt;</code> tags it rewrites this way, so they also load under the default policy. See <a href="/docs/wicket-link.html">Turn plain links into page links with wicket:link</a>.</p>
+
+<h2 id="offer-several-image-sizes">Offer several image sizes</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Image</code> takes more than one reference. Add <code class="language-plaintext highlighter-rouge">srcset</code> descriptors with <code class="language-plaintext highlighter-rouge">setXValues</code> and the <code class="language-plaintext highlighter-rouge">sizes</code> attribute with <code class="language-plaintext highlighter-rouge">setSizes</code>, and the browser picks the best file:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Image</span> <span class="n">photo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Image</span><span class="o">(</span><span class="s">"photo"</span><span class="o">,</span>
+    <span class="k">new</span> <span class="nf">PackageResourceReference</span><span class="o">(</span><span class="nc">ProductPanel</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"photo-small.jpg"</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nf">PackageResourceReference</span><span class="o">(</span><span class="nc">ProductPanel</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"photo-large.jpg"</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nf">PackageResourceReference</span><span class="o">(</span><span class="nc">ProductPanel</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"photo-medium.jpg"</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nf">PackageResourceReference</span><span class="o">(</span><span class="nc">ProductPanel</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"photo-small.jpg"</span><span class="o">));</span>
+<span class="n">photo</span><span class="o">.</span><span class="na">setXValues</span><span class="o">(</span><span class="s">"1024w"</span><span class="o">,</span> <span class="s">"640w"</span><span class="o">,</span> <span class="s">"320w"</span><span class="o">);</span>
+<span class="n">photo</span><span class="o">.</span><span class="na">setSizes</span><span class="o">(</span><span class="s">"(min-width: 36em) 33.3vw"</span><span class="o">,</span> <span class="s">"100vw"</span><span class="o">);</span>
+<span class="n">add</span><span class="o">(</span><span class="n">photo</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>The first reference becomes <code class="language-plaintext highlighter-rouge">src</code>, the others make up <code class="language-plaintext highlighter-rouge">srcset</code>. For art direction, use a <code class="language-plaintext highlighter-rouge">Picture</code> with <code class="language-plaintext highlighter-rouge">Source</code> children (both in <code class="language-plaintext highlighter-rouge">org.apache.wicket.markup.html.image</code>) and an <code class="language-plaintext highlighter-rouge">Image</code> as fallback:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Picture</span> <span class="n">picture</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Picture</span><span class="o">(</span><span class="s">"picture"</span><span class="o">);</span>
+
+<span class="nc">Source</span> <span class="n">wide</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Source</span><span class="o">(</span><span class="s">"wide"</span><span class="o">,</span>
+    <span class="k">new</span> <span class="nf">PackageResourceReference</span><span class="o">(</span><span class="nc">ProductPanel</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"banner-wide.jpg"</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nf">PackageResourceReference</span><span class="o">(</span><span class="nc">ProductPanel</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"banner-wide-2x.jpg"</span><span class="o">));</span>
+<span class="n">wide</span><span class="o">.</span><span class="na">setXValues</span><span class="o">(</span><span class="s">"1x"</span><span class="o">,</span> <span class="s">"2x"</span><span class="o">);</span>
+<span class="n">wide</span><span class="o">.</span><span class="na">setMedia</span><span class="o">(</span><span class="s">"(min-width: 40em)"</span><span class="o">);</span>
+<span class="n">picture</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">wide</span><span class="o">);</span>
+
+<span class="n">picture</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Image</span><span class="o">(</span><span class="s">"fallback"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">PackageResourceReference</span><span class="o">(</span><span class="nc">ProductPanel</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"banner.jpg"</span><span class="o">)));</span>
+<span class="n">add</span><span class="o">(</span><span class="n">picture</span><span class="o">);</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;picture</span> <span class="na">wicket:id=</span><span class="s">"picture"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">wicket:id=</span><span class="s">"wide"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">wicket:id=</span><span class="s">"fallback"</span> <span class="na">alt=</span><span class="s">"Spring sale"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/picture&gt;</span>
+</code></pre></div></div>
+
+<h2 id="embed-a-small-image-in-the-page">Embed a small image in the page</h2>
+
+<p><code class="language-plaintext highlighter-rouge">InlineImage</code> writes the file into the <code class="language-plaintext highlighter-rouge">src</code> attribute as a base64 <code class="language-plaintext highlighter-rouge">data:</code> URI, which saves a request for small icons:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">InlineImage</span><span class="o">(</span><span class="s">"logo"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">PackageResourceReference</span><span class="o">(</span><span class="nc">HeaderPanel</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"logo.png"</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p>The default Content Security Policy only allows images from your own origin (<code class="language-plaintext highlighter-rouge">img-src 'self'</code>) and blocks <code class="language-plaintext highlighter-rouge">data:</code> URIs. Allow them in <code class="language-plaintext highlighter-rouge">init()</code> before you use <code class="language-plaintext highlighter-rouge">InlineImage</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getCspSettings</span><span class="o">().</span><span class="na">blocking</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="nc">CSPDirective</span><span class="o">.</span><span class="na">IMG_SRC</span><span class="o">,</span> <span class="s">"data:"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="stream-video-and-audio">Stream video and audio</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Video</code> and <code class="language-plaintext highlighter-rouge">Audio</code> render <code class="language-plaintext highlighter-rouge">&lt;video&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;audio&gt;</code> tags for a reference. Package resources support HTTP range requests, so the browser can seek. Call <code class="language-plaintext highlighter-rouge">readBuffered(false)</code> so Wicket streams the file instead of loading it into memory:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Video</span><span class="o">(</span><span class="s">"intro"</span><span class="o">,</span>
+    <span class="k">new</span> <span class="nf">PackageResourceReference</span><span class="o">(</span><span class="nc">TourPage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"intro.mp4"</span><span class="o">).</span><span class="na">readBuffered</span><span class="o">(</span><span class="kc">false</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;video</span> <span class="na">wicket:id=</span><span class="s">"intro"</span> <span class="na">controls</span><span class="nt">&gt;&lt;/video&gt;</span>
+</code></pre></div></div>
+
+<p>Two defaults stand in the way of media files. The package resource guard does not serve <code class="language-plaintext highlighter-rouge">.mp4</code>, <code class="language-plaintext highlighter-rouge">.webm</code> or <code class="language-plaintext highlighter-rouge">.mp3</code>; allow the extension as described in <a href="/docs/package-resource-guard.html">Control which package resources are served</a>. And the default Content Security Policy sets no <code class="language-plaintext highlighter-rouge">media-src</code>, so it falls back to <code class="language-plaintext highlighter-rouge">default-src 'none'</code>; add your own origin:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getCspSettings</span><span class="o">().</span><span class="na">blocking</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="nc">CSPDirective</span><span class="o">.</span><span class="na">MEDIA_SRC</span><span class="o">,</span> <span class="nc">CSPDirectiveSrcValue</span><span class="o">.</span><span class="na">SELF</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="serve-a-localized-file">Serve a localized file</h2>
+
+<p>Package resources follow the same naming rules as markup and properties files. With <code class="language-plaintext highlighter-rouge">calendar.png</code> and <code class="language-plaintext highlighter-rouge">calendar_fr.png</code> in the package, a session with a French locale gets <code class="language-plaintext highlighter-rouge">calendar_fr.png</code> from the same reference. Styles and variations work the same way; <a href="/docs/bundle-lookup.html">Where Wicket looks for texts</a> describes the lookup order.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/resources.html">Resources</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Serve files from your Java packages</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep images, media and other files next to the component that uses them and serve them with PackageResourceReference, from Java or from markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/add-css-javascript.html">Add CSS and JavaScript to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component or behavior add its stylesheets, script files and start-up code to the page header with renderHead and header items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/context-resources.html">Use files from the web application root</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add stylesheets, scripts and images that live in the web application folder, such as src/main/webapp, to your pages with ContextRelativeResourceReference and ContextImage.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-dependencies.html">Declare dependencies between resources</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make a script or stylesheet pull in the libraries it needs by overriding getDependencies, so Wicket always renders them first and only once.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-bundles.html">Combine resources into one bundle</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve several package stylesheets or scripts as one file with ResourceBundles, and replace a resource throughout the application with addResourceReplacement.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/javascript-in-body.html">Put JavaScript at the end of the body</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render all script header items in a container just before the closing body tag with JavaScriptFilteredIntoFooterHeaderResponse and HeaderResponseContainer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/header-order.html">Control the order of header items</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a header item first with PriorityHeaderItem, let the page's own items come before those of its components, and fix where Wicket inserts items with wicket:header-items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/custom-resources.html">Generate a resource in code</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build files on request, such as a CSV export, a PDF or an image, by extending AbstractResource or writing a lambda, and offer them for download with ResourceLink.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/mount-resources.html">Give a resource a URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Mount a resource reference on a path of your choice with mountResource, read path and query parameters in the resource, and link to the mounted URL.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/shared-resources.html">Share a resource across the application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Register a resource once under an application-wide key with getSharedResources and refer to it from any component with SharedResourceReference.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-loading.html">Customize where resources are loaded from</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make Wicket find markup, properties and package files in a folder of the web application or the file system by adding resource finders.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/compress-resources.html">Minify and compress CSS and JavaScript</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve pre-minified .min files, strip JavaScript in deployment mode, plug in your own CSS or JavaScript compressor, and rewrite URLs inside stylesheets with CssUrlReplacer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nio-resources.html">Serve files with NIO</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve files from the file system or from inside a ZIP archive through java.nio.file.Path with FileSystemResourceReference and FileSystemResource, including byte ranges for media.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/model-resources.html">Show images from an external URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render img and source tags whose URL comes from a model with ExternalImage and ExternalSource, for images on another server or a CDN.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/header-items.html">Header items</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every header item type with its factory methods, the tag it renders and where it ends up, the rendering order, Ajax behaviour and the header response decorators.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-resources.html">How Wicket serves resources</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What resources and resource references are, why components carry their own CSS and JavaScript, and how Wicket gives every file a cacheable URL.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/package-resources.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

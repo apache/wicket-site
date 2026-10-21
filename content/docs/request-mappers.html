@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Request mappers | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The request mappers that turn URLs into request handlers and back, the mount methods of WebApplication, and the syntax of mount paths." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/links.html">Links and URLs</a></p>
+            <h1>Request mappers</h1>
+            <p class="page-sign-sub">The request mappers that turn URLs into request handlers and back, the mount methods of WebApplication, and the syntax of mount paths.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#irequestmapper"><span class="toc-number">1</span> <span class="toc-text">IRequestMapper</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#how-wicket-picks-a-mapper"><span class="toc-number">2</span> <span class="toc-text">How Wicket picks a mapper</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#mount-methods"><span class="toc-number">3</span> <span class="toc-text">Mount methods</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#mount-path-syntax"><span class="toc-number">4</span> <span class="toc-text">Mount path syntax</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#page-mappers"><span class="toc-number">5</span> <span class="toc-text">Page mappers</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#resource-mappers"><span class="toc-number">6</span> <span class="toc-text">Resource mappers</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#wrapping-mappers"><span class="toc-number">7</span> <span class="toc-text">Wrapping mappers</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#compound-mappers"><span class="toc-number">8</span> <span class="toc-text">Compound mappers</span></a></li>
+<li class="toc--level-1 toc--section-9"><a href="#parameter-encoders"><span class="toc-number">9</span> <span class="toc-text">Parameter encoders</span></a></li>
+<li class="toc--level-1 toc--section-10"><a href="#mapper-context"><span class="toc-number">10</span> <span class="toc-text">Mapper context</span></a></li>
+<li class="toc--level-1 toc--section-11"><a href="#generate-urls-in-code"><span class="toc-number">11</span> <span class="toc-text">Generate URLs in code</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>A request mapper works in two directions. For an incoming request it returns the request handler that produces the response, or <code class="language-plaintext highlighter-rouge">null</code> when it does not recognize the URL. When Wicket renders a link, form or resource reference, it asks the mappers for the URL of a request handler. How the handler then processes the request is described in <a href="/docs/request-processing.html">Request processing</a>.</p>
+
+<h2 id="irequestmapper">IRequestMapper</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Called</th>
+      <th>Returns</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getCompatibilityScore(Request)</code></td>
+      <td>for every incoming request, on every mapper</td>
+      <td>how well the mapper fits the URL; higher is tried first</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mapRequest(Request)</code></td>
+      <td>on the mappers in order of score, until one returns a handler</td>
+      <td>an <code class="language-plaintext highlighter-rouge">IRequestHandler</code>, or <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mapHandler(IRequestHandler)</code></td>
+      <td>when Wicket needs a URL for a handler</td>
+      <td>a <code class="language-plaintext highlighter-rouge">Url</code>, or <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">IRequestMapperDelegate</code> marks a mapper that wraps another one; <code class="language-plaintext highlighter-rouge">getDelegateMapper()</code> returns the wrapped mapper.</p>
+
+<h2 id="how-wicket-picks-a-mapper">How Wicket picks a mapper</h2>
+
+<p>The application has one root mapper. By default it is a <code class="language-plaintext highlighter-rouge">SystemMapper</code>, a <code class="language-plaintext highlighter-rouge">CompoundRequestMapper</code> that holds the built-in mappers and every mount.</p>
+
+<p>For an incoming request, a <code class="language-plaintext highlighter-rouge">CompoundRequestMapper</code> asks all its mappers for their score and calls <code class="language-plaintext highlighter-rouge">mapRequest</code> on them from the highest score down. When two mappers have the same score, the one added last goes first. To generate a URL, it calls <code class="language-plaintext highlighter-rouge">mapHandler</code> on its mappers from the last added to the first, and uses the first URL it gets. Mounts are added after the built-in mappers, so they win.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mapper</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">MountedMapper</code>, <code class="language-plaintext highlighter-rouge">PackageMapper</code>
+</td>
+      <td>0 when the URL does not start with the mount path; otherwise it grows with the length of the mount path, where fixed segments weigh more than placeholders and optional placeholders do not count</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceMapper</code></td>
+      <td>as <code class="language-plaintext highlighter-rouge">MountedMapper</code>, minus 1, so that pages win over resources on the same path</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">BookmarkableMapper</code>, <code class="language-plaintext highlighter-rouge">PageInstanceMapper</code>, <code class="language-plaintext highlighter-rouge">BufferedResponseMapper</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Integer.MAX_VALUE</code> when the URL is theirs, otherwise 0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HomePageMapper</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Integer.MIN_VALUE + 1</code>, the last resort</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="mount-methods">Mount methods</h2>
+
+<p>Methods of <code class="language-plaintext highlighter-rouge">WebApplication</code>, called in <code class="language-plaintext highlighter-rouge">init()</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Adds</th>
+      <th>Returns</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mountPage(String path, Class&lt;T&gt; pageClass)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">MountedMapper</code></td>
+      <td>the <code class="language-plaintext highlighter-rouge">MountedMapper</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mountPackage(String path, Class&lt;P&gt; pageClass)</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">PackageMapper</code> for the package of <code class="language-plaintext highlighter-rouge">pageClass</code>
+</td>
+      <td>the <code class="language-plaintext highlighter-rouge">PackageMapper</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mountResource(String path, ResourceReference reference)</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">ResourceMapper</code>; also registers the reference</td>
+      <td>the <code class="language-plaintext highlighter-rouge">ResourceMapper</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mount(IRequestMapper mapper)</code></td>
+      <td>any mapper</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">unmount(String path)</code></td>
+      <td>removes every mapper that matches the path</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">mount</code> adds the mapper to <code class="language-plaintext highlighter-rouge">getRootRequestMapperAsCompound()</code>. If the root mapper is not a compound mapper, for example because you wrapped it in a <code class="language-plaintext highlighter-rouge">CryptoMapper</code>, that method wraps the root in a new <code class="language-plaintext highlighter-rouge">SystemMapper</code> first. Mount before you wrap the root mapper.</p>
+
+<p>Methods of <code class="language-plaintext highlighter-rouge">Application</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getRootRequestMapper()</code></td>
+      <td>the root mapper</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setRootRequestMapper(IRequestMapper)</code></td>
+      <td>replaces the root mapper; used to wrap it in a <code class="language-plaintext highlighter-rouge">CryptoMapper</code> or <code class="language-plaintext highlighter-rouge">HttpsMapper</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getRootRequestMapperAsCompound()</code></td>
+      <td>the root mapper as an <code class="language-plaintext highlighter-rouge">ICompoundRequestMapper</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getMapperContext()</code></td>
+      <td>the <code class="language-plaintext highlighter-rouge">IMapperContext</code>, created once by <code class="language-plaintext highlighter-rouge">newMapperContext()</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="mount-path-syntax">Mount path syntax</h2>
+
+<p>Mount paths of <code class="language-plaintext highlighter-rouge">mountPage</code>, <code class="language-plaintext highlighter-rouge">mountPackage</code>, <code class="language-plaintext highlighter-rouge">mountResource</code> and the mapper constructors are made of segments separated by <code class="language-plaintext highlighter-rouge">/</code>. A leading <code class="language-plaintext highlighter-rouge">/</code> is optional.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Segment</th>
+      <th>Meaning</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>fixed text that must match</td>
+      <td><code class="language-plaintext highlighter-rouge">/products</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">${name}</code></td>
+      <td>required named parameter; the URL must have this segment</td>
+      <td><code class="language-plaintext highlighter-rouge">/products/${id}</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#{name}</code></td>
+      <td>optional named parameter; the segment is left out when the parameter is missing</td>
+      <td><code class="language-plaintext highlighter-rouge">/products/${id}/#{tab}</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A placeholder is a whole segment</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">/item-${id}</code> is fixed text, not a placeholder</td>
+    </tr>
+    <tr>
+      <td>Values of placeholders</td>
+      <td>become named page parameters, read with <code class="language-plaintext highlighter-rouge">parameters.get("id")</code>
+</td>
+    </tr>
+    <tr>
+      <td>Named parameters without a placeholder</td>
+      <td>are encoded by the parameter encoder; by default in the query string</td>
+    </tr>
+    <tr>
+      <td>Segments after the mount path</td>
+      <td>become indexed parameters: <code class="language-plaintext highlighter-rouge">/products/42</code> on a mount at <code class="language-plaintext highlighter-rouge">/products</code> gives <code class="language-plaintext highlighter-rouge">get(0)</code> = <code class="language-plaintext highlighter-rouge">42</code>
+</td>
+    </tr>
+    <tr>
+      <td>Matching order</td>
+      <td>left to right; required parameters are matched before optional ones, optional ones eagerly from the left</td>
+    </tr>
+    <tr>
+      <td>Reserved segments</td>
+      <td>a mount path must not start with a segment of the mapper context, <code class="language-plaintext highlighter-rouge">wicket</code> by default</td>
+    </tr>
+    <tr>
+      <td>Missing required parameter</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">mapHandler</code> returns <code class="language-plaintext highlighter-rouge">null</code>: no URL for this mount, the next mapper is tried</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mountPage</span><span class="o">(</span><span class="s">"/blog/${year}/#{month}/#{slug}"</span><span class="o">,</span> <span class="nc">BlogPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">mountResource</span><span class="o">(</span><span class="s">"/export/${format}"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ExportResourceReference</span><span class="o">());</span>
+</code></pre></div></div>
+
+<h2 id="page-mappers">Page mappers</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mapper</th>
+      <th>URLs</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MountedMapper</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">/products/42</code>, <code class="language-plaintext highlighter-rouge">/products/42?3</code>, <code class="language-plaintext highlighter-rouge">/products/42?3-1.-form</code>
+</td>
+      <td>one page class on a mount path; constructors take a page class or a <code class="language-plaintext highlighter-rouge">Supplier</code> of one, and optionally an <code class="language-plaintext highlighter-rouge">IPageParametersEncoder</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PackageMapper</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">/admin/UserAdminPage</code>, <code class="language-plaintext highlighter-rouge">/admin/UserAdminPage?3</code>
+</td>
+      <td>all bookmarkable pages of one package; the last segment is the simple class name. Constructor takes a <code class="language-plaintext highlighter-rouge">PackageName</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HomePageMapper</code></td>
+      <td><code class="language-plaintext highlighter-rouge">/</code></td>
+      <td>the page from <code class="language-plaintext highlighter-rouge">Application#getHomePage()</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BookmarkableMapper</code></td>
+      <td><code class="language-plaintext highlighter-rouge">/wicket/bookmarkable/com.example.ProductPage?id=42</code></td>
+      <td>any bookmarkable page that is not mounted. Disabled for requests by <code class="language-plaintext highlighter-rouge">SecuritySettings#setEnforceMounts(true)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PageInstanceMapper</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">/wicket/page?3</code>, <code class="language-plaintext highlighter-rouge">/wicket/page?3-1.-form</code>
+</td>
+      <td>a page instance from the page store, for pages that were not created from a bookmarkable URL</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BufferedResponseMapper</code></td>
+      <td>the URL of a response stored by <code class="language-plaintext highlighter-rouge">REDIRECT_TO_BUFFER</code>
+</td>
+      <td>see <a href="/docs/redirects.html">Redirects after a request</a>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The number after <code class="language-plaintext highlighter-rouge">?</code> is the page id. After it may follow the render count and the path of the component whose listener the URL calls, such as <code class="language-plaintext highlighter-rouge">3-1.-form</code>.</p>
+
+<h2 id="resource-mappers">Resource mappers</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mapper</th>
+      <th>URLs</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceMapper</code></td>
+      <td><code class="language-plaintext highlighter-rouge">/export/csv?from=2026-01-01</code></td>
+      <td>one <code class="language-plaintext highlighter-rouge">ResourceReference</code> on a mount path; placeholders allowed</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceReferenceMapper</code></td>
+      <td><code class="language-plaintext highlighter-rouge">/wicket/resource/com.example.HomePage/logo.png?en</code></td>
+      <td>resource references that are not mounted; adds locale, style and variation to the query string. Wraps a <code class="language-plaintext highlighter-rouge">BasicResourceReferenceMapper</code> in a <code class="language-plaintext highlighter-rouge">ParentPathReferenceRewriter</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HashBasedResourceReferenceMapper</code></td>
+      <td><code class="language-plaintext highlighter-rouge">/wicket/resource/&lt;hash&gt;/logo.png</code></td>
+      <td>alternative to <code class="language-plaintext highlighter-rouge">ResourceReferenceMapper</code> that replaces the scope class name with a hash</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UrlResourceReferenceMapper</code></td>
+      <td>—</td>
+      <td>generates URLs for <code class="language-plaintext highlighter-rouge">UrlResourceReference</code>, which points to an external URL</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ParentPathReferenceRewriter</code></td>
+      <td>—</td>
+      <td>wraps a mapper and replaces <code class="language-plaintext highlighter-rouge">../</code> in resource paths with the placeholder from <code class="language-plaintext highlighter-rouge">ResourceSettings#getParentFolderPlaceholder()</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="wrapping-mappers">Wrapping mappers</h2>
+
+<p>These mappers wrap another mapper, usually the root mapper, with <code class="language-plaintext highlighter-rouge">setRootRequestMapper(new XMapper(getRootRequestMapper(), ...))</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mapper</th>
+      <th>Constructor</th>
+      <th>What it does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CryptoMapper</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">(IRequestMapper, Application)</code>, <code class="language-plaintext highlighter-rouge">(IRequestMapper, Supplier&lt;ICrypt&gt;)</code>
+</td>
+      <td>encrypts the URLs of the wrapped mapper</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HttpsMapper</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(IRequestMapper, HttpsConfig)</code></td>
+      <td>redirects to HTTPS for pages annotated with <code class="language-plaintext highlighter-rouge">@RequireHttps</code>, and back to HTTP for others; see <a href="/docs/https.html">Require HTTPS</a>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="compound-mappers">Compound mappers</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ICompoundRequestMapper</code></td>
+      <td>a mapper made of other mappers: <code class="language-plaintext highlighter-rouge">add(IRequestMapper)</code>, <code class="language-plaintext highlighter-rouge">remove(IRequestMapper)</code>, and iteration</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CompoundRequestMapper</code></td>
+      <td>the implementation; selects by score as described above</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SystemMapper</code></td>
+      <td>the default root mapper. Holds, added in this order: <code class="language-plaintext highlighter-rouge">PageInstanceMapper</code>, <code class="language-plaintext highlighter-rouge">BookmarkableMapper</code>, <code class="language-plaintext highlighter-rouge">HomePageMapper</code>, <code class="language-plaintext highlighter-rouge">ResourceReferenceMapper</code>, <code class="language-plaintext highlighter-rouge">UrlResourceReferenceMapper</code>, the mapper for <code class="language-plaintext highlighter-rouge">RestartResponseAtInterceptPageException</code>, <code class="language-plaintext highlighter-rouge">BufferedResponseMapper</code>. Override its <code class="language-plaintext highlighter-rouge">new...Mapper()</code> factory methods to replace one of them</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Other features add their own mappers, such as <code class="language-plaintext highlighter-rouge">ReportCSPViolationMapper</code> for the reports of the <a href="/docs/csp.html">Content Security Policy</a>.</p>
+
+<h2 id="parameter-encoders">Parameter encoders</h2>
+
+<p>An <code class="language-plaintext highlighter-rouge">IPageParametersEncoder</code> turns <code class="language-plaintext highlighter-rouge">PageParameters</code> into the part of a <code class="language-plaintext highlighter-rouge">Url</code> after the mount path, and back. <code class="language-plaintext highlighter-rouge">MountedMapper</code>, <code class="language-plaintext highlighter-rouge">PackageMapper</code>, <code class="language-plaintext highlighter-rouge">ResourceMapper</code> and <code class="language-plaintext highlighter-rouge">BookmarkableMapper</code> accept one in their constructor.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Encoder</th>
+      <th>Named parameters</th>
+      <th>Indexed parameters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">PageParametersEncoder</code> (default)</td>
+      <td>query string: <code class="language-plaintext highlighter-rouge">?id=42&amp;tab=reviews</code>
+</td>
+      <td>path segments: <code class="language-plaintext highlighter-rouge">/42/reviews</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UrlPathPageParametersEncoder</code></td>
+      <td>path segments as name-value pairs: <code class="language-plaintext highlighter-rouge">/id/42/tab/reviews</code>; no POST parameters</td>
+      <td>not supported; encoding throws an exception</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mount</span><span class="o">(</span><span class="k">new</span> <span class="nc">MountedMapper</span><span class="o">(</span><span class="s">"/search"</span><span class="o">,</span> <span class="nc">SearchPage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">UrlPathPageParametersEncoder</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<h2 id="mapper-context">Mapper context</h2>
+
+<p><code class="language-plaintext highlighter-rouge">IMapperContext</code> provides the reserved segments of unmounted URLs and creates page instances for the mappers. Override <code class="language-plaintext highlighter-rouge">Application#newMapperContext()</code> to change the segments, usually by extending <code class="language-plaintext highlighter-rouge">DefaultMapperContext</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Default</th>
+      <th>Used in</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getNamespace()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">wicket</code></td>
+      <td>first segment of every unmounted URL</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getBookmarkableIdentifier()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bookmarkable</code></td>
+      <td><code class="language-plaintext highlighter-rouge">/wicket/bookmarkable/...</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getPageIdentifier()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">page</code></td>
+      <td><code class="language-plaintext highlighter-rouge">/wicket/page?3</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getResourceIdentifier()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">resource</code></td>
+      <td><code class="language-plaintext highlighter-rouge">/wicket/resource/...</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="generate-urls-in-code">Generate URLs in code</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Returns</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RequestCycle#urlFor(Class&lt;C&gt; pageClass, PageParameters)</code></td>
+      <td>the URL of a bookmarkable page, relative to the current page, as <code class="language-plaintext highlighter-rouge">CharSequence</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RequestCycle#urlFor(IRequestHandler)</code></td>
+      <td>the URL of any handler</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RequestCycle#urlFor(ResourceReference, PageParameters)</code></td>
+      <td>the URL of a resource</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RequestCycle#mapUrlFor(...)</code></td>
+      <td>the same, as a <code class="language-plaintext highlighter-rouge">Url</code> object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Component#urlFor(...)</code></td>
+      <td>shortcuts to the request cycle methods</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RequestCycle#getUrlRenderer().renderFullUrl(Url)</code></td>
+      <td>the URL with protocol, host and port</td>
+    </tr>
+  </tbody>
+</table>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/links.html">Links and URLs</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-parameters.html">Pass parameters to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put values in the URL of a page with PageParameters, read them in the page constructor and convert them to the types you need.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bookmarkable-links.html">Link to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Navigate to another page with a Link that runs code on the server first, or with a BookmarkablePageLink that points straight at the page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/wicket-link.html">Turn plain links into page links with wicket:link</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write ordinary anchors to page files in the markup and let wicket:link turn them into links to bookmarkable pages, without Java code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/external-links.html">Link to another site</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render a link to a URL outside your application with ExternalLink, build the URL from a model, and redirect to another site from code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-links.html">Use links on stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Handle clicks on a stateless page with StatelessLink and keep the state the click needs in page parameters, because every click builds a new page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/mount-pages.html">Give pages readable URLs</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Mount pages on paths of your choice, put page parameters in path segments with placeholders, and mount a whole package at once.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Request mappers</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The request mappers that turn URLs into request handlers and back, the mount methods of WebApplication, and the syntax of mount paths.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/redirects.html">Redirects after a request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why Wicket answers a form submit or link click with a redirect, how the three render strategies differ, and what that means for stateless pages and clusters.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/request-mappers.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

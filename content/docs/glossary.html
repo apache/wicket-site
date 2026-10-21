@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Glossary | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Plain-English definitions of the Wicket terms used in this guide, each compared with what other web frameworks call it." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/start.html">Getting started</a></p>
+            <h1>Glossary</h1>
+            <p class="page-sign-sub">Plain-English definitions of the Wicket terms used in this guide, each compared with what other web frameworks call it.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading guide-reading">
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>The definitions use plain words first and the Wicket class second. “Similar to” names the closest idea in other frameworks; the comparison is never exact.</p>
+
+<dl>
+  <dt><strong><a href="/docs/how-ajax-works.html">Ajax request target</a></strong></dt>
+  <dd>The list of components to redraw in response to an Ajax request, plus any JavaScript to run. Ajax callbacks such as <code class="language-plaintext highlighter-rouge">onClick(AjaxRequestTarget)</code> receive one; <code class="language-plaintext highlighter-rouge">AjaxRequestTarget.add()</code> puts a component in it.</dd>
+  <dd>
+<em>Similar to:</em> the <code class="language-plaintext highlighter-rouge">render</code> attribute of JSF’s <code class="language-plaintext highlighter-rouge">&lt;f:ajax&gt;</code>, or out-of-band swaps (<code class="language-plaintext highlighter-rouge">hx-swap-oob</code>) in htmx.</dd>
+  <dt><strong><a href="/docs/configuration.html">Application</a></strong></dt>
+  <dd>The object that represents your web application, one per deployment. You subclass <code class="language-plaintext highlighter-rouge">WebApplication</code> to name the home page and configure everything else in <code class="language-plaintext highlighter-rouge">init()</code>.</dd>
+  <dd>
+<em>Similar to:</em> a Spring Boot application class with its configuration, or <code class="language-plaintext highlighter-rouge">faces-config.xml</code> in JSF.</dd>
+  <dt><strong><a href="/docs/add-behaviors.html">Behavior</a></strong></dt>
+  <dd>An add-on you attach to a component to change its tag, contribute CSS or JavaScript, or react to browser events, without subclassing the component. Behaviors extend <code class="language-plaintext highlighter-rouge">Behavior</code>; Ajax behaviors extend <code class="language-plaintext highlighter-rouge">AbstractAjaxBehavior</code>.</dd>
+  <dd>
+<em>Similar to:</em> attribute directives in Angular, custom directives in Vue.</dd>
+  <dt><strong><a href="/docs/use-borders.html">Border</a></strong></dt>
+  <dd>A component that wraps markup around its children: the border provides the frame, and <code class="language-plaintext highlighter-rouge">&lt;wicket:body&gt;</code> marks where the children go.</dd>
+  <dd>
+<em>Similar to:</em> a React component that renders its <code class="language-plaintext highlighter-rouge">children</code> inside a frame, or a layout decorator in Thymeleaf.</dd>
+  <dt><strong>Component</strong></dt>
+  <dd>A Java object that renders one part of a page and handles the events for it, such as a label, a link or a text field. It is tied to a tag in the markup through <code class="language-plaintext highlighter-rouge">wicket:id</code>. All components extend <code class="language-plaintext highlighter-rouge">Component</code>.</dd>
+  <dd>
+<em>Similar to:</em> a JSF <code class="language-plaintext highlighter-rouge">UIComponent</code>, a Vaadin component, or a React or Vue component rendered on the server.</dd>
+  <dt><strong><a href="/docs/auto-components.html">Component tree</a></strong></dt>
+  <dd>The hierarchy of components that make up a page. Containers (<code class="language-plaintext highlighter-rouge">MarkupContainer</code>), such as pages, panels and forms, hold child components, and the hierarchy matches the nesting of the <code class="language-plaintext highlighter-rouge">wicket:id</code> tags in the markup.</dd>
+  <dd>
+<em>Similar to:</em> the JSF component tree, or a DOM that lives on the server.</dd>
+  <dt><strong><a href="/docs/property-models.html">CompoundPropertyModel</a></strong></dt>
+  <dd>A model for a container whose children use their own <code class="language-plaintext highlighter-rouge">wicket:id</code> as the name of the property they read and write on the model’s object.</dd>
+  <dd>
+<em>Similar to:</em> Spring MVC form binding with <code class="language-plaintext highlighter-rouge">th:field</code>, which binds inputs to bean properties by name.</dd>
+  <dt><strong><a href="/docs/convert-input.html">Converter</a></strong></dt>
+  <dd>An object that turns submitted text into a Java value and a value back into text, for numbers, dates and the other types it knows. Converters implement <code class="language-plaintext highlighter-rouge">IConverter</code>; you register your own on the <code class="language-plaintext highlighter-rouge">ConverterLocator</code>.</dd>
+  <dd>
+<em>Similar to:</em> a JSF <code class="language-plaintext highlighter-rouge">Converter</code>, or a Spring <code class="language-plaintext highlighter-rouge">Formatter</code>.</dd>
+  <dt><strong>Deployment mode, development mode</strong></dt>
+  <dd>The two runtime configuration types of an application. Development mode adds checks, reloads changed markup and shows stack traces; deployment mode leaves those out for speed and safety. See <a href="/docs/deployment-mode.html">Switch between development and deployment mode</a>.</dd>
+  <dd>
+<em>Similar to:</em> the <code class="language-plaintext highlighter-rouge">Development</code> and <code class="language-plaintext highlighter-rouge">Production</code> project stages of JSF, or Spring profiles.</dd>
+  <dt><strong>Detach</strong></dt>
+  <dd>The cleanup step at the end of every request, in which components and models drop data they can load again, before Wicket stores the page.</dd>
+  <dd>
+<em>Similar to:</em> releasing request-scoped beans at the end of a request.</dd>
+  <dt><strong><a href="/docs/detachable-models.html">Detachable model</a></strong></dt>
+  <dd>A model that loads its object when it is first asked for it in a request, and forgets it when the request ends, so the stored page keeps only what it needs to load it again, such as an id. <code class="language-plaintext highlighter-rouge">LoadableDetachableModel</code> is the usual base class.</dd>
+  <dd>
+<em>Similar to:</em> loading an entity by id in every Spring MVC request instead of keeping it in the session.</dd>
+  <dt><strong><a href="/docs/use-enclosures.html">Enclosure</a></strong></dt>
+  <dd>A <code class="language-plaintext highlighter-rouge">&lt;wicket:enclosure&gt;</code> tag around markup that is shown only when a chosen child component is visible, so its label and surrounding tags disappear with it.</dd>
+  <dd>
+<em>Similar to:</em> <code class="language-plaintext highlighter-rouge">th:if</code> in Thymeleaf or <code class="language-plaintext highlighter-rouge">v-if</code> in Vue on a wrapping element.</dd>
+  <dt><strong><a href="/docs/validate-input.html">Feedback message, FeedbackPanel</a></strong></dt>
+  <dd>A message for the user, such as a validation error or a confirmation, with a level: error, warning, info, success. Components record them with <code class="language-plaintext highlighter-rouge">error()</code>, <code class="language-plaintext highlighter-rouge">info()</code> and similar methods, and a <code class="language-plaintext highlighter-rouge">FeedbackPanel</code> shows them.</dd>
+  <dd>
+<em>Similar to:</em> <code class="language-plaintext highlighter-rouge">&lt;h:messages&gt;</code> in JSF, or flash messages in Spring MVC.</dd>
+  <dt><strong><a href="/docs/form-processing.html">Form</a></strong></dt>
+  <dd>A component for an HTML <code class="language-plaintext highlighter-rouge">&lt;form&gt;</code> that runs the submit: it converts and validates the input of its form components, updates their models, and calls <code class="language-plaintext highlighter-rouge">onSubmit()</code> or <code class="language-plaintext highlighter-rouge">onError()</code>.</dd>
+  <dd>
+<em>Similar to:</em> <code class="language-plaintext highlighter-rouge">&lt;h:form&gt;</code> in JSF, or a Spring MVC form with its <code class="language-plaintext highlighter-rouge">@PostMapping</code> handler.</dd>
+  <dt><strong><a href="/docs/form-components.html">Form component</a></strong></dt>
+  <dd>A component that takes user input, such as <code class="language-plaintext highlighter-rouge">TextField</code>, <code class="language-plaintext highlighter-rouge">CheckBox</code> or <code class="language-plaintext highlighter-rouge">DropDownChoice</code>. Form components extend <code class="language-plaintext highlighter-rouge">FormComponent</code>.</dd>
+  <dd>
+<em>Similar to:</em> JSF input components such as <code class="language-plaintext highlighter-rouge">&lt;h:inputText&gt;</code>.</dd>
+  <dt><strong><a href="/docs/use-fragments.html">Fragment</a></strong></dt>
+  <dd>A piece of markup defined inside the markup file of a page or panel with <code class="language-plaintext highlighter-rouge">&lt;wicket:fragment&gt;</code>, and shown by a <code class="language-plaintext highlighter-rouge">Fragment</code> component, so small variations need no file of their own.</dd>
+  <dd>
+<em>Similar to:</em> a <code class="language-plaintext highlighter-rouge">th:fragment</code> defined in the same Thymeleaf template, or a named template block.</dd>
+  <dt><strong><a href="/docs/header-items.html">Header item</a></strong></dt>
+  <dd>A reference to CSS, JavaScript or other content for the <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> of a page, which a component contributes in <code class="language-plaintext highlighter-rouge">renderHead()</code>. Wicket includes each item once, in dependency order. <code class="language-plaintext highlighter-rouge">HeaderItem</code> is the base class.</dd>
+  <dd>
+<em>Similar to:</em> <code class="language-plaintext highlighter-rouge">&lt;h:outputScript&gt;</code> in JSF.</dd>
+  <dt><strong><a href="/docs/lambda-models.html">LambdaModel</a></strong></dt>
+  <dd>A model built from a getter and a setter, often two method references such as <code class="language-plaintext highlighter-rouge">Person::getName</code> and <code class="language-plaintext highlighter-rouge">Person::setName</code>. The compiler checks it, unlike a property expression in a string.</dd>
+  <dd>
+<em>Similar to:</em> a computed property with a getter and setter in Vue.</dd>
+  <dt><strong>Markup</strong></dt>
+  <dd>The HTML file of a page, panel or border, kept next to its Java class. It is plain HTML with <code class="language-plaintext highlighter-rouge">wicket:id</code> attributes and a few <code class="language-plaintext highlighter-rouge">wicket:</code> tags.</dd>
+  <dd>
+<em>Similar to:</em> a Thymeleaf template or a JSF Facelets file, without an expression language.</dd>
+  <dt><strong><a href="/docs/markup-ids.html">Markup id</a></strong></dt>
+  <dd>The <code class="language-plaintext highlighter-rouge">id</code> attribute Wicket writes on a component’s tag when you call <code class="language-plaintext highlighter-rouge">setOutputMarkupId(true)</code>. Ajax needs it to find the tag to replace.</dd>
+  <dd>
+<em>Similar to:</em> the generated client id of a JSF component.</dd>
+  <dt><strong><a href="/docs/markup-inheritance.html">Markup inheritance</a></strong></dt>
+  <dd>A page or panel subclass inherits the markup of its parent class. The parent marks one place with <code class="language-plaintext highlighter-rouge">&lt;wicket:child/&gt;</code>, and the subclass fills it with the content of its <code class="language-plaintext highlighter-rouge">&lt;wicket:extend&gt;</code> tag.</dd>
+  <dd>
+<em>Similar to:</em> template inheritance with the Thymeleaf Layout Dialect, or a Facelets template with <code class="language-plaintext highlighter-rouge">&lt;ui:composition&gt;</code>.</dd>
+  <dt><strong><a href="/docs/about-models.html">Model</a></strong></dt>
+  <dd>The object a component asks for the value it shows, and hands a new value to when the user submits one. Models implement <code class="language-plaintext highlighter-rouge">IModel</code>, which has <code class="language-plaintext highlighter-rouge">getObject()</code> and <code class="language-plaintext highlighter-rouge">setObject()</code>. Because <code class="language-plaintext highlighter-rouge">IModel</code> has only one abstract method, a lambda is a read-only model.</dd>
+  <dd>
+<em>Similar to:</em> a property in JavaFX, or a computed property with a getter and setter in Vue.</dd>
+  <dt><strong><a href="/docs/mount-pages.html">Mount</a></strong></dt>
+  <dd>Giving a page or resource a fixed, readable URL path in <code class="language-plaintext highlighter-rouge">init()</code>, for example <code class="language-plaintext highlighter-rouge">mountPage("/products/${id}", ProductPage.class)</code>.</dd>
+  <dd>
+<em>Similar to:</em> <code class="language-plaintext highlighter-rouge">@GetMapping("/products/{id}")</code> in Spring MVC.</dd>
+  <dt><strong><a href="/docs/package-resources.html">Package resource</a></strong></dt>
+  <dd>A file, such as CSS, JavaScript or an image, stored in a Java package next to the component that uses it, and served by Wicket with a URL that changes when the file does.</dd>
+  <dd>
+<em>Similar to:</em> a resource library in <code class="language-plaintext highlighter-rouge">META-INF/resources</code> in JSF.</dd>
+  <dt><strong>Page</strong></dt>
+  <dd>A component that is a complete HTML document, with its own markup file. Every rendered HTML page in a Wicket application is an instance of a <code class="language-plaintext highlighter-rouge">Page</code> subclass, usually <code class="language-plaintext highlighter-rouge">WebPage</code>.</dd>
+  <dd>
+<em>Similar to:</em> a JSF view, or a Spring MVC controller method together with its template.</dd>
+  <dt><strong><a href="/docs/page-parameters.html">Page parameters</a></strong></dt>
+  <dd>The named and indexed values in the URL of a bookmarkable page, which the page receives as <code class="language-plaintext highlighter-rouge">PageParameters</code> in its constructor.</dd>
+  <dd>
+<em>Similar to:</em> <code class="language-plaintext highlighter-rouge">@PathVariable</code> and <code class="language-plaintext highlighter-rouge">@RequestParam</code> in Spring MVC, or view parameters in JSF.</dd>
+  <dt><strong><a href="/docs/page-storage.html">Page store</a></strong></dt>
+  <dd>Where Wicket keeps the stateful pages of each session between requests: the most recent ones in memory, and serialized pages on disk.</dd>
+  <dd>
+<em>Similar to:</em> server-side view state in JSF.</dd>
+  <dt><strong><a href="/docs/build-panel.html">Panel</a></strong></dt>
+  <dd>A reusable component with its own markup file, inside a <code class="language-plaintext highlighter-rouge">&lt;wicket:panel&gt;</code> tag. Panels are the usual way to build your own components.</dd>
+  <dd>
+<em>Similar to:</em> a JSF composite component, or a React or Vue component with its own template.</dd>
+  <dt><strong><a href="/docs/repeaters.html">Repeater</a></strong></dt>
+  <dd>A component that renders its markup once for each item in a collection: <code class="language-plaintext highlighter-rouge">RepeatingView</code>, <code class="language-plaintext highlighter-rouge">ListView</code>, <code class="language-plaintext highlighter-rouge">DataView</code> and others.</dd>
+  <dd>
+<em>Similar to:</em> <code class="language-plaintext highlighter-rouge">th:each</code> in Thymeleaf, <code class="language-plaintext highlighter-rouge">v-for</code> in Vue, or <code class="language-plaintext highlighter-rouge">&lt;ui:repeat&gt;</code> in JSF.</dd>
+  <dt><strong><a href="/docs/request-cycle.html">Request cycle</a></strong></dt>
+  <dd>The processing of one request, from mapping the URL to a handler to writing the response and detaching. <code class="language-plaintext highlighter-rouge">RequestCycle.get()</code> returns the current one.</dd>
+  <dd>
+<em>Similar to:</em> the JSF lifecycle, or what Spring’s <code class="language-plaintext highlighter-rouge">DispatcherServlet</code> does for one request.</dd>
+  <dt><strong><a href="/docs/request-mappers.html">Request mapper</a></strong></dt>
+  <dd>An object that translates a URL into a request handler and the other way around, used for mounted pages and resources. Mappers implement <code class="language-plaintext highlighter-rouge">IRequestMapper</code>.</dd>
+  <dd>
+<em>Similar to:</em> handler mappings in Spring MVC.</dd>
+  <dt><strong><a href="/docs/about-resources.html">Resource</a></strong></dt>
+  <dd>Anything Wicket serves that is not a page: a stylesheet, an image, a download, a generated PDF or a JSON response. Resources implement <code class="language-plaintext highlighter-rouge">IResource</code>.</dd>
+  <dd>
+<em>Similar to:</em> a Spring MVC handler that returns a <code class="language-plaintext highlighter-rouge">ResponseEntity</code> with bytes, or a static resource handler.</dd>
+  <dt><strong>Resource reference</strong></dt>
+  <dd>A named, serializable pointer to a resource, which Wicket turns into a URL and resolves when the URL is requested.</dd>
+  <dd>
+<em>Similar to:</em> a JSF resource identified by library and name.</dd>
+  <dt><strong><a href="/docs/use-session.html">Session</a></strong></dt>
+  <dd>The Wicket object for one visitor, kept in the HTTP session once something needs to be remembered: the locale, the signed-in user, feedback messages, and the visitor’s stateful pages. You can subclass <code class="language-plaintext highlighter-rouge">WebSession</code> for typed fields.</dd>
+  <dd>
+<em>Similar to:</em> a session-scoped bean in Spring or CDI.</dd>
+  <dt><strong><a href="/docs/stateful-stateless.html">Stateful page, stateless page</a></strong></dt>
+  <dd>A stateful page is stored after it renders, so later requests, such as link clicks and form submits, go to the same page object. A stateless page is created anew for every request and needs no session. Wicket makes a page stateful as soon as one of its components needs that.</dd>
+  <dd>
+<em>Similar to:</em> JSF views with view state versus transient views; every Spring MVC page is stateless.</dd>
+  <dt><strong><a href="/docs/validators.html">Validator</a></strong></dt>
+  <dd>An object that checks the converted input of a form component and records an error when it fails, such as <code class="language-plaintext highlighter-rouge">StringValidator</code> or <code class="language-plaintext highlighter-rouge">EmailAddressValidator</code>. Validators implement <code class="language-plaintext highlighter-rouge">IValidator</code>.</dd>
+  <dd>
+<em>Similar to:</em> a JSF <code class="language-plaintext highlighter-rouge">Validator</code>, or a Spring <code class="language-plaintext highlighter-rouge">Validator</code>.</dd>
+  <dt><strong><a href="/docs/wicket-tester.html">WicketTester</a></strong></dt>
+  <dd>A test helper that runs your application in memory, so a JUnit test can render pages, click links, submit forms and check the result without a browser or server.</dd>
+  <dd>
+<em>Similar to:</em> Spring’s <code class="language-plaintext highlighter-rouge">MockMvc</code>.</dd>
+  <dt><strong><a href="/docs/wicket-tags.html">wicket:id</a></strong></dt>
+  <dd>The attribute that ties a tag in the markup to the component with the same id in Java. Each component added in Java needs a tag with its id, at the same place in the hierarchy.</dd>
+  <dd>
+<em>Similar to:</em> the <code class="language-plaintext highlighter-rouge">id</code> that binds a Facelets tag to a JSF component, or a <code class="language-plaintext highlighter-rouge">th:</code> attribute in Thymeleaf, but without an expression.</dd>
+</dl>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/start.html">Getting started</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-application.html">Build your first application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a project from the quickstart, run it, and build a home page with a label, a click counter and a link to a second page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-layout.html">Give every page the same layout</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Move the header, navigation and footer of your application into a base page and two panels, so every page shares one layout.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-form.html">Build a form that saves data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a guestbook page with a form that validates its input, saves entries and lists them, and shows errors and a confirmation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-ajax.html">Update a page with Ajax</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make the click counter and the guestbook form update only the parts of the page that change, open the form without a reload, and refresh the guestbook every ten seconds.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-test.html">Test a page with WicketTester</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write JUnit tests that render your pages, click links, submit the guestbook form and check Ajax updates, without a browser or a server.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/create-project.html">Create a project from the quickstart archetype</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a ready-to-run Wicket project with Maven, know what is in it, and open it in your IDE.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/deployment-mode.html">Switch between development and deployment mode</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run Wicket in deployment mode on production servers, with a system property, a web.xml parameter or code, and check which mode is active.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ide-plugins.html">Add Wicket support to your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install WicketForge in IntelliJ IDEA or QWickie in Eclipse to jump between Java and markup and complete wicket:id values.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/modules.html">Wicket modules</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The artifacts Wicket is released as, what each one contains, which Wicket modules it depends on, and which you need for testing and tooling.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/maven-setup.html">Maven dependencies</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Maven dependencies, versions, scopes and build settings a Wicket project needs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/configuration.html">Application settings</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a Wicket application is started and configured, the settings objects with their main options and defaults, and what development and deployment mode change.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Glossary</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Plain-English definitions of the Wicket terms used in this guide, each compared with what other web frameworks call it.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/why-wicket.html">Why component-oriented</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What a component-oriented framework does differently from request-based MVC frameworks, what Wicket gains from it, and what it costs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/best-practices.html">Best practices</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The habits that keep a Wicket application easy to change and to test, each with the reason it follows from how Wicket works.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/glossary.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

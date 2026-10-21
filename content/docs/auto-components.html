@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>How markup becomes components | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="How Wicket loads, parses and caches markup, and how Wicket tags turn into auto components that you never add yourself." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/components.html">Components and markup</a></p>
+            <h1>How markup becomes components</h1>
+            <p class="page-sign-sub">How Wicket loads, parses and caches markup, and how Wicket tags turn into auto components that you never add yourself.</p>
+            <p class="guide-plates"><span class="guide-kind">Explanation</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#loading-and-caching-markup"><span class="toc-number">1</span> <span class="toc-text">Loading and caching markup</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#parsing-a-chain-of-markup-filters"><span class="toc-number">2</span> <span class="toc-text">Parsing: a chain of markup filters</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#resolving-finding-a-component-for-each-tag"><span class="toc-number">3</span> <span class="toc-text">Resolving: finding a component for each tag</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#why-enclosures-are-siblings-not-parents"><span class="toc-number">4</span> <span class="toc-text">Why enclosures are siblings, not parents</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#your-own-tags"><span class="toc-number">5</span> <span class="toc-text">Your own tags</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>You add components in Java and attach them to tags with <code class="language-plaintext highlighter-rouge">wicket:id</code>. Yet a rendered page contains components you never created: one for every <code class="language-plaintext highlighter-rouge">&lt;wicket:message&gt;</code>, every <code class="language-plaintext highlighter-rouge">&lt;wicket:enclosure&gt;</code>, every link inside <code class="language-plaintext highlighter-rouge">&lt;wicket:link&gt;</code>, every <code class="language-plaintext highlighter-rouge">&lt;label wicket:for&gt;</code>, and the <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> of the page. These are auto components. They come from two steps: parsing the markup, which turns the file into a list of tags Wicket understands, and resolving, which finds a component for each tag that needs one.</p>
+
+<h2 id="loading-and-caching-markup">Loading and caching markup</h2>
+
+<p>Wicket loads a component’s markup the first time the component renders, not when it is created. The <code class="language-plaintext highlighter-rouge">MarkupFactory</code>, found in the application’s markup settings, locates the file for the component’s class, locale, style and variation, parses it and stores the result in the application-wide <code class="language-plaintext highlighter-rouge">MarkupCache</code>. Every later instance of the class, in any session, uses the cached markup. In development mode Wicket watches the files and drops a cache entry when its file changes, which is why editing HTML needs no restart.</p>
+
+<p>Because markup is shared between all instances, it is read-only at runtime. Anything that differs per instance or per request, such as a value, an attribute or visibility, lives in components, not in the markup.</p>
+
+<h2 id="parsing-a-chain-of-markup-filters">Parsing: a chain of markup filters</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">MarkupParser</code> reads the file with an XML pull parser and passes every element through a chain of <code class="language-plaintext highlighter-rouge">IMarkupFilter</code>s. Each filter handles one concern and can change, mark or drop what passes through. Among the default filters:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Filter</th>
+      <th>What it does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WicketTagIdentifier</code></td>
+      <td>Recognizes <code class="language-plaintext highlighter-rouge">wicket:id</code> attributes and tags in the Wicket namespace, and gives every Wicket tag without an id a generated one. Rejects unknown Wicket tags.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WicketRemoveTagHandler</code></td>
+      <td>Drops <code class="language-plaintext highlighter-rouge">&lt;wicket:remove&gt;</code> regions entirely.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WicketLinkTagHandler</code></td>
+      <td>Inside <code class="language-plaintext highlighter-rouge">&lt;wicket:link&gt;</code>, marks tags with a relative <code class="language-plaintext highlighter-rouge">href</code> or <code class="language-plaintext highlighter-rouge">src</code> as auto components.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AutoLabelTagHandler</code></td>
+      <td>Marks <code class="language-plaintext highlighter-rouge">&lt;label wicket:for&gt;</code> tags as auto components.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WicketNamespaceHandler</code></td>
+      <td>Reads the namespace prefix from <code class="language-plaintext highlighter-rouge">xmlns:...="http://wicket.apache.org"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WicketMessageTagHandler</code></td>
+      <td>Handles <code class="language-plaintext highlighter-rouge">wicket:message</code> attributes, on plain tags as well as component tags.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HtmlHeaderSectionHandler</code></td>
+      <td>In page markup, makes <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> (or <code class="language-plaintext highlighter-rouge">&lt;wicket:header-items/&gt;</code>) a component tag, and adds a <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> when the markup has a <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> but no <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">EnclosureHandler</code>, <code class="language-plaintext highlighter-rouge">InlineEnclosureHandler</code>
+</td>
+      <td>Work out the controlling child of each enclosure.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>What comes out is a sequence of two kinds of elements: raw markup, which Wicket writes to the response as is, and component tags, which need a component. A tag becomes a component tag because it has a <code class="language-plaintext highlighter-rouge">wicket:id</code>, because it is a Wicket tag, or because a filter marked it.</p>
+
+<p>The chain is open: a <code class="language-plaintext highlighter-rouge">MarkupFactory</code> subclass can add filters in <code class="language-plaintext highlighter-rouge">newMarkupParser</code>, and an application can register it with <code class="language-plaintext highlighter-rouge">getMarkupSettings().setMarkupFactory(...)</code>. Few applications need this.</p>
+
+<p>Some Wicket tags never become components. <code class="language-plaintext highlighter-rouge">&lt;wicket:remove&gt;</code> is gone after parsing. <code class="language-plaintext highlighter-rouge">&lt;wicket:child&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;wicket:extend&gt;</code> serve to merge a parent’s and a subclass’s markup when it is loaded; see <a href="/docs/markup-inheritance.html">Markup inheritance</a>. <code class="language-plaintext highlighter-rouge">&lt;wicket:panel&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;wicket:border&gt;</code> tell a panel or border which part of its file to use.</p>
+
+<h2 id="resolving-finding-a-component-for-each-tag">Resolving: finding a component for each tag</h2>
+
+<p>When a container renders, it walks through its markup. For each component tag it looks for a child with the tag’s id. For tags with a <code class="language-plaintext highlighter-rouge">wicket:id</code>, that child is normally the component you added. For a Wicket tag, there usually is none, so the container asks the component resolvers, the <code class="language-plaintext highlighter-rouge">IComponentResolver</code>s, to supply one. It asks in this order:</p>
+
+<ol>
+  <li>The container itself and its parents, up to the page, if they implement <code class="language-plaintext highlighter-rouge">IComponentResolver</code>. A <code class="language-plaintext highlighter-rouge">Border</code> resolves <code class="language-plaintext highlighter-rouge">&lt;wicket:body&gt;</code> this way, a <code class="language-plaintext highlighter-rouge">TransparentWebMarkupContainer</code> lets its parent’s children render inside its tag, and an <code class="language-plaintext highlighter-rouge">Enclosure</code> finds the children in its markup.</li>
+  <li>The application-wide resolvers in <code class="language-plaintext highlighter-rouge">getPageSettings().getComponentResolvers()</code>, in the order they were registered.</li>
+</ol>
+
+<p>The first resolver that returns a component wins. The default application-wide resolvers include <code class="language-plaintext highlighter-rouge">HtmlHeaderResolver</code> for <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;wicket:head&gt;</code>, <code class="language-plaintext highlighter-rouge">WicketMessageResolver</code> for <code class="language-plaintext highlighter-rouge">&lt;wicket:message&gt;</code>, <code class="language-plaintext highlighter-rouge">EnclosureHandler</code> and <code class="language-plaintext highlighter-rouge">InlineEnclosureHandler</code> for enclosures, <code class="language-plaintext highlighter-rouge">WicketContainerResolver</code> for <code class="language-plaintext highlighter-rouge">&lt;wicket:container&gt;</code>, and, in a web application, <code class="language-plaintext highlighter-rouge">AutoLinkResolver</code>, <code class="language-plaintext highlighter-rouge">AutoLabelResolver</code> and <code class="language-plaintext highlighter-rouge">AutoLabelTextResolver</code>. <code class="language-plaintext highlighter-rouge">ComponentResolvers.resolve</code> runs this lookup and is what you call if you write a component that renders unusual markup itself.</p>
+
+<p>A resolved component is added to the container with <code class="language-plaintext highlighter-rouge">autoAdd</code> and marked as auto. Auto components are exempt from two rules that apply to your own components: they can be added while the page renders, and changes to them are not recorded in the page’s version history. They are created from the markup, so treat them as stateless: whatever they need comes from the tag and from the components around them.</p>
+
+<h2 id="why-enclosures-are-siblings-not-parents">Why enclosures are siblings, not parents</h2>
+
+<p>Resolving explains the one surprise in this mechanism. In the markup, <code class="language-plaintext highlighter-rouge">&lt;wicket:enclosure&gt;</code> contains the components inside it. In Java, it does not: the <code class="language-plaintext highlighter-rouge">Enclosure</code> is created by a resolver while its container renders, and is added to that same container, next to the components it encloses. The enclosure finds its controlling child by id in its parent and asks it whether it is visible.</p>
+
+<p>So the markup hierarchy and the component hierarchy differ. When the enclosure is hidden, the components inside it are not hidden in Java: they are still configured, <code class="language-plaintext highlighter-rouge">onBeforeRender</code> may be called on them, and form components in a hidden enclosure are still validated when the form is submitted. WicketTester cannot see that they are hidden either.</p>
+
+<p>Component queueing removes the difference. When you <code class="language-plaintext highlighter-rouge">queue</code> components instead of adding them, Wicket builds the hierarchy from the markup before rendering. When it meets a tag that has an auto component factory, such as an enclosure, it creates the component right there and places the queued components inside it. The enclosure becomes a real parent, and hiding it hides its children. See <a href="/docs/queue-components.html">Add components without repeating the markup hierarchy</a>. Where you cannot queue, an <code class="language-plaintext highlighter-rouge">EnclosureContainer</code> that you add yourself gives the same result; see <a href="/docs/use-enclosures.html">Hide surrounding markup with wicket:enclosure</a>.</p>
+
+<h2 id="your-own-tags">Your own tags</h2>
+
+<p>The same mechanism is available to applications. A class implementing <code class="language-plaintext highlighter-rouge">IComponentResolver</code>, registered with <code class="language-plaintext highlighter-rouge">getPageSettings().addComponentResolver(...)</code>, can supply components for tags that have no component in Java. A new tag name in the Wicket namespace also needs <code class="language-plaintext highlighter-rouge">WicketTagIdentifier.registerWellKnownTagName(...)</code>, or the parser rejects it.</p>
+
+<p>This is a trade-off. A custom tag lets markup authors use a feature without touching Java, but it hides where the component comes from: someone reading the Java code does not see it, and someone reading the markup has to know the tag. Wicket’s own tags are few for that reason, and most features that could be tags are components or behaviors instead. The complete list of tags is in <a href="/docs/wicket-tags.html">Wicket tags and attributes</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/components.html">Components and markup</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/show-hide-components.html">Show, hide or disable a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a component or make it read-only depending on the state of your application, and decide that state once per request in onConfigure.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/modify-attributes.html">Change a tag's attributes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set, append to or remove an attribute of a component's tag from Java, with a fixed value or one that follows a model.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/markup-ids.html">Give a component a markup id</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render the HTML id attribute of a component so JavaScript, CSS, labels and Ajax can find it, and choose or generate the id yourself.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/group-components.html">Group components with WebMarkupContainer</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Attach a plain HTML element to a container component so you can hide, disable, style or repaint a group of components as one.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/build-panel.html">Build a reusable panel</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Package a piece of user interface as a Panel, a Java class with its own HTML file, and use it on any page as often as you need.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-fragments.html">Swap markup with fragments</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep small alternative pieces of markup inside a page or panel and choose in Java which one to show, without a panel class for each.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-borders.html">Wrap content with a Border</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write the markup that goes around content once, as a Border, and wrap any part of a page in it while the page keeps its own components.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-enclosures.html">Hide surrounding markup with wicket:enclosure</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a caption, label or table row together with the component it describes, without a container component in Java.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/render-body-only.html">Render a component without its tag</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave out a component's own HTML tag and render only its content, and know what stops working when you do.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stub-markup.html">Keep preview markup out of the output</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave sample content in your HTML files so they look complete in a browser or design tool, and make sure Wicket never sends it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/add-behaviors.html">Add behavior to a component with a Behavior</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write a Behavior that changes a component's tag, adds markup around it or contributes CSS and JavaScript, and reuse it on any kind of component.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/queue-components.html">Add components without repeating the markup hierarchy</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Queue components on a page or panel and let Wicket put each one in the right container by following the nesting in the markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/generate-markup.html">Generate markup from code</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a panel or page markup built in Java instead of an HTML file, and control whether Wicket caches it.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/wicket-tags.html">Wicket tags and attributes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every tag and attribute in the wicket namespace, what it does, which attributes it takes, with a minimal example of each.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/markup-inheritance.html">Markup inheritance</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a page or panel subclass inherits its parent's HTML along with its Java code, how wicket:child and wicket:extend merge the two, and when panels are the better tool.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">How markup becomes components</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket loads, parses and caches markup, and how Wicket tags turn into auto components that you never add yourself.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/auto-components.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

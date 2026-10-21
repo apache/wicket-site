@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Minify and compress CSS and JavaScript | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Serve pre-minified .min files, strip JavaScript in deployment mode, plug in your own CSS or JavaScript compressor, and rewrite URLs inside stylesheets with C..." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571023" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/resources.html">Resources</a></p>
+            <h1>Minify and compress CSS and JavaScript</h1>
+            <p class="page-sign-sub">Serve pre-minified .min files, strip JavaScript in deployment mode, plug in your own CSS or JavaScript compressor, and rewrite URLs inside stylesheets with CssUrlReplacer.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#ship-minified-files"><span class="toc-number">1</span> <span class="toc-text">Ship minified files</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#strip-javascript-in-deployment-mode"><span class="toc-number">2</span> <span class="toc-text">Strip JavaScript in deployment mode</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#plug-in-a-compressor"><span class="toc-number">3</span> <span class="toc-text">Plug in a compressor</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#rewrite-urls-inside-stylesheets"><span class="toc-number">4</span> <span class="toc-text">Rewrite URLs inside stylesheets</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#compress-responses-with-gzip"><span class="toc-number">5</span> <span class="toc-text">Compress responses with gzip</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Wicket can make the CSS and JavaScript you serve from your packages smaller in two ways: by picking a minified copy of a file that you ship, and by running a compressor over a file while it serves it. Both apply to package resources, the files you reference with <code class="language-plaintext highlighter-rouge">CssResourceReference</code> and <code class="language-plaintext highlighter-rouge">JavaScriptResourceReference</code>.</p>
+
+<h2 id="ship-minified-files">Ship minified files</h2>
+
+<p>Put the minified version next to the original, with <code class="language-plaintext highlighter-rouge">.min</code> before the extension:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>com/example/components/
+    calendar.js
+    calendar.min.js
+    calendar.css
+    calendar.min.css
+</code></pre></div></div>
+
+<p>Keep referencing <code class="language-plaintext highlighter-rouge">calendar.js</code>. When minified resources are in use, Wicket serves <code class="language-plaintext highlighter-rouge">calendar.min.js</code> if it exists and falls back to <code class="language-plaintext highlighter-rouge">calendar.js</code> otherwise. Minified resources are off in development mode, so you debug the readable files, and on in deployment mode. To change that, set it in <code class="language-plaintext highlighter-rouge">init()</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getResourceSettings</span><span class="o">().</span><span class="na">setUseMinifiedResources</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Files in the web application folder follow the same naming rule with <code class="language-plaintext highlighter-rouge">ContextRelativeResourceReference</code>, but without the fallback, see <a href="/docs/context-resources.html">Use files from the web application root</a>.</p>
+
+<p>Whether the compressors described below run depends on the name you reference: a reference to <code class="language-plaintext highlighter-rouge">calendar.min.js</code> is never compressed, but when Wicket picks <code class="language-plaintext highlighter-rouge">calendar.min.js</code> for a reference to <code class="language-plaintext highlighter-rouge">calendar.js</code>, the compressor runs on the minified file as well.</p>
+
+<h2 id="strip-javascript-in-deployment-mode">Strip JavaScript in deployment mode</h2>
+
+<p>In deployment mode Wicket installs <code class="language-plaintext highlighter-rouge">DefaultJavaScriptCompressor</code>, which removes comments and whitespace from JavaScript package resources. It does not rename variables. For real minification, ship <code class="language-plaintext highlighter-rouge">.min.js</code> files built by your front-end tooling, or plug in a minifier of your own.</p>
+
+<h2 id="plug-in-a-compressor">Plug in a compressor</h2>
+
+<p>A compressor is an object with one method, <code class="language-plaintext highlighter-rouge">compress(String)</code>, that returns the new content. Set one for CSS and one for JavaScript:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">usesDeploymentConfig</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">getResourceSettings</span><span class="o">().</span><span class="na">setCssCompressor</span><span class="o">(</span><span class="n">css</span> <span class="o">-&gt;</span> <span class="nc">MyCssMinifier</span><span class="o">.</span><span class="na">minify</span><span class="o">(</span><span class="n">css</span><span class="o">));</span>
+        <span class="n">getResourceSettings</span><span class="o">().</span><span class="na">setJavaScriptCompressor</span><span class="o">(</span><span class="n">js</span> <span class="o">-&gt;</span> <span class="nc">MyJsMinifier</span><span class="o">.</span><span class="na">minify</span><span class="o">(</span><span class="n">js</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>There is no CSS compressor by default. To run several compressors in turn, combine them with <code class="language-plaintext highlighter-rouge">CompositeCssCompressor</code> or <code class="language-plaintext highlighter-rouge">CompositeJavaScriptCompressor</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getResourceSettings</span><span class="o">().</span><span class="na">setCssCompressor</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">CompositeCssCompressor</span><span class="o">(</span><span class="k">new</span> <span class="nc">CssUrlReplacer</span><span class="o">(),</span> <span class="n">css</span> <span class="o">-&gt;</span> <span class="nc">MyCssMinifier</span><span class="o">.</span><span class="na">minify</span><span class="o">(</span><span class="n">css</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p>Wicket runs the compressor each time it sends the file, so keep it fast; browsers keep the result for as long as the version in the URL stays the same. A reference with <code class="language-plaintext highlighter-rouge">readBuffered(false)</code> is streamed and skips the compressor. Setting <code class="language-plaintext highlighter-rouge">null</code>, or <code class="language-plaintext highlighter-rouge">new NoOpTextCompressor()</code>, switches compression off.</p>
+
+<h2 id="rewrite-urls-inside-stylesheets">Rewrite URLs inside stylesheets</h2>
+
+<p><code class="language-plaintext highlighter-rouge">CssUrlReplacer</code> is a CSS compressor that does not compress. It finds the relative <code class="language-plaintext highlighter-rouge">url(…)</code> references in a stylesheet and replaces them with Wicket URLs for the package resources they point to, including the version, so images referenced from CSS are cached as long as the CSS itself:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getResourceSettings</span><span class="o">().</span><span class="na">setCssCompressor</span><span class="o">(</span><span class="k">new</span> <span class="nc">CssUrlReplacer</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p>With <code class="language-plaintext highlighter-rouge">mycss.css</code> in <code class="language-plaintext highlighter-rouge">com/example/res/css/</code> and an image in <code class="language-plaintext highlighter-rouge">com/example/res/images/</code>, this rule</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="nf">url</span><span class="p">(</span><span class="s2">'../images/some.png'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>is served as</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="nf">url</span><span class="p">(</span><span class="s2">'../images/some-ver-1712345678000.png'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Absolute URLs, context-relative URLs that start with <code class="language-plaintext highlighter-rouge">/</code> and <code class="language-plaintext highlighter-rouge">data:</code> URLs stay as they are. Pass file names to the constructor, <code class="language-plaintext highlighter-rouge">new CssUrlReplacer(List.of("vendor.css"))</code>, to leave those stylesheets alone.</p>
+
+<p>Add <code class="language-plaintext highlighter-rouge">?embedBase64</code> to a URL to embed the image in the stylesheet as a <code class="language-plaintext highlighter-rouge">data:</code> URL:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.logo</span> <span class="p">{</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="nf">url</span><span class="p">(</span><span class="s2">'../images/logo.png?embedBase64'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The default Content Security Policy blocks images from <code class="language-plaintext highlighter-rouge">data:</code> URLs. Allow them with <code class="language-plaintext highlighter-rouge">getCspSettings().blocking().add(CSPDirective.IMG_SRC, "data:")</code>, see <a href="/docs/csp.html">Configure the Content Security Policy</a>.</p>
+
+<h2 id="compress-responses-with-gzip">Compress responses with gzip</h2>
+
+<p>Wicket does not gzip or brotli-compress responses itself. Turn on response compression in the servlet container or in the reverse proxy in front of it; it applies to pages and resources alike.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/resources.html">Resources</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/package-resources.html">Serve files from your Java packages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep images, media and other files next to the component that uses them and serve them with PackageResourceReference, from Java or from markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/add-css-javascript.html">Add CSS and JavaScript to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component or behavior add its stylesheets, script files and start-up code to the page header with renderHead and header items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/context-resources.html">Use files from the web application root</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add stylesheets, scripts and images that live in the web application folder, such as src/main/webapp, to your pages with ContextRelativeResourceReference and ContextImage.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-dependencies.html">Declare dependencies between resources</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make a script or stylesheet pull in the libraries it needs by overriding getDependencies, so Wicket always renders them first and only once.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-bundles.html">Combine resources into one bundle</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve several package stylesheets or scripts as one file with ResourceBundles, and replace a resource throughout the application with addResourceReplacement.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/javascript-in-body.html">Put JavaScript at the end of the body</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render all script header items in a container just before the closing body tag with JavaScriptFilteredIntoFooterHeaderResponse and HeaderResponseContainer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/header-order.html">Control the order of header items</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a header item first with PriorityHeaderItem, let the page's own items come before those of its components, and fix where Wicket inserts items with wicket:header-items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/custom-resources.html">Generate a resource in code</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build files on request, such as a CSV export, a PDF or an image, by extending AbstractResource or writing a lambda, and offer them for download with ResourceLink.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/mount-resources.html">Give a resource a URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Mount a resource reference on a path of your choice with mountResource, read path and query parameters in the resource, and link to the mounted URL.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/shared-resources.html">Share a resource across the application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Register a resource once under an application-wide key with getSharedResources and refer to it from any component with SharedResourceReference.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-loading.html">Customize where resources are loaded from</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make Wicket find markup, properties and package files in a folder of the web application or the file system by adding resource finders.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Minify and compress CSS and JavaScript</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve pre-minified .min files, strip JavaScript in deployment mode, plug in your own CSS or JavaScript compressor, and rewrite URLs inside stylesheets with CssUrlReplacer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nio-resources.html">Serve files with NIO</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve files from the file system or from inside a ZIP archive through java.nio.file.Path with FileSystemResourceReference and FileSystemResource, including byte ranges for media.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/model-resources.html">Show images from an external URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render img and source tags whose URL comes from a model with ExternalImage and ExternalSource, for images on another server or a CDN.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/header-items.html">Header items</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every header item type with its factory methods, the tag it renders and where it ends up, the rendering order, Ajax behaviour and the header response decorators.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-resources.html">How Wicket serves resources</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What resources and resource references are, why components carry their own CSS and JavaScript, and how Wicket gives every file a cacheable URL.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/compress-resources.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571023" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>
