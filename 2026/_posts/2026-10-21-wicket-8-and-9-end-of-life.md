@@ -18,7 +18,7 @@ support release, supported until July 2027.
 What end of life means
 ----------------------
 
-Until their final release, 8.x and 9.x are supported as they are today. After it:
+After their final release:
 
  * no new 8.x or 9.x release ships, for bugs or for vulnerabilities;
  * every release stays available: on Maven Central, and in the

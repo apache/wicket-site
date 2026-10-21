@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2026-10-21T08:29:46+00:00</updated>
+    <updated>2026-10-21T08:31:58+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -27,7 +27,7 @@ support release, supported until July 2027.&lt;/p&gt;
 
 &lt;h2 id=&quot;what-end-of-life-means&quot;&gt;What end of life means&lt;/h2&gt;
 
-&lt;p&gt;Until their final release, 8.x and 9.x are supported as they are today. After it:&lt;/p&gt;
+&lt;p&gt;After their final release:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;no new 8.x or 9.x release ships, for bugs or for vulnerabilities;&lt;/li&gt;
