@@ -34,8 +34,9 @@ Every security report has to be assessed, fixed, backported and released for eac
 support. With four lines that work is done four times, and that is time not spent on
 improving Wicket itself. Retiring 8 and 9 ends that.
 
-Wicket 8 and 9 are also the last lines on `javax.servlet`. The Java world moved to the
-`jakarta` namespace, and Wicket 10 moved with it.
+Wicket 8 and 9 are also the last lines on `javax.servlet`. Jakarta EE 9 moved the Java
+enterprise APIs to the `jakarta` namespace in December 2020, almost six years ago, and
+Wicket 10 moved with it.
 
 How to move to Wicket 10
 ------------------------

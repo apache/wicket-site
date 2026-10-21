@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2026-10-21T08:31:58+00:00</updated>
+    <updated>2026-10-21T08:33:46+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -44,8 +44,9 @@ Every security report has to be assessed, fixed, backported and released for eac
 support. With four lines that work is done four times, and that is time not spent on
 improving Wicket itself. Retiring 8 and 9 ends that.&lt;/p&gt;
 
-&lt;p&gt;Wicket 8 and 9 are also the last lines on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javax.servlet&lt;/code&gt;. The Java world moved to the
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jakarta&lt;/code&gt; namespace, and Wicket 10 moved with it.&lt;/p&gt;
+&lt;p&gt;Wicket 8 and 9 are also the last lines on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javax.servlet&lt;/code&gt;. Jakarta EE 9 moved the Java
+enterprise APIs to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jakarta&lt;/code&gt; namespace in December 2020, almost six years ago, and
+Wicket 10 moved with it.&lt;/p&gt;
 
 &lt;h2 id=&quot;how-to-move-to-wicket-10&quot;&gt;How to move to Wicket 10&lt;/h2&gt;
 
