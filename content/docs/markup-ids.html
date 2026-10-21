@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Give a component a markup id | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Render the HTML id attribute of a component so JavaScript, CSS, labels and Ajax can find it, and choose or generate the id yourself." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/components.html">Components and markup</a></p>
+            <h1>Give a component a markup id</h1>
+            <p class="page-sign-sub">Render the HTML id attribute of a component so JavaScript, CSS, labels and Ajax can find it, and choose or generate the id yourself.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#render-the-id-attribute"><span class="toc-number">1</span> <span class="toc-text">Render the id attribute</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#use-the-id-in-java"><span class="toc-number">2</span> <span class="toc-text">Use the id in Java</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#choose-the-id-yourself"><span class="toc-number">3</span> <span class="toc-text">Choose the id yourself</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#know-what-generated-ids-look-like"><span class="toc-number">4</span> <span class="toc-text">Know what generated ids look like</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#generate-ids-your-own-way"><span class="toc-number">5</span> <span class="toc-text">Generate ids your own way</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#keep-the-tag-when-you-need-the-id"><span class="toc-number">6</span> <span class="toc-text">Keep the tag when you need the id</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use this when something in the browser needs to find a component’s element by its <code class="language-plaintext highlighter-rouge">id</code>: your JavaScript, a <code class="language-plaintext highlighter-rouge">&lt;label for&gt;</code>, an ARIA attribute, or Wicket Ajax repainting the component. By default Wicket does not write an <code class="language-plaintext highlighter-rouge">id</code> attribute on component tags.</p>
+
+<h2 id="render-the-id-attribute">Render the id attribute</h2>
+
+<p>Call <code class="language-plaintext highlighter-rouge">setOutputMarkupId(true)</code>. Wicket then writes an <code class="language-plaintext highlighter-rouge">id</code> that is unique within the page.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Label</span> <span class="n">total</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"total"</span><span class="o">,</span> <span class="n">totalModel</span><span class="o">);</span>
+<span class="n">total</span><span class="o">.</span><span class="na">setOutputMarkupId</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">add</span><span class="o">(</span><span class="n">total</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Components you repaint with Ajax need it as well: the browser finds the element to replace by this id, so it must be in the page before the Ajax request.</p>
+
+<h2 id="use-the-id-in-java">Use the id in Java</h2>
+
+<p><code class="language-plaintext highlighter-rouge">getMarkupId()</code> returns the id. Use it to build JavaScript or to point other attributes at the component:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">TextField</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">search</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">&lt;&gt;(</span><span class="s">"search"</span><span class="o">,</span> <span class="n">queryModel</span><span class="o">);</span>
+<span class="n">search</span><span class="o">.</span><span class="na">setOutputMarkupId</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">add</span><span class="o">(</span><span class="n">search</span><span class="o">);</span>
+
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">WebMarkupContainer</span><span class="o">(</span><span class="s">"hint"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">AttributeModifier</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"aria-describedby"</span><span class="o">,</span> <span class="nl">search:</span><span class="o">:</span><span class="n">getMarkupId</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p>Call <code class="language-plaintext highlighter-rouge">getMarkupId()</code> once the component is on a page, for instance from <code class="language-plaintext highlighter-rouge">onInitialize</code>, <code class="language-plaintext highlighter-rouge">onConfigure</code>, a model or <code class="language-plaintext highlighter-rouge">renderHead</code>, not in a constructor where the component has no parent yet.</p>
+
+<p>For <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> tags there is a shortcut that needs no Java: <code class="language-plaintext highlighter-rouge">&lt;label wicket:for="search"&gt;</code> writes the <code class="language-plaintext highlighter-rouge">for</code> attribute and turns on the markup id. See <a href="/docs/wicket-tags.html#wicketfor"><code class="language-plaintext highlighter-rouge">wicket:for</code></a>.</p>
+
+<h2 id="choose-the-id-yourself">Choose the id yourself</h2>
+
+<p>Wicket picks the id from, in this order:</p>
+
+<ol>
+  <li>a value you set with <code class="language-plaintext highlighter-rouge">setMarkupId(String)</code>;</li>
+  <li>an <code class="language-plaintext highlighter-rouge">id</code> attribute on the tag in the markup;</li>
+  <li>a generated id.</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">search</span><span class="o">.</span><span class="na">setMarkupId</span><span class="o">(</span><span class="s">"site-search"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>A fixed id is your responsibility: if the component appears twice on a page, for instance in a list or in two panels, the page ends up with duplicate ids. Generated ids do not have that problem, so prefer them unless something outside Wicket needs a known id.</p>
+
+<h2 id="know-what-generated-ids-look-like">Know what generated ids look like</h2>
+
+<p>The default generator, <code class="language-plaintext highlighter-rouge">DefaultMarkupIdGenerator</code>, combines a prefix with a counter kept in the session, written in hexadecimal. In development mode the prefix is the component id, such as <code class="language-plaintext highlighter-rouge">total1f</code>, so you can recognise the element. In deployment mode the prefix is <code class="language-plaintext highlighter-rouge">id</code>, such as <code class="language-plaintext highlighter-rouge">id1f</code>. Do not rely on a generated id in CSS or tests: it changes with the order in which components get their ids.</p>
+
+<h2 id="generate-ids-your-own-way">Generate ids your own way</h2>
+
+<p>Implement <code class="language-plaintext highlighter-rouge">IMarkupIdGenerator</code>, a single method interface, and register it in your application’s <code class="language-plaintext highlighter-rouge">init()</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getMarkupSettings</span><span class="o">().</span><span class="na">setMarkupIdGenerator</span><span class="o">((</span><span class="n">component</span><span class="o">,</span> <span class="n">createIfDoesNotExist</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+        <span class="nc">Object</span> <span class="n">stored</span> <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="na">getMarkupIdImpl</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">stored</span> <span class="k">instanceof</span> <span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">stored</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">createIfDoesNotExist</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="kt">int</span> <span class="n">sequence</span> <span class="o">=</span> <span class="n">stored</span> <span class="k">instanceof</span> <span class="nc">Integer</span> <span class="n">number</span> <span class="o">?</span> <span class="n">number</span> <span class="o">:</span> <span class="n">component</span><span class="o">.</span><span class="na">getSession</span><span class="o">().</span><span class="na">nextSequenceValue</span><span class="o">();</span>
+        <span class="n">component</span><span class="o">.</span><span class="na">setMarkupIdImpl</span><span class="o">(</span><span class="n">sequence</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"w"</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">sequence</span><span class="o">,</span> <span class="mi">36</span><span class="o">);</span>
+    <span class="o">});</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The generator must return the same id every time it is asked about the same component, which is why it stores the sequence number on the component with <code class="language-plaintext highlighter-rouge">setMarkupIdImpl</code>.</p>
+
+<h2 id="keep-the-tag-when-you-need-the-id">Keep the tag when you need the id</h2>
+
+<p>A component with <code class="language-plaintext highlighter-rouge">setRenderBodyOnly(true)</code> has no tag to carry the id. Wicket logs <code class="language-plaintext highlighter-rouge">Markup id set on a component that renders its body only</code>, and the component cannot be updated with Ajax. Keep the tag on components that need an id; see <a href="/docs/render-body-only.html">Render a component without its tag</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/components.html">Components and markup</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/show-hide-components.html">Show, hide or disable a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a component or make it read-only depending on the state of your application, and decide that state once per request in onConfigure.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/modify-attributes.html">Change a tag's attributes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set, append to or remove an attribute of a component's tag from Java, with a fixed value or one that follows a model.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Give a component a markup id</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render the HTML id attribute of a component so JavaScript, CSS, labels and Ajax can find it, and choose or generate the id yourself.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/group-components.html">Group components with WebMarkupContainer</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Attach a plain HTML element to a container component so you can hide, disable, style or repaint a group of components as one.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/build-panel.html">Build a reusable panel</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Package a piece of user interface as a Panel, a Java class with its own HTML file, and use it on any page as often as you need.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-fragments.html">Swap markup with fragments</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep small alternative pieces of markup inside a page or panel and choose in Java which one to show, without a panel class for each.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-borders.html">Wrap content with a Border</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write the markup that goes around content once, as a Border, and wrap any part of a page in it while the page keeps its own components.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-enclosures.html">Hide surrounding markup with wicket:enclosure</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a caption, label or table row together with the component it describes, without a container component in Java.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/render-body-only.html">Render a component without its tag</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave out a component's own HTML tag and render only its content, and know what stops working when you do.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stub-markup.html">Keep preview markup out of the output</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave sample content in your HTML files so they look complete in a browser or design tool, and make sure Wicket never sends it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/add-behaviors.html">Add behavior to a component with a Behavior</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write a Behavior that changes a component's tag, adds markup around it or contributes CSS and JavaScript, and reuse it on any kind of component.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/queue-components.html">Add components without repeating the markup hierarchy</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Queue components on a page or panel and let Wicket put each one in the right container by following the nesting in the markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/generate-markup.html">Generate markup from code</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a panel or page markup built in Java instead of an HTML file, and control whether Wicket caches it.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/wicket-tags.html">Wicket tags and attributes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every tag and attribute in the wicket namespace, what it does, which attributes it takes, with a minimal example of each.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/markup-inheritance.html">Markup inheritance</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a page or panel subclass inherits its parent's HTML along with its Java code, how wicket:child and wicket:extend merge the two, and when panels are the better tool.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/auto-components.html">How markup becomes components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket loads, parses and caches markup, and how Wicket tags turn into auto components that you never add yourself.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/markup-ids.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

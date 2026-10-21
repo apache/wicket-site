@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Site files and data | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="What each folder and data file of the site holds, the version settings in _config.yml, and the fields of the release lines." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items active" aria-current="true">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="/community/">Community</a><span aria-hidden="true"> / </span><a href="/contribute/">Contribute</a></p>
+        <h1>Site files and data</h1>
+        <p class="page-sign-sub">What each folder and data file of the site holds, the version settings in _config.yml, and the fields of the release lines.</p>
+        <p class="guide-plates"><span class="guide-kind">Reference</span></p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#folders"><span class="toc-number">1</span> <span class="toc-text">Folders</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#layouts"><span class="toc-number">2</span> <span class="toc-text">Layouts</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#versions-in-_configyml"><span class="toc-number">3</span> <span class="toc-text">Versions in _config.yml</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#release-lines-_datareleasesyml"><span class="toc-number">4</span> <span class="toc-text">Release lines: _data/releases.yml</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#a-release-lines-page"><span class="toc-number">5</span> <span class="toc-text">A release line’s page</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#highlights-_datahighlightsyml"><span class="toc-number">6</span> <span class="toc-text">Highlights: _data/highlights.yml</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            <section class="page-content guide-content">
+                <h2 id="folders">Folders</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Folder or file</th>
+      <th>Holds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_config.yml</code></td>
+      <td>Site settings, the versions of every release line, the main menu, and the collections.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_data/</code></td>
+      <td>The release lines, the highlights per release and the topics of the documentation.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_guide/</code></td>
+      <td>The documentation, one Markdown file per page, published under <code class="language-plaintext highlighter-rouge">/docs/</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_contribute/</code></td>
+      <td>The contributor documentation, published under <code class="language-plaintext highlighter-rouge">/contribute/</code>.</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">2009/</code> … <code class="language-plaintext highlighter-rouge">2026/</code>
+</td>
+      <td>The blog: <code class="language-plaintext highlighter-rouge">_posts/</code> in each year’s folder, published under <code class="language-plaintext highlighter-rouge">/news/</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">versions/</code></td>
+      <td>The release lines page and one page per line, <code class="language-plaintext highlighter-rouge">wicket-&lt;series&gt;.x/index.md</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">docs/</code></td>
+      <td>The front page of the documentation and the A–Z index.</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">community/</code>, <code class="language-plaintext highlighter-rouge">contribute/</code>, <code class="language-plaintext highlighter-rouge">learn/</code>, <code class="language-plaintext highlighter-rouge">apache/</code>
+</td>
+      <td>Pages of those sections.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">start/quickstart.md</code></td>
+      <td>The quick start wizard.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_layouts/</code></td>
+      <td>Page layouts.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_includes/</code></td>
+      <td>Fragments that layouts and pages include.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_plugins/</code></td>
+      <td>Jekyll plugins: the documentation’s topic and kind pages, search index and A–Z index, the news archives, the table of contents.</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">_sass/</code>, <code class="language-plaintext highlighter-rouge">css/</code>
+</td>
+      <td>The stylesheets; <code class="language-plaintext highlighter-rouge">css/style.scss</code> compiles <code class="language-plaintext highlighter-rouge">_sass/</code>.</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">javascript/</code>, <code class="language-plaintext highlighter-rouge">img/</code>, <code class="language-plaintext highlighter-rouge">fonts/</code>
+</td>
+      <td>Scripts, images and fonts, served as they are.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.htaccess</code></td>
+      <td>Redirects of old URLs.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">content/</code></td>
+      <td>The built site, which the web server publishes. Generated: do not edit.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_previews/</code></td>
+      <td>Scripts for maintainers: design previews and <code class="language-plaintext highlighter-rouge">guide-changes.sh</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GUIDE.md</code></td>
+      <td>The rules for writing the documentation.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="layouts">Layouts</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Layout</th>
+      <th>Used by</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">default</code></td>
+      <td>Most pages in the older sections, with a title, subtitle and preamble.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">section</code></td>
+      <td>The front pages of the release lines, the blog, Community and Learn. Front matter: <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">summary</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hub</code></td>
+      <td>The page of one release line under <code class="language-plaintext highlighter-rouge">/versions/</code>.</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">guide</code>, <code class="language-plaintext highlighter-rouge">guide-topic</code>, <code class="language-plaintext highlighter-rouge">guide-kind</code>
+</td>
+      <td>A documentation page, a topic page and a kind page.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">contribute</code></td>
+      <td>A page of the contributor documentation.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">post</code></td>
+      <td>A blog post: its kind, the page of its release line, and links to the older and newer post.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">blog-archive</code></td>
+      <td>The blog’s archive per year and month, generated by the archive plugins.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">home</code></td>
+      <td>The homepage.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="versions-in-_configyml">Versions in <code class="language-plaintext highlighter-rouge">_config.yml</code>
+</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Holds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket.version</code></td>
+      <td>The latest release of the newest line, used where a page needs “the current version”.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket.version_&lt;nn&gt;</code></td>
+      <td>The latest release of each line: <code class="language-plaintext highlighter-rouge">version_10</code>, <code class="language-plaintext highlighter-rouge">version_90</code> for 9, <code class="language-plaintext highlighter-rouge">version_80</code> for 8, <code class="language-plaintext highlighter-rouge">version_15</code> for 1.5.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket.released</code></td>
+      <td>The date of the latest release.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket.versions</code></td>
+      <td>Released and <code class="language-plaintext highlighter-rouge">-SNAPSHOT</code> versions for <code class="language-plaintext highlighter-rouge">archetype-catalog.xml</code> and <code class="language-plaintext highlighter-rouge">doap.rdf</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">live_examples_url</code></td>
+      <td>Where the live examples run.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="release-lines-_datareleasesyml">Release lines: <code class="language-plaintext highlighter-rouge">_data/releases.yml</code>
+</h2>
+
+<p><code class="language-plaintext highlighter-rouge">featured</code> names the line whose highlights a page shows when it names none. <code class="language-plaintext highlighter-rouge">lines</code> lists every release line in service, upcoming or recently out of service:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Holds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">series</code></td>
+      <td>The line, as a string: <code class="language-plaintext highlighter-rouge">"10"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">config</code></td>
+      <td>The key under <code class="language-plaintext highlighter-rouge">wicket:</code> in <code class="language-plaintext highlighter-rouge">_config.yml</code> with the line’s latest version. Lines with a release.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">version</code></td>
+      <td>The version of an upcoming release, for lines without <code class="language-plaintext highlighter-rouge">config</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">service</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">lts</code>, <code class="language-plaintext highlighter-rouge">quarterly</code>, or <code class="language-plaintext highlighter-rouge">major</code> for lines from before the release schedule.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">status</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">boarding</code> (the next release), <code class="language-plaintext highlighter-rouge">scheduled</code>, <code class="language-plaintext highlighter-rouge">current</code>, <code class="language-plaintext highlighter-rouge">lts</code>, <code class="language-plaintext highlighter-rouge">last-call</code>, <code class="language-plaintext highlighter-rouge">superseded</code> or <code class="language-plaintext highlighter-rouge">eol</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">when</code></td>
+      <td>When the line arrived, or when a release is due: <code class="language-plaintext highlighter-rouge">"Since Mar 2024"</code>, <code class="language-plaintext highlighter-rouge">"Jan 2027"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">support</code></td>
+      <td>How long the line is supported: <code class="language-plaintext highlighter-rouge">"Until Jul 2027"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">page</code></td>
+      <td>The line’s page: <code class="language-plaintext highlighter-rouge">/versions/wicket-10.x/</code>. Only lines with a page appear in the panels and the quick start.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">role</code></td>
+      <td>The name of a line in service next to its version: <code class="language-plaintext highlighter-rouge">"Current"</code> on the quarterly line. The LTS has none; its LTS plate names it.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="a-release-lines-page">A release line’s page</h2>
+
+<p>The front matter of <code class="language-plaintext highlighter-rouge">versions/wicket-&lt;series&gt;.x/index.md</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Holds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">layout</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hub</code></td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">series</code>, <code class="language-plaintext highlighter-rouge">config</code>
+</td>
+      <td>As in <code class="language-plaintext highlighter-rouge">_data/releases.yml</code>.</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">java</code>, <code class="language-plaintext highlighter-rouge">servlet</code>
+</td>
+      <td>The minimum Java version and Servlet API.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">migration</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">from</code> and <code class="language-plaintext highlighter-rouge">url</code> of the migration guide to this line.</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">status</code>, <code class="language-plaintext highlighter-rouge">support</code>
+</td>
+      <td>Only for lines no longer in <code class="language-plaintext highlighter-rouge">_data/releases.yml</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">published</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">false</code> until the line’s first release.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The page’s own Markdown follows the generated sections: manual downloads, requirements and migration guides.</p>
+
+<h2 id="highlights-_datahighlightsyml">Highlights: <code class="language-plaintext highlighter-rouge">_data/highlights.yml</code>
+</h2>
+
+<p>Per series, an <code class="language-plaintext highlighter-rouge">intro</code> and <code class="language-plaintext highlighter-rouge">items</code>, each with a <code class="language-plaintext highlighter-rouge">title</code>, a <code class="language-plaintext highlighter-rouge">text</code> in Markdown, and optionally <code class="language-plaintext highlighter-rouge">facts</code> (label and value pairs) and a <code class="language-plaintext highlighter-rouge">code</code> sample with its <code class="language-plaintext highlighter-rouge">lang</code> and <code class="language-plaintext highlighter-rouge">file</code>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/contribute/">Contribute</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-first-change.html">Make your first change to the site</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Clone the site, run it on your machine, change a page, and send the change as a pull request.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-release.html">Update the site for a release</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Announce a release on the site, update its version everywhere it appears, and start a new release line when a major release ships.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-blog-post.html">Write a blog post</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Publish a release announcement, a security advisory or an article on the blog, and decide whether it is featured.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-docs-page.html">Add a page to the documentation</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write a new page for the documentation under /docs/, give it the front matter that files it, and check it in search and on its topic page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-docs-release.html">Carry the reference guide's changes into the documentation</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">At a release, find what changed in the AsciiDoc reference guide in apache/wicket and rewrite those changes into the pages under /docs/.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-redirect.html">Redirect an old URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep links in mails, announcements and other sites working when a page moves or disappears.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Site files and data</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What each folder and data file of the site holds, the version settings in _config.yml, and the fields of the release lines.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-publishing.html">How the site is built and published</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why the built site is committed next to its source, how a commit reaches wicket.apache.org, and why release day only changes data.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_contribute/site-files.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

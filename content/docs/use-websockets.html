@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Push updates over a WebSocket | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Set up wicket-native-websocket, handle messages from the browser and push component updates to a page from a background thread." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/websockets.html">WebSockets</a></p>
+            <h1>Push updates over a WebSocket</h1>
+            <p class="page-sign-sub">Set up wicket-native-websocket, handle messages from the browser and push component updates to a page from a background thread.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1">
+<a href="#add-the-dependency-and-the-filter"><span class="toc-number">1</span> <span class="toc-text">Add the dependency and the filter</span></a><ul><li class="toc--level-2 toc--section-2"><a href="#with-spring-boot"><span class="toc-number">1.1</span> <span class="toc-text">With Spring Boot</span></a></li></ul>
+</li>
+<li class="toc--level-1 toc--section-3"><a href="#answer-messages-from-the-browser"><span class="toc-number">2</span> <span class="toc-text">Answer messages from the browser</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#push-an-update-from-a-background-thread"><span class="toc-number">3</span> <span class="toc-text">Push an update from a background thread</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#push-to-many-pages-at-once"><span class="toc-number">4</span> <span class="toc-text">Push to many pages at once</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#send-raw-text-without-a-page"><span class="toc-number">5</span> <span class="toc-text">Send raw text without a page</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use this when the server has to update a page without the user doing anything: a job that reports progress, a chat, a dashboard that follows live data. <a href="/docs/how-websockets-work.html">How native WebSockets work</a> explains what happens underneath.</p>
+
+<h2 id="add-the-dependency-and-the-filter">Add the dependency and the filter</h2>
+
+<p>Add the module to your build:</p>
+
+<p><em>pom.xml</em></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-native-websocket-javax<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${wicket.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>Replace <code class="language-plaintext highlighter-rouge">WicketFilter</code> with <code class="language-plaintext highlighter-rouge">JavaxWebSocketFilter</code>. In <code class="language-plaintext highlighter-rouge">web.xml</code>, only the filter class changes:</p>
+
+<p><em>web.xml</em></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;filter&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>wicket<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;filter-class&gt;</span>org.apache.wicket.protocol.ws.javax.JavaxWebSocketFilter<span class="nt">&lt;/filter-class&gt;</span>
+    <span class="nt">&lt;init-param&gt;</span>
+        <span class="nt">&lt;param-name&gt;</span>applicationClassName<span class="nt">&lt;/param-name&gt;</span>
+        <span class="nt">&lt;param-value&gt;</span>com.example.WicketApplication<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/init-param&gt;</span>
+<span class="nt">&lt;/filter&gt;</span>
+</code></pre></div></div>
+
+<p>The servlet container has to support Jakarta WebSocket, as Tomcat, Jetty and WildFly do.</p>
+
+<h3 id="with-spring-boot">With Spring Boot</h3>
+
+<p>Add <code class="language-plaintext highlighter-rouge">spring-boot-starter-websocket</code>, register the filter, and export Wicket’s endpoint:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Bean</span>
+<span class="kd">public</span> <span class="nc">FilterRegistrationBean</span><span class="o">&lt;</span><span class="nc">JavaxWebSocketFilter</span><span class="o">&gt;</span> <span class="nf">wicketFilter</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kt">var</span> <span class="n">registration</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FilterRegistrationBean</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="nc">JavaxWebSocketFilter</span><span class="o">());</span>
+    <span class="n">registration</span><span class="o">.</span><span class="na">setDispatcherTypes</span><span class="o">(</span><span class="nc">DispatcherType</span><span class="o">.</span><span class="na">REQUEST</span><span class="o">,</span> <span class="nc">DispatcherType</span><span class="o">.</span><span class="na">ERROR</span><span class="o">,</span>
+        <span class="nc">DispatcherType</span><span class="o">.</span><span class="na">FORWARD</span><span class="o">,</span> <span class="nc">DispatcherType</span><span class="o">.</span><span class="na">ASYNC</span><span class="o">);</span>
+    <span class="n">registration</span><span class="o">.</span><span class="na">setAsyncSupported</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="n">registration</span><span class="o">.</span><span class="na">addInitParameter</span><span class="o">(</span><span class="nc">WicketFilter</span><span class="o">.</span><span class="na">APP_FACT_PARAM</span><span class="o">,</span>
+        <span class="nc">SpringWebApplicationFactory</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+    <span class="n">registration</span><span class="o">.</span><span class="na">addInitParameter</span><span class="o">(</span><span class="nc">WicketFilter</span><span class="o">.</span><span class="na">FILTER_MAPPING_PARAM</span><span class="o">,</span> <span class="s">"/*"</span><span class="o">);</span>
+    <span class="n">registration</span><span class="o">.</span><span class="na">addUrlPatterns</span><span class="o">(</span><span class="s">"/*"</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">registration</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Bean</span>
+<span class="kd">public</span> <span class="nc">ServerEndpointExporter</span> <span class="nf">serverEndpointExporter</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">ServerEndpointExporter</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nd">@Bean</span>
+<span class="kd">public</span> <span class="nc">WicketServerEndpointConfig</span> <span class="nf">wicketServerEndpointConfig</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">WicketServerEndpointConfig</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="answer-messages-from-the-browser">Answer messages from the browser</h2>
+
+<p>Add a <code class="language-plaintext highlighter-rouge">WebSocketBehavior</code> to the page, or to a component on it. The browser opens the connection when the page loads. Override the callbacks you need:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">WebSocketBehavior</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onMessage</span><span class="o">(</span><span class="nc">WebSocketRequestHandler</span> <span class="n">handler</span><span class="o">,</span> <span class="nc">TextMessage</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">chat</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">message</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+        <span class="n">handler</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">messages</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">handler.add(...)</code> re-renders components in the browser, exactly as with an <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code>; the components need a markup id. <code class="language-plaintext highlighter-rouge">handler.push(String)</code> sends a plain text message instead, which your JavaScript receives; see <a href="/docs/websocket-client-api.html">WebSocket JavaScript API</a>. <code class="language-plaintext highlighter-rouge">appendJavaScript</code> and <code class="language-plaintext highlighter-rouge">prependJavaScript</code> work as well.</p>
+
+<h2 id="push-an-update-from-a-background-thread">Push an update from a background thread</h2>
+
+<p>Code outside a request cannot touch components. It sends a message object, and the page’s components turn it into an update.</p>
+
+<ol>
+  <li>
+    <p>Define the message as a class implementing <code class="language-plaintext highlighter-rouge">IWebSocketPushMessage</code>:</p>
+
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">record</span> <span class="nf">JobProgress</span><span class="o">(</span><span class="kt">int</span> <span class="n">percent</span><span class="o">)</span> <span class="kd">implements</span> <span class="nc">IWebSocketPushMessage</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Remember where to send it. The connection is identified by the application name, the session id and a key for the page. <code class="language-plaintext highlighter-rouge">onConnect</code> gives you all three:</p>
+
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">WebSocketBehavior</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onConnect</span><span class="o">(</span><span class="nc">ConnectedMessage</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">jobs</span><span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="k">new</span> <span class="nc">ProgressReporter</span><span class="o">(</span><span class="n">message</span><span class="o">.</span><span class="na">getApplication</span><span class="o">().</span><span class="na">getName</span><span class="o">(),</span>
+            <span class="n">message</span><span class="o">.</span><span class="na">getSessionId</span><span class="o">(),</span> <span class="n">message</span><span class="o">.</span><span class="na">getKey</span><span class="o">()));</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>In the background thread, broadcast the message to that connection:</p>
+
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">record</span> <span class="nf">ProgressReporter</span><span class="o">(</span><span class="nc">String</span> <span class="n">applicationName</span><span class="o">,</span> <span class="nc">String</span> <span class="n">sessionId</span><span class="o">,</span> <span class="nc">IKey</span> <span class="n">key</span><span class="o">)</span>
+        <span class="kd">implements</span> <span class="nc">Serializable</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">report</span><span class="o">(</span><span class="kt">int</span> <span class="n">percent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Application</span> <span class="n">application</span> <span class="o">=</span> <span class="nc">Application</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">applicationName</span><span class="o">);</span>
+        <span class="kt">var</span> <span class="n">registry</span> <span class="o">=</span> <span class="nc">WebSocketSettings</span><span class="o">.</span><span class="na">Holder</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">application</span><span class="o">).</span><span class="na">getConnectionRegistry</span><span class="o">();</span>
+        <span class="k">new</span> <span class="nf">WebSocketPushBroadcaster</span><span class="o">(</span><span class="n">registry</span><span class="o">).</span><span class="na">broadcast</span><span class="o">(</span>
+            <span class="k">new</span> <span class="nf">ConnectedMessage</span><span class="o">(</span><span class="n">application</span><span class="o">,</span> <span class="n">sessionId</span><span class="o">,</span> <span class="n">key</span><span class="o">),</span> <span class="k">new</span> <span class="nc">JobProgress</span><span class="o">(</span><span class="n">percent</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Receive it in the page or a component and update the components:</p>
+
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onEvent</span><span class="o">(</span><span class="nc">IEvent</span><span class="o">&lt;?&gt;</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getPayload</span><span class="o">()</span> <span class="k">instanceof</span> <span class="nc">WebSocketPushPayload</span> <span class="n">payload</span>
+            <span class="o">&amp;&amp;</span> <span class="n">payload</span><span class="o">.</span><span class="na">getMessage</span><span class="o">()</span> <span class="k">instanceof</span> <span class="nc">JobProgress</span> <span class="n">progress</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">percent</span> <span class="o">=</span> <span class="n">progress</span><span class="o">.</span><span class="na">percent</span><span class="o">();</span>
+        <span class="n">payload</span><span class="o">.</span><span class="na">getHandler</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">progressBar</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">WebSocketBehavior.onPush(handler, message)</code> receives the same messages, if you prefer to handle them in the behavior.</p>
+  </li>
+</ol>
+
+<p>A connection that has closed in the meantime is skipped without an error.</p>
+
+<h2 id="push-to-many-pages-at-once">Push to many pages at once</h2>
+
+<p><code class="language-plaintext highlighter-rouge">WebSocketPushBroadcaster</code> also has <code class="language-plaintext highlighter-rouge">broadcastAll(application, message)</code> for every connection of the application, <code class="language-plaintext highlighter-rouge">broadcastAllInSession(application, sessionId, message)</code> for one user’s pages, and <code class="language-plaintext highlighter-rouge">broadcastAllMatchingFilter(application, filter, message)</code> with a lambda that selects connections by session id and key:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">broadcaster</span><span class="o">.</span><span class="na">broadcastAllMatchingFilter</span><span class="o">(</span><span class="n">application</span><span class="o">,</span>
+    <span class="o">(</span><span class="n">sessionId</span><span class="o">,</span> <span class="n">key</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">key</span> <span class="k">instanceof</span> <span class="nc">PageIdKey</span><span class="o">,</span> <span class="k">new</span> <span class="nc">PriceChanged</span><span class="o">(</span><span class="n">product</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>By default the broadcast runs in the calling thread, one page after the other. <code class="language-plaintext highlighter-rouge">WebSocketSettings.setWebSocketPushMessageExecutor</code> moves it to other threads.</p>
+
+<h2 id="send-raw-text-without-a-page">Send raw text without a page</h2>
+
+<p>When the browser renders the data itself, for example a chart that receives a stream of numbers, send text straight to the connection and skip the page:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">IWebSocketConnection</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">application</span><span class="o">,</span> <span class="n">sessionId</span><span class="o">,</span> <span class="n">key</span><span class="o">);</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">connection</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">connection</span><span class="o">.</span><span class="na">isOpen</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">sendMessageAsync</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>For many messages from the browser, a <code class="language-plaintext highlighter-rouge">WebSocketResource</code> handles them without taking the page lock. Register it with <code class="language-plaintext highlighter-rouge">getSharedResources().add("prices", new PriceResource())</code> in <code class="language-plaintext highlighter-rouge">init()</code> and add <code class="language-plaintext highlighter-rouge">new BaseWebSocketBehavior("prices")</code> to the page. It has the same callbacks as <code class="language-plaintext highlighter-rouge">WebSocketBehavior</code>, but cannot re-render components.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/websockets.html">WebSockets</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Push updates over a WebSocket</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set up wicket-native-websocket, handle messages from the browser and push component updates to a page from a background thread.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/test-websockets.html">Test WebSocket behaviors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Send messages to a page's WebSocket behavior and check what it pushes back with WebSocketTester, without a servlet container.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/websocket-client-api.html">WebSocket JavaScript API</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Wicket.WebSocket functions and the events your JavaScript can subscribe to on a page with a WebSocket behavior.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/how-websockets-work.html">How native WebSockets work</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket connects a page to a WebSocket, routes messages to components, pushes updates from other threads, and what that means for sessions and locking.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/use-websockets.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

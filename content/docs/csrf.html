@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Protect against cross-site request forgery | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Refuse link clicks, form submits and Ajax calls that another site makes on behalf of your users, with ResourceIsolationRequestCycleListener." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/security.html">Security</a></p>
+            <h1>Protect against cross-site request forgery</h1>
+            <p class="page-sign-sub">Refuse link clicks, form submits and Ajax calls that another site makes on behalf of your users, with ResourceIsolationRequestCycleListener.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#register-the-listener"><span class="toc-number">1</span> <span class="toc-text">Register the listener</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#what-the-default-policies-check"><span class="toc-number">2</span> <span class="toc-text">What the default policies check</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#allow-requests-from-your-other-subdomains"><span class="toc-number">3</span> <span class="toc-text">Allow requests from your other subdomains</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#accept-a-trusted-origin"><span class="toc-number">4</span> <span class="toc-text">Accept a trusted origin</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#exempt-a-path-or-a-page"><span class="toc-number">5</span> <span class="toc-text">Exempt a path or a page</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#check-page-renders-as-well"><span class="toc-number">6</span> <span class="toc-text">Check page renders as well</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#change-what-happens-to-a-refused-request"><span class="toc-number">7</span> <span class="toc-text">Change what happens to a refused request</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#keep-your-tests-passing"><span class="toc-number">8</span> <span class="toc-text">Keep your tests passing</span></a></li>
+<li class="toc--level-1 toc--section-9"><a href="#protect-websocket-connections"><span class="toc-number">9</span> <span class="toc-text">Protect WebSocket connections</span></a></li>
+<li class="toc--level-1 toc--section-10"><a href="#combine-it-with-encrypted-urls"><span class="toc-number">10</span> <span class="toc-text">Combine it with encrypted URLs</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>You need this when a page on another site must not be able to make your users click a link, submit a form or fire an Ajax call in your application. Browsers send your session cookie along with such forged requests, so the request has to be checked for where it came from. <a href="/docs/security-model.html#cross-site-request-forgery">How Wicket keeps applications secure</a> explains what stateful pages and encrypted URLs already do against it.</p>
+
+<h2 id="register-the-listener">Register the listener</h2>
+
+<p><em>WicketApplication.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getRequestCycleListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ResourceIsolationRequestCycleListener</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The listener is not registered by default. Once it is, every request that invokes a listener on a page (a <code class="language-plaintext highlighter-rouge">Link.onClick()</code>, a <code class="language-plaintext highlighter-rouge">Form.onSubmit()</code>, an Ajax behavior) is checked. A refused request ends with 403 Forbidden.</p>
+
+<p>Requests that only render a page are not checked, so other sites can still link to your pages.</p>
+
+<h2 id="what-the-default-policies-check">What the default policies check</h2>
+
+<p>Without arguments the listener asks two policies, in order, and the first answer other than “unknown” decides:</p>
+
+<ol>
+  <li>
+<code class="language-plaintext highlighter-rouge">FetchMetadataResourceIsolationPolicy</code> reads the <code class="language-plaintext highlighter-rouge">Sec-Fetch-Site</code> header that browsers add to every request. It allows <code class="language-plaintext highlighter-rouge">same-origin</code> and <code class="language-plaintext highlighter-rouge">none</code> (a typed URL or a bookmark). A request from another origin may render a page through a plain top-level navigation, but may not invoke a listener.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">OriginResourceIsolationPolicy</code> compares the <code class="language-plaintext highlighter-rouge">Origin</code> or <code class="language-plaintext highlighter-rouge">Referer</code> header with the requested URL. It only gets a say when a request has no <code class="language-plaintext highlighter-rouge">Sec-Fetch-Site</code> header, which current browsers always send.</li>
+</ol>
+
+<p>When neither policy can decide, the request is refused.</p>
+
+<p>To rely on fetch metadata alone, pass the policy yourself:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getRequestCycleListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">ResourceIsolationRequestCycleListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">FetchMetadataResourceIsolationPolicy</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<h2 id="allow-requests-from-your-other-subdomains">Allow requests from your other subdomains</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Sec-Fetch-Site: same-site</code> means a different origin on the same registrable domain, such as <code class="language-plaintext highlighter-rouge">shop.example.com</code> calling <code class="language-plaintext highlighter-rouge">app.example.com</code>. It is refused by default. If every origin on your site is part of the same application, allow it:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getRequestCycleListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">ResourceIsolationRequestCycleListener</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">FetchMetadataResourceIsolationPolicy</span><span class="o">().</span><span class="na">setSameSiteAllowed</span><span class="o">(</span><span class="kc">true</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nf">OriginResourceIsolationPolicy</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<p>This trusts every subdomain. A hostile sibling origin, through a subdomain takeover, user-provided content or an XSS hole elsewhere on the site, can then act on behalf of your users.</p>
+
+<p>Wicket 10 releases before 10.11.0 allowed <code class="language-plaintext highlighter-rouge">same-site</code> requests without this setting.</p>
+
+<h2 id="accept-a-trusted-origin">Accept a trusted origin</h2>
+
+<p>For clients without fetch metadata, <code class="language-plaintext highlighter-rouge">OriginResourceIsolationPolicy.addAcceptedOrigin("partner.example.com")</code> accepts requests from that host and every host below it.</p>
+
+<h2 id="exempt-a-path-or-a-page">Exempt a path or a page</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">listener</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ResourceIsolationRequestCycleListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">boolean</span> <span class="nf">isChecked</span><span class="o">(</span><span class="nc">IRequestablePage</span> <span class="n">targetedPage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">!(</span><span class="n">targetedPage</span> <span class="k">instanceof</span> <span class="nc">PartnerCallbackPage</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">};</span>
+<span class="n">listener</span><span class="o">.</span><span class="na">addExemptedPaths</span><span class="o">(</span><span class="s">"/api/callback"</span><span class="o">);</span>
+<span class="n">getRequestCycleListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">listener</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>An exempted path is compared exactly with the path info of the request, <code class="language-plaintext highlighter-rouge">HttpServletRequest.getPathInfo()</code>.</p>
+
+<h2 id="check-page-renders-as-well">Check page renders as well</h2>
+
+<p>Override <code class="language-plaintext highlighter-rouge">isChecked(IRequestHandler)</code> to return <code class="language-plaintext highlighter-rouge">true</code> for every page request handler. Policies then also see renders, and <code class="language-plaintext highlighter-rouge">FetchMetadataResourceIsolationPolicy</code> still allows a plain top-level navigation from another site.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">listener</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ResourceIsolationRequestCycleListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">boolean</span> <span class="nf">isChecked</span><span class="o">(</span><span class="nc">IRequestHandler</span> <span class="n">handler</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">handler</span> <span class="k">instanceof</span> <span class="nc">IPageRequestHandler</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">};</span>
+</code></pre></div></div>
+
+<h2 id="change-what-happens-to-a-refused-request">Change what happens to a refused request</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Default</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setDisallowedOutcomeAction(CsrfAction)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ABORT</code></td>
+      <td>What to do when a policy refuses the request</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setUnknownOutcomeAction(CsrfAction)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ABORT</code></td>
+      <td>What to do when no policy can decide</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setErrorCode(int)</code></td>
+      <td>403</td>
+      <td>Status code for <code class="language-plaintext highlighter-rouge">ABORT</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setErrorMessage(String)</code></td>
+      <td>“The request was blocked by a resource isolation policy”</td>
+      <td>Message for <code class="language-plaintext highlighter-rouge">ABORT</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">CsrfAction.ABORT</code> answers with the error code, <code class="language-plaintext highlighter-rouge">SUPPRESS</code> renders the targeted page without invoking the listener, and <code class="language-plaintext highlighter-rouge">ALLOW</code> logs the request and lets it through. <code class="language-plaintext highlighter-rouge">ALLOW</code> is useful to try the listener out on a running application before you enforce it.</p>
+
+<h2 id="keep-your-tests-passing">Keep your tests passing</h2>
+
+<p><code class="language-plaintext highlighter-rouge">WicketTester</code> sends no <code class="language-plaintext highlighter-rouge">Sec-Fetch-Site</code> header, so with the listener registered its requests are refused. Set the header before clicking a link or submitting a form:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tester</span><span class="o">.</span><span class="na">addRequestHeader</span><span class="o">(</span><span class="nc">FetchMetadataResourceIsolationPolicy</span><span class="o">.</span><span class="na">SEC_FETCH_SITE_HEADER</span><span class="o">,</span>
+    <span class="nc">FetchMetadataResourceIsolationPolicy</span><span class="o">.</span><span class="na">SAME_ORIGIN</span><span class="o">);</span>
+<span class="n">tester</span><span class="o">.</span><span class="na">clickLink</span><span class="o">(</span><span class="s">"delete"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>A request header applies to the next request only. <a href="/docs/test-pages.html#set-request-headers">Test pages and components</a> has more on headers in tests.</p>
+
+<h2 id="protect-websocket-connections">Protect WebSocket connections</h2>
+
+<p>With native WebSockets, register <code class="language-plaintext highlighter-rouge">WebSocketAwareResourceIsolationRequestCycleListener</code> instead. It checks the HTTP request that opens the connection, which carries <code class="language-plaintext highlighter-rouge">Origin</code> and fetch metadata headers, and skips the messages that arrive over the open connection, which carry no headers:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getRequestCycleListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">WebSocketAwareResourceIsolationRequestCycleListener</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p>Browsers let any page open a WebSocket to any host, and send your cookies with it. To accept connections only from your own pages, also install a <code class="language-plaintext highlighter-rouge">WebSocketConnectionOriginFilter</code> with the exact origins that may connect:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WebSocketSettings</span><span class="o">.</span><span class="na">Holder</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">setConnectionFilter</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">WebSocketConnectionOriginFilter</span><span class="o">(</span><span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"https://app.example.com"</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p>A connection whose single <code class="language-plaintext highlighter-rouge">Origin</code> header is not in the list is closed with code 1008, “Origin mismatch”. An empty list allows every origin. <a href="/docs/use-websockets.html">Push updates over a WebSocket</a> covers the setup.</p>
+
+<h2 id="combine-it-with-encrypted-urls">Combine it with encrypted URLs</h2>
+
+<p><code class="language-plaintext highlighter-rouge">CryptoMapper</code> and this listener work independently and can be combined. <code class="language-plaintext highlighter-rouge">CsrfPreventionRequestCycleListener</code>, the Origin-header check of Wicket 7 to 9, was removed in Wicket 10; <code class="language-plaintext highlighter-rouge">OriginResourceIsolationPolicy</code> contains its logic.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/security.html">Security</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/login.html">Log users in</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a sign-in page with wicket-auth-roles, send anonymous users there when a page needs a signed-in user, and sign them out again.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/roles.html">Restrict access by role</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Allow pages, components, actions and resources only for users with a given role, with annotations on classes and packages or in code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/https.html">Require HTTPS</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve pages over HTTPS with HttpsMapper and @RequireHttps, and set up the container so redirects and absolute URLs use the right host.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Protect against cross-site request forgery</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Refuse link clicks, form submits and Ajax calls that another site makes on behalf of your users, with ResourceIsolationRequestCycleListener.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/csp.html">Configure the Content Security Policy</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Work with the strict Content Security Policy Wicket sends by default, allow extra sources, report violations, and move inline scripts and styles out of the markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/cross-origin-isolation.html">Isolate the page with COOP and COEP</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set the Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy headers, which Wicket sends by default, to isolate your pages from other origins.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/package-resource-guard.html">Control which package resources are served</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Allow or block files on the classpath that browsers may request as package resources, with patterns on SecurePackageResourceGuard.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/security-checks.html">Security headers and external checks</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The response headers that scanners such as Mozilla Observatory check, which of them Wicket sends by default, and the Wicket API or hook that sets each one.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/security-model.html">How Wicket keeps applications secure</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What Wicket defends against by default (escaping, a strict CSP, stateful URLs and encryption) and what it leaves to your application and your deployment.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/csrf.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

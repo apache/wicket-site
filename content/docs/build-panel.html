@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Build a reusable panel | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Package a piece of user interface as a Panel, a Java class with its own HTML file, and use it on any page as often as you need." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/components.html">Components and markup</a></p>
+            <h1>Build a reusable panel</h1>
+            <p class="page-sign-sub">Package a piece of user interface as a Panel, a Java class with its own HTML file, and use it on any page as often as you need.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#write-the-panel-class"><span class="toc-number">1</span> <span class="toc-text">Write the panel class</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#write-the-panels-markup"><span class="toc-number">2</span> <span class="toc-text">Write the panel’s markup</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#use-the-panel-in-a-page"><span class="toc-number">3</span> <span class="toc-text">Use the panel in a page</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#reach-components-inside-a-panel"><span class="toc-number">4</span> <span class="toc-text">Reach components inside a panel</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#give-the-panel-its-own-css"><span class="toc-number">5</span> <span class="toc-text">Give the panel its own CSS</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#extend-a-panel"><span class="toc-number">6</span> <span class="toc-text">Extend a panel</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use a panel when a piece of a page, with its markup and its components, appears in more than one place, or when a page gets too big to read. A panel is a component with its own markup file. Pages contain panels, panels contain other panels, and each one only knows its own markup.</p>
+
+<h2 id="write-the-panel-class">Write the panel class</h2>
+
+<p>Subclass <code class="language-plaintext highlighter-rouge">GenericPanel</code> when the panel shows one object, so the model is typed. Use <code class="language-plaintext highlighter-rouge">Panel</code> when it has no model of its own. Add the panel’s components in the constructor, or in <code class="language-plaintext highlighter-rouge">onInitialize</code> when they need the page or the parent.</p>
+
+<p><em>AddressPanel.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.example.customer</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddressPanel</span> <span class="kd">extends</span> <span class="nc">GenericPanel</span><span class="o">&lt;</span><span class="nc">Address</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">AddressPanel</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Address</span><span class="o">&gt;</span> <span class="n">address</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">address</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onInitialize</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onInitialize</span><span class="o">();</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"street"</span><span class="o">,</span> <span class="n">getModel</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">Address:</span><span class="o">:</span><span class="n">getStreet</span><span class="o">)));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"city"</span><span class="o">,</span> <span class="n">getModel</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">Address:</span><span class="o">:</span><span class="n">getCity</span><span class="o">)));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"country"</span><span class="o">,</span> <span class="n">getModel</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">Address:</span><span class="o">:</span><span class="n">getCountry</span><span class="o">)));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">getModel().map(...)</code> derives a model for each field, so the labels always show the current address. See <a href="/docs/lambda-models.html">Read and write data with lambda models</a>.</p>
+
+<h2 id="write-the-panels-markup">Write the panel’s markup</h2>
+
+<p>Give the HTML file the same name as the class, next to it in the same package: <code class="language-plaintext highlighter-rouge">com/example/customer/AddressPanel.html</code>. Wicket uses only what is inside <code class="language-plaintext highlighter-rouge">&lt;wicket:panel&gt;</code>. Use the rest of the file for a preview.</p>
+
+<p><em>AddressPanel.html</em></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">"http://wicket.apache.org"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;wicket:panel&gt;</span>
+    <span class="nt">&lt;address&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"street"</span><span class="nt">&gt;</span>Main Street 1<span class="nt">&lt;/span&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"city"</span><span class="nt">&gt;</span>Springfield<span class="nt">&lt;/span&gt;&lt;br&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"country"</span><span class="nt">&gt;</span>USA<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/address&gt;</span>
+  <span class="nt">&lt;/wicket:panel&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>With Maven, put the HTML file either in <code class="language-plaintext highlighter-rouge">src/main/java</code> next to the class, if your build copies non-Java files from there, or in the same package under <code class="language-plaintext highlighter-rouge">src/main/resources</code>.</p>
+
+<h2 id="use-the-panel-in-a-page">Use the panel in a page</h2>
+
+<p>Give the panel a tag in the page and add it like any component:</p>
+
+<p><em>CustomerPage.html</em></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h2&gt;</span>Billing address<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">"billing"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;h2&gt;</span>Shipping address<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">"shipping"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p><em>CustomerPage.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Customer</span><span class="o">&gt;</span> <span class="n">customer</span> <span class="o">=</span> <span class="nc">LoadableDetachableModel</span><span class="o">.</span><span class="na">of</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">customers</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">customerId</span><span class="o">));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AddressPanel</span><span class="o">(</span><span class="s">"billing"</span><span class="o">,</span> <span class="n">customer</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Customer:</span><span class="o">:</span><span class="n">getBillingAddress</span><span class="o">)));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AddressPanel</span><span class="o">(</span><span class="s">"shipping"</span><span class="o">,</span> <span class="n">customer</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Customer:</span><span class="o">:</span><span class="n">getShippingAddress</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p>The panel’s markup replaces the content of its tag. The tag itself, <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> here, stays.</p>
+
+<h2 id="reach-components-inside-a-panel">Reach components inside a panel</h2>
+
+<p>From outside, refer to a panel’s child by its path, the ids separated by colons:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Component</span> <span class="n">city</span> <span class="o">=</span> <span class="n">get</span><span class="o">(</span><span class="s">"billing:city"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Prefer to give the panel a method or a constructor argument for what callers need to change. A path couples the caller to the panel’s insides.</p>
+
+<h2 id="give-the-panel-its-own-css">Give the panel its own CSS</h2>
+
+<p>Ship the panel’s styles with the panel, so every page that uses it gets them. Contribute a stylesheet from <code class="language-plaintext highlighter-rouge">renderHead</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">renderHead</span><span class="o">(</span><span class="nc">IHeaderResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">renderHead</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="nc">CssHeaderItem</span><span class="o">.</span><span class="na">forReference</span><span class="o">(</span>
+        <span class="k">new</span> <span class="nf">CssResourceReference</span><span class="o">(</span><span class="nc">AddressPanel</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"AddressPanel.css"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Wicket adds the stylesheet once, however many panels are on the page. For a few lines you can also put a <code class="language-plaintext highlighter-rouge">&lt;style&gt;</code> inside <code class="language-plaintext highlighter-rouge">&lt;wicket:head&gt;</code> in the panel’s markup file. See <a href="/docs/add-css-javascript.html">Add CSS and JavaScript to a page</a>.</p>
+
+<h2 id="extend-a-panel">Extend a panel</h2>
+
+<p>A panel can extend another panel and its markup, as pages do. Put <code class="language-plaintext highlighter-rouge">&lt;wicket:child/&gt;</code> in the base panel’s markup inside <code class="language-plaintext highlighter-rouge">&lt;wicket:panel&gt;</code>, and the subclass’s markup in <code class="language-plaintext highlighter-rouge">&lt;wicket:extend&gt;</code>. See <a href="/docs/markup-inheritance.html">Markup inheritance</a>.</p>
+
+<p>For a small block of markup that only one page needs, a <a href="/docs/use-fragments.html">fragment</a> saves you the class and the file.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/components.html">Components and markup</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/show-hide-components.html">Show, hide or disable a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a component or make it read-only depending on the state of your application, and decide that state once per request in onConfigure.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/modify-attributes.html">Change a tag's attributes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set, append to or remove an attribute of a component's tag from Java, with a fixed value or one that follows a model.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/markup-ids.html">Give a component a markup id</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render the HTML id attribute of a component so JavaScript, CSS, labels and Ajax can find it, and choose or generate the id yourself.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/group-components.html">Group components with WebMarkupContainer</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Attach a plain HTML element to a container component so you can hide, disable, style or repaint a group of components as one.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Build a reusable panel</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Package a piece of user interface as a Panel, a Java class with its own HTML file, and use it on any page as often as you need.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-fragments.html">Swap markup with fragments</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep small alternative pieces of markup inside a page or panel and choose in Java which one to show, without a panel class for each.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-borders.html">Wrap content with a Border</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write the markup that goes around content once, as a Border, and wrap any part of a page in it while the page keeps its own components.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-enclosures.html">Hide surrounding markup with wicket:enclosure</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a caption, label or table row together with the component it describes, without a container component in Java.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/render-body-only.html">Render a component without its tag</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave out a component's own HTML tag and render only its content, and know what stops working when you do.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stub-markup.html">Keep preview markup out of the output</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave sample content in your HTML files so they look complete in a browser or design tool, and make sure Wicket never sends it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/add-behaviors.html">Add behavior to a component with a Behavior</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write a Behavior that changes a component's tag, adds markup around it or contributes CSS and JavaScript, and reuse it on any kind of component.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/queue-components.html">Add components without repeating the markup hierarchy</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Queue components on a page or panel and let Wicket put each one in the right container by following the nesting in the markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/generate-markup.html">Generate markup from code</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a panel or page markup built in Java instead of an HTML file, and control whether Wicket caches it.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/wicket-tags.html">Wicket tags and attributes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every tag and attribute in the wicket namespace, what it does, which attributes it takes, with a minimal example of each.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/markup-inheritance.html">Markup inheritance</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a page or panel subclass inherits its parent's HTML along with its Java code, how wicket:child and wicket:extend merge the two, and when panels are the better tool.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/auto-components.html">How markup becomes components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket loads, parses and caches markup, and how Wicket tags turn into auto components that you never add yourself.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/build-panel.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

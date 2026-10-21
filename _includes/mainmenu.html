@@ -1,45 +1,54 @@
-{% assign activeMenu = nil %}
-<nav class="mainmenu">
-    {% include logo.html %}
-    <div class="nav-container">
-    {% for link in site.navigation %}
-		{% assign url = page.url|remove:'/index.html' %}
-    	{% assign active = nil %}
-        {% assign linkurl = link.url|remove:'/index.html' %}
-        {% assign linkurl = link.url|remove:'/index.md' %}
-		<!-- {{ linkurl }} || {{ url }} -->
-		{% if page.active_link == link.id %}
-			{% assign active = 'active' %}
-    	{% elsif url == "" and link.url == "/" %}
-    		{% assign active = 'active' %}
-    	{% elsif url == link.url or page.url == link.url %}
-    		{% assign active = 'active' %}
-        {% elsif url == linkurl %}
-    		{% assign active = 'active' %}
-    	{% elsif page.layout == link.layout %}
-    		{% assign active = 'active' %}
-    	{% elsif page.post == true and link.layout == 'post' %}
-    		{% assign active = 'active' %}
-    	{% else %}
-    		{% for sublink in link.subnavigation %}
-    			{% if url == sublink.url %}
-    				{% assign active = 'active' %}
-    			{% endif %}
-    		{% endfor %}
-    	{% endif %}
-    	{% if active == "active" %}
-    		{% assign activeMenu = link %}
-    	{% endif %}
-        {% unless link.url contains "http://" %}
-            {% capture url %}{{ site.baseurl }}{{ link.url}}{% endcapture %}
+{% comment %}
+  The main menu: the logo, the version plate (the release lines in service, linking to
+  the page of the newest), the sections from site.navigation (Releases leads to /versions/), the ASF mark, and GitHub
+  (img/asf_mark.svg is feather.svg from the ASF press kit, apache.org/foundation/press/kit/).
+{% endcomment %}
+{% assign url = page.url | remove: '/index.html' %}
+{% comment %} The plate shows the newest line in service, and the LTS when that is another line. {% endcomment %}
+{% assign plate_line = nil %}{% assign lts_line = nil %}
+{% for line in site.data.releases.lines %}
+    {% unless line.status == 'current' or line.status == 'lts' %}{% continue %}{% endunless %}
+    {% if line.status == 'lts' %}{% assign lts_line = line %}{% endif %}
+    {% assign n = line.series | plus: 0 %}{% assign m = plate_line.series | plus: 0 %}
+    {% if plate_line == nil or n > m %}{% assign plate_line = line %}{% endif %}
+{% endfor %}
+{% assign v = site.wicket[plate_line.config] | split: '.' %}
+{% assign plate_current = v[0] | append: '.' | append: v[1] %}
+{% if lts_line == nil %}{% assign plate_lts = '' %}{% elsif lts_line.series == plate_line.series %}{% assign plate_lts = 'LTS' %}{% else %}{% assign plate_lts = 'LTS ' | append: lts_line.series %}{% endif %}
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        {% include logo.html %}
+        {% comment %} One line in service: one link. The newest line and an older LTS: a link to each. {% endcomment %}
+        {% if lts_line and lts_line.series != plate_line.series %}
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current{% if page.url == plate_line.page %} active{% endif %}" href="{{ site.baseurl }}{{ plate_line.page }}"{% if page.url == plate_line.page %} aria-current="page"{% endif %} aria-label="{{ plate_current }}: Wicket {{ plate_line.series }}, the newest release line" title="Wicket {{ plate_line.series }}: Maven dependency, downloads and documentation">{{ plate_current }}</a><a class="nav-plate-lts{% if page.url == lts_line.page %} active{% endif %}" href="{{ site.baseurl }}{{ lts_line.page }}"{% if page.url == lts_line.page %} aria-current="page"{% endif %} aria-label="LTS {{ lts_line.series }}: Wicket {{ lts_line.series }}, the long-term support release" title="Wicket {{ lts_line.series }} LTS: Maven dependency, downloads and documentation">LTS {{ lts_line.series }}</a>
+        </span>
         {% else %}
-            {% assign url = link.url %}
-        {% endunless %}
-    	<a href="{{ url }}" class="{{ active }} nav-items">{{ link.text }}</a>
+        {% assign plate_here = false %}{% if page.url == plate_line.page %}{% assign plate_here = true %}{% endif %}
+        <a class="nav-plate{% if plate_here %} active{% endif %}" href="{{ site.baseurl }}{{ plate_line.page }}"{% if plate_here %} aria-current="page"{% endif %} aria-label="{{ plate_current }}{% if plate_lts != '' %} {{ plate_lts }}{% endif %}: Wicket {{ plate_line.series }}, its Maven dependency, downloads and documentation" title="Wicket {{ plate_line.series }}: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">{{ plate_current }}</span>{% if plate_lts != '' %}<span class="nav-plate-lts">{{ plate_lts }}</span>{% endif %}
+        </a>
+        {% endif %}
+    </div>
+    <div class="nav-container nav-sections">
+    {% for link in site.navigation %}
+        {% assign linkurl = link.url | remove: '/index.html' %}
+        {% assign active = nil %}
+        {% if page.active_link == link.id %}
+            {% assign active = 'active' %}
+        {% elsif page.layout == link.layout %}
+            {% assign active = 'active' %}
+        {% elsif url == linkurl or page.url == link.url %}
+            {% assign active = 'active' %}
+        {% elsif page.parent and page.parent.url == link.url %}
+            {% comment %} A page under a section, by its breadcrumb (quick start under Releases, Learn under Docs). {% endcomment %}
+            {% assign active = 'active' %}
+        {% endif %}
+        <a href="{{ site.baseurl }}{{ link.url }}" class="nav-items {{ active }}"{% if active %} aria-current="{% if url == linkurl %}page{% else %}true{% endif %}"{% endif %}>{{ link.text }}</a>
     {% endfor %}
     </div>
-    <div class="nav-container  ">
-        <a href="https://github.com/apache/wicket" rel="noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
-        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
-    </div>    
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation"><img src="{{ site.baseurl }}/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer" title="Apache Wicket on GitHub"><svg class="nav-github" viewBox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
 </nav>

@@ -1,0 +1,18 @@
+{% comment %}
+A ruled list of guide pages. include.pages: the pages; include.current: the url to mark
+as the page being read; include.kind: show each page's kind.
+{% endcomment %}
+<ul class="guide-list">
+{% for doc in include.pages %}
+    {% assign kind = site.data.guide.kinds | where: "id", doc.type | first %}
+    <li{% if doc.url == include.current %} class="is-current"{% endif %}>
+        {% if doc.url == include.current %}
+        <span class="guide-list-title" aria-current="page">{{ doc.title }}</span>
+        {% else %}
+        <a class="guide-list-title" href="{{ site.baseurl }}{{ doc.url }}">{{ doc.title }}</a>
+        {% endif %}
+        <span class="guide-list-meta">{% if include.kind %}<span class="guide-list-kind">{{ kind.label }}</span>{% endif %}{% if doc.since > site.data.guide_oldest %}<span class="guide-list-since">Wicket {{ doc.since }}+</span>{% endif %}</span>
+        <span class="guide-list-summary">{{ doc.summary }}</span>
+    </li>
+{% endfor %}
+</ul>

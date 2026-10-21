@@ -69,7 +69,10 @@ module Jekyll
       self.content = <<-EOS
       {% for year in site.years %}
       {% assign y = year.first.first.date | date: '%Y' %}
-      {% if y == '#{year}' %}
+      {% comment %}Jekyll 4 caches templates by path, which all yearly pages share:
+         read the year from page.year instead of interpolating it here.{% endcomment %}
+      {% assign page_year = page.year | append: '' %}
+      {% if y == page_year %}
       <div class="l-first">
           {% for month in year %}
               {% assign m = month.first.date | date: '%m' %}

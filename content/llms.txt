@@ -1,0 +1,66 @@
+# Apache Wicket
+
+> Apache Wicket is an open source, component-oriented Java web framework of the Apache Software Foundation. Every component keeps its behaviour and state in Java and its markup in plain HTML; there is no JavaScript build chain. Maven coordinates: groupId `org.apache.wicket`, artifactId `wicket-core`.
+
+Release lines in service:
+
+- Wicket 10 (LTS): latest 10.11.0, Java 17+, Jakarta Servlet 5.0+. In service, supported until Jul 2027.
+- Wicket 9: latest 9.24.0, Java 11+, Servlet 3.1+. Last release coming, supported until its final release.
+- Wicket 8: latest 8.19.0, Java 8+, Servlet 3.1+. Last release coming, supported until its final release.
+
+Wicket 10 and later use the `jakarta.*` namespace; Wicket 9 and earlier use `javax.*`.
+
+## Reference guide
+
+The complete user guide of each release line in one document.
+
+- [Wicket 10.x Reference Guide](https://nightlies.apache.org/wicket/guide/10.x/single.html): one HTML page
+- [Wicket 9.x Reference Guide](https://nightlies.apache.org/wicket/guide/9.x/single.html): one HTML page
+- [Wicket 8.x Reference Guide](https://nightlies.apache.org/wicket/guide/8.x/single.html): one HTML page
+- [Wicket 7.x Reference Guide](https://nightlies.apache.org/wicket/guide/7.x/single.html): one HTML page
+
+## Javadoc
+
+- [Wicket 10.x Javadoc](https://nightlies.apache.org/wicket/apidocs/10.x/index.html)
+- [Wicket 9.x Javadoc](https://nightlies.apache.org/wicket/apidocs/9.x/index.html)
+- [Wicket 8.x Javadoc](https://nightlies.apache.org/wicket/apidocs/8.x/index.html)
+- [Wicket 7.x Javadoc](https://nightlies.apache.org/wicket/apidocs/7.x/index.html)
+
+## Documentation
+
+Tutorials, how-to guides, reference and explanation for Wicket 10 and later, by topic.
+
+- [Documentation](https://wicket.apache.org/docs/): the front page, with the five tutorial lessons
+- [A–Z index](https://wicket.apache.org/docs/a-z.html): every Wicket class the documentation explains
+- [Getting started](https://wicket.apache.org/docs/topics/start.html): Create a project, configure the application and learn what Wicket is made of.
+- [Components and markup](https://wicket.apache.org/docs/topics/components.html): Pages, panels, borders and fragments, and how Java components meet their HTML.
+- [Models](https://wicket.apache.org/docs/topics/models.html): How components get and keep their data.
+- [Forms](https://wicket.apache.org/docs/topics/forms.html): Input fields, validation, conversion, uploads and submitting.
+- [Lists and tables](https://wicket.apache.org/docs/topics/repeaters.html): Repeat markup for each item in a list, page through data.
+- [Ajax and JavaScript](https://wicket.apache.org/docs/topics/ajax.html): Update parts of a page without reloading it, and work with JavaScript.
+- [WebSockets](https://wicket.apache.org/docs/topics/websockets.html): Push updates from the server to the browser.
+- [Links and URLs](https://wicket.apache.org/docs/topics/links.html): Link between pages, pass parameters and shape the URLs.
+- [Resources](https://wicket.apache.org/docs/topics/resources.html): Serve CSS, JavaScript, images and generated files.
+- [Pages and state](https://wicket.apache.org/docs/topics/state.html): Stateful and stateless pages, the page store and the session.
+- [Requests and lifecycle](https://wicket.apache.org/docs/topics/lifecycle.html): How a request is processed and what happens to a component along the way.
+- [Localization](https://wicket.apache.org/docs/topics/i18n.html): Translate texts, formats and choices.
+- [Security](https://wicket.apache.org/docs/topics/security.html): Log users in, restrict access and harden the application.
+- [Testing](https://wicket.apache.org/docs/topics/testing.html): Test pages, forms and markup without a browser.
+- [Integration](https://wicket.apache.org/docs/topics/integration.html): Spring, CDI, EJB, OSGi and monitoring.
+
+## Start
+
+- [Quick start](https://wicket.apache.org/start/quickstart.html): the Maven command that generates a new Wicket project
+
+## Releases
+
+- [Releases](https://wicket.apache.org/versions/): release lines, support and the release policy
+- [Upgrade paths](https://wicket.apache.org/versions/#upgrade-paths): the route from an older line to one that is supported, with the migration guides
+- [Wicket 10](https://wicket.apache.org/versions/wicket-10.x/): Maven dependency, downloads, what is new and migration
+- [Wicket 9](https://wicket.apache.org/versions/wicket-9.x/): Maven dependency, downloads, what is new and migration
+- [Wicket 8](https://wicket.apache.org/versions/wicket-8.x/): Maven dependency, downloads, what is new and migration
+
+## Optional
+
+- [Blog](https://wicket.apache.org/news/): release announcements and articles ([Atom feed](https://wicket.apache.org/atom.xml))
+- [Community](https://wicket.apache.org/community/): mailing lists, Slack, issues and security reports

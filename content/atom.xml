@@ -3,13 +3,80 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2026-09-11T16:41:49+00:00</updated>
+    <updated>2026-10-21T08:33:46+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
         <email>dev@wicket.apache.org</email>
     </author>
  
+
+    <entry>
+        <title>Wicket 8 and 9 reach end of life soon</title>
+        <link href="http://wicket.apache.org/news/2026/10/21/wicket-8-and-9-end-of-life.html"/>
+        <updated>2026-10-21T00:00:00+00:00</updated>
+        <id>http://wicket.apache.org/news/2026/10/21/wicket-8-and-9-end-of-life</id>
+        <content type="html">&lt;p&gt;Apache Wicket 8.x and 9.x each get one final release, and then reach end of life. After
+that they get no more releases, not even security fixes, and Wicket’s support for the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javax.servlet&lt;/code&gt; API ends with them. We announce the final releases on the
+&lt;a href=&quot;/community/#announce&quot;&gt;announce list&lt;/a&gt; and here on the blog. If your
+application runs on Wicket 8 or 9, plan the move to Wicket 10 now: it is our long-term
+support release, supported until July 2027.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;what-end-of-life-means&quot;&gt;What end of life means&lt;/h2&gt;
+
+&lt;p&gt;After their final release:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;no new 8.x or 9.x release ships, for bugs or for vulnerabilities;&lt;/li&gt;
+  &lt;li&gt;every release stays available: on Maven Central, and in the
+&lt;a href=&quot;https://archive.apache.org/dist/wicket&quot;&gt;Apache archives&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;the &lt;a href=&quot;/community/#user&quot;&gt;users list&lt;/a&gt; still helps with questions, but a
+fix for a problem in 8 or 9 only ships in the lines we still support.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;why-we-stop&quot;&gt;Why we stop&lt;/h2&gt;
+
+&lt;p&gt;We announced this with the &lt;a href=&quot;/news/2026/09/11/release-cadence.html&quot;&gt;new release cadence&lt;/a&gt;.
+Every security report has to be assessed, fixed, backported and released for each line we
+support. With four lines that work is done four times, and that is time not spent on
+improving Wicket itself. Retiring 8 and 9 ends that.&lt;/p&gt;
+
+&lt;p&gt;Wicket 8 and 9 are also the last lines on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javax.servlet&lt;/code&gt;. Jakarta EE 9 moved the Java
+enterprise APIs to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jakarta&lt;/code&gt; namespace in December 2020, almost six years ago, and
+Wicket 10 moved with it.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-move-to-wicket-10&quot;&gt;How to move to Wicket 10&lt;/h2&gt;
+
+&lt;p&gt;Wicket 10 requires Java 17 and Jakarta Servlet 5.0 or newer, and its integrations move
+along: Spring 6, Guice 7 and Commons FileUpload 2.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;From Wicket 9&lt;/strong&gt;, move to 10 directly with the
+&lt;a href=&quot;https://s.apache.org/wicket10migrate&quot;&gt;migration guide to Wicket 10&lt;/a&gt;. The
+&lt;a href=&quot;/versions/wicket-10.x/#automatic-migration&quot;&gt;OpenRewrite recipes of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wicket-migration&lt;/code&gt;&lt;/a&gt;
+do the repetitive part: the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jakarta&lt;/code&gt; imports, the Java 17 baseline and the moved Wicket
+classes.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;From Wicket 8&lt;/strong&gt;, take the Wicket 9 step first, with the
+&lt;a href=&quot;https://s.apache.org/wicket9migration&quot;&gt;migration guide to Wicket 9&lt;/a&gt; and Java 11. Each
+migration guide covers one major version, so the step to 10 follows from there.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;a href=&quot;/versions/#upgrade-paths&quot;&gt;upgrade paths&lt;/a&gt; on the releases page show
+the route, and the pages of &lt;a href=&quot;/versions/wicket-9.x/&quot;&gt;Wicket 9&lt;/a&gt; and
+&lt;a href=&quot;/versions/wicket-8.x/&quot;&gt;Wicket 8&lt;/a&gt; carry it as well.&lt;/p&gt;
+
+&lt;h2 id=&quot;need-help&quot;&gt;Need help?&lt;/h2&gt;
+
+&lt;p&gt;Ask on the &lt;a href=&quot;/community/#user&quot;&gt;users list&lt;/a&gt; when the migration raises
+questions; include your Wicket and Java versions. If you need more hands or more time,
+&lt;a href=&quot;https://cwiki.apache.org/confluence/display/WICKET/Companies+that+provide+services&quot;&gt;several companies&lt;/a&gt;
+offer training, consulting and development for Wicket applications. The Wicket project
+does not endorse or rank them.&lt;/p&gt;
+</content>
+    </entry>
 
     <entry>
         <title>A new release cadence for Apache Wicket</title>
@@ -106,9 +173,187 @@ to ease migration. API changes are documented in our migration guide.&lt;/p&gt;
     </entry>
 
     <entry>
+        <title>A security policy for Apache Wicket</title>
+        <link href="http://wicket.apache.org/news/2026/09/08/security-policy.html"/>
+        <updated>2026-09-08T00:00:00+00:00</updated>
+        <id>http://wicket.apache.org/news/2026/09/08/security-policy</id>
+        <content type="html">&lt;p&gt;Apache Wicket now has a security policy. The &lt;a href=&quot;https://github.com/apache/wicket/blob/master/SECURITY.md&quot;&gt;SECURITY.md&lt;/a&gt;
+in the Wicket repository describes how to report a vulnerability, what we do and do not
+assess, and the security model the framework works from: which inputs Wicket treats as
+trusted, and which boundaries it promises to enforce. It is on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; and on the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wicket-10.x&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wicket-9.x&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wicket-8.x&lt;/code&gt; branches, so it applies to every line we
+support.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;why-now&quot;&gt;Why now&lt;/h2&gt;
+
+&lt;p&gt;Over the past months the number of security reports has grown sharply, many of them
+produced with tooling or language models. Some point at real problems. Others point at code
+that does not exist, at versions we no longer support, or at behaviour that depends on a
+deployment trusting something it should not. Each one costs the same to triage. Writing
+down what the framework claims, and what it leaves to the application and the operator,
+lets reporters check their finding before they send it, and lets us answer consistently.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-report&quot;&gt;How to report&lt;/h2&gt;
+
+&lt;p&gt;Report a suspected vulnerability privately to &lt;strong&gt;security@apache.org&lt;/strong&gt;, the ASF security
+team, who forward it to the Wicket PMC. Never use GitHub issues, pull requests, discussions
+or the public mailing lists: they disclose the problem before a fix is available.&lt;/p&gt;
+
+&lt;p&gt;A useful report names the affected versions and module, the class and method, how an
+attacker reaches that code and what the attacker controls, the impact, and ideally a failing
+test. We assess a report against the current tip of a supported branch, so verify it there
+first and say which commit you tested. How you found it does not matter to us, by hand, with
+tooling or with a model; whether the code you describe exists does.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-out-of-scope&quot;&gt;What is out of scope&lt;/h2&gt;
+
+&lt;p&gt;Three kinds of code inside the supported lines are not handled as vulnerabilities:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Deprecated code&lt;/strong&gt; that an application has to use deliberately. The remedy is to stop
+using it, and the javadoc says what to do instead.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OriginResourceIsolationPolicy&lt;/code&gt;&lt;/strong&gt;, the fallback that compares &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Origin&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Referer&lt;/code&gt;
+headers. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FetchMetadataResourceIsolationPolicy&lt;/code&gt; is the supported cross-origin defence.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wicket-examples&lt;/code&gt;&lt;/strong&gt;, which is teaching material and deliberately not production code.
+We still want to hear about problems in it, and fix them in the open.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-wicket-trusts-and-what-that-means-for-your-application&quot;&gt;What Wicket trusts, and what that means for your application&lt;/h2&gt;
+
+&lt;p&gt;The security model is worth reading if you run Wicket in production. A few points in it ask
+something of the deployment:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;The host comes from the container.&lt;/strong&gt; Wicket builds absolute URLs and redirects from the
+scheme, host and port the servlet container reports, and does not check the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Host&lt;/code&gt;
+header itself. Configure the container or proxy to reject unexpected &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Host&lt;/code&gt; values.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;X-Forwarded-*&lt;/code&gt; headers are ignored&lt;/strong&gt; unless you enable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XForwardedRequestWrapperFactory&lt;/code&gt;,
+and should only be enabled behind a proxy that sets them.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Run production in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DEPLOYMENT&lt;/code&gt; mode&lt;/strong&gt; and do not deploy &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wicket-devutils&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The page store and the session store are trusted storage.&lt;/strong&gt; An encrypted page store
+is tamper-evident; anything else that holds serialized Wicket data must not be writable by
+untrusted parties.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Model data is escaped by default; markup files and message bundles are trusted.&lt;/strong&gt;
+Turning off &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;escapeModelStrings&lt;/code&gt; makes the content your responsibility, and so does
+placing a value in a JavaScript context.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cross-origin listener calls are only refused when you register
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ResourceIsolationRequestCycleListener&lt;/code&gt;.&lt;/strong&gt; Wicket does not do this by default.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CryptoMapper&lt;/code&gt; is not authorization.&lt;/strong&gt; Encrypted URLs make URLs harder to forge; who
+may see a page is decided by your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IAuthorizationStrategy&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tell-us-when-the-model-is-wrong&quot;&gt;Tell us when the model is wrong&lt;/h2&gt;
+
+&lt;p&gt;The security model describes what Wicket intends to enforce. If the code falls short of it,
+that is a vulnerability and we want to hear about it. If you think the model itself is
+wrong, that is just as useful to report: say so, and we discuss the model instead of a
+single code path. Findings that are real but not vulnerabilities, such as hardening
+suggestions, are welcome as public issues or pull requests.&lt;/p&gt;
+
+&lt;p&gt;— The Apache Wicket PMC&lt;/p&gt;
+</content>
+    </entry>
+
+    <entry>
+        <title>Apache Wicket 10.11.0 released</title>
+        <link href="http://wicket.apache.org/news/2026/08/30/wicket-10.11.0-released.html"/>
+        <updated>2026-08-30T10:00:00+00:00</updated>
+        <id>http://wicket.apache.org/news/2026/08/30/wicket-10.11.0-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 10.11.0!&lt;/p&gt;
+
+&lt;p&gt;Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
+
+&lt;p&gt;This release marks another minor release of Wicket 10. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present in this release compared to 10.0.0.&lt;/p&gt;
+
+&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
+
+&lt;p&gt;This release fixes the following CVE:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CVE-2026-70449 Path traversal in resource style/variation/locale&lt;/li&gt;
+  &lt;li&gt;CVE-2026-71257 Configured file upload limits are not enforced when the multipart request has already been parsed&lt;/li&gt;
+  &lt;li&gt;CVE-2026-71378 Cross-Site Request Forgery (CSRF) protection bypass in ResourceIsolationRequestCycleListener&lt;/li&gt;
+  &lt;li&gt;CVE-2026-75802 XSS in AjaxEditableLabel and its subclasses via IChoiceRenderer and defaultNullLabel&lt;/li&gt;
+  &lt;li&gt;CVE-2026-76982 XSS in Button via its model object&lt;/li&gt;
+  &lt;li&gt;CVE-2026-76983 XSS in AutoLabelTextResolver via FormComponent.setLabel&lt;/li&gt;
+  &lt;li&gt;CVE-2026-76984 XSS in MetaDataHeaderItem via addTagAttribute&lt;/li&gt;
+  &lt;li&gt;CVE-2026-76985 XSS in Palette via getAdditionalAttributes&lt;/li&gt;
+  &lt;li&gt;CVE-2026-76986 XSS in AbstractSingleSelectChoice via getNullValidDisplayValue&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
+
+&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;10.11.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or download and build the distribution yourself, or use our
+convenience binary package you can find here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-10.x.html#manually&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
+
+&lt;p&gt;If you upgrade from 10.y.z this release is a drop in replacement. If
+you come from a version prior to 10.0.0, please read our Wicket 10
+migration guide found at&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://s.apache.org/wicket10migrate&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Have fun!&lt;/p&gt;
+
+&lt;p&gt;— The Wicket team&lt;/p&gt;
+
+&lt;p&gt;========================================================================&lt;/p&gt;
+
+&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
+
+&lt;h4 id=&quot;changelog-for-10110&quot;&gt;CHANGELOG for 10.11.0:&lt;/h4&gt;
+
+&lt;h5 id=&quot;new-feature&quot;&gt;New Feature&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-7196] - Allow unescaped wicket:label tags&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-7192] - restrict SourcesPage to resources of the page’s own package&lt;/li&gt;
+  &lt;li&gt;[WICKET-7195] - Add tag type=”search” to those supported by  TextField&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;task&quot;&gt;Task&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-7193] - Deprecate and remove IAuthenticationStrategy&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+    </entry>
+
+    <entry>
         <title>Apache Wicket 9.24.0 released</title>
         <link href="http://wicket.apache.org/news/2026/08/30/wicket-9.24.0-released.html"/>
-        <updated>2026-08-30T00:00:00+00:00</updated>
+        <updated>2026-08-30T09:00:00+00:00</updated>
         <id>http://wicket.apache.org/news/2026/08/30/wicket-9.24.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 9.24.0!&lt;/p&gt;
 
@@ -189,7 +434,7 @@ migration guide found at&lt;/p&gt;
     <entry>
         <title>Apache Wicket 8.19.0 released</title>
         <link href="http://wicket.apache.org/news/2026/08/30/wicket-8.19.0-released.html"/>
-        <updated>2026-08-30T00:00:00+00:00</updated>
+        <updated>2026-08-30T08:00:00+00:00</updated>
         <id>http://wicket.apache.org/news/2026/08/30/wicket-8.19.0-released</id>
         <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 8.19.0!&lt;/p&gt;
 
@@ -303,100 +548,6 @@ N9pZFDkCLSpCU1RYKo1Zo78TO7FW/+/AtDD5GO8A6gajQx/n0ls=
 &lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
 
 &lt;h4 id=&quot;changelog-for-8190&quot;&gt;CHANGELOG for 8.19.0:&lt;/h4&gt;
-
-&lt;h5 id=&quot;task&quot;&gt;Task&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-7193] - Deprecate and remove IAuthenticationStrategy&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 10.11.0 released</title>
-        <link href="http://wicket.apache.org/news/2026/08/30/wicket-10.11.0-released.html"/>
-        <updated>2026-08-30T00:00:00+00:00</updated>
-        <id>http://wicket.apache.org/news/2026/08/30/wicket-10.11.0-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 10.11.0!&lt;/p&gt;
-
-&lt;p&gt;Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
-
-&lt;p&gt;This release marks another minor release of Wicket 10. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present in this release compared to 10.0.0.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
-
-&lt;p&gt;This release fixes the following CVE:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;CVE-2026-70449 Path traversal in resource style/variation/locale&lt;/li&gt;
-  &lt;li&gt;CVE-2026-71257 Configured file upload limits are not enforced when the multipart request has already been parsed&lt;/li&gt;
-  &lt;li&gt;CVE-2026-71378 Cross-Site Request Forgery (CSRF) protection bypass in ResourceIsolationRequestCycleListener&lt;/li&gt;
-  &lt;li&gt;CVE-2026-75802 XSS in AjaxEditableLabel and its subclasses via IChoiceRenderer and defaultNullLabel&lt;/li&gt;
-  &lt;li&gt;CVE-2026-76982 XSS in Button via its model object&lt;/li&gt;
-  &lt;li&gt;CVE-2026-76983 XSS in AutoLabelTextResolver via FormComponent.setLabel&lt;/li&gt;
-  &lt;li&gt;CVE-2026-76984 XSS in MetaDataHeaderItem via addTagAttribute&lt;/li&gt;
-  &lt;li&gt;CVE-2026-76985 XSS in Palette via getAdditionalAttributes&lt;/li&gt;
-  &lt;li&gt;CVE-2026-76986 XSS in AbstractSingleSelectChoice via getNullValidDisplayValue&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;10.11.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package you can find here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-10.x.html#manually&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
-
-&lt;p&gt;If you upgrade from 10.y.z this release is a drop in replacement. If
-you come from a version prior to 10.0.0, please read our Wicket 10
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://s.apache.org/wicket10migrate&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
-
-&lt;h4 id=&quot;changelog-for-10110&quot;&gt;CHANGELOG for 10.11.0:&lt;/h4&gt;
-
-&lt;h5 id=&quot;new-feature&quot;&gt;New Feature&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-7196] - Allow unescaped wicket:label tags&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-7192] - restrict SourcesPage to resources of the page’s own package&lt;/li&gt;
-  &lt;li&gt;[WICKET-7195] - Add tag type=”search” to those supported by  TextField&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h5 id=&quot;task&quot;&gt;Task&lt;/h5&gt;
 
@@ -727,161 +878,6 @@ migration guide found at&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;[WICKET-7174] - DefaultSecureRandomSupplier does not work for FIPS&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 10.9.0 released</title>
-        <link href="http://wicket.apache.org/news/2026/05/05/wicket-10.9.0-released.html"/>
-        <updated>2026-05-05T00:00:00+00:00</updated>
-        <id>http://wicket.apache.org/news/2026/05/05/wicket-10.9.0-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 10.9.0!&lt;/p&gt;
-
-&lt;p&gt;Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
-
-&lt;p&gt;This release marks another minor release of Wicket 10. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present in this release compared to 10.0.0.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
-
-&lt;p&gt;This release fixes the following security issue:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;CVE-2026-43646 crafted URLs can bypass PackageResourceGuard&lt;/li&gt;
-  &lt;li&gt;CVE-2026-42509 crafted strings can break out of the JavaScript sequence&lt;/li&gt;
-  &lt;li&gt;CVE-2026-40010 possible session fixation using AuthenticatedWebSession&lt;/li&gt;
-  &lt;li&gt;CVE-2026-43975 Possible malicious path traversal in FolderUploadsFileManager&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;10.9.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package you can find here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-10.x.html#manually&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
-
-&lt;p&gt;If you upgrade from 10.y.z this release is a drop in replacement. If
-you come from a version prior to 10.0.0, please read our Wicket 10
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://s.apache.org/wicket10migrate&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
-
-&lt;h4 id=&quot;changelog-for-1090&quot;&gt;CHANGELOG for 10.9.0:&lt;/h4&gt;
-
-&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-7174] - DefaultSecureRandomSupplier does not work for FIPS&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;new-feature&quot;&gt;New Feature&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-7169] - Make partHeaderSizeMax in AbstractFileUpload configurable&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-7172] - Support new CSP style, script directives&lt;/li&gt;
-  &lt;li&gt;[WICKET-7179] - add support for jQuery 4.0.0&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 10.8.0 released</title>
-        <link href="http://wicket.apache.org/news/2025/12/21/wicket-10.8.0-released.html"/>
-        <updated>2025-12-21T00:00:00+00:00</updated>
-        <id>http://wicket.apache.org/news/2025/12/21/wicket-10.8.0-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 10.8.0!&lt;/p&gt;
-
-&lt;p&gt;Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
-
-&lt;p&gt;This release marks another minor release of Wicket 10. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present in this release compared to 10.0.0.&lt;/p&gt;
-
-&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;10.8.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package you can find here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-10.x.html#manually&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
-
-&lt;p&gt;If you upgrade from 10.y.z this release is a drop in replacement. If
-you come from a version prior to 10.0.0, please read our Wicket 10
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://s.apache.org/wicket10migrate&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
-
-&lt;h4 id=&quot;changelog-for-1080&quot;&gt;CHANGELOG for 10.8.0:&lt;/h4&gt;
-
-&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[WICKET-7167] - Submited Form with wantSubmitOnParentFormSubmit false does not cascade process.&lt;/li&gt;
-  &lt;li&gt;[WICKET-7170] - SpringInjector / AnnotProxyFieldValueFactory does not consider defaultCandidate&lt;/li&gt;
 &lt;/ul&gt;
 
 </content>

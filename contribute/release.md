@@ -10,7 +10,6 @@ Learn how to build and release one of the Wicket branches.
 
 * [Releasing Apache Wicket 6.x](#release-60)
 * [Releasing Apache Wicket 1.4.x+](#release-14)
-* [Releasing Apache Wicket 1.3.x](#release-13)
 * [Staging Releases using the Apache Nexus Repository](#nexus)
 * [Announcing the release](#announcing)
 * [Additional tasks](#additional)
@@ -281,29 +280,13 @@ More information is available at: [Publishing Maven Artifacts](http://www.apache
 
 ## Announcing the release ## {#announcing}
 
-Edit the \_config.yaml file. This file contains a site wide configuration
-section specific to Wicket:
+[Update the site for a release]({{ site.baseurl }}/contribute/site-release.html) describes
+the changes to the site: the versions in `_config.yml`, the release lines in
+`_data/releases.yml`, and the announcement as a blog post.
 
-{% highlight yaml %}
-wicket:
-    version:    1.4.10
-    released:   2010-08-11
-    versions:   [1.3.7, 1.3-SNAPSHOT, 1.4.9, 1.4.10, 1.4-SNAPSHOT, 1.5-M1, 1.5-SNAPSHOT]
-{% endhighlight %}
+* Send the announcement to: users@wicket.apache.org, dev@wicket.apache.org, announce@wicket.apache.org, announce@apache.org
 
-You'll need to edit this part: modify the version, update the released date,
-and add the new version to the versions list (remove any stale releases,
-typically just leave the previous release as well).
-
-* Write an announcement in the \_posts directory
-* Restart jekyll to regenerate the pages: it will automatically generate the
-  correct links in the navigation menu, quickstart and downloads page. It will
-  update the doap.rdf file, atom.xml rss feed and index.html file so that it
-  contains your announcement.
-* Send email to: users@wicket.apache.org, dev@wicket.apache.org, announce@wicket.apache.org, announce@apache.org
-* Misc. websites like javalobby, serverside, onjava etc.
-
-## Additional tasks ## { #additional }
+## Additional tasks ## {#additional}
 
 * Commit the JavaDocs to
   [https://svn.apache.org/repos/asf/wicket/common/site/apidocs/1.4](https://svn.apache.org/repos/asf/wicket/common/site/apidocs/1.4)

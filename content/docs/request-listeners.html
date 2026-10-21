@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Handle a callback URL with IRequestListener | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Let a component or behavior answer requests to a URL of its own, read parameters from the request, and respond with the page or anything else." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/lifecycle.html">Requests and lifecycle</a></p>
+            <h1>Handle a callback URL with IRequestListener</h1>
+            <p class="page-sign-sub">Let a component or behavior answer requests to a URL of its own, read parameters from the request, and respond with the page or anything else.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#give-a-component-a-callback-url"><span class="toc-number">1</span> <span class="toc-text">Give a component a callback URL</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#give-a-behavior-a-callback-url"><span class="toc-number">2</span> <span class="toc-text">Give a behavior a callback URL</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#respond-with-something-other-than-the-page"><span class="toc-number">3</span> <span class="toc-text">Respond with something other than the page</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#things-to-know"><span class="toc-number">4</span> <span class="toc-text">Things to know</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use <code class="language-plaintext highlighter-rouge">IRequestListener</code> when a component or behavior needs a URL that calls back into it on the server, and none of the built-in links, forms or Ajax behaviors fits. <code class="language-plaintext highlighter-rouge">Link</code> itself works this way: its <code class="language-plaintext highlighter-rouge">onClick()</code> is called from the listener method <code class="language-plaintext highlighter-rouge">onRequest()</code>. For callbacks from JavaScript without a page reload, use an Ajax behavior such as <code class="language-plaintext highlighter-rouge">AbstractDefaultAjaxBehavior</code> instead; see <a href="/docs/ajax-behaviors.html">Ajax behaviors</a>.</p>
+
+<p>The interface has two methods:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">void onRequest()</code></td>
+      <td>Runs when the callback URL is requested.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">boolean rendersPage()</code></td>
+      <td>Whether Wicket renders the page after <code class="language-plaintext highlighter-rouge">onRequest()</code>. Default <code class="language-plaintext highlighter-rouge">true</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="give-a-component-a-callback-url">Give a component a callback URL</h2>
+
+<p>Implement <code class="language-plaintext highlighter-rouge">IRequestListener</code> on the component and put the URL from <code class="language-plaintext highlighter-rouge">urlForListener()</code> in its markup:</p>
+
+<p><em>LikeButton.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LikeButton</span> <span class="kd">extends</span> <span class="nc">WebComponent</span> <span class="kd">implements</span> <span class="nc">IRequestListener</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">LikeButton</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">likes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">likes</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onComponentTag</span><span class="o">(</span><span class="nc">ComponentTag</span> <span class="n">tag</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onComponentTag</span><span class="o">(</span><span class="n">tag</span><span class="o">);</span>
+        <span class="n">tag</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"href"</span><span class="o">,</span> <span class="n">urlForListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">PageParameters</span><span class="o">()));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRequest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">likes</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Integer</span><span class="o">)</span> <span class="n">getDefaultModelObject</span><span class="o">();</span>
+        <span class="n">setDefaultModelObject</span><span class="o">(</span><span class="n">likes</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><em>HomePage.html</em></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">"like"</span><span class="nt">&gt;</span>Like<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div>
+
+<p>When the user follows the link, Wicket finds the page and the component, calls <code class="language-plaintext highlighter-rouge">onRequest()</code>, and renders the page again.</p>
+
+<h2 id="give-a-behavior-a-callback-url">Give a behavior a callback URL</h2>
+
+<p>A behavior gets its URL from the component it is bound to, with <code class="language-plaintext highlighter-rouge">urlForListener(behavior, parameters)</code>. This behavior sends the selected value of a <code class="language-plaintext highlighter-rouge">&lt;select&gt;</code> to the server when it changes, by adding a request parameter to the callback URL:</p>
+
+<p><em>ChoiceCallbackBehavior.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">ChoiceCallbackBehavior</span> <span class="kd">extends</span> <span class="nc">Behavior</span> <span class="kd">implements</span> <span class="nc">IRequestListener</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">Component</span> <span class="n">component</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bind</span><span class="o">(</span><span class="nc">Component</span> <span class="n">component</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">component</span> <span class="o">=</span> <span class="n">component</span><span class="o">;</span>
+        <span class="n">component</span><span class="o">.</span><span class="na">setOutputMarkupId</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">renderHead</span><span class="o">(</span><span class="nc">Component</span> <span class="n">component</span><span class="o">,</span> <span class="nc">IHeaderResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="na">urlForListener</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="k">new</span> <span class="nc">PageParameters</span><span class="o">()).</span><span class="na">toString</span><span class="o">();</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="nc">OnDomReadyHeaderItem</span><span class="o">.</span><span class="na">forScript</span><span class="o">(</span>
+            <span class="s">"document.getElementById('"</span> <span class="o">+</span> <span class="n">component</span><span class="o">.</span><span class="na">getMarkupId</span><span class="o">()</span> <span class="o">+</span> <span class="s">"').addEventListener('change', e =&gt; {"</span>
+            <span class="o">+</span> <span class="s">" const url = new URL('"</span> <span class="o">+</span> <span class="n">url</span> <span class="o">+</span> <span class="s">"', location.href);"</span>
+            <span class="o">+</span> <span class="s">" url.searchParams.set('choice', e.target.value);"</span>
+            <span class="o">+</span> <span class="s">" location.href = url; });"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRequest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">StringValue</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="na">getRequest</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">getRequestParameters</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">getParameterValue</span><span class="o">(</span><span class="s">"choice"</span><span class="o">);</span>
+        <span class="n">onChoice</span><span class="o">(</span><span class="n">choice</span><span class="o">.</span><span class="na">toOptionalString</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">onChoice</span><span class="o">(</span><span class="nc">String</span> <span class="n">choice</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Read request parameters with <code class="language-plaintext highlighter-rouge">getRequestParameters()</code>, which covers both the query string and posted form data. Values arrive as <code class="language-plaintext highlighter-rouge">StringValue</code>; convert them yourself and never trust them, since anyone can send any value to the URL.</p>
+
+<h2 id="respond-with-something-other-than-the-page">Respond with something other than the page</h2>
+
+<p>Return <code class="language-plaintext highlighter-rouge">false</code> from <code class="language-plaintext highlighter-rouge">rendersPage()</code> and schedule your own request handler in <code class="language-plaintext highlighter-rouge">onRequest()</code>. This listener answers with JSON:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">rendersPage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRequest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">json</span> <span class="o">=</span> <span class="s">"{\"likes\": "</span> <span class="o">+</span> <span class="n">getDefaultModelObject</span><span class="o">()</span> <span class="o">+</span> <span class="s">"}"</span><span class="o">;</span>
+    <span class="nc">RequestCycle</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">scheduleRequestHandlerAfterCurrent</span><span class="o">(</span>
+        <span class="k">new</span> <span class="nf">TextRequestHandler</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">,</span> <span class="n">json</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The handlers you can schedule are listed in <a href="/docs/request-processing.html#request-handlers">Request processing</a>.</p>
+
+<h2 id="things-to-know">Things to know</h2>
+
+<ul>
+  <li>A behavior that implements <code class="language-plaintext highlighter-rouge">IRequestListener</code> makes its page stateful, because the URL points to one component instance on one page instance. A component that implements it decides with <code class="language-plaintext highlighter-rouge">getStatelessHint()</code>; <code class="language-plaintext highlighter-rouge">Link</code> returns <code class="language-plaintext highlighter-rouge">false</code>. On a stateless page, Wicket creates the page again for the callback. See <a href="/docs/keep-stateless.html">Keep a page stateless</a>.</li>
+  <li>Wicket calls the listener only when the component is visible and enabled, and the behavior enabled. Otherwise it throws a <code class="language-plaintext highlighter-rouge">ListenerInvocationNotAllowedException</code> and shows the access denied page. Override <code class="language-plaintext highlighter-rouge">canCallListener()</code> to change this.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">onRequest()</code> runs before the rendering hooks of the request. Change state there and let <code class="language-plaintext highlighter-rouge">onConfigure()</code> act on it; see <a href="/docs/component-lifecycle.html#when-a-request-invokes-a-listener">Component lifecycle</a>.</li>
+</ul>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/lifecycle.html">Requests and lifecycle</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/handle-exceptions.html">Handle exceptions and show error pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Replace Wicket's error pages, choose what users see after an unexpected exception, and map your own exceptions and HTTP errors to pages.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Handle a callback URL with IRequestListener</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component or behavior answer requests to a URL of its own, read parameters from the request, and respond with the page or anything else.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/send-events.html">Send events between components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component notify others on the page without holding references to them, with send(), onEvent() and a payload class.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/initializers.html">Configure a module with an initializer</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a jar configure every Wicket application it is added to, with an IInitializer registered through the Java ServiceLoader.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/component-lifecycle.html">Component lifecycle</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The stages a component goes through and every hook method Wicket calls on it, in order, with who calls it and when.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-processing.html">Request processing</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The objects that serve a request, the steps of RequestCycle in order, the request cycle listener hooks, and the request handlers Wicket ships.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-cycle.html">What happens during a request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket turns an HTTP request into a request handler, runs it, and cleans up afterwards, and why it is built that way.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/request-listeners.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

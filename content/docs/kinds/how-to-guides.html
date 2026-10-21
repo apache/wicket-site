@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>How-to guides | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Directions for a specific goal." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a></p>
+            <h1>How-to guides</h1>
+            <p class="page-sign-sub">Directions for a specific goal.</p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        <div class="reading-rail">
+            <nav aria-label="On this page">
+                <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+                
+                    <li class="toc--level-1"><a href="#start"><span class="toc-text">Getting started</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#components"><span class="toc-text">Components and markup</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#models"><span class="toc-text">Models</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#forms"><span class="toc-text">Forms</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#repeaters"><span class="toc-text">Lists and tables</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#ajax"><span class="toc-text">Ajax and JavaScript</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#websockets"><span class="toc-text">WebSockets</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#links"><span class="toc-text">Links and URLs</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#resources"><span class="toc-text">Resources</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#state"><span class="toc-text">Pages and state</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#lifecycle"><span class="toc-text">Requests and lifecycle</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#i18n"><span class="toc-text">Localization</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#security"><span class="toc-text">Security</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#testing"><span class="toc-text">Testing</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#integration"><span class="toc-text">Integration</span></a></li>
+                
+                </ul>
+</div>
+            </nav>
+        </div>
+        <div class="reading-main">
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="start"><a href="/docs/topics/start.html">Getting started</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/create-project.html">Create a project from the quickstart archetype</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a ready-to-run Wicket project with Maven, know what is in it, and open it in your IDE.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/deployment-mode.html">Switch between development and deployment mode</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run Wicket in deployment mode on production servers, with a system property, a web.xml parameter or code, and check which mode is active.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ide-plugins.html">Add Wicket support to your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install WicketForge in IntelliJ IDEA or QWickie in Eclipse to jump between Java and markup and complete wicket:id values.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="components"><a href="/docs/topics/components.html">Components and markup</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/show-hide-components.html">Show, hide or disable a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a component or make it read-only depending on the state of your application, and decide that state once per request in onConfigure.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/modify-attributes.html">Change a tag's attributes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set, append to or remove an attribute of a component's tag from Java, with a fixed value or one that follows a model.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/markup-ids.html">Give a component a markup id</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render the HTML id attribute of a component so JavaScript, CSS, labels and Ajax can find it, and choose or generate the id yourself.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/group-components.html">Group components with WebMarkupContainer</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Attach a plain HTML element to a container component so you can hide, disable, style or repaint a group of components as one.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/build-panel.html">Build a reusable panel</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Package a piece of user interface as a Panel, a Java class with its own HTML file, and use it on any page as often as you need.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-fragments.html">Swap markup with fragments</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep small alternative pieces of markup inside a page or panel and choose in Java which one to show, without a panel class for each.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-borders.html">Wrap content with a Border</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write the markup that goes around content once, as a Border, and wrap any part of a page in it while the page keeps its own components.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-enclosures.html">Hide surrounding markup with wicket:enclosure</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a caption, label or table row together with the component it describes, without a container component in Java.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/render-body-only.html">Render a component without its tag</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave out a component's own HTML tag and render only its content, and know what stops working when you do.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stub-markup.html">Keep preview markup out of the output</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave sample content in your HTML files so they look complete in a browser or design tool, and make sure Wicket never sends it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/add-behaviors.html">Add behavior to a component with a Behavior</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write a Behavior that changes a component's tag, adds markup around it or contributes CSS and JavaScript, and reuse it on any kind of component.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/queue-components.html">Add components without repeating the markup hierarchy</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Queue components on a page or panel and let Wicket put each one in the right container by following the nesting in the markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/generate-markup.html">Generate markup from code</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a panel or page markup built in Java instead of an HTML file, and control whether Wicket caches it.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="models"><a href="/docs/topics/models.html">Models</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/lambda-models.html">Read and write data with lambda models</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use lambdas, method references and the default methods of IModel to show computed values and bind components to properties without strings.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/property-models.html">Bind components to a JavaBean</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Read and write bean properties with PropertyModel, and let form fields find their property by id with CompoundPropertyModel.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/chain-models.html">Chain models</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Wrap one model in another so that a form, a panel or a label always works on the object the inner model currently holds.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/detachable-models.html">Load data once per request with detachable models</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep only an id in the page and load the entity fresh in every request with LoadableDetachableModel.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/multiple-models.html">Use more than one model in a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Detach the extra models a component, behavior or custom model keeps in its fields, so their data is not stored with the page.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="forms"><a href="/docs/topics/forms.html">Forms</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/validate-input.html">Validate input and show errors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make fields required, check their values with validators, show the error messages and change their text.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/convert-input.html">Convert input to your types</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Tell a field which type its input becomes, write a converter for your own type and register it for one field or the whole application.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bean-validation.html">Validate with Bean Validation</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Check form input against the Jakarta Bean Validation annotations on your domain classes with the wicket-bean-validation module.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/dropdown-choice.html">Let the user pick from a list</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show a drop-down list with DropDownChoice, render objects and enums as options, and control the empty "Choose One" option.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/checkboxes-radios.html">Use checkboxes and radio buttons</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Bind a checkbox to a boolean, let the user tick several options or pick one with radio buttons, and add a "select all" checkbox.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/select-multiple.html">Select several values</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let the user select several values from a list with ListMultipleChoice, or move them between two lists with Palette.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/submit-buttons.html">Use more than one submit button</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a form several buttons that each run their own code, pick the button for the Enter key, and add a Cancel button that skips validation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nest-forms.html">Nest forms</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a form inside another form, submit and validate the inner form on its own, and decide which forms take part in a submit.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/upload-files.html">Upload files</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let users upload one or more files with FileUploadField, limit their size and number, and show upload progress.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-component-panel.html">Combine fields into one form component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a FormComponentPanel that shows several inputs but converts, validates and stores them as one value.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-forms.html">Build a stateless form</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use StatelessForm so a page with a form stays stateless, never expires and does not create a session until it must.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="repeaters"><a href="/docs/topics/repeaters.html">Lists and tables</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/repeat-markup.html">Repeat markup with RepeatingView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render a tag once for every child you add in code, for menus, button bars and other short lists you build in the constructor.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/list-items.html">Show a list with ListView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render markup for every element of a java.util.List, keep form input in the rows, and avoid the pitfalls of index-based items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/refreshing-view.html">Control how items are reused with RefreshingView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build repeater items from models you supply, and keep an item's components across renders as long as its model stays in the list.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/paginate-data.html">Page through data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Load one page of rows at a time with an IDataProvider, show them in a DataView or DataTable, and let users move between pages.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="ajax"><a href="/docs/topics/ajax.html">Ajax and JavaScript</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/update-components.html">Update components with Ajax</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Re-render components, show hidden ones, refresh lists and run JavaScript in response to an Ajax request.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/activity-indicator.html">Show that a request is running</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show a busy indicator while an Ajax request runs, with the indicating components, your own component or your own spinner element.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-request-attributes.html">Change how an Ajax request is sent</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Override updateAjaxAttributes to throttle requests, send them as POST, pass extra parameters, drop outdated ones or stop the browser's default action.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-call-listeners.html">React to Ajax requests in JavaScript</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run your own JavaScript before, during and after Ajax requests, for one component with a call listener or for the whole page with global events.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-ajax.html">Use Ajax on stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make Ajax components and behaviors stateless with getStatelessHint, so a page such as a login page keeps working without a stored page instance.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-lambdas.html">Write Ajax handlers as lambdas</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Create Ajax behaviors from lambdas with their static factory methods instead of anonymous subclasses, and do the same for Ajax links and buttons.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/integrate-javascript.html">Wrap a JavaScript widget in a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Package a JavaScript library with a component, initialize it with the component's markup id, keep it working after Ajax updates and call back to the server.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="websockets"><a href="/docs/topics/websockets.html">WebSockets</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-websockets.html">Push updates over a WebSocket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set up wicket-native-websocket, handle messages from the browser and push component updates to a page from a background thread.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/test-websockets.html">Test WebSocket behaviors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Send messages to a page's WebSocket behavior and check what it pushes back with WebSocketTester, without a servlet container.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="links"><a href="/docs/topics/links.html">Links and URLs</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-parameters.html">Pass parameters to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put values in the URL of a page with PageParameters, read them in the page constructor and convert them to the types you need.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bookmarkable-links.html">Link to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Navigate to another page with a Link that runs code on the server first, or with a BookmarkablePageLink that points straight at the page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/wicket-link.html">Turn plain links into page links with wicket:link</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write ordinary anchors to page files in the markup and let wicket:link turn them into links to bookmarkable pages, without Java code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/external-links.html">Link to another site</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render a link to a URL outside your application with ExternalLink, build the URL from a model, and redirect to another site from code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-links.html">Use links on stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Handle clicks on a stateless page with StatelessLink and keep the state the click needs in page parameters, because every click builds a new page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/mount-pages.html">Give pages readable URLs</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Mount pages on paths of your choice, put page parameters in path segments with placeholders, and mount a whole package at once.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="resources"><a href="/docs/topics/resources.html">Resources</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/package-resources.html">Serve files from your Java packages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep images, media and other files next to the component that uses them and serve them with PackageResourceReference, from Java or from markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/add-css-javascript.html">Add CSS and JavaScript to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component or behavior add its stylesheets, script files and start-up code to the page header with renderHead and header items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/context-resources.html">Use files from the web application root</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add stylesheets, scripts and images that live in the web application folder, such as src/main/webapp, to your pages with ContextRelativeResourceReference and ContextImage.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-dependencies.html">Declare dependencies between resources</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make a script or stylesheet pull in the libraries it needs by overriding getDependencies, so Wicket always renders them first and only once.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-bundles.html">Combine resources into one bundle</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve several package stylesheets or scripts as one file with ResourceBundles, and replace a resource throughout the application with addResourceReplacement.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/javascript-in-body.html">Put JavaScript at the end of the body</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render all script header items in a container just before the closing body tag with JavaScriptFilteredIntoFooterHeaderResponse and HeaderResponseContainer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/header-order.html">Control the order of header items</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a header item first with PriorityHeaderItem, let the page's own items come before those of its components, and fix where Wicket inserts items with wicket:header-items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/custom-resources.html">Generate a resource in code</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build files on request, such as a CSV export, a PDF or an image, by extending AbstractResource or writing a lambda, and offer them for download with ResourceLink.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/mount-resources.html">Give a resource a URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Mount a resource reference on a path of your choice with mountResource, read path and query parameters in the resource, and link to the mounted URL.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/shared-resources.html">Share a resource across the application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Register a resource once under an application-wide key with getSharedResources and refer to it from any component with SharedResourceReference.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-loading.html">Customize where resources are loaded from</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make Wicket find markup, properties and package files in a folder of the web application or the file system by adding resource finders.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/compress-resources.html">Minify and compress CSS and JavaScript</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve pre-minified .min files, strip JavaScript in deployment mode, plug in your own CSS or JavaScript compressor, and rewrite URLs inside stylesheets with CssUrlReplacer.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nio-resources.html">Serve files with NIO</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve files from the file system or from inside a ZIP archive through java.nio.file.Path with FileSystemResourceReference and FileSystemResource, including byte ranges for media.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/model-resources.html">Show images from an external URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render img and source tags whose URL comes from a model with ExternalImage and ExternalSource, for images on another server or a CDN.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="state"><a href="/docs/topics/state.html">Pages and state</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/keep-stateless.html">Keep a page stateless</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a page that Wicket does not store in the session, find the component that makes it stateful, and guard it with a test.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/configure-page-store.html">Configure the page store</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Change how much page history Wicket keeps per session and where, encrypt stored pages, or replace the disk store with another store.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-session.html">Keep data in the session</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Store per-user data in a typed Wicket session, in session attributes or as metadata, control when the session is created, and end it on logout.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="lifecycle"><a href="/docs/topics/lifecycle.html">Requests and lifecycle</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/handle-exceptions.html">Handle exceptions and show error pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Replace Wicket's error pages, choose what users see after an unexpected exception, and map your own exceptions and HTTP errors to pages.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-listeners.html">Handle a callback URL with IRequestListener</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component or behavior answer requests to a URL of its own, read parameters from the request, and respond with the page or anything else.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/send-events.html">Send events between components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component notify others on the page without holding references to them, with send(), onEvent() and a payload class.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/initializers.html">Configure a module with an initializer</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a jar configure every Wicket application it is added to, with an IInitializer registered through the Java ServiceLoader.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="i18n"><a href="/docs/topics/i18n.html">Localization</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/localize-components.html">Translate component texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Move the texts of a page or panel into properties files, show them with wicket:message or from Java, and let the user switch the language.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-models.html">Put model values into translated texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show translated texts through ResourceModel and StringResourceModel, fill in property values and MessageFormat parameters, and choose the key from the data.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/localize-choices.html">Translate the options of a choice</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show translated options in a DropDownChoice, RadioChoice or other choice component, translate enum values, and change the "Choose One" text.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/custom-string-loaders.html">Load texts from your own source</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a string resource loader that reads texts from a database or an existing Java ResourceBundle, and change the chain of loaders Wicket searches.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="security"><a href="/docs/topics/security.html">Security</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/login.html">Log users in</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a sign-in page with wicket-auth-roles, send anonymous users there when a page needs a signed-in user, and sign them out again.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/roles.html">Restrict access by role</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Allow pages, components, actions and resources only for users with a given role, with annotations on classes and packages or in code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/https.html">Require HTTPS</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve pages over HTTPS with HttpsMapper and @RequireHttps, and set up the container so redirects and absolute URLs use the right host.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/csrf.html">Protect against cross-site request forgery</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Refuse link clicks, form submits and Ajax calls that another site makes on behalf of your users, with ResourceIsolationRequestCycleListener.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/csp.html">Configure the Content Security Policy</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Work with the strict Content Security Policy Wicket sends by default, allow extra sources, report violations, and move inline scripts and styles out of the markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/cross-origin-isolation.html">Isolate the page with COOP and COEP</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set the Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy headers, which Wicket sends by default, to isolate your pages from other origins.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/package-resource-guard.html">Control which package resources are served</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Allow or block files on the classpath that browsers may request as package resources, with patterns on SecurePackageResourceGuard.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="testing"><a href="/docs/topics/testing.html">Testing</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/test-pages.html">Test pages and components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render pages and single components in a unit test, click links, fire Ajax events and check what they render, with WicketTester and JUnit.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/test-forms.html">Test forms</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Fill in fields, pick options, upload files and submit a form in a unit test with FormTester, then check the feedback messages and the model.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/test-markup.html">Test markup</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Find tags in the rendered output with TagTester and check their attributes and content, render a component to a string, or compare a page with an expected file.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/test-with-spring.html">Test with Spring</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Test pages that use @SpringBean with WicketTester, either with mock beans in an ApplicationContextMock or against a real Spring test context.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="integration"><a href="/docs/topics/integration.html">Integration</a></h2>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/spring.html">Inject Spring beans</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Inject beans from a Spring application context into pages, components, behaviors and other objects with @SpringBean.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/cdi.html">Inject CDI beans</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Configure wicket-cdi so pages, components, behaviors and the session get CDI beans with @Inject, and choose beans that survive serialization.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ejb.html">Inject EJBs</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Inject session beans, JNDI resources and persistence units into Wicket components with @EJB, @Resource and @PersistenceUnit, through WicketStuff's javaee-inject module.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/jsr330.html">Inject with JSR-330 annotations</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use the standard @Inject and @Named annotations instead of @SpringBean, with the Spring, Guice and CDI integrations.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/karaf.html">Run on Apache Karaf</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install Wicket in Apache Karaf or another OSGi container with the Karaf feature that every Wicket release publishes.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/jmx.html">Inspect and change settings with JMX</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add wicket-jmx to see a running application's settings and session counts in JConsole, clear the markup cache, and change some settings without a restart.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/metrics.html">Measure with Wicket metrics</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Count requests and time component creation, rendering and model loading with the experimental wicket-metrics module, AspectJ and Dropwizard Metrics.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+            <nav class="guide-topics-other" aria-label="Other kinds">
+                <h2>Other kinds</h2>
+                <ul>
+                
+                    <li><a href="/docs/kinds/tutorials.html">Tutorials</a></li>
+                
+                    <li><a href="/docs/kinds/reference.html">Reference</a></li>
+                
+                    <li><a href="/docs/kinds/explanation.html">Explanation</a></li>
+                
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

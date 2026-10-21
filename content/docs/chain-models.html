@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Chain models | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Wrap one model in another so that a form, a panel or a label always works on the object the inner model currently holds." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/models.html">Models</a></p>
+            <h1>Chain models</h1>
+            <p class="page-sign-sub">Wrap one model in another so that a form, a panel or a label always works on the object the inner model currently holds.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#edit-the-item-selected-in-a-drop-down"><span class="toc-number">1</span> <span class="toc-text">Edit the item selected in a drop-down</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#chain-a-single-property"><span class="toc-number">2</span> <span class="toc-text">Chain a single property</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#write-your-own-chaining-model"><span class="toc-number">3</span> <span class="toc-text">Write your own chaining model</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Chain models when one component must work on whatever object another model holds at the moment, such as a form that edits the item selected in a drop-down. The outer model asks the inner model for its object every time, so it follows changes without being replaced.</p>
+
+<p>Most models in Wicket accept a model where they accept an object: <code class="language-plaintext highlighter-rouge">CompoundPropertyModel</code>, <code class="language-plaintext highlighter-rouge">PropertyModel</code> and <code class="language-plaintext highlighter-rouge">LambdaModel.of(target, getter, setter)</code>. The models made with <code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">filter</code> and the other default methods of <code class="language-plaintext highlighter-rouge">IModel</code> are chained to the model you call them on. Detaching the outer model detaches the inner one.</p>
+
+<h2 id="edit-the-item-selected-in-a-drop-down">Edit the item selected in a drop-down</h2>
+
+<p>This page shows a list of people in a drop-down and a form to edit the selected person. The drop-down and the form share one model, <code class="language-plaintext highlighter-rouge">selected</code>. The form wraps it in a <code class="language-plaintext highlighter-rouge">CompoundPropertyModel</code>, so its fields edit whichever person <code class="language-plaintext highlighter-rouge">selected</code> holds.</p>
+
+<p><em>PersonListDetails.html</em></p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;select</span> <span class="na">wicket:id=</span><span class="s">"persons"</span><span class="nt">&gt;&lt;/select&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">"form"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label&gt;</span>Name <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">wicket:id=</span><span class="s">"name"</span><span class="nt">&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;label&gt;</span>Surname <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">wicket:id=</span><span class="s">"surname"</span><span class="nt">&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;label&gt;</span>Email <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">wicket:id=</span><span class="s">"email"</span><span class="nt">&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Save<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<p><em>PersonListDetails.java</em></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PersonListDetails</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">PersonListDetails</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">selected</span> <span class="o">=</span> <span class="nc">Model</span><span class="o">.</span><span class="na">of</span><span class="o">();</span>
+
+        <span class="nc">DropDownChoice</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">persons</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DropDownChoice</span><span class="o">&lt;&gt;(</span><span class="s">"persons"</span><span class="o">,</span> <span class="n">selected</span><span class="o">,</span>
+                <span class="n">loadPersons</span><span class="o">(),</span> <span class="k">new</span> <span class="nc">LambdaChoiceRenderer</span><span class="o">&lt;&gt;(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getFullName</span><span class="o">));</span>
+        <span class="n">persons</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">FormComponentUpdatingBehavior</span><span class="o">());</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">persons</span><span class="o">);</span>
+
+        <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Form</span><span class="o">&lt;&gt;(</span><span class="s">"form"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">CompoundPropertyModel</span><span class="o">&lt;&gt;(</span><span class="n">selected</span><span class="o">))</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onConfigure</span><span class="o">()</span> <span class="o">{</span>
+                <span class="kd">super</span><span class="o">.</span><span class="na">onConfigure</span><span class="o">();</span>
+                <span class="n">setVisible</span><span class="o">(</span><span class="n">getModelObject</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">&lt;&gt;(</span><span class="s">"name"</span><span class="o">));</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">&lt;&gt;(</span><span class="s">"surname"</span><span class="o">));</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">EmailTextField</span><span class="o">(</span><span class="s">"email"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">loadPersons()</code> returns the list of people to choose from. What happens:</p>
+
+<ol>
+  <li>The user picks a person. <code class="language-plaintext highlighter-rouge">FormComponentUpdatingBehavior</code> submits the drop-down on its <code class="language-plaintext highlighter-rouge">change</code> event, without needing a form around it, and the drop-down writes the choice into <code class="language-plaintext highlighter-rouge">selected</code>.</li>
+  <li>The page renders again. The form’s <code class="language-plaintext highlighter-rouge">CompoundPropertyModel</code> calls <code class="language-plaintext highlighter-rouge">selected.getObject()</code> and gets the new person. Each field reads its property from that person.</li>
+  <li>The user edits the fields and saves. The fields write into the person that <code class="language-plaintext highlighter-rouge">selected</code> holds.</li>
+</ol>
+
+<p>The form never gets a new model. Only the object at the end of the chain changes.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Person</code> is <code class="language-plaintext highlighter-rouge">Serializable</code> here, so <code class="language-plaintext highlighter-rouge">Model</code> can hold it. When the people come from a database, hold the selection in a <a href="/docs/detachable-models.html">detachable model</a> that keeps the id. To update only the form and not the whole page, use an <code class="language-plaintext highlighter-rouge">AjaxFormComponentUpdatingBehavior</code> and add the form to the <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code>, as in <a href="/docs/update-components.html">Update components with Ajax</a>.</p>
+
+<h2 id="chain-a-single-property">Chain a single property</h2>
+
+<p>For one value instead of a whole form, chain with <code class="language-plaintext highlighter-rouge">LambdaModel.of</code> or <code class="language-plaintext highlighter-rouge">map</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">email</span> <span class="o">=</span> <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">selected</span><span class="o">,</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">getEmail</span><span class="o">,</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">setEmail</span><span class="o">);</span>
+<span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">initials</span> <span class="o">=</span> <span class="n">selected</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getInitials</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Both return <code class="language-plaintext highlighter-rouge">null</code> while <code class="language-plaintext highlighter-rouge">selected</code> is empty, and both detach <code class="language-plaintext highlighter-rouge">selected</code> when they are detached.</p>
+
+<h2 id="write-your-own-chaining-model">Write your own chaining model</h2>
+
+<p>Extend <code class="language-plaintext highlighter-rouge">ChainingModel</code> for a custom model that may receive either an object or a model. When it was given a model, <code class="language-plaintext highlighter-rouge">getObject()</code> and <code class="language-plaintext highlighter-rouge">setObject()</code> go to that model; otherwise they read and replace the object itself. Its <code class="language-plaintext highlighter-rouge">detach()</code> detaches the inner model. <code class="language-plaintext highlighter-rouge">getChainedModel()</code> returns the inner model, or <code class="language-plaintext highlighter-rouge">null</code> when it was given a plain object.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UpperCaseModel</span> <span class="kd">extends</span> <span class="nc">ChainingModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">UpperCaseModel</span><span class="o">(</span><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">source</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">source</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getObject</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">value</span> <span class="o">=</span> <span class="kd">super</span><span class="o">.</span><span class="na">getObject</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">value</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">(</span><span class="nc">Locale</span><span class="o">.</span><span class="na">ROOT</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>For a read-only transformation like this one, <code class="language-plaintext highlighter-rouge">source.map(s -&gt; s.toUpperCase(Locale.ROOT))</code> is shorter. A subclass of <code class="language-plaintext highlighter-rouge">ChainingModel</code> pays off when it also writes, or when it is reused in many places.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/models.html">Models</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/lambda-models.html">Read and write data with lambda models</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use lambdas, method references and the default methods of IModel to show computed values and bind components to properties without strings.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/property-models.html">Bind components to a JavaBean</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Read and write bean properties with PropertyModel, and let form fields find their property by id with CompoundPropertyModel.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Chain models</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Wrap one model in another so that a form, a panel or a label always works on the object the inner model currently holds.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/detachable-models.html">Load data once per request with detachable models</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep only an id in the page and load the entity fresh in every request with LoadableDetachableModel.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/multiple-models.html">Use more than one model in a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Detach the extra models a component, behavior or custom model keeps in its fields, so their data is not stored with the page.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/model-types.html">Model classes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every model class and model interface in wicket-core, the default methods of IModel, the factory methods and the component methods that work with models.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-models.html">Models and component data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why a component reads its data through a model, what happens to that data between requests, and why wrapping an entity in Model goes wrong.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/chain-models.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+{% comment %}
+The guide search: a combobox over /docs/search.json, run by javascript/guide.js.
+Without JavaScript the form opens the A-Z index. Pass size="large" for the guide's front page.
+{% endcomment %}
+<form class="guide-search{% if include.size == 'large' %} guide-search--large{% endif %}" role="search" action="{{ site.baseurl }}/docs/a-z.html" data-index="{{ site.baseurl }}/docs/search.json" data-script="{{ site.baseurl }}/javascript/minisearch-7.2.0.js" data-oldest="{{ site.data.guide_oldest }}" data-base="{{ site.baseurl }}" data-guides="7,8,9,10" data-lines="{% for p in site.pages %}{% if p.layout == 'hub' and p.series %}{{ p.series }},{% endif %}{% endfor %}">
+    <label class="guide-search-label" for="guide-q{{ include.id }}">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q{{ include.id }}" name="q" type="search" autocomplete="off" spellcheck="false"
+               placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    {% comment %} With one line covered there is nothing to choose; the select stays for guide.js, which reads it. {% endcomment %}
+    <p class="guide-search-hint"{% if site.data.guide_lines.size < 2 and site.data.guide_upcoming == nil %} hidden{% endif %}>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            {% for line in site.data.guide_lines %}<option value="{{ line }}">Wicket {{ line }}</option>{% endfor %}
+            {% if site.data.guide_upcoming %}<option value="{{ site.data.guide_upcoming.series }}">Wicket {{ site.data.guide_upcoming.series }} (upcoming)</option>{% endif %}
+        </select></label>
+    </p>
+</form>

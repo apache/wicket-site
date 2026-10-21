@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Translate component texts | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Move the texts of a page or panel into properties files, show them with wicket:message or from Java, and let the user switch the language." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/i18n.html">Localization</a></p>
+            <h1>Translate component texts</h1>
+            <p class="page-sign-sub">Move the texts of a page or panel into properties files, show them with wicket:message or from Java, and let the user switch the language.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#create-a-properties-file-per-language"><span class="toc-number">1</span> <span class="toc-text">Create a properties file per language</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#save-files-with-non-latin-characters-as-utf-8"><span class="toc-number">2</span> <span class="toc-text">Save files with non-Latin characters as UTF-8</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#show-a-text-in-the-markup"><span class="toc-number">3</span> <span class="toc-text">Show a text in the markup</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#put-components-inside-a-translated-sentence"><span class="toc-number">4</span> <span class="toc-text">Put components inside a translated sentence</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#show-a-text-from-java"><span class="toc-number">5</span> <span class="toc-text">Show a text from Java</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#use-a-different-markup-file-per-language"><span class="toc-number">6</span> <span class="toc-text">Use a different markup file per language</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#let-the-user-switch-the-language"><span class="toc-number">7</span> <span class="toc-text">Let the user switch the language</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>To translate a page or panel, put its texts in properties files next to its class, one file per language, and refer to them by key from the markup or the Java code. How Wicket finds the right file is explained in <a href="/docs/about-localization.html">How Wicket localizes</a>.</p>
+
+<h2 id="create-a-properties-file-per-language">Create a properties file per language</h2>
+
+<p>Next to <code class="language-plaintext highlighter-rouge">HomePage.java</code> and <code class="language-plaintext highlighter-rouge">HomePage.html</code>, add a file with the default texts and one file per translation. The language code, and optionally the country, goes between the class name and the extension:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/main/java/com/example/
+├── HomePage.java
+├── HomePage.html
+├── HomePage.properties             default texts
+├── HomePage_de.utf8.properties     German
+└── HomePage_fr_CA.utf8.properties  French for Canada
+</code></pre></div></div>
+
+<p><em>HomePage.properties</em></p>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">greeting</span><span class="p">=</span><span class="s">Welcome to the shop!</span>
+<span class="py">search.placeholder</span><span class="p">=</span><span class="s">Search products</span>
+<span class="py">search.title</span><span class="p">=</span><span class="s">Type a product name and press Enter</span>
+</code></pre></div></div>
+
+<p><em>HomePage_de.utf8.properties</em></p>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">greeting</span><span class="p">=</span><span class="s">Willkommen im Shop!</span>
+<span class="py">search.placeholder</span><span class="p">=</span><span class="s">Produkte suchen</span>
+<span class="py">search.title</span><span class="p">=</span><span class="s">Produktnamen eingeben und Enter drücken</span>
+</code></pre></div></div>
+
+<p>A key missing in <code class="language-plaintext highlighter-rouge">HomePage_de.utf8.properties</code> falls back to <code class="language-plaintext highlighter-rouge">HomePage.properties</code>. Texts used on many pages go in the bundle of a base page, a package (<code class="language-plaintext highlighter-rouge">wicket-package.properties</code>) or the application class (<code class="language-plaintext highlighter-rouge">WicketApplication.properties</code>).</p>
+
+<h2 id="save-files-with-non-latin-characters-as-utf-8">Save files with non-Latin characters as UTF-8</h2>
+
+<p>Wicket reads <code class="language-plaintext highlighter-rouge">.properties</code> files as ISO 8859-1, like <code class="language-plaintext highlighter-rouge">java.util.Properties</code>. When your editor saves UTF-8, as most do, characters such as <code class="language-plaintext highlighter-rouge">ü</code> come out garbled, and Chinese or Cyrillic text cannot be written in that encoding at all. In a <code class="language-plaintext highlighter-rouge">.properties</code> file you have to write them as Unicode escapes, such as <code class="language-plaintext highlighter-rouge">ü</code>.</p>
+
+<p>Name the file <code class="language-plaintext highlighter-rouge">.utf8.properties</code> instead, and Wicket reads it as UTF-8. This is the simplest choice for every language, German included:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HomePage_zh.utf8.properties
+</code></pre></div></div>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">greeting</span><span class="p">=</span><span class="s">欢迎光临本网站！</span>
+</code></pre></div></div>
+
+<p>Wicket also reads XML properties files, which declare their own encoding, with the extension <code class="language-plaintext highlighter-rouge">.properties.xml</code>:</p>
+
+<p><em>HomePage_ja.properties.xml</em></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;</span>
+<span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">"greeting"</span><span class="nt">&gt;</span>ショップへようこそ！<span class="nt">&lt;/entry&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+</code></pre></div></div>
+
+<p>For each file name, Wicket uses the first of <code class="language-plaintext highlighter-rouge">.properties</code>, <code class="language-plaintext highlighter-rouge">.utf8.properties</code> and <code class="language-plaintext highlighter-rouge">.properties.xml</code> that exists. Keep one format per file name.</p>
+
+<h2 id="show-a-text-in-the-markup">Show a text in the markup</h2>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;wicket:message&gt;</code> replaces itself with the text for its key. The content between the tags is only for previewing the markup:</p>
+
+<p><em>HomePage.html</em></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;&lt;wicket:message</span> <span class="na">key=</span><span class="s">"greeting"</span><span class="nt">&gt;</span>Welcome!<span class="nt">&lt;/wicket:message&gt;&lt;/h1&gt;</span>
+</code></pre></div></div>
+
+<p>To translate attributes, add a <code class="language-plaintext highlighter-rouge">wicket:message</code> attribute with <code class="language-plaintext highlighter-rouge">attribute:key</code> pairs, separated by commas:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"search"</span> <span class="na">wicket:message=</span><span class="s">"placeholder:search.placeholder,title:search.title"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>The text is not escaped by default. Add <code class="language-plaintext highlighter-rouge">escape="true"</code> to the tag when the text may contain <code class="language-plaintext highlighter-rouge">&lt;</code> or <code class="language-plaintext highlighter-rouge">&amp;</code>.</p>
+
+<p>A key that is not found in any bundle makes Wicket throw an exception, so a missing translation shows up during development. <code class="language-plaintext highlighter-rouge">ResourceSettings#setThrowExceptionOnMissingResource(false)</code> makes Wicket log a warning instead.</p>
+
+<h2 id="put-components-inside-a-translated-sentence">Put components inside a translated sentence</h2>
+
+<p>A sentence with a link or a value in the middle stays one key. Nest the components inside <code class="language-plaintext highlighter-rouge">&lt;wicket:message&gt;</code> and refer to them with <code class="language-plaintext highlighter-rouge">${id}</code> in the text:</p>
+
+<p><em>CartPage.html</em></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;wicket:message</span> <span class="na">key=</span><span class="s">"cart.summary"</span><span class="nt">&gt;</span>
+    You have <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">"count"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/span&gt;</span> items.
+    <span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">"checkout"</span><span class="nt">&gt;&lt;wicket:message</span> <span class="na">key=</span><span class="s">"cart.checkout"</span><span class="nt">&gt;</span>Check out<span class="nt">&lt;/wicket:message&gt;&lt;/a&gt;</span>
+<span class="nt">&lt;/wicket:message&gt;</span>
+</code></pre></div></div>
+
+<p><em>CartPage.properties</em></p>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">cart.summary</span><span class="p">=</span><span class="s">You have ${count} items in your cart. ${checkout} now.</span>
+<span class="py">cart.checkout</span><span class="p">=</span><span class="s">Check out</span>
+</code></pre></div></div>
+
+<p><em>CartPage.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"count"</span><span class="o">,</span> <span class="n">cartModel</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Cart:</span><span class="o">:</span><span class="n">getItemCount</span><span class="o">)));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">BookmarkablePageLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"checkout"</span><span class="o">,</span> <span class="nc">CheckoutPage</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>Each translation can put <code class="language-plaintext highlighter-rouge">${count}</code> and <code class="language-plaintext highlighter-rouge">${checkout}</code> where its grammar needs them.</p>
+
+<h2 id="show-a-text-from-java">Show a text from Java</h2>
+
+<p>Use a <code class="language-plaintext highlighter-rouge">ResourceModel</code> for the model of a component. It looks up the text when the component renders, so it follows a change of language and works in the constructor:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"greeting"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ResourceModel</span><span class="o">(</span><span class="s">"greeting"</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Component#getString(key)</code> returns the text right away. Call it during rendering, in <code class="language-plaintext highlighter-rouge">onConfigure</code> or inside a model lambda, not in the constructor: until the component is on a page, Wicket cannot search the bundles of its parents.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"greeting"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">getString</span><span class="o">(</span><span class="s">"greeting"</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p>To put values in a text, such as a name or a date, see <a href="/docs/resource-models.html">Put model values into translated texts</a>.</p>
+
+<h2 id="use-a-different-markup-file-per-language">Use a different markup file per language</h2>
+
+<p>When a language needs a different layout, not only different words, add a localized markup file next to the default one:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CustomPanel.html
+CustomPanel_de.html
+</code></pre></div></div>
+
+<p>For a German locale Wicket uses <code class="language-plaintext highlighter-rouge">CustomPanel_de.html</code>; for all other locales <code class="language-plaintext highlighter-rouge">CustomPanel.html</code>.</p>
+
+<h2 id="let-the-user-switch-the-language">Let the user switch the language</h2>
+
+<p>Wicket starts each session with the language of the browser. To let the user change it, set the locale of the session. This drop-down does so as soon as the user picks a language:</p>
+
+<p><em>BasePage.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Locale</span><span class="o">&gt;</span> <span class="n">languages</span> <span class="o">=</span> <span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="nc">Locale</span><span class="o">.</span><span class="na">ENGLISH</span><span class="o">,</span> <span class="nc">Locale</span><span class="o">.</span><span class="na">GERMAN</span><span class="o">,</span> <span class="nc">Locale</span><span class="o">.</span><span class="na">forLanguageTag</span><span class="o">(</span><span class="s">"nl"</span><span class="o">));</span>
+
+<span class="nc">DropDownChoice</span><span class="o">&lt;</span><span class="nc">Locale</span><span class="o">&gt;</span> <span class="n">language</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DropDownChoice</span><span class="o">&lt;&gt;(</span><span class="s">"language"</span><span class="o">,</span>
+    <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">getSession</span><span class="o">().</span><span class="na">getLocale</span><span class="o">(),</span> <span class="n">locale</span> <span class="o">-&gt;</span> <span class="n">getSession</span><span class="o">().</span><span class="na">setLocale</span><span class="o">(</span><span class="n">locale</span><span class="o">)),</span>
+    <span class="n">languages</span><span class="o">,</span>
+    <span class="k">new</span> <span class="nc">LambdaChoiceRenderer</span><span class="o">&lt;</span><span class="nc">Locale</span><span class="o">&gt;(</span><span class="n">locale</span> <span class="o">-&gt;</span> <span class="n">locale</span><span class="o">.</span><span class="na">getDisplayLanguage</span><span class="o">(</span><span class="n">locale</span><span class="o">),</span> <span class="nl">Locale:</span><span class="o">:</span><span class="n">toLanguageTag</span><span class="o">));</span>
+<span class="n">language</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">FormComponentUpdatingBehavior</span><span class="o">());</span>
+<span class="n">add</span><span class="o">(</span><span class="n">language</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p><em>BasePage.html</em></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;select</span> <span class="na">wicket:id=</span><span class="s">"language"</span><span class="nt">&gt;&lt;/select&gt;</span>
+</code></pre></div></div>
+
+<p>Each language is shown in its own language, so users find theirs whatever the page is currently in. The next render uses the new locale for texts, markup files and number and date formats.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/i18n.html">Localization</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Translate component texts</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Move the texts of a page or panel into properties files, show them with wicket:message or from Java, and let the user switch the language.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-models.html">Put model values into translated texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show translated texts through ResourceModel and StringResourceModel, fill in property values and MessageFormat parameters, and choose the key from the data.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/localize-choices.html">Translate the options of a choice</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show translated options in a DropDownChoice, RadioChoice or other choice component, translate enum values, and change the "Choose One" text.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/custom-string-loaders.html">Load texts from your own source</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a string resource loader that reads texts from a database or an existing Java ResourceBundle, and change the chain of loaders Wicket searches.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bundle-lookup.html">Where Wicket looks for texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The exact order in which Wicket searches resource bundles for a key, the file names it tries, and the settings that change the search.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-localization.html">How Wicket localizes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Where the locale of a page comes from, why texts live in properties files next to the components that use them, and why the page can override its panels.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/localize-components.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

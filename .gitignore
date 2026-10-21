@@ -4,3 +4,9 @@ Gemfile.lock
 .jekyll-cache/
 .idea/
 *.iml
+.bundle-cache/
+.impeccable/*.local.json
+.impeccable/hook.cache.json
+.impeccable/review/
+.claude/settings.local.json
+.previews/

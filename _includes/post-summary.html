@@ -1,0 +1,8 @@
+{% comment %}
+  One sentence about include.post: its `description` front matter, or the start of its excerpt.
+{% endcomment %}
+{%- if include.post.description -%}
+{{ include.post.description }}
+{%- else -%}
+{{ include.post.excerpt | strip_html | normalize_whitespace | truncatewords: 28 }}
+{%- endif -%}

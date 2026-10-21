@@ -1,0 +1,207 @@
+---
+layout: base
+---
+{% comment %}
+  The page of one release line under /versions/. Front matter:
+    series:     "11", "1.5"
+    config:     key under `wicket:` in _config.yml with the latest version
+    java:       minimum Java version
+    servlet:    Servlet API the line needs
+    migration:  { from, url } the migration guide to this line, if published
+    status, support: only for lines no longer in _data/releases.yml
+  The line's status, support and role come from _data/releases.yml when it lists the line.
+  The page's own content follows the generated sections: manual download, requirements, migration.
+{% endcomment %}
+{% assign line = nil %}
+{% for l in site.data.releases.lines %}
+    {% if l.series == page.series and l.status != 'scheduled' and l.status != 'boarding' %}{% assign line = l %}{% break %}{% endif %}
+{% endfor %}
+{% assign status = line.status | default: page.status %}
+{% assign support = line.support | default: page.support %}
+{% assign version = site.wicket[page.config] %}
+{% assign major = page.series | split: '.' | first | plus: 0 %}
+{% assign in_service = true %}{% if status == 'eol' %}{% assign in_service = false %}{% endif %}
+{% comment %} A line to recommend for new work: the LTS or the current quarterly release. {% endcomment %}
+{% assign recommended = false %}{% if status == 'lts' or status == 'current' %}{% assign recommended = true %}{% endif %}
+{% comment %}
+  For a line that is ending or has ended: the route to the LTS, one migration guide per major
+  step, taken from the line pages under /versions/ (Wicket 6 and later; 1.x lines link to the
+  upgrade paths only).
+{% endcomment %}
+{% assign lts = site.data.releases.lines | where: "status", "lts" | first %}
+{% assign lts_major = lts.series | plus: 0 %}
+{% assign route = '' | split: '' %}
+{% assign dotted = false %}{% if page.series contains '.' %}{% assign dotted = true %}{% endif %}
+{% if recommended == false and dotted == false and major >= 6 and major < lts_major %}
+    {% assign first_step = major | plus: 1 %}
+    {% for n in (first_step..lts_major) %}
+        {% assign step_url = '/versions/wicket-' | append: n | append: '.x/' %}
+        {% assign step_page = site.pages | where: "url", step_url | first %}
+        {% if step_page.migration %}{% assign route = route | push: step_page %}{% endif %}
+    {% endfor %}
+{% endif %}
+{% assign post_key = '/wicket-' | append: page.series | append: '.' %}
+{% assign post_major = '/wicket-' | append: page.series | append: '-released' %}
+{% assign highlights = site.data.highlights[page.series] %}
+{% assign line_posts = '' | split: '' %}
+{% for post in site.posts %}
+    {% if post.url contains post_key or post.url contains post_major or post.lines contains page.series %}{% assign line_posts = line_posts | push: post %}{% endif %}
+{% endfor %}
+<div class="header default">
+    <div class="l-container">
+        {% include mainmenu.html %}
+    </div>
+</div>
+<main class="hub" id="main" tabindex="-1">
+    <div class="l-container">
+        <header class="hub-head" id="status">
+            <p class="hub-crumbs"><a href="{{ site.baseurl }}/versions/">Releases</a></p>
+            <h1>Apache Wicket {{ page.series }}.x</h1>
+            <p class="hub-role">
+                {% case status %}
+                {% when 'lts' %}The long-term support release.
+                {% when 'current' %}The current quarterly release.
+                {% when 'eol' %}End of life: no more releases, not even security fixes.
+                {% when 'last-call' %}One more Wicket {{ page.series }} release follows {{ version }}; after it the line reaches end of life. Its date will be on the <a href="{{ site.baseurl }}/news/">blog</a>; <a href="mailto:announce-subscribe@wicket.apache.org">subscribe to the announce list</a> to hear it first.
+                {% else %}In service.
+                {% endcase %}
+            </p>
+            <dl class="hub-facts">
+                <div><dt>Latest release</dt><dd class="hub-version">{{ version }}</dd></div>
+                <div><dt>Status</dt><dd>{% case status %}{% when 'lts' %}<span class="tag tag-lts">LTS</span> In service{% else %}{% include line-status.html status=status style="tag" %}{% endcase %}</dd></div>
+                <div><dt>Supported</dt><dd>{{ support }}</dd></div>
+                {% assign next_release = site.data.releases.lines | where: "series", page.series | where: "status", "scheduled" | first %}
+                {% if next_release %}<div><dt>Next release</dt><dd>{{ next_release.version }}, {{ next_release.when }}</dd></div>{% endif %}
+                <div><dt>Java</dt><dd>{{ page.java }} or newer</dd></div>
+                <div><dt>Servlet API</dt><dd>{{ page.servlet }}</dd></div>
+            </dl>
+            {% if recommended == false %}
+            <div class="hub-eol{% if status == 'last-call' %} is-ending{% endif %}" id="upgrade">
+                <p class="hub-eol-title">{% if status == 'last-call' %}Wicket {{ page.series }} reaches end of life with its final release{% else %}Wicket {{ page.series }} gets no more releases, not even security fixes{% endif %}</p>
+                {% assign eol_post = nil %}{% for post in site.posts %}{% if post.announces == 'end-of-life' and post.lines contains page.series %}{% assign eol_post = post %}{% break %}{% endif %}{% endfor %}
+                {% if eol_post %}<p><a href="{{ site.baseurl }}{{ eol_post.url }}">{{ eol_post.title }}</a>: what end of life means, why, and how to move.</p>{% endif %}
+                {% assign next_lts = site.data.releases.lines | where: "service", "lts" | where: "status", "scheduled" | where_exp: "l", "l.series != lts.series" | first %}
+                <p>Plan the move to Wicket {{ lts.series }} LTS. {% if next_lts %}It is supported until Wicket {{ next_lts.series }}, the next LTS, ships in {{ next_lts.when }}.{% else %}It is supported {{ lts.support | replace: 'Until', 'until' }}.{% endif %}{% if route.size > 1 %} Take one major version at a time:{% endif %}</p>
+                {% if route.size == 1 %}{% assign step = route | first %}
+                <p class="hub-route-one"><a href="{{ step.migration.url }}">Migrating from Wicket {{ step.migration.from }} to {{ step.series }}</a></p>
+                {% elsif route.size > 1 %}
+                <ol class="hub-route">
+                    {% for step in route %}{% assign step_from = step.migration.from %}
+                    <li><a href="{{ step.migration.url }}">Migrating from Wicket {{ step_from }} to {{ step.series }}</a>{% if step.series == lts.series %} <span class="tag tag-lts">LTS</span>{% endif %}</li>
+                    {% endfor %}
+                </ol>
+                {% endif %}
+                {% assign lts_page = site.pages | where: "url", lts.page | first %}
+                <p>For the step to {{ lts.series }}, the <a href="{{ site.baseurl }}{{ lts.page }}#automatic-migration">OpenRewrite recipes of <code>wicket-migration</code></a> do the repetitive part: the <code>jakarta</code> imports, the Java {{ lts_page.java }} baseline and the moved Wicket classes.</p>
+                <p class="hub-eol-more">The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> explain each step and what changes in Java and the Servlet API. If you need help or more time, <a href="{{ site.baseurl }}/community/#commercial">companies that offer Wicket support</a> are listed on the wiki.</p>
+            </div>
+            {% endif %}
+            <div class="hub-maven" id="maven">
+                <p class="hub-maven-label"><span>Maven dependency</span><button type="button" class="hub-copy" data-copy="hub-maven-snippet" aria-live="polite">Copy</button></p>
+<div id="hub-maven-snippet">
+{% highlight xml %}
+<!-- Apache Wicket {{ page.series }}.x{% if status == 'lts' %} LTS{% endif %}: Java {{ page.java }}+, {{ page.servlet | replace: ' or newer', '+' }} -->
+<dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-core</artifactId>
+    <version>{{ version }}</version>
+</dependency>
+{% endhighlight %}
+</div>
+                {% if recommended %}<p class="hub-maven-more">Other modules, such as <code>wicket-extensions</code> and <code>wicket-spring</code>, take the same group id and version. <a href="{{ site.baseurl }}/docs/modules.html">Wicket's modules</a> lists them all.</p>{% endif %}
+                <p class="hub-maven-more"><a href="#manually">Download the source and binaries</a>{% if recommended %} · New project? <a href="{{ site.baseurl }}/start/quickstart.html?v={{ page.series }}">Generate one with the quick start</a>{% endif %}</p>
+            </div>
+        </header>
+
+{% comment %} The page's sections, as a row of links under the head. {% endcomment %}
+        <nav class="hub-jump" aria-label="On this page">
+            <ul>
+                {% if highlights %}<li><a href="#new">New in Wicket {{ page.series }}</a></li>{% endif %}
+                <li><a href="#docs">Documentation</a></li>
+                {% if line_posts.size > 0 %}<li><a href="#news">Blog posts</a></li>{% endif %}
+                <li><a href="#download">Download</a></li>
+                <li><a href="#requirements">Requirements</a></li>
+            </ul>
+        </nav>
+
+        {% if highlights %}
+        <section class="hub-section" id="new">
+            <h2>New in Wicket {{ page.series }}</h2>
+            {% include highlights.html series=page.series %}
+        </section>
+        {% endif %}
+
+        <section class="hub-section" id="docs">
+            <h2>Documentation</h2>
+            <ul class="hub-panels">
+                <li>
+                    <h3>Docs</h3>
+                    {% if recommended %}
+                    <p><a href="{{ site.baseurl }}/docs/?v={{ major }}">The documentation for Wicket {{ page.series }}</a>: tutorials, how-to guides, reference and explanation.</p>
+                    <p class="hub-panel-alt"><a href="https://nightlies.apache.org/wicket/guide/{{ page.series }}.x/single.html">The reference guide as one document</a></p>
+                    {% elsif major >= 7 %}
+                    <p><a href="https://nightlies.apache.org/wicket/guide/{{ page.series }}.x/single.html">The reference guide for Wicket {{ page.series }}</a>, as one document.</p>
+                    {% else %}
+                    <p>Wicket {{ page.series }} has no reference guide of its own; the <a href="https://cwiki.apache.org/WICKET">wiki</a> and the <a href="{{ site.baseurl }}/learn/books/">books</a> cover it.</p>
+                    {% endif %}
+                </li>
+                <li id="migrate">
+                    <h3>Migration guide</h3>
+                    {% assign newer = nil %}{% for l in site.data.releases.lines %}{% assign n = l.series | plus: 0 %}{% if line.status == 'lts' and l.status == 'current' and l.page and n > major %}{% assign newer = l %}{% endif %}{% endfor %}
+                    {% if newer %}{% assign newer_page = site.pages | where: "url", newer.page | first %}{% assign newer_key = '/wicket-' | append: newer.series | append: '.0.0-released' %}{% assign newer_post = nil %}{% for post in site.posts %}{% if post.url contains newer_key %}{% assign newer_post = post %}{% break %}{% endif %}{% endfor %}
+                    <p class="hub-next-line">Moving on to <a href="{{ site.baseurl }}{{ newer.page }}">Wicket {{ newer.series }}</a>: it needs Java {{ newer_page.java }} and {{ newer_page.servlet }}.{% if newer_post %} <a href="{{ site.baseurl }}{{ newer_post.url }}#upgrading-from-wicket-{{ page.series }}">Upgrading from Wicket {{ page.series }}</a> in its release announcement lists the steps.{% endif %}</p>
+                    {% endif %}
+                    {% if route.size > 0 %}{% assign next_step = route | first %}
+                    <p><a href="{{ next_step.migration.url }}">Migrating from Wicket {{ page.series }} to {{ next_step.series }}</a>: the next step up.</p>
+                    {% if page.migration %}<p class="hub-panel-alt"><a href="{{ page.migration.url }}">Migrating from Wicket {{ page.migration.from }} to {{ page.series }}</a></p>{% endif %}
+                    {% elsif page.migration %}
+                    <p><a href="{{ page.migration.url }}">Migrating from Wicket {{ page.migration.from }} to {{ page.series }}</a>: what changed and what to adjust in your application.</p>
+                    {% else %}
+                    {% assign release_post = nil %}{% assign release_key = '/wicket-' | append: page.series | append: '.0.0-released' %}{% for post in site.posts %}{% if post.url contains release_key %}{% assign release_post = post %}{% break %}{% endif %}{% endfor %}
+                    <p>The migration guide from Wicket {{ major | minus: 1 }} is not published on the wiki yet.{% if release_post %} <a href="{{ site.baseurl }}{{ release_post.url }}#upgrading-from-wicket-{{ major | minus: 1 }}">Upgrading from Wicket {{ major | minus: 1 }}</a> in the release announcement lists the steps, and{% else %} Until it is,{% endif %} <a href="#new">New in Wicket {{ page.series }}</a> lists the changes.</p>
+                    {% endif %}
+                </li>
+                <li>
+                    <h3>API documentation</h3>
+                    {% if major >= 7 %}
+                    <p><a href="https://nightlies.apache.org/wicket/apidocs/{{ page.series }}.x/index.html">Javadoc for Wicket {{ page.series }}</a>: every class, method and setting.</p>
+                    {% else %}
+                    <p>The Javadoc for Wicket {{ page.series }} ships in the <a href="#manually">binary download</a>.</p>
+                    {% endif %}
+                </li>
+            </ul>
+        </section>
+
+        {% if line_posts.size > 0 %}
+        <section class="hub-section" id="news">
+            <h2>Blog posts about Wicket {{ page.series }}</h2>
+            {% include post-list.html posts=line_posts featured=3 rows=8 %}
+            <p class="hub-more"><a href="{{ site.baseurl }}/news/">All posts on the blog</a></p>
+        </section>
+        {% endif %}
+
+        <section class="hub-section hub-body">
+            {{ content }}
+        </section>
+    </div>
+</main>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (button) {
+    button.addEventListener('click', function () {
+        var text = document.getElementById(button.getAttribute('data-copy')).textContent;
+        navigator.clipboard.writeText(text).then(function () {
+            button.textContent = 'Copied';
+            setTimeout(function () { button.textContent = 'Copy'; }, 2000);
+        }).catch(function () {
+            // No clipboard access: select the code, so the reader can copy it themselves.
+            var range = document.createRange();
+            range.selectNodeContents(document.getElementById(button.getAttribute('data-copy')));
+            var selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            button.textContent = 'Selected, copy it';
+            setTimeout(function () { button.textContent = 'Copy'; }, 4000);
+        });
+    });
+});
+</script>

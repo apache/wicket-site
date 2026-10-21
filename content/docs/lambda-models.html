@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Read and write data with lambda models | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Use lambdas, method references and the default methods of IModel to show computed values and bind components to properties without strings." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/models.html">Models</a></p>
+            <h1>Read and write data with lambda models</h1>
+            <p class="page-sign-sub">Use lambdas, method references and the default methods of IModel to show computed values and bind components to properties without strings.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#show-a-computed-value"><span class="toc-number">1</span> <span class="toc-text">Show a computed value</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#derive-a-value-from-another-model"><span class="toc-number">2</span> <span class="toc-text">Derive a value from another model</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#read-and-write-a-property"><span class="toc-number">3</span> <span class="toc-text">Read and write a property</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#bind-a-field-of-the-page"><span class="toc-number">4</span> <span class="toc-text">Bind a field of the page</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#fall-back-to-a-default"><span class="toc-number">5</span> <span class="toc-text">Fall back to a default</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#combine-two-models"><span class="toc-number">6</span> <span class="toc-text">Combine two models</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#keep-or-test-an-object"><span class="toc-number">7</span> <span class="toc-text">Keep or test an object</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#keep-what-the-lambda-captures-small"><span class="toc-number">8</span> <span class="toc-text">Keep what the lambda captures small</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use lambda models when a component shows a value computed from other data, or reads and writes one property of an object that another model holds. They are checked by the compiler and survive a rename, unlike <a href="/docs/property-models.html">property expressions</a>.</p>
+
+<p>The examples use a <code class="language-plaintext highlighter-rouge">personModel</code> of type <code class="language-plaintext highlighter-rouge">IModel&lt;Person&gt;</code>, for instance a <a href="/docs/detachable-models.html">detachable model</a> that loads the person by id.</p>
+
+<h2 id="show-a-computed-value">Show a computed value</h2>
+
+<p><code class="language-plaintext highlighter-rouge">IModel</code> has a single abstract method, <code class="language-plaintext highlighter-rouge">getObject()</code>, so any lambda that returns a value is a model:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"now"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="nc">LocalTime</span><span class="o">.</span><span class="na">now</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<p>Wicket calls the lambda every time the label renders. A model written this way is read-only: its <code class="language-plaintext highlighter-rouge">setObject()</code> throws <code class="language-plaintext highlighter-rouge">UnsupportedOperationException</code>. That is fine for labels, but a form component needs a model it can write to.</p>
+
+<h2 id="derive-a-value-from-another-model">Derive a value from another model</h2>
+
+<p><code class="language-plaintext highlighter-rouge">map</code> turns a model into a model of something computed from its object:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"fullName"</span><span class="o">,</span> <span class="n">personModel</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getFullName</span><span class="o">)));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"city"</span><span class="o">,</span> <span class="n">personModel</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getAddress</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="nl">Address:</span><span class="o">:</span><span class="n">getCity</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">map</code> returns <code class="language-plaintext highlighter-rouge">null</code> instead of calling the function when the object is <code class="language-plaintext highlighter-rouge">null</code>, so a chain of <code class="language-plaintext highlighter-rouge">map</code> calls never throws a <code class="language-plaintext highlighter-rouge">NullPointerException</code> halfway. The resulting model is read-only. Detaching it detaches <code class="language-plaintext highlighter-rouge">personModel</code>.</p>
+
+<h2 id="read-and-write-a-property">Read and write a property</h2>
+
+<p><code class="language-plaintext highlighter-rouge">LambdaModel.of(target, getter, setter)</code> gives a model that reads and writes one property of the object in <code class="language-plaintext highlighter-rouge">target</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">email</span> <span class="o">=</span> <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">personModel</span><span class="o">,</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">getEmail</span><span class="o">,</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">setEmail</span><span class="o">);</span>
+<span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">EmailTextField</span><span class="o">(</span><span class="s">"email"</span><span class="o">,</span> <span class="n">email</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>When the form is submitted, the field calls <code class="language-plaintext highlighter-rouge">setObject()</code>, which calls <code class="language-plaintext highlighter-rouge">setEmail</code> on the person the target model holds at that moment. When the target holds <code class="language-plaintext highlighter-rouge">null</code>, <code class="language-plaintext highlighter-rouge">getObject()</code> returns <code class="language-plaintext highlighter-rouge">null</code> and <code class="language-plaintext highlighter-rouge">setObject()</code> does nothing. The model detaches its target.</p>
+
+<p><code class="language-plaintext highlighter-rouge">flatMap</code> does the same for a mapper that returns a model, which is useful when the object already offers models for its parts:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="n">personModel</span><span class="o">.</span><span class="na">flatMap</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="nl">p:</span><span class="o">:</span><span class="n">getName</span><span class="o">,</span> <span class="nl">p:</span><span class="o">:</span><span class="n">setName</span><span class="o">));</span>
+</code></pre></div></div>
+
+<h2 id="bind-a-field-of-the-page">Bind a field of the page</h2>
+
+<p>For a value that belongs to the page or panel, use <code class="language-plaintext highlighter-rouge">LambdaModel.of(getter, setter)</code> with method references on <code class="language-plaintext highlighter-rouge">this</code>:</p>
+
+<p><em>SearchPage.java</em></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SearchPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">query</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">SearchPage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Form</span><span class="o">&lt;&gt;(</span><span class="s">"form"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="nc">ResultsPage</span><span class="o">(</span><span class="n">query</span><span class="o">));</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">&lt;&gt;(</span><span class="s">"query"</span><span class="o">,</span> <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">this</span><span class="o">::</span><span class="n">getQuery</span><span class="o">,</span> <span class="k">this</span><span class="o">::</span><span class="n">setQuery</span><span class="o">)));</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getQuery</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">query</span><span class="o">;</span> <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setQuery</span><span class="o">(</span><span class="nc">String</span> <span class="n">query</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="fall-back-to-a-default">Fall back to a default</h2>
+
+<p><code class="language-plaintext highlighter-rouge">orElse</code> returns a fixed value when the object is <code class="language-plaintext highlighter-rouge">null</code>; <code class="language-plaintext highlighter-rouge">orElseGet</code> calls a supplier instead:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"nickname"</span><span class="o">,</span> <span class="n">personModel</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getNickname</span><span class="o">).</span><span class="na">orElse</span><span class="o">(</span><span class="s">"(none)"</span><span class="o">)));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"since"</span><span class="o">,</span> <span class="n">personModel</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getJoined</span><span class="o">).</span><span class="na">orElseGet</span><span class="o">(</span><span class="nl">LocalDate:</span><span class="o">:</span><span class="n">now</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<h2 id="combine-two-models">Combine two models</h2>
+
+<p><code class="language-plaintext highlighter-rouge">combineWith</code> computes a value from the objects of two models. It returns <code class="language-plaintext highlighter-rouge">null</code> when either object is <code class="language-plaintext highlighter-rouge">null</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">first</span> <span class="o">=</span> <span class="n">personModel</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getFirstName</span><span class="o">);</span>
+<span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">last</span> <span class="o">=</span> <span class="n">personModel</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getLastName</span><span class="o">);</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="n">first</span><span class="o">.</span><span class="na">combineWith</span><span class="o">(</span><span class="n">last</span><span class="o">,</span> <span class="o">(</span><span class="n">f</span><span class="o">,</span> <span class="n">l</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">f</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">l</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<h2 id="keep-or-test-an-object">Keep or test an object</h2>
+
+<p><code class="language-plaintext highlighter-rouge">filter</code> keeps the object only when a predicate holds, and returns <code class="language-plaintext highlighter-rouge">null</code> otherwise. <code class="language-plaintext highlighter-rouge">isPresent</code> gives a <code class="language-plaintext highlighter-rouge">Boolean</code> model that is <code class="language-plaintext highlighter-rouge">true</code> when the object is not <code class="language-plaintext highlighter-rouge">null</code>. <code class="language-plaintext highlighter-rouge">as</code> keeps the object only when it is an instance of a class:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Order</span><span class="o">&gt;</span> <span class="n">openOrder</span> <span class="o">=</span> <span class="n">orderModel</span><span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="nl">Order:</span><span class="o">:</span><span class="n">isOpen</span><span class="o">);</span>
+
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Link</span><span class="o">&lt;&gt;(</span><span class="s">"cancel"</span><span class="o">,</span> <span class="n">openOrder</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">orderService</span><span class="o">.</span><span class="na">cancel</span><span class="o">(</span><span class="n">getModelObject</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onConfigure</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onConfigure</span><span class="o">();</span>
+        <span class="n">setVisible</span><span class="o">(</span><span class="n">openOrder</span><span class="o">.</span><span class="na">isPresent</span><span class="o">().</span><span class="na">getObject</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+
+<span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Customer</span><span class="o">&gt;</span> <span class="n">customer</span> <span class="o">=</span> <span class="n">partyModel</span><span class="o">.</span><span class="na">as</span><span class="o">(</span><span class="nc">Customer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="keep-what-the-lambda-captures-small">Keep what the lambda captures small</h2>
+
+<p>The lambdas you pass to these methods are serializable types (<code class="language-plaintext highlighter-rouge">SerializableSupplier</code>, <code class="language-plaintext highlighter-rouge">SerializableFunction</code> and so on), because they are stored with the page. Everything a lambda captures is stored with it.</p>
+
+<ul>
+  <li>Capture models, ids and <code class="language-plaintext highlighter-rouge">this</code>. The page or panel is serialized anyway.</li>
+  <li>Do not capture entities or large objects. <code class="language-plaintext highlighter-rouge">LambdaModel.of(person::getName, person::setName)</code> stores <code class="language-plaintext highlighter-rouge">person</code> in the page, with the problems described in <a href="/docs/about-models.html#why-new-modelentity-goes-wrong">Why <code class="language-plaintext highlighter-rouge">new Model&lt;&gt;(entity)</code> goes wrong</a>. Use the <code class="language-plaintext highlighter-rouge">LambdaModel.of(personModel, ...)</code> form instead.</li>
+  <li>Do not capture services or connections, which are rarely serializable. Reach them through an injected field of the component, as described in <a href="/docs/spring.html">Inject Spring beans</a>.</li>
+</ul>
+
+<p><a href="/docs/model-types.html#imodel-methods">Model classes</a> lists every default method of <code class="language-plaintext highlighter-rouge">IModel</code>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/models.html">Models</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Read and write data with lambda models</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use lambdas, method references and the default methods of IModel to show computed values and bind components to properties without strings.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/property-models.html">Bind components to a JavaBean</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Read and write bean properties with PropertyModel, and let form fields find their property by id with CompoundPropertyModel.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/chain-models.html">Chain models</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Wrap one model in another so that a form, a panel or a label always works on the object the inner model currently holds.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/detachable-models.html">Load data once per request with detachable models</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep only an id in the page and load the entity fresh in every request with LoadableDetachableModel.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/multiple-models.html">Use more than one model in a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Detach the extra models a component, behavior or custom model keeps in its fields, so their data is not stored with the page.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/model-types.html">Model classes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every model class and model interface in wicket-core, the default methods of IModel, the factory methods and the component methods that work with models.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-models.html">Models and component data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why a component reads its data through a model, what happens to that data between requests, and why wrapping an entity in Model goes wrong.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/lambda-models.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

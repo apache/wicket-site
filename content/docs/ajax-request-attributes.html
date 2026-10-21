@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Change how an Ajax request is sent | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Override updateAjaxAttributes to throttle requests, send them as POST, pass extra parameters, drop outdated ones or stop the browser's default action." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/ajax.html">Ajax and JavaScript</a></p>
+            <h1>Change how an Ajax request is sent</h1>
+            <p class="page-sign-sub">Override updateAjaxAttributes to throttle requests, send them as POST, pass extra parameters, drop outdated ones or stop the browser's default action.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#wait-until-the-user-stops-typing"><span class="toc-number">1</span> <span class="toc-text">Wait until the user stops typing</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#drop-requests-that-are-outdated"><span class="toc-number">2</span> <span class="toc-text">Drop requests that are outdated</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#stop-the-browsers-default-action"><span class="toc-number">3</span> <span class="toc-text">Stop the browser’s default action</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#send-extra-parameters"><span class="toc-number">4</span> <span class="toc-text">Send extra parameters</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#send-the-request-as-post"><span class="toc-number">5</span> <span class="toc-text">Send the request as POST</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#listen-to-several-events-or-to-child-elements"><span class="toc-number">6</span> <span class="toc-text">Listen to several events, or to child elements</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#give-up-after-a-timeout"><span class="toc-number">7</span> <span class="toc-text">Give up after a timeout</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#change-every-ajax-request-in-the-application"><span class="toc-number">8</span> <span class="toc-text">Change every Ajax request in the application</span></a></li>
+<li class="toc--level-1 toc--section-9"><a href="#read-the-attributes-in-the-page-source"><span class="toc-number">9</span> <span class="toc-text">Read the attributes in the page source</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use this when the default request of an Ajax component or behavior does not fit: it fires too often, should carry more data, or lets the browser do something you want to stop. Every Ajax component and behavior describes its request with an <code class="language-plaintext highlighter-rouge">AjaxRequestAttributes</code> object, which you change by overriding <code class="language-plaintext highlighter-rouge">updateAjaxAttributes</code>. Always call <code class="language-plaintext highlighter-rouge">super</code> first, it sets the event names and the form to submit:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">field</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxFormComponentUpdatingBehavior</span><span class="o">(</span><span class="s">"input"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">updateAjaxAttributes</span><span class="o">(</span><span class="nc">AjaxRequestAttributes</span> <span class="n">attributes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">updateAjaxAttributes</span><span class="o">(</span><span class="n">attributes</span><span class="o">);</span>
+        <span class="n">attributes</span><span class="o">.</span><span class="na">setThrottlingSettings</span><span class="o">(</span><span class="k">new</span> <span class="nc">ThrottlingSettings</span><span class="o">(</span><span class="nc">Duration</span><span class="o">.</span><span class="na">ofMillis</span><span class="o">(</span><span class="mi">400</span><span class="o">)));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onUpdate</span><span class="o">(</span><span class="nc">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">target</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">results</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p>Ajax components such as <code class="language-plaintext highlighter-rouge">AjaxLink</code> and <code class="language-plaintext highlighter-rouge">AjaxButton</code> have the same <code class="language-plaintext highlighter-rouge">updateAjaxAttributes</code> method.</p>
+
+<h2 id="wait-until-the-user-stops-typing">Wait until the user stops typing</h2>
+
+<p>The throttling settings above send at most one request per 400 ms, however fast the user types. <code class="language-plaintext highlighter-rouge">new ThrottlingSettings(delay, true)</code> restarts the delay at every event, so the request goes out only once the user has paused for the whole delay.</p>
+
+<h2 id="drop-requests-that-are-outdated">Drop requests that are outdated</h2>
+
+<p>Ajax requests wait in a queue per channel, and all requests share one channel by default. For a search field, an older search is useless once a newer one is waiting. Give the behavior its own channel that keeps only the last request:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">attributes</span><span class="o">.</span><span class="na">setChannel</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxChannel</span><span class="o">(</span><span class="s">"search"</span><span class="o">,</span> <span class="nc">AjaxChannel</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">DROP</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">AjaxChannel.Type.ACTIVE</code> discards a new request while one on the channel is still running, which suits a button that must not be pressed twice.</p>
+
+<h2 id="stop-the-browsers-default-action">Stop the browser’s default action</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">attributes</span><span class="o">.</span><span class="na">setPreventDefault</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">attributes</span><span class="o">.</span><span class="na">setEventPropagation</span><span class="o">(</span><span class="nc">AjaxRequestAttributes</span><span class="o">.</span><span class="na">EventPropagation</span><span class="o">.</span><span class="na">STOP</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">setPreventDefault(true)</code> stops a link from being followed or a form from being submitted by the browser. You need it for an <code class="language-plaintext highlighter-rouge">AjaxFormSubmitBehavior</code> on a submit button, or the form is submitted twice. <code class="language-plaintext highlighter-rouge">EventPropagation.STOP</code> keeps the event from reaching the parent elements; the default is <code class="language-plaintext highlighter-rouge">BUBBLE</code>.</p>
+
+<h2 id="send-extra-parameters">Send extra parameters</h2>
+
+<p>Static values go into <code class="language-plaintext highlighter-rouge">getExtraParameters()</code>. Values that the browser has to compute go into <code class="language-plaintext highlighter-rouge">getDynamicExtraParameters()</code>, as the body of a JavaScript function that returns an object:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">attributes</span><span class="o">.</span><span class="na">getExtraParameters</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="s">"source"</span><span class="o">,</span> <span class="s">"toolbar"</span><span class="o">);</span>
+<span class="n">attributes</span><span class="o">.</span><span class="na">getDynamicExtraParameters</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="s">"return {'width': window.innerWidth};"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Read them on the server from the request parameters:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="n">getRequest</span><span class="o">().</span><span class="na">getRequestParameters</span><span class="o">().</span><span class="na">getParameterValue</span><span class="o">(</span><span class="s">"width"</span><span class="o">).</span><span class="na">toInt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="send-the-request-as-post">Send the request as POST</h2>
+
+<p>Ajax requests are GET requests unless they submit a form. Switch to POST when the parameters are large or the request changes data:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">attributes</span><span class="o">.</span><span class="na">setMethod</span><span class="o">(</span><span class="nc">AjaxRequestAttributes</span><span class="o">.</span><span class="na">Method</span><span class="o">.</span><span class="na">POST</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="listen-to-several-events-or-to-child-elements">Listen to several events, or to child elements</h2>
+
+<p><code class="language-plaintext highlighter-rouge">AjaxEventBehavior</code> takes several event names separated by spaces, such as <code class="language-plaintext highlighter-rouge">new AjaxEventBehavior("click keydown")</code>. To handle clicks on many children with one behavior on their container, set a CSS selector; the event then only triggers when it comes from a matching element:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">attributes</span><span class="o">.</span><span class="na">setChildSelector</span><span class="o">(</span><span class="s">"li"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="give-up-after-a-timeout">Give up after a timeout</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">attributes</span><span class="o">.</span><span class="na">setRequestTimeout</span><span class="o">(</span><span class="nc">Duration</span><span class="o">.</span><span class="na">ofSeconds</span><span class="o">(</span><span class="mi">10</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>A request that has no response by then fails, and the failure handlers of its call listeners run.</p>
+
+<h2 id="change-every-ajax-request-in-the-application">Change every Ajax request in the application</h2>
+
+<p>An <code class="language-plaintext highlighter-rouge">AjaxRequestTarget.IListener</code> registered with the application sees the attributes of every Ajax behavior before the behavior’s own <code class="language-plaintext highlighter-rouge">updateAjaxAttributes</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getAjaxRequestTargetListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxRequestTarget</span><span class="o">.</span><span class="na">IListener</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateAjaxAttributes</span><span class="o">(</span><span class="nc">AbstractDefaultAjaxBehavior</span> <span class="n">behavior</span><span class="o">,</span>
+                <span class="nc">AjaxRequestAttributes</span> <span class="n">attributes</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">attributes</span><span class="o">.</span><span class="na">setRequestTimeout</span><span class="o">(</span><span class="nc">Duration</span><span class="o">.</span><span class="na">ofSeconds</span><span class="o">(</span><span class="mi">30</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">});</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="read-the-attributes-in-the-page-source">Read the attributes in the page source</h2>
+
+<p>The attributes are rendered as a JSON object in the call to <code class="language-plaintext highlighter-rouge">Wicket.Ajax.ajax</code>, with short names. Only values that differ from the default are written.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Short name</th>
+      <th>Attribute</th>
+      <th>Set with</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">u</code></td>
+      <td>Callback URL</td>
+      <td>(generated)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">c</code></td>
+      <td>Markup id of the component</td>
+      <td>(generated)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">e</code></td>
+      <td>Event names</td>
+      <td><code class="language-plaintext highlighter-rouge">setEventNames</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">m</code></td>
+      <td>HTTP method, <code class="language-plaintext highlighter-rouge">GET</code> by default</td>
+      <td><code class="language-plaintext highlighter-rouge">setMethod</code></td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">f</code>, <code class="language-plaintext highlighter-rouge">sc</code>, <code class="language-plaintext highlighter-rouge">mp</code>
+</td>
+      <td>Form to submit, submitting component, multipart</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">setFormId</code>, <code class="language-plaintext highlighter-rouge">setSubmittingComponentName</code>, <code class="language-plaintext highlighter-rouge">setMultipart</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">tr</code></td>
+      <td>Throttling</td>
+      <td><code class="language-plaintext highlighter-rouge">setThrottlingSettings</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ch</code></td>
+      <td>Channel</td>
+      <td><code class="language-plaintext highlighter-rouge">setChannel</code></td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">pd</code>, <code class="language-plaintext highlighter-rouge">sp</code>
+</td>
+      <td>Prevent default, event propagation</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">setPreventDefault</code>, <code class="language-plaintext highlighter-rouge">setEventPropagation</code>
+</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">ep</code>, <code class="language-plaintext highlighter-rouge">dep</code>
+</td>
+      <td>Extra and dynamic extra parameters</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getExtraParameters</code>, <code class="language-plaintext highlighter-rouge">getDynamicExtraParameters</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sel</code></td>
+      <td>Child selector</td>
+      <td><code class="language-plaintext highlighter-rouge">setChildSelector</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">rt</code></td>
+      <td>Request timeout</td>
+      <td><code class="language-plaintext highlighter-rouge">setRequestTimeout</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">async</code></td>
+      <td>Asynchronous request, <code class="language-plaintext highlighter-rouge">true</code> by default</td>
+      <td><code class="language-plaintext highlighter-rouge">setAsynchronous</code></td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">dt</code>, <code class="language-plaintext highlighter-rouge">wr</code>
+</td>
+      <td>Response data type, whether the response is an <code class="language-plaintext highlighter-rouge">&lt;ajax-response&gt;</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">setDataType</code>, <code class="language-plaintext highlighter-rouge">setWicketAjaxResponse</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sr</code></td>
+      <td>Serialize all form fields inside the element</td>
+      <td><code class="language-plaintext highlighter-rouge">setSerializeRecursively</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">i</code></td>
+      <td>Markup id of the busy indicator</td>
+      <td><code class="language-plaintext highlighter-rouge">IAjaxIndicatorAware</code></td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">ih</code>, <code class="language-plaintext highlighter-rouge">bh</code>, <code class="language-plaintext highlighter-rouge">pre</code>, <code class="language-plaintext highlighter-rouge">bsh</code>, <code class="language-plaintext highlighter-rouge">ah</code>, <code class="language-plaintext highlighter-rouge">sh</code>, <code class="language-plaintext highlighter-rouge">fh</code>, <code class="language-plaintext highlighter-rouge">coh</code>, <code class="language-plaintext highlighter-rouge">dh</code>
+</td>
+      <td>Call listener handlers</td>
+      <td><code class="language-plaintext highlighter-rouge">getAjaxCallListeners</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The handlers are covered in <a href="/docs/ajax-call-listeners.html">React to Ajax requests in JavaScript</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/ajax.html">Ajax and JavaScript</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/update-components.html">Update components with Ajax</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Re-render components, show hidden ones, refresh lists and run JavaScript in response to an Ajax request.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/activity-indicator.html">Show that a request is running</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show a busy indicator while an Ajax request runs, with the indicating components, your own component or your own spinner element.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Change how an Ajax request is sent</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Override updateAjaxAttributes to throttle requests, send them as POST, pass extra parameters, drop outdated ones or stop the browser's default action.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-call-listeners.html">React to Ajax requests in JavaScript</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run your own JavaScript before, during and after Ajax requests, for one component with a call listener or for the whole page with global events.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-ajax.html">Use Ajax on stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make Ajax components and behaviors stateless with getStatelessHint, so a page such as a login page keeps working without a stored page instance.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-lambdas.html">Write Ajax handlers as lambdas</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Create Ajax behaviors from lambdas with their static factory methods instead of anonymous subclasses, and do the same for Ajax links and buttons.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/integrate-javascript.html">Wrap a JavaScript widget in a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Package a JavaScript library with a component, initialize it with the component's markup id, keep it working after Ajax updates and call back to the server.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-components.html">Ajax components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Ajax components in wicket-core and wicket-extensions, what each does and which callback you override.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-behaviors.html">Ajax behaviors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Ajax behaviors and call listeners in wicket-core and wicket-extensions, the callback each one calls and its lambda factory method.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/how-ajax-works.html">How Wicket Ajax works</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What happens between a click in the browser and the updated components on the page, and why components need a markup id.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/ajax-request-attributes.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

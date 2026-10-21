@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Security headers and external checks | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The response headers that scanners such as Mozilla Observatory check, which of them Wicket sends by default, and the Wicket API or hook that sets each one." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/security.html">Security</a></p>
+            <h1>Security headers and external checks</h1>
+            <p class="page-sign-sub">The response headers that scanners such as Mozilla Observatory check, which of them Wicket sends by default, and the Wicket API or hook that sets each one.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#headers-and-who-sets-them"><span class="toc-number">1</span> <span class="toc-text">Headers and who sets them</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#stop-other-sites-from-framing-your-pages"><span class="toc-number">2</span> <span class="toc-text">Stop other sites from framing your pages</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#add-headers-to-every-page"><span class="toc-number">3</span> <span class="toc-text">Add headers to every page</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#add-headers-to-every-response"><span class="toc-number">4</span> <span class="toc-text">Add headers to every response</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#require-https-in-webxml"><span class="toc-number">5</span> <span class="toc-text">Require HTTPS in web.xml</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Scanners such as <a href="https://developer.mozilla.org/en-US/observatory" target="_blank" rel="noopener noreferrer">Mozilla Observatory</a> grade a site by the security headers in its responses. Wicket sends some of them itself; the others you add in your application, in the container or in a reverse proxy in front of it.</p>
+
+<h2 id="headers-and-who-sets-them">Headers and who sets them</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Header</th>
+      <th>Sent by Wicket by default</th>
+      <th>Set with</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Content-Security-Policy</code></td>
+      <td>Yes, a strict policy with nonces, on every <code class="language-plaintext highlighter-rouge">WebPage</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getCspSettings()</code>, see <a href="/docs/csp.html">Configure the Content Security Policy</a>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Cross-Origin-Opener-Policy</code></td>
+      <td>Yes, <code class="language-plaintext highlighter-rouge">same-origin</code>, on every response</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getSecuritySettings().setCrossOriginOpenerPolicyConfiguration(...)</code>, see <a href="/docs/cross-origin-isolation.html">Isolate the page with COOP and COEP</a>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Cross-Origin-Embedder-Policy</code></td>
+      <td>As <code class="language-plaintext highlighter-rouge">Cross-Origin-Embedder-Policy-Report-Only: require-corp</code>, on every response</td>
+      <td><code class="language-plaintext highlighter-rouge">getSecuritySettings().setCrossOriginEmbedderPolicyConfiguration(...)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Vary: sec-fetch-dest, sec-fetch-site, sec-fetch-mode</code></td>
+      <td>Only with <code class="language-plaintext highlighter-rouge">ResourceIsolationRequestCycleListener</code> registered</td>
+      <td>See <a href="/docs/csrf.html">Protect against cross-site request forgery</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">Cache-Control: no-cache, no-store</code>, <code class="language-plaintext highlighter-rouge">Pragma: no-cache</code>, <code class="language-plaintext highlighter-rouge">Expires</code>
+</td>
+      <td>Yes, on every <code class="language-plaintext highlighter-rouge">WebPage</code>
+</td>
+      <td>Override <code class="language-plaintext highlighter-rouge">WebPage#setHeaders(WebResponse)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Strict-Transport-Security</code></td>
+      <td>No</td>
+      <td>Your own code, the container or the proxy</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">X-Content-Type-Options: nosniff</code></td>
+      <td>No</td>
+      <td>Your own code, the container or the proxy</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">X-Frame-Options</code></td>
+      <td>No</td>
+      <td>Your own code, or the <code class="language-plaintext highlighter-rouge">frame-ancestors</code> directive of the CSP</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Referrer-Policy</code></td>
+      <td>No</td>
+      <td>Your own code, the container or the proxy</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Permissions-Policy</code></td>
+      <td>No</td>
+      <td>Your own code, the container or the proxy</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">X-XSS-Protection</code> controlled a filter that current browsers no longer have. Leave it out; the Content Security Policy replaces it.</p>
+
+<h2 id="stop-other-sites-from-framing-your-pages">Stop other sites from framing your pages</h2>
+
+<p>The CSP directive <code class="language-plaintext highlighter-rouge">frame-ancestors</code> is the current replacement for <code class="language-plaintext highlighter-rouge">X-Frame-Options</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getCspSettings</span><span class="o">().</span><span class="na">blocking</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="nc">CSPDirective</span><span class="o">.</span><span class="na">FRAME_ANCESTORS</span><span class="o">,</span> <span class="nc">CSPDirectiveSrcValue</span><span class="o">.</span><span class="na">SELF</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="add-headers-to-every-page">Add headers to every page</h2>
+
+<p>Override <code class="language-plaintext highlighter-rouge">setHeaders</code> in your base page. Call <code class="language-plaintext highlighter-rouge">super.setHeaders</code> to keep the caching headers.</p>
+
+<p><em>BasePage.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">setHeaders</span><span class="o">(</span><span class="nc">WebResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">setHeaders</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"X-Content-Type-Options"</span><span class="o">,</span> <span class="s">"nosniff"</span><span class="o">);</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"Referrer-Policy"</span><span class="o">,</span> <span class="s">"strict-origin-when-cross-origin"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="add-headers-to-every-response">Add headers to every response</h2>
+
+<p>A request cycle listener also reaches resources, Ajax responses and redirects. Set the headers both when the handler is resolved and after it has run, the way Wicket’s own COOP and COEP listeners do, so they survive a redirect to a buffered response:</p>
+
+<p><em>SecurityHeadersListener.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecurityHeadersListener</span> <span class="kd">implements</span> <span class="nc">IRequestCycleListener</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRequestHandlerResolved</span><span class="o">(</span><span class="nc">RequestCycle</span> <span class="n">cycle</span><span class="o">,</span> <span class="nc">IRequestHandler</span> <span class="n">handler</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">setHeaders</span><span class="o">(</span><span class="n">cycle</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRequestHandlerExecuted</span><span class="o">(</span><span class="nc">RequestCycle</span> <span class="n">cycle</span><span class="o">,</span> <span class="nc">IRequestHandler</span> <span class="n">handler</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">setHeaders</span><span class="o">(</span><span class="n">cycle</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">setHeaders</span><span class="o">(</span><span class="nc">RequestCycle</span> <span class="n">cycle</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">cycle</span><span class="o">.</span><span class="na">getResponse</span><span class="o">()</span> <span class="k">instanceof</span> <span class="nc">WebResponse</span> <span class="n">response</span> <span class="o">&amp;&amp;</span> <span class="n">response</span><span class="o">.</span><span class="na">isHeaderSupported</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"Strict-Transport-Security"</span><span class="o">,</span> <span class="s">"max-age=31536000; includeSubDomains"</span><span class="o">);</span>
+            <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"X-Content-Type-Options"</span><span class="o">,</span> <span class="s">"nosniff"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><em>WicketApplication.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getRequestCycleListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">SecurityHeadersListener</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p>Do not set <code class="language-plaintext highlighter-rouge">Content-Security-Policy</code> or the cross-origin policies this way: Wicket already sends them, and a second value either replaces Wicket’s policy or is combined with it by the browser.</p>
+
+<h2 id="require-https-in-webxml">Require HTTPS in web.xml</h2>
+
+<p>The servlet container can redirect every plain HTTP request to HTTPS:</p>
+
+<p><em>web.xml</em></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;security-constraint&gt;</span>
+    <span class="nt">&lt;web-resource-collection&gt;</span>
+        <span class="nt">&lt;web-resource-name&gt;</span>Entire application<span class="nt">&lt;/web-resource-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+    <span class="nt">&lt;/web-resource-collection&gt;</span>
+    <span class="nt">&lt;user-data-constraint&gt;</span>
+        <span class="nt">&lt;transport-guarantee&gt;</span>CONFIDENTIAL<span class="nt">&lt;/transport-guarantee&gt;</span>
+    <span class="nt">&lt;/user-data-constraint&gt;</span>
+<span class="nt">&lt;/security-constraint&gt;</span>
+</code></pre></div></div>
+
+<p><a href="/docs/https.html">Require HTTPS</a> covers HTTPS in Wicket itself.</p>
+
+<p>After adding headers, check that the application still works: <code class="language-plaintext highlighter-rouge">Strict-Transport-Security</code> with <code class="language-plaintext highlighter-rouge">includeSubDomains</code> affects every subdomain for as long as <code class="language-plaintext highlighter-rouge">max-age</code> says, and a strict <code class="language-plaintext highlighter-rouge">frame-ancestors</code> breaks pages that are meant to be embedded.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/security.html">Security</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/login.html">Log users in</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a sign-in page with wicket-auth-roles, send anonymous users there when a page needs a signed-in user, and sign them out again.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/roles.html">Restrict access by role</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Allow pages, components, actions and resources only for users with a given role, with annotations on classes and packages or in code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/https.html">Require HTTPS</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve pages over HTTPS with HttpsMapper and @RequireHttps, and set up the container so redirects and absolute URLs use the right host.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/csrf.html">Protect against cross-site request forgery</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Refuse link clicks, form submits and Ajax calls that another site makes on behalf of your users, with ResourceIsolationRequestCycleListener.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/csp.html">Configure the Content Security Policy</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Work with the strict Content Security Policy Wicket sends by default, allow extra sources, report violations, and move inline scripts and styles out of the markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/cross-origin-isolation.html">Isolate the page with COOP and COEP</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set the Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy headers, which Wicket sends by default, to isolate your pages from other origins.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/package-resource-guard.html">Control which package resources are served</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Allow or block files on the classpath that browsers may request as package resources, with patterns on SecurePackageResourceGuard.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Security headers and external checks</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The response headers that scanners such as Mozilla Observatory check, which of them Wicket sends by default, and the Wicket API or hook that sets each one.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/security-model.html">How Wicket keeps applications secure</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What Wicket defends against by default (escaping, a strict CSP, stateful URLs and encryption) and what it leaves to your application and your deployment.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/security-checks.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

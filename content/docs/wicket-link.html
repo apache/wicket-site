@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Turn plain links into page links with wicket:link | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Write ordinary anchors to page files in the markup and let wicket:link turn them into links to bookmarkable pages, without Java code." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/links.html">Links and URLs</a></p>
+            <h1>Turn plain links into page links with wicket:link</h1>
+            <p class="page-sign-sub">Write ordinary anchors to page files in the markup and let wicket:link turn them into links to bookmarkable pages, without Java code.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#wrap-the-anchors-in-wicketlink"><span class="toc-number">1</span> <span class="toc-text">Wrap the anchors in wicket:link</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#use-an-absolute-path"><span class="toc-number">2</span> <span class="toc-text">Use an absolute path</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#pass-parameters-or-jump-to-an-anchor"><span class="toc-number">3</span> <span class="toc-text">Pass parameters or jump to an anchor</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#how-the-link-to-the-current-page-renders"><span class="toc-number">4</span> <span class="toc-text">How the link to the current page renders</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#which-anchors-are-left-alone"><span class="toc-number">5</span> <span class="toc-text">Which anchors are left alone</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#turn-automatic-linking-on-or-off-for-a-region"><span class="toc-number">6</span> <span class="toc-text">Turn automatic linking on or off for a region</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use <code class="language-plaintext highlighter-rouge">&lt;wicket:link&gt;</code> when a page has static navigation, such as a menu, that you want to write and preview as plain HTML. Wicket replaces each anchor inside the tag with a link to the bookmarkable page the <code class="language-plaintext highlighter-rouge">href</code> names, so you add no components in Java.</p>
+
+<h2 id="wrap-the-anchors-in-wicketlink">Wrap the anchors in wicket:link</h2>
+
+<p>Point each <code class="language-plaintext highlighter-rouge">href</code> at the markup file of the target page, relative to the package of the current page:</p>
+
+<p><em>HomePage.html</em>, in package <code class="language-plaintext highlighter-rouge">com.example</code></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;wicket:link&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"HomePage.html"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"ProductListPage.html"</span><span class="nt">&gt;</span>Products<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"account/ProfilePage.html"</span><span class="nt">&gt;</span>Your profile<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/wicket:link&gt;</span>
+</code></pre></div></div>
+
+<p>Wicket strips the <code class="language-plaintext highlighter-rouge">.html</code>, resolves the rest as a class name relative to the package, and creates a link to that page. <code class="language-plaintext highlighter-rouge">account/ProfilePage.html</code> becomes <code class="language-plaintext highlighter-rouge">com.example.account.ProfilePage</code>, and <code class="language-plaintext highlighter-rouge">../HomePage.html</code> in a page from <code class="language-plaintext highlighter-rouge">com.example.account</code> points back to <code class="language-plaintext highlighter-rouge">com.example.HomePage</code>. The target page must be bookmarkable: it needs a constructor without arguments or one that takes <code class="language-plaintext highlighter-rouge">PageParameters</code>.</p>
+
+<p>Because the <code class="language-plaintext highlighter-rouge">href</code> values are real file paths, the links also work when you open the markup files in a browser from your source tree.</p>
+
+<h2 id="use-an-absolute-path">Use an absolute path</h2>
+
+<p>A path that starts with <code class="language-plaintext highlighter-rouge">/</code> is a full package path:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/com/example/account/ProfilePage.html"</span><span class="nt">&gt;</span>Your profile<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div>
+
+<p>Relative paths resolve against the package of the page being rendered, also in the markup of a panel or border. Use absolute paths in a panel that you place on pages in different packages.</p>
+
+<h2 id="pass-parameters-or-jump-to-an-anchor">Pass parameters or jump to an anchor</h2>
+
+<p>A query string in the <code class="language-plaintext highlighter-rouge">href</code> becomes the page parameters, and a fragment directly after the file name is kept in the URL:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"ProductPage.html?id=42"</span><span class="nt">&gt;</span>Product 42<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"HelpPage.html#shipping"</span><span class="nt">&gt;</span>Shipping costs<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div>
+
+<p>Wicket reads everything after the <code class="language-plaintext highlighter-rouge">?</code> as parameters, so do not put a fragment after a query string.</p>
+
+<h2 id="how-the-link-to-the-current-page-renders">How the link to the current page renders</h2>
+
+<p>A link that points to the page it is on is disabled. On the home page, the first anchor in the example renders as:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">disabled=</span><span class="s">"disabled"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">href</code> is gone and the <code class="language-plaintext highlighter-rouge">disabled</code> attribute is added, so you can style the current menu entry with CSS such as <code class="language-plaintext highlighter-rouge">a[disabled]</code>.</p>
+
+<h2 id="which-anchors-are-left-alone">Which anchors are left alone</h2>
+
+<p>Inside <code class="language-plaintext highlighter-rouge">&lt;wicket:link&gt;</code>, Wicket only rewrites tags that have no <code class="language-plaintext highlighter-rouge">wicket:id</code> and whose <code class="language-plaintext highlighter-rouge">href</code> or <code class="language-plaintext highlighter-rouge">src</code> contains no colon. Links such as <code class="language-plaintext highlighter-rouge">https://wicket.apache.org</code> or <code class="language-plaintext highlighter-rouge">mailto:dev@wicket.apache.org</code> stay as they are.</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">href</code> that does not end in <code class="language-plaintext highlighter-rouge">.html</code> (or <code class="language-plaintext highlighter-rouge">.xml</code>, <code class="language-plaintext highlighter-rouge">.wml</code>, <code class="language-plaintext highlighter-rouge">.svg</code>) is treated as a package resource instead of a page: <code class="language-plaintext highlighter-rouge">&lt;link href="style.css"&gt;</code> inside <code class="language-plaintext highlighter-rouge">&lt;wicket:link&gt;</code> becomes a URL to <code class="language-plaintext highlighter-rouge">style.css</code> in the package of the page. See <a href="/docs/package-resources.html">Serve files from your Java packages</a>.</p>
+
+<h2 id="turn-automatic-linking-on-or-off-for-a-region">Turn automatic linking on or off for a region</h2>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;wicket:link&gt;</code> regions can be nested, and the <code class="language-plaintext highlighter-rouge">autolink</code> attribute switches the behavior for the region:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;wicket:link</span> <span class="na">autolink=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"Prototype.html"</span><span class="nt">&gt;</span>Not rewritten<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/wicket:link&gt;</span>
+</code></pre></div></div>
+
+<p>To rewrite anchors in all markup without <code class="language-plaintext highlighter-rouge">&lt;wicket:link&gt;</code> tags, turn on automatic linking for the application:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getMarkupSettings</span><span class="o">().</span><span class="na">setAutomaticLinking</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The tag itself is described with the other Wicket tags in <a href="/docs/wicket-tags.html">Wicket tags and attributes</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/links.html">Links and URLs</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-parameters.html">Pass parameters to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put values in the URL of a page with PageParameters, read them in the page constructor and convert them to the types you need.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bookmarkable-links.html">Link to a page</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Navigate to another page with a Link that runs code on the server first, or with a BookmarkablePageLink that points straight at the page.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Turn plain links into page links with wicket:link</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write ordinary anchors to page files in the markup and let wicket:link turn them into links to bookmarkable pages, without Java code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/external-links.html">Link to another site</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render a link to a URL outside your application with ExternalLink, build the URL from a model, and redirect to another site from code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-links.html">Use links on stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Handle clicks on a stateless page with StatelessLink and keep the state the click needs in page parameters, because every click builds a new page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/mount-pages.html">Give pages readable URLs</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Mount pages on paths of your choice, put page parameters in path segments with placeholders, and mount a whole package at once.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-mappers.html">Request mappers</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The request mappers that turn URLs into request handlers and back, the mount methods of WebApplication, and the syntax of mount paths.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/redirects.html">Redirects after a request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why Wicket answers a form submit or link click with a redirect, how the three render strategies differ, and what that means for stateless pages and clusters.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/wicket-link.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

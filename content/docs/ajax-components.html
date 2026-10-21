@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Ajax components | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The Ajax components in wicket-core and wicket-extensions, what each does and which callback you override." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/ajax.html">Ajax and JavaScript</a></p>
+            <h1>Ajax components</h1>
+            <p class="page-sign-sub">The Ajax components in wicket-core and wicket-extensions, what each does and which callback you override.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#links-and-buttons"><span class="toc-number">1</span> <span class="toc-text">Links and buttons</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#form-fields"><span class="toc-number">2</span> <span class="toc-text">Form fields</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#tables-and-paging"><span class="toc-number">3</span> <span class="toc-text">Tables and paging</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#panels-dialogs-and-tabs"><span class="toc-number">4</span> <span class="toc-text">Panels, dialogs and tabs</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#trees"><span class="toc-number">5</span> <span class="toc-text">Trees</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Every component on this page renders an Ajax behavior and calls a method with an <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code>, or an <code class="language-plaintext highlighter-rouge">Optional&lt;AjaxRequestTarget&gt;</code> for the fallback components, which is empty when the request came in without Ajax. Components from wicket-core need no extra dependency; the others are in the <code class="language-plaintext highlighter-rouge">wicket-extensions</code> module. To add Ajax to a component that has none, use an <a href="/docs/ajax-behaviors.html">Ajax behavior</a>.</p>
+
+<h2 id="links-and-buttons">Links and buttons</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Module</th>
+      <th>What it does</th>
+      <th>Callback you override</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxLink&lt;T&gt;</code></td>
+      <td>wicket-core</td>
+      <td>Calls the server on click. Works on any tag, not only <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">onClick(AjaxRequestTarget)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxFallbackLink&lt;T&gt;</code></td>
+      <td>wicket-core</td>
+      <td>A <code class="language-plaintext highlighter-rouge">Link</code> that uses Ajax when it can and a normal request when JavaScript is off.</td>
+      <td><code class="language-plaintext highlighter-rouge">onClick(Optional&lt;AjaxRequestTarget&gt;)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxButton</code></td>
+      <td>wicket-core</td>
+      <td>A button that submits its form with Ajax.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">onSubmit(AjaxRequestTarget)</code>, <code class="language-plaintext highlighter-rouge">onError(AjaxRequestTarget)</code>, <code class="language-plaintext highlighter-rouge">onAfterSubmit(AjaxRequestTarget)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxSubmitLink</code></td>
+      <td>wicket-core</td>
+      <td>A link that submits a form with Ajax.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">onSubmit(AjaxRequestTarget)</code>, <code class="language-plaintext highlighter-rouge">onError(AjaxRequestTarget)</code>, <code class="language-plaintext highlighter-rouge">onAfterSubmit(AjaxRequestTarget)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxFallbackButton</code></td>
+      <td>wicket-core</td>
+      <td>A button that submits with Ajax, or normally when JavaScript is off.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">onSubmit(Optional&lt;AjaxRequestTarget&gt;)</code>, <code class="language-plaintext highlighter-rouge">onError(Optional&lt;AjaxRequestTarget&gt;)</code>, <code class="language-plaintext highlighter-rouge">onAfterSubmit(Optional&lt;AjaxRequestTarget&gt;)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IndicatingAjaxLink&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">AjaxLink</code> that shows a busy indicator while the request runs.</td>
+      <td><code class="language-plaintext highlighter-rouge">onClick(AjaxRequestTarget)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IndicatingAjaxFallbackLink&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">AjaxFallbackLink</code> with a busy indicator.</td>
+      <td><code class="language-plaintext highlighter-rouge">onClick(Optional&lt;AjaxRequestTarget&gt;)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IndicatingAjaxButton</code></td>
+      <td>wicket-extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">AjaxButton</code> with a busy indicator.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">onSubmit(AjaxRequestTarget)</code>, <code class="language-plaintext highlighter-rouge">onError(AjaxRequestTarget)</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">AjaxLink</code>, <code class="language-plaintext highlighter-rouge">AjaxFallbackLink</code>, <code class="language-plaintext highlighter-rouge">AjaxButton</code> and <code class="language-plaintext highlighter-rouge">AjaxSubmitLink</code> are in <code class="language-plaintext highlighter-rouge">org.apache.wicket.ajax.markup.html</code> and its <code class="language-plaintext highlighter-rouge">form</code> subpackage; the indicating variants in <code class="language-plaintext highlighter-rouge">org.apache.wicket.extensions.ajax.markup.html</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxButton</span><span class="o">(</span><span class="s">"save"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">(</span><span class="nc">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">repository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">form</span><span class="o">.</span><span class="na">getModelObject</span><span class="o">());</span>
+        <span class="n">target</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">feedback</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">target</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">feedback</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<h2 id="form-fields">Form fields</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Module</th>
+      <th>What it does</th>
+      <th>Callback you override</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxCheckBox</code></td>
+      <td>wicket-core</td>
+      <td>A <code class="language-plaintext highlighter-rouge">CheckBox</code> that updates its model as soon as it is clicked.</td>
+      <td><code class="language-plaintext highlighter-rouge">onUpdate(AjaxRequestTarget)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AutoCompleteTextField&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>A text field that shows a list of suggestions while the user types.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getChoices(String input)</code>, returns an <code class="language-plaintext highlighter-rouge">Iterator&lt;T&gt;</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DefaultCssAutoCompleteTextField&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">AutoCompleteTextField</code> with a default stylesheet for the suggestion list.</td>
+      <td><code class="language-plaintext highlighter-rouge">getChoices(String input)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxEditableLabel&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>A label that turns into a text field when clicked, and back after Enter or Escape.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">onEdit</code>, <code class="language-plaintext highlighter-rouge">onSubmit</code>, <code class="language-plaintext highlighter-rouge">onError</code>, <code class="language-plaintext highlighter-rouge">onCancel</code>, all with an <code class="language-plaintext highlighter-rouge">AjaxRequestTarget</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxEditableMultiLineLabel&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>Editable label that edits with a text area.</td>
+      <td>as <code class="language-plaintext highlighter-rouge">AjaxEditableLabel</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxEditableChoiceLabel&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>Editable label that edits with a drop-down choice.</td>
+      <td>as <code class="language-plaintext highlighter-rouge">AjaxEditableLabel</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FileUploadToResourceField</code></td>
+      <td>wicket-core</td>
+      <td>Uploads the selected files to a resource, without submitting a form. Start it with <code class="language-plaintext highlighter-rouge">startUpload(IPartialPageRequestHandler)</code>.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">onUploadSuccess(AjaxRequestTarget, List&lt;UploadInfo&gt;)</code>, <code class="language-plaintext highlighter-rouge">onUploadFailure</code>, <code class="language-plaintext highlighter-rouge">onUploadCanceled</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UploadProgressBar</code></td>
+      <td>wicket-extensions</td>
+      <td>Shows the progress of a multipart form submit.</td>
+      <td>none</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">AutoCompleteTextField</code> takes an <code class="language-plaintext highlighter-rouge">AutoCompleteSettings</code> in its constructor for the throttle delay, the minimum input length and the look of the list. Suggestions are rendered with an <code class="language-plaintext highlighter-rouge">IAutoCompleteRenderer</code>; the default calls <code class="language-plaintext highlighter-rouge">toString()</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">AutoCompleteSettings</span> <span class="n">settings</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AutoCompleteSettings</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setThrottleDelay</span><span class="o">(</span><span class="mi">400</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setMinInputLength</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AutoCompleteTextField</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="s">"city"</span><span class="o">,</span> <span class="n">cityModel</span><span class="o">,</span> <span class="n">settings</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">getChoices</span><span class="o">(</span><span class="nc">String</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">cities</span><span class="o">.</span><span class="na">findByPrefix</span><span class="o">(</span><span class="n">input</span><span class="o">,</span> <span class="mi">10</span><span class="o">).</span><span class="na">iterator</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<h2 id="tables-and-paging">Tables and paging</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Module</th>
+      <th>What it does</th>
+      <th>Callback you override</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxPagingNavigator</code></td>
+      <td>wicket-core</td>
+      <td>A <code class="language-plaintext highlighter-rouge">PagingNavigator</code> whose links switch pages with Ajax.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">onAjaxEvent(AjaxRequestTarget)</code>, optional</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">AjaxPagingNavigation</code>, <code class="language-plaintext highlighter-rouge">AjaxPagingNavigationLink</code>, <code class="language-plaintext highlighter-rouge">AjaxPagingNavigationIncrementLink</code>
+</td>
+      <td>wicket-core</td>
+      <td>The parts <code class="language-plaintext highlighter-rouge">AjaxPagingNavigator</code> is built from.</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxFallbackDefaultDataTable&lt;T, S&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">DataTable</code> with Ajax sorting headers and an Ajax navigation toolbar.</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxNavigationToolbar</code></td>
+      <td>wicket-extensions</td>
+      <td>Navigation toolbar for a <code class="language-plaintext highlighter-rouge">DataTable</code> with Ajax page links.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">onAjaxEvent(AjaxRequestTarget)</code>, optional</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxFallbackHeadersToolbar&lt;S&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>Headers toolbar that sorts with Ajax.</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxFallbackOrderByBorder&lt;S&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>Sort border around a column header.</td>
+      <td><code class="language-plaintext highlighter-rouge">onAjaxClick(AjaxRequestTarget)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxOrderByLink&lt;S&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>Sort link.</td>
+      <td><code class="language-plaintext highlighter-rouge">onClick(AjaxRequestTarget)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">AjaxPagingNavigator</code> adds the nearest parent of the repeater that outputs a markup id to the target, and the whole page when there is none, so give the container around the repeater a markup id. <code class="language-plaintext highlighter-rouge">AjaxFallbackDefaultDataTable</code> sets its own. See <a href="/docs/paginate-data.html">Page through data</a>.</p>
+
+<h2 id="panels-dialogs-and-tabs">Panels, dialogs and tabs</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Module</th>
+      <th>What it does</th>
+      <th>Callback you override</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ModalDialog</code></td>
+      <td>wicket-extensions</td>
+      <td>A modal dialog; its content is a component with id <code class="language-plaintext highlighter-rouge">ModalDialog.CONTENT_ID</code>. Open and close it with <code class="language-plaintext highlighter-rouge">open(AjaxRequestTarget)</code> and <code class="language-plaintext highlighter-rouge">close(AjaxRequestTarget)</code>.</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxLazyLoadPanel&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>Renders a placeholder first and loads the real content with a follow-up Ajax request.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getLazyLoadComponent(String id)</code>, <code class="language-plaintext highlighter-rouge">onContentLoaded(T, Optional&lt;AjaxRequestTarget&gt;)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxTabbedPanel&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">TabbedPanel</code> that switches tabs with Ajax.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">onAjaxUpdate(Optional&lt;AjaxRequestTarget&gt;)</code>, optional</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxListPanel</code></td>
+      <td>wicket-extensions</td>
+      <td>A list that adds and removes single items without re-rendering the list: <code class="language-plaintext highlighter-rouge">append(component, target)</code>, <code class="language-plaintext highlighter-rouge">delete(component, target)</code>.</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AjaxWizardButtonBar</code></td>
+      <td>wicket-extensions</td>
+      <td>Button bar for a <code class="language-plaintext highlighter-rouge">Wizard</code> that moves between steps with Ajax. Return it from <code class="language-plaintext highlighter-rouge">Wizard#newButtonBar</code>.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">updateAjaxAttributes(AjaxRequestAttributes)</code>, optional</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">ModalDialog</code> brings no styling of its own. Add a <code class="language-plaintext highlighter-rouge">DefaultTheme</code> behavior, or style its CSS classes yourself. <code class="language-plaintext highlighter-rouge">closeOnEscape()</code>, <code class="language-plaintext highlighter-rouge">closeOnClick()</code> and <code class="language-plaintext highlighter-rouge">trapFocus()</code> switch on the matching behavior.</p>
+
+<p><em>HomePage.html</em></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">"open"</span><span class="nt">&gt;</span>Open the dialog<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">"dialog"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p><em>HomePage.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ModalDialog</span> <span class="n">dialog</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ModalDialog</span><span class="o">(</span><span class="s">"dialog"</span><span class="o">);</span>
+<span class="n">dialog</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultTheme</span><span class="o">());</span>
+<span class="n">dialog</span><span class="o">.</span><span class="na">closeOnEscape</span><span class="o">();</span>
+<span class="n">dialog</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="nc">ModalDialog</span><span class="o">.</span><span class="na">CONTENT_ID</span><span class="o">,</span> <span class="s">"Saved."</span><span class="o">));</span>
+<span class="n">add</span><span class="o">(</span><span class="n">dialog</span><span class="o">);</span>
+
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"open"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">dialog</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="n">target</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<h2 id="trees">Trees</h2>
+
+<p>The tree components are in <code class="language-plaintext highlighter-rouge">org.apache.wicket.extensions.markup.html.repeater.tree</code>. Expanding and collapsing a node updates the tree with Ajax.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Module</th>
+      <th>What it does</th>
+      <th>Callback you override</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NestedTree&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>Tree rendered as nested lists. Its nodes come from an <code class="language-plaintext highlighter-rouge">ITreeProvider&lt;T&gt;</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">newContentComponent(String id, IModel&lt;T&gt; node)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TableTree&lt;T, S&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>Tree rendered as a table with columns.</td>
+      <td><code class="language-plaintext highlighter-rouge">newContentComponent(String id, IModel&lt;T&gt; node)</code></td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">DefaultNestedTree&lt;T&gt;</code>, <code class="language-plaintext highlighter-rouge">DefaultTableTree&lt;T, S&gt;</code>
+</td>
+      <td>wicket-extensions</td>
+      <td>The two trees with a <code class="language-plaintext highlighter-rouge">Folder</code> as content and a theme applied.</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Folder&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>Node content that expands or collapses its node on click.</td>
+      <td><code class="language-plaintext highlighter-rouge">onClick(Optional&lt;AjaxRequestTarget&gt;)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CheckedFolder&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Folder</code> with a check box.</td>
+      <td><code class="language-plaintext highlighter-rouge">onUpdate(AjaxRequestTarget)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CheckFolder&lt;T&gt;</code></td>
+      <td>wicket-extensions</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Folder</code> with a <code class="language-plaintext highlighter-rouge">Check</code>, for trees inside a <code class="language-plaintext highlighter-rouge">CheckGroup</code>.</td>
+      <td>none</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">HumanTheme</code> and <code class="language-plaintext highlighter-rouge">WindowsTheme</code> are behaviors that give a tree a look. The repeaters these trees build on are described in <a href="/docs/repeaters.html">Repeaters</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/ajax.html">Ajax and JavaScript</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/update-components.html">Update components with Ajax</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Re-render components, show hidden ones, refresh lists and run JavaScript in response to an Ajax request.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/activity-indicator.html">Show that a request is running</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show a busy indicator while an Ajax request runs, with the indicating components, your own component or your own spinner element.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-request-attributes.html">Change how an Ajax request is sent</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Override updateAjaxAttributes to throttle requests, send them as POST, pass extra parameters, drop outdated ones or stop the browser's default action.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-call-listeners.html">React to Ajax requests in JavaScript</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run your own JavaScript before, during and after Ajax requests, for one component with a call listener or for the whole page with global events.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-ajax.html">Use Ajax on stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make Ajax components and behaviors stateless with getStatelessHint, so a page such as a login page keeps working without a stored page instance.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-lambdas.html">Write Ajax handlers as lambdas</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Create Ajax behaviors from lambdas with their static factory methods instead of anonymous subclasses, and do the same for Ajax links and buttons.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/integrate-javascript.html">Wrap a JavaScript widget in a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Package a JavaScript library with a component, initialize it with the component's markup id, keep it working after Ajax updates and call back to the server.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Ajax components</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Ajax components in wicket-core and wicket-extensions, what each does and which callback you override.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-behaviors.html">Ajax behaviors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Ajax behaviors and call listeners in wicket-core and wicket-extensions, the callback each one calls and its lambda factory method.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/how-ajax-works.html">How Wicket Ajax works</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What happens between a click in the browser and the updated components on the page, and why components need a markup id.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/ajax-components.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Add a page to the documentation | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Write a new page for the documentation under /docs/, give it the front matter that files it, and check it in search and on its topic page." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items active" aria-current="true">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="/community/">Community</a><span aria-hidden="true"> / </span><a href="/contribute/">Contribute</a></p>
+        <h1>Add a page to the documentation</h1>
+        <p class="page-sign-sub">Write a new page for the documentation under /docs/, give it the front matter that files it, and check it in search and on its topic page.</p>
+        <p class="guide-plates"><span class="guide-kind">How-to</span></p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#decide-what-the-page-is"><span class="toc-number">1</span> <span class="toc-text">Decide what the page is</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#create-the-file"><span class="toc-number">2</span> <span class="toc-text">Create the file</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#write-it"><span class="toc-number">3</span> <span class="toc-text">Write it</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#check-it"><span class="toc-number">4</span> <span class="toc-text">Check it</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            <section class="page-content guide-content">
+                <p>Every page of the documentation is one Markdown file in <code class="language-plaintext highlighter-rouge">_guide/</code>, published as <code class="language-plaintext highlighter-rouge">/docs/&lt;file name&gt;.html</code>. A page does one job, in one of four kinds, for one topic. The topic pages, the pages per kind, the A–Z index and the search are all built from its front matter, so a page needs no links from elsewhere to be found.</p>
+
+<h2 id="decide-what-the-page-is">Decide what the page is</h2>
+
+<p>Pick the kind from what the reader wants:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>The reader wants to</th>
+      <th>Kind</th>
+      <th>Title starts with</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>learn by building something</td>
+      <td><code class="language-plaintext highlighter-rouge">tutorial</code></td>
+      <td>what they build: “Build a form that saves data”</td>
+    </tr>
+    <tr>
+      <td>reach a goal they already have</td>
+      <td><code class="language-plaintext highlighter-rouge">howto</code></td>
+      <td>a verb: “Upload files”</td>
+    </tr>
+    <tr>
+      <td>look up how something is defined</td>
+      <td><code class="language-plaintext highlighter-rouge">reference</code></td>
+      <td>the thing: “Wicket tags”</td>
+    </tr>
+    <tr>
+      <td>understand why Wicket works this way</td>
+      <td><code class="language-plaintext highlighter-rouge">explanation</code></td>
+      <td>the subject: “Stateful and stateless pages”</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When a page needs a second kind, it is two pages that link to each other.</p>
+
+<h2 id="create-the-file">Create the file</h2>
+
+<p>Name the file after the page, in lowercase words joined by dashes, and start it with front matter:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Upload files</span>
+<span class="na">type</span><span class="pi">:</span> <span class="s">howto</span>
+<span class="na">topic</span><span class="pi">:</span> <span class="s">forms</span>
+<span class="na">summary</span><span class="pi">:</span> <span class="s">Let users upload one or more files with a form, and limit their size and type.</span>
+<span class="na">since</span><span class="pi">:</span> <span class="m">10</span>
+<span class="na">apis</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">FileUploadField</span><span class="pi">,</span> <span class="nv">FileUpload</span><span class="pi">]</span>
+<span class="na">keywords</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">multipart</span><span class="pi">,</span> <span class="nv">upload size</span><span class="pi">,</span> <span class="nv">MultipartFormData</span><span class="pi">]</span>
+<span class="na">order</span><span class="pi">:</span> <span class="m">60</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">topic</code> is one of the ids in <code class="language-plaintext highlighter-rouge">_data/guide.yml</code>.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">summary</code> is one sentence of at most about 25 words; listings and search results show it.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">since</code> is the oldest line in service the page is correct for. A page about a feature of the next release gets that release’s series, and says it is upcoming until it ships.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">apis</code> lists the classes the page explains, for the A–Z index and search.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">keywords</code> are words a reader searches for that are not in the title or summary.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">order</code> places the page within its topic and kind, lowest first.</li>
+</ul>
+
+<h2 id="write-it">Write it</h2>
+
+<p>Address the reader as “you”, in short sentences. Use <code class="language-plaintext highlighter-rouge">##</code> and <code class="language-plaintext highlighter-rouge">###</code> headings: <code class="language-plaintext highlighter-rouge">##</code> sections appear in the page’s “On this page” rail and as search results of their own. Show Java and HTML side by side when both are needed, each code block preceded by its file name in italics. Link to other pages with <code class="language-plaintext highlighter-rouge">{{ site.baseurl }}/docs/&lt;file name&gt;.html</code>.</p>
+
+<p>When one paragraph differs between the lines in service, mark it instead of copying the page, with N the newer line:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; Since Wicket N, what the newer line does differently, in one or two</span>
+<span class="gt">&gt; sentences.</span>
+{: .since}
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">GUIDE.md</code> at the root of the repository holds the complete rules for the documentation.</p>
+
+<h2 id="check-it">Check it</h2>
+
+<p>Run the site and open the page, its topic page under <code class="language-plaintext highlighter-rouge">/docs/topics/</code>, and its kind under <code class="language-plaintext highlighter-rouge">/docs/kinds/</code>. Search for one of its keywords on <a href="http://localhost:4000/docs/" target="_blank" rel="noopener noreferrer">http://localhost:4000/docs/</a>. The build warns about a page with an unknown topic or kind, a missing summary, and links to documentation pages that do not exist.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/contribute/">Contribute</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-first-change.html">Make your first change to the site</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Clone the site, run it on your machine, change a page, and send the change as a pull request.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-release.html">Update the site for a release</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Announce a release on the site, update its version everywhere it appears, and start a new release line when a major release ships.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-blog-post.html">Write a blog post</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Publish a release announcement, a security advisory or an article on the blog, and decide whether it is featured.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Add a page to the documentation</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write a new page for the documentation under /docs/, give it the front matter that files it, and check it in search and on its topic page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-docs-release.html">Carry the reference guide's changes into the documentation</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">At a release, find what changed in the AsciiDoc reference guide in apache/wicket and rewrite those changes into the pages under /docs/.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-redirect.html">Redirect an old URL</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep links in mails, announcements and other sites working when a page moves or disappears.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-files.html">Site files and data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What each folder and data file of the site holds, the version settings in _config.yml, and the fields of the release lines.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/site-publishing.html">How the site is built and published</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why the built site is committed next to its source, how a commit reaches wicket.apache.org, and why release day only changes data.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_contribute/site-docs-page.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

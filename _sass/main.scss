@@ -15,21 +15,24 @@
 @use "modules/builtwithwicket";
 @use "modules/quickstart";
 @use "modules/wicket8";
+@use "modules/structure";
 
 code, pre, code > span, pre > span { 
     font-family: 'Source Code Pro', 'courier new', monospace; 
     font-size: settings.$font-size-20; 
 }
 
+// Links take the darker brand orange: the logo orange is too light for text on white (2.9:1).
 a {
 	border-color: settings.$color-brand-50;
     border-style: none none dotted none;
     border-width: 0 0 1px 0;
+    color: settings.$color-brand-text;
     cursor: pointer;
     font-weight:400;
     text-decoration: none;
 
-    &:hover { color: settings.$color-brand-60; }
+    &:hover { color: settings.$color-navy; border-bottom-style: solid; }
 }
 
 h1 a, h2 a, h3 a {

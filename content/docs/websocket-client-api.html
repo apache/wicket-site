@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>WebSocket JavaScript API | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The Wicket.WebSocket functions and the events your JavaScript can subscribe to on a page with a WebSocket behavior." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/websockets.html">WebSockets</a></p>
+            <h1>WebSocket JavaScript API</h1>
+            <p class="page-sign-sub">The Wicket.WebSocket functions and the events your JavaScript can subscribe to on a page with a WebSocket behavior.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#functions"><span class="toc-number">1</span> <span class="toc-text">Functions</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#events"><span class="toc-number">2</span> <span class="toc-text">Events</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#messages-the-script-handles-itself"><span class="toc-number">3</span> <span class="toc-text">Messages the script handles itself</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#connection-url"><span class="toc-number">4</span> <span class="toc-text">Connection URL</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>A page with a <code class="language-plaintext highlighter-rouge">WebSocketBehavior</code> or <code class="language-plaintext highlighter-rouge">BaseWebSocketBehavior</code> loads <code class="language-plaintext highlighter-rouge">wicket-websocket-jquery.js</code> and opens one connection when the DOM is ready. The script is a thin layer over the browser’s <code class="language-plaintext highlighter-rouge">WebSocket</code>: it builds the connection URL, applies <code class="language-plaintext highlighter-rouge">&lt;ajax-response&gt;</code> messages from the server and publishes everything else as events.</p>
+
+<h2 id="functions">Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>What it does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Wicket.WebSocket.send(text)</code></td>
+      <td>Sends a text message over the page’s default connection. The server receives it in <code class="language-plaintext highlighter-rouge">onMessage(WebSocketRequestHandler, TextMessage)</code>. Empty text is not sent.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Wicket.WebSocket.close()</code></td>
+      <td>Closes the default connection and forgets it.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Wicket.WebSocket.createDefaultConnection()</code></td>
+      <td>Opens the default connection if there is none. The behavior’s setup script calls it.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">new Wicket.WebSocket()</code></td>
+      <td>Opens an additional connection with the same settings. The object has <code class="language-plaintext highlighter-rouge">send(text)</code> and <code class="language-plaintext highlighter-rouge">close()</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Wicket</span><span class="p">.</span><span class="nx">WebSocket</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">({</span> <span class="na">action</span><span class="p">:</span> <span class="dl">'</span><span class="s1">like</span><span class="dl">'</span><span class="p">,</span> <span class="na">id</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}));</span>
+</code></pre></div></div>
+
+<h2 id="events">Events</h2>
+
+<p>Subscribe with <code class="language-plaintext highlighter-rouge">Wicket.Event.subscribe(topic, function (event, ...) { })</code>. The first argument is Wicket’s event object; the other arguments are listed below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Arguments after the event</th>
+      <th>Published when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">/websocket/open</code></td>
+      <td>the browser’s <code class="language-plaintext highlighter-rouge">open</code> event</td>
+      <td>The connection is open.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">/websocket/message</code></td>
+      <td>the message data</td>
+      <td>A message arrives that is not an <code class="language-plaintext highlighter-rouge">&lt;ajax-response&gt;</code>, such as text sent with <code class="language-plaintext highlighter-rouge">WebSocketRequestHandler.push(String)</code> or <code class="language-plaintext highlighter-rouge">IWebSocketConnection.sendMessage(String)</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">/websocket/closed</code></td>
+      <td>the browser’s <code class="language-plaintext highlighter-rouge">close</code> event</td>
+      <td>The connection is closed.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">/websocket/error</code></td>
+      <td>the browser’s <code class="language-plaintext highlighter-rouge">error</code> event</td>
+      <td>A communication error occurred. The connection is closed.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">/websocket/notsupported</code></td>
+      <td>an error message</td>
+      <td>The browser has no WebSocket support.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Wicket</span><span class="p">.</span><span class="nx">Event</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="dl">'</span><span class="s1">/websocket/message</span><span class="dl">'</span><span class="p">,</span> <span class="nf">function </span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+    <span class="nf">updateChart</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>The topic names are also available as <code class="language-plaintext highlighter-rouge">Wicket.Event.Topic.WebSocket.Opened</code>, <code class="language-plaintext highlighter-rouge">Message</code>, <code class="language-plaintext highlighter-rouge">Closed</code>, <code class="language-plaintext highlighter-rouge">Error</code> and <code class="language-plaintext highlighter-rouge">NotSupported</code>.</p>
+
+<h2 id="messages-the-script-handles-itself">Messages the script handles itself</h2>
+
+<p>A message that contains <code class="language-plaintext highlighter-rouge">&lt;ajax-response&gt;</code> is applied like an Ajax response: components are replaced and scripts run. This is what <code class="language-plaintext highlighter-rouge">WebSocketRequestHandler.add(...)</code>, <code class="language-plaintext highlighter-rouge">appendJavaScript</code> and <code class="language-plaintext highlighter-rouge">prependJavaScript</code> produce. These messages are processed one after the other on their own channel, <code class="language-plaintext highlighter-rouge">Wicket.WebSocket.MESSAGE_CHANNEL</code>, and are not published as <code class="language-plaintext highlighter-rouge">/websocket/message</code>.</p>
+
+<h2 id="connection-url">Connection URL</h2>
+
+<p>The connection goes to <code class="language-plaintext highlighter-rouge">/wicket/websocket</code> under the context path and the filter prefix, with <code class="language-plaintext highlighter-rouge">ws:</code> or <code class="language-plaintext highlighter-rouge">wss:</code> matching the page’s protocol. The query string carries the page id or the resource name of a <code class="language-plaintext highlighter-rouge">WebSocketResource</code>, the page class as context, the application name and the base URL. The session id is added to the path when the session is tracked in the URL or no session cookie is available.</p>
+
+<p>The parts can be changed in <code class="language-plaintext highlighter-rouge">WebSocketSettings</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setPort(int)</code></td>
+      <td>The port of the page.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setSecurePort(int)</code></td>
+      <td>The port of the page, for <code class="language-plaintext highlighter-rouge">wss:</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setContextPath(CharSequence)</code></td>
+      <td>The servlet context path.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setFilterPrefix(CharSequence)</code></td>
+      <td>Empty. Set it to the filter path when the filter is not mapped to <code class="language-plaintext highlighter-rouge">/*</code>, for example <code class="language-plaintext highlighter-rouge">/app</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setBaseUrl(CharSequence)</code></td>
+      <td>The base URL of the page.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WebSocketSettings</span><span class="o">.</span><span class="na">Holder</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">setPort</span><span class="o">(</span><span class="mi">8000</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Behind a proxy that serves WebSockets on another port, set the ports. Subclasses of <code class="language-plaintext highlighter-rouge">BaseWebSocketBehavior</code> can override <code class="language-plaintext highlighter-rouge">getPort</code>, <code class="language-plaintext highlighter-rouge">getSecurePort</code>, <code class="language-plaintext highlighter-rouge">getContextPath</code>, <code class="language-plaintext highlighter-rouge">getFilterPrefix</code> and <code class="language-plaintext highlighter-rouge">getBaseUrl</code> to compute them per page.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/websockets.html">WebSockets</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-websockets.html">Push updates over a WebSocket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set up wicket-native-websocket, handle messages from the browser and push component updates to a page from a background thread.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/test-websockets.html">Test WebSocket behaviors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Send messages to a page's WebSocket behavior and check what it pushes back with WebSocketTester, without a servlet container.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">WebSocket JavaScript API</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Wicket.WebSocket functions and the events your JavaScript can subscribe to on a page with a WebSocket behavior.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/how-websockets-work.html">How native WebSockets work</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket connects a page to a WebSocket, routes messages to components, pushes updates from other threads, and what that means for sessions and locking.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/websocket-client-api.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

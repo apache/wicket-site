@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Configure the page store | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Change how much page history Wicket keeps per session and where, encrypt stored pages, or replace the disk store with another store." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/state.html">Pages and state</a></p>
+            <h1>Configure the page store</h1>
+            <p class="page-sign-sub">Change how much page history Wicket keeps per session and where, encrypt stored pages, or replace the disk store with another store.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#limit-the-history-per-session"><span class="toc-number">1</span> <span class="toc-text">Limit the history per session</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#move-the-store-folder"><span class="toc-number">2</span> <span class="toc-text">Move the store folder</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#write-pages-synchronously"><span class="toc-number">3</span> <span class="toc-text">Write pages synchronously</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#encrypt-stored-pages"><span class="toc-number">4</span> <span class="toc-text">Encrypt stored pages</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#replace-the-disk-store"><span class="toc-number">5</span> <span class="toc-text">Replace the disk store</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#change-the-serializer"><span class="toc-number">6</span> <span class="toc-text">Change the serializer</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#check-the-size-of-pages-and-sessions"><span class="toc-number">7</span> <span class="toc-text">Check the size of pages and sessions</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Configure the page store when the defaults do not fit: too little or too much page history per session, a temporary directory that is not suitable, stored pages that must be encrypted, or a cluster where pages must be reachable from every node. All settings go in your application’s <code class="language-plaintext highlighter-rouge">init()</code>. <a href="/docs/page-storage.html">How pages are stored</a> explains the stores involved.</p>
+
+<h2 id="limit-the-history-per-session">Limit the history per session</h2>
+
+<p>Each session’s pages go to a file of at most 10 MB. When it is full, the oldest pages are overwritten, and going back to them ends in an expired page. Raise the limit for applications where users go back far, lower it to save disk:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getStoreSettings</span><span class="o">().</span><span class="na">setMaxSizePerSession</span><span class="o">(</span><span class="nc">Bytes</span><span class="o">.</span><span class="na">megabytes</span><span class="o">(</span><span class="mi">20</span><span class="o">));</span>
+</code></pre></div></div>
+
+<h2 id="move-the-store-folder">Move the store folder</h2>
+
+<p>By default the files go to the servlet container’s temporary directory, in a folder named after the application followed by <code class="language-plaintext highlighter-rouge">-filestore</code>. Choose a folder that only the application can read, with enough space:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getStoreSettings</span><span class="o">().</span><span class="na">setFileStoreFolder</span><span class="o">(</span><span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"/var/lib/myapp/pages"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<h2 id="write-pages-synchronously">Write pages synchronously</h2>
+
+<p>Pages are written to disk on a background thread, with a queue of 100 pages. Writes beyond that capacity happen in the request thread. Change the capacity, or write every page in the request:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getStoreSettings</span><span class="o">().</span><span class="na">setAsynchronousQueueCapacity</span><span class="o">(</span><span class="mi">200</span><span class="o">);</span>
+<span class="n">getStoreSettings</span><span class="o">().</span><span class="na">setAsynchronous</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="encrypt-stored-pages">Encrypt stored pages</h2>
+
+<p>Turn on encryption when the stored pages hold data that others with access to the disk must not read:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getStoreSettings</span><span class="o">().</span><span class="na">setEncrypted</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Each session gets a random key, kept in the session. The cipher comes from <code class="language-plaintext highlighter-rouge">StoreSettings.setCrypter</code>. The default <code class="language-plaintext highlighter-rouge">DefaultCrypter</code> uses AES-256-CBC, which is not authenticated. For tamper detection, use the GCM-SIV crypter, which needs Bouncy Castle:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getStoreSettings</span><span class="o">().</span><span class="na">setEncrypted</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">setCrypter</span><span class="o">(</span><span class="nl">GCMSIVCrypter:</span><span class="o">:</span><span class="k">new</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="replace-the-disk-store">Replace the disk store</h2>
+
+<p>Register a <code class="language-plaintext highlighter-rouge">DefaultPageManagerProvider</code> that creates another persistent store. The rest of the default chain stays as it is.</p>
+
+<p>Keep the pages in the application’s memory, at most 50 per session:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setPageManagerProvider</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultPageManagerProvider</span><span class="o">(</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="nc">IPageStore</span> <span class="nf">newPersistentStore</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">InMemoryPageStore</span><span class="o">(</span><span class="n">getName</span><span class="o">(),</span> <span class="mi">50</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">InMemoryPageStore</code> also takes a <code class="language-plaintext highlighter-rouge">Bytes</code> limit instead of a page count. Its pages are lost when the server stops, and other nodes in a cluster cannot see them.</p>
+
+<p>Keep serialized pages in the HTTP session, up to 2 MB per session. The servlet container then replicates them with the session, which suits a cluster with session replication. The session cannot be written from a background thread, so switch off asynchronous writing as well:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getStoreSettings</span><span class="o">().</span><span class="na">setAsynchronous</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+<span class="n">setPageManagerProvider</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultPageManagerProvider</span><span class="o">(</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="nc">IPageStore</span> <span class="nf">newPersistentStore</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">InSessionPageStore</span><span class="o">(</span><span class="nc">Bytes</span><span class="o">.</span><span class="na">megabytes</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p>Write each page to its own file instead of one file per session, which keeps pages from different browser tabs from pushing each other out:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setPageManagerProvider</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultPageManagerProvider</span><span class="o">(</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="nc">IPageStore</span> <span class="nf">newPersistentStore</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">StoreSettings</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">getStoreSettings</span><span class="o">();</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">FilePageStore</span><span class="o">(</span><span class="n">getName</span><span class="o">(),</span> <span class="n">settings</span><span class="o">.</span><span class="na">getFileStoreFolder</span><span class="o">(),</span>
+                <span class="n">settings</span><span class="o">.</span><span class="na">getMaxSizePerSession</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">DefaultPageManagerProvider</code> has a factory method for each store in the chain, such as <code class="language-plaintext highlighter-rouge">newCachingStore</code> and <code class="language-plaintext highlighter-rouge">newSerializingStore</code>, to replace other parts. Stores for databases and distributed caches are available from WicketStuff, or implement <code class="language-plaintext highlighter-rouge">IPageStore</code> yourself. Any store after the <code class="language-plaintext highlighter-rouge">SerializingPageStore</code> receives <code class="language-plaintext highlighter-rouge">SerializedPage</code>s.</p>
+
+<h2 id="change-the-serializer">Change the serializer</h2>
+
+<p>Pages are serialized with Java serialization. Plug in another <code class="language-plaintext highlighter-rouge">ISerializer</code>, for example a Kryo-based one from WicketStuff:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getFrameworkSettings</span><span class="o">().</span><span class="na">setSerializer</span><span class="o">(</span><span class="k">new</span> <span class="nc">MySerializer</span><span class="o">());</span>
+</code></pre></div></div>
+
+<h2 id="check-the-size-of-pages-and-sessions">Check the size of pages and sessions</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">DebugBar</code> from <code class="language-plaintext highlighter-rouge">wicket-devutils</code> shows the size of the session while you develop, and links to an inspector of the current page and to a browser of the page store. Add it to a base page:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">DebugBar</span><span class="o">(</span><span class="s">"debug"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">"debug"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/state.html">Pages and state</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/keep-stateless.html">Keep a page stateless</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a page that Wicket does not store in the session, find the component that makes it stateful, and guard it with a test.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Configure the page store</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Change how much page history Wicket keeps per session and where, encrypt stored pages, or replace the disk store with another store.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-session.html">Keep data in the session</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Store per-user data in a typed Wicket session, in session attributes or as metadata, control when the session is created, and end it on logout.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateful-stateless.html">Stateful and stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why Wicket keeps pages between requests, how page versions serve the back button, and what a stateless page gives up and gains.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-storage.html">How pages are stored</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket finds the page for a request, and the chain of stores that keeps stateful pages in the request, the session and on disk.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/configure-page-store.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

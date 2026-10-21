@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Validators and converters | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The built-in validators, form validators and converters, with their message keys, the variables in their messages and their default texts." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/forms.html">Forms</a></p>
+            <h1>Validators and converters</h1>
+            <p class="page-sign-sub">The built-in validators, form validators and converters, with their message keys, the variables in their messages and their default texts.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#validators"><span class="toc-number">1</span> <span class="toc-text">Validators</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#form-validators"><span class="toc-number">2</span> <span class="toc-text">Form validators</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#default-messages"><span class="toc-number">3</span> <span class="toc-text">Default messages</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#variables-in-every-message"><span class="toc-number">4</span> <span class="toc-text">Variables in every message</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#how-a-message-is-found"><span class="toc-number">5</span> <span class="toc-text">How a message is found</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#conversion-errors"><span class="toc-number">6</span> <span class="toc-text">Conversion errors</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#converters"><span class="toc-number">7</span> <span class="toc-text">Converters</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#validation-with-bean-validation"><span class="toc-number">8</span> <span class="toc-text">Validation with Bean Validation</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Validators are in <code class="language-plaintext highlighter-rouge">org.apache.wicket.validation.validator</code>, form validators in <code class="language-plaintext highlighter-rouge">org.apache.wicket.markup.html.form.validation</code>, and converters in <code class="language-plaintext highlighter-rouge">org.apache.wicket.util.convert.converter</code> (module wicket-util). The default English texts are in <code class="language-plaintext highlighter-rouge">Application.utf8.properties</code> in the package <code class="language-plaintext highlighter-rouge">org.apache.wicket</code>.</p>
+
+<h2 id="validators">Validators</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Validator</th>
+      <th>Create with</th>
+      <th>Validates</th>
+      <th>Message key</th>
+      <th>Variables</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StringValidator</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">minimumLength(int)</code>, <code class="language-plaintext highlighter-rouge">maximumLength(int)</code>, <code class="language-plaintext highlighter-rouge">lengthBetween(int, int)</code>, <code class="language-plaintext highlighter-rouge">exactLength(int)</code>
+</td>
+      <td>the length of a <code class="language-plaintext highlighter-rouge">String</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">StringValidator.minimum</code>, <code class="language-plaintext highlighter-rouge">.maximum</code>, <code class="language-plaintext highlighter-rouge">.range</code>, <code class="language-plaintext highlighter-rouge">.exact</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">minimum</code>, <code class="language-plaintext highlighter-rouge">maximum</code>, <code class="language-plaintext highlighter-rouge">exact</code>, <code class="language-plaintext highlighter-rouge">length</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RangeValidator</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">minimum(T)</code>, <code class="language-plaintext highlighter-rouge">maximum(T)</code>, <code class="language-plaintext highlighter-rouge">range(T, T)</code>
+</td>
+      <td>any <code class="language-plaintext highlighter-rouge">Comparable</code>, such as numbers and <code class="language-plaintext highlighter-rouge">java.time</code> values</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">RangeValidator.minimum</code>, <code class="language-plaintext highlighter-rouge">.maximum</code>, <code class="language-plaintext highlighter-rouge">.range</code>, <code class="language-plaintext highlighter-rouge">.exact</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">minimum</code>, <code class="language-plaintext highlighter-rouge">maximum</code>, <code class="language-plaintext highlighter-rouge">exact</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DateValidator</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">minimum(Date)</code>, <code class="language-plaintext highlighter-rouge">maximum(Date)</code>, <code class="language-plaintext highlighter-rouge">range(Date, Date)</code>, each also with a format pattern</td>
+      <td>a <code class="language-plaintext highlighter-rouge">java.util.Date</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">DateValidator.minimum</code>, <code class="language-plaintext highlighter-rouge">.maximum</code>, <code class="language-plaintext highlighter-rouge">.range</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">minimum</code>, <code class="language-plaintext highlighter-rouge">maximum</code>, <code class="language-plaintext highlighter-rouge">inputdate</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PatternValidator</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">new PatternValidator(String)</code>, also with flags, a <code class="language-plaintext highlighter-rouge">Pattern</code> or a <code class="language-plaintext highlighter-rouge">MetaPattern</code>; <code class="language-plaintext highlighter-rouge">setReverse(true)</code> rejects matches instead</td>
+      <td>a <code class="language-plaintext highlighter-rouge">String</code> against a regular expression</td>
+      <td><code class="language-plaintext highlighter-rouge">PatternValidator</code></td>
+      <td><code class="language-plaintext highlighter-rouge">pattern</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EmailAddressValidator</code></td>
+      <td><code class="language-plaintext highlighter-rouge">getInstance()</code></td>
+      <td>an email address of the form local-part@domain</td>
+      <td><code class="language-plaintext highlighter-rouge">EmailAddressValidator</code></td>
+      <td><code class="language-plaintext highlighter-rouge">pattern</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UrlValidator</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">new UrlValidator()</code>, also with allowed schemes and options</td>
+      <td>a URL; by default <code class="language-plaintext highlighter-rouge">http</code>, <code class="language-plaintext highlighter-rouge">https</code> and <code class="language-plaintext highlighter-rouge">ftp</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">UrlValidator</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CreditCardValidator</code></td>
+      <td><code class="language-plaintext highlighter-rouge">new CreditCardValidator()</code></td>
+      <td>a credit card number by length, prefix and check digit</td>
+      <td><code class="language-plaintext highlighter-rouge">CreditCardValidator</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CompoundValidator</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">new CompoundValidator&lt;&gt;()</code>, then <code class="language-plaintext highlighter-rouge">add(IValidator)</code>
+</td>
+      <td>runs several validators as one</td>
+      <td>the keys of its validators</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A validator’s message key is the simple name of its class, plus a variation for the range validators. A subclass of a validator therefore has its own key.</p>
+
+<p><code class="language-plaintext highlighter-rouge">UrlValidator</code> options, combined with <code class="language-plaintext highlighter-rouge">+</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ALLOW_ALL_SCHEMES</code></td>
+      <td>accepts any scheme, ignoring the list of schemes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ALLOW_2_SLASHES</code></td>
+      <td>accepts <code class="language-plaintext highlighter-rouge">//</code> in the path</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NO_FRAGMENTS</code></td>
+      <td>rejects URLs with a <code class="language-plaintext highlighter-rouge">#fragment</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Validators run only on a non-<code class="language-plaintext highlighter-rouge">null</code> converted value, unless they implement <code class="language-plaintext highlighter-rouge">INullAcceptingValidator</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">StringValidator</code> also writes <code class="language-plaintext highlighter-rouge">maxlength</code> and <code class="language-plaintext highlighter-rouge">minlength</code> on the <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;textarea&gt;</code> it validates, so the browser enforces the length as the user types.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">HTML5Attributes</code> behavior renders the regular expression of a <code class="language-plaintext highlighter-rouge">PatternValidator</code> as the <code class="language-plaintext highlighter-rouge">pattern</code> attribute, and the browser checks it before submitting.</p>
+
+<h2 id="form-validators">Form validators</h2>
+
+<p>Form validators are added to the <code class="language-plaintext highlighter-rouge">Form</code> with <code class="language-plaintext highlighter-rouge">add(IFormValidator)</code> and compare several form components.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Validator</th>
+      <th>Create with</th>
+      <th>Validates</th>
+      <th>Message key</th>
+      <th>Variables</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EqualInputValidator</code></td>
+      <td><code class="language-plaintext highlighter-rouge">new EqualInputValidator(component1, component2)</code></td>
+      <td>that two components have the same input</td>
+      <td><code class="language-plaintext highlighter-rouge">EqualInputValidator</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">input0</code>, <code class="language-plaintext highlighter-rouge">input1</code>, <code class="language-plaintext highlighter-rouge">label0</code>, <code class="language-plaintext highlighter-rouge">label1</code>, <code class="language-plaintext highlighter-rouge">name0</code>, <code class="language-plaintext highlighter-rouge">name1</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EqualPasswordInputValidator</code></td>
+      <td><code class="language-plaintext highlighter-rouge">new EqualPasswordInputValidator(component1, component2)</code></td>
+      <td>as <code class="language-plaintext highlighter-rouge">EqualInputValidator</code>, without showing the input</td>
+      <td><code class="language-plaintext highlighter-rouge">EqualPasswordInputValidator</code></td>
+      <td>as <code class="language-plaintext highlighter-rouge">EqualInputValidator</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AbstractFormValidator</code></td>
+      <td>extend it</td>
+      <td>base class for your own form validators</td>
+      <td>the simple class name</td>
+      <td>set your own</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A form validator runs only when all components returned by <code class="language-plaintext highlighter-rouge">getDependentFormComponents()</code> are valid.</p>
+
+<h2 id="default-messages">Default messages</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Default text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Required</code></td>
+      <td>’${label}’ is required.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IConverter</code></td>
+      <td>The value of ‘${label}’ is not a valid ${type}.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StringValidator.minimum</code></td>
+      <td>The value of ‘${label}’ is shorter than the minimum of ${minimum} characters.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StringValidator.maximum</code></td>
+      <td>The value of ‘${label}’ is longer than the maximum of ${maximum} characters.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StringValidator.range</code></td>
+      <td>The value of ‘${label}’ is not between ${minimum} and ${maximum} characters long.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StringValidator.exact</code></td>
+      <td>The value of ‘${label}’ is not exactly ${exact} characters long.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RangeValidator.minimum</code></td>
+      <td>The value of ‘${label}’ must be at least ${minimum}.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RangeValidator.maximum</code></td>
+      <td>The value of ‘${label}’ must be at most ${maximum}.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RangeValidator.range</code></td>
+      <td>The value of ‘${label}’ must be between ${minimum} and ${maximum}.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RangeValidator.exact</code></td>
+      <td>The value of ‘${label}’ must be exactly ${minimum}.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DateValidator.minimum</code></td>
+      <td>The value of ‘${label}’ is less than the minimum of ${minimum}.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DateValidator.maximum</code></td>
+      <td>The value of ‘${label}’ is larger than the maximum of ${maximum}.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DateValidator.range</code></td>
+      <td>The value of ‘${label}’ is not between ${minimum} and ${maximum}.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PatternValidator</code></td>
+      <td>The value of ‘${label}’ does not match pattern ‘${pattern}’.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EmailAddressValidator</code></td>
+      <td>The value of ‘${label}’ is not a valid email address.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UrlValidator</code></td>
+      <td>The value of ‘${label}’ is not a valid URL.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CreditCardValidator</code></td>
+      <td>The credit card number is invalid.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EqualInputValidator</code></td>
+      <td>’${input0}’ from ${label0} and ‘${input1}’ from ${label1} must be equal.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EqualPasswordInputValidator</code></td>
+      <td>${label0} and ${label1} must be equal.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Wicket ships translations of these texts for many languages.</p>
+
+<h2 id="variables-in-every-message">Variables in every message</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">${label}</code></td>
+      <td>the component’s label model, else the resource with the component id as key, else the component id</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">${input}</code></td>
+      <td>the input as the user typed it</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">${name}</code></td>
+      <td>the component id</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="how-a-message-is-found">How a message is found</h2>
+
+<p>For an error with key <code class="language-plaintext highlighter-rouge">K</code> on a component with id <code class="language-plaintext highlighter-rouge">C</code>, Wicket asks the localizer for these keys in order and uses the first one found:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">C.K</code></li>
+  <li><code class="language-plaintext highlighter-rouge">K</code></li>
+</ol>
+
+<p>The localizer searches the properties files of the component, its parents and the page, then the application’s, then Wicket’s own. If no key is found, the error’s own message is used, set with <code class="language-plaintext highlighter-rouge">new ValidationError(String)</code> or <code class="language-plaintext highlighter-rouge">setMessage(String)</code>. <a href="/docs/bundle-lookup.html">Where Wicket looks for texts</a> describes the search.</p>
+
+<p>An error can carry several keys, added with <code class="language-plaintext highlighter-rouge">addKey(String)</code>; the first key that yields a text wins.</p>
+
+<h2 id="conversion-errors">Conversion errors</h2>
+
+<p>When a converter throws a <code class="language-plaintext highlighter-rouge">ConversionException</code>, the component reports an error with these keys, in this order:</p>
+
+<ol>
+  <li>the resource key set on the exception with <code class="language-plaintext highlighter-rouge">setResourceKey(String)</code>, if any;</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">IConverter.&lt;Type&gt;</code>, for example <code class="language-plaintext highlighter-rouge">IConverter.Integer</code>;</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">IConverter</code>.</li>
+</ol>
+
+<p>The message has the variables <code class="language-plaintext highlighter-rouge">type</code> (the simple name of the target type), <code class="language-plaintext highlighter-rouge">exception</code>, <code class="language-plaintext highlighter-rouge">locale</code> if the exception has one, <code class="language-plaintext highlighter-rouge">format</code> for a <code class="language-plaintext highlighter-rouge">SimpleDateFormat</code>, and every variable set on the exception with <code class="language-plaintext highlighter-rouge">setVariable(String, Object)</code>.</p>
+
+<h2 id="converters">Converters</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">ConverterLocator</code> of the application has these converters. Number and date converters use the locale of the session.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Converter</th>
+      <th>Format</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">boolean</code>, <code class="language-plaintext highlighter-rouge">Boolean</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">BooleanConverter</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">true</code>/<code class="language-plaintext highlighter-rouge">false</code>; also accepts <code class="language-plaintext highlighter-rouge">yes</code>, <code class="language-plaintext highlighter-rouge">on</code>, <code class="language-plaintext highlighter-rouge">y</code>, <code class="language-plaintext highlighter-rouge">1</code> and <code class="language-plaintext highlighter-rouge">no</code>, <code class="language-plaintext highlighter-rouge">off</code>, <code class="language-plaintext highlighter-rouge">n</code>, <code class="language-plaintext highlighter-rouge">0</code>
+</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">byte</code>, <code class="language-plaintext highlighter-rouge">Byte</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">ByteConverter</code></td>
+      <td>localized number</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">char</code>, <code class="language-plaintext highlighter-rouge">Character</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">CharacterConverter</code></td>
+      <td>one character</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">double</code>, <code class="language-plaintext highlighter-rouge">Double</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">DoubleConverter</code></td>
+      <td>localized number</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">float</code>, <code class="language-plaintext highlighter-rouge">Float</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">FloatConverter</code></td>
+      <td>localized number</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">Integer</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">IntegerConverter</code></td>
+      <td>localized number</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">long</code>, <code class="language-plaintext highlighter-rouge">Long</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">LongConverter</code></td>
+      <td>localized number</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">short</code>, <code class="language-plaintext highlighter-rouge">Short</code>
+</td>
+      <td><code class="language-plaintext highlighter-rouge">ShortConverter</code></td>
+      <td>localized number</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BigDecimal</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BigDecimalConverter</code></td>
+      <td>localized number</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BigInteger</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BigIntegerConverter</code></td>
+      <td>localized number</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">java.util.Date</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DateConverter</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">DateFormat.SHORT</code> date of the locale</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">java.sql.Date</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SqlDateConverter</code></td>
+      <td>localized date</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">java.sql.Time</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SqlTimeConverter</code></td>
+      <td>localized time</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">java.sql.Timestamp</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SqlTimestampConverter</code></td>
+      <td>localized date and time</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Calendar</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CalendarConverter</code></td>
+      <td>as <code class="language-plaintext highlighter-rouge">DateConverter</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LocalDate</code></td>
+      <td><code class="language-plaintext highlighter-rouge">LocalDateConverter</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">FormatStyle.SHORT</code> date of the locale</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LocalDateTime</code></td>
+      <td><code class="language-plaintext highlighter-rouge">LocalDateTimeConverter</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">FormatStyle.MEDIUM</code> date and time of the locale</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LocalTime</code></td>
+      <td><code class="language-plaintext highlighter-rouge">LocalTimeConverter</code></td>
+      <td>ISO time, such as <code class="language-plaintext highlighter-rouge">14:30:00</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ZonedDateTime</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ZonedDateTimeConverter</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">FormatStyle.MEDIUM</code> date and <code class="language-plaintext highlighter-rouge">FormatStyle.FULL</code> time of the locale</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">MaskConverter</code> in <code class="language-plaintext highlighter-rouge">org.apache.wicket.util.convert</code> is not registered by default. It converts with a <code class="language-plaintext highlighter-rouge">javax.swing.text.MaskFormatter</code> mask such as <code class="language-plaintext highlighter-rouge">(###) ###-####</code>; use it from <code class="language-plaintext highlighter-rouge">createConverter</code> on a component.</p>
+
+<p>Choice components such as <code class="language-plaintext highlighter-rouge">DropDownChoice</code> do not use converters; their <code class="language-plaintext highlighter-rouge">IChoiceRenderer</code> maps option ids back to objects.</p>
+
+<h2 id="validation-with-bean-validation">Validation with Bean Validation</h2>
+
+<p>The wicket-bean-validation module adds <code class="language-plaintext highlighter-rouge">PropertyValidator</code>, which checks the Jakarta Bean Validation constraints of a bean property. Its messages are keyed by the constraint’s message key, such as <code class="language-plaintext highlighter-rouge">jakarta.validation.constraints.NotNull.message</code>. See <a href="/docs/bean-validation.html">Validate with Bean Validation</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/forms.html">Forms</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/validate-input.html">Validate input and show errors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make fields required, check their values with validators, show the error messages and change their text.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/convert-input.html">Convert input to your types</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Tell a field which type its input becomes, write a converter for your own type and register it for one field or the whole application.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/bean-validation.html">Validate with Bean Validation</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Check form input against the Jakarta Bean Validation annotations on your domain classes with the wicket-bean-validation module.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/dropdown-choice.html">Let the user pick from a list</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show a drop-down list with DropDownChoice, render objects and enums as options, and control the empty "Choose One" option.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/checkboxes-radios.html">Use checkboxes and radio buttons</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Bind a checkbox to a boolean, let the user tick several options or pick one with radio buttons, and add a "select all" checkbox.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/select-multiple.html">Select several values</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let the user select several values from a list with ListMultipleChoice, or move them between two lists with Palette.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/submit-buttons.html">Use more than one submit button</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a form several buttons that each run their own code, pick the button for the Enter key, and add a Cancel button that skips validation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/nest-forms.html">Nest forms</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Put a form inside another form, submit and validate the inner form on its own, and decide which forms take part in a submit.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/upload-files.html">Upload files</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let users upload one or more files with FileUploadField, limit their size and number, and show upload progress.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-component-panel.html">Combine fields into one form component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a FormComponentPanel that shows several inputs but converts, validates and stores them as one value.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-forms.html">Build a stateless form</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use StatelessForm so a page with a form stays stateless, never expires and does not create a session until it must.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-components.html">Form components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every form, input, choice, upload and submit component in wicket-core and wicket-extensions, with the markup tag it needs and the type of its model.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Validators and converters</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The built-in validators, form validators and converters, with their message keys, the variables in their messages and their default texts.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/form-processing.html">How a form is processed</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The order in which Wicket checks, converts, validates and stores submitted input, and why a form updates all its models or none.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/validators.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

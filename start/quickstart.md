@@ -1,186 +1,86 @@
 ---
-layout: default
-title: Create a Wicket Quickstart 
-subtitle: With the quickstart you’ll be up and running in seconds
-preamble: Use the following wizard to generate a Quick Start Project using Maven. Paste the generated command line into a shell (DOS prompt or unix shell) and create a project with Wicket in a jiffy.
-pageclasses: quickstart
-atitlePicture:
-  - title: Ready, set, go!
-    src: ../img/getstarted.png
-    alt: .oO
+layout: section
+title: Quick start
+parent:
+  title: Releases
+  url: /versions/
+summary: Generate a Wicket project with Maven in a minute, run it, and open it in your browser.
 ---
-<script type="text/javascript" charset="utf-8" src="{{ site.baseurl }}/javascript/ZeroClipboard-1.1.7.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-      
-      ZeroClipboard.setDefaults( { moviePath: '{{ site.baseurl }}/javascript/ZeroClipboard-1.1.7.swf' } );
-      var clip = new ZeroClipboard(document.getElementById("cmdLineCopy"));
-      clip.on( 'noflash', function ( client, args ) {
-        document.getElementById("cmdLineCopy").style.display = 'none';
-      });
-      clip.on( 'wrongflash', function ( client, args ) {
-        document.getElementById("cmdLineCopy").style.display = 'none';
-      });
-      $(document).resize(function() {
-        clip.reposition();
-      });
-    });
+{% comment %}
+  The versions offered are the latest releases of the lines in service, in the order of
+  _data/releases.yml, so the LTS comes first and is the default; their Java requirement comes from the line's page under /versions/.
+  ?v=10 preselects a line.
+{% endcomment %}
+{% assign choices = '' | split: '' %}
+{% for line in site.data.releases.lines %}
+    {% if line.page and line.config and line.status != 'eol' %}{% assign choices = choices | push: line %}{% endif %}
+{% endfor %}
+<form class="quickstart" id="quickstart" autocomplete="off">
+    <div class="quickstart-fields">
+        <label>Group ID <input type="text" name="groupId" value="com.mycompany" spellcheck="false"></label>
+        <label>Artifact ID <input type="text" name="artifactId" value="myproject" spellcheck="false"></label>
+        <label>Wicket version
+            <select name="version">
+            {% for line in choices %}
+                {% assign hub = site.pages | where: "url", line.page | first %}
+                <option value="{{ site.wicket[line.config] }}" data-series="{{ line.series }}" data-java="{{ hub.java }}" data-support="Wicket {{ line.series }} is supported {{ line.support | replace: 'Until', 'until' }}.">{{ site.wicket[line.config] }}{% if line.status == 'lts' %} — LTS{% elsif line.role %} — {{ line.role }}{% endif %}{% if line.status == 'last-call' %} — last release coming, not for new projects{% endif %}</option>
+            {% endfor %}
+            </select>
+        </label>
+    </div>
+    <div class="quickstart-command">
+        <p class="hub-maven-label"><span>Run this in a terminal</span><button type="button" class="hub-copy" data-copy="quickstart-cmd" aria-live="polite">Copy</button></p>
+        {% assign first = choices | first %}<pre id="quickstart-cmd"><code class="language-shell">mvn archetype:generate \
+  -DarchetypeGroupId=org.apache.wicket \
+  -DarchetypeArtifactId=wicket-archetype-quickstart \
+  -DarchetypeVersion={{ site.wicket[first.config] }} \
+  -DgroupId=com.mycompany \
+  -DartifactId=myproject \
+  -DinteractiveMode=false</code></pre>
+        {% assign first_hub = site.pages | where: "url", first.page | first %}<p class="quickstart-needs">Needs Maven and Java <span class="quickstart-java">{{ first_hub.java }}</span> or newer. <span class="quickstart-support">Wicket {{ first.series }} is supported {{ first.support | replace: 'Until', 'until' }}.</span></p>
+    </div>
+</form>
 
-    function changeIt()
-    {
-		var groupId = document.getElementById("groupId").value;
-		var artifactId = document.getElementById("artifactId").value;
-		var version = document.getElementById("version").value;
-		var appserver = document.getElementById("appserver").value;
-		var cmd;
-				
-		if(version.match(/^1\.[34]/))
-			cmd = 'mvn archetype:create -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;						
-		else
-			cmd = 'mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion=' + version + ' -DgroupId=' + groupId + ' -DartifactId=' + artifactId;			
+## Five steps to a running application {#steps}
 
-		if (version.match(/.*SNAPSHOT/))
-			cmd += ' -DarchetypeRepository=https://repository.apache.org/content/repositories/snapshots/';
-		else
-			cmd += ' -DarchetypeRepository=https://repository.apache.org/';
+1. Fill in the Maven coordinates of your project and pick a Wicket version. The group ID also becomes the Java package.
+2. Copy the command and run it in a terminal. Maven creates a folder named after the artifact ID.
+3. Open the project in your IDE. Every current Java IDE imports Maven projects directly.
+4. Run the `main` method of the `Start` class in `src/test/java`.
+5. Open <http://localhost:8080>.
 
-		if (appserver === 'wildfly')
-			cmd += ' -Dlog4j.properties=wildfly-doesnt-need-log4j.properties';
+[Create a project]({{ site.baseurl }}/docs/create-project.html) explains what the generated project contains and how to adjust it, and [Build your first application]({{ site.baseurl }}/docs/first-application.html) takes it from there. The same project is what the users list asks for when you report a bug: a small application that shows the problem.
 
-		cmd += ' -DinteractiveMode=false'; 
-		document.getElementById("cmdLine").value = cmd;
+<script>
+(function () {
+    var form = document.getElementById('quickstart');
+    var code = form.querySelector('code');
+    var select = form.elements.version;
+    var wanted = new URLSearchParams(window.location.search).get('v');
+    if (wanted) {
+        Array.prototype.forEach.call(select.options, function (o) { if (o.getAttribute('data-series') === wanted) o.selected = true; });
     }
-  </script>
-
-## Before you start
-
-The Quick Start Wizard uses [Apache Maven](http://maven.apache.org) to
-make it really fast to get started. You should have Maven installed and
-working before you can use the Quick Start wizard.
-
-## 5 small steps to a web application
-
-Use the following steps to quickly generate a project to get you
-started:
-
-1.  Fill in the Maven coordinates for your project in the wizard and 
-    select the appropriate Wicket version
-2.  Copy the generated commandline to your clipboard and paste it in a 
-    terminal (or a DOS box)
-3.  Open the project in your IDE of choice
-4.  Start the `Start` class in the *src/test/java* folder
-5.  Open your browser to <a target="_blank" href="http://localhost:8080">http://localhost:8080</a>
-
-And you're done!
-
-## Quick Start Wizard
-
-Fill in your project details in the wizard below and copy the generated
-command line to your clipboard.
-
-  <div class="l-two-third">
-    <div class="quickstart-wizard">
-      <div>
-        <label title="Base Package" for="groupId">Group ID</label>
-        <input type="text" value="com.mycompany" onkeyup="changeIt();" id="groupId">
-      </div>
-      <div>
-        <label title="Project Name" for="artifactId">Artifact ID</label>
-        <input type="text" value="myproject" onkeyup="changeIt();" id="artifactId">
-      </div>
-      <div>
-        <label title="Wicket Version" for="version">Wicket Version</label>
-        <select onchange="changeIt();" id="version">
-    {% for version in site.wicket.versions reversed %}
-    {% if version == site.wicket.version %}
-    	<option value="{{version}}" selected="selected">{{version}}</option>
-    {% else %}
-    	<option value="{{version}}">{{version}}</option>
-    {% endif %}
-    {% endfor %}
-        </select>
-      </div>
-      <div>
-    <label for="appserver" title="Server to deploy on">Server to deploy on</label>
-    <select id="appserver" onchange="changeIt();">
-    	<option value="any" selected="selected">Any but Wild Fly</option>
-    	<option value="wildfly" >Wild Fly (JBoss 8.x)</option>
-    </select>
-    </div>
-      <div>
-        <label id="cmdLabel" for="cmdLine">generated command line</label>
-        <textarea onfocus="this.select();" id="cmdLine" style="resize: vertical;"></textarea>
-        <script>changeIt();</script>
-      </div>
-      <div>
-        <button data-clipboard-target="cmdLine" class="clip_button" id="cmdLineCopy">copy to clipboard</button>
-      </div>
-    </div>
-  </div>
-<br/>
-
-With the generated command line on your clipboard open up a terminal
-window (or DOS box) and navigate to where you want the project to be
-generated (e.g. for Eclipse users this would be your workspace folder).
-Paste the command line into your terminal window and press «enter» to
-execute the command.
-
-
-#### Result of the Maven command
-
-Executing the Maven command line will result the following directory
-structure:
-
-    .\myproject
-        |   pom.xml
-        |
-        \---src
-            +---main
-            |   +---java
-            |   |   \---com
-            |   |       \---mycompany
-            |   |               HomePage.html
-            |   |               HomePage.java
-            |   |               WicketApplication.java
-            |   |
-            |   +---resources
-            |   |       log4j.properties
-            |   |
-            |   \---webapp
-            |       \---WEB-INF
-            |               web.xml
-            |
-            \---test
-                \---java
-                    \---com
-                        \---mycompany
-                                Start.java
-
-It might be different depending on your settings (and version of
-Wicket), but this is basically the standard layout for web projects.
-
-## Import the Quick Start in your IDE
-
-The Wicket Quick Start uses Apache Maven to make it really fast to get
-started. You should have Maven installed and working before you can use
-the Quick Start wizard.
-
-### Eclipse
-
-Eclipse has native support for Maven projects. To import the project you
-select "Import existing Maven project" from the File menu, and select the
-folder of your generated Quick Start project.
-
-### IntelliJ IDEA
-
-IntelliJ IDEA has native support for Maven projects. You just point the
-open project dialog to the place where you generated the Quick Start
-project and open the pom.xml file. IDEA will then open the project as
-any other Java project.
-
-### Netbeans
-
-Netbeans has native support for Maven projects. You just point the open
-project dialog to the place where you generated the Quick Start project
-and open the pom.xml file. Netbeans will then open the project as any
-other Java project.
+    function update() {
+        var option = select.options[select.selectedIndex];
+        code.textContent = 'mvn archetype:generate \\\n' +
+            '  -DarchetypeGroupId=org.apache.wicket \\\n' +
+            '  -DarchetypeArtifactId=wicket-archetype-quickstart \\\n' +
+            '  -DarchetypeVersion=' + select.value + ' \\\n' +
+            '  -DgroupId=' + (form.elements.groupId.value.trim() || 'com.mycompany') + ' \\\n' +
+            '  -DartifactId=' + (form.elements.artifactId.value.trim() || 'myproject') + ' \\\n' +
+            '  -DinteractiveMode=false';
+        form.querySelector(".quickstart-java").textContent = option.getAttribute("data-java");
+        form.querySelector(".quickstart-support").textContent = option.getAttribute("data-support");
+    }
+    form.addEventListener('input', update);
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+    update();
+    form.querySelector('[data-copy]').addEventListener('click', function (e) {
+        var button = e.currentTarget;
+        navigator.clipboard.writeText(code.textContent).then(function () {
+            button.textContent = 'Copied';
+            setTimeout(function () { button.textContent = 'Copy'; }, 2000);
+        });
+    });
+})();
+</script>

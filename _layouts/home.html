@@ -1,0 +1,15 @@
+---
+layout: base
+---
+{% comment %}
+  The homepage: the menu, then the page's own sections. The page sets its sections in full;
+  this layout adds no title, table of contents or date.
+{% endcomment %}
+<div class="header default">
+    <div class="l-container">
+        {% include mainmenu.html %}
+    </div>
+</div>
+<main id="main" class="home" tabindex="-1">
+    {{ content }}
+</main>

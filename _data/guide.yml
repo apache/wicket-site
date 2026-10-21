@@ -1,0 +1,68 @@
+# Topics of the user guide (`_guide/`), in reading order. Every page names one
+# topic in its `topic` front matter; the topic page at /docs/topics/<id>.html
+# lists that topic's pages by kind. See GUIDE.md.
+
+kinds:
+  - id: tutorial
+    title: Tutorials
+    label: Tutorial
+    intro: Lessons that build something that works, step by step.
+  - id: howto
+    title: How-to guides
+    label: How-to
+    intro: Directions for a specific goal.
+  - id: reference
+    title: Reference
+    label: Reference
+    intro: The classes, tags and settings, described.
+  - id: explanation
+    title: Explanation
+    label: Explanation
+    intro: Why Wicket works the way it does.
+
+topics:
+  - id: start
+    title: Getting started
+    summary: Create a project, configure the application and learn what Wicket is made of.
+  - id: components
+    title: Components and markup
+    summary: Pages, panels, borders and fragments, and how Java components meet their HTML.
+  - id: models
+    title: Models
+    summary: How components get and keep their data.
+  - id: forms
+    title: Forms
+    summary: Input fields, validation, conversion, uploads and submitting.
+  - id: repeaters
+    title: Lists and tables
+    summary: Repeat markup for each item in a list, page through data.
+  - id: ajax
+    title: Ajax and JavaScript
+    summary: Update parts of a page without reloading it, and work with JavaScript.
+  - id: websockets
+    title: WebSockets
+    summary: Push updates from the server to the browser.
+  - id: links
+    title: Links and URLs
+    summary: Link between pages, pass parameters and shape the URLs.
+  - id: resources
+    title: Resources
+    summary: Serve CSS, JavaScript, images and generated files.
+  - id: state
+    title: Pages and state
+    summary: Stateful and stateless pages, the page store and the session.
+  - id: lifecycle
+    title: Requests and lifecycle
+    summary: How a request is processed and what happens to a component along the way.
+  - id: i18n
+    title: Localization
+    summary: Translate texts, formats and choices.
+  - id: security
+    title: Security
+    summary: Log users in, restrict access and harden the application.
+  - id: testing
+    title: Testing
+    summary: Test pages, forms and markup without a browser.
+  - id: integration
+    title: Integration
+    summary: Spring, CDI, EJB, OSGi and monitoring.

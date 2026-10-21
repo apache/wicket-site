@@ -69,17 +69,17 @@ p {
 
 // Links
 a {
-    color: settings.$color-brand-50;
+    color: settings.$color-brand-text;
     cursor: pointer;
     text-decoration: none;
 
-    &:hover { color: settings.$color-brand-60; }
+    &:hover { color: settings.$color-navy; }
 }
 
 
 // Other
 small {
-    color: settings.$color-neutral-50;
+    color: #5d6662;
     font-size: settings.$font-size-20;
 }
 

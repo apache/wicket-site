@@ -1,7 +1,62 @@
 ---
-layout: default
+layout: base
 ---
-<div class="l-full">
-    <p class="meta">{{ page.date | date_to_string }}</p>
-    {{ content }}
+{% comment %}
+  A blog post. Its kind (release, major release, security advisory, article) comes from
+  _includes/post-kind.html; a release post links to the page of its release line.
+{% endcomment %}
+<div class="header default">
+    <div class="l-container">
+        {% include mainmenu.html %}
+    </div>
 </div>
+{% include post-kind.html post=page %}
+{% assign year = page.date | date: "%Y" %}
+{% include post-line.html post=page %}
+{% capture toc %}{{ content | toc_generate }}{% endcapture %}{% assign toc = toc | strip %}
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="{{ site.baseurl }}/news/">Blog</a><span aria-hidden="true"> / </span><a href="{{ site.baseurl }}/news/{{ year }}/">{{ year }}</a></p>
+        <h1>{{ page.title }}</h1>
+        <p class="post-sign-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
+            {% case post_kind %}
+            {% when 'major' %}<span class="tag tag-post">Major release</span>
+            {% when 'release' %}<span class="tag tag-post">Release</span>{% if post_fixes %}<span class="tag tag-post tag-security">Security fixes</span>{% endif %}
+            {% when 'security' %}<span class="tag tag-post tag-security">Security advisory</span>
+            {% endcase %}
+            {% if line_page %}<a href="{{ site.baseurl }}{{ line_page.url }}">Wicket {{ line_series }}.x: status, downloads and documentation</a>{% endif %}
+        </p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading{% if toc != '' %} has-rail{% endif %} guide-reading">
+        {% if toc != '' %}
+        <nav class="reading-rail" aria-label="On this page">{{ toc }}</nav>
+        {% endif %}
+        <div class="reading-main">
+            <article class="page-content guide-content post-content">
+                {{ content | autolink }}
+            </article>
+            <footer class="post-foot">
+                <nav class="post-pager" aria-label="Other posts">
+                    {% comment %} A release post pages through the releases of its own line; other posts through all posts. {% endcomment %}
+                    {% assign pager_older = page.previous %}{% assign pager_newer = page.next %}{% assign pager_label = '' %}
+                    {% if line_series and post_kind == 'release' %}
+                        {% assign pager_key = '/wicket-' | append: line_series | append: '.' %}
+                        {% assign pager_older = nil %}{% assign pager_newer = nil %}{% assign pager_self = false %}
+                        {% for p in site.posts %}
+                            {% if p.url == page.url %}{% assign pager_self = true %}{% continue %}{% endif %}
+                            {% unless p.url contains pager_key and p.url contains '-released' %}{% continue %}{% endunless %}
+                            {% if pager_self %}{% assign pager_older = p %}{% break %}{% else %}{% assign pager_newer = p %}{% endif %}
+                        {% endfor %}
+                        {% assign pager_label = ' ' | append: line_series | append: '.x release' %}
+                    {% endif %}
+                    {% if pager_older %}<a class="post-pager-older" href="{{ site.baseurl }}{{ pager_older.url }}"><span>Older{{ pager_label }}</span>{{ pager_older.title }}</a>{% endif %}
+                    {% if pager_newer %}<a class="post-pager-newer" href="{{ site.baseurl }}{{ pager_newer.url }}"><span>Newer{{ pager_label }}</span>{{ pager_newer.title }}</a>{% endif %}
+                </nav>
+                <p class="post-follow">Follow the project on the <a href="{{ site.baseurl }}/news/">blog</a>, in the <a href="{{ site.baseurl }}/atom.xml">Atom feed</a> or on the <a href="{{ site.baseurl }}/community/#announce">announce list</a>.</p>
+            </footer>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Best practices | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The habits that keep a Wicket application easy to change and to test, each with the reason it follows from how Wicket works." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/start.html">Getting started</a></p>
+            <h1>Best practices</h1>
+            <p class="page-sign-sub">The habits that keep a Wicket application easy to change and to test, each with the reason it follows from how Wicket works.</p>
+            <p class="guide-plates"><span class="guide-kind">Explanation</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#give-a-component-its-own-markup"><span class="toc-number">1</span> <span class="toc-text">Give a component its own markup</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#keep-data-in-fields"><span class="toc-number">2</span> <span class="toc-text">Keep data in fields</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#name-ids-after-what-they-mean"><span class="toc-number">3</span> <span class="toc-text">Name ids after what they mean</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#build-the-component-tree-once"><span class="toc-number">4</span> <span class="toc-text">Build the component tree once</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#decide-visibility-in-onconfigure"><span class="toc-number">5</span> <span class="toc-text">Decide visibility in onConfigure</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#pass-models-not-objects"><span class="toc-number">6</span> <span class="toc-text">Pass models, not objects</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#unwrap-models-only-in-event-methods"><span class="toc-number">7</span> <span class="toc-text">Unwrap models only in event methods</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#pass-the-model-to-the-superclass"><span class="toc-number">8</span> <span class="toc-text">Pass the model to the superclass</span></a></li>
+<li class="toc--level-1 toc--section-9"><a href="#let-validators-only-validate"><span class="toc-number">9</span> <span class="toc-text">Let validators only validate</span></a></li>
+<li class="toc--level-1 toc--section-10"><a href="#use-callbacks-instead-of-passing-pages"><span class="toc-number">10</span> <span class="toc-text">Use callbacks instead of passing pages</span></a></li>
+<li class="toc--level-1 toc--section-11"><a href="#use-the-session-only-for-global-data"><span class="toc-number">11</span> <span class="toc-text">Use the session only for global data</span></a></li>
+<li class="toc--level-1 toc--section-12"><a href="#subclass-instead-of-using-factories"><span class="toc-number">12</span> <span class="toc-text">Subclass instead of using factories</span></a></li>
+<li class="toc--level-1 toc--section-13"><a href="#test-every-page-and-component"><span class="toc-number">13</span> <span class="toc-text">Test every page and component</span></a></li>
+<li class="toc--level-1 toc--section-14"><a href="#stay-inside-wicket-instead-of-using-servlet-filters"><span class="toc-number">14</span> <span class="toc-text">Stay inside Wicket instead of using servlet filters</span></a></li>
+<li class="toc--level-1 toc--section-15"><a href="#keep-classes-and-methods-small"><span class="toc-number">15</span> <span class="toc-text">Keep classes and methods small</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Developers who come to Wicket from request-based frameworks such as Struts or Spring MVC tend to write procedural code: build what this request needs, then throw it away. Wicket pages are long-lived objects in a tree, and code that treats them that way stays simpler. Each practice below follows from that.</p>
+
+<h2 id="give-a-component-its-own-markup">Give a component its own markup</h2>
+
+<p>A component should hide how it is built. Whoever uses it should only need its constructor and its public methods, not the ids of its children.</p>
+
+<p>That rules out subclassing <code class="language-plaintext highlighter-rouge">Form</code> or <code class="language-plaintext highlighter-rouge">WebMarkupContainer</code> and adding children to it: those classes have no markup of their own, so the page that uses the subclass has to supply tags for children it never added.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Every page that uses this form must know it has "username" and "email" fields</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RegistrationForm</span> <span class="kd">extends</span> <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">RegistrationForm</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">model</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">&lt;&gt;(</span><span class="s">"username"</span><span class="o">,</span> <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">model</span><span class="o">,</span> <span class="nl">Registration:</span><span class="o">:</span><span class="n">getUsername</span><span class="o">,</span> <span class="nl">Registration:</span><span class="o">:</span><span class="n">setUsername</span><span class="o">)));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">&lt;&gt;(</span><span class="s">"email"</span><span class="o">,</span> <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">model</span><span class="o">,</span> <span class="nl">Registration:</span><span class="o">:</span><span class="n">getEmail</span><span class="o">,</span> <span class="nl">Registration:</span><span class="o">:</span><span class="n">setEmail</span><span class="o">)));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Make it a <code class="language-plaintext highlighter-rouge">Panel</code> instead, with the form and the fields in the panel’s own markup. The page then contains one tag for the panel and nothing about its inside, and you can change the fields without touching any page. Adding behaviors and validators through a subclass is fine: they have no tags.</p>
+
+<h2 id="keep-data-in-fields">Keep data in fields</h2>
+
+<p>A page is not recreated for every request. When a form fails validation, when the user clicks a link on the page, or when they come back with the back button, Wicket uses the same page object. Data the page needs, which is usually a model passed to its constructor, belongs in a field, where every method of the page can reach it.</p>
+
+<p>Pages are stored by serializing them, so everything in their fields must be serializable and should be small. A service or a database connection does not belong in a field. Large or persistent data belongs in a <code class="language-plaintext highlighter-rouge">LoadableDetachableModel</code>, which keeps only what it needs to load the data again.</p>
+
+<h2 id="name-ids-after-what-they-mean">Name ids after what they mean</h2>
+
+<p>Name a <code class="language-plaintext highlighter-rouge">wicket:id</code> after its business meaning, <code class="language-plaintext highlighter-rouge">birthDate</code>, not after the technology, <code class="language-plaintext highlighter-rouge">birthDateTextField</code>. The Java code and the markup already show what kind of component it is. When you replace the text field with a date picker, a technical id has to change in both files, and a business id does not. A <code class="language-plaintext highlighter-rouge">CompoundPropertyModel</code> uses the id as the name of a property, so <code class="language-plaintext highlighter-rouge">setBirthDateTextField()</code> would be the result.</p>
+
+<h2 id="build-the-component-tree-once">Build the component tree once</h2>
+
+<p>Build the tree in the constructor or in <code class="language-plaintext highlighter-rouge">onInitialize()</code>, and then leave it alone. The tree is the skeleton; the models fill it with data. If you find yourself calling <code class="language-plaintext highlighter-rouge">replace()</code> or <code class="language-plaintext highlighter-rouge">remove()</code>, or adding different components depending on a condition, the data probably is not in a model.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Decided once, at construction: wrong after the user logs in</span>
+<span class="k">if</span> <span class="o">(</span><span class="nc">MySession</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">isSignedIn</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">EmptyPanel</span><span class="o">(</span><span class="s">"login"</span><span class="o">));</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">LoginPanel</span><span class="o">(</span><span class="s">"login"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Always add the <code class="language-plaintext highlighter-rouge">LoginPanel</code>, and let it decide when it is visible, as described in the next section.</p>
+
+<h2 id="decide-visibility-in-onconfigure">Decide visibility in onConfigure</h2>
+
+<p>A component should decide for itself whether it is visible, based on current state. Set it in <code class="language-plaintext highlighter-rouge">onConfigure()</code>, which Wicket calls before every render:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginPanel</span> <span class="kd">extends</span> <span class="nc">Panel</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onConfigure</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onConfigure</span><span class="o">();</span>
+        <span class="n">setVisible</span><span class="o">(!</span><span class="nc">MySession</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">isSignedIn</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Calling <code class="language-plaintext highlighter-rouge">setVisible()</code> from outside, once, when you create the component, records a decision that goes stale: the page lives on, and something has to remember to call <code class="language-plaintext highlighter-rouge">setVisible()</code> again at the right moments.</p>
+
+<p><img src="/img/guide/login_calls_hollywood.png" alt="Calling setVisible from outside needs a call at every change of state; onConfigure needs none"></p>
+
+<p>With <code class="language-plaintext highlighter-rouge">onConfigure()</code> the logic is in one place, inside the component it concerns, and it reads the current state on every render. The same goes for <code class="language-plaintext highlighter-rouge">setEnabled()</code>. When visibility depends on data, let the component read its model in <code class="language-plaintext highlighter-rouge">onConfigure()</code>; a button that shows something then only changes the model.</p>
+
+<p>Do not override <code class="language-plaintext highlighter-rouge">isVisible()</code> for this. Wicket calls it many times per request, also in phases where the answer must not change, and an override that depends on changing state leads to errors that are hard to trace. Form components inside an invisible or disabled container are not processed when the form is submitted.</p>
+
+<h2 id="pass-models-not-objects">Pass models, not objects</h2>
+
+<p>Give components and your own constructors an <code class="language-plaintext highlighter-rouge">IModel&lt;Registration&gt;</code>, not a <code class="language-plaintext highlighter-rouge">Registration</code>. A component that holds the object itself cannot get a fresh one: after the next request the page still shows the entity it loaded the first time, even if the database changed. With a model, where the object comes from is the model’s business. The same component works with a <code class="language-plaintext highlighter-rouge">Model</code>, a lambda or a <code class="language-plaintext highlighter-rouge">LoadableDetachableModel</code> that loads the entity from the database each request.</p>
+
+<h2 id="unwrap-models-only-in-event-methods">Unwrap models only in event methods</h2>
+
+<p>Do not call <code class="language-plaintext highlighter-rouge">getObject()</code> in a constructor. The constructor runs once, but the page lives for many requests, so a value you read there is a copy that goes stale and takes up space in the stored page. Read models where you need their value now: in <code class="language-plaintext highlighter-rouge">onSubmit()</code>, <code class="language-plaintext highlighter-rouge">onClick()</code>, <code class="language-plaintext highlighter-rouge">onUpdate()</code>, in <code class="language-plaintext highlighter-rouge">onConfigure()</code>, or in a lambda model that Wicket evaluates during rendering.</p>
+
+<h2 id="pass-the-model-to-the-superclass">Pass the model to the superclass</h2>
+
+<p>When your component takes a model, pass it to <code class="language-plaintext highlighter-rouge">super(id, model)</code>. Wicket detaches the models a component knows about at the end of every request; a model you only keep in a field of your own is not detached unless you do it in <code class="language-plaintext highlighter-rouge">onDetach()</code>. A <code class="language-plaintext highlighter-rouge">LoadableDetachableModel</code> that is not detached keeps its loaded object, and the object ends up in the stored page.</p>
+
+<h2 id="let-validators-only-validate">Let validators only validate</h2>
+
+<p>A validator answers one question: is this input acceptable? It should not change the input, the model or anything else. Nobody reading the form expects a validator to correct a bank name or save data. That work belongs in <code class="language-plaintext highlighter-rouge">onSubmit()</code> of the form or of a button, which runs after all validators passed.</p>
+
+<h2 id="use-callbacks-instead-of-passing-pages">Use callbacks instead of passing pages</h2>
+
+<p>Do not pass a page or component to a constructor so the new page can return to it later:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// The caller must create the page to return to before it is needed</span>
+<span class="kd">public</span> <span class="nf">SettingsPage</span><span class="o">(</span><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Settings</span><span class="o">&gt;</span> <span class="n">settings</span><span class="o">,</span> <span class="nc">WebPage</span> <span class="n">backTo</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Give the page a method that runs when its work is done, and let the caller override it:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SettingsPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">SettingsPage</span><span class="o">(</span><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Settings</span><span class="o">&gt;</span> <span class="n">settings</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Settings</span><span class="o">&gt;</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Form</span><span class="o">&lt;&gt;(</span><span class="s">"form"</span><span class="o">,</span> <span class="n">settings</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">onSaved</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onSaved</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// In the calling page</span>
+<span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="nc">SettingsPage</span><span class="o">(</span><span class="n">settingsModel</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onSaved</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setResponsePage</span><span class="o">(</span><span class="nc">CallingPage</span><span class="o">.</span><span class="na">this</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p>The caller decides what happens next at the moment it matters, can do more than navigate, such as show a message, and no page is created that may never be shown.</p>
+
+<h2 id="use-the-session-only-for-global-data">Use the session only for global data</h2>
+
+<p>Wicket’s session is your own subclass of <code class="language-plaintext highlighter-rouge">WebSession</code>, with typed fields. Put data there that nearly every page needs during the whole visit: the signed-in user and what that user may do. Data of one form or one flow of pages does not belong there. Pass it from page to page in the constructor, as a model. It then lives exactly as long as the pages that use it, and disappears when the user leaves the flow, without code to clean it up.</p>
+
+<h2 id="subclass-instead-of-using-factories">Subclass instead of using factories</h2>
+
+<p>A factory method that builds and configures a component hides its class. Callers cannot override <code class="language-plaintext highlighter-rouge">onConfigure()</code> or other methods, and cannot subclass it. Write a class instead, such as a <code class="language-plaintext highlighter-rouge">CmsLabel</code> that extends <code class="language-plaintext highlighter-rouge">Label</code>, and create it with <code class="language-plaintext highlighter-rouge">new</code>.</p>
+
+<p>If the factory exists to give components their services, use injection: an <code class="language-plaintext highlighter-rouge">IComponentInstantiationListener</code> runs for every component that is constructed. <code class="language-plaintext highlighter-rouge">SpringComponentInjector</code> from <code class="language-plaintext highlighter-rouge">wicket-spring</code> is one, and fills fields annotated with <code class="language-plaintext highlighter-rouge">@SpringBean</code>. See <a href="/docs/spring.html">Inject Spring beans</a>.</p>
+
+<h2 id="test-every-page-and-component">Test every page and component</h2>
+
+<p>Every page and panel should have at least a test that renders it with <code class="language-plaintext highlighter-rouge">WicketTester</code>. It catches a <code class="language-plaintext highlighter-rouge">wicket:id</code> without a component and a component without a tag, and it runs in a fraction of the time of starting a server. Tests of forms and Ajax behaviors with <code class="language-plaintext highlighter-rouge">FormTester</code> and <code class="language-plaintext highlighter-rouge">executeAjaxEvent</code> catch errors in your logic before a user does. The tutorial <a href="/docs/first-test.html">Test a page with WicketTester</a> shows how.</p>
+
+<h2 id="stay-inside-wicket-instead-of-using-servlet-filters">Stay inside Wicket instead of using servlet filters</h2>
+
+<p>Code that needs to run around each request, such as opening and closing a unit of work, fits in an <code class="language-plaintext highlighter-rouge">IRequestCycleListener</code>, registered with <code class="language-plaintext highlighter-rouge">getRequestCycleListeners().add()</code>. It has hooks such as <code class="language-plaintext highlighter-rouge">onBeginRequest</code>, <code class="language-plaintext highlighter-rouge">onEndRequest</code> and <code class="language-plaintext highlighter-rouge">onException</code>, and runs with Wicket’s request cycle, session and page available. Data that lives as long as the visit belongs in your <code class="language-plaintext highlighter-rouge">WebSession</code>, not in attributes of the <code class="language-plaintext highlighter-rouge">HttpSession</code>. Access the servlet API directly only when you must, for example to read a cookie set by another application, and keep that code in one place.</p>
+
+<h2 id="keep-classes-and-methods-small">Keep classes and methods small</h2>
+
+<p>A page whose constructor builds everything in nested anonymous classes is hard to read and harder to change. Extract methods named after what they create, such as <code class="language-plaintext highlighter-rouge">createAddressFields()</code>, so the constructor reads as a summary of the page. When a part grows, make it a panel of its own. Smaller components are easier to reuse and to test.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/start.html">Getting started</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-application.html">Build your first application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a project from the quickstart, run it, and build a home page with a label, a click counter and a link to a second page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-layout.html">Give every page the same layout</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Move the header, navigation and footer of your application into a base page and two panels, so every page shares one layout.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-form.html">Build a form that saves data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a guestbook page with a form that validates its input, saves entries and lists them, and shows errors and a confirmation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-ajax.html">Update a page with Ajax</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make the click counter and the guestbook form update only the parts of the page that change, open the form without a reload, and refresh the guestbook every ten seconds.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-test.html">Test a page with WicketTester</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write JUnit tests that render your pages, click links, submit the guestbook form and check Ajax updates, without a browser or a server.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/create-project.html">Create a project from the quickstart archetype</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a ready-to-run Wicket project with Maven, know what is in it, and open it in your IDE.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/deployment-mode.html">Switch between development and deployment mode</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run Wicket in deployment mode on production servers, with a system property, a web.xml parameter or code, and check which mode is active.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ide-plugins.html">Add Wicket support to your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install WicketForge in IntelliJ IDEA or QWickie in Eclipse to jump between Java and markup and complete wicket:id values.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/modules.html">Wicket modules</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The artifacts Wicket is released as, what each one contains, which Wicket modules it depends on, and which you need for testing and tooling.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/maven-setup.html">Maven dependencies</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Maven dependencies, versions, scopes and build settings a Wicket project needs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/configuration.html">Application settings</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a Wicket application is started and configured, the settings objects with their main options and defaults, and what development and deployment mode change.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/glossary.html">Glossary</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Plain-English definitions of the Wicket terms used in this guide, each compared with what other web frameworks call it.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/why-wicket.html">Why component-oriented</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What a component-oriented framework does differently from request-based MVC frameworks, what Wicket gains from it, and what it costs.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Best practices</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The habits that keep a Wicket application easy to change and to test, each with the reason it follows from how Wicket works.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/best-practices.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Where Wicket looks for texts | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The exact order in which Wicket searches resource bundles for a key, the file names it tries, and the settings that change the search." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/i18n.html">Localization</a></p>
+            <h1>Where Wicket looks for texts</h1>
+            <p class="page-sign-sub">The exact order in which Wicket searches resource bundles for a key, the file names it tries, and the settings that change the search.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#inputs-of-a-lookup"><span class="toc-number">1</span> <span class="toc-text">Inputs of a lookup</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#string-resource-loaders"><span class="toc-number">2</span> <span class="toc-text">String resource loaders</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#order-of-components-and-keys"><span class="toc-number">3</span> <span class="toc-text">Order of components and keys</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#file-names"><span class="toc-number">4</span> <span class="toc-text">File names</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#file-formats"><span class="toc-number">5</span> <span class="toc-text">File formats</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#settings"><span class="toc-number">6</span> <span class="toc-text">Settings</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#find-out-why-a-text-is-not-found"><span class="toc-number">7</span> <span class="toc-text">Find out why a text is not found</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Every text that Wicket looks up by key, through <code class="language-plaintext highlighter-rouge">Component#getString</code>, <code class="language-plaintext highlighter-rouge">ResourceModel</code>, <code class="language-plaintext highlighter-rouge">StringResourceModel</code>, <code class="language-plaintext highlighter-rouge">&lt;wicket:message&gt;</code>, feedback messages of validators and converters, or the null option of a choice, goes through the <code class="language-plaintext highlighter-rouge">Localizer</code>. The <code class="language-plaintext highlighter-rouge">Localizer</code> asks a chain of string resource loaders, and each loader searches a set of bundles. The first text found wins. Why the search runs in this order is explained in <a href="/docs/about-localization.html">How Wicket localizes</a>.</p>
+
+<h2 id="inputs-of-a-lookup">Inputs of a lookup</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Input</th>
+      <th>Taken from</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>key</td>
+      <td>the caller</td>
+    </tr>
+    <tr>
+      <td>component</td>
+      <td>the component the text is for; may be <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+    </tr>
+    <tr>
+      <td>locale</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Component#getLocale()</code>, which asks the parents and finally <code class="language-plaintext highlighter-rouge">Session#getLocale()</code>
+</td>
+    </tr>
+    <tr>
+      <td>style</td>
+      <td><code class="language-plaintext highlighter-rouge">Session#getStyle()</code></td>
+    </tr>
+    <tr>
+      <td>variation</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Component#getVariation()</code>, which asks the parents; <code class="language-plaintext highlighter-rouge">null</code> for a page unless overridden</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="string-resource-loaders">String resource loaders</h2>
+
+<p>The default chain in <code class="language-plaintext highlighter-rouge">ResourceSettings#getStringResourceLoaders()</code>, asked in this order:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Loader</th>
+      <th>Searches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">ComponentStringResourceLoader</code></td>
+      <td>bundles of the components from the page down to the component, and of their superclasses</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">PackageStringResourceLoader</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">wicket-package</code> bundles in the packages of those components, up to the root package</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code class="language-plaintext highlighter-rouge">ClassStringResourceLoader</code></td>
+      <td>bundles of the application class and its superclasses, down to Wicket’s <code class="language-plaintext highlighter-rouge">Application</code>
+</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code class="language-plaintext highlighter-rouge">ValidatorStringResourceLoader</code></td>
+      <td>bundles of the validators of the form component, or the form validators of the form, that asks</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><code class="language-plaintext highlighter-rouge">InitializerStringResourceLoader</code></td>
+      <td>bundles of the <code class="language-plaintext highlighter-rouge">IInitializer</code> classes of Wicket modules</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Two more loaders exist but are not in the default chain: <code class="language-plaintext highlighter-rouge">BundleStringResourceLoader</code>, which reads a Java <code class="language-plaintext highlighter-rouge">ResourceBundle</code> by base name, and <code class="language-plaintext highlighter-rouge">NestedStringResourceLoader</code>, which resolves references to other keys. See <a href="/docs/custom-string-loaders.html">Load texts from your own source</a>.</p>
+
+<h2 id="order-of-components-and-keys">Order of components and keys</h2>
+
+<p><code class="language-plaintext highlighter-rouge">ComponentStringResourceLoader</code> walks the component path from the page down to the component that asks. At each component it first tries the key prefixed with the path that is left below that component, with ids joined by dots, and then the plain key. For a key <code class="language-plaintext highlighter-rouge">title</code> asked by the label <code class="language-plaintext highlighter-rouge">total</code> inside the panel <code class="language-plaintext highlighter-rouge">summary</code> on <code class="language-plaintext highlighter-rouge">OrderPage</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th>Bundles of</th>
+      <th>Key</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">OrderPage</code></td>
+      <td><code class="language-plaintext highlighter-rouge">summary.total.title</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">OrderPage</code></td>
+      <td><code class="language-plaintext highlighter-rouge">title</code></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">OrderSummaryPanel</code> (id <code class="language-plaintext highlighter-rouge">summary</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">total.title</code></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code class="language-plaintext highlighter-rouge">OrderSummaryPanel</code></td>
+      <td><code class="language-plaintext highlighter-rouge">title</code></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Label</code> (id <code class="language-plaintext highlighter-rouge">total</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">title</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bundles of a component</td>
+      <td>the bundle of its class, then of each superclass. The walk stops after the first Wicket base class it meets: <code class="language-plaintext highlighter-rouge">WebPage</code>, <code class="language-plaintext highlighter-rouge">Page</code>, <code class="language-plaintext highlighter-rouge">WebMarkupContainer</code>, <code class="language-plaintext highlighter-rouge">MarkupContainer</code>, <code class="language-plaintext highlighter-rouge">WebComponent</code> or <code class="language-plaintext highlighter-rouge">Component</code>
+</td>
+    </tr>
+    <tr>
+      <td>Repeater items</td>
+      <td>the ids of the items of a repeater, such as the index of a <code class="language-plaintext highlighter-rouge">ListView</code> item, are left out of the prefix: <code class="language-plaintext highlighter-rouge">rows.name</code>, not <code class="language-plaintext highlighter-rouge">rows.0.name</code>
+</td>
+    </tr>
+    <tr>
+      <td>Component not on a page</td>
+      <td>the walk starts at the topmost parent. <code class="language-plaintext highlighter-rouge">Localizer</code> logs a warning, because the parents that will hold it later are not searched; this happens when <code class="language-plaintext highlighter-rouge">getString</code> is called in a constructor</td>
+    </tr>
+    <tr>
+      <td>Component <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+      <td>this loader finds nothing</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">PackageStringResourceLoader</code> and <code class="language-plaintext highlighter-rouge">ClassStringResourceLoader</code> use the same steps and keys. Instead of the bundle of each component class they search:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Loader</th>
+      <th>Bundles for a class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PackageStringResourceLoader</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">wicket-package</code> in the package of the class, then in each parent package up to the root, then the same for each superclass</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ClassStringResourceLoader</code></td>
+      <td>always the application class, then its superclasses up to and including <code class="language-plaintext highlighter-rouge">org.apache.wicket.Application</code>, whose bundle holds Wicket’s default messages</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">ValidatorStringResourceLoader</code> and <code class="language-plaintext highlighter-rouge">InitializerStringResourceLoader</code> try only the plain key, in the bundles of the validator or initializer class and its superclasses.</p>
+
+<h2 id="file-names">File names</h2>
+
+<p>For each class or package in the search, Wicket builds names from the path of the class, the variation, the style and the locale:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;path&gt;[_&lt;variation&gt;][_&lt;style&gt;][_&lt;language&gt;[_&lt;COUNTRY&gt;[_&lt;variant&gt;]]]
+</code></pre></div></div>
+
+<p>It tries the combinations from the most specific to the plain path. For <code class="language-plaintext highlighter-rouge">com.example.OrderPage</code> with variation <code class="language-plaintext highlighter-rouge">compact</code>, style <code class="language-plaintext highlighter-rouge">acme</code> and locale <code class="language-plaintext highlighter-rouge">de_CH</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage_compact_acme_de_CH</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage_compact_acme_de</code></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage_compact_acme</code></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage_acme_de_CH</code></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage_acme_de</code></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage_acme</code></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage_compact_de_CH</code></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage_compact_de</code></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage_compact</code></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage_de_CH</code></td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage_de</code></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td><code class="language-plaintext highlighter-rouge">com/example/OrderPage</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Combinations with an empty part are skipped: without a variation, names 1 to 3 and 7 to 9 are not tried. A locale variant adds <code class="language-plaintext highlighter-rouge">_de_CH_&lt;variant&gt;</code> before <code class="language-plaintext highlighter-rouge">_de_CH</code> in each group. The script and extensions of a locale are not used.</p>
+
+<p>Unlike <code class="language-plaintext highlighter-rouge">java.util.ResourceBundle</code>, Wicket does not fall back to the default locale of the JVM. After the language comes the name without a locale.</p>
+
+<h2 id="file-formats">File formats</h2>
+
+<p>For each name, the <code class="language-plaintext highlighter-rouge">PropertiesFactory</code> tries these extensions in order and uses the first file that exists. Files with different extensions for the same name are not merged.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th>Format</th>
+      <th>Encoding</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.properties</code></td>
+      <td><code class="language-plaintext highlighter-rouge">java.util.Properties</code></td>
+      <td>ISO 8859-1; other characters as <code class="language-plaintext highlighter-rouge">\uXXXX</code> escapes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.utf8.properties</code></td>
+      <td><code class="language-plaintext highlighter-rouge">java.util.Properties</code></td>
+      <td>UTF-8</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.properties.xml</code></td>
+      <td>XML properties, DTD <code class="language-plaintext highlighter-rouge">http://java.sun.com/dtd/properties.dtd</code>
+</td>
+      <td>as declared in the XML header</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">getResourceSettings().getPropertiesFactory()</code> returns the factory; its <code class="language-plaintext highlighter-rouge">getPropertiesLoaders()</code> list can be changed to add or remove formats.</p>
+
+<p>Files are found through the resource stream locator of the application, on the classpath by default, next to the class files. In development mode Wicket checks the files for changes every second and reloads them.</p>
+
+<h2 id="settings">Settings</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Default</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceSettings#getStringResourceLoaders()</code></td>
+      <td>the five loaders above</td>
+      <td>the chain; a modifiable list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceSettings#setThrowExceptionOnMissingResource(boolean)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td>when no text and no default is found, <code class="language-plaintext highlighter-rouge">getString</code> throws a <code class="language-plaintext highlighter-rouge">MissingResourceException</code> and <code class="language-plaintext highlighter-rouge">&lt;wicket:message&gt;</code> a <code class="language-plaintext highlighter-rouge">WicketRuntimeException</code>. With <code class="language-plaintext highlighter-rouge">false</code>, <code class="language-plaintext highlighter-rouge">getString</code> returns <code class="language-plaintext highlighter-rouge">[Warning: Property for 'key' not found]</code>, and <code class="language-plaintext highlighter-rouge">&lt;wicket:message&gt;</code> logs a warning and renders its own body</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceSettings#setUseDefaultOnMissingResource(boolean)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td>use the default text passed by the caller when the key is not found</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Localizer#setEnableCache(boolean)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td>cache results, including keys that were not found; <code class="language-plaintext highlighter-rouge">clearCache()</code> empties it</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PackageStringResourceLoader#setFilename(String)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-package</code></td>
+      <td>base name of package bundles</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="find-out-why-a-text-is-not-found">Find out why a text is not found</h2>
+
+<p>Set the log level of <code class="language-plaintext highlighter-rouge">org.apache.wicket.resource.loader</code> to <code class="language-plaintext highlighter-rouge">DEBUG</code> to log each class and key a loader tries, and of <code class="language-plaintext highlighter-rouge">org.apache.wicket.Localizer</code> to log where a key was found or that it was not.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/i18n.html">Localization</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/localize-components.html">Translate component texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Move the texts of a page or panel into properties files, show them with wicket:message or from Java, and let the user switch the language.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/resource-models.html">Put model values into translated texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show translated texts through ResourceModel and StringResourceModel, fill in property values and MessageFormat parameters, and choose the key from the data.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/localize-choices.html">Translate the options of a choice</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show translated options in a DropDownChoice, RadioChoice or other choice component, translate enum values, and change the "Choose One" text.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/custom-string-loaders.html">Load texts from your own source</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a string resource loader that reads texts from a database or an existing Java ResourceBundle, and change the chain of loaders Wicket searches.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Where Wicket looks for texts</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The exact order in which Wicket searches resource bundles for a key, the file names it tries, and the settings that change the search.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-localization.html">How Wicket localizes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Where the locale of a page comes from, why texts live in properties files next to the components that use them, and why the page can override its panels.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/bundle-lookup.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

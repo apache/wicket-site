@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Model classes | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Every model class and model interface in wicket-core, the default methods of IModel, the factory methods and the component methods that work with models." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/models.html">Models</a></p>
+            <h1>Model classes</h1>
+            <p class="page-sign-sub">Every model class and model interface in wicket-core, the default methods of IModel, the factory methods and the component methods that work with models.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#model-classes"><span class="toc-number">1</span> <span class="toc-text">Model classes</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#factory-methods"><span class="toc-number">2</span> <span class="toc-text">Factory methods</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#imodel-methods"><span class="toc-number">3</span> <span class="toc-text">IModel methods</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#loadabledetachablemodel-methods"><span class="toc-number">4</span> <span class="toc-text">LoadableDetachableModel methods</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#stringresourcemodel-methods"><span class="toc-number">5</span> <span class="toc-text">StringResourceModel methods</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#model-interfaces"><span class="toc-number">6</span> <span class="toc-text">Model interfaces</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#component-methods-for-models"><span class="toc-number">7</span> <span class="toc-text">Component methods for models</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>The classes are in <code class="language-plaintext highlighter-rouge">org.apache.wicket.model</code>, except the collection models, which are in <code class="language-plaintext highlighter-rouge">org.apache.wicket.model.util</code>. <a href="/docs/about-models.html">Models and component data</a> explains what models are for.</p>
+
+<h2 id="model-classes">Model classes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Holds</th>
+      <th>Writable</th>
+      <th>Detach does</th>
+      <th>Use for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Model&lt;T extends Serializable&gt;</code></td>
+      <td>the object itself</td>
+      <td>yes</td>
+      <td>nothing</td>
+      <td>values that belong to the page: input, selections, small value objects</td>
+    </tr>
+    <tr>
+      <td>lambda (<code class="language-plaintext highlighter-rouge">IModel</code> as functional interface)</td>
+      <td>the lambda and what it captures</td>
+      <td>no</td>
+      <td>nothing</td>
+      <td>computed, read-only values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LambdaModel</code></td>
+      <td>a getter and setter, optionally a target model</td>
+      <td>yes, with a setter</td>
+      <td>detaches the target model</td>
+      <td>one property, type-safe</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PropertyModel&lt;T&gt;</code></td>
+      <td>an object or model, and a property expression</td>
+      <td>yes</td>
+      <td>detaches the inner model</td>
+      <td>one property by name</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CompoundPropertyModel&lt;T&gt;</code></td>
+      <td>an object or model</td>
+      <td>yes</td>
+      <td>detaches the inner model</td>
+      <td>a form or container whose children bind by id</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LoadableDetachableModel&lt;T&gt;</code></td>
+      <td>the loaded object, transient</td>
+      <td>yes, until the end of the request</td>
+      <td>drops the object</td>
+      <td>entities and other data loaded per request</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ChainingModel&lt;T&gt;</code></td>
+      <td>an object or model</td>
+      <td>yes</td>
+      <td>detaches the inner model</td>
+      <td>base class for models that wrap a model or an object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AbstractPropertyModel&lt;T&gt;</code></td>
+      <td>an object or model</td>
+      <td>yes</td>
+      <td>detaches the inner model</td>
+      <td>base class for models that resolve a property expression</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ComponentPropertyModel&lt;T&gt;</code></td>
+      <td>a property name</td>
+      <td>no, <code class="language-plaintext highlighter-rouge">setObject</code> throws</td>
+      <td>detaches the wrapper</td>
+      <td>a property of the model of the component it is assigned to</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ComponentModel&lt;T&gt;</code></td>
+      <td>nothing</td>
+      <td>when <code class="language-plaintext highlighter-rouge">setObject(Component, T)</code> is overridden</td>
+      <td>nothing</td>
+      <td>models that compute their object from the component they are assigned to, in <code class="language-plaintext highlighter-rouge">getObject(Component)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ComponentDetachableModel&lt;T&gt;</code></td>
+      <td>a transient attached flag</td>
+      <td>when <code class="language-plaintext highlighter-rouge">setObject(Component, T)</code> is overridden</td>
+      <td>calls <code class="language-plaintext highlighter-rouge">detach()</code> when it was attached</td>
+      <td>as <code class="language-plaintext highlighter-rouge">ComponentModel</code>, with <code class="language-plaintext highlighter-rouge">attach()</code> before the first access in a request</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ResourceModel</code></td>
+      <td>a resource key and a default</td>
+      <td>no, <code class="language-plaintext highlighter-rouge">setObject</code> throws</td>
+      <td>the wrapper drops the looked-up text</td>
+      <td>a localized text from the resource bundles</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StringResourceModel</code></td>
+      <td>a key, an optional component, model and parameters</td>
+      <td>until the end of the request</td>
+      <td>drops the text and detaches its model</td>
+      <td>a localized text with values from a model filled in</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">util.ListModel&lt;T&gt;</code></td>
+      <td>a list</td>
+      <td>yes</td>
+      <td>nothing</td>
+      <td>lists that may not be serializable</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">util.SetModel&lt;T&gt;</code></td>
+      <td>a set</td>
+      <td>yes</td>
+      <td>nothing</td>
+      <td>sets, as above</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">util.MapModel&lt;K, V&gt;</code></td>
+      <td>a map</td>
+      <td>yes</td>
+      <td>nothing</td>
+      <td>maps, as above</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">util.CollectionModel&lt;T&gt;</code></td>
+      <td>a collection</td>
+      <td>yes</td>
+      <td>nothing</td>
+      <td>collections, as above</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">util.GenericBaseModel&lt;T&gt;</code></td>
+      <td>the object, or a serializable copy</td>
+      <td>yes</td>
+      <td>nothing</td>
+      <td>base class of the four collection models</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When the collection passed to a collection model is not <code class="language-plaintext highlighter-rouge">Serializable</code>, the model keeps a copy in an <code class="language-plaintext highlighter-rouge">ArrayList</code> (<code class="language-plaintext highlighter-rouge">ListModel</code>, <code class="language-plaintext highlighter-rouge">CollectionModel</code>), <code class="language-plaintext highlighter-rouge">HashSet</code> (<code class="language-plaintext highlighter-rouge">SetModel</code>) or <code class="language-plaintext highlighter-rouge">HashMap</code> (<code class="language-plaintext highlighter-rouge">MapModel</code>) instead. A serializable collection is kept as it is.</p>
+
+<h2 id="factory-methods">Factory methods</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Returns</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Model.of(T object)</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">Model</code> holding a serializable object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Model.of()</code></td>
+      <td>an empty <code class="language-plaintext highlighter-rouge">Model</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Model.of(Collection&lt;C&gt;)</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">CollectionModel</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Model.ofList(List&lt;C&gt;)</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">ListModel</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Model.ofSet(Set&lt;C&gt;)</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">SetModel</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Model.ofMap(Map&lt;K, V&gt;)</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">MapModel</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LambdaModel.of(getter)</code></td>
+      <td>a read-only model calling the getter</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LambdaModel.of(getter, setter)</code></td>
+      <td>a model calling the getter and setter</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LambdaModel.of(target, getter, setter)</code></td>
+      <td>a model applying a function and bi-consumer to the object of <code class="language-plaintext highlighter-rouge">target</code>; <code class="language-plaintext highlighter-rouge">null</code> when the target holds <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PropertyModel.of(object, expression)</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">PropertyModel</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CompoundPropertyModel.of(IModel&lt;Z&gt;)</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">CompoundPropertyModel</code> wrapping a model</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CompoundPropertyModel.of(Z object)</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">CompoundPropertyModel</code> holding a serializable object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LoadableDetachableModel.of(supplier)</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">LoadableDetachableModel</code> whose <code class="language-plaintext highlighter-rouge">load()</code> calls the supplier</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IModel.of(IModel&lt;?&gt;)</code></td>
+      <td>the same model, cast to another type parameter; it creates nothing</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="imodel-methods">IModel methods</h2>
+
+<p><code class="language-plaintext highlighter-rouge">IModel&lt;T&gt;</code> extends <code class="language-plaintext highlighter-rouge">IDetachable</code>. Only <code class="language-plaintext highlighter-rouge">getObject()</code> is abstract. The models returned by the default methods detach the model they were made from.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">T getObject()</code></td>
+      <td>returns the model object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">void setObject(T)</code></td>
+      <td>sets the model object; the default throws <code class="language-plaintext highlighter-rouge">UnsupportedOperationException</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">void detach()</code></td>
+      <td>releases data at the end of the request; the default does nothing</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">filter(predicate)</code></td>
+      <td>a read-only model with the object when the predicate holds, <code class="language-plaintext highlighter-rouge">null</code> otherwise</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">map(function)</code></td>
+      <td>a read-only model with the function applied to the object; <code class="language-plaintext highlighter-rouge">null</code> when the object is <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">flatMap(function)</code></td>
+      <td>a read-write model that delegates to the model the function returns for the object; <code class="language-plaintext highlighter-rouge">null</code> when the object is <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">combineWith(other, function)</code></td>
+      <td>a read-only model with the function applied to both objects; <code class="language-plaintext highlighter-rouge">null</code> when either is <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">orElse(T)</code></td>
+      <td>a read-only model with the object, or the given value when it is <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">orElseGet(supplier)</code></td>
+      <td>a read-only model with the object, or the supplier’s value when it is <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isPresent()</code></td>
+      <td>a <code class="language-plaintext highlighter-rouge">Boolean</code> model that is <code class="language-plaintext highlighter-rouge">true</code> when the object is not <code class="language-plaintext highlighter-rouge">null</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">as(Class&lt;R&gt;)</code></td>
+      <td>a read-only model with the object cast to <code class="language-plaintext highlighter-rouge">R</code> when it is an instance, <code class="language-plaintext highlighter-rouge">null</code> otherwise</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="loadabledetachablemodel-methods">LoadableDetachableModel methods</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LoadableDetachableModel()</code></td>
+      <td>creates the model detached; the first <code class="language-plaintext highlighter-rouge">getObject()</code> calls <code class="language-plaintext highlighter-rouge">load()</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LoadableDetachableModel(T object)</code></td>
+      <td>creates the model attached with <code class="language-plaintext highlighter-rouge">object</code>; <code class="language-plaintext highlighter-rouge">load()</code> is first called in the next request</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">protected abstract T load()</code></td>
+      <td>loads the object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">T getObject()</code></td>
+      <td>returns the object, loading it first when the model is detached; final</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">void setObject(T)</code></td>
+      <td>holds the object until the next detach</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">boolean isAttached()</code></td>
+      <td>whether the model holds a loaded object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">void detach()</code></td>
+      <td>calls <code class="language-plaintext highlighter-rouge">onDetach()</code> when attached, then drops the object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">protected void onAttach()</code></td>
+      <td>called after <code class="language-plaintext highlighter-rouge">load()</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">protected void onDetach()</code></td>
+      <td>called on detach when the model was attached</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">detach()</code> is not final, so a subclass can override it.</p>
+
+<h2 id="stringresourcemodel-methods">StringResourceModel methods</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StringResourceModel(key)</code></td>
+      <td>looks up <code class="language-plaintext highlighter-rouge">key</code> relative to the component it is assigned to</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StringResourceModel(key, component)</code></td>
+      <td>looks up <code class="language-plaintext highlighter-rouge">key</code> relative to <code class="language-plaintext highlighter-rouge">component</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StringResourceModel(key, model)</code></td>
+      <td>substitutes <code class="language-plaintext highlighter-rouge">${property}</code> expressions in the text with properties of the model’s object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StringResourceModel(key, component, model)</code></td>
+      <td>both</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setModel(IModel&lt;?&gt;)</code></td>
+      <td>sets the model for <code class="language-plaintext highlighter-rouge">${property}</code> substitution</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setParameters(Object...)</code></td>
+      <td>sets the values for <code class="language-plaintext highlighter-rouge">{0}</code>, <code class="language-plaintext highlighter-rouge">{1}</code> placeholders, formatted with <code class="language-plaintext highlighter-rouge">MessageFormat</code>; a parameter may be a model</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">setDefaultValue(String)</code>, <code class="language-plaintext highlighter-rouge">setDefaultValue(IModel&lt;String&gt;)</code>
+</td>
+      <td>the text when the key is not found</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getString()</code></td>
+      <td>the localized text</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="/docs/resource-models.html">Put model values into translated texts</a> shows <code class="language-plaintext highlighter-rouge">ResourceModel</code> and <code class="language-plaintext highlighter-rouge">StringResourceModel</code> in use.</p>
+
+<h2 id="model-interfaces">Model interfaces</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Interface</th>
+      <th>Implemented by</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IDetachable</code></td>
+      <td>every model</td>
+      <td>has <code class="language-plaintext highlighter-rouge">detach()</code>, called at the end of the request</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IModel&lt;T&gt;</code></td>
+      <td>every model</td>
+      <td>gets and sets an object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IComponentInheritedModel&lt;T&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CompoundPropertyModel</code></td>
+      <td>children without a model get one from it through <code class="language-plaintext highlighter-rouge">wrapOnInheritance(Component)</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IComponentAssignedModel&lt;T&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">ComponentModel</code>, <code class="language-plaintext highlighter-rouge">ComponentDetachableModel</code>, <code class="language-plaintext highlighter-rouge">ComponentPropertyModel</code>, <code class="language-plaintext highlighter-rouge">ResourceModel</code>, <code class="language-plaintext highlighter-rouge">StringResourceModel</code>
+</td>
+      <td>replaced by a wrapper that knows the component, through <code class="language-plaintext highlighter-rouge">wrapOnAssignment(Component)</code>, when assigned to a component</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IWrapModel&lt;T&gt;</code></td>
+      <td>the wrappers made by the two interfaces above</td>
+      <td>wraps another model, returned by <code class="language-plaintext highlighter-rouge">getWrappedModel()</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IObjectClassAwareModel&lt;T&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Model</code>, <code class="language-plaintext highlighter-rouge">AbstractPropertyModel</code> and <code class="language-plaintext highlighter-rouge">PropertyModel</code>, <code class="language-plaintext highlighter-rouge">GenericBaseModel</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getObjectClass()</code> returns the class of the object, which form components use to pick a converter</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IPropertyReflectionAwareModel&lt;T&gt;</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">AbstractPropertyModel</code> and subclasses</td>
+      <td>gives the <code class="language-plaintext highlighter-rouge">Field</code>, getter and setter of the property; <code class="language-plaintext highlighter-rouge">wicket-bean-validation</code> uses it to find the constraints</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IModelComparator</code></td>
+      <td>returned by <code class="language-plaintext highlighter-rouge">Component.getModelComparator()</code>
+</td>
+      <td>decides whether a new object equals the current model object; <code class="language-plaintext highlighter-rouge">setDefaultModelObject</code> does nothing when it does</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="component-methods-for-models">Component methods for models</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getDefaultModel()</code></td>
+      <td>the component’s model; calls <code class="language-plaintext highlighter-rouge">initModel()</code> when it has none</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setDefaultModel(IModel&lt;?&gt;)</code></td>
+      <td>replaces the model</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getDefaultModelObject()</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getDefaultModel().getObject()</code>, or <code class="language-plaintext highlighter-rouge">null</code> without a model</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setDefaultModelObject(Object)</code></td>
+      <td>sets the model object when it differs from the current one, calling <code class="language-plaintext highlighter-rouge">modelChanging()</code> before and <code class="language-plaintext highlighter-rouge">modelChanged()</code> after</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getDefaultModelObjectAsString()</code></td>
+      <td>the model object converted to text and escaped as configured with <code class="language-plaintext highlighter-rouge">setEscapeModelStrings</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">initModel()</code></td>
+      <td>provides a model when the component has none; looks for an <code class="language-plaintext highlighter-rouge">IComponentInheritedModel</code> in the parents</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">modelChanging()</code>, <code class="language-plaintext highlighter-rouge">modelChanged()</code>
+</td>
+      <td>report a change to the model object; <code class="language-plaintext highlighter-rouge">modelChanging()</code> tells the page, which can start a new page version; they call <code class="language-plaintext highlighter-rouge">onModelChanging()</code> and <code class="language-plaintext highlighter-rouge">onModelChanged()</code>
+</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">onModelChanging()</code>, <code class="language-plaintext highlighter-rouge">onModelChanged()</code>
+</td>
+      <td>override to react to a change</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onDetach()</code></td>
+      <td>override to detach models kept in fields; call <code class="language-plaintext highlighter-rouge">super.onDetach()</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">detachModels()</code></td>
+      <td>detaches the default model; called after <code class="language-plaintext highlighter-rouge">onDetach()</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">GenericPanel&lt;T&gt;</code>, <code class="language-plaintext highlighter-rouge">GenericWebPage&lt;T&gt;</code> and other components implementing <code class="language-plaintext highlighter-rouge">IGenericComponent&lt;T, C&gt;</code> add typed methods: <code class="language-plaintext highlighter-rouge">getModel()</code>, <code class="language-plaintext highlighter-rouge">setModel(IModel&lt;T&gt;)</code>, <code class="language-plaintext highlighter-rouge">getModelObject()</code> and <code class="language-plaintext highlighter-rouge">setModelObject(T)</code>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/models.html">Models</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/lambda-models.html">Read and write data with lambda models</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Use lambdas, method references and the default methods of IModel to show computed values and bind components to properties without strings.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/property-models.html">Bind components to a JavaBean</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Read and write bean properties with PropertyModel, and let form fields find their property by id with CompoundPropertyModel.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/chain-models.html">Chain models</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Wrap one model in another so that a form, a panel or a label always works on the object the inner model currently holds.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/detachable-models.html">Load data once per request with detachable models</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep only an id in the page and load the entity fresh in every request with LoadableDetachableModel.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/multiple-models.html">Use more than one model in a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Detach the extra models a component, behavior or custom model keeps in its fields, so their data is not stored with the page.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Model classes</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every model class and model interface in wicket-core, the default methods of IModel, the factory methods and the component methods that work with models.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/about-models.html">Models and component data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why a component reads its data through a model, what happens to that data between requests, and why wrapping an entity in Model goes wrong.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/model-types.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

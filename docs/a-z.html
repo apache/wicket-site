@@ -1,0 +1,61 @@
+---
+layout: base
+title: A–Z index
+description: Every Wicket class the documentation explains, and every page by title.
+active_link: documentation
+---
+<div class="header default">
+    <div class="l-container">
+        {% include mainmenu.html %}
+    </div>
+</div>
+{% assign classes = site.data.guide_classes %}
+{% assign letters = classes | map: "letter" | uniq | sort %}
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="{{ site.baseurl }}/docs/">Documentation</a></p>
+            <h1>A–Z index</h1>
+            <p class="page-sign-sub">Every Wicket class the guide explains, and every page by title.</p>
+        </div>
+        {% include guide-search.html id="-sign" %}
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        <div class="reading-rail">
+            <nav aria-label="On this page">
+                <div id="toc" class="toc"><div id="toc-title"><h2>{{ site.contentsLabel }}</h2></div><ul>
+                    <li class="toc--level-1"><a href="#classes"><span class="toc-text">Classes</span></a></li>
+                    <li class="toc--level-1"><a href="#pages"><span class="toc-text">Pages</span></a></li>
+                </ul></div>
+            </nav>
+        </div>
+        <div class="reading-main">
+            <section class="guide-group">
+                <h2 id="classes">Classes</h2>
+                <p class="guide-group-intro">Interfaces are sorted without their leading I, so <code>IModel</code> is under M.</p>
+                <nav class="guide-letters" aria-label="Classes by letter">
+                {% for l in letters %}<a href="#class-{{ l }}">{{ l }}</a>{% endfor %}
+                </nav>
+                {% assign byletter = classes | group_by: "letter" | sort: "name" %}
+                {% for group in byletter %}
+                <h3 id="class-{{ group.name }}" class="guide-letter">{{ group.name }}</h3>
+                <dl class="guide-classes">
+                    {% assign entries = group.items | sort_natural: "name" %}
+                    {% for c in entries %}
+                    <dt><code>{{ c.name }}</code></dt>
+                    <dd>{% for doc in c.pages %}<a href="{{ site.baseurl }}{{ doc.url }}">{{ doc.title }}</a>{% unless forloop.last %}<span aria-hidden="true"> · </span>{% endunless %}{% endfor %}</dd>
+                    {% endfor %}
+                </dl>
+                {% endfor %}
+            </section>
+            <section class="guide-group">
+                <h2 id="pages">Pages</h2>
+                {% assign all = site.guide | sort_natural: "title" %}
+                {% include guide-list.html pages=all kind=true %}
+            </section>
+        </div>
+    </div>
+</main>
+<script src="{{ site.baseurl }}/javascript/guide.js?v={{ site.time | date: '%s' }}" defer></script>

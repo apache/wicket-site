@@ -18,7 +18,7 @@ nav.mainmenu {
 
     a, a:active {
         border:none;
-        color:settings.$color-brand-50;
+        color:settings.$color-brand-text;
         font-weight:500;
         text-decoration: none;
     }
@@ -54,7 +54,7 @@ nav.mainmenu {
    padding-right: 1rem;
     
    &:hover {
-       color: settings.$color-brand-50;
+       color: settings.$color-navy;
    }
 }
 

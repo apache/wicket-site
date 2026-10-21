@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Keep a page stateless | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Build a page that Wicket does not store in the session, find the component that makes it stateful, and guard it with a test." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/state.html">Pages and state</a></p>
+            <h1>Keep a page stateless</h1>
+            <p class="page-sign-sub">Build a page that Wicket does not store in the session, find the component that makes it stateful, and guard it with a test.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#make-the-page-bookmarkable"><span class="toc-number">1</span> <span class="toc-text">Make the page bookmarkable</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#use-stateless-components"><span class="toc-number">2</span> <span class="toc-text">Use stateless components</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#find-the-component-that-makes-the-page-stateful"><span class="toc-number">3</span> <span class="toc-text">Find the component that makes the page stateful</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#fail-fast-with-statelesschecker"><span class="toc-number">4</span> <span class="toc-text">Fail fast with StatelessChecker</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#test-it"><span class="toc-number">5</span> <span class="toc-text">Test it</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Keep a page stateless when it is public, visited by many anonymous users or meant to be bookmarked, such as a home page, a product page or a login page. A stateless page needs no session. <a href="/docs/stateful-stateless.html">Stateful and stateless pages</a> explains the trade-off.</p>
+
+<h2 id="make-the-page-bookmarkable">Make the page bookmarkable</h2>
+
+<p>Wicket must be able to create the page itself, for every request. Give it a public constructor without arguments, or one that takes only <code class="language-plaintext highlighter-rouge">PageParameters</code>, and read everything else from the parameters:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">ProductPage</span><span class="o">(</span><span class="nc">PageParameters</span> <span class="n">parameters</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">id</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"id"</span><span class="o">).</span><span class="na">toLong</span><span class="o">();</span>
+        <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="n">product</span> <span class="o">=</span> <span class="nc">LoadableDetachableModel</span><span class="o">.</span><span class="na">of</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">productService</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">id</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="n">product</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Product:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Link to it by class, with <code class="language-plaintext highlighter-rouge">BookmarkablePageLink</code> or <code class="language-plaintext highlighter-rouge">setResponsePage(ProductPage.class, parameters)</code>, so Wicket creates it from the URL. <a href="/docs/page-parameters.html">Pass parameters to a page</a> shows how to build those URLs.</p>
+
+<h2 id="use-stateless-components">Use stateless components</h2>
+
+<p>A page is stateless only when every visible, enabled component on it, and every behavior on those components, is stateless. These components are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instead of</th>
+      <th>Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Link</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">BookmarkablePageLink</code> to go to a page, <code class="language-plaintext highlighter-rouge">StatelessLink</code> to run code on click</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Form</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">StatelessForm</code>, see <a href="/docs/stateless-forms.html">Build a stateless form</a>
+</td>
+    </tr>
+    <tr>
+      <td>Ajax behaviors and links</td>
+      <td>their stateless variants, see <a href="/docs/stateless-ajax.html">Use Ajax on stateless pages</a>
+</td>
+    </tr>
+    <tr>
+      <td>any link to another site</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">ExternalLink</code>, which has no callback</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Labels, images, containers and other components without a callback are stateless already. A stateful component that is hidden or disabled does not make the page stateful.</p>
+
+<p>Calling <code class="language-plaintext highlighter-rouge">getPageReference()</code> on a page makes it stateful, and so does <code class="language-plaintext highlighter-rouge">setStatelessHint(false)</code>.</p>
+
+<h2 id="find-the-component-that-makes-the-page-stateful">Find the component that makes the page stateful</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Page.isPageStateless()</code> tells you whether the page is stateless. To find the culprit, visit the components and log those that are not:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onBeforeRender</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onBeforeRender</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">getApplication</span><span class="o">().</span><span class="na">usesDevelopmentConfig</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">isPageStateless</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">visitChildren</span><span class="o">((</span><span class="n">component</span><span class="o">,</span> <span class="n">visit</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">component</span><span class="o">.</span><span class="na">isStateless</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">log</span><span class="o">.</span><span class="na">warn</span><span class="o">(</span><span class="s">"Stateful component: {}"</span><span class="o">,</span> <span class="n">component</span><span class="o">.</span><span class="na">getPageRelativePath</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>With debug logging on for <code class="language-plaintext highlighter-rouge">org.apache.wicket.Page</code>, Wicket logs the same thing itself: “Page ‘…’ is not stateless because of component with path ‘…’”.</p>
+
+<h2 id="fail-fast-with-statelesschecker">Fail fast with StatelessChecker</h2>
+
+<p><code class="language-plaintext highlighter-rouge">wicket-devutils</code> has an annotation and a checker that throws an exception when a page or component marked as stateless is not. Register the checker in development mode:</p>
+
+<p><em>WicketApplication.java</em></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">usesDevelopmentConfig</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">getComponentPostOnBeforeRenderListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">StatelessChecker</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>and annotate the page:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@StatelessComponent</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>When <code class="language-plaintext highlighter-rouge">ProductPage</code> renders with a stateful component, <code class="language-plaintext highlighter-rouge">StatelessChecker</code> throws a <code class="language-plaintext highlighter-rouge">StatelessCheckFailureException</code> that names the component. The annotation has no effect without the checker, and is inherited by subclasses; <code class="language-plaintext highlighter-rouge">@StatelessComponent(enabled = false)</code> turns it off for a subclass that is allowed to be stateful.</p>
+
+<h2 id="test-it">Test it</h2>
+
+<p>Assert the statelessness in a test, so a later change cannot break it unnoticed:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">productPageIsStateless</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">ProductPage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">PageParameters</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="mi">42</span><span class="o">));</span>
+    <span class="n">assertTrue</span><span class="o">(</span><span class="n">tester</span><span class="o">.</span><span class="na">getLastRenderedPage</span><span class="o">().</span><span class="na">isPageStateless</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><a href="/docs/test-pages.html">Test pages and components</a> shows how to set up <code class="language-plaintext highlighter-rouge">WicketTester</code>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/state.html">Pages and state</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Keep a page stateless</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build a page that Wicket does not store in the session, find the component that makes it stateful, and guard it with a test.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/configure-page-store.html">Configure the page store</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Change how much page history Wicket keeps per session and where, encrypt stored pages, or replace the disk store with another store.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/use-session.html">Keep data in the session</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Store per-user data in a typed Wicket session, in session attributes or as metadata, control when the session is created, and end it on logout.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateful-stateless.html">Stateful and stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why Wicket keeps pages between requests, how page versions serve the back button, and what a stateless page gives up and gains.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-storage.html">How pages are stored</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket finds the page for a request, and the chain of stores that keeps stateful pages in the request, the session and on disk.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/keep-stateless.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

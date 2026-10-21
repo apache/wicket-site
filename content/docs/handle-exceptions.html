@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Handle exceptions and show error pages | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Replace Wicket's error pages, choose what users see after an unexpected exception, and map your own exceptions and HTTP errors to pages." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/lifecycle.html">Requests and lifecycle</a></p>
+            <h1>Handle exceptions and show error pages</h1>
+            <p class="page-sign-sub">Replace Wicket's error pages, choose what users see after an unexpected exception, and map your own exceptions and HTTP errors to pages.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#replace-the-built-in-error-pages"><span class="toc-number">1</span> <span class="toc-text">Replace the built-in error pages</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#choose-what-users-see-after-an-unexpected-exception"><span class="toc-number">2</span> <span class="toc-text">Choose what users see after an unexpected exception</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#show-a-page-for-one-exception"><span class="toc-number">3</span> <span class="toc-text">Show a page for one exception</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#send-an-http-error-from-your-code"><span class="toc-number">4</span> <span class="toc-text">Send an HTTP error from your code</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#show-a-wicket-page-for-404-and-other-container-errors"><span class="toc-number">5</span> <span class="toc-text">Show a Wicket page for 404 and other container errors</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#handle-errors-in-ajax-requests"><span class="toc-number">6</span> <span class="toc-text">Handle errors in Ajax requests</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use this when the default error pages do not fit your application, or when you want specific exceptions to lead to specific pages. Exceptions become request handlers inside the request cycle; <a href="/docs/request-cycle.html#exceptions-become-handlers-too">What happens during a request</a> explains how.</p>
+
+<h2 id="replace-the-built-in-error-pages">Replace the built-in error pages</h2>
+
+<p>Wicket shows three pages for the exceptions it expects. Set your own in <code class="language-plaintext highlighter-rouge">Application.init()</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getApplicationSettings</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">setInternalErrorPage</span><span class="o">(</span><span class="nc">ErrorPage</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">setPageExpiredErrorPage</span><span class="o">(</span><span class="nc">SessionExpiredPage</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">setAccessDeniedPage</span><span class="o">(</span><span class="nc">NoAccessPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Shown for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setInternalErrorPage</code></td>
+      <td>Unexpected exceptions, in deployment mode.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setPageExpiredErrorPage</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">PageExpiredException</code>: the page a link or form belongs to is no longer in the page store, usually because the session expired.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setAccessDeniedPage</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">AuthorizationException</code>, for example from a <a href="/docs/roles.html">role check</a>, and listener calls on components that are disabled or invisible.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Extend <code class="language-plaintext highlighter-rouge">AbstractErrorPage</code> for your pages. It turns off versioning for the page and adds a small default style sheet. Set the HTTP status in <code class="language-plaintext highlighter-rouge">setHeaders()</code>, otherwise the browser receives <code class="language-plaintext highlighter-rouge">200 OK</code>:</p>
+
+<p><em>ErrorPage.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ErrorPage</span> <span class="kd">extends</span> <span class="nc">AbstractErrorPage</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">ErrorPage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">homePageLink</span><span class="o">(</span><span class="s">"home"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">setHeaders</span><span class="o">(</span><span class="nc">WebResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">setHeaders</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="nc">HttpServletResponse</span><span class="o">.</span><span class="na">SC_INTERNAL_SERVER_ERROR</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="choose-what-users-see-after-an-unexpected-exception">Choose what users see after an unexpected exception</h2>
+
+<p>In development mode Wicket shows <code class="language-plaintext highlighter-rouge">ExceptionErrorPage</code> with the stack trace; in deployment mode it shows the internal error page (see <a href="/docs/deployment-mode.html">Switch between development and deployment mode</a>). Override this with the exception settings:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getExceptionSettings</span><span class="o">().</span><span class="na">setUnexpectedExceptionDisplay</span><span class="o">(</span><span class="nc">ExceptionSettings</span><span class="o">.</span><span class="na">SHOW_INTERNAL_ERROR_PAGE</span><span class="o">);</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SHOW_EXCEPTION_PAGE</code></td>
+      <td>The stack trace page. Never use it in production: it reveals your code.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SHOW_INTERNAL_ERROR_PAGE</code></td>
+      <td>The internal error page.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SHOW_NO_EXCEPTION_PAGE</code></td>
+      <td>An empty response with status 500.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Wicket logs every unexpected exception at error level before it shows the page.</p>
+
+<h2 id="show-a-page-for-one-exception">Show a page for one exception</h2>
+
+<p>To send one kind of exception to its own page, register a request cycle listener and return a handler from <code class="language-plaintext highlighter-rouge">onException()</code>. Returning <code class="language-plaintext highlighter-rouge">null</code> leaves the exception to Wicket.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getRequestCycleListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">IRequestCycleListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">IRequestHandler</span> <span class="nf">onException</span><span class="o">(</span><span class="nc">RequestCycle</span> <span class="n">cycle</span><span class="o">,</span> <span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">var</span> <span class="n">notFound</span> <span class="o">=</span> <span class="nc">Exceptions</span><span class="o">.</span><span class="na">findCause</span><span class="o">(</span><span class="n">ex</span><span class="o">,</span> <span class="nc">ProductNotFoundException</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">notFound</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">RenderPageRequestHandler</span><span class="o">(</span><span class="k">new</span> <span class="nc">ProductNotFoundPage</span><span class="o">(</span><span class="n">notFound</span><span class="o">.</span><span class="na">getProductId</span><span class="o">()));</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p>Wicket often wraps an exception, for example in a <code class="language-plaintext highlighter-rouge">WicketRuntimeException</code> when a component fails to render, so look for the cause with <code class="language-plaintext highlighter-rouge">org.apache.wicket.util.lang.Exceptions.findCause</code> instead of checking <code class="language-plaintext highlighter-rouge">ex</code> itself. Leave exceptions that implement <code class="language-plaintext highlighter-rouge">IWicketInternalException</code> alone; Wicket handles those itself.</p>
+
+<p>For full control, replace the exception mapper. Extend <code class="language-plaintext highlighter-rouge">DefaultExceptionMapper</code> and override <code class="language-plaintext highlighter-rouge">mapUnexpectedExceptions</code> or <code class="language-plaintext highlighter-rouge">mapExpectedExceptions</code>, then install it:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setExceptionMapperProvider</span><span class="o">(</span><span class="nl">MyExceptionMapper:</span><span class="o">:</span><span class="k">new</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="send-an-http-error-from-your-code">Send an HTTP error from your code</h2>
+
+<p>Throw <code class="language-plaintext highlighter-rouge">AbortWithHttpErrorCodeException</code> to stop the request and answer with a status code, for example when a page parameter points to nothing:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Product</span> <span class="n">product</span> <span class="o">=</span> <span class="n">products</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">id</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">orElseThrow</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="nc">AbortWithHttpErrorCodeException</span><span class="o">(</span><span class="mi">404</span><span class="o">));</span>
+</code></pre></div></div>
+
+<h2 id="show-a-wicket-page-for-404-and-other-container-errors">Show a Wicket page for 404 and other container errors</h2>
+
+<p>Requests that Wicket does not map, and errors you send with a status code, end up at the servlet container. Let the container forward them to a mounted Wicket page. Mount the page:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mountPage</span><span class="o">(</span><span class="s">"/errors/404"</span><span class="o">,</span> <span class="nc">NotFoundPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Map the status code to it in <em>web.xml</em>, and let the Wicket filter handle error dispatches:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>wicket<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+    <span class="nt">&lt;dispatcher&gt;</span>REQUEST<span class="nt">&lt;/dispatcher&gt;</span>
+    <span class="nt">&lt;dispatcher&gt;</span>ERROR<span class="nt">&lt;/dispatcher&gt;</span>
+<span class="nt">&lt;/filter-mapping&gt;</span>
+
+<span class="nt">&lt;error-page&gt;</span>
+    <span class="nt">&lt;error-code&gt;</span>404<span class="nt">&lt;/error-code&gt;</span>
+    <span class="nt">&lt;location&gt;</span>/errors/404<span class="nt">&lt;/location&gt;</span>
+<span class="nt">&lt;/error-page&gt;</span>
+</code></pre></div></div>
+
+<p>Override <code class="language-plaintext highlighter-rouge">setHeaders()</code> in <code class="language-plaintext highlighter-rouge">NotFoundPage</code> to set status 404, as shown above.</p>
+
+<h2 id="handle-errors-in-ajax-requests">Handle errors in Ajax requests</h2>
+
+<p>By default an exception during an Ajax request makes the browser go to the error page. To keep the user on the page and let your JavaScript react instead, call the failure handlers:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getExceptionSettings</span><span class="o">().</span><span class="na">setAjaxErrorHandlingStrategy</span><span class="o">(</span>
+    <span class="nc">ExceptionSettings</span><span class="o">.</span><span class="na">AjaxErrorStrategy</span><span class="o">.</span><span class="na">INVOKE_FAILURE_HANDLER</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Wicket then answers with status 500 and runs the <code class="language-plaintext highlighter-rouge">onFailure</code> handlers of the request; see <a href="/docs/ajax-call-listeners.html">React to Ajax requests in JavaScript</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/lifecycle.html">Requests and lifecycle</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Handle exceptions and show error pages</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Replace Wicket's error pages, choose what users see after an unexpected exception, and map your own exceptions and HTTP errors to pages.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-listeners.html">Handle a callback URL with IRequestListener</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component or behavior answer requests to a URL of its own, read parameters from the request, and respond with the page or anything else.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/send-events.html">Send events between components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a component notify others on the page without holding references to them, with send(), onEvent() and a payload class.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/initializers.html">Configure a module with an initializer</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Let a jar configure every Wicket application it is added to, with an IInitializer registered through the Java ServiceLoader.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/component-lifecycle.html">Component lifecycle</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The stages a component goes through and every hook method Wicket calls on it, in order, with who calls it and when.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-processing.html">Request processing</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The objects that serve a request, the steps of RequestCycle in order, the request cycle listener hooks, and the request handlers Wicket ships.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/request-cycle.html">What happens during a request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket turns an HTTP request into a request handler, runs it, and cleans up afterwards, and why it is built that way.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/handle-exceptions.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

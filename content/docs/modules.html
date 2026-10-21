@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Wicket modules | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The artifacts Wicket is released as, what each one contains, which Wicket modules it depends on, and which you need for testing and tooling." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/css/style.css?v=1792571626" type="text/css" media="screen" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        
+        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
+            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
+        </a>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/start.html">Getting started</a></p>
+            <h1>Wicket modules</h1>
+            <p class="page-sign-sub">The artifacts Wicket is released as, what each one contains, which Wicket modules it depends on, and which you need for testing and tooling.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint" hidden>
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#core-modules"><span class="toc-number">1</span> <span class="toc-text">Core modules</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#component-and-feature-modules"><span class="toc-number">2</span> <span class="toc-text">Component and feature modules</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#dependency-injection-modules"><span class="toc-number">3</span> <span class="toc-text">Dependency injection modules</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#test-modules"><span class="toc-number">4</span> <span class="toc-text">Test modules</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#tooling-and-experimental-modules"><span class="toc-number">5</span> <span class="toc-text">Tooling and experimental modules</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#third-party-libraries-the-core-modules-use"><span class="toc-number">6</span> <span class="toc-text">Third-party libraries the core modules use</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>All modules have the group id <code class="language-plaintext highlighter-rouge">org.apache.wicket</code> and share one version number, except the experimental modules. Use the same version for every Wicket module in a project. <a href="/docs/maven-setup.html">Maven dependencies</a> shows how to add them.</p>
+
+<h2 id="core-modules">Core modules</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artifact</th>
+      <th>Contains</th>
+      <th>Depends on</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-util</code></td>
+      <td>General utilities: I/O, strings, collections, conversion, time, files, XML parsing and resource streams.</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-request</code></td>
+      <td>Request and response abstractions, URLs, request mappers and request handlers.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-util</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+      <td>The framework: <code class="language-plaintext highlighter-rouge">Application</code>, <code class="language-plaintext highlighter-rouge">Component</code>, pages, panels, forms, models, links, repeaters, resources, Ajax, the page store, security settings and the content security policy.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">wicket-request</code>, <code class="language-plaintext highlighter-rouge">wicket-util</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket</code></td>
+      <td>No code. A POM that depends on <code class="language-plaintext highlighter-rouge">wicket-core</code>, for projects that want a single Wicket dependency.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">wicket-core</code> is the module every application needs. It brings <code class="language-plaintext highlighter-rouge">wicket-request</code> and <code class="language-plaintext highlighter-rouge">wicket-util</code> along.</p>
+
+<p>Some modules, among them <code class="language-plaintext highlighter-rouge">wicket-core</code>, <code class="language-plaintext highlighter-rouge">wicket-extensions</code>, <code class="language-plaintext highlighter-rouge">wicket-devutils</code>, <code class="language-plaintext highlighter-rouge">wicket-jmx</code> and <code class="language-plaintext highlighter-rouge">wicket-velocity</code>, configure themselves when the application starts, through an initializer listed in <code class="language-plaintext highlighter-rouge">META-INF/services/org.apache.wicket.IInitializer</code>. See <a href="/docs/initializers.html">Configure a module with an initializer</a>.</p>
+
+<h2 id="component-and-feature-modules">Component and feature modules</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artifact</th>
+      <th>Contains</th>
+      <th>Depends on</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-extensions</code></td>
+      <td>More components: <code class="language-plaintext highlighter-rouge">DataTable</code> and its sortable, filterable variants, <code class="language-plaintext highlighter-rouge">ModalDialog</code>, tabs, the wizard, <code class="language-plaintext highlighter-rouge">Palette</code>, <code class="language-plaintext highlighter-rouge">AutoCompleteTextField</code>, <code class="language-plaintext highlighter-rouge">AjaxLazyLoadPanel</code>, <code class="language-plaintext highlighter-rouge">UploadProgressBar</code>, and more.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-auth-roles</code></td>
+      <td>Sign-in and role-based authorization: <code class="language-plaintext highlighter-rouge">AuthenticatedWebApplication</code>, <code class="language-plaintext highlighter-rouge">AuthenticatedWebSession</code>, <code class="language-plaintext highlighter-rouge">SignInPanel</code>, <code class="language-plaintext highlighter-rouge">@AuthorizeInstantiation</code> and <code class="language-plaintext highlighter-rouge">@AuthorizeAction</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-bean-validation</code></td>
+      <td>Jakarta Bean Validation for form components: <code class="language-plaintext highlighter-rouge">PropertyValidator</code> and <code class="language-plaintext highlighter-rouge">BeanValidationConfiguration</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-native-websocket-core</code></td>
+      <td>WebSocket support independent of the container: <code class="language-plaintext highlighter-rouge">WebSocketBehavior</code>, <code class="language-plaintext highlighter-rouge">WebSocketResource</code>, pushing messages to clients.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-native-websocket-javax</code></td>
+      <td>Runs <code class="language-plaintext highlighter-rouge">wicket-native-websocket-core</code> on a container’s Jakarta WebSocket (JSR 356) implementation, with <code class="language-plaintext highlighter-rouge">WicketServerEndpointConfig</code>. Despite the name, it uses the <code class="language-plaintext highlighter-rouge">jakarta.websocket</code> API.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-native-websocket-core</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-devutils</code></td>
+      <td>Tools for development: <code class="language-plaintext highlighter-rouge">DebugBar</code>, <code class="language-plaintext highlighter-rouge">InspectorPage</code> and the page, session and component inspectors. They work only in <a href="/docs/deployment-mode.html">development mode</a>.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">wicket-core</code>, <code class="language-plaintext highlighter-rouge">wicket-extensions</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-velocity</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">VelocityPanel</code> and resources that render Apache Velocity templates.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-jmx</code></td>
+      <td>Exposes the application and its settings as JMX MBeans.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-objectsizeof-agent</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">InstrumentationObjectSizeOfStrategy</code>, which measures object sizes, for example of pages and sessions, through a Java agent.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">wicket-velocity</code> renders a template as markup without escaping it, and does not escape the values it interpolates either. A Velocity template can call methods on the objects in its context, so only use templates written by developers, never templates built from user input.</p>
+
+<h2 id="dependency-injection-modules">Dependency injection modules</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artifact</th>
+      <th>Contains</th>
+      <th>Depends on</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-ioc</code></td>
+      <td>The shared base for injection: lazy, serializable proxies for injected beans (<code class="language-plaintext highlighter-rouge">LazyInitProxyFactory</code>) and the field injection that <code class="language-plaintext highlighter-rouge">wicket-spring</code> and <code class="language-plaintext highlighter-rouge">wicket-guice</code> build on.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-spring</code></td>
+      <td>Spring integration: <code class="language-plaintext highlighter-rouge">SpringComponentInjector</code>, the <code class="language-plaintext highlighter-rouge">@SpringBean</code> annotation and <code class="language-plaintext highlighter-rouge">SpringWebApplicationFactory</code>. Wicket 10 works with Spring 6.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">wicket-core</code>, <code class="language-plaintext highlighter-rouge">wicket-ioc</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-cdi</code></td>
+      <td>Jakarta CDI integration: <code class="language-plaintext highlighter-rouge">CdiConfiguration</code> injects CDI beans into components, behaviors and sessions. Wicket 10 builds against CDI 4.0 (tested with Weld 5).</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-guice</code></td>
+      <td>Google Guice integration: <code class="language-plaintext highlighter-rouge">GuiceComponentInjector</code>.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">wicket-core</code>, <code class="language-plaintext highlighter-rouge">wicket-ioc</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="test-modules">Test modules</h2>
+
+<p>Add these with <code class="language-plaintext highlighter-rouge">&lt;scope&gt;test&lt;/scope&gt;</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artifact</th>
+      <th>Contains</th>
+      <th>Depends on</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-tester</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">WicketTester</code>, <code class="language-plaintext highlighter-rouge">FormTester</code>, <code class="language-plaintext highlighter-rouge">TagTester</code> and <code class="language-plaintext highlighter-rouge">WicketTesterExtension</code> for JUnit 5.</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-extensions-tester</code></td>
+      <td>Test helpers for <code class="language-plaintext highlighter-rouge">wicket-extensions</code>, such as <code class="language-plaintext highlighter-rouge">AjaxLazyLoadPanelTester</code>.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">wicket-core</code>, <code class="language-plaintext highlighter-rouge">wicket-extensions</code>, <code class="language-plaintext highlighter-rouge">wicket-tester</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-native-websocket-tester</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">WebSocketTester</code>, to test WebSocket behaviors and resources without a container.</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">wicket-native-websocket-core</code>, <code class="language-plaintext highlighter-rouge">wicket-tester</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">wicket-tester</code> brings JUnit Jupiter and AssertJ along. In Wicket 10 that is JUnit 5.</p>
+
+<h2 id="tooling-and-experimental-modules">Tooling and experimental modules</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artifact</th>
+      <th>Contains</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-migration</code></td>
+      <td>OpenRewrite recipes for upgrades: <code class="language-plaintext highlighter-rouge">org.apache.wicket.MigrateToWicket10</code> and <code class="language-plaintext highlighter-rouge">org.apache.wicket.BestPractices</code>. You run it with the <code class="language-plaintext highlighter-rouge">rewrite-maven-plugin</code>; it is not a dependency of your application.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-archetype-quickstart</code></td>
+      <td>The Maven archetype for new projects. See <a href="/docs/create-project.html">Create a project from the quickstart archetype</a>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-metrics</code></td>
+      <td>Experimental. Measures Wicket internals with Dropwizard Metrics and AspectJ. Its group id is <code class="language-plaintext highlighter-rouge">org.apache.wicket.experimental.wicket10</code>. See <a href="/docs/metrics.html">Measure with Wicket metrics</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="third-party-libraries-the-core-modules-use">Third-party libraries the core modules use</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Library</th>
+      <th>Used by</th>
+      <th>Needed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SLF4J API</td>
+      <td>all modules</td>
+      <td>Always. Add an SLF4J back end, such as <code class="language-plaintext highlighter-rouge">slf4j-simple</code> or Logback, to see log output.</td>
+    </tr>
+    <tr>
+      <td>Jakarta Servlet API</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+      <td>Provided by the servlet container. Wicket 10 needs Servlet 5.0 or newer.</td>
+    </tr>
+    <tr>
+      <td>Apache Commons FileUpload, Commons IO, Commons Collections</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-util</code></td>
+      <td>Always; they come along with <code class="language-plaintext highlighter-rouge">wicket-util</code>.</td>
+    </tr>
+    <tr>
+      <td>OpenJSON, jdk-serializable-functional</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+      <td>Always; they come along with <code class="language-plaintext highlighter-rouge">wicket-core</code>.</td>
+    </tr>
+    <tr>
+      <td>Bouncy Castle (<code class="language-plaintext highlighter-rouge">org.bouncycastle:bcprov-jdk18on</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-core</code></td>
+      <td>Optional. Only for the AES-GCM-SIV encryption: <code class="language-plaintext highlighter-rouge">GCMSIVCrypter</code>. See <a href="/docs/configure-page-store.html#encrypt-stored-pages">Configure the page store</a>.</td>
+    </tr>
+    <tr>
+      <td>Jackson databind</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-extensions</code></td>
+      <td>Optional. Only for <code class="language-plaintext highlighter-rouge">JsonRequestLogger</code>. Wicket 10 uses Jackson 2 (<code class="language-plaintext highlighter-rouge">com.fasterxml.jackson.core</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/start.html">Getting started</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-application.html">Build your first application</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a project from the quickstart, run it, and build a home page with a label, a click counter and a link to a second page.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/page-layout.html">Give every page the same layout</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Move the header, navigation and footer of your application into a base page and two panels, so every page shares one layout.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-form.html">Build a form that saves data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a guestbook page with a form that validates its input, saves entries and lists them, and shows errors and a confirmation.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-ajax.html">Update a page with Ajax</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make the click counter and the guestbook form update only the parts of the page that change, open the form without a reload, and refresh the guestbook every ten seconds.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/first-test.html">Test a page with WicketTester</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write JUnit tests that render your pages, click links, submit the guestbook form and check Ajax updates, without a browser or a server.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/create-project.html">Create a project from the quickstart archetype</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Generate a ready-to-run Wicket project with Maven, know what is in it, and open it in your IDE.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/deployment-mode.html">Switch between development and deployment mode</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run Wicket in deployment mode on production servers, with a system property, a web.xml parameter or code, and check which mode is active.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ide-plugins.html">Add Wicket support to your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Install WicketForge in IntelliJ IDEA or QWickie in Eclipse to jump between Java and markup and complete wicket:id values.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Wicket modules</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The artifacts Wicket is released as, what each one contains, which Wicket modules it depends on, and which you need for testing and tooling.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/maven-setup.html">Maven dependencies</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Maven dependencies, versions, scopes and build settings a Wicket project needs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/configuration.html">Application settings</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a Wicket application is started and configured, the settings objects with their main options and defaults, and what development and deployment mode change.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/glossary.html">Glossary</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Plain-English definitions of the Wicket terms used in this guide, each compared with what other web frameworks call it.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/why-wicket.html">Why component-oriented</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What a component-oriented framework does differently from request-based MVC frameworks, what Wicket gains from it, and what it costs.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/best-practices.html">Best practices</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The habits that keep a Wicket application easy to change and to test, each with the reason it follows from how Wicket works.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/modules.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1792571626" defer></script>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

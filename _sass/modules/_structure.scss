@@ -1,0 +1,1920 @@
+@use "sass:color";
+@use "../taiga/mixins";
+@use "../taiga/settings";
+
+// The parts the restructured site adds to the Taiga theme: the version plate in the menu,
+// the release line pages, the release lines table, the blog listings and the user guide.
+
+$rule: settings.$color-neutral-30;
+$tint: settings.$color-neutral-10;
+$ink: settings.$color-neutral-70;
+$ink-soft: #5d6662;
+$brand: settings.$color-brand-50;
+$brand-text: #b4531a;   // brand orange dark enough for text on white
+$navy: #303284;         // the "WICKET" of the logo
+$eol: #b3261e;
+
+// One width for the whole site: 66rem of content between the 5rem gutters of the
+// Taiga container, so the menu, page headings, panels, tables and footer share both edges.
+$content-width: 66rem;
+$site-width: $content-width + 10rem;
+
+.l-container {
+    max-width: $site-width;
+}
+
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+// ---------- Main menu
+
+nav.mainmenu {
+    .nav-items.active {
+        box-shadow: inset 0 -2px 0 $brand;
+        color: $navy;
+    }
+}
+
+.nav-plate {
+    align-items: center;
+    border: 1px solid settings.$color-neutral-50;
+    border-radius: settings.$border-radius-20;
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-right: 1.25rem;
+    min-height: 2.25rem;
+    padding: 0.2rem 0.55rem 0.2rem 0.65rem;
+    text-transform: none;
+    transition: border-color 160ms ease-out, background-color 160ms ease-out;
+    white-space: nowrap;
+
+    &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+
+    .nav-plate-current {
+        color: $navy;
+        font-weight: 600;
+    }
+    .nav-plate-lts {
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+        font-weight: 400;
+    }
+    &:hover,
+    &.active {
+        background: $tint;
+        border-color: $brand-text;
+    }
+}
+
+// ---------- Small labels
+
+.tag {
+    border-radius: settings.$border-radius-10;
+    display: inline-block;
+    font-size: settings.$font-size-10;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    padding: 0 0.4em;
+    text-transform: uppercase;
+    vertical-align: 0.15em;
+}
+.tag-lts {
+    background: $navy;
+    color: #fff;
+}
+.tag-eol {
+    border: 1px solid $eol;
+    color: $eol;
+}
+// A line with one release left: a filled amber label, apart from the red of end of life.
+.tag-ending {
+    background: #fdebd3;
+    color: #7a3510;
+}
+// A release that fixes vulnerabilities: a reason to upgrade, not a warning.
+.tag-security {
+    border: 1px solid $navy;
+    color: $navy;
+}
+.release-lines-latest {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+    font-variant-numeric: tabular-nums;
+    font-weight: 400;
+}
+.tag-post.tag-security {
+    border-color: $navy;
+    color: $navy;
+}
+.release-lines-role {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+}
+
+// ---------- Release lines table
+
+.release-lines {
+    border-collapse: collapse;
+    margin: 1rem 0 2rem;
+    width: 100%;
+
+    th, td {
+        border-bottom: 1px solid $rule;
+        padding: 0.6rem 1rem 0.6rem 0;
+        text-align: left;
+        vertical-align: baseline;
+    }
+    thead th {
+        border-bottom: 2px solid $ink;
+        font-weight: 600;
+    }
+    tbody th[scope=row] {
+        font-weight: 600;
+        white-space: nowrap;
+
+        a { font-weight: 600; }
+        .tag { margin-left: 0.4rem; }
+    }
+    .release-lines-group th {
+        border-bottom: 1px solid $rule;
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        padding-top: 1.5rem;
+        text-transform: uppercase;
+    }
+    .is-eol th[scope=row],
+    .is-eol th[scope=row] a {
+        color: $ink-soft;
+        text-decoration: line-through;
+        text-decoration-color: $eol;
+    }
+
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        // One release is one block: no rule between its two rows of cells.
+        &,
+        .section-body & {
+            th, td { border: none; }
+        }
+        thead { display: none; }
+        tr { display: grid; grid-template-columns: 1fr 1fr; padding: 0.5rem 0; border-bottom: 1px solid $rule; }
+        th, td { border: none; padding: 0.15rem 0; }
+        .release-lines-group { display: block; border-bottom: none; }
+    }
+}
+
+// ---------- Release line page
+
+.hub {
+    padding-bottom: 3rem;
+
+    .hub-head,
+    .hub-section { max-width: 66rem; }
+}
+
+// Signs and reading columns line up with the menu's container.
+@mixin container-gutters {
+    margin: 0 auto;
+    max-width: $site-width;
+    padding-left: settings.$spacing;
+    padding-right: settings.$spacing;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        padding-left: settings.$spacing * 5;
+        padding-right: settings.$spacing * 5;
+    }
+}
+
+.hub-head {
+    margin: 2rem 0 1rem;
+
+    h1 {
+        color: settings.$color-neutral-90;
+        font-size: 2.6rem;
+        font-weight: 300;
+        line-height: 1.15;
+        margin: 0.25rem 0 0.5rem;
+    }
+}
+
+.hub-crumbs {
+    font-size: settings.$font-size-20;
+}
+
+.hub-role {
+    font-size: settings.$font-size-50;
+    line-height: 1.4;
+    max-width: 60ch;
+    margin-bottom: 1.5rem;
+}
+
+.hub-facts {
+    border-bottom: 1px solid $rule;
+    border-top: 1px solid $rule;
+    display: grid;
+    gap: 1rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+
+    dt {
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+    }
+    dd {
+        color: settings.$color-neutral-90;
+        font-weight: 400;
+        margin: 0;
+    }
+    .hub-version {
+        font-size: settings.$font-size-60;
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+}
+
+.hub-eol {
+    border: 1px solid $eol;
+    border-radius: settings.$border-radius-20;
+    color: settings.$color-neutral-90;
+    margin-bottom: 1.5rem;
+    max-width: 46rem;
+    padding: 1rem 1.25rem;
+
+    &.is-ending { border-color: $brand-text; }
+    p { margin: 0; }
+    p + p, p + ol, ol + p { margin-top: 0.5rem; }
+}
+.hub-route-one { font-size: settings.$font-size-40; }
+.hub-eol-title {
+    font-size: settings.$font-size-40;
+    font-weight: 600;
+}
+.hub-eol-more {
+    font-size: settings.$font-size-20;
+}
+.hub-route {
+    margin: 0.5rem 0 0 1.25rem;
+
+    li + li { margin-top: 0.25rem; }
+    .tag { margin-left: 0.25rem; }
+}
+
+.hub-maven {
+    max-width: 36rem;
+
+    pre {
+        background: $tint;
+        border-radius: settings.$border-radius-20;
+        margin: 0.5rem 0;
+        overflow-x: auto;
+        padding: 1rem;
+
+        @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') { white-space: pre-wrap; }
+    }
+}
+pre:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+
+.hub-maven-label {
+    align-items: center;
+    display: flex;
+    font-weight: 400;
+    justify-content: space-between;
+}
+
+.hub-copy {
+    background: none;
+    border: 1px solid $brand;
+    border-radius: settings.$border-radius-20;
+    color: $brand-text;
+    cursor: pointer;
+    font: inherit;
+    font-size: settings.$font-size-20;
+    font-weight: 600;
+    padding: 0.1rem 0.75rem;
+
+    &:hover { background: $brand; color: #fff; }
+    &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+}
+
+.hub-maven-more,
+.hub-more {
+    font-size: settings.$font-size-20;
+}
+
+.hub-jump {
+    border-top: 1px solid $rule;
+    margin-top: 2rem;
+    padding-top: 1rem;
+
+    ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.75rem; list-style: none; margin: 0; padding: 0; }
+    li { margin: 0; }
+    a { font-weight: 600; }
+
+    + .hub-section { border-top: none; margin-top: 1.5rem; }
+}
+
+.hub-section {
+    border-top: 1px solid $rule;
+    margin-top: 3rem;
+    padding-top: 2rem;
+
+    > h2 {
+        color: settings.$color-neutral-90;
+        font-weight: 400;
+        font-size: 1.9rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.hub-panels {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    li {
+        border-top: 3px solid $brand;
+        padding-top: 0.75rem;
+    }
+    h3 {
+        color: settings.$color-neutral-90;
+        font-weight: 600;
+        font-size: settings.$font-size-40;
+    }
+    p + p { margin-top: 0.5rem; }
+}
+
+.hub-panel-alt {
+    font-size: settings.$font-size-20;
+}
+
+.hub-body {
+    scroll-margin-top: 1rem;
+
+    h2 {
+        color: settings.$color-neutral-90;
+        font-weight: 400;
+        font-size: 1.9rem;
+        margin-top: 2.5rem;
+
+        &:first-child { margin-top: 0; }
+    }
+    h3 {
+        font-weight: 600;
+        font-size: settings.$font-size-40;
+        margin-top: 1.5rem;
+    }
+    p, ul { max-width: 68ch; }
+}
+
+// ---------- Highlights ("New in Wicket n")
+
+.features {
+    display: grid;
+    gap: 2rem 3rem;
+    grid-template-columns: minmax(0, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .feature {
+        margin: 0;
+
+        h3 {
+            color: settings.$color-neutral-90;
+            font-weight: 600;
+            font-size: settings.$font-size-40;
+        }
+    }
+    .feature-facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+        margin-top: 0.75rem;
+
+        dt { color: $ink-soft; font-size: settings.$font-size-20; }
+        dd { font-weight: 600; margin: 0; }
+    }
+    .feature-code {
+        margin-top: 0.75rem;
+
+        pre {
+            background: $tint;
+            border-radius: settings.$border-radius-20;
+            overflow-x: auto;
+            padding: 0.75rem 1rem;
+        }
+    }
+    .route-file {
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+        font-style: italic;
+    }
+}
+
+// ---------- Blog listings
+
+.post-panels,
+.post-rows {
+    > li { margin-left: 0; padding-left: 0; }
+}
+
+.post-panels {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    }
+
+    a {
+        border: none;
+        border-top: 3px solid $navy;
+        color: $ink;
+        display: block;
+        height: 100%;
+        padding-top: 0.75rem;
+
+        &:hover .post-title { color: $brand-text; }
+    }
+    .is-security a { border-top-color: $eol; }
+}
+
+.post-meta {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+}
+
+.post-title {
+    color: settings.$color-neutral-90;
+    display: block;
+    font-size: settings.$font-size-50;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0.25rem 0 0.5rem;
+}
+
+.post-summary {
+    display: block;
+}
+
+.post-rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        border-bottom: 1px solid $rule;
+        display: flex;
+        gap: 1.5rem;
+        padding: 0.4rem 0;
+    }
+    time {
+        color: $ink-soft;
+        flex: 0 0 7rem;
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+
+// ---------- User guide
+
+.page-sign {
+    border-bottom: 1px solid $rule;
+    padding: 2rem 0 1.5rem;
+}
+
+.page-sign-inner {
+    @include container-gutters;
+
+    h1 {
+        color: settings.$color-neutral-90;
+        font-size: 2.4rem;
+        font-weight: 300;
+        line-height: 1.15;
+        margin: 0.25rem 0 0.5rem;
+    }
+}
+
+.guide-sign-inner {
+    display: grid;
+    gap: 1.5rem 3rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-40) {
+        align-items: end;
+        grid-template-columns: minmax(0, 1fr) 22rem;
+    }
+}
+
+.page-sign-sub {
+    font-size: settings.$font-size-50;
+    line-height: 1.4;
+    max-width: 46rem;
+}
+
+.guide-crumbs {
+    font-size: settings.$font-size-20;
+}
+
+.guide-plates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.guide-kind,
+.guide-since,
+.guide-list-kind,
+.guide-list-since {
+    border: 1px solid $rule;
+    border-radius: settings.$border-radius-10;
+    color: $ink-soft;
+    display: inline-block;
+    font-size: settings.$font-size-10;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+    padding: 0 0.45em;
+    text-transform: uppercase;
+}
+.guide-kind {
+    background: $navy;
+    border-color: $navy;
+    color: #fff;
+}
+
+// Search
+.guide-search {
+    position: relative;
+}
+.guide-search-label {
+    display: block;
+    font-size: settings.$font-size-20;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+}
+.guide-search-field {
+    position: relative;
+
+    input {
+        border: 1px solid $ink-soft;
+        border-radius: settings.$border-radius-20;
+        font: inherit;
+        padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+        width: 100%;
+
+        &:focus { border-color: $brand; outline: 2px solid color.adjust($brand, $alpha: -0.6); }
+    }
+}
+.guide-search--large .guide-search-field input {
+    font-size: settings.$font-size-50;
+    padding: 0.75rem 3rem 0.75rem 1rem;
+}
+.guide-search-key {
+    border: 1px solid $rule;
+    border-radius: settings.$border-radius-10;
+    color: $ink-soft;
+    font-size: settings.$font-size-10;
+    padding: 0 0.4em;
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.guide-search-hint {
+    font-size: settings.$font-size-20;
+    margin-top: 0.4rem;
+
+    select { font: inherit; }
+}
+.guide-results {
+    background: #fff;
+    border: 1px solid $rule;
+    border-radius: settings.$border-radius-20;
+    box-shadow: 0 0.5rem 1.5rem rgba(35, 39, 37, 0.15);
+    left: 0;
+    list-style: none;
+    margin: 0.25rem 0 0;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 0.25rem 0;
+    position: absolute;
+    right: 0;
+    z-index: settings.$z-index-30;
+
+    li { margin: 0; }
+    a {
+        border: none;
+        color: $ink;
+        display: block;
+        padding: 0.5rem 0.75rem;
+    }
+    .is-active a,
+    a:hover { background: $tint; }
+}
+.guide-result-title { color: settings.$color-neutral-90; display: block; font-weight: 400; }
+.guide-result-meta { color: $ink-soft; display: block; font-size: settings.$font-size-10; text-transform: uppercase; letter-spacing: 0.04em; }
+.guide-result-text { display: block; font-size: settings.$font-size-20; }
+.guide-results-empty { padding: 0.5rem 0.75rem; }
+
+// Reading
+.reading {
+    @include container-gutters;
+    padding-bottom: 3rem;
+    padding-top: 2rem;
+
+    // The rail sits right of the text, so title and text share the left edge.
+    &.has-rail {
+        @include mixins.breakpoint(settings.$breakpoint-40) {
+            display: grid;
+            gap: 3rem;
+            grid-template-columns: minmax(0, 1fr) 14rem;
+
+            > .reading-rail { grid-column: 2; grid-row: 1; }
+            > .reading-main { grid-column: 1; grid-row: 1; }
+        }
+    }
+}
+
+.reading-rail {
+    // The rail lists sections by name; their numbers stay in the headings.
+    .toc-number { display: none; }
+
+    // Below 1152px the rail is a compact row of the top-level sections above the text.
+    @include mixins.breakpoint(settings.$breakpoint-40, 'max-width') {
+        border-bottom: 1px solid $rule;
+        font-size: settings.$font-size-20;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+
+        .toc { display: block; }
+        #toc-title h2,
+        .toc h2 {
+            font-size: settings.$font-size-20;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+        }
+        ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; list-style: none; margin: 0; padding: 0; }
+        li,
+        .toc > ul > li + li { margin: 0; }
+        ul ul { display: none; }
+        a { border: none; }
+    }
+
+    @include mixins.breakpoint(settings.$breakpoint-40) {
+        display: block;
+
+        .toc,
+        > nav > .toc,
+        > .toc {
+            display: block;
+            font-size: settings.$font-size-20;
+            position: sticky;
+            top: 1rem;
+
+            ul { margin: 0; padding: 0; }
+            li { margin: 0 0 0.4rem; }
+            ul ul { margin: 0.4rem 0 0 0.75rem; }
+            a { border: none; color: $ink; }
+            a:hover { color: $brand-text; }
+            h2 { font-size: settings.$font-size-20; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        }
+    }
+}
+
+.reading-main {
+    max-width: 48rem;
+    min-width: 0;
+}
+
+.guide-version-note {
+    background: $tint;
+    border-radius: settings.$border-radius-20;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+}
+
+.guide-content {
+    h2 {
+        color: settings.$color-neutral-90;
+        font-weight: 400;
+        margin-top: 2rem;
+    }
+    h3 {
+        font-weight: 600;
+        font-size: settings.$font-size-40;
+        margin-top: 1.5rem;
+    }
+    p, ul, ol, table, pre, blockquote { margin-bottom: 1rem; }
+    ul, ol { padding-left: 1.5rem; }
+    pre {
+        background: $tint;
+        border-radius: settings.$border-radius-20;
+        overflow-x: auto;
+        padding: 0.75rem 1rem;
+    }
+    :not(pre) > code {
+        overflow-wrap: anywhere;
+        background: $tint;
+        border-radius: settings.$border-radius-10;
+        padding: 0 0.25em;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border-bottom: 1px solid $rule;
+        padding: 0.4rem 0.75rem 0.4rem 0;
+        text-align: left;
+        vertical-align: top;
+    }
+    blockquote.since,
+    .since {
+        border: 1px solid $rule;
+        border-radius: settings.$border-radius-20;
+        padding: 0.5rem 1rem;
+    }
+}
+
+.guide-foot {
+    border-top: 1px solid $rule;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+}
+.guide-foot-title { font-weight: 300; }
+.guide-foot-kinds {
+    display: grid;
+    gap: 1rem 2rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    h3 { font-size: settings.$font-size-30; font-weight: 600; margin-top: 1rem; }
+}
+.guide-edit {
+    font-size: settings.$font-size-20;
+    margin-top: 2rem;
+}
+
+// Lists of pages
+.guide-list,
+.guide-route,
+.guide-topics,
+.guide-lookup {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        border-bottom: 1px solid $rule;
+        padding: 0.6rem 0;
+    }
+}
+.guide-route {
+    counter-reset: route;
+
+    li {
+        counter-increment: route;
+        padding-left: 2.25rem;
+        position: relative;
+
+        &::before {
+            color: $brand-text;
+            content: counter(route);
+            font-size: settings.$font-size-50;
+            font-weight: 600;
+            left: 0;
+            position: absolute;
+            top: 0.45rem;
+        }
+    }
+}
+.guide-list-title {
+    font-weight: 400;
+}
+.guide-list .is-current .guide-list-title {
+    color: settings.$color-neutral-90;
+    font-weight: 600;
+}
+.guide-list-meta {
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-left: 0.5rem;
+}
+.guide-list-summary {
+    display: block;
+    font-size: settings.$font-size-30;
+}
+.guide-topic-counts {
+    color: $ink-soft;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: settings.$font-size-10;
+    gap: 0 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+.guide-topics {
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        column-gap: 3rem;
+        columns: 2;
+
+        li { break-inside: avoid; }
+    }
+}
+
+.guide-front > * {
+    max-width: 66rem;
+}
+.guide-front-section {
+    margin-bottom: 3rem;
+
+    h2 {
+        color: settings.$color-neutral-90;
+        font-weight: 400;
+        font-size: 1.9rem;
+    }
+}
+// The reference guide of each line, under the search on the docs front page.
+.guide-sign-refs {
+    font-size: settings.$font-size-20;
+    grid-column: 1 / -1;
+    line-height: 1.8;
+    margin: 0;
+
+    .tag { vertical-align: 0.1em; }
+}
+.guide-sign-refs-label {
+    color: settings.$color-neutral-90;
+    font-weight: 600;
+    margin-right: 0.25rem;
+}
+.guide-kinds-line { margin-top: 1rem; }
+.guide-front-section h3 {
+    font-size: settings.$font-size-40;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+}
+
+// The reference guide and Javadoc of every release line
+.guide-refs {
+    border-collapse: collapse;
+    width: 100%;
+
+    th, td {
+        border-bottom: 1px solid $rule;
+        padding: 0.6rem 1rem 0.6rem 0;
+        text-align: left;
+        vertical-align: top;
+    }
+    thead th {
+        border-bottom: 2px solid $ink;
+        font-weight: 600;
+    }
+    tbody th { font-weight: 600; }
+    td { white-space: nowrap; }
+}
+.guide-refs-status {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+    font-weight: 400;
+}
+.guide-group {
+    margin-bottom: 2.5rem;
+
+    h2 { color: settings.$color-neutral-90; font-weight: 400; }
+}
+.guide-group-intro {
+    margin-bottom: 0.75rem;
+}
+.guide-topics-other {
+    border-top: 1px solid $rule;
+    padding-top: 1.5rem;
+
+    h2 { font-size: settings.$font-size-40; font-weight: 600; }
+    ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; list-style: none; margin: 0.5rem 0 0; padding: 0; }
+}
+
+// A-Z
+.guide-letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin: 0.5rem 0 1.5rem;
+
+    a { font-weight: 600; }
+}
+.guide-letter {
+    border-bottom: 1px solid $rule;
+    color: $brand-text;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+.guide-classes {
+    dt { font-weight: 400; margin-top: 0.5rem; }
+    dd { font-size: settings.$font-size-20; margin: 0; }
+}
+
+// ---------- Section front pages
+
+.section-body {
+    > * { max-width: 66rem; }
+
+    table {
+        border-collapse: collapse;
+        margin: 1rem 0 1.5rem;
+        width: 100%;
+    }
+    th, td {
+        border-bottom: 1px solid $rule;
+        padding: 0.6rem 1rem 0.6rem 0;
+        text-align: left;
+        vertical-align: top;
+    }
+    thead th {
+        border-bottom: 2px solid $ink;
+        font-weight: 600;
+    }
+    tbody th[scope=row] { font-weight: 600; }
+    td p + p { margin-top: 0.5rem; }
+    .connections-route { color: settings.$color-neutral-90; font-weight: 400; }
+    pre {
+        background: $tint;
+        border-radius: settings.$border-radius-20;
+        overflow-x: auto;
+        padding: 0.75rem 1rem;
+    }
+
+    > h2 {
+        border-top: 1px solid $rule;
+        color: settings.$color-neutral-90;
+        font-size: 1.9rem;
+        font-weight: 400;
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+    }
+    > p,
+    > ul:not([class]) {
+        margin-bottom: 1rem;
+        max-width: 46rem;
+    }
+    > ul:not([class]) { padding-left: 1.25rem; }
+    > ul:not([class]) li + li { margin-top: 0.35rem; }
+    > hr { display: none; }
+}
+
+.section-index {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: settings.$font-size-20;
+    gap: 0.25rem 1.5rem;
+    margin-bottom: 1rem;
+}
+
+// The active marker spans the label only.
+nav.mainmenu .nav-container > a.nav-items {
+    margin-right: 1rem;
+    padding-right: 0;
+}
+
+// The ASF mark before GitHub, at the height of the GitHub icon.
+.nav-asf {
+    border: none;
+    display: inline-flex;
+    margin-right: 1rem;
+
+    img {
+        display: block;
+        height: 2.1rem;
+        width: auto;
+    }
+    &:hover img { opacity: 0.8; }
+}
+
+// The menu: logo and version plate on the left, the sections centred on the page,
+// the ASF mark and GitHub on the right.
+.header.default nav.mainmenu {
+    @include mixins.breakpoint(settings.$breakpoint-20) {
+        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        padding-right: 0;
+
+        > .nav-container:last-child { justify-content: flex-end; }
+    }
+}
+
+.nav-brand {
+    align-items: center;
+    display: flex;
+    gap: 0.25rem;
+
+    .nav-logo { padding-right: 0.75rem; }
+    .nav-plate { margin-right: 0; }
+
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .nav-logo { padding-right: 0; }
+    }
+}
+
+nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
+
+// Taiga strips borders from header links; the plate keeps its outline.
+.header.default nav.mainmenu a.nav-plate {
+    border: 1px solid $ink-soft;
+
+    &:hover,
+    &.active { border-color: $navy; }
+}
+
+// Release line panels on the docs front page.
+.line-panels {
+    margin-bottom: 3rem;
+
+    ul {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: minmax(0, 1fr);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        @include mixins.breakpoint(settings.$breakpoint-10) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        @include mixins.breakpoint(settings.$breakpoint-30) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    li { margin: 0; }
+    a {
+        border: 1px solid $rule;
+        border-radius: settings.$border-radius-20;
+        border-top: 3px solid $brand;
+        color: $ink;
+        display: block;
+        height: 100%;
+        padding: 0.9rem 1rem 1rem;
+
+        &:hover {
+            border-color: $brand;
+            .line-panel-name { color: $brand-text; }
+        }
+        &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+    }
+    .is-eol a { border-top-color: settings.$color-neutral-50; }
+    .is-ending a { border-top-color: $brand-text; }
+}
+.line-panel-name {
+    color: settings.$color-neutral-90;
+    display: block;
+    font-size: settings.$font-size-60;
+    font-weight: 400;
+    line-height: 1.2;
+
+    .tag { margin-left: 0.25rem; }
+}
+.line-panel-role {
+    display: block;
+    margin-top: 0.25rem;
+}
+.line-panel-meta {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+    font-variant-numeric: tabular-nums;
+    margin-top: 0.5rem;
+}
+
+.guide-front-lines {
+    padding-bottom: 0;
+
+    .line-panels { margin-bottom: 1rem; }
+}
+
+.guide-upcoming {
+    border: 1px solid $brand;
+    border-radius: settings.$border-radius-20;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+}
+
+// The last icon ends on the right edge, without the padding of the menu links.
+.header.default nav.mainmenu > .nav-container:last-child .nav-items {
+    padding-right: 0;
+}
+
+// The quick start wizard.
+.quickstart {
+    margin-bottom: 2rem;
+    max-width: 46rem;
+}
+.quickstart-fields {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    label {
+        display: block;
+        font-size: settings.$font-size-20;
+        font-weight: 400;
+    }
+    input, select {
+        background-color: #fff;
+        border: 1px solid settings.$color-neutral-50;
+        border-radius: settings.$border-radius-20;
+        box-sizing: border-box;
+        display: block;
+        font: inherit;
+        font-size: settings.$font-size-30;
+        height: 2.6rem;
+        line-height: 1.4;
+        margin-top: 0.25rem;
+        padding: 0 0.6rem;
+        width: 100%;
+
+        &:focus { border-color: $brand; outline: 2px solid color.adjust($brand, $alpha: -0.6); }
+    }
+}
+.quickstart-command pre {
+    background: $tint;
+    border-radius: settings.$border-radius-20;
+    margin: 0.5rem 0;
+    overflow-x: auto;
+    padding: 1rem;
+}
+.quickstart-needs {
+    color: $ink-soft;
+    font-size: settings.$font-size-20;
+}
+
+// The homepage's call to action, under the announcement.
+.home-start {
+    margin-top: 1.5rem;
+    text-align: center;
+
+    .button {
+        font-size: settings.$font-size-50;
+        padding: 0.6rem 2rem;
+    }
+}
+
+// The mailing lists on the community page.
+.community-lists th[scope=row] {
+    white-space: nowrap;
+}
+.line-panels .is-security a { border-top-color: $eol; }
+
+// A section page with a lead above its rail: the lead sits closer to the content.
+.section-lead {
+    padding-bottom: 0;
+
+    .line-panels { margin-bottom: 1rem; }
+}
+// In a rail layout the first heading needs no rule above it.
+.has-rail .section-body > h2:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+// Blog posts and archives.
+.post-sign-meta {
+    align-items: center;
+    color: $ink-soft;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-top: 0.75rem;
+}
+.tag-post {
+    border: 1px solid $rule;
+    color: $ink-soft;
+    vertical-align: baseline;
+}
+.post-content {
+    overflow-wrap: break-word;
+
+    h2 { font-size: 1.6rem; }
+    blockquote {
+        border-left: 1px solid $rule;
+        color: $ink-soft;
+        padding-left: 1rem;
+    }
+    img { max-width: 100%; height: auto; }
+}
+.post-foot {
+    border-top: 1px solid $rule;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+}
+.post-pager {
+    display: grid;
+    gap: 1rem 2rem;
+    margin-bottom: 1.5rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: 1fr 1fr; }
+
+    a {
+        border: none;
+        display: block;
+
+        span {
+            color: $ink-soft;
+            display: block;
+            font-size: settings.$font-size-20;
+        }
+    }
+    .post-pager-newer { text-align: right; grid-column: 2; }
+}
+.post-follow {
+    color: $ink-soft;
+    font-size: settings.$font-size-20;
+}
+.post-rows--archive {
+    margin-bottom: 2rem;
+
+    li { align-items: baseline; }
+    time { flex: 0 0 4rem; }
+    .tag { margin-left: 0.4rem; }
+}
+.post-row-body {
+    display: block;
+}
+.post-row-summary {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+}
+.section-body > h2.archive-month {
+    border-top: none;
+    color: $ink-soft;
+    font-size: settings.$font-size-40;
+    font-weight: 600;
+    margin: 1.5rem 0 0.25rem;
+    padding-top: 0;
+}
+
+// The archives' pager sits under the list, like the pager under a post.
+.section-body > .post-pager {
+    border-top: 1px solid $rule;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+}
+
+// The blog page: the newest posts in full, one after another.
+.blog-entry {
+    max-width: 48rem;
+
+    & + .blog-entry {
+        border-top: 1px solid $rule;
+        margin-top: 3rem;
+        padding-top: 2.5rem;
+    }
+}
+.blog-entry-head {
+    margin-bottom: 1.25rem;
+
+    .post-sign-meta { margin-top: 0; }
+    h2 {
+        font-size: 2rem;
+        font-weight: 300;
+        line-height: 1.2;
+        margin: 0.4rem 0 0;
+
+        a { border: none; color: settings.$color-neutral-90; }
+        a:hover { color: $brand-text; }
+    }
+}
+.blog-entry .post-content h2 {
+    font-size: settings.$font-size-50;
+    font-weight: 600;
+}
+.section-body > .blog-entry + .post-pager,
+.section-body > .post-pager {
+    max-width: 48rem;
+}
+
+// The posts after the newest: a title and a sentence each.
+.blog-entry--short {
+    & + .blog-entry--short {
+        margin-top: 1.75rem;
+        padding-top: 1.5rem;
+    }
+    .blog-entry-head { margin-bottom: 0.4rem; }
+    .blog-entry-head h2 { font-size: settings.$font-size-60; font-weight: 400; }
+}
+.blog-entry-summary {
+    color: $ink-soft;
+}
+
+.reading-rail .toc .toc-gap {
+    border-top: 1px solid $rule;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+}
+
+// ---------- Browser surfaces
+
+// Hidden until focused, then a plate in the top left corner.
+.skip-link {
+    background: #fff;
+    border: 2px solid $navy;
+    border-radius: settings.$border-radius-20;
+    color: $navy;
+    font-weight: 600;
+    left: 1rem;
+    padding: 0.5rem 0.9rem;
+    position: absolute;
+    top: -4rem;
+    z-index: 10;
+
+    &:focus { top: 1rem; }
+}
+
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible,
+.button:focus-visible {
+    outline: 2px solid $navy;
+    outline-offset: 2px;
+}
+main:focus-visible { outline: none; }
+
+::selection {
+    background: color.adjust($brand, $lightness: 30%);
+    color: settings.$color-neutral-90;
+}
+
+// Reading text stays near 75 characters a line; tables and code take the full column.
+.guide-content,
+.section-body,
+.hub-body,
+.guide-front-section {
+    > p,
+    > ul:not([class]),
+    > ol:not([class]) { max-width: 68ch; }
+}
+
+// On touch screens the small links of the menu, the plate and the copy buttons grow to 44px.
+@media (pointer: coarse) {
+    .header.default nav.mainmenu .nav-sections > a.nav-items,
+    .header.default nav.mainmenu a.nav-plate,
+    .nav-asf,
+    .header.default nav.mainmenu .nav-container:last-child > a {
+        align-items: center;
+        display: inline-flex;
+        min-height: 44px;
+        min-width: 44px;
+        justify-content: center;
+    }
+    .hub-copy { min-height: 44px; min-width: 44px; }
+    .reading-rail a,
+    .footer-sitemap a,
+    .hub-jump a,
+    .section-index a { display: inline-block; padding: 0.75rem 0; }
+    .release-lines th[scope=row] a,
+    .home-release a,
+    .guide-foot a { display: inline-block; padding: 0.75rem 0; }
+    .quickstart input,
+    .quickstart select { min-height: 44px; }
+    .hub-crumbs a,
+    .guide-crumbs a,
+    .hub-maven-more a,
+    .post-sign-meta a,
+    .home-action-alt,
+    .home-more a,
+    .hub-more a,
+    .post-row-title > a,
+    .guide-refs a,
+    .hub-panel-alt a { display: inline-block; padding: 0.7rem 0; }
+    .footer-sitemap a { display: inline-block; min-width: 44px; }
+    .guide-search-hint select,
+    .guide-search-field input { min-height: 44px; }
+    .guide-search-key { display: none; }
+}
+
+// ---------- Footer
+
+body > footer {
+    border-top: 1px solid $rule;
+    margin-top: 2rem;
+}
+
+// Taiga's container clears floats with pseudo-elements, which would take a grid or flex cell.
+.footer-columns,
+.footer-legal {
+    &::before,
+    &::after { display: none; }
+}
+
+.footer-columns {
+    display: grid;
+    gap: 1.5rem 3rem;
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 2.5rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+}
+.footer-sitemap {
+    display: grid;
+    gap: 0 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    h2 {
+        color: settings.$color-neutral-90;
+        font-size: settings.$font-size-20;
+        font-weight: 600;
+        grid-column: 1 / -1;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+    }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { margin: 0 0 0.35rem; }
+    a { border: none; }
+    a:hover { border: none; text-decoration: underline; }
+}
+
+.footer-legal {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    margin-top: 1.5rem;
+    padding-bottom: 2rem;
+    padding-top: 1.5rem;
+
+    p {
+        color: settings.$color-neutral-70;
+        flex: 1 1 24rem;
+        font-size: settings.$font-size-20;
+        max-width: 68ch;
+        margin: 0;
+        max-width: 80ch;
+    }
+}
+.footer-asf {
+    border: none;
+
+    img { display: block; height: 4.5rem; width: auto; }
+}
+
+// ---------- Docs: a version the documentation does not cover
+
+.guide-uncovered {
+    padding-bottom: 0;
+}
+.guide-uncovered-inner {
+    border: 1px solid $navy;
+    border-radius: settings.$border-radius-20;
+    max-width: 48rem;
+    padding: 1rem 1.25rem;
+
+    p { margin: 0; }
+}
+.guide-uncovered-title {
+    font-size: settings.$font-size-40;
+    font-weight: 600;
+    margin-bottom: 0.25rem !important;
+}
+
+// ---------- Release lines table on phones: each cell names its column
+
+.release-lines td[data-label] {
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        &::before {
+            color: $ink-soft;
+            content: attr(data-label) " ";
+            font-size: settings.$font-size-10;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.post-rows .post-row-title .tag { margin-left: 0.35rem; }
+
+// ---------- Homepage
+
+.home {
+    padding-bottom: 2rem;
+}
+
+.home-inner {
+    @include container-gutters;
+}
+
+.home-hero {
+    border-bottom: 1px solid $rule;
+    padding: 3.5rem 0 2.5rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) { padding: 5rem 0 3rem; }
+
+    h1 {
+        color: $navy;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.08;
+        margin: 0 0 1.25rem;
+        max-width: 22ch;
+        text-wrap: balance;
+    }
+}
+
+.home-lead {
+    color: settings.$color-neutral-70;
+    font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+    line-height: 1.5;
+    max-width: 40rem;
+}
+
+.home-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    margin: 1.75rem 0 2.5rem;
+
+    .button {
+        border: none;
+        font-size: settings.$font-size-40;
+        margin: 0;
+        padding: 0.65rem 1.4rem;
+        transition: background-color 160ms ease-out, color 160ms ease-out;
+    }
+}
+.home-action-alt { font-size: settings.$font-size-40; }
+
+// The release facts: one row of what to use now and what comes next.
+.home-release {
+    border-top: 1px solid $rule;
+    display: grid;
+    gap: 1rem 2.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0;
+    padding-top: 1.25rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) {
+        align-items: end;
+        grid-template-columns: repeat(auto-fit, minmax(12rem, auto));
+        justify-content: start;
+    }
+
+    dt {
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+    }
+    dd {
+        font-variant-numeric: tabular-nums;
+        margin: 0.15rem 0 0;
+
+        > a { font-size: settings.$font-size-50; font-weight: 600; }
+        .tag { margin-left: 0.15rem; }
+    }
+}
+.home-release-note {
+    color: $ink-soft;
+    display: block;
+    font-size: settings.$font-size-20;
+}
+.home-release-all dd > a {
+    font-size: settings.$font-size-30;
+    font-weight: 400;
+}
+
+.home-section {
+    padding-top: 4rem;
+
+    h2 {
+        color: settings.$color-neutral-90;
+        font-size: clamp(1.75rem, 3vw, 2.3rem);
+        font-weight: 400;
+        line-height: 1.2;
+        margin-bottom: 1.25rem;
+    }
+}
+.home-section-lead {
+    max-width: 68ch;
+}
+.home-more {
+    margin-top: 1rem;
+}
+
+// How a page works: the Java class beside its HTML.
+.home-code-pair {
+    display: grid;
+    gap: 1.5rem 3rem;
+    grid-template-columns: minmax(0, 1fr);
+
+    @include mixins.breakpoint(settings.$breakpoint-30) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+
+    figure { margin: 0; min-width: 0; }
+    figcaption {
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+        margin-bottom: 0.35rem;
+    }
+    .highlight,
+    pre {
+        background: $tint;
+        border-radius: settings.$border-radius-20;
+        margin: 0;
+    }
+    pre {
+        overflow-x: auto;
+        padding: 1rem 1.25rem;
+    }
+}
+.home-code-notes {
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        border-top: 1px solid $rule;
+        margin: 0;
+        padding: 0.6rem 0;
+    }
+    code { background: $tint; border-radius: settings.$border-radius-10; padding: 0 0.25em; }
+}
+
+// Why Wicket: a ruled list in two columns, no boxes.
+.home-why {
+    display: grid;
+    gap: 0 3rem;
+    grid-template-columns: minmax(0, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @include mixins.breakpoint(settings.$breakpoint-40) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    li {
+        border-top: 1px solid $rule;
+        margin: 0;
+        padding: 1rem 0 1.25rem;
+    }
+    h3 {
+        color: settings.$color-neutral-90;
+        font-size: settings.$font-size-40;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+    }
+    p { margin: 0; }
+    code { background: $tint; border-radius: settings.$border-radius-10; padding: 0 0.25em; }
+}
+.home-also {
+    border-top: 1px solid $rule;
+    max-width: 68ch;
+    padding-top: 1rem;
+
+    span { font-weight: 600; }
+}
+
+// Learn: the introduction beside the five lessons.
+.home-split {
+    display: grid;
+    gap: 1rem 4rem;
+    grid-template-columns: minmax(0, 1fr);
+
+    @include mixins.breakpoint(settings.$breakpoint-30) { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
+}
+.home-lessons { margin: 0; }
+
+.home-section .line-panels { margin-bottom: 0; }
+
+// Built with Wicket on the homepage: no grey band, the strip on phones.
+#builtwithwicket {
+    padding-bottom: 2rem;
+
+    // slick's own theme removes focus outlines; bring them back, and give its controls contrast.
+    .slick-list:focus-visible,
+    .slick-prev:focus-visible,
+    .slick-next:focus-visible,
+    .slick-dots li button:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+    .slick-prev::before,
+    .slick-next::before { opacity: 1; }
+    .slick-dots li button::before { color: $ink-soft; opacity: 1; }
+    .slick-dots li.slick-active button::before { color: $navy; opacity: 1; }
+
+    .builtwithwicket-slider { margin-top: 1rem; }
+    .builtwithwicket-caption { font-size: settings.$font-size-20; }
+    .slick-prev::before,
+    .slick-next::before { color: $brand-text; }
+}
+.builtwithwicket-slider.is-strip {
+    display: flex;
+    position: relative;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+    .builtwithwicket-post {
+        flex: 0 0 80%;
+        padding: 0;
+        scroll-snap-align: start;
+    }
+    .builtwithwicket-screenshot { min-height: 0; min-width: 0; width: 100%; }
+}
+.bww-count {
+    color: $ink-soft;
+    font-size: settings.$font-size-20;
+    margin-top: 0.5rem;
+}
+
+// ---------- The menu on phones: logo and plate on one row, sections and icons on the next
+
+.header.default nav.mainmenu {
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        justify-content: center;
+        padding: 0.75rem 0 0.5rem;
+
+        .nav-brand { flex: 1 0 100%; flex-direction: row; justify-content: center; gap: 0.75rem; }
+        .nav-logo img { width: 9.5rem; }
+        .nav-container { flex: 0 0 auto; }
+        .nav-container:last-child { flex-grow: 0; font-size: 1.5rem; }
+        .nav-asf img { height: 1.6rem; }
+        .nav-container > a.nav-items { padding-bottom: 0.15rem; padding-top: 0.15rem; }
+    }
+}
+
+// ---------- Page not found
+
+.notfound-suggest {
+    font-size: settings.$font-size-50;
+    margin-bottom: 1.5rem;
+}
+.notfound-map {
+    list-style: none;
+    margin: 0;
+    max-width: 52rem;
+    padding: 0;
+
+    li {
+        border-top: 1px solid $rule;
+        margin: 0;
+        padding: 0.6rem 0;
+    }
+    a { font-weight: 600; }
+    span { color: $ink-soft; display: block; font-size: settings.$font-size-20; }
+}
+
+// A page that opens with its own panels (community) needs no compact rail above the text on phones.
+.section-lead + .has-rail .reading-rail {
+    @include mixins.breakpoint(settings.$breakpoint-40, 'max-width') { display: none; }
+}
+
+.home-release-next {
+    font-size: settings.$font-size-50;
+    font-weight: 600;
+}
+
+// The copy button of a code sample in the documentation, in a bar above the code.
+.guide-copy-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0.75rem 0 -0.5rem;
+}
+
+// A section page that opens with a heading needs no rule above it: the sign already ends in one.
+.section-body > h2:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+// Phones: a wider gutter than Taiga's 15px, so text does not touch the screen edge.
+@include mixins.breakpoint(settings.$breakpoint-30, 'max-width') {
+    .l-container,
+    .page-sign-inner,
+    .reading,
+    .home-inner { padding-left: 20px; padding-right: 20px; }
+}
+
+// The scope of the docs, under the reference guide line.
+.guide-sign-scope {
+    color: $ink-soft;
+    font-size: settings.$font-size-20;
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+// Upgrade paths: one guide per line.
+.connections-guides {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li + li { margin-top: 0.4rem; }
+}
+
+// The invitation that closes the homepage.
+.home-involved { padding-bottom: 2rem; }
+
+// The GitHub mark in the menu, inline instead of an icon font, at the height of the ASF mark.
+.nav-github {
+    display: block;
+    height: 1.9rem;
+    width: 1.9rem;
+}
+
+// The plate split in two when the newest line is not the LTS: a link to each line.
+.header.default nav.mainmenu .nav-plate--split {
+    border: 1px solid $ink-soft;
+    gap: 0;
+    padding: 0;
+
+    &:hover { background: none; }
+
+    a {
+        align-items: center;
+        border: none;
+        display: inline-flex;
+        min-height: 2.25rem;
+        padding: 0.2rem 0.6rem;
+
+        &:hover, &.active { background: $tint; }
+        &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+    }
+    a + a { border-left: 1px solid $rule; }
+    .nav-plate-current { color: $navy; font-weight: 600; }
+    .nav-plate-lts { color: $ink-soft; font-size: settings.$font-size-20; }
+}
+@media (pointer: coarse) {
+    .header.default nav.mainmenu .nav-plate--split a { min-height: 44px; min-width: 44px; }
+}
+
+// Docs search: a focus ring as strong as everywhere else.
+.guide-search-field input:focus { border-color: $navy; outline: 2px solid $navy; outline-offset: 1px; }
+
+// Search results: the kind and the topic apart.
+.guide-result-meta span + span::before { content: " · "; }
+
+// Small links in rows and strips reach 44px on touch screens.
+@media (pointer: coarse) {
+    .guide-refs a,
+    .builtwithwicket-post > a,
+    .reading-rail .toc a { display: inline-block; padding: 0.7rem 0.5rem; margin-left: -0.5rem; }
+}
+.guide-results ul { list-style: none; margin: 0; padding: 0; }
+
+// The upgrade paths stack on phones: each line of the table becomes a block.
+@include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+    .connections-table {
+        thead { height: 1px; left: -9999px; overflow: hidden; position: absolute; width: 1px; }
+        tbody, tr, th, td { display: block; width: auto; }
+        tr { border-bottom: 1px solid $rule; padding: 0.75rem 0; }
+        th, td { border: 0; padding: 0.25rem 0; }
+    }
+}
+
+// Touch screens: the links in the release tables reach 44px.
+@media (pointer: coarse) {
+    .connections-guides a,
+    .connections-table td > a,
+    .eol-table td > a { display: inline-block; padding: 0.75rem 0; }
+}

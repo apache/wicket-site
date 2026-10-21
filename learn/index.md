@@ -1,165 +1,40 @@
 ---
-layout: default
-title: Documentation
-subtitle: All the things you want to know about Wicket but are afraid to ask
-preamble: No matter how you want to learn about Wicket, there's something available for you. If you want a quick reference, use the User Guide. If you rather prefer a book, there's a couple waiting for you. And if you rather watch a video or presentation, we have that covered too.
+layout: section
+title: Learn Wicket
+parent:
+  title: Documentation
+  url: /docs/
+summary: The reference guide, books, courses and talks about Wicket, and the libraries the community builds on it.
 ---
-<div class="l-button-table">
-    <div class="l-two-third">
-        <div class="button-bar">
-        	<a class="button" href="#news"><i class="fa fa-newspaper-o"></i><br>News</a>
-        	<a class="button" href="blogs.html"><i class="fa fa-rss"></i><br>Blogs</a>
-        	<a class="button" href="https://cwiki.apache.org/WICKET"><i class="fa fa-users"></i><br>Wiki</a>
-        </div>
-        <div class="button-bar">
-        	<a class="button" href="#guide"><i class="fa fa-file-text-o"></i><br>User Guide</a>
-        	<a class="button" href="#javadoc"><i class="fa fa-code"></i><br>API docs</a>
-        	<a class="button" href="books/index.html"><i class="fa fa-book"></i><br>Books</a>
-        </div>
-        <div class="button-bar">
-        	<a class="button" href="#migrations"><i class="fa fa-history"></i><br>Migrations</a>
-        	<a class="button" href="#presentations"><i class="fa fa-file-powerpoint-o"></i><br>Presentations</a>
-        	<a class="button" href="#ides"><i class="fa fa-terminal"></i><br>IDEs</a>
-        </div>
-        
-        <div class="button-bar">
-        	<a class="button" href="#courses"><i class="fa fa-graduation-cap"></i><br>Online courses</a>
-        	<div class="button"></div>
-        	<a class="button" href="#examples"><i class="fa fa-life-ring"></i><br>Support &amp; Examples</a>
-        </div>
-    </div>
-</div>
+<nav class="section-index" aria-label="On this page">
+    <a href="#guide">Reference guide</a>
+    <a href="#learning">Books, courses and talks</a>
+    <a href="#ecosystem">Libraries and integrations</a>
+</nav>
 
-## News Archive {#news}
+## Reference guide {#guide}
 
-Every release is announced through our mailing lists and the official Apache announcements list.
-We also publish a news item on our website with the announcement, and it is also published in our <a type="application/atom+xml" title="Atom 1.0 feed" href="{{site.baseurl}}/atom.xml">RSS feed</a> (handy for RSS readers).
+The reference guide, called the User Guide on this site before, is the complete guide to Wicket in one document per release line. The [Documentation]({{ site.baseurl }}/docs/#reference-guide) links it for every line, as one page or PDF, with the Javadoc next to it:
+{% include reference-lines.html %}{% assign refs = '' | split: '' %}{% for n in ref_lines %}{% capture a %}[Wicket {{ n }}](https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.html){% endcapture %}{% assign refs = refs | push: a %}{% endfor %}{{ refs | join: ", " }}.
 
-Here are the most recent headlines:
+## Books, courses and talks {#learning}
 
-{% for post in site.posts limit:3 %}
-- [{{post.title}}]({{ site.baseurl }}{{post.url}}) <small>{{post.date | date_to_string}}</small>
-{% endfor %}
+- [Books about Wicket]({{ site.baseurl }}/learn/books/), from Wicket in Action to the Apache Wicket Cookbook.
+- [Apache Wicket Kompakt](https://www.udemy.com/course/apache-wicket-kompakt/), a German course with many practical examples.
+- [Starting with Apache Wicket](https://www.udemy.com/course/starting-with-apache-wicket-version-9x/?referralCode=C2A6EF19A72071AA2E22), for Wicket 9 and later, with forms, components, MongoDB and Spring Boot.
+- [An introduction to Wicket]({{ site.baseurl }}/learn/presentations/wicketIntroduction.pdf), slides for developers new to Wicket.
+- [A quick tour of Wicket]({{ site.baseurl }}/learn/examples/), small examples of what Wicket code looks like, and the [live examples]({{ site.live_examples_url }}) running on a server.
 
-The complete articles and all other news items are available in the [archives]({{ site.baseurl }}/news).
+The [Wicket wiki](https://cwiki.apache.org/WICKET) holds older articles, the migration guides and community pages.
 
----
+## Libraries and integrations {#ecosystem}
 
-## Wicket User Guide {#guide}
+The community builds and maintains libraries on top of Wicket. They have their own release cycles and maintainers.
 
-Learn building web applications with Wicket from scratch reading its
-200+ page user guide. The guide gradually introduces you to the various
-features of the framework with many real-world examples. It covers
-subjects such as models, behaviours, testing and integration with other
-projects.
+- [WicketStuff](https://github.com/wicketstuff/) gathers community-provided projects, from integrations with JavaScript libraries to REST resources and asynchronous tasks; the [project overview](https://github.com/wicketstuff/core/wiki) lists them.
+- [Wicket Spring Boot](https://github.com/MarcGiffing/wicket-spring-boot) configures Wicket and its extensions automatically in a Spring Boot application.
+- [Wicket-Bootstrap](https://github.com/l0rdn1kk0n/wicket-bootstrap/) integrates Bootstrap's components and styles, with a showcase of every feature.
+- [Wicket jQuery UI](https://github.com/sebfz1/wicket-jquery-ui) wraps the jQuery UI and Kendo UI widgets as Wicket components.
+- [Modern web development with Apache Wicket](https://github.com/bitstorm/modern-webdev-wicket) shows Wicket with Spring Boot, Hazelcast and WebJars in working examples.
 
-The guide is available as PDF or html file for the following versions:
-
-
-1.  Wicket 10.x
-* [HTML (single page)](https://nightlies.apache.org/wicket/guide/10.x/single.html)
-* [PDF](https://nightlies.apache.org/wicket/guide/10.x/single.pdf)
-
-2.  Wicket 9.x
-* [HTML (single page)](https://nightlies.apache.org/wicket/guide/9.x/single.html)
-* [PDF](https://nightlies.apache.org/wicket/guide/9.x/single.pdf)
-
-3.  Wicket 8.x
-* [HTML (single page)](https://nightlies.apache.org/wicket/guide/8.x/single.html)
-* [PDF](https://nightlies.apache.org/wicket/guide/8.x/single.pdf)
-
-4.  Wicket 7.x
-* [HTML (single page)](https://nightlies.apache.org/wicket/guide/7.x/single.html)
-* [PDF](https://nightlies.apache.org/wicket/guide/7.x/single.pdf)
-
-You can use the guide for older releases even though there will be
-differences. We urge you however to upgrade your project to the latest
-stable release rather than sticking on an older version.
-
----
-
-## API Documentation {#javadoc}
-
-Each release of Wicket comes with sources, including JavaDocs. When you
-use Maven for dependency management, your IDE will automatically
-download the source JARs and when you hover on a Wicket class or
-method, show you the corresponding documentation.
-
-For reference we also publish the API documentation online so you can
-link to it from emails or websites:
-
-- [JavaDoc 10.x](https://nightlies.apache.org/wicket/apidocs/10.x/index.html)
-- [JavaDoc 9.x](https://nightlies.apache.org/wicket/apidocs/9.x/index.html)
-- [JavaDoc 8.x](https://nightlies.apache.org/wicket/apidocs/8.x/index.html)
-- [JavaDoc 7.x](https://nightlies.apache.org/wicket/apidocs/7.x/index.html)
-
----
-
-## Migration Guides {#migrations}
-
-When you upgrade your application from an older Wicket version to a
-newer version you can run into all of the changes that were applied to
-Wicket's API. We have done our best to document all the changes and
-provide migration paths between the different Wicket versions.
-
-Here's a list of the migration guides:
-<div class="l-button-table">
-    <div class="l-full">
-        <div class="button-bar">
-            <a class="button" href="https://s.apache.org/wicket10migration">
-                Wicket 10<br>
-        		migration guide
-            </a>
-            <a class="button" href="https://s.apache.org/wicket9migration">
-                Wicket 9<br>
-        		migration guide
-            </a>
-            <a class="button" href="https://s.apache.org/wicket8migration">
-                Wicket 8<br>
-        		migration guide
-            </a>
-            <a class="button" href="https://s.apache.org/wicket7migrate">
-                Wicket 7<br>
-        		migration guide
-            </a>
-        </div>
-    </div>
-</div>        
-
-If you encounter a change that was not in the migration guide, don't
-hesitate to notify us.
-
----
-
-## Getting help {#support}
-
-Stuck with a problem? See how you can find [support]({{ site.baseurl }}/help/index.html)!
-
----
-
-## IDE Support {#ides}
-
-Wicket is well supported by the three main Java IDEs (NetBeans, IntelliJ and Eclipse).
-Find [here]({{ site.baseurl }}/contribute/ides.html) how to work with Wicket projects with your favourite IDE.
-
----
-	
-## Examples {#examples}
-
-- <a href="{{ site.baseurl }}/learn/examples/index.html">Examples</a> - Browse a vast collection of examples in live action without having to install anything!
-
----
-
-## Online courses {#courses}
-
-- <a href="https://www.udemy.com/course/apache-wicket-kompakt/">Apache Wicket Kompakt</a> - A complete German-based course with many pratical examples.
-- <a href="https://www.udemy.com/course/starting-with-apache-wicket-version-9x/?referralCode=C2A6EF19A72071AA2E22">Starting with Apache Wicket (version 9.x+)</a> - Get started with Apache Wicket 9.x+ with forms, components, MongoDB, GridFS and backed by SpringBoot.
-
----
-
-## Presentations {#presentations}
-
-New to Wicket and eager to learn it? This [presentation]({{ site.baseurl }}/learn/presentations/wicketIntroduction.pdf) is for you!
-
-[migrate7]: https://s.apache.org/wicket7migrate
-[migrate8]: https://s.apache.org/wicket8migrate
+The [Integration]({{ site.baseurl }}/docs/topics/integration.html) topic of the documentation covers Spring, CDI and the other integrations that ship with Wicket.

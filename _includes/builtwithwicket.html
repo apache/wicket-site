@@ -1,61 +1,70 @@
-<header class="preamble">
-    <h1 id="poweredby">Projects Using Apache Wicket</h1>
-    <p>
-        Many projects use Wicket but are not known for it. 
-        Below you find a list of projects that are <a href="http://builtwithwicket.tumblr.com" rel="nofollow">Powered by Wicket</a>.
-    </p>
-</header>
-<article class="l-full">
-    <div class="builtwithwicket-slider"></div>
-    <br><br>
-    <p>
-        This list is generated from our Tumblr feed 'Built with Wicket'. 
-        You can submit your own project to this list through 
-        <a href="http://builtwithwicket.tumblr.com/submit" rel="nofollow">this form</a>.
-    </p>
-</article>
-<div class="l-first"></div>
-<!-- Only display the blog image, title and post URL -->   
-<script type="text/javascript"> 
+<h2 id="bww-title">Built with Wicket</h2>
+<p class="home-section-lead">Many applications run on Wicket without saying so. These say so, collected through the <a href="https://builtwithwicket.tumblr.com" rel="nofollow">Built with Wicket</a> feed. <a href="https://builtwithwicket.tumblr.com/submit" rel="nofollow">Submit your own project</a>.</p>
+<div class="builtwithwicket-slider"></div>
+<!-- Only display the blog image, title and post URL -->
+<script type="text/javascript">
     function randomIntFromInterval(min,max)
     {
         return Math.floor(Math.random()*(max-min+1)+min);
     }
 
-    fetch('./tumblr.json') // Call the fetch function passing the url of the API as a parameter
+    fetch('{{ site.baseurl }}/tumblr.json')
         .then(res => res.json())
         .then(function (response) {
-            var posts = response.posts;  
+            var posts = response.posts;
 
             for(var postIndex in posts) {
                 var post = posts[postIndex];
-                var caption = jQuery('<div>' + post['photo-caption'] + '</div>').text().substring(0,150) + "...";
-                var newSlide = $('.builtwithwicket-slider').append(
-                    '<div class="builtwithwicket-post">\n' +
-                    '  <img class="builtwithwicket-screenshot" data-lazy="' + post['photo-url-500'] + '">\n' +
-                    '  <p class="builtwithwicket-caption">' + caption + '</p>\n' +
-                    '  <a href="' + post['url'] + '" target="_blank" rel="nofollow">More</a>\n' + 
-                    '</div>');
+                var text = jQuery('<div>' + post['photo-caption'] + '</div>').text().replace(/\s+/g, ' ').trim();
+                // The caption without web addresses, cut after its first sentence: feed entries carry notes to the curators.
+                var caption = text.replace(/\(?https?:\/\/\S+\)?/g, '').replace(/\s+([,.;:!?])/g, '$1').replace(/\s+/g, ' ').trim();
+                var firstStop = caption.search(/[.!?](\s|$)/);
+                if (firstStop > 0) caption = caption.substring(0, firstStop + 1);
+                // The caption opens with the project's name, followed by its address or a description.
+                var name = text.split(/\s*\(?https?:\/\//)[0].split(/\s+[-–—]\s+|\s*\(|[.:;!?](?:\s|$)/)[0].trim();
+                if (name.length > 60) name = name.substring(0, name.lastIndexOf(' ', 60));
+                if (!name) name = 'this project';
+                var image = post['photo-url-500'];
+                // Root-relative paths get the baseurl, unless a preview build already added it.
+                var base = '{{ site.baseurl }}';
+                if (image.charAt(0) === '/' && image.indexOf(base + '/') !== 0) image = base + image;
+                $('.builtwithwicket-slider').append(
+                    $('<div class="builtwithwicket-post">').append(
+                        $('<img class="builtwithwicket-screenshot">').attr({ 'data-lazy': image, alt: 'Screenshot of ' + name }),
+                        $('<p class="builtwithwicket-caption">').text(caption.length > 150 ? caption.substring(0, 150) + '…' : caption),
+                        $('<a rel="nofollow">').attr('href', post['url']).text('More').append(
+                            $('<span class="visually-hidden">').text(' about ' + name))));
             }
 
+            if (window.matchMedia('(max-width: 589px)').matches) {
+                // Phones get a swipeable strip; images load as they scroll in.
+                $('.builtwithwicket-slider').addClass('is-strip')
+                    .attr({ role: 'region', tabindex: 0, 'aria-label': 'Built with Wicket projects, swipe for more' })
+                    .after('<p class="bww-count">' + posts.length + ' projects, swipe for more</p>');
+                $('.builtwithwicket-screenshot').each(function () {
+                    this.loading = 'lazy';
+                    this.src = this.getAttribute('data-lazy');
+                });
+                return;
+            }
+
+            // Links in slides out of view leave the tab order, so Tab does not land off screen.
+            $('.builtwithwicket-slider').on('init afterChange', function () {
+                $(this).find('.slick-slide').each(function () {
+                    var hidden = this.getAttribute('aria-hidden') === 'true';
+                    $(this).find('a').attr('tabindex', hidden ? -1 : null);
+                });
+            });
+            // No autoplay: a moving carousel cannot be paused by every visitor.
             $('.builtwithwicket-slider').slick({
                 arrows: true,
-                autoplay: true,
-                autoplaySpeed: 5000,
+                autoplay: false,
                 dots: true,
                 draggable: true,
                 infinite: true,
-                initialSlide: randomIntFromInterval(0, posts.length),
+                initialSlide: randomIntFromInterval(0, posts.length - 1),
                 lazyLoad: 'ondemand',
-                pauseOnDotsHover: true,
                 responsive: [    {
-                        breakpoint: 590,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    },
-                    {
                         breakpoint: 960,
                         settings: {
                             slidesToShow: 2,

@@ -36,10 +36,10 @@ input[type=submit],
 button {
     @extend %button;
     background: settings.$color-brand-70;
-    color: settings.$white;
+    color: settings.$color-navy;
 
     &:hover {
-        background: settings.$color-brand-60;
+        background: settings.$color-navy;
         color: settings.$white;
     }
 
