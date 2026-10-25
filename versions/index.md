@@ -1,6 +1,9 @@
 ---
 layout: section
 title: Releases
+sign_action:
+  text: Quick start
+  url: /start/quickstart.html
 summary: Wicket 10 is the long-term support (LTS) release. Each release line has its own page with Maven coordinates, downloads, what is new and documentation.
 ---
 

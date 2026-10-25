@@ -6,7 +6,8 @@ layout: base
   the title and `summary` front matter on a sign, then the content.
   `lead`: an include shown full width above the content;
   `toc: true`: an "On this page" rail of the content's headings;
-  `rail`: an include that renders the rail itself, instead of the headings.
+  `rail`: an include that renders the rail itself, instead of the headings;
+  `sign_action`: a button on the sign, with `text` and `url` (the quick start on Releases).
 {% endcomment %}
 <div class="header default">
     <div class="l-container">
@@ -18,6 +19,7 @@ layout: base
         {% if page.parent %}<p class="hub-crumbs"><a href="{{ site.baseurl }}{{ page.parent.url }}">{{ page.parent.title }}</a></p>{% endif %}
         <h1>{{ page.title }}</h1>
         {% if page.summary %}<p class="page-sign-sub">{{ page.summary }}</p>{% endif %}
+        {% if page.sign_action %}<p class="page-sign-action"><a class="button" href="{{ site.baseurl }}{{ page.sign_action.url }}">{{ page.sign_action.text }}</a></p>{% endif %}
     </div>
 </div>
 <main id="main" tabindex="-1">

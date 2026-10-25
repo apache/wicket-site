@@ -542,6 +542,19 @@ pre:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
     max-width: 46rem;
 }
 
+// A section's one action on its sign, sized like the homepage's.
+.page-sign-action {
+    margin: 1.25rem 0 0.5rem;
+
+    .button {
+        border: none;
+        font-size: settings.$font-size-40;
+        margin: 0;
+        padding: 0.65rem 1.4rem;
+        transition: background-color 160ms ease-out, color 160ms ease-out;
+    }
+}
+
 .guide-crumbs {
     font-size: settings.$font-size-20;
 }
