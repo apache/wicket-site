@@ -1651,6 +1651,18 @@ pre:focus-visible {
   max-width: 46rem;
 }
 
+.page-sign-action {
+  margin: 1.25rem 0 0.5rem;
+}
+
+.page-sign-action .button {
+  border: none;
+  font-size: 1.125rem;
+  margin: 0;
+  padding: 0.65rem 1.4rem;
+  transition: background-color 160ms ease-out, color 160ms ease-out;
+}
+
 .guide-crumbs {
   font-size: 0.875rem;
 }
