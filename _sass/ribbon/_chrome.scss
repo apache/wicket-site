@@ -127,6 +127,11 @@ nav.mainmenu.is-home .nav-sections { margin-left: 0; }
     object-fit: cover; object-position: var(--focus-wide, 50% 50%);
 }
 .photo[data-soft] img { filter: blur(1.4px) saturate(.92); transform: scale(1.03); }
+// At night a bright photo is dimmed beside the dark page; `night` in _data/seasons.yml says how far.
+@media (prefers-color-scheme: dark) {
+    .photo img { filter: brightness(var(--night, .6)); }
+    .photo[data-soft] img { filter: blur(1.4px) saturate(.92) brightness(var(--night, .6)); }
+}
 
 // A photo whose subject stands mid-frame keeps its full height at the right; its own sky and land continue to the left.
 .photo[data-anchor="right"] { background: var(--ground, #C9D6CF); }

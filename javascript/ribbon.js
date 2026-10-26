@@ -53,7 +53,7 @@ document.documentElement.classList.replace('no-js', 'js');
       photo.toggleAttribute('data-sized', !!s.size);
       if (s.anchor) photo.dataset.anchor = s.anchor; else delete photo.dataset.anchor;
       if (s.veil) photo.dataset.veil = s.veil; else delete photo.dataset.veil;
-      const vars = { '--focus-wide': s.focus, '--focus-narrow': s.focus_narrow, '--shift': s.shift, '--size': s.size, '--ground': s.ground };
+      const vars = { '--focus-wide': s.focus, '--focus-narrow': s.focus_narrow, '--shift': s.shift, '--size': s.size, '--ground': s.ground, '--night': s.night };
       for (const k in vars) { if (vars[k]) photo.style.setProperty(k, vars[k]); else photo.style.removeProperty(k); }
 
       const credit = photo.parentElement.querySelector('.photo-credit');
