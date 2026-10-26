@@ -14,6 +14,7 @@ active_link: blog
 {% assign posts = page.posts | sort: "date" | reverse %}
 {% assign year = page.year | append: '' %}
 <div class="page-sign">
+    {% include season-photo.html %}
     <div class="page-sign-inner">
         <p class="guide-crumbs"><a href="{{ site.baseurl }}/news/">Blog</a>{% if page.month %}<span aria-hidden="true"> / </span><a href="{{ site.baseurl }}/news/{{ year }}/">{{ year }}</a>{% endif %}</p>
         <h1>{% if page.month %}{{ page.date | date: "%B %Y" }}{% else %}{{ year }}{% endif %}</h1>

@@ -11,6 +11,7 @@ active_link: documentation
 </div>
 {% assign oldest = site.data.guide_oldest %}
 <div class="page-sign guide-sign guide-sign--front">
+    {% include season-photo.html %}
     <div class="page-sign-inner">
         <h1>Documentation</h1>
         <p class="page-sign-sub">Building web applications with Apache Wicket {{ site.data.guide_lines | join: " and " }}{% if site.data.guide_upcoming %}, and what the upcoming Wicket {{ site.data.guide_upcoming.series }} brings{% endif %}.</p>
@@ -19,7 +20,7 @@ active_link: documentation
         {% include reference-lines.html %}
         {% assign next = site.data.releases.lines | where: "status", "boarding" | first %}
         <p class="guide-sign-refs"><span class="guide-sign-refs-label">The reference guide (formerly the User Guide), one page per release line:</span>
-            {% for n in ref_lines %}{% assign line = site.data.releases.lines | where: "series", n | where_exp: "l", "l.page" | first %}<a href="https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.html">Wicket {{ n }}</a>{% if line.status == 'lts' %} <span class="tag tag-lts">LTS</span>{% endif %} · {% endfor %}{% if next %}<a href="https://nightlies.apache.org/wicket/guide/{{ next.series }}.x/single.html">Wicket {{ next.series }}</a> (upcoming) · {% endif %}<a href="#reference-guide">PDF and Javadoc</a></p>
+            {% for n in ref_lines %}{% assign line = site.data.releases.lines | where: "series", n | where_exp: "l", "l.page" | first %}<a href="https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.html">Wicket {{ n }}</a>{% if line.status == 'lts' %} <span class="tag tag-lts">LTS</span>{% endif %}{% if line.role %} <span class="tag tag-current">{{ line.role }}</span>{% endif %} · {% endfor %}{% if next %}<a href="https://nightlies.apache.org/wicket/guide/{{ next.series }}.x/single.html">Wicket {{ next.series }}</a> (upcoming) · {% endif %}<a href="#reference-guide">PDF and Javadoc</a></p>
         <p class="guide-sign-scope">These pages cover Wicket {{ site.data.guide_lines | join: " and " }}. On an older line, use its reference guide.</p>
     </div>
 </div>
@@ -30,8 +31,9 @@ active_link: documentation
                 <div id="toc" class="toc"><div id="toc-title"><h2>{{ site.contentsLabel }}</h2></div><ul>
                     <li class="toc--level-1"><a href="#start"><span class="toc-text">Start here</span></a></li>
                     <li class="toc--level-1"><a href="#topics"><span class="toc-text">Topics</span></a></li>
-                    <li class="toc--level-1"><a href="#lookup"><span class="toc-text">Look it up</span></a></li>
-                    <li class="toc--level-2"><a href="#reference-guide"><span class="toc-text">Reference guide and Javadoc</span></a></li>
+                    <li class="toc--level-1"><a href="#lookup"><span class="toc-text">Look it up</span></a><ul>
+                        <li class="toc--level-2"><a href="#reference-guide"><span class="toc-text">Reference guide and Javadoc</span></a></li>
+                    </ul></li>
                     <li class="toc--level-1"><a href="#upgrading"><span class="toc-text">Upgrading</span></a></li>
                 </ul></div>
             </nav>
@@ -39,7 +41,7 @@ active_link: documentation
         <div class="reading-main">
         <section class="guide-front-section" id="start">
             <h2>Start here</h2>
-            <p class="guide-group-intro">Five lessons that build one application, from an empty project to a tested page with Ajax. To get a running project in a minute first, use the <a href="{{ site.baseurl }}/start/quickstart.html">quick start</a>.</p>
+            <p class="guide-group-intro">Five lessons that build one application, from an empty project to a tested page with Ajax. To get a running project in a minute first, use the <a href="{{ site.baseurl }}/start/quickstart.html">quick start</a>; to see how Wicket works before you build, follow <a href="{{ site.baseurl }}/start/overview.html">one page in seven steps</a>.</p>
             {% assign tutorials = site.guide | where: "type", "tutorial" | sort: "order", "last" %}
             <ol class="guide-route">
             {% for doc in tutorials %}
@@ -84,8 +86,8 @@ active_link: documentation
                 {% for n in ref_lines %}
                     {% assign line = site.data.releases.lines | where: "series", n | where_exp: "l", "l.page" | first %}
                     <tr>
-                        <th scope="row">{% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">Wicket {{ n }}</a>{% elsif line %}Wicket {{ n }}{% else %}<a href="{{ site.baseurl }}/versions/wicket-{{ n }}.x/">Wicket {{ n }}</a>{% endif %}{% if line.status == 'lts' %} <span class="tag tag-lts">LTS</span>{% endif %}
-                            <span class="guide-refs-status">{% if line.role %}{{ line.role }}{% elsif line.status == 'boarding' %}Announced for {{ line.when }}, not yet released{% elsif line %}{% include line-status.html status=line.status %}{% else %}End of life{% endif %}</span></th>
+                        <th scope="row">{% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">Wicket {{ n }}</a>{% elsif line %}Wicket {{ n }}{% else %}<a href="{{ site.baseurl }}/versions/wicket-{{ n }}.x/">Wicket {{ n }}</a>{% endif %}{% if line.status == 'lts' %} <span class="tag tag-lts">LTS</span>{% endif %}{% if line.role %} <span class="tag tag-current">{{ line.role }}</span>{% endif %}
+                            <span class="guide-refs-status">{% if line.status == 'boarding' %}Announced for {{ line.when }}, not yet released{% elsif line %}{% include line-status.html status=line.status %}{% else %}End of life{% endif %}</span></th>
                         <td><a href="https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.html">One page<span class="visually-hidden">, Wicket {{ n }}</span></a> · <a href="https://nightlies.apache.org/wicket/guide/{{ n }}.x/single.pdf">PDF<span class="visually-hidden">, Wicket {{ n }}</span></a></td>
                         <td><a href="https://nightlies.apache.org/wicket/apidocs/{{ n }}.x/index.html">Javadoc<span class="visually-hidden"> for Wicket {{ n }}</span></a></td>
                     </tr>
@@ -96,7 +98,7 @@ active_link: documentation
 
         <section class="guide-front-section" id="upgrading">
             <h2>Upgrading</h2>
-            <p>Every major release has a migration guide on the wiki with the API changes and what to do about them, linked from its <a href="{{ site.baseurl }}/versions/">release line page</a>. The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> show the route from a line that is ending or has ended to one that is supported.</p>
+            <p>Every major release has a migration guide on the wiki with the API changes and what to do about them, linked from its <a href="{{ site.baseurl }}/versions/">release line page</a>. The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> show how to move from a line that is ending or has ended to one that is supported.</p>
             {% if site.data.guide_lines.size > 1 or site.data.guide_upcoming %}<p>Pages marked with a version, like <span class="guide-list-since">Wicket {{ site.data.guide_lines | last }}+</span>, need that version or later.</p>{% endif %}
             <p>Books, courses, talks and the libraries the community builds on Wicket are on <a href="{{ site.baseurl }}/learn/">Learn Wicket</a>.</p>
         </section>

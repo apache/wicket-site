@@ -1,37 +1,52 @@
 ---
 layout: base
 ---
+{% comment %}
+  A reading page: the title band on the season's photograph (title, `subtitle`), the `preamble`,
+  then the content with the reading rail of its headings when it has any.
+{% endcomment %}
 <div class="header default">
     <div class="l-container">
-        {% include mainmenu.html %}        
+        {% include mainmenu.html %}
+    </div>
+</div>
+{% capture toc %}{{ content | toc_generate }}{% endcapture %}{% assign toc = toc | strip %}
+<div class="page-sign">
+    {% include season-photo.html %}
+    <div class="page-sign-inner">
+        {% if page.parent %}<p class="hub-crumbs"><a href="{{ site.baseurl }}{{ page.parent.url }}">{{ page.parent.title }}</a></p>{% endif %}
+        <h1>{{ page.title }}</h1>
+        {% if page.subtitle %}<p class="page-sign-sub">{{ page.subtitle }}</p>{% endif %}
     </div>
 </div>
 <main id="main" tabindex="-1">
-    <div class="l-container">
-        <header class="l-full preamble">
-            <h1>{{ page.title }}</h1>
-            {% if page.subtitle %}<h2>{{ page.subtitle }}</h2>{% endif %}
+    <div class="reading{% if toc != '' %} has-rail{% endif %} guide-reading">
+        {% if toc != '' %}
+        <nav class="reading-rail" aria-label="On this page">{{ toc }}</nav>
+        {% endif %}
+        <div class="reading-main">
+            {% if page.titlePicture or page.preamble %}
+            <div class="preamble">
             {% if page.titlePicture %}
                 {% assign pictureAttrs = "" %}
                 {% for prop in page.titlePicture %}
-                   {% for subprop in prop %}	
-                     {% capture pictureAttrs %}{{ pictureAttrs }} {{subprop[0]}}="{{subprop[1]}}" {% endcapture %}                         
+                   {% for subprop in prop %}
+                     {% capture pictureAttrs %}{{ pictureAttrs }} {{subprop[0]}}="{{subprop[1]}}" {% endcapture %}
                    {% endfor %}
                 {% endfor %}
-            <img {{pictureAttrs}}>
+                <img {{pictureAttrs}}>
             {% endif %}
             {% if page.preamble %}<p>{{ page.preamble | markownify }}</p>{% endif %}
-        </header>
-        <section class="toc left {{page.layout}} {{page.pageclasses}}">
-            {{ content | toc_generate }}
-        </section>
-        <section>
-            {{ content }}
-{% for item in page.additionalContents %}
-            <article id="{{item.sectionId}}" {% unless item.cssClass == '' %}class="{{item.cssClass}}"{% endunless %}>
-                {% include {{item.path}} %}
-            </article>
-{% endfor %}
-        </section>
+            </div>
+            {% endif %}
+            <section class="page-content guide-content">
+                {{ content }}
+{% for item in page.additionalContents %}{% if item.path %}
+                <article id="{{item.sectionId}}" {% unless item.cssClass == '' %}class="{{item.cssClass}}"{% endunless %}>
+                    {% include {{item.path}} %}
+                </article>
+{% endif %}{% endfor %}
+            </section>
+        </div>
     </div>
 </main>

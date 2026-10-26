@@ -1,0 +1,102 @@
+# Seasonal photographs at the top of every page: the homepage hero and the photo band behind
+# the title of every other page. The photo follows the month; an occasion wins over the season
+# on its days, every year. The files are in img/seasons/ (see img/seasons/README.txt for where
+# each photo comes from).
+#
+# Per season:
+#   months       the months it covers, 1 = January ... 12 = December
+# Per occasion:
+#   name         a short name, used in ?occasion=<name>
+#   from, to     the first and last day as "MM-DD", both included; a range may run over New
+#                Year ("12-20" to "01-02")
+# Both:
+#   label        the name in the review selector
+#   photo        the image file in img/seasons/
+#   srcset       optional: larger and smaller copies of the same photo, file and width
+#   focus        which part of the photo stays in view on wide screens (CSS object-position)
+#   focus_narrow the same on phones
+#   soft         true for a small photo: shown slightly softened instead of stretched sharp
+#   veil         "strong" for a dark photo: a wider paper scrim behind the text
+#   anchor       "right": on wide screens the photo stands at the right instead of filling the
+#                width, so a subject in the middle of the frame clears the text. With it:
+#                shift  moves the photo further right (a share of its own width)
+#                size   makes it smaller (a share of the hero's height, from the top)
+#                ground continues the photo's colours to the left and below (a CSS gradient)
+#   credit, url  who took the photo and where it comes from, shown small in the photo's
+#                corner; leave both out for the project's own photos
+#
+# Without JavaScript a page shows the season of the month it was built in. To review, add
+# ?season=winter, spring, summer or autumn, or ?occasion=halloween, to the address; builds with
+# `season_selector: true` in their configuration also show a selector on the photo.
+
+seasons:
+  - name: winter
+    label: Winter
+    months: [12, 1, 2]
+    photo: winter-frosted-leaf-1600.jpg
+    srcset:
+      - { file: winter-frosted-leaf-900.jpg, width: 900 }
+      - { file: winter-frosted-leaf-1600.jpg, width: 1600 }
+      - { file: winter-frosted-leaf-2400.jpg, width: 2400 }
+    focus: "50% 64%"
+    focus_narrow: "100% 50%"
+
+  - name: spring
+    label: Spring
+    months: [3, 4, 5]
+    photo: spring-meadow.jpg
+    focus: "50% 26%"
+    focus_narrow: "56% 50%"
+    soft: true
+
+  # The orange-red windscreen on the beach, from the 2005 SourceForge site.
+  - name: summer
+    label: Summer
+    months: [6, 7, 8]
+    photo: summer-windscreen-1600.jpg
+    srcset:
+      - { file: summer-windscreen-900.jpg, width: 900 }
+      - { file: summer-windscreen-1600.jpg, width: 1600 }
+      - { file: summer-windscreen-2160.jpg, width: 2160 }
+    focus: "50% 50%"
+    focus_narrow: "50% 50%"
+    anchor: right
+    shift: "33%"
+    ground: "linear-gradient(180deg, #44649E 0%, #4D6FA8 10%, #597FB4 20%, #7393C0 30%, #9DABC1 42%, #93A4B8 54%, #859AB2 56.5%, #9A8A79 57.5%, #BBB3B2 62%, #B1A79F 85%, #ACA39C 100%)"
+
+  - name: autumn
+    label: Autumn
+    months: [9, 10, 11]
+    photo: autumn-ink-cap-1600.jpg
+    srcset:
+      - { file: autumn-ink-cap-900.jpg, width: 900 }
+      - { file: autumn-ink-cap-1600.jpg, width: 1600 }
+      - { file: autumn-ink-cap-2400.jpg, width: 2400 }
+    focus: "50% 40%"
+    focus_narrow: "100% 30%"
+    anchor: right
+    shift: "2%"
+    ground: "linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)"
+    veil: strong
+    credit: Veronika Biro on Unsplash
+    url: https://unsplash.com/photos/CCAoWVqolxM
+
+occasions:
+  - name: halloween
+    label: Halloween
+    from: "10-24"
+    to: "11-01"
+    photo: halloween-pumpkin-1600.jpg
+    srcset:
+      - { file: halloween-pumpkin-900.jpg, width: 900 }
+      - { file: halloween-pumpkin-1600.jpg, width: 1600 }
+      - { file: halloween-pumpkin-2400.jpg, width: 2400 }
+    focus: "50% 0%"
+    focus_narrow: "50% 0%"
+    anchor: right
+    shift: "8%"
+    size: "80%"
+    ground: "linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)"
+    veil: strong
+    credit: Ashley Levinson on Unsplash
+    url: https://unsplash.com/photos/ApYECGtZa4A

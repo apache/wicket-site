@@ -21,8 +21,8 @@ Several lines released on the same day get one commit, with a post each.
 
 On top of the steps above, for a new major release N.0.0:
 
-1. In `_data/releases.yml`, change the entry of N from `status: boarding` to `status: current`, and give it what the lines in service have: `config: version_N`, `page: /versions/wicket-N.x/`, `role: "Current"`, and `when: "Since <month> <year>"`. Remove its `version`.
-2. Set the line it replaces to `status: superseded`, or to `status: eol` when it reaches end of life now. A line out of service keeps its `page`.
+1. In `_data/releases.yml`, change the entry of N from `status: boarding` to `status: current`, and give it what the supported lines have: `config: version_N`, `page: /versions/wicket-N.x/`, `role: "Current"`, and `when: "Since <month> <year>"`. Remove its `version`.
+2. Set the line it replaces to `status: superseded`, or to `status: eol` when it reaches end of life now. A line at end of life keeps its `page`.
 3. Give the next major release `status: boarding`. The documentation then marks pages for it as upcoming.
 4. Add `version_N: N.0.0` to `_config.yml`.
 5. Create the line's page as `versions/wicket-N.x/index.md`. Copy the page of the previous line and change its front matter: `series`, `config`, `java`, `servlet` and `migration`, the link to the migration guide on the wiki. If the page already exists with `published: false`, set it to `true`.

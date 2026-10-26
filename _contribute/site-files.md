@@ -54,7 +54,7 @@ order: 70
 
 ## Release lines: `_data/releases.yml`
 
-`featured` names the line whose highlights a page shows when it names none. `lines` lists every release line in service, upcoming or recently out of service:
+`featured` names the line whose highlights a page shows when it names none. `lines` lists every supported release line, the upcoming ones and those that recently reached end of life:
 
 | Field | Holds |
 |---|---|
@@ -66,7 +66,7 @@ order: 70
 | `when` | When the line arrived, or when a release is due: `"Since Mar 2024"`, `"Jan 2027"`. |
 | `support` | How long the line is supported: `"Until Jul 2027"`. |
 | `page` | The line's page: `/versions/wicket-10.x/`. Only lines with a page appear in the panels and the quick start. |
-| `role` | The name of a line in service next to its version: `"Current"` on the quarterly line. The LTS has none; its LTS plate names it. |
+| `role` | The name of a supported line next to its version: `"Current"` on the quarterly line. The LTS has none; its LTS plate names it. |
 
 ## A release line's page
 

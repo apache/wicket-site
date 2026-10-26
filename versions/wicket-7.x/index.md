@@ -45,7 +45,7 @@ Check its PGP signature with the keys in the [KEYS file](https://www.apache.org/
 
 ### Older releases
 
-The mirrors carry only the latest release of each line in service. Every older release is in [the Apache archives](https://archive.apache.org/dist/wicket).
+The mirrors carry only the latest release of each supported line. Every older release is in [the Apache archives](https://archive.apache.org/dist/wicket).
 
 ### Change log
 

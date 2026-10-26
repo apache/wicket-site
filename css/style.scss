@@ -3,7 +3,17 @@
 # only Main files contain this front matter, not partials.
 ---
 @use "sass:meta";
-@import "../fonts/source-code-pro/stylesheet.css";
-@import "../fonts/source-sans-pro/stylesheet.css";
-@import "../fonts/wicket-font/stylesheet.css";
+
+// Alegreya, Alegreya SC and Alegreya Sans (Huerta Tipográfica) and JetBrains Mono, all SIL Open
+// Font License, self-hosted (fonts/*/LICENSE-*.txt).
+@font-face { font-family: "Alegreya"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/alegreya/alegreya-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya"; font-weight: 400; font-style: italic; font-display: swap; src: url("../fonts/alegreya/alegreya-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya"; font-weight: 700; font-style: normal; font-display: swap; src: url("../fonts/alegreya/alegreya-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya SC"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/alegreya/alegreya-sc-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya SC"; font-weight: 500; font-style: normal; font-display: swap; src: url("../fonts/alegreya/alegreya-sc-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya Sans"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/alegreya/alegreya-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya Sans"; font-weight: 500; font-style: normal; font-display: swap; src: url("../fonts/alegreya/alegreya-sans-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya Sans"; font-weight: 700; font-style: normal; font-display: swap; src: url("../fonts/alegreya/alegreya-sans-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/jetbrains-mono/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+
 @include meta.load-css("../_sass/main");

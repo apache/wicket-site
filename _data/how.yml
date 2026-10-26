@@ -1,0 +1,229 @@
+# How Wicket works (start/overview.md): one small order page in seven steps, each drawn as a loom
+# like the component tree on the homepage, by the `loom` filter in _plugins/loom.rb.
+#
+# components: per wicket:id, the component's class and the tag it renders; `k` lists the ids of
+# the lines it lights when they differ from its own id.
+#
+# steps: `text` is HTML; `more` is the page of the guide that explains the step. `focus` is what
+# the step lights while nothing is pointed at: tree paths and line ids. `sheets` are pairs of
+# files on shared rows: `left` the Java, `right` the markup, each `{name, c}`. A row has `j` and/or
+# `h` (the code, one line each; a missing side stays empty), `c` the ids it belongs to (`cj`/`ch`
+# per side), `thread: false` when its two lines are not joined, `b` the beads on the row: tree
+# paths, `@x` to place one, `~` for a tag that waits for its component. A pair's own `b` puts a
+# bead on its file names. `marks` adds a word to a bead. Lines and beads no earlier step had are
+# marked as new.
+
+components:
+  page: { type: WebPage, tag: html }
+  message: { type: Label, tag: p }
+  order: { type: Form, tag: form }
+  street: { type: TextField, tag: input }
+  city: { type: TextField, tag: input }
+  save: { type: Button, tag: button }
+  billing: { type: AddressPanel, tag: div, k: "billing AddressPanel" }
+  shipping: { type: AddressPanel, tag: div, k: "shipping AddressPanel" }
+  shipElsewhere: { type: AjaxLink, tag: a }
+
+steps:
+  - title: Start with plain HTML
+    text: >-
+      <p>A page begins as an HTML file. The <code>wicket:id</code> attribute marks the tag a component
+      will render; the dashed bead is the component it waits for. There is no template language: the
+      file stays HTML that any editor or browser opens.</p>
+    more: { url: /docs/wicket-tags.html, label: Wicket tags and attributes }
+    focus: { paths: "", keys: message }
+    sheets:
+      - right: { name: OrderPage.html, c: page }
+        b: page
+        rows:
+          - h: '<html>'
+          - h: '<body>'
+          - { h: '  <p wicket:id="message">Message</p>', c: message, b: ~page/message }
+          - h: '</body>'
+          - h: '</html>'
+
+  - title: Give the tag a component
+    text: >-
+      <p>Behaviour lives in a Java class with the same name. <code>add(...)</code> puts a
+      <code>Label</code> into the page&rsquo;s tree under the id <code>"message"</code>, and Wicket
+      renders it into the tag with that <code>wicket:id</code>. The ribbon joins the page to its first
+      component.</p>
+    more: { url: /docs/topics/components.html, label: Components and markup }
+    focus: { paths: page/message, keys: message }
+    sheets:
+      - left: { name: OrderPage.java, c: page }
+        right: { name: OrderPage.html, c: page }
+        b: page
+        rows:
+          - { j: 'public class OrderPage extends WebPage {', h: '<html>' }
+          - { j: '    public OrderPage() {', h: '<body>' }
+          - { j: '        add(new Label("message", "Check both addresses."));', h: '  <p wicket:id="message">Message</p>', c: message, b: page/message }
+          - { j: '    }', h: '</body>' }
+          - { j: '}', h: '</html>' }
+
+  - title: Add a form with fields
+    text: >-
+      <p>Components nest the way tags do. The form is a child of the page; the text fields and the
+      button are children of the form, in the Java and in the HTML. A
+      <code>CompoundPropertyModel</code> binds each field to the property of the address with the
+      field&rsquo;s id.</p>
+    more: { url: /docs/about-models.html, label: Models and component data }
+    focus: { paths: page/order/street page/order/city page/order/save, keys: order street city save }
+    sheets:
+      - left: { name: OrderPage.java, c: page }
+        right: { name: OrderPage.html, c: page }
+        b: page
+        rows:
+          - { j: 'public class OrderPage extends WebPage {', h: '<html>' }
+          - { j: '    public OrderPage() {', h: '<body>' }
+          - { j: '        add(new Label("message", "Check both addresses."));', h: '  <p wicket:id="message">Message</p>', c: message, b: page/message }
+          - { j: '        Form<Address> form = new Form<>("order",', h: '  <form wicket:id="order">', c: order, b: page/order }
+          - { j: '                new CompoundPropertyModel<>(billingAddress));', c: order }
+          - { j: '        form.add(new TextField<String>("street"));', h: '    <input wicket:id="street">', c: street, b: page/order/street }
+          - { j: '        form.add(new TextField<String>("city"));', h: '    <input wicket:id="city">', c: city, b: page/order/city }
+          - { j: '        form.add(new Button("save"));', h: '    <button wicket:id="save">Save</button>', c: save, b: page/order/save }
+          - { j: '        add(form);', h: '  </form>' }
+          - { j: '    }', h: '</body>' }
+          - { j: '}', h: '</html>' }
+
+  - title: Reuse a panel, twice
+    text: >-
+      <p>Move the fields into <code>AddressPanel</code>, a Java class with its own markup inside
+      <code>&lt;wicket:panel&gt;</code> and its own model. The form uses it twice, for billing and for
+      shipping, and the same branch grows under each: one class, one file of markup, two instances in
+      the tree.</p>
+    more: { url: /docs/build-panel.html, label: Build a reusable panel }
+    focus: { paths: page/order/billing page/order/shipping, keys: billing shipping AddressPanel }
+    sheets:
+      - left: { name: OrderPage.java, c: page }
+        right: { name: OrderPage.html, c: page }
+        b: page
+        rows:
+          - { j: 'public class OrderPage extends WebPage {', h: '<html>' }
+          - { j: '    public OrderPage() {', h: '<body>' }
+          - { j: '        add(new Label("message", "Check both addresses."));', h: '  <p wicket:id="message">Message</p>', c: message, b: page/message }
+          - { j: '        Form<Void> form = new Form<>("order");', h: '  <form wicket:id="order">', c: order, b: page/order }
+          - { j: '        form.add(new AddressPanel("billing", billingAddress));', h: '    <div wicket:id="billing"></div>', c: billing, b: page/order/billing }
+          - { j: '        form.add(new AddressPanel("shipping", shippingAddress));', h: '    <div wicket:id="shipping"></div>', c: shipping, b: page/order/shipping }
+          - { j: '        form.add(new Button("save"));', h: '    <button wicket:id="save">Save</button>', c: save, b: page/order/save }
+          - { j: '        add(form);', h: '  </form>' }
+          - { j: '    }', h: '</body>' }
+          - { j: '}', h: '</html>' }
+      - &panel
+        left: { name: AddressPanel.java, c: AddressPanel }
+        right: { name: AddressPanel.html, c: AddressPanel }
+        rows:
+          - { j: 'public class AddressPanel extends Panel {', h: '<wicket:panel>', c: AddressPanel }
+          - { j: '    public AddressPanel(String id, IModel<Address> address) {' }
+          - { j: '        super(id, new CompoundPropertyModel<>(address));' }
+          - { j: '        add(new TextField<String>("street"));', h: '  <input wicket:id="street">', c: street, b: [page/order/billing/street@50, page/order/shipping/street@38.5] }
+          - { j: '        add(new TextField<String>("city"));', h: '  <input wicket:id="city">', c: city, b: [page/order/billing/city@50, page/order/shipping/city@38.5] }
+          - { j: '    }', h: '</wicket:panel>' }
+          - { j: '}' }
+
+  - title: Update it from Java
+    text: >-
+      <p>Wicket renders on the server and keeps the page&rsquo;s state there, in this tree. A click on
+      the <code>AjaxLink</code> runs <code>onClick</code> in Java; <code>target.add(shipping)</code>
+      renders that one branch again and Wicket swaps it into the page in the browser. You write no
+      JavaScript.</p>
+    more: { url: /docs/how-ajax-works.html, label: How Wicket Ajax works }
+    focus: { paths: page/order/shipElsewhere page/order/shipping, keys: shipElsewhere shipping }
+    sheets:
+      - &order5
+        left: { name: OrderPage.java, c: page }
+        right: { name: OrderPage.html, c: page }
+        b: page
+        rows:
+          - { j: 'public class OrderPage extends WebPage {', h: '<html>' }
+          - { j: '    public OrderPage() {', h: '<body>' }
+          - { j: '        add(new Label("message", "Check both addresses."));', h: '  <p wicket:id="message">Message</p>', c: message, b: page/message }
+          - { j: '        Form<Void> form = new Form<>("order");', h: '  <form wicket:id="order">', c: order, b: page/order }
+          - { j: '        form.add(new AddressPanel("billing", billingAddress));', h: '    <div wicket:id="billing"></div>', c: billing, b: page/order/billing }
+          - { j: '        AddressPanel shipping =', c: shipping }
+          - { j: '                new AddressPanel("shipping", shippingAddress);', c: shipping }
+          - { j: '        shipping.setOutputMarkupPlaceholderTag(true);', c: shipping }
+          - { j: '        shipping.setVisible(false);', c: shipping }
+          - { j: '        form.add(new AjaxLink<Void>("shipElsewhere") {', h: '    <a wicket:id="shipElsewhere">', c: shipElsewhere, b: page/order/shipElsewhere }
+          - { j: '            @Override', h: '      Ship to another address</a>', c: shipElsewhere, thread: false }
+          - { j: '            public void onClick(AjaxRequestTarget target) {', c: shipElsewhere }
+          - { j: '                shipping.setVisible(!shipping.isVisible());', c: shipElsewhere shipping }
+          - { j: '                target.add(shipping);', c: shipElsewhere shipping }
+          - { j: '            }', c: shipElsewhere }
+          - { j: '        });', c: shipElsewhere }
+          - { j: '        form.add(shipping);', h: '    <div wicket:id="shipping"></div>', c: shipping, b: page/order/shipping }
+          - { j: '        form.add(new Button("save"));', h: '    <button wicket:id="save">Save</button>', c: save, b: page/order/save }
+          - { j: '        add(form);', h: '  </form>' }
+          - { j: '    }', h: '</body>' }
+          - { j: '}', h: '</html>' }
+      - &panel5
+        left: { name: AddressPanel.java, c: AddressPanel }
+        right: { name: AddressPanel.html, c: AddressPanel }
+        rows:
+          - { j: 'public class AddressPanel extends Panel {', h: '<wicket:panel>', c: AddressPanel }
+          - { j: '    public AddressPanel(String id, IModel<Address> address) {' }
+          - { j: '        super(id, new CompoundPropertyModel<>(address));' }
+          - { j: '        add(new TextField<String>("street"));', h: '  <input wicket:id="street">', c: street, b: [page/order/billing/street@50, page/order/shipping/street@38.5] }
+          - { j: '        add(new TextField<String>("city"));', h: '  <input wicket:id="city">', c: city, b: [page/order/billing/city@50, page/order/shipping/city@38.5] }
+          - { j: '    }', h: '</wicket:panel>' }
+          - { j: '}' }
+
+  - title: Test it without a browser
+    text: >-
+      <p><code>WicketTester</code> renders the page in a plain unit test: no browser, no server. It
+      finds a component by its path in the tree, so <code>"order:shipping"</code> is the ribbon from
+      the form to the panel. The test clicks the Ajax link and checks that the panel came back.</p>
+    more: { url: /docs/test-pages.html, label: Test pages and components }
+    focus: { paths: page/order/shipElsewhere page/order/shipping, keys: shipElsewhere shipping }
+    sheets:
+      - left: { name: OrderPageTest.java }
+        right: { name: OrderPage.html, c: page }
+        b: page
+        rows:
+          - { j: '@Test void shipsToAnotherAddress() {', h: '<html>' }
+          - { j: '    tester.startPage(OrderPage.class);', h: '<body>', cj: page }
+          - { j: '    tester.assertLabel("message", "Check both addresses.");', h: '  <p wicket:id="message">Message</p>', c: message, b: page/message }
+          - { h: '  <form wicket:id="order">', c: order, b: page/order }
+          - { h: '    <div wicket:id="billing"></div>', c: billing, b: page/order/billing }
+          - { j: '    tester.clickLink("order:shipElsewhere");', h: '    <a wicket:id="shipElsewhere">', c: shipElsewhere, b: page/order/shipElsewhere }
+          - { h: '      Ship to another address</a>', c: shipElsewhere }
+          - { j: '    tester.assertComponentOnAjaxResponse("order:shipping");', h: '    <div wicket:id="shipping"></div>', c: shipping, b: page/order/shipping }
+          - { j: '}', h: '    <button wicket:id="save">Save</button>', ch: save, b: page/order/save }
+          - { h: '  </form>' }
+          - { h: '</body>' }
+          - { h: '</html>' }
+      - *panel5
+
+  - title: Secure by default
+    text: >-
+      <p>Every page is sent with a strict Content Security Policy, without <code>unsafe-inline</code>.
+      Wicket puts a fresh nonce on every script and stylesheet a component contributes to the page,
+      here the Ajax link&rsquo;s. You only add what your application needs, such as one more host for
+      images.</p>
+    more: { url: /docs/security-model.html, label: How Wicket keeps applications secure }
+    focus: { paths: page/order/shipElsewhere, keys: shipElsewhere nonce img }
+    marks: { page/order/shipElsewhere: nonce }
+    sheets:
+      - *order5
+      - *panel5
+      - left: { name: MyApplication.java }
+        right: { name: The response to the browser }
+        rows:
+          - { j: 'public class MyApplication extends WebApplication {' }
+          - { j: '    @Override', h: 'Content-Security-Policy:' }
+          - { j: '    protected void init() {', h: "  default-src 'none';" }
+          - { j: '        super.init();', h: "  script-src 'strict-dynamic' 'nonce-R3x';", ch: nonce }
+          - { j: '        getCspSettings().blocking()', h: "  style-src 'nonce-R3x';", cj: img, ch: nonce }
+          - { j: '                .add(CSPDirective.IMG_SRC,', h: "  img-src 'self'", c: img }
+          - { j: '                        "https://images.example.org");', h: '    https://images.example.org;', c: img }
+          - { j: '    }', h: "  connect-src 'self'; font-src 'self'; …" }
+          - { j: '}' }
+          - { h: '<head>' }
+          - { h: '  <script nonce="R3x"', c: shipElsewhere }
+          - { h: '    src="…/wicket-ajax-jquery.js">', c: shipElsewhere }
+          - { h: '  </script>', c: shipElsewhere }
+          - { h: '  <script nonce="R3x">', c: shipElsewhere }
+          - { h: '    Wicket.Ajax.ajax({"e":"click",', c: shipElsewhere }
+          - { h: '      "c":"shipElsewhere3", …});', c: shipElsewhere }
+          - { h: '  </script>', c: shipElsewhere }
+          - { h: '</head>' }

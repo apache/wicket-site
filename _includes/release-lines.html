@@ -1,5 +1,5 @@
 {% comment %}
-  The release lines: in service, announced, and just reached end of life, one row per line.
+  The release lines: supported, scheduled, and recently reached end of life, one row per line.
   A scheduled release of a line that is already out (an LTS patch release) shows in that
   line's row as its next release; a scheduled or announced major without a release yet is
   a row of its own. Reads _data/releases.yml and the versions in _config.yml.
@@ -31,7 +31,7 @@
     {% if group_size == 0 %}{% continue %}{% endif %}
     <tbody>
         <tr class="release-lines-group">
-            <th scope="rowgroup" colspan="4">{% case group %}{% when 1 %}In service{% when 2 %}Scheduled{% else %}End of life{% endcase %}</th>
+            <th scope="rowgroup" colspan="4">{% case group %}{% when 1 %}Supported{% when 2 %}Scheduled{% else %}End of life{% endcase %}</th>
         </tr>
         {% for line in releases.lines %}
             {% assign line_group = 1 %}
@@ -47,16 +47,14 @@
             {% if line.config %}{% assign next = releases.lines | where: "series", line.series | where: "status", "scheduled" | first %}{% endif %}
         <tr class="is-{{ line.status }}">
             <th scope="row">
-                {% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">Wicket {{ line.series }}</a>{% else %}Wicket {{ line.series }}{% endif %}
+                {% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">Wicket {{ line.series }}</a>{% else %}Wicket {{ line.series }}{% endif %}{% comment %} The role beside the line: LTS, Current. {% endcomment %}{% if line.service == 'lts' %} <span class="tag tag-lts" title="Long-term support">LTS</span>{% endif %}{% if line.role %} <span class="tag tag-current">{{ line.role }}</span>{% endif %}
                 {% if line.config %}<span class="release-lines-latest">Latest {{ version }}</span>{% else %}<span class="release-lines-latest">{{ version }}</span>{% endif %}
                 {% if next %}<span class="release-lines-latest">Next {{ next.version }}, {{ next.when }}</span>{% endif %}
             </th>
             <td data-label="{% if line.config %}First release{% else %}Due{% endif %}">{% if line.config %}{{ line.when | remove: 'Since ' }}{% else %}{{ line.when }}{% endif %}</td>
             <td data-label="Supported">{{ line.support }}</td>
             <td>
-                {% comment %} The state first, the role of a line in service under it. {% endcomment %}
-                {% include line-status.html status=line.status style="tag" %}{% if line.service == 'lts' %} <span class="tag tag-lts" title="Long-term support">LTS</span>{% endif %}
-                {% if line.role %}<span class="release-lines-role">{{ line.role }}</span>{% endif %}
+                {% include line-status.html status=line.status style="tag" %}
             </td>
         </tr>
         {% endfor %}

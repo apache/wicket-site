@@ -10,9 +10,9 @@ permalink: /llms.txt
 
 > Apache Wicket is an open source, component-oriented Java web framework of the Apache Software Foundation. Every component keeps its behaviour and state in Java and its markup in plain HTML; there is no JavaScript build chain. Maven coordinates: groupId `org.apache.wicket`, artifactId `wicket-core`.
 
-Release lines in service:
+Supported release lines:
 {% for line in site.data.releases.lines %}{% if line.page %}{% unless line.status == 'eol' %}{% assign hub = site.pages | where: "url", line.page | first %}
-- Wicket {{ line.series }}{% if line.status == 'lts' %} (LTS){% endif %}: latest {{ site.wicket[line.config] }}, Java {{ hub.java }}+, {{ hub.servlet | replace: ' or newer', '+' }}. {% include line-status.html status=line.status %}, {{ line.support | replace: 'Until', 'supported until' }}.{% endunless %}{% endif %}{% endfor %}{% if next %}
+- Wicket {{ line.series }}{% if line.status == 'lts' %} (LTS){% endif %}{% if line.role %} ({{ line.role }}){% endif %}: latest {{ site.wicket[line.config] }}, Java {{ hub.java }}+, {{ hub.servlet | replace: ' or newer', '+' }}. {{ line.support | replace: 'Until', 'Supported until' }}.{% endunless %}{% endif %}{% endfor %}{% if next %}
 - Wicket {{ next.series }}: announced for {{ next.when }}, not yet released.{% endif %}
 
 Wicket 10 and later use the `jakarta.*` namespace; Wicket 9 and earlier use `javax.*`.
@@ -43,7 +43,7 @@ Tutorials, how-to guides, reference and explanation for Wicket {{ site.data.guid
 ## Releases
 
 - [Releases]({{ root }}/versions/): release lines, support and the release policy
-- [Upgrade paths]({{ root }}/versions/#upgrade-paths): the route from an older line to one that is supported, with the migration guides
+- [Upgrade paths]({{ root }}/versions/#upgrade-paths): how to get from an older line to one that is supported, with the migration guides
 {% for line in site.data.releases.lines %}{% if line.page %}- [Wicket {{ line.series }}]({{ root }}{{ line.page }}): Maven dependency, downloads, what is new and migration
 {% endif %}{% endfor %}
 ## Optional

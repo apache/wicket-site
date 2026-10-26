@@ -1,0 +1,79 @@
+// ---------------------------------------------------------------- How Wicket works
+// The homepage's component tree on bookcloth, grown in seven steps. A rail of seven beads chooses
+// the step; the ribbon runs along it up to the step shown. Each step is a loom (_plugins/loom.rb):
+// lines new in the step carry a +, the ribbon grows into new beads (javascript/ribbon.js).
+
+.how .ctree-in { padding-top: 34px; }
+
+.how-n {
+    display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; position: relative; z-index: 1;
+    font: 400 .95rem/1 var(--mono); color: var(--on-cloth); background: var(--cloth);
+    border: 1px solid var(--ribbon); border-radius: 3px;
+}
+
+.how-rail ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; }
+.how-rail li { position: relative; margin: 0; }
+// The run to the next bead: a thread ahead of the step shown, the ribbon up to it.
+.how-rail li:not(:last-child)::before {
+    content: ""; position: absolute; left: 16px; right: -16px; top: 15.5px; height: 1px;
+    background: rgba(127, 156, 147, .5);
+}
+.how-rail li.done::before { top: calc(16px - var(--ribbon-w) / 2); height: var(--ribbon-w); background: var(--ribbon); }
+.how-rail a {
+    display: block; padding: 0 14px 6px 0; color: var(--muted); text-decoration: none;
+    font: 500 1rem/1.3 var(--sans);
+}
+.how-t { display: block; margin-top: 10px; max-width: 15ch; }
+.how-rail a:hover .how-t { color: var(--on-cloth); text-decoration: underline; text-decoration-color: var(--ribbon); }
+.how-rail .done .how-n { background: var(--cloth-deep); }
+.how-rail a[aria-current] { color: var(--on-cloth); }
+.how-rail a[aria-current] .how-n { background: var(--ribbon); color: var(--on-ribbon); }
+
+.how-step { padding-top: 44px; }
+.how-head h2 { display: flex; align-items: center; gap: 14px; max-width: 18ch; }
+.how-text { grid-column: 2 / 4; padding-left: 14ch; max-width: calc(46ch + 50ch); }
+.how-text p { padding-left: 0; }
+.how-text code { font-size: .86em; color: var(--ribbon-text); }
+.how-text .how-more { display: flex; flex-wrap: wrap; gap: 4px 26px; margin-top: 12px; font: 500 1.0625rem/1.3 var(--sans); }
+@media (pointer: coarse) { .how-more a { display: inline-flex; align-items: center; min-height: 44px; } }
+.how .loom-hint { margin-top: 18px; }
+
+// A line new in its step: a + in the margin of its sheet, as in a diff.
+.ln.new, .tcl.new { position: relative; }
+.ln.new::before, .tcl.new::before { content: "+" / ""; position: absolute; left: .6ch; font-weight: 700; color: var(--ribbon-deep); }
+.tcl.new::before { left: 3px; }
+
+// The components on the way to the lit ones stay readable: a path in the tree is the ribbon to it.
+.how .loom.focused .bead.trail { opacity: 1; }
+
+// A tag waiting for its component.
+.bead-ghost {
+    grid-column: 2; grid-row: var(--r); justify-self: start; align-self: center;
+    display: inline-flex; align-items: center; margin-left: calc((var(--x) + 2.5) * 1ch); height: 2.1em; padding: 0 1ch;
+    font: 400 1em/1 var(--mono); color: var(--muted); border: 1px dashed var(--ribbon); border-radius: 3px;
+}
+// A word on a bead, such as the nonce on the Ajax link's script.
+.bead-mark { margin-left: .8ch; padding: 2px 5px; border-radius: 2px; font: 500 .92em/1 var(--sans); color: var(--ribbon-text); background: var(--cloth); }
+
+@media (prefers-reduced-motion: no-preference) {
+    .how .bead.new { animation: how-bead .45s var(--ease) .55s both; }
+    .how .ln.new { animation: how-line 1.4s var(--ease) .2s both; }
+    .tree-ribbon .seg.grow path { stroke-dasharray: var(--len) var(--len); stroke-dashoffset: var(--len); }
+    .tree-ribbon .seg.grow polygon, .tree-ribbon .seg.grow .knot { opacity: 0; }
+    .tree-ribbon .seg.grow.grown path { stroke-dashoffset: 0; transition: stroke-dashoffset .8s var(--ease) .1s; }
+    .tree-ribbon .seg.grow.grown polygon, .tree-ribbon .seg.grow.grown .knot { opacity: 1; transition: opacity .3s .75s; }
+}
+@keyframes how-bead { from { opacity: 0; transform: translateX(-6px); } }
+@keyframes how-line { from { background-color: var(--ribbon-wash); } }
+
+@media (max-width: 1239px) {
+    .how-text { padding-left: 0; }
+    .how-step { padding-top: 40px; }
+    .how-step + .how-step { margin-top: 24px; border-top: 1px solid rgba(127, 156, 147, .35); }
+}
+@media (max-width: 899px) {
+    .how-rail ol { grid-template-columns: 1fr; gap: 2px; }
+    .how-rail li::before { display: none; }
+    .how-rail a { display: flex; align-items: center; gap: 12px; padding: 4px 0; }
+    .how-t { margin: 0; max-width: none; }
+}

@@ -8,8 +8,12 @@
 #   facts: optional list of { label, value } pairs, shown as board figures
 #   code:  optional code sample, with `lang` (java, xml, html) and `file`
 #   home:  false keeps a highlight off the homepage (default: shown)
+#
+# Per line, `brief` is one line under the line's version in the homepage hero,
+# shown while the line is supported.
 
 "11":
+  brief: "Java 21, secure by default, pages that serialize about 40% smaller, and Ajax without jQuery."
   intro: >
     Wicket 11 opens the quarterly release schedule. It moves to a current Java
     and Jakarta baseline, tightens security, makes every component leaner and

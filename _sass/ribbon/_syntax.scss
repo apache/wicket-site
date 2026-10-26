@@ -1,0 +1,30 @@
+// =========== Rouge highlighting on the code ground
+// The palette of the homepage code: keywords in deep orange, strings and tags in bookcloth greens,
+// comments soft and italic.
+
+.highlight {
+    .c, .c1, .cm, .cd, .cs, .ch, .cpf { color: var(--ink-soft); font-style: italic; }
+    .cp { color: var(--ink-soft); }
+    .k, .kd, .kn, .kp, .kr, .kv, .kc { color: var(--ribbon-deep); }
+    .kt { color: var(--code-tag); }
+    .o, .ow, .p, .pi { color: var(--code-op); }
+    .s, .s1, .s2, .sa, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss, .dl { color: var(--code-green); }
+    .m, .mb, .mf, .mh, .mi, .mo, .mx, .il { color: var(--code-green); }
+    .nt { color: var(--code-tag); }
+    .na { color: var(--ribbon-deep); }
+    .nc, .nn, .ne { color: var(--ink); font-weight: 400; }
+    .nf, .fm { color: var(--ink); }
+    .nd { color: var(--code-tag); }
+    .nb, .bp, .no, .nv, .vc, .vg, .vi { color: var(--ink); }
+    .ni { color: var(--code-tag); }
+    .err { color: inherit; background: none; }
+    .gd { color: var(--ink-soft); text-decoration: line-through; }
+    .gi { background: var(--ribbon-wash); }
+    .ge { font-style: italic; }
+    .gs { font-weight: 700; }
+    .gh, .gu { font-weight: 700; }
+    .gp { color: var(--ink-soft); user-select: none; }
+    .go { color: var(--code-op); }
+    .w { color: inherit; }
+    .lineno { color: var(--ink-soft); margin-right: .75rem; text-align: right; }
+}

@@ -170,7 +170,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
   # Upgrading lives on the releases page and in the announcement of the newest major release.
   upgrade = { 'id' => '/versions/#upgrade-paths', 'url' => "#{base}/versions/#upgrade-paths",
               'title' => 'Upgrade paths', 'page' => 'Releases', 'kind' => 'reference', 'topic' => '', 'since' => 0,
-              'text' => 'The route from your Wicket version to one that is supported, with the migration guides.',
+              'text' => 'How to get from your Wicket version to one that is supported, with the migration guides.',
               'keywords' => 'upgrade upgrading migrate migration guide move javax jakarta', 'apis' => '', 'body' => '' }
   extra = [refs, upgrade]
   # The one-page reference guide of every line, so "user guide" finds the document itself.

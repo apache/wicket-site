@@ -10,6 +10,7 @@ layout: base
 {% capture toc %}{{ content | toc_generate }}{% endcapture %}{% assign toc = toc | strip %}
 {% assign kind = site.data.guide.kinds | where: "id", page.type | first %}
 <div class="page-sign guide-sign">
+    {% include season-photo.html %}
     <div class="page-sign-inner">
         <p class="guide-crumbs"><a href="{{ site.baseurl }}/community/">Community</a><span aria-hidden="true"> / </span><a href="{{ site.baseurl }}/contribute/">Contribute</a></p>
         <h1>{{ page.title }}</h1>

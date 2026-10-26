@@ -15,6 +15,7 @@ layout: base
 {% include post-line.html post=page %}
 {% capture toc %}{{ content | toc_generate }}{% endcapture %}{% assign toc = toc | strip %}
 <div class="page-sign">
+    {% include season-photo.html %}
     <div class="page-sign-inner">
         <p class="guide-crumbs"><a href="{{ site.baseurl }}/news/">Blog</a><span aria-hidden="true"> / </span><a href="{{ site.baseurl }}/news/{{ year }}/">{{ year }}</a></p>
         <h1>{{ page.title }}</h1>

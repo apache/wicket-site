@@ -12,6 +12,7 @@ active_link: documentation
 {% assign classes = site.data.guide_classes %}
 {% assign letters = classes | map: "letter" | uniq | sort %}
 <div class="page-sign guide-sign">
+    {% include season-photo.html %}
     <div class="page-sign-inner guide-sign-inner">
         <div class="guide-sign-text">
             <p class="guide-crumbs"><a href="{{ site.baseurl }}/docs/">Documentation</a></p>

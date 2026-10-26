@@ -1,9 +1,8 @@
 ---
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
     <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta charset="utf-8">
 	{% assign prefix = "" %}
 	{% if page.title %}
@@ -13,20 +12,29 @@
         <title>{{ page.title | append: prefix }} Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="{{ page.description | default: page.summary | default: 'Apache Wicket, the open source component-oriented Java web framework.' | strip_html | strip_newlines | truncate: 160 }}" />
+        <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
+        <meta name="color-scheme" content="light dark" />
         <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="{{ site.baseurl }}/atom.xml" />
 
-        <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/vnd.microsoft.icon" />
-        <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css?v={{ site.time | date: '%s' }}" type="text/css" media="screen" />
+        <link rel="icon" href="{{ site.baseurl }}/img/logo-apachewicket-mark.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="{{ site.baseurl }}/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="preload" href="{{ site.baseurl }}/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="{{ site.baseurl }}/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css?v={{ site.time | date: '%s' }}" type="text/css" />
 
-		<script src="/javascript/jquery-3.7.1.min.js"></script>
+		<script src="{{ site.baseurl }}/javascript/jquery-3.7.1.min.js"></script>
 {% for item in page.additionalContents %}{% if item.header %}        {% include {{item.header}} %}{% endif %}{% endfor %}
 
     </head>
     <body class="{{page.pageclasses}}">
         <a class="skip-link" href="#main">Skip to content</a>
         {{content}}
-        <footer>
+        <footer class="footer">
             {% include footer.html %}
         </footer>
+        {% comment %} The seasonal photographs, for javascript/ribbon.js; edit them in _data/seasons.yml. {% endcomment %}
+        <script type="application/json" id="seasons" data-base="{{ site.baseurl }}/img/seasons/"{% if site.season_selector %} data-selector{% endif %}>{{ site.data.seasons | jsonify }}</script>
+        <script src="{{ site.baseurl }}/javascript/ribbon.js?v={{ site.time | date: '%s' }}" defer></script>
     </body>
 </html>

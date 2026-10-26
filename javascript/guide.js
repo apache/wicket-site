@@ -67,7 +67,7 @@
                 p.appendChild(document.createTextNode(' and '));
             }
             p.appendChild(link(base + '/versions/wicket-' + wanted + '.x/', 'the page of Wicket ' + wanted + '.x'));
-            p.appendChild(document.createTextNode(', with its Javadoc and the route to a supported line.'));
+            p.appendChild(document.createTextNode(', with its Javadoc and how to upgrade to a supported line.'));
         } else {
             p.appendChild(document.createTextNode('There is no Wicket ' + wanted + '. '));
             p.appendChild(link(base + '/versions/', 'Releases'));

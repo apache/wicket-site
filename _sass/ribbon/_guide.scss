@@ -1,0 +1,282 @@
+// =========== Documentation: title band with search, page lists on the ribbon, the A–Z index
+
+// ---------------------------------------------------------------- title band
+
+@media (min-width: 1000px) {
+    .guide-sign-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem); gap: 0 clamp(48px, 5vw, 96px); align-items: end; }
+}
+.guide-sign-text { min-width: 0; }
+
+.guide-plates { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin: 14px 0 0; font: 400 1.0625rem/1.3 var(--sans); }
+// The kind of page as a bead, as the components are on the homepage.
+.guide-kind { padding: 2px 8px 3px; border: 1px solid var(--ribbon); border-radius: 3px; background: rgba(var(--veil), .92); font-weight: 500; }
+.guide-since { padding: 2px 6px 3px; background: rgba(var(--veil), .8); color: var(--ink-soft); }
+.guide-since-figure { color: var(--ink); font-weight: 700; font-variant-numeric: lining-nums; }
+
+// The docs front page: the large search under the title, the reference guides under it on a paper panel.
+@media (min-width: 861px) { .guide-sign--front .page-sign-inner { min-height: 0; padding-top: 48px; } }
+.guide-sign--front .guide-search--large { margin-top: 26px; }
+.guide-sign-refs,
+.guide-sign-scope {
+    max-width: 46rem; margin: 0; padding: 10px 16px 0;
+    background: rgba(var(--veil), .9);
+    font: 400 1.0625rem/1.7 var(--sans);
+}
+.guide-sign-refs { margin-top: 20px; border-top: 1px solid var(--ribbon); }
+.guide-sign-refs a { white-space: nowrap; }
+.guide-sign-refs .tag { font-size: .95rem; padding-block: 0 1px; }
+.guide-sign-refs-label { display: block; font: 500 1.05rem/1.3 var(--sc); letter-spacing: .03em; color: var(--ink-soft); margin-bottom: 2px; }
+.guide-sign-scope { padding-top: 4px; padding-bottom: 10px; color: var(--ink-soft); }
+
+@media (pointer: coarse) {
+    .guide-sign-refs a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+// ---------------------------------------------------------------- search: a paper sheet on the photograph
+
+.guide-search {
+    position: relative; margin-top: 24px; padding: 12px 14px;
+    background: var(--sheet);
+    box-shadow: 0 1px 0 rgba(20, 36, 31, .06), 0 14px 30px -20px rgba(6, 26, 22, .45);
+}
+@media (min-width: 1000px) { .guide-sign-inner > .guide-search { margin-top: 0; } }
+.guide-search--large { max-width: 40rem; }
+
+.guide-search .guide-search-label { display: block; margin: 0 0 7px; font: 500 1.05rem/1.2 var(--sc); letter-spacing: .03em; color: var(--ink-soft); }
+
+.guide-search-field {
+    position: relative;
+
+    input {
+        width: 100%; height: 44px; padding: 0 44px 0 12px;
+        background: var(--paper); border: 1px solid var(--field); border-radius: 2px;
+        color: var(--ink); font: 400 1.0625rem var(--sans); caret-color: var(--ribbon-deep);
+        transition: border-color .15s;
+        -webkit-appearance: none; appearance: none;
+    }
+    input::placeholder { color: var(--ink-soft); opacity: 1; }
+    input:hover { border-color: var(--ink-soft); }
+    input:focus-visible { border-color: var(--ribbon-deep); outline: 2px solid var(--ribbon-deep); outline-offset: 1px; }
+    input::-webkit-search-cancel-button { display: none; }
+
+    .guide-search--large & input { height: 52px; font-size: 1.2rem; }
+}
+
+.guide-search-key {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%); pointer-events: none;
+    padding: 1px 7px; border: 1px solid var(--ribbon); border-radius: 3px;
+    font: 400 .85rem var(--mono); color: var(--ink);
+
+    input:focus ~ & { visibility: hidden; }
+    @media (pointer: coarse) { display: none; }
+}
+
+.guide-search .guide-search-hint {
+    max-width: none; margin: 9px 0 0; font: 400 1.0625rem var(--sans); color: var(--ink-soft);
+
+    select {
+        appearance: none; -webkit-appearance: none; margin-left: 4px; cursor: pointer;
+        background: var(--paper) var(--chev-down) no-repeat right 10px center;
+        border: 1px solid var(--field); border-radius: 2px; color: var(--ink);
+        font: 500 1rem/1 var(--sans); padding: 7px 28px 7px 9px;
+    }
+    select:hover { border-color: var(--ink-soft); }
+    select:focus-visible { border-color: var(--ribbon-deep); }
+    @media (pointer: coarse) { select { min-height: 44px; } }
+}
+// On phones the version choice stays on the docs front page, keeping title bands short.
+@media (max-width: 999px) {
+    .guide-sign-inner > .guide-search:not(.guide-search--large) .guide-search-hint { display: none; }
+}
+.guide-search-hint[hidden] { display: none; }
+
+.guide-results {
+    position: absolute; z-index: 5; top: calc(100% + 6px); left: 0; right: 0;
+    max-height: min(32rem, 70vh); overflow-y: auto;
+    background: var(--sheet); border-top: 2px solid var(--ribbon);
+    box-shadow: 0 1px 0 rgba(20, 36, 31, .06), 0 24px 48px -24px rgba(6, 26, 22, .55);
+
+    @media (min-width: 1000px) {
+        .guide-sign-inner > .guide-search & { left: auto; width: min(38rem, calc(100vw - 6rem)); }
+    }
+
+    ul { list-style: none; margin: 0; padding: 4px 6px; }
+    li { margin: 0; }
+    li + li { border-top: 1px solid var(--rule); }
+    a { display: block; padding: 9px 10px 10px; border-radius: 2px; color: var(--ink-soft); text-decoration: none; }
+    li:hover a,
+    li.is-active a { background: var(--ribbon-wash); }
+    li:hover .guide-result-title,
+    li.is-active .guide-result-title { text-decoration-color: var(--ribbon-deep); }
+}
+.guide-results[hidden] { display: none; }
+
+.guide-result-title {
+    display: block; color: var(--ink); font: 700 1.15rem/1.25 var(--serif);
+    text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1.5px; text-underline-offset: .2em;
+}
+.guide-result-meta {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; margin-top: 3px;
+    font: 500 1rem/1.3 var(--sc); letter-spacing: .02em; color: var(--ribbon-deep);
+    span:not(.guide-list-since) + span:not(.guide-list-since)::before { content: "/ "; }
+}
+.guide-result-text {
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
+    margin-top: 3px; font: 400 1rem/1.4 var(--sans);
+}
+.guide-results-empty { padding: 12px 16px; font: 400 1.0625rem var(--sans); color: var(--ink-soft); }
+
+// ---------------------------------------------------------------- page lists: leaves on the ribbon
+
+.guide-list {
+    --rw: 5px; --mid: 20px;
+    list-style: none; margin: 0; padding: 0;
+
+    li { position: relative; margin: 0; padding: 0 0 14px 26px; }
+    li::before {
+        content: ""; position: absolute; left: 0; top: 0; width: 16px; height: var(--mid);
+        border-left: var(--rw) solid var(--ribbon); border-bottom: var(--rw) solid var(--ribbon); border-bottom-left-radius: 2px;
+    }
+    li:not(:last-child)::after { content: ""; position: absolute; left: 0; top: calc(var(--mid) - 4px); bottom: 0; border-left: var(--rw) solid var(--ribbon); }
+}
+
+.guide-list-title {
+    display: inline-block; padding: 5px 0 0;
+    font: 700 1.25rem/1.25 var(--serif); text-decoration-color: transparent;
+    &:is(a):hover { text-decoration-color: var(--ribbon-deep); }
+}
+// The page being read: the lit bead.
+.guide-list li.is-current .guide-list-title { padding: 3px 8px 4px; margin-top: 2px; border-radius: 3px; background: var(--ribbon); color: var(--on-ribbon); }
+
+.guide-list-meta { display: inline-flex; flex-wrap: wrap; gap: 6px; margin-left: 6px; vertical-align: .1em; &:empty { display: none; } }
+.guide-list-kind { font: 500 1rem var(--sc); letter-spacing: .03em; color: var(--ribbon-deep); }
+// A page that needs a newer release line than the oldest covered: a bead.
+.guide-list-since { padding: 0 6px 1px; border: 1px solid var(--ribbon); border-radius: 3px; font: 500 .95rem/1.4 var(--sans); white-space: nowrap; }
+.guide-list-summary { display: block; max-width: var(--measure); margin-top: 2px; font: 400 1.0625rem/1.4 var(--sans); color: var(--ink-soft); }
+
+@media (pointer: coarse) {
+    .guide-list-title { display: inline-flex; align-items: center; min-height: 44px; padding-top: 0; }
+    .guide-list { --mid: 26px; }
+}
+
+// The tutorials in order: each step a bead with its number.
+.guide-route {
+    list-style: none; margin: 0; padding: 0; counter-reset: route; max-width: 54rem; border-top: 2px solid var(--ink);
+
+    li { position: relative; margin: 0; padding: 12px 0 14px 3rem; border-bottom: 1px solid var(--rule); counter-increment: route; }
+    li::before {
+        content: counter(route); position: absolute; left: 0; top: 15px;
+        min-width: 2rem; height: 2rem; padding: 0 6px; border: 1px solid var(--ribbon); border-radius: 3px; background: var(--paper);
+        font: 400 .95rem/1.9rem var(--mono); text-align: center; transition: background-color .15s;
+    }
+    li:has(a:hover)::before { background: var(--ribbon); }
+    .guide-list-title { padding-top: 0; }
+}
+
+// Topics and the lookup list: ruled rows, the topics in two columns.
+.guide-topics,
+.guide-lookup {
+    list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink);
+    li { margin: 0; padding: 10px 0 13px; border-bottom: 1px solid var(--rule); break-inside: avoid; }
+    .guide-list-title { padding-top: 0; }
+}
+.guide-topics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+@media (max-width: 760px) { .guide-topics { grid-template-columns: minmax(0, 1fr); } }
+
+// ---------------------------------------------------------------- the docs front page
+
+.guide-front-section { margin-bottom: 64px; scroll-margin-top: 24px; }
+.guide-front-section > h2 { margin: 0 0 10px; font: 700 clamp(2rem, 3vw, 2.6rem)/1.05 var(--serif); letter-spacing: -.015em; }
+.guide-front-section > h3 { margin: 44px 0 8px; font: 700 1.45rem/1.2 var(--serif); scroll-margin-top: 24px; }
+.guide-front-section > p { max-width: var(--measure); margin: 0 0 1em; }
+.guide-group-intro { max-width: var(--measure); margin: 0 0 20px; color: var(--ink-soft); }
+.guide-kinds-line { margin-top: 22px; color: var(--ink-soft); }
+.guide-kinds-line a { color: var(--ink); }
+
+// The reference guide and Javadoc of every line.
+.guide-refs {
+    width: 100%; margin: 12px 0 0; border-collapse: collapse; border-top: 2px solid var(--ink); font: 400 1.0625rem/1.4 var(--sans);
+
+    th, td { padding: 10px 18px 10px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
+    th:last-child, td:last-child { padding-right: 0; }
+    thead th { padding-block: 9px 8px; font: 500 1.05rem/1.2 var(--sc); letter-spacing: .03em; color: var(--ink-soft); }
+    tbody th > a { font: 700 1.2rem/1.2 var(--serif); }
+    tbody th .tag { margin-left: 4px; }
+    td { white-space: nowrap; }
+    @media (pointer: coarse) { a { display: inline-flex; align-items: center; min-height: 44px; } }
+}
+.guide-refs-status { display: block; margin-top: 2px; font: 400 1rem/1.3 var(--sans); color: var(--ink-soft); }
+@media (max-width: 600px) {
+    .guide-refs { display: block; overflow-x: auto; }
+}
+
+// ---------------------------------------------------------------- topic and kind pages, A–Z
+
+.guide-group { margin-bottom: 52px; }
+.guide-group h2 { margin: 0 0 6px; font: 700 clamp(1.75rem, 2.6vw, 2.25rem)/1.1 var(--serif); letter-spacing: -.015em; scroll-margin-top: 24px; }
+.guide-group h2 a { text-decoration-color: transparent; }
+.guide-group h2 a:hover { text-decoration-color: var(--ribbon-deep); }
+
+.guide-topics-other {
+    padding-top: 14px; border-top: 2px solid var(--ink);
+    h2 { margin: 0 0 8px; font: 500 1.1rem/1.2 var(--sc); letter-spacing: .04em; color: var(--ribbon-deep); }
+    ul { display: flex; flex-wrap: wrap; gap: 6px 22px; list-style: none; margin: 0; padding: 0; font: 500 1.0625rem var(--sans); }
+    li { margin: 0; }
+    @media (pointer: coarse) { a { display: inline-flex; align-items: center; min-height: 44px; } }
+}
+
+// Letters as beads.
+.guide-letters {
+    display: flex; flex-wrap: wrap; gap: 5px; margin: 0 0 28px;
+    a {
+        min-width: 36px; padding: 5px 0 6px; text-align: center;
+        border: 1px solid var(--ribbon-under); border-radius: 3px; background: var(--paper);
+        font: 400 .95rem var(--mono); text-decoration: none; transition: background-color .15s;
+    }
+    a:hover { background: var(--ribbon); color: var(--on-ribbon); }
+    @media (pointer: coarse) { a { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; } }
+}
+
+.guide-letter { margin: 36px 0 0; padding-bottom: 6px; border-bottom: 2px solid var(--ink); font: 700 1.6rem/1.1 var(--serif); scroll-margin-top: 24px; }
+
+.guide-classes {
+    margin: 0;
+    @media (min-width: 760px) { display: grid; grid-template-columns: minmax(12rem, 18rem) minmax(0, 1fr); }
+
+    dt, dd { margin: 0; padding: 9px 16px 9px 0; border-top: 1px solid var(--rule); }
+    dt:first-of-type, dd:first-of-type { border-top: 0; }
+    @media (max-width: 759px) { dd { border-top: 0; padding-top: 0; } }
+    dd { font: 400 1.0625rem/1.45 var(--sans); }
+    dd a { text-decoration-thickness: 1px; }
+    code { font-size: .85em; }
+}
+
+// ---------------------------------------------------------------- notes above a page: asides on the tint
+
+.guide-version-note,
+.guide-upcoming,
+.guide-uncovered-inner {
+    max-width: var(--measure); margin: 0 0 32px; padding: 12px 16px 13px;
+    background: var(--paper-tint); border-top: 1px solid var(--ribbon); font: 400 1.0625rem/1.45 var(--sans);
+}
+.guide-version-note[hidden] { display: none; }
+.guide-uncovered { padding-bottom: 0; }
+.guide-uncovered-inner { max-width: 54rem; margin: 0; p { margin: 0; } }
+.guide-uncovered-title { margin-bottom: 4px !important; font-weight: 700; }
+
+.guide-content blockquote.since { font-family: var(--sans); }
+
+// ---------------------------------------------------------------- the foot of a page
+
+.guide-foot { margin-top: 64px; padding-top: 22px; border-top: 2px solid var(--ink); }
+.guide-foot-title { margin: 0 0 20px; font: 700 clamp(1.75rem, 2.6vw, 2.25rem)/1.1 var(--serif); letter-spacing: -.015em; }
+.guide-foot-title a { text-decoration-color: transparent; }
+.guide-foot-title a:hover { text-decoration-color: var(--ribbon-deep); }
+.guide-foot-kinds {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px;
+    section { margin-bottom: 26px; min-width: 0; }
+    h3 { margin: 0 0 8px; font: 500 1.1rem/1.2 var(--sc); letter-spacing: .04em; color: var(--ribbon-deep); }
+}
+@media (max-width: 760px) { .guide-foot-kinds { grid-template-columns: minmax(0, 1fr); } }
+.guide-edit { margin-top: 12px; font: 500 1.0625rem var(--sans); }
+@media (pointer: coarse) { .guide-edit a { display: inline-flex; align-items: center; min-height: 44px; } }

@@ -1,0 +1,237 @@
+// =========== Container, masthead, the seasonal photograph, the season selector and the footer
+
+// One frame for the whole site: the menu, title bands, reading columns and footer share both edges.
+.l-container {
+    display: flow-root;
+    max-width: var(--max); margin: 0 auto; padding: 0 var(--pad);
+    &::before, &::after { display: none; }
+}
+
+// ---------------------------------------------------------------- masthead: lies on the photograph
+
+.header.default { position: relative; z-index: 5; }
+.header.default > .l-container { height: var(--mast-h); }
+
+nav.mainmenu {
+    height: 100%;
+    display: flex; align-items: center; gap: 12px 32px;
+    font: 500 1.0625rem/1 var(--sans);
+}
+
+.nav-brand { display: flex; align-items: center; gap: 12px 24px; }
+
+// The registered mark with the wordmark in the heading face.
+.brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; }
+.brand-mark { width: 34px; height: 34px; flex: none; display: block; }
+.brand-name { font: 700 1.5rem/1 var(--serif); letter-spacing: -.01em; white-space: nowrap; }
+
+// The version plate: the supported lines as beads on one string. The newest line, and the LTS
+// when that is another line, each link to their page; the line whose page is open is the lit bead.
+.nav-plate {
+    display: inline-flex; align-items: stretch;
+    border: 1px solid var(--ribbon-under); border-radius: 3px;
+    background: rgba(var(--veil), .9); color: var(--ink);
+    font: 500 1rem/1 var(--sans); font-variant-numeric: lining-nums; white-space: nowrap;
+    text-decoration: none;
+}
+a.nav-plate, .nav-plate--split a { transition: background-color .15s; }
+a.nav-plate:hover, .nav-plate--split a:hover { background: var(--ribbon-wash); }
+.nav-plate-current, .nav-plate-lts { display: inline-flex; align-items: center; padding: 6px 10px 7px; }
+.nav-plate-lts { border-left: 1px solid var(--ribbon-under); }
+.nav-plate--split a { color: var(--ink); text-decoration: none; }
+a.nav-plate.active, .nav-plate--split a.active { background: var(--ribbon); color: var(--on-ribbon); }
+
+.nav-container { display: flex; align-items: center; gap: 4px 26px; }
+.nav-sections { margin-left: auto; }
+
+nav.mainmenu .nav-items {
+    padding: 8px 0; color: var(--ink); white-space: nowrap;
+    text-decoration-color: transparent;
+    &:hover { text-decoration-color: var(--ribbon-deep); }
+    // The section the page belongs to: a short run of ribbon under the link.
+    &.active { text-decoration-color: var(--ribbon); text-decoration-thickness: 4px; text-underline-offset: .42em; }
+}
+
+// The ASF feather and GitHub at the end, set off by a hairline, each with its name beside the
+// mark; on phones the marks alone.
+.nav-sections + .nav-container { gap: 18px; }
+.nav-asf {
+    display: inline-flex; align-items: center; gap: 7px; padding: 8px 0;
+    color: var(--ink); text-decoration-color: transparent; white-space: nowrap;
+    &:hover { text-decoration-color: var(--ribbon-deep); }
+}
+.nav-asf img { display: block; height: 26px; width: auto; }
+.nav-gh {
+    display: inline-flex; align-items: center; gap: 7px; padding: 8px 0 8px 18px;
+    border-left: 1px solid var(--hair);
+    color: var(--ink); text-decoration-color: transparent; white-space: nowrap;
+    &:hover { text-decoration-color: var(--ribbon-deep); }
+}
+.nav-github { width: 16px; height: 16px; flex: none; }
+
+// Homepage: the hero lockup carries the mark, so the menu goes without the brand, centred.
+nav.mainmenu.is-home { justify-content: center; }
+nav.mainmenu.is-home .nav-sections { margin-left: 0; }
+// The hero's release panel names the supported lines beside the lockup, so on wide screens the
+// homepage menu goes without the plate. On phones the panel is below the first screen; the plate stays.
+@media (min-width: 1000px) { nav.mainmenu.is-home .nav-brand { display: none; } }
+
+@media (max-width: 1199px) {
+    nav.mainmenu { gap: 12px 22px; }
+    .nav-container { gap: 4px 18px; }
+}
+
+// Narrower: the brand and the plate on the first row, the sections and the marks on the second.
+@media (max-width: 999px) {
+    nav.mainmenu { flex-wrap: wrap; align-content: center; gap: 0 18px; }
+    .nav-brand { flex: 1 0 100%; justify-content: space-between; min-height: 48px; }
+    .nav-sections { margin-left: 0; gap: 0 18px; }
+    .nav-sections + .nav-container { margin-left: auto; gap: 14px; }
+    .nav-gh { padding-left: 14px; }
+    nav.mainmenu.is-home .nav-brand { justify-content: center; }
+    nav.mainmenu.is-home .nav-sections + .nav-container { margin-left: 0; }
+}
+@media (max-width: 600px) {
+    nav.mainmenu { font-size: 1rem; column-gap: 14px; }
+    .brand-name { font-size: 1.3rem; }
+    .brand-mark { width: 30px; height: 30px; }
+    .nav-sections { column-gap: 14px; }
+    .nav-sections + .nav-container { gap: 10px; }
+    .nav-gh { padding-left: 10px; }
+    .nav-github-label, .nav-asf-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .nav-github { width: 20px; height: 20px; }
+    .nav-asf img { height: 24px; }
+}
+
+// Touch screens: every link of the masthead is a 44px target.
+@media (pointer: coarse) {
+    nav.mainmenu .nav-items, .nav-asf, .nav-gh, .brand { min-height: 44px; display: inline-flex; align-items: center; }
+    .nav-asf { min-width: 32px; justify-content: center; }
+    .nav-gh { min-width: 44px; justify-content: center; }
+    .nav-plate-current, .nav-plate-lts { min-height: 44px; }
+    @media (max-width: 999px) {
+        .nav-brand { min-height: 50px; }
+    }
+}
+
+// ---------------------------------------------------------------- the seasonal photograph
+// One element, two uses: behind the homepage hero, and behind the title band of every other
+// page. It reaches up behind the masthead. The season data is in _data/seasons.yml.
+
+.photo {
+    position: absolute; z-index: -1; left: 0; right: 0; top: calc(-1 * var(--mast-h)); bottom: 0;
+    overflow: hidden; background: #C9D6CF;
+}
+.photo img {
+    position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; display: block;
+    object-fit: cover; object-position: var(--focus-wide, 50% 50%);
+}
+.photo[data-soft] img { filter: blur(1.4px) saturate(.92); transform: scale(1.03); }
+
+// A photo whose subject stands mid-frame keeps its full height at the right; its own sky and land continue to the left.
+.photo[data-anchor="right"] { background: var(--ground, #C9D6CF); }
+.photo[data-anchor="right"] img {
+    left: auto; right: 0; width: auto; height: 100%; transform: translateX(var(--shift, 0));
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 260px); mask-image: linear-gradient(90deg, transparent 0, #000 260px);
+}
+.photo[data-anchor="right"][data-sized] img {
+    bottom: auto; height: var(--size, 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 260px), linear-gradient(180deg, #000 calc(100% - 140px), transparent);
+    mask-image: linear-gradient(90deg, transparent 0, #000 260px), linear-gradient(180deg, #000 calc(100% - 140px), transparent);
+    -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+
+// The veil: paper, only where text sits: the masthead and the corner with the lockup or title.
+.photo::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+        linear-gradient(180deg, rgba(var(--veil), .8) 0, rgba(var(--veil), .62) calc(var(--mast-h) - 6px), rgba(var(--veil), 0) calc(var(--mast-h) + 80px)),
+        radial-gradient(ellipse 66% 116% at 0% 62%, rgba(var(--veil), .86) 0, rgba(var(--veil), .78) 52%, rgba(var(--veil), 0) 100%);
+}
+.photo[data-soft]::after {
+    background:
+        linear-gradient(180deg, rgba(var(--veil), .8) 0, rgba(var(--veil), .62) calc(var(--mast-h) - 6px), rgba(var(--veil), 0) calc(var(--mast-h) + 80px)),
+        radial-gradient(ellipse 68% 118% at 0% 62%, rgba(var(--veil), .88) 0, rgba(var(--veil), .8) 52%, rgba(var(--veil), 0) 100%);
+}
+.photo[data-veil="strong"]::after {
+    background:
+        linear-gradient(180deg, rgba(var(--veil), .84) 0, rgba(var(--veil), .68) calc(var(--mast-h) - 6px), rgba(var(--veil), 0) calc(var(--mast-h) + 90px)),
+        radial-gradient(ellipse 76% 128% at 0% 62%, rgba(var(--veil), .9) 0, rgba(var(--veil), .85) 58%, rgba(var(--veil), 0) 100%);
+}
+
+// The credit and, in review builds, the season selector: small chips in the photo's corner.
+.photo-meta {
+    position: absolute; right: var(--pad); bottom: 10px; z-index: 1;
+    display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 6px;
+    font: 400 .875rem/1.2 var(--sans);
+}
+.photo-credit {
+    margin: 0; padding: 3px 8px 4px; border-radius: 2px;
+    color: var(--on-cloth); background: rgba(11, 46, 40, .84);
+    --focus: var(--ribbon-text);
+    a { text-decoration-color: rgba(246, 248, 247, .6); text-decoration-thickness: 1px; }
+    &[hidden] { display: none; }
+}
+
+// Review builds only (season_selector: true): try the photo of each season on every page.
+.season-pick {
+    margin: 0; padding: 3px; border: 0; border-radius: 3px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 2px;
+    background: rgba(11, 46, 40, .88); color: var(--on-cloth);
+    --focus: var(--ribbon-text);
+
+    &[hidden] { display: none; }
+    legend { float: left; padding: 3px 6px 4px 5px; font: 500 .875rem/1.2 var(--sc); letter-spacing: .04em; color: var(--muted); }
+    label { position: relative; display: block; cursor: pointer; }
+    input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+    span { display: block; padding: 3px 8px 4px; border-radius: 2px; transition: background-color .15s, color .15s; }
+    label:hover span { background: rgba(246, 248, 247, .14); }
+    input:checked + span { background: var(--ribbon); color: var(--on-ribbon); }
+    input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 1px; }
+}
+@media (pointer: coarse) {
+    .season-pick span { display: flex; align-items: center; min-height: 44px; padding-block: 0; }
+    .photo-credit a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+// ---------------------------------------------------------------- footer: the bookcloth field
+
+.footer { margin-top: 0; background: var(--cloth); color: var(--muted); --focus: var(--ribbon-text); }
+.footer a { color: var(--on-cloth); text-decoration-color: var(--ribbon); }
+
+.footer-columns {
+    display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px 48px;
+    padding-top: 44px;
+    font: 400 1.0625rem/1.5 var(--sans);
+}
+.footer-sitemap {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; align-content: start;
+
+    h2 { grid-column: 1 / -1; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(168, 199, 189, .35); font: 500 1.05rem/1.2 var(--sc); letter-spacing: .04em; color: var(--ribbon-text); }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { margin: 0 0 6px; }
+}
+
+.footer-legal {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px 40px; align-items: center;
+    margin-top: 36px; padding-top: 28px; padding-bottom: 48px;
+    // The hairline spans the content edges, not the container's gutters.
+    background: linear-gradient(rgba(168, 199, 189, .35), rgba(168, 199, 189, .35)) no-repeat var(--pad) 0 / calc(100% - 2 * var(--pad)) 1px;
+
+    p { margin: 0; max-width: 110ch; font: 400 .9375rem/1.5 var(--sans); }
+}
+// The ASF logo on a paper tile, so its purple lettering stays legible on the cloth.
+.footer-asf {
+    display: block; width: max-content; padding: 8px 12px; background: var(--tile); border-radius: 2px; line-height: 0;
+    img { display: block; width: auto; height: 48px; }
+}
+
+@media (max-width: 860px) {
+    .footer-columns { grid-template-columns: minmax(0, 1fr); }
+    .footer-legal { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (pointer: coarse) {
+    .footer-sitemap li { margin: 0; }
+    .footer-sitemap a { display: inline-flex; align-items: center; min-height: 44px; }
+}

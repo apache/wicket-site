@@ -1,0 +1,41 @@
+---
+layout: section
+title: How Wicket works
+parent:
+  title: Documentation
+  url: /docs/
+summary: One small order page in seven steps, from plain HTML to a tested page with Ajax that is secure by default. Each step adds a few lines of Java or HTML and grows the page’s component tree.
+wide: true
+---
+{% comment %}
+  How Wicket works: the component tree of the homepage, grown in seven steps. The steps are
+  _data/how.yml; the `loom` filter (_plugins/loom.rb) renders each. On wide screens with JavaScript
+  one step shows at a time and the rail of beads at the top chooses it; javascript/ribbon.js grows
+  the ribbon into what is new. Without JavaScript and on narrow screens the steps follow each other,
+  each tree as a list with its files, and the rail is their table of contents.
+{% endcomment %}
+{% assign steps = site.data.how.steps %}
+<section class="ctree how" aria-label="How Wicket works, in seven steps">
+  <div class="ctree-in">
+    <nav class="how-rail" aria-label="Steps">
+      <ol>
+        {% for step in steps %}<li><a href="#step-{{ forloop.index }}"><span class="how-n">{{ forloop.index }}</span> <span class="how-t">{{ step.title }}</span></a></li>
+        {% endfor %}
+      </ol>
+    </nav>
+    {% for step in steps %}
+    <section class="how-step" id="step-{{ forloop.index }}" aria-labelledby="step-{{ forloop.index }}-title">
+      <header class="ctree-head how-head">
+        <h2 id="step-{{ forloop.index }}-title"><span class="how-n">{{ forloop.index }}</span> {{ step.title }}</h2>
+        <div class="how-text">
+          {{ step.text }}
+          <p class="how-more"><a href="{{ site.baseurl }}{{ step.more.url }}">{{ step.more.label }}</a>
+            {% if forloop.last %}<a class="how-next" href="{{ site.baseurl }}/docs/first-application.html">Next: build your first application</a>{% else %}{% assign next = steps[forloop.index] %}<a class="how-next" href="#step-{{ forloop.index | plus: 1 }}">Next: {{ next.title }}</a>{% endif %}</p>
+        </div>
+      </header>
+      {{ step | loom: forloop.index0 }}
+    </section>
+    {% endfor %}
+    <p class="loom-hint" id="loom-hint">Lines marked + are new in their step. Point at a component, or tab to the tree and use the arrow keys, to follow it from its Java line to its tag.</p>
+  </div>
+</section>

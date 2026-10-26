@@ -1,0 +1,28 @@
+{% comment %}
+  The season's photograph behind the homepage hero (include.hero) or the title band of a page,
+  with the credit and, in review builds (season_selector: true), the season selector.
+  Without JavaScript the page shows the season of the month it was built in; javascript/ribbon.js
+  picks the season of today, an occasion on its days, or the one asked for. Data: _data/seasons.yml.
+{% endcomment %}
+{%- assign month = site.time | date: "%-m" | plus: 0 -%}
+{%- assign s = site.data.seasons.seasons | first -%}
+{%- for season in site.data.seasons.seasons -%}{%- if season.months contains month -%}{%- assign s = season -%}{%- endif -%}{%- endfor -%}
+{%- capture base %}{{ site.baseurl }}/img/seasons/{% endcapture -%}
+<div class="photo" data-season="{{ s.name }}"{% if s.soft %} data-soft{% endif %}{% if s.anchor %} data-anchor="{{ s.anchor }}"{% endif %}{% if s.veil %} data-veil="{{ s.veil }}"{% endif %}{% if s.size %} data-sized{% endif %} style="--focus-wide: {{ s.focus }}; --focus-narrow: {{ s.focus_narrow }};{% if s.shift %} --shift: {{ s.shift }};{% endif %}{% if s.size %} --size: {{ s.size }};{% endif %}{% if s.ground %} --ground: {{ s.ground }};{% endif %}" aria-hidden="true">
+    <img src="{{ base }}{{ s.photo }}"{% if s.srcset %} srcset="{% for f in s.srcset %}{{ base }}{{ f.file }} {{ f.width }}w{% unless forloop.last %}, {% endunless %}{% endfor %}" sizes="100vw"{% endif %} alt=""{% if include.hero %} fetchpriority="high"{% endif %}>
+</div>
+<div class="photo-meta">
+    <p class="photo-credit"{% unless s.credit %} hidden{% endunless %}>{% if s.credit %}Photo: <a href="{{ s.url }}" rel="noreferrer">{{ s.credit }}</a>{% endif %}</p>
+    {%- if site.season_selector %}
+    <fieldset class="season-pick" hidden>
+        <legend>Season</legend>
+        <label><input type="radio" name="season-{{ include.hero | default: 'band' }}" value=""><span>By date</span></label>
+        {%- for season in site.data.seasons.seasons %}
+        <label><input type="radio" name="season-{{ include.hero | default: 'band' }}" value="{{ season.name }}"><span>{{ season.label }}</span></label>
+        {%- endfor %}
+        {%- for occasion in site.data.seasons.occasions %}
+        <label><input type="radio" name="season-{{ include.hero | default: 'band' }}" value="{{ occasion.name }}"><span>{{ occasion.label }}</span></label>
+        {%- endfor %}
+    </fieldset>
+    {%- endif %}
+</div>

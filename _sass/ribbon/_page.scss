@@ -1,0 +1,394 @@
+// =========== Reading pages: the title band on the photograph, the ribbon rail, body copy and the
+// furniture of Markdown pages
+
+// ---------------------------------------------------------------- title band on the season's photograph
+
+.page-sign { position: relative; isolation: isolate; }
+.page-sign-inner {
+    position: relative;
+    width: 100%; max-width: var(--max); margin: 0 auto; min-height: 220px;
+    padding: 36px var(--pad) 48px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+
+    h1 {
+        max-width: 20ch;
+        font: 700 clamp(2.4rem, 4.4vw, 3.8rem)/1.02 var(--serif); letter-spacing: -.02em;
+    }
+}
+.page-sign-sub,
+.hub-role {
+    max-width: 46ch; margin: 12px 0 0;
+    font: italic 400 clamp(1.25rem, 1.7vw, 1.5rem)/1.3 var(--serif);
+}
+
+// A section's one action on its sign.
+.page-sign-action { margin: 22px 0 0; }
+.page-sign-action .button { margin: 0; }
+
+// The breadcrumb above a title: the section the page belongs to, in small capitals.
+.guide-crumbs,
+.hub-crumbs {
+    margin: 0 0 10px; font: 500 1.1rem/1.2 var(--sc); letter-spacing: .03em; color: var(--ink-soft);
+    a { color: var(--ribbon-deep); text-decoration-color: transparent; }
+    a:hover { text-decoration-color: var(--ribbon-deep); }
+}
+
+@media (max-width: 860px) {
+    // The photograph is a strip under the menu; the title reads on paper below it.
+    .page-sign { --band-m: 260px; }
+    .page-sign > .photo { bottom: auto; height: var(--band-m); background: var(--paper); }
+    .page-sign > .photo img,
+    .page-sign > .photo[data-anchor] img,
+    .page-sign > .photo[data-anchor][data-sized] img {
+        inset: 0; width: 100%; height: 100%;
+        transform: none; -webkit-mask-image: none; mask-image: none; object-position: var(--focus-narrow, 100% 50%);
+    }
+    .page-sign > .photo::after,
+    .page-sign > .photo[data-soft]::after,
+    .page-sign > .photo[data-veil="strong"]::after {
+        background: linear-gradient(180deg, rgba(var(--veil), .84) 0, rgba(var(--veil), .66) calc(var(--mast-h) - 4px), rgba(var(--veil), 0) calc(var(--mast-h) + 40px),
+            rgba(var(--veil), 0) calc(var(--band-m) - 110px), rgba(var(--veil), 1) var(--band-m));
+    }
+    // The credit and selector follow the title, on paper.
+    .page-sign { display: flex; flex-direction: column; }
+    .page-sign .photo-meta { position: static; order: 1; justify-content: flex-start; max-width: var(--max); width: 100%; margin: -14px auto 0; padding: 0 var(--pad) 16px; }
+    .page-sign .photo-credit { padding: 0; background: none; color: var(--ink-soft); --focus: var(--ribbon-deep); }
+    .page-sign-inner { min-height: 0; padding: calc(var(--band-m) - var(--mast-h) - 30px) var(--pad) 26px; }
+    .page-sign-inner h1 { font-size: 2.3rem; }
+    .page-sign-sub, .hub-role { font-size: 1.2rem; }
+}
+
+// ---------------------------------------------------------------- reading layout
+
+// The footer stays at the foot of the window on short pages.
+body { min-height: 100vh; display: flex; flex-direction: column; }
+body > main { flex: 1 0 auto; }
+
+.reading { max-width: var(--max); margin: 0 auto; padding: 48px var(--pad) 72px; }
+.reading-main { min-width: 0; max-width: 54rem; }
+
+@media (min-width: 1100px) {
+    .reading.has-rail { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: clamp(48px, 5vw, 96px); align-items: start; }
+}
+
+// ---------------------------------------------------------------- the rail: the page's sections on the ribbon
+// The ribbon drops from the photograph's edge into the rail and folds into every section,
+// as it runs through the component tree on the homepage. The section in view is the lit bead.
+
+.reading.has-rail { padding-top: 0; }
+.reading.has-rail > .reading-main { padding-top: 48px; }
+
+.reading-rail {
+    --rw: 5px; --mid: 17px;
+    padding-top: 48px; font: 400 1.0625rem/1.3 var(--sans);
+
+    #toc-title { position: relative; padding: 0 0 10px 24px; }
+    #toc-title::before { content: ""; position: absolute; left: 0; top: -48px; bottom: 0; border-left: var(--rw) solid var(--ribbon); }
+    #toc-title h2 { margin: 0; font: 500 1.05rem/1.2 var(--sc); letter-spacing: .04em; color: var(--ribbon-deep); }
+
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { position: relative; margin: 0; padding: 0 0 0 24px; }
+    li::before {
+        content: ""; position: absolute; left: 0; top: 0; width: 14px; height: var(--mid);
+        border-left: var(--rw) solid var(--ribbon); border-bottom: var(--rw) solid var(--ribbon); border-bottom-left-radius: 2px;
+    }
+    li:not(:last-child)::after { content: ""; position: absolute; left: 0; top: calc(var(--mid) - 4px); bottom: 0; border-left: var(--rw) solid var(--ribbon); }
+    // The second level: a thinner run of ribbon from the first.
+    li li { --mid: 15px; padding-left: 20px; }
+    li li::before { width: 12px; border-width: 0 0 3px 3px; }
+    li li:not(:last-child)::after { border-left-width: 3px; }
+    .toc-gap { margin-top: 10px; }
+
+    a {
+        display: inline-block; margin: 4px 0; padding: 4px 7px 5px; border-radius: 3px;
+        color: var(--ink-soft); text-decoration: none;
+        transition: background-color .15s, color .15s;
+    }
+    a:hover { color: var(--ink); background: var(--ribbon-wash); }
+    li li a { margin: 2px 0; padding-block: 3px 4px; font-size: 1rem; }
+    .toc-number { display: none; }
+    a.is-current { color: var(--on-ribbon); background: var(--ribbon); }
+}
+
+@media (min-width: 1100px) {
+    .reading-rail { position: sticky; top: 0; max-height: 100vh; overflow-y: auto; padding-bottom: 24px; }
+}
+
+// Below the wide layout the rail is a compact index above the text, first level only.
+@media (max-width: 1099px) {
+    .reading-rail { padding-top: 32px; }
+    .reading-rail #toc-title::before { top: -32px; }
+    .reading-rail ul ul { display: none; }
+    .reading.has-rail > .reading-main { padding-top: 32px; }
+    // A page that opens with its own panels (community) needs no index above the text.
+    .section-lead + .has-rail .reading-rail { display: none; }
+    .section-lead + .has-rail > .reading-main { padding-top: 36px; }
+}
+
+@media (pointer: coarse) {
+    .reading-rail a { display: inline-flex; align-items: center; min-height: 44px; margin: 0; padding-block: 0; }
+    .reading-rail li { --mid: 24px; }
+}
+
+// ---------------------------------------------------------------- preamble (older pages)
+
+.preamble {
+    margin-bottom: 36px;
+    p { max-width: 60ch; margin: 0; font-size: clamp(1.25rem, 1.6vw, 1.4rem); line-height: 1.45; }
+    img { display: block; margin: 0 0 24px; }
+}
+
+// ---------------------------------------------------------------- body copy
+
+.page-content,
+.section-body,
+.hub-body {
+    line-height: 1.6;
+
+    &::after { content: ""; display: table; clear: both; }
+    > :first-child { margin-top: 0; }
+
+    p, ul:not([class]), ol:not([class]), dl:not([class]), blockquote, h1, h2, h3, h4, h5, h6 { max-width: var(--measure); }
+
+    h1, h2 { margin: 3.25rem 0 .9rem; font: 700 clamp(1.75rem, 2.6vw, 2.25rem)/1.1 var(--serif); letter-spacing: -.015em; }
+    h3 { margin: 2.25rem 0 .55rem; font: 700 1.45rem/1.2 var(--serif); }
+    h4 { margin: 1.75rem 0 .45rem; font: 700 1.2rem/1.25 var(--serif); }
+    h5, h6 { margin: 1.5rem 0 .4rem; font: 500 1.1rem/1.25 var(--sc); letter-spacing: .03em; }
+    h2, h3, h4 { scroll-margin-top: 24px; }
+
+    p { margin: 0 0 1em; }
+    ul:not([class]), ol:not([class]) { margin: 0 0 1.2em; padding-left: 1.35em; }
+    :is(ul, ol):not([class]) > li { margin-bottom: .3em; }
+    li > ul, li > ol { margin: .3em 0 0; }
+    li::marker { color: var(--ribbon-deep); }
+    dl { margin: 0 0 1.2em; }
+    dt { font-weight: 700; }
+    dd { margin: 0 0 .8em; }
+    small { font: 400 1rem var(--sans); color: var(--ink-soft); }
+
+    hr { clear: both; height: 0; margin: 3rem 0; border: 0; border-top: 1px solid var(--rule); }
+    hr + h1, hr + h2 { margin-top: 0; }
+
+    blockquote {
+        margin: 1.5rem 0; padding: 12px 18px 14px;
+        background: var(--paper-tint); border-top: 1px solid var(--ribbon);
+        p:last-child { margin-bottom: 0; }
+    }
+
+    img { border-radius: 2px; }
+
+    // Inline code keeps its words whole; a table that grows too wide scrolls in its own box.
+    :not(pre) > code { padding: .08em .32em; background: var(--code-bg); border-radius: 2px; }
+}
+
+// Section pages: each section opens on a 2px ink rule; the first sits right under the title band.
+.section-body {
+    > h2 { max-width: none; padding-top: 1.5rem; border-top: 2px solid var(--ink); margin-top: 3.25rem; }
+    > h2:first-child,
+    > .visually-hidden:first-child + * + h2 { margin-top: 0; }
+    > h2:first-child { padding-top: 0; border-top: 0; }
+    > hr { display: none; }
+}
+.section-body.reading > *:not(table):not(.post-panels):not(.line-panels):not(h2) { max-width: 54rem; }
+.hub-body > h2:first-child { margin-top: 0; }
+
+// ---------------------------------------------------------------- code blocks
+
+.page-content pre,
+.section-body pre,
+.hub-body pre,
+.hub-maven pre,
+.feature-code pre,
+.quickstart pre { overflow-x: auto; font: 400 .8125rem/1.65 var(--mono); color: var(--ink); tab-size: 4; }
+pre code { font-size: 1em; }
+
+div.highlight,
+figure.highlight,
+.page-content > pre,
+.section-body > pre { margin: 1.25rem 0 1.75rem; background: var(--code-bg); border-radius: 2px; }
+div.highlight pre,
+figure.highlight pre { margin: 0; padding: 14px 16px; }
+.page-content > pre,
+.section-body > pre { padding: 14px 16px; }
+
+// The copy button guide.js puts above a code sample: a bar of the code's own ground.
+.guide-copy-bar {
+    display: flex; justify-content: flex-end; margin-top: 1.25rem; padding: 8px 8px 0;
+    background: var(--code-bg); border-radius: 2px 2px 0 0;
+    + .highlight, + pre { margin-top: 0 !important; border-radius: 0 0 2px 2px; }
+    + .highlight pre, + pre { padding-top: 4px !important; }
+}
+
+// ---------------------------------------------------------------- tables: an ink rule above, hairlines between
+
+.page-content table,
+.section-body table,
+.hub-body table {
+    width: 100%; margin: 1.5rem 0 2.25rem;
+    border-collapse: collapse; border-top: 2px solid var(--ink);
+    font: 400 1.0625rem/1.45 var(--sans);
+
+    th, td { padding: 10px 18px 10px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
+    th:last-child, td:last-child { padding-right: 0; }
+    thead th {
+        padding-block: 9px 8px; vertical-align: bottom;
+        font: 500 1.05rem/1.2 var(--sc); letter-spacing: .03em; color: var(--ink-soft);
+    }
+    tbody th { font-weight: 700; }
+    td p { margin: 0 0 .5rem; }
+    td p:last-child { margin-bottom: 0; }
+    code { font-size: .86em; }
+}
+.community-lists th[scope=row] { white-space: nowrap; }
+@media (pointer: coarse) { .community-lists td a, .guide-foot-title a { display: inline-flex; align-items: center; min-height: 44px; } }
+
+// Markdown tables scroll inside their own box rather than squeezing their code or the page.
+.page-content table:not([class]),
+.section-body table:not([class]),
+.hub-body table:not([class]) { display: block; overflow-x: auto; }
+
+// ---------------------------------------------------------------- buttons
+
+.button {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin: .25rem 0 1rem; padding: 13px 18px; border: 0; border-radius: 2px;
+    background: var(--ribbon); color: var(--on-ribbon);
+    font: 700 1.0625rem/1.2 var(--sans); text-decoration: none; cursor: pointer;
+    transition: background-color .15s;
+}
+.button:hover { background: var(--ribbon-text); }
+
+// Jump lists (.button-bar in older Markdown): a ruled index, labels only.
+.l-button-table,
+.l-button-table > div { display: block; float: none; margin: 0; width: auto; }
+.l-button-table { margin: 0 0 2.5rem; }
+.button-bar {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 0 2.5rem;
+    margin: 0; max-width: none;
+
+    .button {
+        display: block; margin: 0; padding: 11px 0 12px;
+        border-top: 1px solid var(--rule); border-radius: 0;
+        background: transparent; color: var(--ink);
+        font: 700 1.2rem/1.25 var(--serif); text-align: left;
+        text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1.5px; text-underline-offset: .22em;
+    }
+    .button:hover { background: transparent; text-decoration-color: var(--ribbon-deep); }
+    i, br { display: none; }
+}
+
+// The copy button of a code sample: a small orange button.
+.hub-copy {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 7px 12px; border: 0; border-radius: 2px;
+    background: var(--ribbon); color: var(--on-ribbon);
+    font: 700 .95rem/1 var(--sans); cursor: pointer;
+    transition: background-color .15s;
+    &:hover { background: var(--ribbon-text); }
+}
+@media (pointer: coarse) { .hub-copy { min-height: 44px; min-width: 64px; } }
+
+// The label row over a code sample: what it is, and its copy button.
+.hub-maven-label {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    margin: 0 0 6px; font: 500 1.05rem/1.2 var(--sc); letter-spacing: .03em; color: var(--ink-soft);
+}
+
+// ---------------------------------------------------------------- section index and jump rows
+
+// A row of the page's sections (contribute, learn): labels between an ink rule and a hairline.
+.section-index {
+    display: flex; flex-wrap: wrap; gap: 4px 28px;
+    margin: 0 0 2.5rem; padding: 12px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule);
+    font: 500 1.0625rem/1.3 var(--sans);
+    a { text-decoration-color: transparent; }
+    a:hover { text-decoration-color: var(--ribbon-deep); }
+}
+.section-index + h2 { margin-top: 0 !important; padding-top: 0 !important; border-top: 0 !important; }
+@media (pointer: coarse) { .section-index a { display: inline-flex; align-items: center; min-height: 44px; } }
+
+.hub-more { margin-top: 1rem; font: 500 1.0625rem var(--sans); }
+@media (pointer: coarse) { .hub-more a { display: inline-flex; align-items: center; min-height: 44px; } }
+
+// ---------------------------------------------------------------- older Taiga layout inside the reading column
+
+.page-content > .l-two-third,
+.page-content > .l-half { float: none; width: auto; margin-left: 0; margin-right: 0; max-width: 42rem; }
+.l-clearfix {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0 2.5rem; margin-bottom: 1.5rem;
+    > * { float: none; width: auto; margin: 0; }
+}
+.media-bar {
+    display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 24px;
+    > * { float: none; width: auto; margin: 0; }
+    a { display: block; line-height: 0; text-decoration: none; }
+    // Book covers: one height, one treatment, lifted off the paper like the sheets in the tree.
+    a > img {
+        display: block; height: 220px; width: auto; max-width: none; border-radius: 2px;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 16px 32px -20px rgba(6, 26, 22, .5);
+        transition: box-shadow .15s;
+    }
+    a:hover > img { box-shadow: 0 0 0 3px var(--ribbon), 0 16px 32px -20px rgba(6, 26, 22, .5); }
+}
+@media (max-width: 600px) { .media-bar a > img { height: 160px; } }
+.page-content article + article { clear: both; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+
+// ---------------------------------------------------------------- quick start: a paper sheet with an orange rule
+
+.quickstart {
+    max-width: 46rem; margin: 0 0 2.5rem; padding: 18px 20px 20px;
+    background: var(--sheet); border-top: 2px solid var(--ribbon);
+    box-shadow: 0 1px 0 rgba(20, 36, 31, .06), 0 14px 30px -20px rgba(6, 26, 22, .35);
+    font-family: var(--sans);
+}
+.quickstart-fields {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 20px;
+
+    label { display: block; font: 500 1.05rem/1.2 var(--sc); letter-spacing: .03em; color: var(--ink-soft); }
+    input, select {
+        display: block; width: 100%; height: 44px; margin-top: 6px; padding: 0 11px;
+        border: 1px solid var(--field); border-radius: 2px;
+        background: var(--paper); color: var(--ink); font: 400 .9375rem/1.4 var(--mono); letter-spacing: 0;
+        transition: border-color .15s;
+    }
+    input:hover, select:hover { border-color: var(--ink-soft); }
+    input:focus-visible, select:focus-visible { border-color: var(--ribbon-deep); outline: 2px solid var(--ribbon-deep); outline-offset: 1px; }
+    select {
+        appearance: none; -webkit-appearance: none; padding-right: 34px; cursor: pointer;
+        background: var(--paper) var(--chev-down) no-repeat right 13px center;
+    }
+}
+.quickstart-command pre { margin: 0; padding: 14px 16px; background: var(--code-bg); border-radius: 2px; }
+.quickstart p { max-width: none; }
+.quickstart .quickstart-needs { margin: 12px 0 0; font: 400 1.0625rem/1.4 var(--sans); color: var(--ink-soft); }
+
+@media (max-width: 760px) {
+    .quickstart { padding: 16px 14px; }
+    .quickstart-fields { grid-template-columns: minmax(0, 1fr); }
+}
+
+// The steps under the quick start: each number a bead.
+.section-body .quickstart ~ ol {
+    list-style: none; padding-left: 0; counter-reset: step;
+
+    > li { position: relative; padding-left: 2.6rem; counter-increment: step; margin-bottom: .7em; }
+    > li::before {
+        content: counter(step); position: absolute; left: 0; top: .1em;
+        width: 1.7rem; height: 1.7rem; border: 1px solid var(--ribbon); border-radius: 3px;
+        font: 400 .95rem/1.6rem var(--mono); text-align: center; color: var(--ink); background: var(--paper);
+    }
+}
+
+// ---------------------------------------------------------------- page not found
+
+.notfound-suggest { margin-bottom: 1.5rem; font-size: 1.35rem; }
+.notfound-suggest[hidden] { display: none; }
+.section-body > .guide-search { max-width: 40rem; margin: 0 0 2.5rem; }
+.notfound-map {
+    list-style: none; margin: 0 0 2rem; padding: 0; max-width: 54rem; border-top: 2px solid var(--ink);
+
+    li { margin: 0; padding: 11px 0 13px; border-bottom: 1px solid var(--rule); }
+    a { font: 700 1.3rem/1.2 var(--serif); text-decoration-color: transparent; }
+    a:hover { text-decoration-color: var(--ribbon-deep); }
+    span { display: block; margin-top: 3px; font: 400 1.0625rem/1.4 var(--sans); color: var(--ink-soft); }
+}

@@ -22,7 +22,7 @@ That is why the site is built on your machine and not by the ASF. Many ASF sites
 
 With a major release every quarter and patch releases in between, the site changes often, and the people who change it are volunteers releasing Wicket, not web developers. So a release is data: the version numbers in `_config.yml`, the release lines in `_data/releases.yml`, the highlights in `_data/highlights.yml`, and a post. The version plate in the menu, the release lines page, the line pages, the panels on the documentation and the quick start are generated from that data. A release updates all of them without anyone editing a page, and none of them can fall behind another.
 
-The documentation follows the same idea with versions. A page states the oldest line it is correct for in `since`, and paragraphs that differ between lines carry a note. One page serves every line in service, a reader filters by the version they use, and a line leaving service needs no edit at all.
+The documentation follows the same idea with versions. A page states the oldest line it is correct for in `since`, and paragraphs that differ between lines carry a note. One page serves every supported line, a reader filters by the version they use, and a line reaching end of life needs no edit at all.
 
 ## Redirects keep old links working
 

@@ -53,8 +53,10 @@ layout: base
     </div>
 </div>
 <main class="hub" id="main" tabindex="-1">
-    <div class="l-container">
-        <header class="hub-head" id="status">
+    {% comment %} The line's title band on the season's photograph: its name and role. {% endcomment %}
+    <header class="page-sign hub-head" id="status">
+        {% include season-photo.html %}
+        <div class="page-sign-inner">
             <p class="hub-crumbs"><a href="{{ site.baseurl }}/versions/">Releases</a></p>
             <h1>Apache Wicket {{ page.series }}.x</h1>
             <p class="hub-role">
@@ -63,12 +65,16 @@ layout: base
                 {% when 'current' %}The current quarterly release.
                 {% when 'eol' %}End of life: no more releases, not even security fixes.
                 {% when 'last-call' %}One more Wicket {{ page.series }} release follows {{ version }}; after it the line reaches end of life. Its date will be on the <a href="{{ site.baseurl }}/news/">blog</a>; <a href="mailto:announce-subscribe@wicket.apache.org">subscribe to the announce list</a> to hear it first.
-                {% else %}In service.
+                {% else %}Supported.
                 {% endcase %}
             </p>
+        </div>
+    </header>
+    <div class="l-container hub-main">
+            {% comment %} The line's facts, on paper under the band. {% endcomment %}
             <dl class="hub-facts">
                 <div><dt>Latest release</dt><dd class="hub-version">{{ version }}</dd></div>
-                <div><dt>Status</dt><dd>{% case status %}{% when 'lts' %}<span class="tag tag-lts">LTS</span> In service{% else %}{% include line-status.html status=status style="tag" %}{% endcase %}</dd></div>
+                <div><dt>Status</dt><dd>{% include line-status.html status=status style="tag" %}{% if line.service == 'lts' %} <span class="tag tag-lts" title="Long-term support">LTS</span>{% endif %}{% if line.role %} <span class="tag tag-current">{{ line.role }}</span>{% endif %}</dd></div>
                 <div><dt>Supported</dt><dd>{{ support }}</dd></div>
                 {% assign next_release = site.data.releases.lines | where: "series", page.series | where: "status", "scheduled" | first %}
                 {% if next_release %}<div><dt>Next release</dt><dd>{{ next_release.version }}, {{ next_release.when }}</dd></div>{% endif %}
@@ -111,7 +117,6 @@ layout: base
                 {% if recommended %}<p class="hub-maven-more">Other modules, such as <code>wicket-extensions</code> and <code>wicket-spring</code>, take the same group id and version. <a href="{{ site.baseurl }}/docs/modules.html">Wicket's modules</a> lists them all.</p>{% endif %}
                 <p class="hub-maven-more"><a href="#manually">Download the source and binaries</a>{% if recommended %} · New project? <a href="{{ site.baseurl }}/start/quickstart.html?v={{ page.series }}">Generate one with the quick start</a>{% endif %}</p>
             </div>
-        </header>
 
 {% comment %} The page's sections, as a row of links under the head. {% endcomment %}
         <nav class="hub-jump" aria-label="On this page">

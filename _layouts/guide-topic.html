@@ -8,6 +8,7 @@ layout: base
 </div>
 {% assign pages = site.guide | where: "topic", page.topic %}
 <div class="page-sign guide-sign">
+    {% include season-photo.html %}
     <div class="page-sign-inner guide-sign-inner">
         <div class="guide-sign-text">
             <p class="guide-crumbs"><a href="{{ site.baseurl }}/docs/">Documentation</a></p>
