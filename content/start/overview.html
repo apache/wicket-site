@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
     <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta charset="utf-8">
 	
 	
 
-        <title>Introducing Apache Wicket | Apache Wicket</title>
+        <title>How Wicket works | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Apache Wicket, the open source component-oriented Java web framework." />
+        <meta name="description" content="One small order page in seven steps, from plain HTML to a tested page with Ajax that is secure by default. Each step adds a few lines of Java or HTML and gro..." />
+        <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
+        <meta name="color-scheme" content="light dark" />
         <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
 
-        <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
-        <link rel="stylesheet" href="/css/style.css?v=1792945482" type="text/css" media="screen" />
+        <link rel="icon" href="/img/logo-apachewicket-mark.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/css/style.css?v=1793051582" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -20,7 +25,8 @@
     </head>
     <body class="">
         <a class="skip-link" href="#main">Skip to content</a>
-        <div class="header default">
+        
+<div class="header default">
     <div class="l-container">
         
 
@@ -39,9 +45,8 @@
 
 <nav class="mainmenu" aria-label="Main">
     <div class="nav-brand">
-        <div class="nav-logo">
-    <a href="/"><img src="/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
-</div>
+        
+<a class="brand" href="/"><img class="brand-mark" src="/img/logo-apachewicket-mark.svg" alt="" width="34" height="34"><span class="brand-name">Apache Wicket</span></a>
 
         
         
@@ -56,7 +61,7 @@
         
         
         
-        <a href="/docs/" class="nav-items ">Docs</a>
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
     
         
         
@@ -75,114 +80,684 @@
     
     </div>
     <div class="nav-container">
-        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
-        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" aria-label="ASF, The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="" width="22" height="34"><span class="nav-asf-label">ASF</span></a>
+        <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="nav-github-label">GitHub</span></a>
     </div>
 </nav>
+
+    </div>
+</div>
+<div class="page-sign">
+    <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 13; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%);" aria-hidden="true">
+    <img src="/img/seasons/autumn-ink-cap-1600.jpg" srcset="/img/seasons/autumn-ink-cap-900.jpg 900w, /img/seasons/autumn-ink-cap-1600.jpg 1600w, /img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="">
+</div>
+<div class="photo-meta">
+    <p class="photo-credit">Photo: <a href="https://unsplash.com/photos/CCAoWVqolxM" rel="noreferrer noopener noreferrer" target="_blank">Veronika Biro on Unsplash</a></p>
+</div>
+
+    <div class="page-sign-inner">
+        <p class="hub-crumbs"><a href="/docs/">Documentation</a></p>
+        <h1>How Wicket works</h1>
+        <p class="page-sign-sub">One small order page in seven steps, from plain HTML to a tested page with Ajax that is secure by default. Each step adds a few lines of Java or HTML and grows the page’s component tree.</p>
         
     </div>
 </div>
 <main id="main" tabindex="-1">
-    <div class="l-container">
-        <header class="l-full preamble">
-            <h1>Introducing Apache Wicket</h1>
-            <h2>Find what Wicket offers you!</h2>
-            
-            
-        </header>
-        <section class="toc left default ">
-            
-        </section>
-        <section>
-            <div class="l-clearfix">
-	<article class="l-one-third">
-		<header>
-			<img src="/img/java-wicket-html5.png">
-			<h3>Just Java &amp; HTML</h3>
-		</header>
-		<p>Leverage what you know about Java or your favorite HTML editor
-			to write Wicket applications. With pure Java code and HTML markup
-			Wicket is the go-to web framework for purists.</p>
-	</article>
-	<article class="l-one-third">
-		<header>
-			<img src="/img/wicket-safe.png">
-			<h3>Secure by default</h3>
-		</header>
-		<p>URLs do not expose sensitive information and all component
-			paths are session-relative. Wicket keeps your model private except
-			those parts you explicitly expose.</p>
-	</article>
-	<article class="l-one-third">
-		<header>
-			<img src="/img/wicket-components.png">
-			<h3>Maintainable code</h3>
-		</header>
-		<p>Pages and Components in Wicket are real Java objects that
-			support encapsulation, inheritance and events. Create high level
-			components with ease and bundle its stylesheets, JavaScript and
-			other resources into one reusable package.</p>
-	</article>
+    
+    
+    
+
+<section class="ctree how" aria-label="How Wicket works, in seven steps">
+  <div class="ctree-in">
+    <nav class="how-rail" aria-label="Steps">
+      <ol>
+        <li><a href="#step-1"><span class="how-n">1</span> <span class="how-t">Start with plain HTML</span></a></li>
+        <li><a href="#step-2"><span class="how-n">2</span> <span class="how-t">Give the tag a component</span></a></li>
+        <li><a href="#step-3"><span class="how-n">3</span> <span class="how-t">Add a form with fields</span></a></li>
+        <li><a href="#step-4"><span class="how-n">4</span> <span class="how-t">Reuse a panel, twice</span></a></li>
+        <li><a href="#step-5"><span class="how-n">5</span> <span class="how-t">Update it from Java</span></a></li>
+        <li><a href="#step-6"><span class="how-n">6</span> <span class="how-t">Test it without a browser</span></a></li>
+        <li><a href="#step-7"><span class="how-n">7</span> <span class="how-t">Secure by default</span></a></li>
+        
+      </ol>
+    </nav>
+    
+    <section class="how-step" id="step-1" aria-labelledby="step-1-title">
+      <header class="ctree-head how-head">
+        <h2 id="step-1-title">
+<span class="how-n">1</span> Start with plain HTML</h2>
+        <div class="how-text">
+          <p>A page begins as an HTML file. The <code>wicket:id</code> attribute marks the tag a component will render; the dashed bead is the component it waits for. There is no template language: the file stays HTML that any editor or browser opens.</p>
+          <p class="how-more"><a href="/docs/wicket-tags.html">Wicket tags and attributes</a>
+            <a class="how-next" href="#step-2">Next: Give the tag a component</a></p>
+        </div>
+      </header>
+      <div class="loom" style="grid-template-rows: 1.2em 3em 1.85em 1.85em 2.8em 1.85em 1.85em 1.2em" aria-describedby="loom-hint" data-focus-paths="" data-focus-keys="message">
+<div class="sheet" style="--c:3; --r:1 / 9" aria-hidden="true"></div>
+<div class="beads" role="group" aria-label="Component tree of OrderPage after step 1">
+<button type="button" class="bead root" style="--r:2; --x:0" data-path="page" data-k="page" aria-label="OrderPage, the page">OrderPage</button>
+<span class="bead-ghost" style="--r:5; --x:14.5" aria-hidden="true">message</span>
 </div>
-<div class="l-clearfix">
-	<article class="l-one-third">
-		<h3>Internationalization</h3>
-		<p>With support of over 25 languages out-of-the-box, Wicket let's
-			you get started in your own language, or a second language with no
-			effort. You can provide alternative languages on the application,
-			page, or even component level.</p>
-	</article>
-	<article class="l-one-third">
-		<h3>Ajax components</h3>
-		<p>Write Ajax applications without having to write a single line
-			of JavaScript code. Wicket's Ajax functionality makes it trivial to
-			update selected parts of a UI, and comes with a great selection of
-			basic Ajax components.</p>
-	</article>
-	<article class="l-one-third">
-		<h3>Injection support for CDI, Spring and Guice</h3>
-		<p>Inject your services into your pages and components with the
-			technology of your choosing: Wicket provides integration with CDI
-			(JSR-305), Spring and Guice.</p>
-	</article>
+<p class="file" style="--c:3; --r:2" data-c="page"><span class="x">OrderPage.html</span></p>
+<pre class="src" aria-label="OrderPage.html"><code><span class="ln" style="--c:3; --r:3"><span class="x"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:4"><span class="x"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:5" data-c="message">  <span class="x"><span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:6"><span class="x"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:7"><span class="x"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></span></code></pre>
+<svg class="tree-ribbon" aria-hidden="true" focusable="false"></svg>
 </div>
-<div class="l-clearfix">
-	<article class="l-one-third">
-		<h3>JavaEE support</h3>
-		<p>If you are using the Web profile of JavaEE 6, you can leverage
-			Bean Validation and CDI with Wicket's integrations for these
-			specifications.</p>
-	</article>
-	<article class="l-one-third">
-		<h3>Multi-tab and window support</h3>
-		<p>No more pain while keeping taps on multiple tabs and windows.
-			Wicket's automatic state storage ensures that your users can open
-			pages in new tabs and windows without causing problems.</p>
-	</article>
-	<article class="l-one-third">
-		<h3>Test your pages and components</h3>
-		<p>With WicketTester you can achieve testing coverage your QA
-			department can only dream of. Test your pages without having to run
-			inside a browser, or start a container. Test your components
-			directly, check their rendered markup tags, attributes and contents
-			with ease.</p>
-	</article>
+<div class="tree-list">
+<h3 class="tree-list-title">OrderPage as a tree after step 1</h3>
+<ol class="tl"><li><span class="tl-name"><b data-c="page">OrderPage</b> <span>page</span></span></li></ol>
 </div>
-<div class="l-clearfix">
-	<article class="l-one-third">
-		<h3>Pluggable Ajax support</h3>
-		<p>While Wicket ships with JQuery as the backing library for
-			Ajax, you can replace the innards of Wicket Ajax with any other
-			library of your choosing.</p>
-	</article>
+<div class="tree-code">
+<p class="tc-file" data-c="page">OrderPage.html</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.html"><code><span class="tcl"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span><span class="tcl" data-c="message">  <span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></code></pre>
 </div>
 
+    </section>
+    
+    <section class="how-step" id="step-2" aria-labelledby="step-2-title">
+      <header class="ctree-head how-head">
+        <h2 id="step-2-title">
+<span class="how-n">2</span> Give the tag a component</h2>
+        <div class="how-text">
+          <p>Behaviour lives in a Java class with the same name. <code>add(...)</code> puts a <code>Label</code> into the page’s tree under the id <code>"message"</code>, and Wicket renders it into the tag with that <code>wicket:id</code>. The ribbon joins the page to its first component.</p>
+          <p class="how-more"><a href="/docs/topics/components.html">Components and markup</a>
+            <a class="how-next" href="#step-3">Next: Add a form with fields</a></p>
+        </div>
+      </header>
+      <div class="loom" style="grid-template-rows: 1.2em 3em 1.85em 1.85em 2.8em 1.85em 1.85em 1.2em" aria-describedby="loom-hint" data-focus-paths="page/message" data-focus-keys="message">
+<div class="sheet" style="--c:1; --r:1 / 9" aria-hidden="true"></div>
+<div class="sheet" style="--c:3; --r:1 / 9" aria-hidden="true"></div>
+<p class="file" style="--c:1; --r:2" data-c="page"><span class="x">OrderPage.java</span></p>
+<pre class="src" aria-label="OrderPage.java"><code><span class="ln new" style="--r:3"><span class="x"><span class="tk">public</span> <span class="tk">class</span> OrderPage <span class="tk">extends</span> WebPage {</span></span>
+<span class="ln new" style="--r:4">    <span class="x"><span class="tk">public</span> OrderPage() {</span></span>
+<span class="ln c new" style="--r:5" data-c="message">        <span class="x">add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span></span>
+<span class="ln new" style="--r:6">    <span class="x">}</span></span>
+<span class="ln new" style="--r:7"><span class="x">}</span></span></code></pre>
+<div class="beads" role="group" aria-label="Component tree of OrderPage after step 2">
+<button type="button" class="bead root" style="--r:2; --x:0" data-path="page" data-k="page" aria-label="OrderPage, the page">OrderPage</button>
+<button type="button" class="bead" style="--r:5; --x:14.5" data-path="page/message" data-k="message" aria-label='Label "message" renders &lt;p wicket:id="message"&gt;'>message</button>
+</div>
+<p class="file" style="--c:3; --r:2" data-c="page"><span class="x">OrderPage.html</span></p>
+<pre class="src" aria-label="OrderPage.html"><code><span class="ln" style="--c:3; --r:3"><span class="x"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:4"><span class="x"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:5" data-c="message">  <span class="x"><span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:6"><span class="x"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:7"><span class="x"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></span></code></pre>
+<svg class="tree-ribbon" aria-hidden="true" focusable="false"></svg>
+</div>
+<div class="tree-list">
+<h3 class="tree-list-title">OrderPage as a tree after step 2</h3>
+<ol class="tl"><li>
+<span class="tl-name"><b data-c="page">OrderPage</b> <span>page</span></span><ol><li><span class="tl-name"><b data-c="message">"message"</b> <span>Label</span></span></li></ol>
+</li></ol>
+<p class="tl-hint">Tap a component to light its lines in the files below. Lines marked + are new in this step.</p>
+</div>
+<div class="tree-code">
+<p class="tc-file" data-c="page">OrderPage.java</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.java"><code><span class="tcl new"><span class="tk">public</span> <span class="tk">class</span> OrderPage <span class="tk">extends</span> WebPage {</span><span class="tcl new">    <span class="tk">public</span> OrderPage() {</span><span class="tcl new" data-c="message">        add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span><span class="tcl new">    }</span><span class="tcl new">}</span></code></pre>
+<p class="tc-file" data-c="page">OrderPage.html</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.html"><code><span class="tcl"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span><span class="tcl" data-c="message">  <span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></code></pre>
+</div>
 
-        </section>
-    </div>
+    </section>
+    
+    <section class="how-step" id="step-3" aria-labelledby="step-3-title">
+      <header class="ctree-head how-head">
+        <h2 id="step-3-title">
+<span class="how-n">3</span> Add a form with fields</h2>
+        <div class="how-text">
+          <p>Components nest the way tags do. The form is a child of the page; the text fields and the button are children of the form, in the Java and in the HTML. A <code>CompoundPropertyModel</code> binds each field to the property of the address with the field’s id.</p>
+          <p class="how-more"><a href="/docs/about-models.html">Models and component data</a>
+            <a class="how-next" href="#step-4">Next: Reuse a panel, twice</a></p>
+        </div>
+      </header>
+      <div class="loom" style="grid-template-rows: 1.2em 3em 1.85em 1.85em 2.8em 2.8em 1.85em 2.8em 2.8em 2.8em 1.85em 1.85em 1.85em 1.2em" aria-describedby="loom-hint" data-focus-paths="page/order/street page/order/city page/order/save" data-focus-keys="order street city save">
+<div class="sheet" style="--c:1; --r:1 / 15" aria-hidden="true"></div>
+<div class="sheet" style="--c:3; --r:1 / 15" aria-hidden="true"></div>
+<p class="file" style="--c:1; --r:2" data-c="page"><span class="x">OrderPage.java</span></p>
+<pre class="src" aria-label="OrderPage.java"><code><span class="ln" style="--r:3"><span class="x"><span class="tk">public</span> <span class="tk">class</span> OrderPage <span class="tk">extends</span> WebPage {</span></span>
+<span class="ln" style="--r:4">    <span class="x"><span class="tk">public</span> OrderPage() {</span></span>
+<span class="ln c" style="--r:5" data-c="message">        <span class="x">add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span></span>
+<span class="ln c new" style="--r:6" data-c="order">        <span class="x">Form&lt;Address&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>,</span></span>
+<span class="ln new" style="--r:7" data-c="order">                <span class="x"><span class="tk">new</span> CompoundPropertyModel&lt;&gt;(billingAddress));</span></span>
+<span class="ln c new" style="--r:8" data-c="street">        <span class="x">form.add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span></span>
+<span class="ln c new" style="--r:9" data-c="city">        <span class="x">form.add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span></span>
+<span class="ln c new" style="--r:10" data-c="save">        <span class="x">form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span></span>
+<span class="ln new" style="--r:11">        <span class="x">add(form);</span></span>
+<span class="ln" style="--r:12">    <span class="x">}</span></span>
+<span class="ln" style="--r:13"><span class="x">}</span></span></code></pre>
+<div class="beads" role="group" aria-label="Component tree of OrderPage after step 3">
+<button type="button" class="bead root" style="--r:2; --x:0" data-path="page" data-k="page" aria-label="OrderPage, the page">OrderPage</button>
+<button type="button" class="bead" style="--r:5; --x:14.5" data-path="page/message" data-k="message" aria-label='Label "message" renders &lt;p wicket:id="message"&gt;'>message</button>
+<button type="button" class="bead new" style="--r:6; --x:14.5" data-path="page/order" data-k="order" aria-label='Form "order" renders &lt;form wicket:id="order"&gt;'>order</button>
+<button type="button" class="bead new" style="--r:8; --x:25" data-path="page/order/street" data-k="street" aria-label='TextField "street" renders &lt;input wicket:id="street"&gt;'>street</button>
+<button type="button" class="bead new" style="--r:9; --x:25" data-path="page/order/city" data-k="city" aria-label='TextField "city" renders &lt;input wicket:id="city"&gt;'>city</button>
+<button type="button" class="bead new" style="--r:10; --x:25" data-path="page/order/save" data-k="save" aria-label='Button "save" renders &lt;button wicket:id="save"&gt;'>save</button>
+</div>
+<p class="file" style="--c:3; --r:2" data-c="page"><span class="x">OrderPage.html</span></p>
+<pre class="src" aria-label="OrderPage.html"><code><span class="ln" style="--c:3; --r:3"><span class="x"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:4"><span class="x"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:5" data-c="message">  <span class="x"><span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span></span>
+<span class="ln c new" style="--c:3; --r:6" data-c="order">  <span class="x"><span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c new" style="--c:3; --r:8" data-c="street">    <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c new" style="--c:3; --r:9" data-c="city">    <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c new" style="--c:3; --r:10" data-c="save">    <span class="x"><span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button</span><span class="tg">&gt;</span></span></span>
+<span class="ln new" style="--c:3; --r:11">  <span class="x"><span class="tg">&lt;/form</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:12"><span class="x"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:13"><span class="x"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></span></code></pre>
+<svg class="tree-ribbon" aria-hidden="true" focusable="false"></svg>
+</div>
+<div class="tree-list">
+<h3 class="tree-list-title">OrderPage as a tree after step 3</h3>
+<ol class="tl"><li>
+<span class="tl-name"><b data-c="page">OrderPage</b> <span>page</span></span><ol>
+<li><span class="tl-name"><b data-c="message">"message"</b> <span>Label</span></span></li>
+<li class="new">
+<span class="tl-name"><b data-c="order">"order"</b> <span>Form</span></span><ol>
+<li class="new"><span class="tl-name"><b data-c="street">"street"</b> <span>TextField</span></span></li>
+<li class="new"><span class="tl-name"><b data-c="city">"city"</b> <span>TextField</span></span></li>
+<li class="new"><span class="tl-name"><b data-c="save">"save"</b> <span>Button</span></span></li>
+</ol>
+</li>
+</ol>
+</li></ol>
+<p class="tl-hint">Tap a component to light its lines in the files below. Lines marked + are new in this step.</p>
+</div>
+<div class="tree-code">
+<p class="tc-file" data-c="page">OrderPage.java</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.java"><code><span class="tcl"><span class="tk">public</span> <span class="tk">class</span> OrderPage <span class="tk">extends</span> WebPage {</span><span class="tcl">    <span class="tk">public</span> OrderPage() {</span><span class="tcl" data-c="message">        add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span><span class="tcl new" data-c="order">        Form&lt;Address&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>,</span><span class="tcl new" data-c="order">                <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(billingAddress));</span><span class="tcl new" data-c="street">        form.add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span><span class="tcl new" data-c="city">        form.add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span><span class="tcl new" data-c="save">        form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span><span class="tcl new">        add(form);</span><span class="tcl">    }</span><span class="tcl">}</span></code></pre>
+<p class="tc-file" data-c="page">OrderPage.html</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.html"><code><span class="tcl"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span><span class="tcl" data-c="message">  <span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="order">  <span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="street">    <span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="city">    <span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="save">    <span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button</span><span class="tg">&gt;</span></span><span class="tcl new">  <span class="tg">&lt;/form</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></code></pre>
+</div>
+
+    </section>
+    
+    <section class="how-step" id="step-4" aria-labelledby="step-4-title">
+      <header class="ctree-head how-head">
+        <h2 id="step-4-title">
+<span class="how-n">4</span> Reuse a panel, twice</h2>
+        <div class="how-text">
+          <p>Move the fields into <code>AddressPanel</code>, a Java class with its own markup inside <code>&lt;wicket:panel&gt;</code> and its own model. The form uses it twice, for billing and for shipping, and the same branch grows under each: one class, one file of markup, two instances in the tree.</p>
+          <p class="how-more"><a href="/docs/build-panel.html">Build a reusable panel</a>
+            <a class="how-next" href="#step-5">Next: Update it from Java</a></p>
+        </div>
+      </header>
+      <div class="loom" style="grid-template-rows: 1.2em 3em 1.85em 1.85em 2.8em 2.8em 2.8em 2.8em 2.8em 1.85em 1.85em 1.85em 1.2em 2.2em 1.2em 3em 1.85em 1.85em 1.85em 2.8em 2.8em 1.85em 1.85em 1.2em" aria-describedby="loom-hint" data-focus-paths="page/order/billing page/order/shipping" data-focus-keys="billing shipping AddressPanel">
+<div class="sheet" style="--c:1; --r:1 / 14" aria-hidden="true"></div>
+<div class="sheet" style="--c:3; --r:1 / 14" aria-hidden="true"></div>
+<div class="sheet" style="--c:1; --r:15 / 25" aria-hidden="true"></div>
+<div class="sheet" style="--c:3; --r:15 / 24" aria-hidden="true"></div>
+<p class="file" style="--c:1; --r:2" data-c="page"><span class="x">OrderPage.java</span></p>
+<pre class="src" aria-label="OrderPage.java"><code><span class="ln" style="--r:3"><span class="x"><span class="tk">public</span> <span class="tk">class</span> OrderPage <span class="tk">extends</span> WebPage {</span></span>
+<span class="ln" style="--r:4">    <span class="x"><span class="tk">public</span> OrderPage() {</span></span>
+<span class="ln c" style="--r:5" data-c="message">        <span class="x">add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span></span>
+<span class="ln c new" style="--r:6" data-c="order">        <span class="x">Form&lt;Void&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>);</span></span>
+<span class="ln c new" style="--r:7" data-c="billing">        <span class="x">form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"billing"</span>, billingAddress));</span></span>
+<span class="ln c new" style="--r:8" data-c="shipping">        <span class="x">form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"shipping"</span>, shippingAddress));</span></span>
+<span class="ln c" style="--r:9" data-c="save">        <span class="x">form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span></span>
+<span class="ln" style="--r:10">        <span class="x">add(form);</span></span>
+<span class="ln" style="--r:11">    <span class="x">}</span></span>
+<span class="ln" style="--r:12"><span class="x">}</span></span></code></pre>
+<p class="file" style="--c:1; --r:16" data-c="AddressPanel"><span class="x">AddressPanel.java</span></p>
+<pre class="src" aria-label="AddressPanel.java"><code><span class="ln new" style="--r:17" data-c="AddressPanel"><span class="x"><span class="tk">public</span> <span class="tk">class</span> AddressPanel <span class="tk">extends</span> Panel {</span></span>
+<span class="ln new" style="--r:18">    <span class="x"><span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span></span>
+<span class="ln new" style="--r:19">        <span class="x"><span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span></span>
+<span class="ln c new" style="--r:20" data-c="street">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span></span>
+<span class="ln c new" style="--r:21" data-c="city">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span></span>
+<span class="ln new" style="--r:22">    <span class="x">}</span></span>
+<span class="ln new" style="--r:23"><span class="x">}</span></span></code></pre>
+<div class="beads" role="group" aria-label="Component tree of OrderPage after step 4">
+<button type="button" class="bead root" style="--r:2; --x:0" data-path="page" data-k="page" aria-label="OrderPage, the page">OrderPage</button>
+<button type="button" class="bead" style="--r:5; --x:14.5" data-path="page/message" data-k="message" aria-label='Label "message" renders &lt;p wicket:id="message"&gt;'>message</button>
+<button type="button" class="bead" style="--r:6; --x:14.5" data-path="page/order" data-k="order" aria-label='Form "order" renders &lt;form wicket:id="order"&gt;'>order</button>
+<button type="button" class="bead new" style="--r:7; --x:25" data-path="page/order/billing" data-k="billing AddressPanel" aria-label='AddressPanel "billing" renders &lt;div wicket:id="billing"&gt;'>billing</button>
+<button type="button" class="bead new" style="--r:8; --x:25" data-path="page/order/shipping" data-k="shipping AddressPanel" aria-label='AddressPanel "shipping" renders &lt;div wicket:id="shipping"&gt;'>shipping</button>
+<button type="button" class="bead" style="--r:9; --x:25" data-path="page/order/save" data-k="save" aria-label='Button "save" renders &lt;button wicket:id="save"&gt;'>save</button>
+<button type="button" class="bead new" style="--r:20; --x:50" data-path="page/order/billing/street" data-k="street" aria-label='TextField "street" inside billing renders &lt;input wicket:id="street"&gt;'>street</button>
+<button type="button" class="bead new" style="--r:20; --x:38.5" data-path="page/order/shipping/street" data-k="street" aria-label='TextField "street" inside shipping renders &lt;input wicket:id="street"&gt;'>street</button>
+<button type="button" class="bead new" style="--r:21; --x:50" data-path="page/order/billing/city" data-k="city" aria-label='TextField "city" inside billing renders &lt;input wicket:id="city"&gt;'>city</button>
+<button type="button" class="bead new" style="--r:21; --x:38.5" data-path="page/order/shipping/city" data-k="city" aria-label='TextField "city" inside shipping renders &lt;input wicket:id="city"&gt;'>city</button>
+</div>
+<p class="file" style="--c:3; --r:2" data-c="page"><span class="x">OrderPage.html</span></p>
+<pre class="src" aria-label="OrderPage.html"><code><span class="ln" style="--c:3; --r:3"><span class="x"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:4"><span class="x"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:5" data-c="message">  <span class="x"><span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:6" data-c="order">  <span class="x"><span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c new" style="--c:3; --r:7" data-c="billing">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span></span>
+<span class="ln c new" style="--c:3; --r:8" data-c="shipping">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:9" data-c="save">    <span class="x"><span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:10">  <span class="x"><span class="tg">&lt;/form</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:11"><span class="x"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:12"><span class="x"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></span></code></pre>
+<p class="file" style="--c:3; --r:16" data-c="AddressPanel"><span class="x">AddressPanel.html</span></p>
+<pre class="src" aria-label="AddressPanel.html"><code><span class="ln new" style="--c:3; --r:17" data-c="AddressPanel"><span class="x"><span class="tg">&lt;wicket:panel</span><span class="tg">&gt;</span></span></span>
+<span class="ln c new" style="--c:3; --r:20" data-c="street">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c new" style="--c:3; --r:21" data-c="city">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span></span>
+<span class="ln new" style="--c:3; --r:22"><span class="x"><span class="tg">&lt;/wicket:panel</span><span class="tg">&gt;</span></span></span></code></pre>
+<svg class="tree-ribbon" aria-hidden="true" focusable="false"></svg>
+</div>
+<div class="tree-list">
+<h3 class="tree-list-title">OrderPage as a tree after step 4</h3>
+<ol class="tl"><li>
+<span class="tl-name"><b data-c="page">OrderPage</b> <span>page</span></span><ol>
+<li><span class="tl-name"><b data-c="message">"message"</b> <span>Label</span></span></li>
+<li>
+<span class="tl-name"><b data-c="order">"order"</b> <span>Form</span></span><ol>
+<li class="new">
+<span class="tl-name"><b data-c="billing AddressPanel">"billing"</b> <span>AddressPanel</span></span><ol>
+<li class="new"><span class="tl-name"><b data-c="street">"street"</b> <span>TextField</span></span></li>
+<li class="new"><span class="tl-name"><b data-c="city">"city"</b> <span>TextField</span></span></li>
+</ol>
+</li>
+<li class="new">
+<span class="tl-name"><b data-c="shipping AddressPanel">"shipping"</b> <span>AddressPanel</span></span><ol>
+<li class="new"><span class="tl-name"><b data-c="street">"street"</b> <span>TextField</span></span></li>
+<li class="new"><span class="tl-name"><b data-c="city">"city"</b> <span>TextField</span></span></li>
+</ol>
+</li>
+<li><span class="tl-name"><b data-c="save">"save"</b> <span>Button</span></span></li>
+</ol>
+</li>
+</ol>
+</li></ol>
+<p class="tl-hint">Tap a component to light its lines in the files below. Lines marked + are new in this step.</p>
+</div>
+<div class="tree-code">
+<p class="tc-file" data-c="page">OrderPage.java</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.java"><code><span class="tcl"><span class="tk">public</span> <span class="tk">class</span> OrderPage <span class="tk">extends</span> WebPage {</span><span class="tcl">    <span class="tk">public</span> OrderPage() {</span><span class="tcl" data-c="message">        add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span><span class="tcl new" data-c="order">        Form&lt;Void&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>);</span><span class="tcl new" data-c="billing">        form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"billing"</span>, billingAddress));</span><span class="tcl new" data-c="shipping">        form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"shipping"</span>, shippingAddress));</span><span class="tcl" data-c="save">        form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span><span class="tcl">        add(form);</span><span class="tcl">    }</span><span class="tcl">}</span></code></pre>
+<p class="tc-file" data-c="page">OrderPage.html</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.html"><code><span class="tcl"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span><span class="tcl" data-c="message">  <span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span><span class="tcl" data-c="order">  <span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="billing">    <span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="shipping">    <span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span><span class="tcl" data-c="save">    <span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button</span><span class="tg">&gt;</span></span><span class="tcl">  <span class="tg">&lt;/form</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></code></pre>
+<p class="tc-file" data-c="AddressPanel">AddressPanel.java</p>
+<pre class="tc" tabindex="0" aria-label="AddressPanel.java"><code><span class="tcl new" data-c="AddressPanel"><span class="tk">public</span> <span class="tk">class</span> AddressPanel <span class="tk">extends</span> Panel {</span><span class="tcl new">    <span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span><span class="tcl new">        <span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span><span class="tcl new" data-c="street">        add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span><span class="tcl new" data-c="city">        add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span><span class="tcl new">    }</span><span class="tcl new">}</span></code></pre>
+<p class="tc-file" data-c="AddressPanel">AddressPanel.html</p>
+<pre class="tc" tabindex="0" aria-label="AddressPanel.html"><code><span class="tcl new" data-c="AddressPanel"><span class="tg">&lt;wicket:panel</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="street">  <span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="city">  <span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span><span class="tcl new"><span class="tg">&lt;/wicket:panel</span><span class="tg">&gt;</span></span></code></pre>
+</div>
+
+    </section>
+    
+    <section class="how-step" id="step-5" aria-labelledby="step-5-title">
+      <header class="ctree-head how-head">
+        <h2 id="step-5-title">
+<span class="how-n">5</span> Update it from Java</h2>
+        <div class="how-text">
+          <p>Wicket renders on the server and keeps the page’s state there, in this tree. A click on the <code>AjaxLink</code> runs <code>onClick</code> in Java; <code>target.add(shipping)</code> renders that one branch again and Wicket swaps it into the page in the browser. You write no JavaScript.</p>
+          <p class="how-more"><a href="/docs/how-ajax-works.html">How Wicket Ajax works</a>
+            <a class="how-next" href="#step-6">Next: Test it without a browser</a></p>
+        </div>
+      </header>
+      <div class="loom" style="grid-template-rows: 1.2em 3em 1.85em 1.85em 2.8em 2.8em 2.8em 1.85em 1.85em 1.85em 1.85em 2.8em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 2.8em 2.8em 1.85em 1.85em 1.85em 1.2em 2.2em 1.2em 3em 1.85em 1.85em 1.85em 2.8em 2.8em 1.85em 1.85em 1.2em" aria-describedby="loom-hint" data-focus-paths="page/order/shipElsewhere page/order/shipping" data-focus-keys="shipElsewhere shipping">
+<div class="sheet" style="--c:1; --r:1 / 25" aria-hidden="true"></div>
+<div class="sheet" style="--c:3; --r:1 / 25" aria-hidden="true"></div>
+<div class="sheet" style="--c:1; --r:26 / 36" aria-hidden="true"></div>
+<div class="sheet" style="--c:3; --r:26 / 35" aria-hidden="true"></div>
+<p class="file" style="--c:1; --r:2" data-c="page"><span class="x">OrderPage.java</span></p>
+<pre class="src" aria-label="OrderPage.java"><code><span class="ln" style="--r:3"><span class="x"><span class="tk">public</span> <span class="tk">class</span> OrderPage <span class="tk">extends</span> WebPage {</span></span>
+<span class="ln" style="--r:4">    <span class="x"><span class="tk">public</span> OrderPage() {</span></span>
+<span class="ln c" style="--r:5" data-c="message">        <span class="x">add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span></span>
+<span class="ln c" style="--r:6" data-c="order">        <span class="x">Form&lt;Void&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>);</span></span>
+<span class="ln c" style="--r:7" data-c="billing">        <span class="x">form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"billing"</span>, billingAddress));</span></span>
+<span class="ln new" style="--r:8" data-c="shipping">        <span class="x">AddressPanel shipping =</span></span>
+<span class="ln new" style="--r:9" data-c="shipping">                <span class="x"><span class="tk">new</span> AddressPanel(<span class="tw">"shipping"</span>, shippingAddress);</span></span>
+<span class="ln new" style="--r:10" data-c="shipping">        <span class="x">shipping.setOutputMarkupPlaceholderTag(<span class="tk">true</span>);</span></span>
+<span class="ln new" style="--r:11" data-c="shipping">        <span class="x">shipping.setVisible(<span class="tk">false</span>);</span></span>
+<span class="ln c new" style="--r:12" data-c="shipElsewhere">        <span class="x">form.add(<span class="tk">new</span> AjaxLink&lt;Void&gt;(<span class="tw">"shipElsewhere"</span>) {</span></span>
+<span class="ln new" style="--r:13" data-c="shipElsewhere" data-thread="no">            <span class="x"><span class="tk">@Override</span></span></span>
+<span class="ln new" style="--r:14" data-c="shipElsewhere">            <span class="x"><span class="tk">public</span> <span class="tk">void</span> onClick(AjaxRequestTarget target) {</span></span>
+<span class="ln new" style="--r:15" data-c="shipElsewhere shipping">                <span class="x">shipping.setVisible(!shipping.isVisible());</span></span>
+<span class="ln new" style="--r:16" data-c="shipElsewhere shipping">                <span class="x">target.add(shipping);</span></span>
+<span class="ln new" style="--r:17" data-c="shipElsewhere">            <span class="x">}</span></span>
+<span class="ln new" style="--r:18" data-c="shipElsewhere">        <span class="x">});</span></span>
+<span class="ln c new" style="--r:19" data-c="shipping">        <span class="x">form.add(shipping);</span></span>
+<span class="ln c" style="--r:20" data-c="save">        <span class="x">form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span></span>
+<span class="ln" style="--r:21">        <span class="x">add(form);</span></span>
+<span class="ln" style="--r:22">    <span class="x">}</span></span>
+<span class="ln" style="--r:23"><span class="x">}</span></span></code></pre>
+<p class="file" style="--c:1; --r:27" data-c="AddressPanel"><span class="x">AddressPanel.java</span></p>
+<pre class="src" aria-label="AddressPanel.java"><code><span class="ln" style="--r:28" data-c="AddressPanel"><span class="x"><span class="tk">public</span> <span class="tk">class</span> AddressPanel <span class="tk">extends</span> Panel {</span></span>
+<span class="ln" style="--r:29">    <span class="x"><span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span></span>
+<span class="ln" style="--r:30">        <span class="x"><span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span></span>
+<span class="ln c" style="--r:31" data-c="street">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span></span>
+<span class="ln c" style="--r:32" data-c="city">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span></span>
+<span class="ln" style="--r:33">    <span class="x">}</span></span>
+<span class="ln" style="--r:34"><span class="x">}</span></span></code></pre>
+<div class="beads" role="group" aria-label="Component tree of OrderPage after step 5">
+<button type="button" class="bead root" style="--r:2; --x:0" data-path="page" data-k="page" aria-label="OrderPage, the page">OrderPage</button>
+<button type="button" class="bead" style="--r:5; --x:14.5" data-path="page/message" data-k="message" aria-label='Label "message" renders &lt;p wicket:id="message"&gt;'>message</button>
+<button type="button" class="bead" style="--r:6; --x:14.5" data-path="page/order" data-k="order" aria-label='Form "order" renders &lt;form wicket:id="order"&gt;'>order</button>
+<button type="button" class="bead" style="--r:7; --x:25" data-path="page/order/billing" data-k="billing AddressPanel" aria-label='AddressPanel "billing" renders &lt;div wicket:id="billing"&gt;'>billing</button>
+<button type="button" class="bead new" style="--r:12; --x:25" data-path="page/order/shipElsewhere" data-k="shipElsewhere" aria-label='AjaxLink "shipElsewhere" renders &lt;a wicket:id="shipElsewhere"&gt;'>shipElsewhere</button>
+<button type="button" class="bead" style="--r:19; --x:25" data-path="page/order/shipping" data-k="shipping AddressPanel" aria-label='AddressPanel "shipping" renders &lt;div wicket:id="shipping"&gt;'>shipping</button>
+<button type="button" class="bead" style="--r:20; --x:25" data-path="page/order/save" data-k="save" aria-label='Button "save" renders &lt;button wicket:id="save"&gt;'>save</button>
+<button type="button" class="bead" style="--r:31; --x:50" data-path="page/order/billing/street" data-k="street" aria-label='TextField "street" inside billing renders &lt;input wicket:id="street"&gt;'>street</button>
+<button type="button" class="bead" style="--r:31; --x:38.5" data-path="page/order/shipping/street" data-k="street" aria-label='TextField "street" inside shipping renders &lt;input wicket:id="street"&gt;'>street</button>
+<button type="button" class="bead" style="--r:32; --x:50" data-path="page/order/billing/city" data-k="city" aria-label='TextField "city" inside billing renders &lt;input wicket:id="city"&gt;'>city</button>
+<button type="button" class="bead" style="--r:32; --x:38.5" data-path="page/order/shipping/city" data-k="city" aria-label='TextField "city" inside shipping renders &lt;input wicket:id="city"&gt;'>city</button>
+</div>
+<p class="file" style="--c:3; --r:2" data-c="page"><span class="x">OrderPage.html</span></p>
+<pre class="src" aria-label="OrderPage.html"><code><span class="ln" style="--c:3; --r:3"><span class="x"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:4"><span class="x"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:5" data-c="message">  <span class="x"><span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:6" data-c="order">  <span class="x"><span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:7" data-c="billing">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span></span>
+<span class="ln c new" style="--c:3; --r:12" data-c="shipElsewhere">    <span class="x"><span class="tg">&lt;a</span> wicket:id=<span class="tw">"shipElsewhere"</span><span class="tg">&gt;</span></span></span>
+<span class="ln new" style="--c:3; --r:13" data-c="shipElsewhere" data-thread="no">      <span class="x">Ship to another address<span class="tg">&lt;/a</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:19" data-c="shipping">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:20" data-c="save">    <span class="x"><span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:21">  <span class="x"><span class="tg">&lt;/form</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:22"><span class="x"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:23"><span class="x"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></span></code></pre>
+<p class="file" style="--c:3; --r:27" data-c="AddressPanel"><span class="x">AddressPanel.html</span></p>
+<pre class="src" aria-label="AddressPanel.html"><code><span class="ln" style="--c:3; --r:28" data-c="AddressPanel"><span class="x"><span class="tg">&lt;wicket:panel</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:31" data-c="street">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:32" data-c="city">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:33"><span class="x"><span class="tg">&lt;/wicket:panel</span><span class="tg">&gt;</span></span></span></code></pre>
+<svg class="tree-ribbon" aria-hidden="true" focusable="false"></svg>
+</div>
+<div class="tree-list">
+<h3 class="tree-list-title">OrderPage as a tree after step 5</h3>
+<ol class="tl"><li>
+<span class="tl-name"><b data-c="page">OrderPage</b> <span>page</span></span><ol>
+<li><span class="tl-name"><b data-c="message">"message"</b> <span>Label</span></span></li>
+<li>
+<span class="tl-name"><b data-c="order">"order"</b> <span>Form</span></span><ol>
+<li>
+<span class="tl-name"><b data-c="billing AddressPanel">"billing"</b> <span>AddressPanel</span></span><ol>
+<li><span class="tl-name"><b data-c="street">"street"</b> <span>TextField</span></span></li>
+<li><span class="tl-name"><b data-c="city">"city"</b> <span>TextField</span></span></li>
+</ol>
+</li>
+<li class="new"><span class="tl-name"><b data-c="shipElsewhere">"shipElsewhere"</b> <span>AjaxLink</span></span></li>
+<li>
+<span class="tl-name"><b data-c="shipping AddressPanel">"shipping"</b> <span>AddressPanel</span></span><ol>
+<li><span class="tl-name"><b data-c="street">"street"</b> <span>TextField</span></span></li>
+<li><span class="tl-name"><b data-c="city">"city"</b> <span>TextField</span></span></li>
+</ol>
+</li>
+<li><span class="tl-name"><b data-c="save">"save"</b> <span>Button</span></span></li>
+</ol>
+</li>
+</ol>
+</li></ol>
+<p class="tl-hint">Tap a component to light its lines in the files below. Lines marked + are new in this step.</p>
+</div>
+<div class="tree-code">
+<p class="tc-file" data-c="page">OrderPage.java</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.java"><code><span class="tcl"><span class="tk">public</span> <span class="tk">class</span> OrderPage <span class="tk">extends</span> WebPage {</span><span class="tcl">    <span class="tk">public</span> OrderPage() {</span><span class="tcl" data-c="message">        add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span><span class="tcl" data-c="order">        Form&lt;Void&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>);</span><span class="tcl" data-c="billing">        form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"billing"</span>, billingAddress));</span><span class="tcl new" data-c="shipping">        AddressPanel shipping =</span><span class="tcl new" data-c="shipping">                <span class="tk">new</span> AddressPanel(<span class="tw">"shipping"</span>, shippingAddress);</span><span class="tcl new" data-c="shipping">        shipping.setOutputMarkupPlaceholderTag(<span class="tk">true</span>);</span><span class="tcl new" data-c="shipping">        shipping.setVisible(<span class="tk">false</span>);</span><span class="tcl new" data-c="shipElsewhere">        form.add(<span class="tk">new</span> AjaxLink&lt;Void&gt;(<span class="tw">"shipElsewhere"</span>) {</span><span class="tcl new" data-c="shipElsewhere">            <span class="tk">@Override</span></span><span class="tcl new" data-c="shipElsewhere">            <span class="tk">public</span> <span class="tk">void</span> onClick(AjaxRequestTarget target) {</span><span class="tcl new" data-c="shipElsewhere shipping">                shipping.setVisible(!shipping.isVisible());</span><span class="tcl new" data-c="shipElsewhere shipping">                target.add(shipping);</span><span class="tcl new" data-c="shipElsewhere">            }</span><span class="tcl new" data-c="shipElsewhere">        });</span><span class="tcl new" data-c="shipping">        form.add(shipping);</span><span class="tcl" data-c="save">        form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span><span class="tcl">        add(form);</span><span class="tcl">    }</span><span class="tcl">}</span></code></pre>
+<p class="tc-file" data-c="page">OrderPage.html</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.html"><code><span class="tcl"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span><span class="tcl" data-c="message">  <span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span><span class="tcl" data-c="order">  <span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span><span class="tcl" data-c="billing">    <span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="shipElsewhere">    <span class="tg">&lt;a</span> wicket:id=<span class="tw">"shipElsewhere"</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="shipElsewhere">      Ship to another address<span class="tg">&lt;/a</span><span class="tg">&gt;</span></span><span class="tcl" data-c="shipping">    <span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span><span class="tcl" data-c="save">    <span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button</span><span class="tg">&gt;</span></span><span class="tcl">  <span class="tg">&lt;/form</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></code></pre>
+<p class="tc-file" data-c="AddressPanel">AddressPanel.java</p>
+<pre class="tc" tabindex="0" aria-label="AddressPanel.java"><code><span class="tcl" data-c="AddressPanel"><span class="tk">public</span> <span class="tk">class</span> AddressPanel <span class="tk">extends</span> Panel {</span><span class="tcl">    <span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span><span class="tcl">        <span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span><span class="tcl" data-c="street">        add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span><span class="tcl" data-c="city">        add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span><span class="tcl">    }</span><span class="tcl">}</span></code></pre>
+<p class="tc-file" data-c="AddressPanel">AddressPanel.html</p>
+<pre class="tc" tabindex="0" aria-label="AddressPanel.html"><code><span class="tcl" data-c="AddressPanel"><span class="tg">&lt;wicket:panel</span><span class="tg">&gt;</span></span><span class="tcl" data-c="street">  <span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span><span class="tcl" data-c="city">  <span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/wicket:panel</span><span class="tg">&gt;</span></span></code></pre>
+</div>
+
+    </section>
+    
+    <section class="how-step" id="step-6" aria-labelledby="step-6-title">
+      <header class="ctree-head how-head">
+        <h2 id="step-6-title">
+<span class="how-n">6</span> Test it without a browser</h2>
+        <div class="how-text">
+          <p><code>WicketTester</code> renders the page in a plain unit test: no browser, no server. It finds a component by its path in the tree, so <code>"order:shipping"</code> is the ribbon from the form to the panel. The test clicks the Ajax link and checks that the panel came back.</p>
+          <p class="how-more"><a href="/docs/test-pages.html">Test pages and components</a>
+            <a class="how-next" href="#step-7">Next: Secure by default</a></p>
+        </div>
+      </header>
+      <div class="loom" style="grid-template-rows: 1.2em 3em 1.85em 1.85em 2.8em 2.8em 2.8em 2.8em 1.85em 2.8em 2.8em 1.85em 1.85em 1.85em 1.2em 2.2em 1.2em 3em 1.85em 1.85em 1.85em 2.8em 2.8em 1.85em 1.85em 1.2em" aria-describedby="loom-hint" data-focus-paths="page/order/shipElsewhere page/order/shipping" data-focus-keys="shipElsewhere shipping">
+<div class="sheet" style="--c:1; --r:1 / 13" aria-hidden="true"></div>
+<div class="sheet" style="--c:3; --r:1 / 16" aria-hidden="true"></div>
+<div class="sheet" style="--c:1; --r:17 / 27" aria-hidden="true"></div>
+<div class="sheet" style="--c:3; --r:17 / 26" aria-hidden="true"></div>
+<p class="file" style="--c:1; --r:2"><span class="x">OrderPageTest.java</span></p>
+<pre class="src" aria-label="OrderPageTest.java"><code><span class="ln new" style="--r:3"><span class="x"><span class="tk">@Test</span> <span class="tk">void</span> shipsToAnotherAddress() {</span></span>
+<span class="ln new" style="--r:4" data-c="page">    <span class="x">tester.startPage(OrderPage.<span class="tk">class</span>);</span></span>
+<span class="ln c new" style="--r:5" data-c="message">    <span class="x">tester.assertLabel(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>);</span></span>
+<span class="ln c new" style="--r:8" data-c="shipElsewhere">    <span class="x">tester.clickLink(<span class="tw">"order:shipElsewhere"</span>);</span></span>
+<span class="ln c new" style="--r:10" data-c="shipping">    <span class="x">tester.assertComponentOnAjaxResponse(<span class="tw">"order:shipping"</span>);</span></span>
+<span class="ln c new" style="--r:11"><span class="x">}</span></span></code></pre>
+<p class="file" style="--c:1; --r:18" data-c="AddressPanel"><span class="x">AddressPanel.java</span></p>
+<pre class="src" aria-label="AddressPanel.java"><code><span class="ln" style="--r:19" data-c="AddressPanel"><span class="x"><span class="tk">public</span> <span class="tk">class</span> AddressPanel <span class="tk">extends</span> Panel {</span></span>
+<span class="ln" style="--r:20">    <span class="x"><span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span></span>
+<span class="ln" style="--r:21">        <span class="x"><span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span></span>
+<span class="ln c" style="--r:22" data-c="street">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span></span>
+<span class="ln c" style="--r:23" data-c="city">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span></span>
+<span class="ln" style="--r:24">    <span class="x">}</span></span>
+<span class="ln" style="--r:25"><span class="x">}</span></span></code></pre>
+<div class="beads" role="group" aria-label="Component tree of OrderPage after step 6">
+<button type="button" class="bead root" style="--r:2; --x:0" data-path="page" data-k="page" aria-label="OrderPage, the page">OrderPage</button>
+<button type="button" class="bead" style="--r:5; --x:14.5" data-path="page/message" data-k="message" aria-label='Label "message" renders &lt;p wicket:id="message"&gt;'>message</button>
+<button type="button" class="bead" style="--r:6; --x:14.5" data-path="page/order" data-k="order" aria-label='Form "order" renders &lt;form wicket:id="order"&gt;'>order</button>
+<button type="button" class="bead" style="--r:7; --x:25" data-path="page/order/billing" data-k="billing AddressPanel" aria-label='AddressPanel "billing" renders &lt;div wicket:id="billing"&gt;'>billing</button>
+<button type="button" class="bead" style="--r:8; --x:25" data-path="page/order/shipElsewhere" data-k="shipElsewhere" aria-label='AjaxLink "shipElsewhere" renders &lt;a wicket:id="shipElsewhere"&gt;'>shipElsewhere</button>
+<button type="button" class="bead" style="--r:10; --x:25" data-path="page/order/shipping" data-k="shipping AddressPanel" aria-label='AddressPanel "shipping" renders &lt;div wicket:id="shipping"&gt;'>shipping</button>
+<button type="button" class="bead" style="--r:11; --x:25" data-path="page/order/save" data-k="save" aria-label='Button "save" renders &lt;button wicket:id="save"&gt;'>save</button>
+<button type="button" class="bead" style="--r:22; --x:50" data-path="page/order/billing/street" data-k="street" aria-label='TextField "street" inside billing renders &lt;input wicket:id="street"&gt;'>street</button>
+<button type="button" class="bead" style="--r:22; --x:38.5" data-path="page/order/shipping/street" data-k="street" aria-label='TextField "street" inside shipping renders &lt;input wicket:id="street"&gt;'>street</button>
+<button type="button" class="bead" style="--r:23; --x:50" data-path="page/order/billing/city" data-k="city" aria-label='TextField "city" inside billing renders &lt;input wicket:id="city"&gt;'>city</button>
+<button type="button" class="bead" style="--r:23; --x:38.5" data-path="page/order/shipping/city" data-k="city" aria-label='TextField "city" inside shipping renders &lt;input wicket:id="city"&gt;'>city</button>
+</div>
+<p class="file" style="--c:3; --r:2" data-c="page"><span class="x">OrderPage.html</span></p>
+<pre class="src" aria-label="OrderPage.html"><code><span class="ln" style="--c:3; --r:3"><span class="x"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:4"><span class="x"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:5" data-c="message">  <span class="x"><span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:6" data-c="order">  <span class="x"><span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:7" data-c="billing">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:8" data-c="shipElsewhere">    <span class="x"><span class="tg">&lt;a</span> wicket:id=<span class="tw">"shipElsewhere"</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:9" data-c="shipElsewhere">      <span class="x">Ship to another address<span class="tg">&lt;/a</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:10" data-c="shipping">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:11" data-c="save">    <span class="x"><span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:12">  <span class="x"><span class="tg">&lt;/form</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:13"><span class="x"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:14"><span class="x"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></span></code></pre>
+<p class="file" style="--c:3; --r:18" data-c="AddressPanel"><span class="x">AddressPanel.html</span></p>
+<pre class="src" aria-label="AddressPanel.html"><code><span class="ln" style="--c:3; --r:19" data-c="AddressPanel"><span class="x"><span class="tg">&lt;wicket:panel</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:22" data-c="street">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:23" data-c="city">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:24"><span class="x"><span class="tg">&lt;/wicket:panel</span><span class="tg">&gt;</span></span></span></code></pre>
+<svg class="tree-ribbon" aria-hidden="true" focusable="false"></svg>
+</div>
+<div class="tree-list">
+<h3 class="tree-list-title">OrderPage as a tree after step 6</h3>
+<ol class="tl"><li>
+<span class="tl-name"><b data-c="page">OrderPage</b> <span>page</span></span><ol>
+<li><span class="tl-name"><b data-c="message">"message"</b> <span>Label</span></span></li>
+<li>
+<span class="tl-name"><b data-c="order">"order"</b> <span>Form</span></span><ol>
+<li>
+<span class="tl-name"><b data-c="billing AddressPanel">"billing"</b> <span>AddressPanel</span></span><ol>
+<li><span class="tl-name"><b data-c="street">"street"</b> <span>TextField</span></span></li>
+<li><span class="tl-name"><b data-c="city">"city"</b> <span>TextField</span></span></li>
+</ol>
+</li>
+<li><span class="tl-name"><b data-c="shipElsewhere">"shipElsewhere"</b> <span>AjaxLink</span></span></li>
+<li>
+<span class="tl-name"><b data-c="shipping AddressPanel">"shipping"</b> <span>AddressPanel</span></span><ol>
+<li><span class="tl-name"><b data-c="street">"street"</b> <span>TextField</span></span></li>
+<li><span class="tl-name"><b data-c="city">"city"</b> <span>TextField</span></span></li>
+</ol>
+</li>
+<li><span class="tl-name"><b data-c="save">"save"</b> <span>Button</span></span></li>
+</ol>
+</li>
+</ol>
+</li></ol>
+<p class="tl-hint">Tap a component to light its lines in the files below. Lines marked + are new in this step.</p>
+</div>
+<div class="tree-code">
+<p class="tc-file">OrderPageTest.java</p>
+<pre class="tc" tabindex="0" aria-label="OrderPageTest.java"><code><span class="tcl new"><span class="tk">@Test</span> <span class="tk">void</span> shipsToAnotherAddress() {</span><span class="tcl new" data-c="page">    tester.startPage(OrderPage.<span class="tk">class</span>);</span><span class="tcl new" data-c="message">    tester.assertLabel(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>);</span><span class="tcl new" data-c="shipElsewhere">    tester.clickLink(<span class="tw">"order:shipElsewhere"</span>);</span><span class="tcl new" data-c="shipping">    tester.assertComponentOnAjaxResponse(<span class="tw">"order:shipping"</span>);</span><span class="tcl new">}</span></code></pre>
+<p class="tc-file" data-c="page">OrderPage.html</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.html"><code><span class="tcl"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span><span class="tcl" data-c="message">  <span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span><span class="tcl" data-c="order">  <span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span><span class="tcl" data-c="billing">    <span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span><span class="tcl" data-c="shipElsewhere">    <span class="tg">&lt;a</span> wicket:id=<span class="tw">"shipElsewhere"</span><span class="tg">&gt;</span></span><span class="tcl" data-c="shipElsewhere">      Ship to another address<span class="tg">&lt;/a</span><span class="tg">&gt;</span></span><span class="tcl" data-c="shipping">    <span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span><span class="tcl" data-c="save">    <span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button</span><span class="tg">&gt;</span></span><span class="tcl">  <span class="tg">&lt;/form</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></code></pre>
+<p class="tc-file" data-c="AddressPanel">AddressPanel.java</p>
+<pre class="tc" tabindex="0" aria-label="AddressPanel.java"><code><span class="tcl" data-c="AddressPanel"><span class="tk">public</span> <span class="tk">class</span> AddressPanel <span class="tk">extends</span> Panel {</span><span class="tcl">    <span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span><span class="tcl">        <span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span><span class="tcl" data-c="street">        add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span><span class="tcl" data-c="city">        add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span><span class="tcl">    }</span><span class="tcl">}</span></code></pre>
+<p class="tc-file" data-c="AddressPanel">AddressPanel.html</p>
+<pre class="tc" tabindex="0" aria-label="AddressPanel.html"><code><span class="tcl" data-c="AddressPanel"><span class="tg">&lt;wicket:panel</span><span class="tg">&gt;</span></span><span class="tcl" data-c="street">  <span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span><span class="tcl" data-c="city">  <span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/wicket:panel</span><span class="tg">&gt;</span></span></code></pre>
+</div>
+
+    </section>
+    
+    <section class="how-step" id="step-7" aria-labelledby="step-7-title">
+      <header class="ctree-head how-head">
+        <h2 id="step-7-title">
+<span class="how-n">7</span> Secure by default</h2>
+        <div class="how-text">
+          <p>Every page is sent with a strict Content Security Policy, without <code>unsafe-inline</code>. Wicket puts a fresh nonce on every script and stylesheet a component contributes to the page, here the Ajax link’s. You only add what your application needs, such as one more host for images.</p>
+          <p class="how-more"><a href="/docs/security-model.html">How Wicket keeps applications secure</a>
+            <a class="how-next" href="/docs/first-application.html">Next: build your first application</a></p>
+        </div>
+      </header>
+      <div class="loom" style="grid-template-rows: 1.2em 3em 1.85em 1.85em 2.8em 2.8em 2.8em 1.85em 1.85em 1.85em 1.85em 2.8em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 2.8em 2.8em 1.85em 1.85em 1.85em 1.2em 2.2em 1.2em 3em 1.85em 1.85em 1.85em 2.8em 2.8em 1.85em 1.85em 1.2em 2.2em 1.2em 3em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.85em 1.2em" aria-describedby="loom-hint" data-focus-paths="page/order/shipElsewhere" data-focus-keys="shipElsewhere nonce img">
+<div class="sheet" style="--c:1; --r:1 / 25" aria-hidden="true"></div>
+<div class="sheet" style="--c:3; --r:1 / 25" aria-hidden="true"></div>
+<div class="sheet" style="--c:1; --r:26 / 36" aria-hidden="true"></div>
+<div class="sheet" style="--c:3; --r:26 / 35" aria-hidden="true"></div>
+<div class="sheet" style="--c:1; --r:37 / 49" aria-hidden="true"></div>
+<div class="sheet" style="--c:3; --r:37 / 58" aria-hidden="true"></div>
+<p class="file" style="--c:1; --r:2" data-c="page"><span class="x">OrderPage.java</span></p>
+<pre class="src" aria-label="OrderPage.java"><code><span class="ln" style="--r:3"><span class="x"><span class="tk">public</span> <span class="tk">class</span> OrderPage <span class="tk">extends</span> WebPage {</span></span>
+<span class="ln" style="--r:4">    <span class="x"><span class="tk">public</span> OrderPage() {</span></span>
+<span class="ln c" style="--r:5" data-c="message">        <span class="x">add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span></span>
+<span class="ln c" style="--r:6" data-c="order">        <span class="x">Form&lt;Void&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>);</span></span>
+<span class="ln c" style="--r:7" data-c="billing">        <span class="x">form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"billing"</span>, billingAddress));</span></span>
+<span class="ln" style="--r:8" data-c="shipping">        <span class="x">AddressPanel shipping =</span></span>
+<span class="ln" style="--r:9" data-c="shipping">                <span class="x"><span class="tk">new</span> AddressPanel(<span class="tw">"shipping"</span>, shippingAddress);</span></span>
+<span class="ln" style="--r:10" data-c="shipping">        <span class="x">shipping.setOutputMarkupPlaceholderTag(<span class="tk">true</span>);</span></span>
+<span class="ln" style="--r:11" data-c="shipping">        <span class="x">shipping.setVisible(<span class="tk">false</span>);</span></span>
+<span class="ln c" style="--r:12" data-c="shipElsewhere">        <span class="x">form.add(<span class="tk">new</span> AjaxLink&lt;Void&gt;(<span class="tw">"shipElsewhere"</span>) {</span></span>
+<span class="ln" style="--r:13" data-c="shipElsewhere" data-thread="no">            <span class="x"><span class="tk">@Override</span></span></span>
+<span class="ln" style="--r:14" data-c="shipElsewhere">            <span class="x"><span class="tk">public</span> <span class="tk">void</span> onClick(AjaxRequestTarget target) {</span></span>
+<span class="ln" style="--r:15" data-c="shipElsewhere shipping">                <span class="x">shipping.setVisible(!shipping.isVisible());</span></span>
+<span class="ln" style="--r:16" data-c="shipElsewhere shipping">                <span class="x">target.add(shipping);</span></span>
+<span class="ln" style="--r:17" data-c="shipElsewhere">            <span class="x">}</span></span>
+<span class="ln" style="--r:18" data-c="shipElsewhere">        <span class="x">});</span></span>
+<span class="ln c" style="--r:19" data-c="shipping">        <span class="x">form.add(shipping);</span></span>
+<span class="ln c" style="--r:20" data-c="save">        <span class="x">form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span></span>
+<span class="ln" style="--r:21">        <span class="x">add(form);</span></span>
+<span class="ln" style="--r:22">    <span class="x">}</span></span>
+<span class="ln" style="--r:23"><span class="x">}</span></span></code></pre>
+<p class="file" style="--c:1; --r:27" data-c="AddressPanel"><span class="x">AddressPanel.java</span></p>
+<pre class="src" aria-label="AddressPanel.java"><code><span class="ln" style="--r:28" data-c="AddressPanel"><span class="x"><span class="tk">public</span> <span class="tk">class</span> AddressPanel <span class="tk">extends</span> Panel {</span></span>
+<span class="ln" style="--r:29">    <span class="x"><span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span></span>
+<span class="ln" style="--r:30">        <span class="x"><span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span></span>
+<span class="ln c" style="--r:31" data-c="street">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span></span>
+<span class="ln c" style="--r:32" data-c="city">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span></span>
+<span class="ln" style="--r:33">    <span class="x">}</span></span>
+<span class="ln" style="--r:34"><span class="x">}</span></span></code></pre>
+<p class="file" style="--c:1; --r:38"><span class="x">MyApplication.java</span></p>
+<pre class="src" aria-label="MyApplication.java"><code><span class="ln new" style="--r:39"><span class="x"><span class="tk">public</span> <span class="tk">class</span> MyApplication <span class="tk">extends</span> WebApplication {</span></span>
+<span class="ln new" style="--r:40">    <span class="x"><span class="tk">@Override</span></span></span>
+<span class="ln new" style="--r:41">    <span class="x"><span class="tk">protected</span> <span class="tk">void</span> init() {</span></span>
+<span class="ln new" style="--r:42">        <span class="x"><span class="tk">super</span>.init();</span></span>
+<span class="ln new" style="--r:43" data-c="img">        <span class="x">getCspSettings().blocking()</span></span>
+<span class="ln new" style="--r:44" data-c="img">                <span class="x">.add(CSPDirective.IMG_SRC,</span></span>
+<span class="ln new" style="--r:45" data-c="img">                        <span class="x"><span class="ts">"https://images.example.org"</span>);</span></span>
+<span class="ln new" style="--r:46">    <span class="x">}</span></span>
+<span class="ln new" style="--r:47"><span class="x">}</span></span></code></pre>
+<div class="beads" role="group" aria-label="Component tree of OrderPage after step 7">
+<button type="button" class="bead root" style="--r:2; --x:0" data-path="page" data-k="page" aria-label="OrderPage, the page">OrderPage</button>
+<button type="button" class="bead" style="--r:5; --x:14.5" data-path="page/message" data-k="message" aria-label='Label "message" renders &lt;p wicket:id="message"&gt;'>message</button>
+<button type="button" class="bead" style="--r:6; --x:14.5" data-path="page/order" data-k="order" aria-label='Form "order" renders &lt;form wicket:id="order"&gt;'>order</button>
+<button type="button" class="bead" style="--r:7; --x:25" data-path="page/order/billing" data-k="billing AddressPanel" aria-label='AddressPanel "billing" renders &lt;div wicket:id="billing"&gt;'>billing</button>
+<button type="button" class="bead" style="--r:12; --x:25" data-path="page/order/shipElsewhere" data-k="shipElsewhere" aria-label='AjaxLink "shipElsewhere" renders &lt;a wicket:id="shipElsewhere"&gt;, with a nonce on its script'>shipElsewhere <small class="bead-mark">nonce</small></button>
+<button type="button" class="bead" style="--r:19; --x:25" data-path="page/order/shipping" data-k="shipping AddressPanel" aria-label='AddressPanel "shipping" renders &lt;div wicket:id="shipping"&gt;'>shipping</button>
+<button type="button" class="bead" style="--r:20; --x:25" data-path="page/order/save" data-k="save" aria-label='Button "save" renders &lt;button wicket:id="save"&gt;'>save</button>
+<button type="button" class="bead" style="--r:31; --x:50" data-path="page/order/billing/street" data-k="street" aria-label='TextField "street" inside billing renders &lt;input wicket:id="street"&gt;'>street</button>
+<button type="button" class="bead" style="--r:31; --x:38.5" data-path="page/order/shipping/street" data-k="street" aria-label='TextField "street" inside shipping renders &lt;input wicket:id="street"&gt;'>street</button>
+<button type="button" class="bead" style="--r:32; --x:50" data-path="page/order/billing/city" data-k="city" aria-label='TextField "city" inside billing renders &lt;input wicket:id="city"&gt;'>city</button>
+<button type="button" class="bead" style="--r:32; --x:38.5" data-path="page/order/shipping/city" data-k="city" aria-label='TextField "city" inside shipping renders &lt;input wicket:id="city"&gt;'>city</button>
+</div>
+<p class="file" style="--c:3; --r:2" data-c="page"><span class="x">OrderPage.html</span></p>
+<pre class="src" aria-label="OrderPage.html"><code><span class="ln" style="--c:3; --r:3"><span class="x"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:4"><span class="x"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:5" data-c="message">  <span class="x"><span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:6" data-c="order">  <span class="x"><span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:7" data-c="billing">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:12" data-c="shipElsewhere">    <span class="x"><span class="tg">&lt;a</span> wicket:id=<span class="tw">"shipElsewhere"</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:13" data-c="shipElsewhere" data-thread="no">      <span class="x">Ship to another address<span class="tg">&lt;/a</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:19" data-c="shipping">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:20" data-c="save">    <span class="x"><span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:21">  <span class="x"><span class="tg">&lt;/form</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:22"><span class="x"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:23"><span class="x"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></span></code></pre>
+<p class="file" style="--c:3; --r:27" data-c="AddressPanel"><span class="x">AddressPanel.html</span></p>
+<pre class="src" aria-label="AddressPanel.html"><code><span class="ln" style="--c:3; --r:28" data-c="AddressPanel"><span class="x"><span class="tg">&lt;wicket:panel</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:31" data-c="street">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:32" data-c="city">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:33"><span class="x"><span class="tg">&lt;/wicket:panel</span><span class="tg">&gt;</span></span></span></code></pre>
+<p class="file" style="--c:3; --r:38"><span class="x">The response to the browser</span></p>
+<pre class="src" aria-label="The response to the browser"><code><span class="ln new" style="--c:3; --r:40"><span class="x"><span class="tk">Content-Security-Policy:</span></span></span>
+<span class="ln new" style="--c:3; --r:41">  <span class="x">default-src <span class="ts">'none'</span>;</span></span>
+<span class="ln new" style="--c:3; --r:42" data-c="nonce">  <span class="x">script-src <span class="ts">'strict-dynamic'</span> <span class="tw">'nonce-R3x'</span>;</span></span>
+<span class="ln new" style="--c:3; --r:43" data-c="nonce">  <span class="x">style-src <span class="tw">'nonce-R3x'</span>;</span></span>
+<span class="ln new" style="--c:3; --r:44" data-c="img">  <span class="x">img-src <span class="ts">'self'</span></span></span>
+<span class="ln new" style="--c:3; --r:45" data-c="img">    <span class="x">https://images.example.org;</span></span>
+<span class="ln new" style="--c:3; --r:46">  <span class="x">connect-src <span class="ts">'self'</span>; font-src <span class="ts">'self'</span>; …</span></span>
+<span class="ln new" style="--c:3; --r:48"><span class="x"><span class="tg">&lt;head</span><span class="tg">&gt;</span></span></span>
+<span class="ln new" style="--c:3; --r:49" data-c="shipElsewhere">  <span class="x"><span class="tg">&lt;script</span> nonce=<span class="tw">"R3x"</span></span></span>
+<span class="ln new" style="--c:3; --r:50" data-c="shipElsewhere">    <span class="x">src=<span class="ts">"…/wicket-ajax-jquery.js"</span><span class="tg">&gt;</span></span></span>
+<span class="ln new" style="--c:3; --r:51" data-c="shipElsewhere">  <span class="x"><span class="tg">&lt;/script</span><span class="tg">&gt;</span></span></span>
+<span class="ln new" style="--c:3; --r:52" data-c="shipElsewhere">  <span class="x"><span class="tg">&lt;script</span> nonce=<span class="tw">"R3x"</span><span class="tg">&gt;</span></span></span>
+<span class="ln new" style="--c:3; --r:53" data-c="shipElsewhere">    <span class="x">Wicket.Ajax.ajax({"e":"click",</span></span>
+<span class="ln new" style="--c:3; --r:54" data-c="shipElsewhere">      <span class="x">"c":"shipElsewhere3", …});</span></span>
+<span class="ln new" style="--c:3; --r:55" data-c="shipElsewhere">  <span class="x"><span class="tg">&lt;/script</span><span class="tg">&gt;</span></span></span>
+<span class="ln new" style="--c:3; --r:56"><span class="x"><span class="tg">&lt;/head</span><span class="tg">&gt;</span></span></span></code></pre>
+<svg class="tree-ribbon" aria-hidden="true" focusable="false"></svg>
+</div>
+<div class="tree-list">
+<h3 class="tree-list-title">OrderPage as a tree after step 7</h3>
+<ol class="tl"><li>
+<span class="tl-name"><b data-c="page">OrderPage</b> <span>page</span></span><ol>
+<li><span class="tl-name"><b data-c="message">"message"</b> <span>Label</span></span></li>
+<li>
+<span class="tl-name"><b data-c="order">"order"</b> <span>Form</span></span><ol>
+<li>
+<span class="tl-name"><b data-c="billing AddressPanel">"billing"</b> <span>AddressPanel</span></span><ol>
+<li><span class="tl-name"><b data-c="street">"street"</b> <span>TextField</span></span></li>
+<li><span class="tl-name"><b data-c="city">"city"</b> <span>TextField</span></span></li>
+</ol>
+</li>
+<li><span class="tl-name"><b data-c="shipElsewhere">"shipElsewhere"</b> <span>AjaxLink</span></span></li>
+<li>
+<span class="tl-name"><b data-c="shipping AddressPanel">"shipping"</b> <span>AddressPanel</span></span><ol>
+<li><span class="tl-name"><b data-c="street">"street"</b> <span>TextField</span></span></li>
+<li><span class="tl-name"><b data-c="city">"city"</b> <span>TextField</span></span></li>
+</ol>
+</li>
+<li><span class="tl-name"><b data-c="save">"save"</b> <span>Button</span></span></li>
+</ol>
+</li>
+</ol>
+</li></ol>
+<p class="tl-hint">Tap a component to light its lines in the files below. Lines marked + are new in this step.</p>
+</div>
+<div class="tree-code">
+<p class="tc-file" data-c="page">OrderPage.java</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.java"><code><span class="tcl"><span class="tk">public</span> <span class="tk">class</span> OrderPage <span class="tk">extends</span> WebPage {</span><span class="tcl">    <span class="tk">public</span> OrderPage() {</span><span class="tcl" data-c="message">        add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span><span class="tcl" data-c="order">        Form&lt;Void&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>);</span><span class="tcl" data-c="billing">        form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"billing"</span>, billingAddress));</span><span class="tcl" data-c="shipping">        AddressPanel shipping =</span><span class="tcl" data-c="shipping">                <span class="tk">new</span> AddressPanel(<span class="tw">"shipping"</span>, shippingAddress);</span><span class="tcl" data-c="shipping">        shipping.setOutputMarkupPlaceholderTag(<span class="tk">true</span>);</span><span class="tcl" data-c="shipping">        shipping.setVisible(<span class="tk">false</span>);</span><span class="tcl" data-c="shipElsewhere">        form.add(<span class="tk">new</span> AjaxLink&lt;Void&gt;(<span class="tw">"shipElsewhere"</span>) {</span><span class="tcl" data-c="shipElsewhere">            <span class="tk">@Override</span></span><span class="tcl" data-c="shipElsewhere">            <span class="tk">public</span> <span class="tk">void</span> onClick(AjaxRequestTarget target) {</span><span class="tcl" data-c="shipElsewhere shipping">                shipping.setVisible(!shipping.isVisible());</span><span class="tcl" data-c="shipElsewhere shipping">                target.add(shipping);</span><span class="tcl" data-c="shipElsewhere">            }</span><span class="tcl" data-c="shipElsewhere">        });</span><span class="tcl" data-c="shipping">        form.add(shipping);</span><span class="tcl" data-c="save">        form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span><span class="tcl">        add(form);</span><span class="tcl">    }</span><span class="tcl">}</span></code></pre>
+<p class="tc-file" data-c="page">OrderPage.html</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.html"><code><span class="tcl"><span class="tg">&lt;html</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;body</span><span class="tg">&gt;</span></span><span class="tcl" data-c="message">  <span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p</span><span class="tg">&gt;</span></span><span class="tcl" data-c="order">  <span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span><span class="tcl" data-c="billing">    <span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span><span class="tcl" data-c="shipElsewhere">    <span class="tg">&lt;a</span> wicket:id=<span class="tw">"shipElsewhere"</span><span class="tg">&gt;</span></span><span class="tcl" data-c="shipElsewhere">      Ship to another address<span class="tg">&lt;/a</span><span class="tg">&gt;</span></span><span class="tcl" data-c="shipping">    <span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;</span><span class="tg">&lt;/div</span><span class="tg">&gt;</span></span><span class="tcl" data-c="save">    <span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button</span><span class="tg">&gt;</span></span><span class="tcl">  <span class="tg">&lt;/form</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/body</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/html</span><span class="tg">&gt;</span></span></code></pre>
+<p class="tc-file" data-c="AddressPanel">AddressPanel.java</p>
+<pre class="tc" tabindex="0" aria-label="AddressPanel.java"><code><span class="tcl" data-c="AddressPanel"><span class="tk">public</span> <span class="tk">class</span> AddressPanel <span class="tk">extends</span> Panel {</span><span class="tcl">    <span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span><span class="tcl">        <span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span><span class="tcl" data-c="street">        add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span><span class="tcl" data-c="city">        add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span><span class="tcl">    }</span><span class="tcl">}</span></code></pre>
+<p class="tc-file" data-c="AddressPanel">AddressPanel.html</p>
+<pre class="tc" tabindex="0" aria-label="AddressPanel.html"><code><span class="tcl" data-c="AddressPanel"><span class="tg">&lt;wicket:panel</span><span class="tg">&gt;</span></span><span class="tcl" data-c="street">  <span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span><span class="tcl" data-c="city">  <span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/wicket:panel</span><span class="tg">&gt;</span></span></code></pre>
+<p class="tc-file">MyApplication.java</p>
+<pre class="tc" tabindex="0" aria-label="MyApplication.java"><code><span class="tcl new"><span class="tk">public</span> <span class="tk">class</span> MyApplication <span class="tk">extends</span> WebApplication {</span><span class="tcl new">    <span class="tk">@Override</span></span><span class="tcl new">    <span class="tk">protected</span> <span class="tk">void</span> init() {</span><span class="tcl new">        <span class="tk">super</span>.init();</span><span class="tcl new" data-c="img">        getCspSettings().blocking()</span><span class="tcl new" data-c="img">                .add(CSPDirective.IMG_SRC,</span><span class="tcl new" data-c="img">                        <span class="ts">"https://images.example.org"</span>);</span><span class="tcl new">    }</span><span class="tcl new">}</span></code></pre>
+<p class="tc-file">The response to the browser</p>
+<pre class="tc" tabindex="0" aria-label="The response to the browser"><code><span class="tcl new"><span class="tk">Content-Security-Policy:</span></span><span class="tcl new">  default-src <span class="ts">'none'</span>;</span><span class="tcl new" data-c="nonce">  script-src <span class="ts">'strict-dynamic'</span> <span class="tw">'nonce-R3x'</span>;</span><span class="tcl new" data-c="nonce">  style-src <span class="tw">'nonce-R3x'</span>;</span><span class="tcl new" data-c="img">  img-src <span class="ts">'self'</span></span><span class="tcl new" data-c="img">    https://images.example.org;</span><span class="tcl new">  connect-src <span class="ts">'self'</span>; font-src <span class="ts">'self'</span>; …</span><span class="tcl new"><span class="tg">&lt;head</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="shipElsewhere">  <span class="tg">&lt;script</span> nonce=<span class="tw">"R3x"</span></span><span class="tcl new" data-c="shipElsewhere">    src=<span class="ts">"…/wicket-ajax-jquery.js"</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="shipElsewhere">  <span class="tg">&lt;/script</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="shipElsewhere">  <span class="tg">&lt;script</span> nonce=<span class="tw">"R3x"</span><span class="tg">&gt;</span></span><span class="tcl new" data-c="shipElsewhere">    Wicket.Ajax.ajax({"e":"click",</span><span class="tcl new" data-c="shipElsewhere">      "c":"shipElsewhere3", …});</span><span class="tcl new" data-c="shipElsewhere">  <span class="tg">&lt;/script</span><span class="tg">&gt;</span></span><span class="tcl new"><span class="tg">&lt;/head</span><span class="tg">&gt;</span></span></code></pre>
+</div>
+
+    </section>
+    
+    <p class="loom-hint" id="loom-hint">Lines marked + are new in their step. Point at a component, or tab to the tree and use the arrow keys, to follow it from its Java line to its tag.</p>
+  </div>
+</section>
+
+    
 </main>
 
-        <footer>
+        <footer class="footer">
             
 <div class="l-container footer-columns">
     <nav class="footer-sitemap" aria-label="Site">
@@ -222,5 +797,8 @@
 </div>
 
         </footer>
+        
+        <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-windscreen-1600.jpg","srcset":[{"file":"summer-windscreen-900.jpg","width":900},{"file":"summer-windscreen-1600.jpg","width":1600},{"file":"summer-windscreen-2160.jpg","width":2160}],"focus":"50% 50%","focus_narrow":"50% 50%","anchor":"right","shift":"33%","ground":"linear-gradient(180deg, #44649E 0%, #4D6FA8 10%, #597FB4 20%, #7393C0 30%, #9DABC1 42%, #93A4B8 54%, #859AB2 56.5%, #9A8A79 57.5%, #BBB3B2 62%, #B1A79F 85%, #ACA39C 100%)"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
+        <script src="/javascript/ribbon.js?v=1793051582" defer></script>
     </body>
 </html>

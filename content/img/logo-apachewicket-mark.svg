@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="199 0 64 64" width="64" height="64">
+  <title>Apache Wicket</title>
+  <!-- The mark from the registered logo (logo-apachewicket.svg), unchanged: orange circle with the white figure. -->
+  <circle cx="231" cy="32" r="32" fill="#ff9925"/>
+  <path d="m 199,0 m 20,20 v 24 h 8 8 8 V 20 l -8,16 -4,-8 -4,8 z" fill="#ffffff"/>
+</svg>

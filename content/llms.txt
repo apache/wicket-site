@@ -2,11 +2,11 @@
 
 > Apache Wicket is an open source, component-oriented Java web framework of the Apache Software Foundation. Every component keeps its behaviour and state in Java and its markup in plain HTML; there is no JavaScript build chain. Maven coordinates: groupId `org.apache.wicket`, artifactId `wicket-core`.
 
-Release lines in service:
+Supported release lines:
 
-- Wicket 10 (LTS): latest 10.11.0, Java 17+, Jakarta Servlet 5.0+. In service, supported until Jul 2027.
-- Wicket 9: latest 9.24.0, Java 11+, Servlet 3.1+. Last release coming, supported until its final release.
-- Wicket 8: latest 8.19.0, Java 8+, Servlet 3.1+. Last release coming, supported until its final release.
+- Wicket 10 (LTS): latest 10.11.0, Java 17+, Jakarta Servlet 5.0+. Supported until Jul 2027.
+- Wicket 9: latest 9.24.0, Java 11+, Servlet 3.1+. Supported until its final release.
+- Wicket 8: latest 8.19.0, Java 8+, Servlet 3.1+. Supported until its final release.
 
 Wicket 10 and later use the `jakarta.*` namespace; Wicket 9 and earlier use `javax.*`.
 
@@ -55,7 +55,7 @@ Tutorials, how-to guides, reference and explanation for Wicket 10 and later, by 
 ## Releases
 
 - [Releases](https://wicket.apache.org/versions/): release lines, support and the release policy
-- [Upgrade paths](https://wicket.apache.org/versions/#upgrade-paths): the route from an older line to one that is supported, with the migration guides
+- [Upgrade paths](https://wicket.apache.org/versions/#upgrade-paths): how to get from an older line to one that is supported, with the migration guides
 - [Wicket 10](https://wicket.apache.org/versions/wicket-10.x/): Maven dependency, downloads, what is new and migration
 - [Wicket 9](https://wicket.apache.org/versions/wicket-9.x/): Maven dependency, downloads, what is new and migration
 - [Wicket 8](https://wicket.apache.org/versions/wicket-8.x/): Maven dependency, downloads, what is new and migration
