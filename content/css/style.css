@@ -806,6 +806,14 @@ nav.mainmenu.is-home .nav-sections {
   transform: scale(1.03);
 }
 
+@media (prefers-color-scheme: dark) {
+  .photo img {
+    filter: brightness(var(--night, 0.6));
+  }
+  .photo[data-soft] img {
+    filter: blur(1.4px) saturate(0.92) brightness(var(--night, 0.6));
+  }
+}
 .photo[data-anchor=right] {
   background: var(--ground, #C9D6CF);
 }
