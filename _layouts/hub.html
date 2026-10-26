@@ -143,9 +143,9 @@ layout: base
                     <h3>Docs</h3>
                     {% if recommended %}
                     <p><a href="{{ site.baseurl }}/docs/?v={{ major }}">The documentation for Wicket {{ page.series }}</a>: tutorials, how-to guides, reference and explanation.</p>
-                    <p class="hub-panel-alt"><a href="https://nightlies.apache.org/wicket/guide/{{ page.series }}.x/single.html">The reference guide as one document</a></p>
+                    <p class="hub-panel-alt"><a href="https://nightlies.apache.org/wicket/guide/{{ page.series }}.x/single.html">The reference guide as one document</a> · <a href="https://nightlies.apache.org/wicket/guide/{{ page.series }}.x/single.pdf">PDF</a></p>
                     {% elsif major >= 7 %}
-                    <p><a href="https://nightlies.apache.org/wicket/guide/{{ page.series }}.x/single.html">The reference guide for Wicket {{ page.series }}</a>, as one document.</p>
+                    <p><a href="https://nightlies.apache.org/wicket/guide/{{ page.series }}.x/single.html">The reference guide for Wicket {{ page.series }}</a>, as one document or as <a href="https://nightlies.apache.org/wicket/guide/{{ page.series }}.x/single.pdf">PDF</a>.</p>
                     {% else %}
                     <p>Wicket {{ page.series }} has no reference guide of its own; the <a href="https://cwiki.apache.org/WICKET">wiki</a> and the <a href="{{ site.baseurl }}/learn/books/">books</a> cover it.</p>
                     {% endif %}
