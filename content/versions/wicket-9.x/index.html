@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1793057496" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1793307580" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -124,7 +124,7 @@
             <p class="hub-crumbs"><a href="/versions/">Releases</a></p>
             <h1>Apache Wicket 9.x</h1>
             <p class="hub-role">
-                One more Wicket 9 release follows 9.24.0; after it the line reaches end of life. Its date will be on the <a href="/news/">blog</a>; <a href="mailto:announce-subscribe@wicket.apache.org">subscribe to the announce list</a> to hear it first.
+                End of life: no more releases, not even security fixes.
                 
             </p>
         </div>
@@ -134,15 +134,15 @@
             <dl class="hub-facts">
                 <div>
 <dt>Latest release</dt>
-<dd class="hub-version">9.24.0</dd>
+<dd class="hub-version">9.25.0</dd>
 </div>
                 <div>
 <dt>Status</dt>
-<dd><span class="tag tag-ending">Last release coming</span></dd>
+<dd><span class="tag tag-eol">End of life</span></dd>
 </div>
                 <div>
 <dt>Supported</dt>
-<dd>Until its final release</dd>
+<dd>Ended Oct 2026</dd>
 </div>
                 
                 
@@ -156,8 +156,8 @@
 </div>
             </dl>
             
-            <div class="hub-eol is-ending" id="upgrade">
-                <p class="hub-eol-title">Wicket 9 reaches end of life with its final release</p>
+            <div class="hub-eol" id="upgrade">
+                <p class="hub-eol-title">Wicket 9 gets no more releases, not even security fixes</p>
                 
                 <p><a href="/news/2026/10/21/wicket-8-and-9-end-of-life.html">Wicket 8 and 9 reach end of life soon</a>: what end of life means, why, and how to move.</p>
                 
@@ -178,7 +178,7 @@
 <span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>9.24.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>9.25.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
 
 </div>
@@ -290,6 +290,9 @@
 </ul>
 <ul class="post-rows">
     <li>
+<time datetime="2026-10-29T10:00:00+00:00">29 Oct 2026</time> <span class="post-row-title"><a href="/news/2026/10/29/wicket-9.25.0-released.html">Apache Wicket 9.25.0 marks the end of Wicket 9</a></span>
+</li>
+    <li>
 <time datetime="2026-08-30T09:00:00+00:00">30 Aug 2026</time> <span class="post-row-title"><a href="/news/2026/08/30/wicket-9.24.0-released.html">Apache Wicket 9.24.0 released</a> <span class="tag tag-security">Security fixes</span></span>
 </li>
     <li>
@@ -310,9 +313,6 @@
     <li>
 <time datetime="2024-06-01T00:00:00+00:00">1 Jun 2024</time> <span class="post-row-title"><a href="/news/2024/06/01/wicket-9.18.0-released.html">Apache Wicket 9.18.0 released</a> <span class="tag tag-security">Security fixes</span></span>
 </li>
-    <li>
-<time datetime="2024-03-17T00:00:00+00:00">17 Mar 2024</time> <span class="post-row-title"><a href="/news/2024/03/17/wicket-9.17.0-released.html">Apache Wicket 9.17.0 released</a> <span class="tag tag-security">Security fixes</span></span>
-</li>
 </ul>
             <p class="hub-more"><a href="/news/">All posts on the blog</a></p>
         </section>
@@ -326,26 +326,26 @@
 <p>Most projects get Wicket through Maven or Gradle, with the dependency at the top of this page. To build Wicket yourself, or to use it without a build tool, download the source:</p>
 
 <ul>
-  <li>Download source <a href="https://www.apache.org/dyn/closer.cgi/wicket/9.24.0/apache-wicket-9.24.0.tar.gz" target="_blank" rel="noopener noreferrer">apache-wicket-9.24.0.tar.gz</a>
-(<a href="https://downloads.apache.org/wicket/9.24.0/apache-wicket-9.24.0.tar.gz.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
-<a href="https://downloads.apache.org/wicket/9.24.0/apache-wicket-9.24.0.tar.gz.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
+  <li>Download source <a href="https://www.apache.org/dyn/closer.cgi/wicket/9.25.0/apache-wicket-9.25.0.tar.gz" target="_blank" rel="noopener noreferrer">apache-wicket-9.25.0.tar.gz</a>
+(<a href="https://downloads.apache.org/wicket/9.25.0/apache-wicket-9.25.0.tar.gz.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
+<a href="https://downloads.apache.org/wicket/9.25.0/apache-wicket-9.25.0.tar.gz.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
 )</li>
-  <li>Download source <a href="https://www.apache.org/dyn/closer.cgi/wicket/9.24.0/apache-wicket-9.24.0.zip" target="_blank" rel="noopener noreferrer">apache-wicket-9.24.0.zip</a>
-(<a href="https://downloads.apache.org/wicket/9.24.0/apache-wicket-9.24.0.zip.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
-<a href="https://downloads.apache.org/wicket/9.24.0/apache-wicket-9.24.0.zip.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
+  <li>Download source <a href="https://www.apache.org/dyn/closer.cgi/wicket/9.25.0/apache-wicket-9.25.0.zip" target="_blank" rel="noopener noreferrer">apache-wicket-9.25.0.zip</a>
+(<a href="https://downloads.apache.org/wicket/9.25.0/apache-wicket-9.25.0.zip.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
+<a href="https://downloads.apache.org/wicket/9.25.0/apache-wicket-9.25.0.zip.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
 )</li>
 </ul>
 
 <p>Or the binaries:</p>
 
 <ul>
-  <li>Download binaries <a href="https://www.apache.org/dyn/closer.cgi/wicket/9.24.0/binaries/apache-wicket-9.24.0-bin.tar.gz" target="_blank" rel="noopener noreferrer">apache-wicket-9.24.0-bin.tar.gz</a>
-(<a href="https://downloads.apache.org/wicket/9.24.0/binaries/apache-wicket-9.24.0-bin.tar.gz.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
-<a href="https://downloads.apache.org/wicket/9.24.0/binaries/apache-wicket-9.24.0-bin.tar.gz.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
+  <li>Download binaries <a href="https://www.apache.org/dyn/closer.cgi/wicket/9.25.0/binaries/apache-wicket-9.25.0-bin.tar.gz" target="_blank" rel="noopener noreferrer">apache-wicket-9.25.0-bin.tar.gz</a>
+(<a href="https://downloads.apache.org/wicket/9.25.0/binaries/apache-wicket-9.25.0-bin.tar.gz.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
+<a href="https://downloads.apache.org/wicket/9.25.0/binaries/apache-wicket-9.25.0-bin.tar.gz.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
 )</li>
-  <li>Download binaries <a href="https://www.apache.org/dyn/closer.cgi/wicket/9.24.0/binaries/apache-wicket-9.24.0-bin.zip" target="_blank" rel="noopener noreferrer">apache-wicket-9.24.0-bin.zip</a>
-(<a href="https://downloads.apache.org/wicket/9.24.0/binaries/apache-wicket-9.24.0-bin.zip.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
-<a href="https://downloads.apache.org/wicket/9.24.0/binaries/apache-wicket-9.24.0-bin.zip.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
+  <li>Download binaries <a href="https://www.apache.org/dyn/closer.cgi/wicket/9.25.0/binaries/apache-wicket-9.25.0-bin.zip" target="_blank" rel="noopener noreferrer">apache-wicket-9.25.0-bin.zip</a>
+(<a href="https://downloads.apache.org/wicket/9.25.0/binaries/apache-wicket-9.25.0-bin.zip.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
+<a href="https://downloads.apache.org/wicket/9.25.0/binaries/apache-wicket-9.25.0-bin.zip.sha256" target="_blank" rel="noopener noreferrer">SHA-256</a>
 )</li>
 </ul>
 
@@ -361,7 +361,7 @@
 
 <h3 id="change-log">Change log</h3>
 
-<p>What changed in each release of this line is in the <a href="https://downloads.apache.org/wicket/9.24.0/CHANGELOG-9.x" target="_blank" rel="noopener noreferrer">change log</a>.</p>
+<p>What changed in each release of this line is in the <a href="https://downloads.apache.org/wicket/9.25.0/CHANGELOG-9.x" target="_blank" rel="noopener noreferrer">change log</a>.</p>
 
 <h2 id="requirements">Requirements</h2>
 
@@ -442,6 +442,6 @@ document.querySelectorAll('[data-copy]').forEach(function (button) {
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1793057496" defer></script>
+        <script src="/javascript/ribbon.js?v=1793307580" defer></script>
     </body>
 </html>

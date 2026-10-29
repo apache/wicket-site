@@ -1072,7 +1072,7 @@ nav.mainmenu.is-home .nav-sections {
 }
 
 .page-sign-inner h1 {
-  max-width: 20ch;
+  max-width: 30ch;
   font: 700 clamp(2.4rem, 4.4vw, 3.8rem)/1.02 var(--serif);
   letter-spacing: -0.02em;
 }
@@ -3911,6 +3911,33 @@ input:focus ~ .guide-search-key {
   max-width: 66ch;
 }
 
+@media (min-width: 861px) {
+  .home-news .home-split {
+    grid-template-rows: auto 1fr;
+  }
+  .home-news .post-panels {
+    grid-column: 2;
+    grid-row: 1/span 2;
+  }
+  .home-news .post-rows {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 14px 0 0;
+    border-top: 0;
+  }
+  .home-news .post-rows li {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0;
+    border-bottom: 0;
+  }
+  .home-news .post-rows li + li {
+    margin-top: 14px;
+  }
+  .home-news .post-rows time {
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+}
 .ctree {
   background: var(--cloth);
   color: var(--on-cloth);

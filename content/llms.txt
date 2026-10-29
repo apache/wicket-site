@@ -5,8 +5,6 @@
 Supported release lines:
 
 - Wicket 10 (LTS): latest 10.11.0, Java 17+, Jakarta Servlet 5.0+. Supported until Jul 2027.
-- Wicket 9: latest 9.24.0, Java 11+, Servlet 3.1+. Supported until its final release.
-- Wicket 8: latest 8.19.0, Java 8+, Servlet 3.1+. Supported until its final release.
 
 Wicket 10 and later use the `jakarta.*` namespace; Wicket 9 and earlier use `javax.*`.
 
