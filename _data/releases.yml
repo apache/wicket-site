@@ -42,15 +42,15 @@ lines:
   - series: "9"
     config: version_90
     service: major
-    status: last-call
+    status: eol
     when: "Since Jul 2020"
-    support: "Until its final release"
+    support: "Ended Oct 2026"
     page: /versions/wicket-9.x/
 
   - series: "8"
     config: version_80
     service: major
-    status: last-call
+    status: eol
     when: "Since May 2018"
-    support: "Until its final release"
+    support: "Ended Oct 2026"
     page: /versions/wicket-8.x/

@@ -33,7 +33,7 @@ What a visitor should remember Wicket for, compared to Spring MVC/Thymeleaf, Vaa
 
 - Visitors arrive from search, Maven Central, mailing-list and ASF release announcements, the Atom feed (`atom.xml`), and links in migration guides on the Apache Confluence wiki.
 - **Release model from Wicket 11.0.0 on** (announced 2026-09-11, `2026/_posts/2026-09-11-release-cadence.md`, Release Policy on `start/download.md`): a new major release every three months; every fourth major is an LTS, supported until the next LTS. Schedule: 11.0.0 first week of October 2026, 12.0.0 January 2027, 13.0.0 April 2027, 14.0.0 (LTS) first week of July 2027, supported until 18. Wicket 10 is the first LTS, supported until 14 ships. At most two release lines are maintained at once: the current LTS and the current quarterly release. Support applies to release lines, not features; features carry forward from `main`.
-- 8.x and 9.x each get one final release and are then end of life, ending support for `javax.servlet`.
+- 8.x and 9.x reached end of life with their final releases, 8.20.0 and 9.25.0, on 29 October 2026, ending support for `javax.servlet`.
 - API stability remains a stated commitment: breaking changes only when needed, deprecated alternatives kept where possible, and every change documented in the migration guide.
 - Every release produces a news post and updates version numbers in `_config.yml`. With quarterly majors this happens four times a year plus patch releases, so release-day site edits must stay small and mechanical.
 - Existing users typically act on the site by copying a Maven dependency snippet, following a migration guide, or checking whether their version is still supported.

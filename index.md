@@ -41,7 +41,7 @@ additionalContents:
                 {%- endfor %}
                 </ul>
                 {%- if eol.size > 0 %}
-                <p class="release-note">{% for line in eol %}{{ line.series }}.x{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %} reached end of life: support {{ eol[0].support | downcase }}. <a href="{{ site.baseurl }}/versions/#upgrade-paths">How to upgrade</a></p>
+                <p class="release-note">With {% for line in eol %}{{ site.wicket[line.config] }}{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %}, {% if eol.size == 2 %}both {% endif %}{% for line in eol %}{{ line.series }}.x{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %} reached end of life. <a href="{{ site.baseurl }}/versions/#upgrade-paths">How to upgrade</a></p>
                 {%- endif %}
                 <p class="release-all"><a href="{{ site.baseurl }}/versions/">Release lines and support</a></p>
             </div>
@@ -55,7 +55,7 @@ additionalContents:
             <h2 class="sec-title" id="blog">From the blog</h2>
             <p class="home-links"><a href="{{ site.baseurl }}/news/">All posts</a> <a type="application/atom+xml" href="{{ site.baseurl }}/atom.xml">Atom feed</a></p>
         </header>
-        {% include post-list.html posts=site.posts featured=3 rows=0 days=400 %}
+        {% include post-list.html posts=site.posts featured=3 rows=3 days=400 %}
     </div>
 </section>
 

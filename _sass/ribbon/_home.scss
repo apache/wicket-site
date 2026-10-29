@@ -64,6 +64,19 @@
     .post-title { font-size: 1.3rem; }
     .post-summary { max-width: 66ch; }
 }
+// The release announcements as small rows under the section head, beside the featured posts.
+@media (min-width: 861px) {
+    .home-news .home-split { grid-template-rows: auto 1fr; }
+    .home-news .post-panels { grid-column: 2; grid-row: 1 / span 2; }
+    .home-news .post-rows {
+        // No rules: they would nearly, never quite, line up with those of the panels. The dates
+        // mark where each row starts.
+        grid-column: 1; grid-row: 2; margin: 14px 0 0; border-top: 0;
+        li { grid-template-columns: minmax(0, 1fr); padding: 0; border-bottom: 0; }
+        li + li { margin-top: 14px; }
+        time { font-size: .95rem; line-height: 1.3; }
+    }
+}
 
 // ---------------------------------------------------------------- the component tree on bookcloth
 // Java sheet, ribbon, markup sheet, on shared rows. javascript/ribbon.js draws the ribbon from the beads.
