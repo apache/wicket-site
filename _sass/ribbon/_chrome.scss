@@ -24,6 +24,10 @@ nav.mainmenu {
 .brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; }
 .brand-mark { width: 34px; height: 34px; flex: none; display: block; }
 .brand-name { font: 700 1.5rem/1 var(--serif); letter-spacing: -.01em; white-space: nowrap; }
+// The trademark symbol the ASF asks for on the most prominent use of the name: small and raised,
+// so it reads as a mark and not as a footnote.
+.tm { position: relative; top: -1.5em; margin-left: .05em; font-size: .3em; font-weight: 400; letter-spacing: 0; }
+.brand-name .tm { top: -.9em; font-size: .42em; }
 
 // The version plate: the supported lines as beads on one string. The newest line, and the LTS
 // when that is another line, each link to their page; the line whose page is open is the lit bead.

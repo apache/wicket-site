@@ -25,7 +25,7 @@ additionalContents:
     <div class="hero-in">
         <h1 class="lockup" id="title">
             <img class="lockup-mark" src="{{ site.baseurl }}/img/logo-apachewicket-mark.svg" alt="" width="112" height="112">
-            <span class="lockup-name"><span>Apache</span> <span>Wicket</span></span>
+            <span class="lockup-name"><span>Apache</span> <span>Wicket<span class="tm" aria-hidden="true">™</span></span></span>
         </h1>
         <div class="lede">
             {% comment %} Tagline placeholder: "Write less, achieve more." is the Wicket 8 announcement's line, kept until the project picks one. {% endcomment %}
