@@ -556,6 +556,20 @@ nav.mainmenu {
   white-space: nowrap;
 }
 
+.tm {
+  position: relative;
+  top: -1.5em;
+  margin-left: 0.05em;
+  font-size: 0.3em;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.brand-name .tm {
+  top: -0.9em;
+  font-size: 0.42em;
+}
+
 .nav-plate {
   display: inline-flex;
   align-items: stretch;
