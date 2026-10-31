@@ -3,7 +3,7 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2026-10-31T15:38:37+00:00</updated>
+    <updated>2026-10-31T16:01:54+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
@@ -12,7 +12,7 @@
  
 
     <entry>
-        <title>Apache Wicket 10.12.0 released</title>
+        <title>Apache Wicket 10.12.0 (LTS) is released</title>
         <link href="http://wicket.apache.org/news/2026/10/31/wicket-10.12.0-released.html"/>
         <updated>2026-10-31T15:00:00+00:00</updated>
         <id>http://wicket.apache.org/news/2026/10/31/wicket-10.12.0-released</id>
