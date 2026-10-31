@@ -3,13 +3,128 @@
     <title>Apache Wicket</title>
     <link href="http://wicket.apache.org/atom.xml" rel="self"/>
     <link href="http://wicket.apache.org/"/>
-    <updated>2026-10-29T23:29:00+00:00</updated>
+    <updated>2026-10-31T15:38:37+00:00</updated>
     <id>http://wicket.apache.org/</id>
     <author>
         <name>Apache Wicket</name>
         <email>dev@wicket.apache.org</email>
     </author>
  
+
+    <entry>
+        <title>Apache Wicket 10.12.0 released</title>
+        <link href="http://wicket.apache.org/news/2026/10/31/wicket-10.12.0-released.html"/>
+        <updated>2026-10-31T15:00:00+00:00</updated>
+        <id>http://wicket.apache.org/news/2026/10/31/wicket-10.12.0-released</id>
+        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 10.12.0!&lt;/p&gt;
+
+&lt;p&gt;Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
+
+&lt;p&gt;This release marks another minor release of Wicket 10. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present in this release compared to 10.0.0.&lt;/p&gt;
+
+&lt;h2 id=&quot;new-and-noteworthy&quot;&gt;New and noteworthy&lt;/h2&gt;
+
+&lt;p&gt;Wicket 10 is the long term support (LTS) version of Apache Wicket
+going forward. As part of our &lt;a href=&quot;/news/2026/09/11/release-cadence.html&quot;&gt;new release cadence&lt;/a&gt;
+we will support Wicket 10 until Wicket 14, the next LTS version, comes out.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Vulnerable dependencies have been updated (WICKET-7199)&lt;/li&gt;
+  &lt;li&gt;Fixed a regression in 10.11.0: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setEscapeModelStrings(false)&lt;/code&gt; on a
+Button had no effect, so markup in a button label was escaped (GH-1576)&lt;/li&gt;
+  &lt;li&gt;CSP headers are now also set when a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RenderPageRequestHandler&lt;/code&gt; is
+wrapped in more than one &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IRequestHandlerDelegate&lt;/code&gt; (WICKET-7205)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CrossOrigin.USE_CREDENTIALS&lt;/code&gt; now renders &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;use-credentials&lt;/code&gt; instead
+of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user-credentials&lt;/code&gt; (GH-1659)&lt;/li&gt;
+  &lt;li&gt;The WebSocket request wrappers follow the Servlet header contract:
+header names are case-insensitive and the header enumerations can be
+read more than once (GH-1688)&lt;/li&gt;
+  &lt;li&gt;Palette’s “move up” works again, it was broken since 10.9.0 (GH-1618)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TrapFocusBehavior&lt;/code&gt; no longer throws a TypeError on Tab or Shift+Tab
+at the edge of the trap (GH-1620)&lt;/li&gt;
+  &lt;li&gt;Lazy-init proxies, as used by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@SpringBean&lt;/code&gt;, are no longer created
+with ByteBuddy’s class injection but defined through a private lookup
+in the class loader of the proxied type (WICKET-7204)&lt;/li&gt;
+  &lt;li&gt;wicket-extensions: the dependency on jackson-databind is optional in
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;module-info.java&lt;/code&gt; (WICKET-7203)&lt;/li&gt;
+  &lt;li&gt;The quickstart archetype’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Start.java&lt;/code&gt; now compiles against Jetty 12
+(GH-1658)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
+
+&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;10.12.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or download and build the distribution yourself, or use our
+convenience binary package you can find here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Download: https://wicket.apache.org/versions/wicket-10.x/#manually&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
+
+&lt;p&gt;If you upgrade from 10.y.z this release is a drop in replacement. If
+you come from a version prior to 10.0.0, please read our Wicket 10
+migration guide found at&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://s.apache.org/wicket10migrate&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Have fun!&lt;/p&gt;
+
+&lt;p&gt;— The Wicket team&lt;/p&gt;
+
+&lt;p&gt;========================================================================&lt;/p&gt;
+
+&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
+
+&lt;h4 id=&quot;changelog-for-10120&quot;&gt;CHANGELOG for 10.12.0:&lt;/h4&gt;
+
+&lt;h5 id=&quot;bug&quot;&gt;Bug&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-7199] - Vulnerable dependencies need to be updated&lt;/li&gt;
+  &lt;li&gt;[WICKET-7203] - wicket-extensions: Dependency on jackson-databind should be optional in module-info.java&lt;/li&gt;
+  &lt;li&gt;[WICKET-7205] - CSP-Headers not set if RenderPageRequestHandler wrapped in more than one IRequestHandlerDelegates&lt;/li&gt;
+  &lt;li&gt;[GH-1576] - BUG since 10.11.0: Wrong escaping in Button label,while getEscapeModelStrings=false&lt;/li&gt;
+  &lt;li&gt;[GH-1618] - Palette “move up” broken since 10.9.0: moveUpHelper calls box.trigger(‘focus’) on a plain DOM element&lt;/li&gt;
+  &lt;li&gt;[GH-1620] - TrapFocusBehavior: Tab/Shift+Tab at trap boundary throws TypeError on wicket-10.x&lt;/li&gt;
+  &lt;li&gt;[GH-1658] - The quickstart archetype’s Start.java does not compile against Jetty 12&lt;/li&gt;
+  &lt;li&gt;[GH-1659] - CrossOrigin.USE_CREDENTIALS renders user-credentials instead of use-credentials&lt;/li&gt;
+  &lt;li&gt;[GH-1688] - WebSocket: Request wrappers break the Servlet header contract (case-sensitive lookup, single-use enumerations)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;improvement&quot;&gt;Improvement&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[WICKET-7204] - Don’t use INJECTION for ByteBuddy proxy creation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;task&quot;&gt;Task&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[GH-1584] - Redundant japicmp exclusions need to removed&lt;/li&gt;
+  &lt;li&gt;[GH-1699] - Include GitHub issues in the release notes built by build-changelog.sh&lt;/li&gt;
+  &lt;li&gt;[GH-1708] - build-versions.py fails on Python 3 and misses the experimental modules&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </entry>
 
     <entry>
         <title>Apache Wicket 9.25.0 marks the end of Wicket 9</title>
@@ -877,66 +992,6 @@ migration guide found at&lt;/p&gt;
   &lt;li&gt;[WICKET-7188] - Sign file upload resource constraints&lt;/li&gt;
 &lt;/ul&gt;
 
-</content>
-    </entry>
-
-    <entry>
-        <title>Apache Wicket 10.9.1 released</title>
-        <link href="http://wicket.apache.org/news/2026/05/20/wicket-10.9.1-released.html"/>
-        <updated>2026-05-20T00:00:00+00:00</updated>
-        <id>http://wicket.apache.org/news/2026/05/20/wicket-10.9.1-released</id>
-        <content type="html">&lt;p&gt;The Apache Wicket PMC is proud to announce Apache Wicket 10.9.1!&lt;/p&gt;
-
-&lt;p&gt;Apache Wicket is an open source Java component oriented web application
-framework that powers thousands of web applications and web sites for
-governments, stores, universities, cities, banks, email providers, and
-more. You can find more about Apache Wicket at https://wicket.apache.org&lt;/p&gt;
-
-&lt;p&gt;This release marks another minor release of Wicket 10. We
-use semantic versioning for the development of Wicket, and as such no
-API breaks are present in this release compared to 10.0.0.&lt;/p&gt;
-
-&lt;h2 id=&quot;using-this-release&quot;&gt;Using this release&lt;/h2&gt;
-
-&lt;p&gt;With Apache Maven update your dependency to (and don’t forget to
-update any other dependencies on Wicket projects to the same version):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.wicket&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wicket-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;10.9.1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or download and build the distribution yourself, or use our
-convenience binary package you can find here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Download: http://wicket.apache.org/start/wicket-10.x.html#manually&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;upgrading-from-earlier-versions&quot;&gt;Upgrading from earlier versions&lt;/h2&gt;
-
-&lt;p&gt;If you upgrade from 10.y.z this release is a drop in replacement. If
-you come from a version prior to 10.0.0, please read our Wicket 10
-migration guide found at&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://s.apache.org/wicket10migrate&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;— The Wicket team&lt;/p&gt;
-
-&lt;p&gt;========================================================================&lt;/p&gt;
-
-&lt;h3 id=&quot;this-release&quot;&gt;This Release&lt;/h3&gt;
-
-&lt;h4 id=&quot;changelog-for-1091&quot;&gt;CHANGELOG for 10.9.1:&lt;/h4&gt;
-
-&lt;p&gt;[WICKET-7179] - fix broken focus functionality&lt;/p&gt;
 </content>
     </entry>
 
