@@ -4,7 +4,7 @@ title: Releases
 sign_action:
   text: Quick start
   url: /start/quickstart.html
-summary: Wicket 10 is the long-term support (LTS) release. Each release line has its own page with Maven coordinates, downloads, what is new and documentation.
+summary: From Wicket 11 on, a long-term support (LTS) release ships once a year, and a current release with new features every quarter. Each release line has its own page with Maven coordinates, downloads, what is new and documentation.
 ---
 
 ## Release lines {#lines}
@@ -34,7 +34,7 @@ How to move an application to a line that stays supported.
             <th scope="row">Wicket 8.x or 9.x</th>
             <td>
                 <p class="connections-route">8.x &rarr; 9 (Java 11) &rarr; 10 LTS (Java 17)</p>
-                <p>Both lines <a href="{{ site.baseurl }}/news/2026/10/21/wicket-8-and-9-end-of-life.html">reached end of life</a> with their final releases, 8.20.0 and 9.25.0, on 29 October 2026, and with them Wicket's support for <code>javax.servlet</code>. Move to 10 LTS: it brings <code>jakarta.servlet</code> and is supported until July 2027. 9.x moves to 10 directly. 8.x takes the Wicket 9 step first, because each migration guide covers one major version.</p>
+                <p>Both lines <a href="{{ site.baseurl }}/news/2026/10/21/wicket-8-and-9-end-of-life.html">reached end of life</a> with their final releases, 8.20.0 and 9.25.0, on 29 October 2026, and with them Wicket's support for <code>javax.servlet</code>. Move to 10 LTS: it brings <code>jakarta.servlet</code>, is supported until July 2027, and hands over to 14, the next LTS. 9.x moves to 10 directly. 8.x takes the Wicket 9 step first, because each migration guide covers one major version.</p>
                 <p>For the step to 10, the <a href="{{ site.baseurl }}/versions/wicket-10.x/#automatic-migration">OpenRewrite recipes of <code>wicket-migration</code></a> do the repetitive part: the <code>jakarta</code> imports, the Java 17 baseline and the moved Wicket classes. If you need help or more time, <a href="{{ site.baseurl }}/community/#commercial">companies that offer Wicket support</a> are listed on the wiki.</p>
             </td>
             <td>
@@ -46,12 +46,17 @@ How to move an application to a line that stays supported.
         </tr>
         <tr>
             <th scope="row">Wicket 10.x</th>
-            <td>Stay on 10: it is the LTS, supported until July 2027.</td>
-            <td><a href="{{ site.baseurl }}/news/2026/09/11/release-cadence.html">The new release cadence</a></td>
+            <td>Stay on the LTS until Wicket 14, the next LTS, ships in July 2027. For new features every quarter, move to 11: it needs Java 21 and Jakarta Servlet 6.1.</td>
+            <td>
+                <ul class="connections-guides">
+                    <li><a href="{{ site.baseurl }}/news/2026/11/01/wicket-11.0.0-released.html#upgrading-from-wicket-10">Upgrading from Wicket 10 to 11</a></li>
+                    <li><a href="{{ site.baseurl }}/news/2026/09/11/release-cadence.html">The new release cadence</a></li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <th scope="row">Starting out</th>
-            <td>Start on 10 LTS.</td>
+            <td>Start on 10 LTS, or on 11, the current release, for new features every quarter.</td>
             <td><a href="{{ site.baseurl }}/start/quickstart.html">Quick start</a></td>
         </tr>
     </tbody>
@@ -59,9 +64,16 @@ How to move an application to a line that stays supported.
 
 ## Release policy {#release-policy}
 
-Wicket 10 is the current long-term support (LTS) release. It receives security fixes and applicable bug fixes until July 2027. Wicket 8.x and 9.x reached end of life with their final releases, 8.20.0 and 9.25.0, on 29 October 2026, and with them Wicket's support for the `javax.servlet` API.
+Since Wicket 11.0.0, released in November 2026, Wicket follows a time-based release schedule: a new major release every three months, and every fourth major release &mdash; once a year &mdash; is a long-term support (LTS) release. The table above shows the lines in service and the releases scheduled after them.
 
-What end of life means for 8 and 9, and how to move, is in [Wicket 8 and 9 reach end of life soon]({{ site.baseurl }}/news/2026/10/21/wicket-8-and-9-end-of-life.html). The release schedule after that, with its new release model, is in [A new release cadence for Apache Wicket]({{site.baseurl}}/news/2026/09/11/release-cadence.html).
+Two release lines are maintained at any time:
+
+* the current **LTS** release, which receives security fixes and applicable bug fixes until the next LTS release;
+* the current **quarterly** release, which receives fixes until the next quarterly release supersedes it. Fixes normally ride along with that next release; a serious issue may warrant a patch release, for example 13.0.1.
+
+The support window applies to the release line, not to individual features. Features are developed on `master` and carry over into every following release, so a feature introduced in Wicket 11 is also present in 12, 13 and in the next LTS, Wicket 14.
+
+Wicket 10 is the current LTS and stays supported until Wicket 14 is released in July 2027. Wicket 8.x and 9.x reached end of life with their final releases, 8.20.0 and 9.25.0, on 29 October 2026, and with them Wicket's support for the `javax.servlet` API: [Wicket 8 and 9 reach end of life soon]({{ site.baseurl }}/news/2026/10/21/wicket-8-and-9-end-of-life.html). The schedule was announced in [A new release cadence for Apache Wicket]({{site.baseurl}}/news/2026/09/11/release-cadence.html).
 
 ## End of life {#unsupported}
 

@@ -1,12 +1,13 @@
 ---
-# Published on release day: set published to true when 11.0.0 is out.
-published: false
 layout: hub
 title: Apache Wicket 11.x
 series: "11"
 config: version_11
 java: "21"
 servlet: Jakarta Servlet 6.1 or newer
+migration:
+  from: "10"
+  url: https://s.apache.org/wicket11migrate
 ---
 ## Download
 

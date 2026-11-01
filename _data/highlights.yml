@@ -13,11 +13,11 @@
 # shown while the line is supported.
 
 "11":
-  brief: "Java 21, secure by default, pages that serialize about 40% smaller, and Ajax without jQuery."
+  brief: "Java 21, Ajax without jQuery, one authenticated encryption API, and leaner components."
   intro: >
     Wicket 11 opens the quarterly release schedule. It moves to a current Java
-    and Jakarta baseline, tightens security, makes every component leaner and
-    lets Ajax run without jQuery.
+    and Jakarta baseline, rebuilds encryption on one authenticated API, makes
+    every component leaner and lets Ajax run without jQuery.
   items:
     - title: A new baseline
       text: >
@@ -32,20 +32,21 @@
         - label: Spring
           value: "7"
 
-    - title: More secure by default
+    - title: One cryptography API
       text: >
         Encryption is rebuilt on one authenticated scheme: encrypted URLs and
         stored pages cannot be altered unnoticed, the scheme generates its own
-        key, and encrypted URLs stay cacheable. Components that write model
-        values into markup escape them consistently, and the content security
-        policy now covers `script-src-attr` and `style-src-attr`.
+        key, and encrypted URLs stay cacheable. Wicket 11 can't decrypt what
+        Wicket 10 encrypted, so encrypted URLs and stored pages don't survive
+        the upgrade.
 
     - title: Leaner components
       text: >
         A component keeps its model, behaviors and metadata in one compact
-        state object instead of a packed array. In the benchmarks, reading that
-        state is 30 to 45% faster, and a component tree with Ajax behaviors
-        serializes about 40% smaller, so sessions and the page store carry less.
+        state object instead of a packed array. In the benchmarks against
+        Wicket 10, reading a component's model takes half the time, and a
+        component tree with Ajax behaviors serializes about 40% smaller, so
+        sessions and the page store carry less.
 
     - title: Ajax without jQuery
       text: >
