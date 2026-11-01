@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+	
+	
+
+        <title>Apache Wicket 11.0.0 released | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Wicket 11 lets an application drop jQuery, makes components faster and leaner, moves to Java 21 and Jakarta EE 11 and rebuilds encryption on one authenticate..." />
+        <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="icon" href="/img/logo-apachewicket-mark.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/css/style.css?v=1793565147" type="text/css" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        
+<a class="brand" href="/"><img class="brand-mark" src="/img/logo-apachewicket-mark.svg" alt="" width="34" height="34"><span class="brand-name">Apache Wicket<span class="tm" aria-hidden="true">™</span></span></a>
+
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items active" aria-current="true">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" aria-label="ASF, The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="" width="22" height="34"><span class="nav-asf-label">ASF</span></a>
+        <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="nav-github-label">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+
+<div class="page-sign">
+    <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 14; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%); --night: 1;" aria-hidden="true">
+    <img src="/img/seasons/autumn-ink-cap-1600.jpg" srcset="/img/seasons/autumn-ink-cap-900.jpg 900w, /img/seasons/autumn-ink-cap-1600.jpg 1600w, /img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="">
+</div>
+<div class="photo-meta">
+    <p class="photo-credit">Photo: <a href="https://unsplash.com/photos/CCAoWVqolxM" rel="noreferrer noopener noreferrer" target="_blank">Veronika Biro on Unsplash</a></p>
+</div>
+
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="/news/">Blog</a><span aria-hidden="true"> / </span><a href="/news/2026/">2026</a></p>
+        <h1>Apache Wicket 11.0.0 released</h1>
+        <p class="post-sign-meta">
+            <time datetime="2026-11-01T11:00:00+00:00">1 November 2026</time>
+            <span class="tag tag-post">Major release</span>
+            
+            <a href="/versions/wicket-11.x/">Wicket 11.x: status, downloads and documentation</a>
+        </p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#release-cadence-and-support"><span class="toc-number">1</span> <span class="toc-text">Release cadence and support</span></a></li>
+<li class="toc--level-1 toc--section-2">
+<a href="#new-and-noteworthy"><span class="toc-number">2</span> <span class="toc-text">New and noteworthy</span></a><ul>
+<li class="toc--level-2 toc--section-3"><a href="#ajax-without-jquery"><span class="toc-number">2.1</span> <span class="toc-text">Ajax without jQuery</span></a></li>
+<li class="toc--level-2 toc--section-4"><a href="#faster-and-leaner"><span class="toc-number">2.2</span> <span class="toc-text">Faster and leaner</span></a></li>
+<li class="toc--level-2 toc--section-5"><a href="#java-21-and-jakarta-ee-11"><span class="toc-number">2.3</span> <span class="toc-text">Java 21 and Jakarta EE 11</span></a></li>
+<li class="toc--level-2 toc--section-6"><a href="#ajax-veils"><span class="toc-number">2.4</span> <span class="toc-text">Ajax veils</span></a></li>
+<li class="toc--level-2 toc--section-7"><a href="#uploads-to-a-resource"><span class="toc-number">2.5</span> <span class="toc-text">Uploads to a resource</span></a></li>
+<li class="toc--level-2 toc--section-8"><a href="#one-cryptography-api"><span class="toc-number">2.6</span> <span class="toc-text">One cryptography API</span></a></li>
+<li class="toc--level-2 toc--section-9"><a href="#and-more"><span class="toc-number">2.7</span> <span class="toc-text">And more</span></a></li>
+</ul>
+</li>
+<li class="toc--level-1 toc--section-10"><a href="#using-this-release"><span class="toc-number">3</span> <span class="toc-text">Using this release</span></a></li>
+<li class="toc--level-1 toc--section-11">
+<a href="#upgrading-from-wicket-10"><span class="toc-number">4</span> <span class="toc-text">Upgrading from Wicket 10</span></a><ul><li class="toc--level-2 toc--section-12"><a href="#this-release"><span class="toc-number">4.1</span> <span class="toc-text">This Release</span></a></li></ul>
+</li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            <article class="page-content guide-content post-content">
+                <p>The Apache Wicket PMC is proud to announce Apache Wicket 11.0.0, the first release of a new
+major version of Wicket.</p>
+
+<p>Apache Wicket is an open source Java component oriented web application framework that
+powers thousands of web applications and web sites for governments, stores, universities,
+cities, banks, email providers, and more. You can find more about Apache Wicket at
+<a href="https://wicket.apache.org">https://wicket.apache.org</a></p>
+
+<p>Wicket 11 lets an application drop jQuery entirely, uses less memory and time per component,
+moves to Java 21 and Jakarta EE 11, and rebuilds Wicket’s encryption on a single,
+authenticated API. It is the first major release on our new cadence: a new major release
+every three months, with a long-term support release every July. Wicket 12 follows in
+January 2027.</p>
+
+<!--more-->
+
+<h2 id="release-cadence-and-support">Release cadence and support</h2>
+
+<p>Wicket 11 is the first release on the schedule
+<a href="/news/2026/09/11/release-cadence.html">we announced in September</a>: a new
+major release every three months, and a long-term support (LTS) release every July.</p>
+
+<ul>
+  <li>Wicket 12.0.0: January 2027</li>
+  <li>Wicket 13.0.0: April 2027</li>
+  <li>Wicket 14.0.0: July 2027, the next LTS release</li>
+</ul>
+
+<p>Only the latest quarterly release receives bug fixes and security fixes, so Wicket 11
+receives them until Wicket 12 is out. Wicket 10 is the current LTS release and receives
+security fixes and applicable bug fixes until Wicket 14 is released. That gives you two ways
+to stay on a supported version:</p>
+
+<ul>
+  <li>follow the quarterly releases: Wicket 11 now, Wicket 12 in January, and so on;</li>
+  <li>stay on Wicket 10, and move to Wicket 14 when it comes out.</li>
+</ul>
+
+<p>Wicket 9.25.0 and 8.20.0, released on 29 October 2026, were the final releases of the 9.x
+and 8.x lines; both
+<a href="/news/2026/10/21/wicket-8-and-9-end-of-life.html">have reached end of life</a>.</p>
+
+<h2 id="new-and-noteworthy">New and noteworthy</h2>
+
+<h3 id="ajax-without-jquery">Ajax without jQuery</h3>
+
+<p>Wicket’s client-side Ajax engine has always been built on jQuery. Wicket 11 adds a second
+implementation in plain JavaScript with the same public API: <code class="language-plaintext highlighter-rouge">Wicket.Ajax</code>, <code class="language-plaintext highlighter-rouge">Wicket.Event</code>,
+<code class="language-plaintext highlighter-rouge">Wicket.DOM</code> and the rest. The other framework JavaScript (autocomplete, palette, upload
+progress, trap focus, the debug bar, native WebSockets) no longer uses jQuery at all, so one
+line removes jQuery from your application:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getJavaScriptLibrarySettings</span><span class="o">().</span><span class="na">setWicketAjaxReference</span><span class="o">(</span>
+        <span class="nc">WicketAjaxResourceReference</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>jQuery remains the default in Wicket 11. A future major release is likely to make the plain
+JavaScript engine the default, so this is a good moment to try it.</p>
+
+<h3 id="faster-and-leaner">Faster and leaner</h3>
+
+<p>Wicket 11 keeps a component’s model, behaviors and meta data in a single, simpler structure,
+and a link or Ajax component no longer carries extra bookkeeping for its behavior ids.
+Measured against Wicket 10 with the JMH benchmarks in the new <code class="language-plaintext highlighter-rouge">wicket-benchmarks</code> module:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Compared with Wicket 10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Heap per component with an Ajax behavior</td>
+      <td>72 bytes less</td>
+    </tr>
+    <tr>
+      <td>A page of such components, serialized</td>
+      <td>About 40% smaller</td>
+    </tr>
+    <tr>
+      <td>Reading a component’s model</td>
+      <td>Half the time</td>
+    </tr>
+    <tr>
+      <td>Reading the behaviors of an Ajax component</td>
+      <td>82% less time</td>
+    </tr>
+    <tr>
+      <td>Creating and detaching an Ajax component</td>
+      <td>43% faster, half the allocation</td>
+    </tr>
+    <tr>
+      <td>Looking up a property, string resource or markup file</td>
+      <td>Up to 6.6 times faster, 40–45% less allocation</td>
+    </tr>
+    <tr>
+      <td>Writing a 500-component page to the page store</td>
+      <td>16% less allocation</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These are microbenchmarks; what an application gains depends on its pages.</p>
+
+<h3 id="java-21-and-jakarta-ee-11">Java 21 and Jakarta EE 11</h3>
+
+<p>Wicket 11 moves to the current Java platform: Java 21 and Jakarta EE 11, with Jakarta
+Servlet 6.1. It is built and tested with Jetty 12.1, Spring 7, CDI 5 with Weld 7, and
+JUnit 6. Wicket 10 required Java 17, and Wicket 8 ran on Java 8. If your application is
+still on Java 8, the road runs through Wicket 10 for the move from <code class="language-plaintext highlighter-rouge">javax</code> to <code class="language-plaintext highlighter-rouge">jakarta</code>, and
+from there to Wicket 11.</p>
+
+<h3 id="ajax-veils">Ajax veils</h3>
+
+<p><code class="language-plaintext highlighter-rouge">PageVeilBehavior</code> and <code class="language-plaintext highlighter-rouge">LocalVeilBehavior</code> in wicket-extensions block the whole page, or a
+single component, while an Ajax request runs. A second click on a slow button no longer
+sends the request twice, and a click elsewhere no longer acts on markup the response is about
+to replace. A spinner appears only when the request takes longer than 300 ms, and local veils
+nest, each with its own timings.</p>
+
+<h3 id="uploads-to-a-resource">Uploads to a resource</h3>
+
+<p><code class="language-plaintext highlighter-rouge">FileUploadToResourceField</code> can now take files dropped on any component
+(<code class="language-plaintext highlighter-rouge">FileDropZoneBehavior</code>) and list the chosen files with a remove button (<code class="language-plaintext highlighter-rouge">FileListBehavior</code>).
+Two files of the same name no longer overwrite each other, and a failed upload ends in
+<code class="language-plaintext highlighter-rouge">onUploadFailure()</code> instead of on the error page.</p>
+
+<h3 id="one-cryptography-api">One cryptography API</h3>
+
+<p>Wicket 11 replaces its two encryption APIs, one for URLs and one for the page store, with a
+single <code class="language-plaintext highlighter-rouge">ICrypt</code> that always uses authenticated encryption. Choose the scheme with
+<code class="language-plaintext highlighter-rouge">SecuritySettings#setCryptScheme</code>: AES-256-GCM by default, or AES-256-GCM-SIV with Bouncy
+Castle.</p>
+
+<h3 id="and-more">And more</h3>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">LoadableDetachableModel</code> has new detach hooks: <code class="language-plaintext highlighter-rouge">onDetach(T)</code> receives the object that is
+being detached, and <code class="language-plaintext highlighter-rouge">onDetachAlways()</code> runs on every detach</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">AjaxFormComponentUpdatingBehavior</code> also processes the components inside a
+<code class="language-plaintext highlighter-rouge">FormComponentPanel</code>, so the panel’s model is up to date in <code class="language-plaintext highlighter-rouge">onUpdate()</code>
+</li>
+</ul>
+
+<h2 id="using-this-release">Using this release</h2>
+
+<p>With Apache Maven, update your dependency, and every other Wicket module you use, to the
+same version:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>11.0.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download the source and the binaries from the
+<a href="/versions/wicket-11.x/#manually">Wicket 11 page</a>.</p>
+
+<h2 id="upgrading-from-wicket-10">Upgrading from Wicket 10</h2>
+
+<p>Wicket 11 is not a drop-in replacement for Wicket 10. Move to Java 21 and a container with
+Jakarta Servlet 6.1 first. The OpenRewrite recipe <code class="language-plaintext highlighter-rouge">org.apache.wicket.MigrateToWicket11</code> in
+<code class="language-plaintext highlighter-rouge">wicket-migration</code> then handles the mechanical changes, including the Wicket version and the
+new groupId <code class="language-plaintext highlighter-rouge">org.apache.wicket.experimental.wicket11</code> of the experimental modules:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">mvn <span class="nt">-U</span> org.openrewrite.maven:rewrite-maven-plugin:run <span class="se">\</span>
+  <span class="nt">-Drewrite</span>.recipeArtifactCoordinates<span class="o">=</span>org.apache.wicket:wicket-migration:11.0.0 <span class="se">\</span>
+  <span class="nt">-Drewrite</span>.activeRecipes<span class="o">=</span>org.apache.wicket.MigrateToWicket11</code></pre></figure>
+
+<p>Check these by hand; the <a href="https://s.apache.org/wicket11migrate" target="_blank" rel="noopener noreferrer">migration guide</a> has the
+details and the rest of the changes:</p>
+
+<ul>
+  <li>Wicket 11 can’t decrypt anything Wicket 10 encrypted. Encrypted URLs bookmarked under
+Wicket 10 no longer resolve, and pages in an encrypted page store can’t be read back
+after the upgrade.</li>
+  <li>Text fields now render <code class="language-plaintext highlighter-rouge">required</code>, <code class="language-plaintext highlighter-rouge">placeholder</code> and <code class="language-plaintext highlighter-rouge">pattern</code>. In a form submitted
+without Ajax, the browser checks them before Wicket sees the request; put <code class="language-plaintext highlighter-rouge">novalidate</code>
+on the form to keep Wicket’s validation messages.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">Include</code> component and <code class="language-plaintext highlighter-rouge">IAuthenticationStrategy</code>, with the “remember me” support of
+wicket-auth-roles, are removed; both were deprecated in 10.11.0. <code class="language-plaintext highlighter-rouge">SignInPanel</code> and
+<code class="language-plaintext highlighter-rouge">SignInPage</code> are now <code class="language-plaintext highlighter-rouge">UsernamePasswordPanel</code> and <code class="language-plaintext highlighter-rouge">UsernamePasswordPage</code>, and the recipe
+renames them.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">LoadableDetachableModel#detach()</code> is final. Move an override to <code class="language-plaintext highlighter-rouge">onDetachAlways()</code>, or to
+<code class="language-plaintext highlighter-rouge">onDetach()</code> if it only applies to an attached model.</li>
+</ul>
+
+<p><a href="/docs/modules.html">Wicket’s modules</a> describes <code class="language-plaintext highlighter-rouge">wicket-migration</code>, and
+the <a href="/docs/">documentation</a> marks every page that needs Wicket 11 with
+“Wicket 11+”.</p>
+
+<p>Applications on Wicket 8 or 9 move to Wicket 10 first.</p>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<p>========================================================================</p>
+
+<h3 id="this-release">This Release</h3>
+
+<h4 id="changelog-for-1100">CHANGELOG for 11.0.0:</h4>
+
+<h5 id="bug">Bug</h5>
+
+<ul>
+  <li>[WICKET-7107] - CSP Header not rendered when using RedirectPolicy.AUTO_REDIRECT</li>
+  <li>[WICKET-7182] - Wicket Autocomplete calls event on a non jquery object</li>
+  <li>[WICKET-7186] - wicket 10.9.0 / 10.9.1 leaks File Reaper threads</li>
+  <li>[WICKET-7189] - make partial page update creation pluggable.</li>
+  <li>[WICKET-7199] - Vulnerable dependencies need to be updated</li>
+  <li>[WICKET-7203] - wicket-extensions: Dependency on jackson-databind should be optional in module-info.java</li>
+  <li>[WICKET-7205] - CSP-Headers not set if RenderPageRequestHandler wrapped in more than one IRequestHandlerDelegates</li>
+  <li>[GH-1576] - BUG since 10.11.0: Wrong escaping in Button label,while getEscapeModelStrings=false</li>
+  <li>[GH-1582] - build fails on SignOut</li>
+  <li>[GH-1593] - Typo in WARN message</li>
+  <li>[GH-1616] - AsynchronousPageStoreTest.storeAsynchronousContextClosed never observes its own assertions</li>
+  <li>[GH-1620] - TrapFocusBehavior: Tab/Shift+Tab at trap boundary throws TypeError on wicket-10.x</li>
+  <li>[GH-1646] - Wicket.Event.remove does not remove a listener added for several event types</li>
+  <li>[GH-1647] - The WebSocket charts example calls jQuery.parseJSON, which jQuery 4 removed</li>
+  <li>[GH-1650] - AjaxButton triggering the submit event also submits the form in Firefox</li>
+  <li>[GH-1658] - The quickstart archetype’s Start.java does not compile against Jetty 12</li>
+  <li>[GH-1659] - CrossOrigin.USE_CREDENTIALS renders user-credentials instead of use-credentials</li>
+  <li>[GH-1670] - problems with upload to resource</li>
+  <li>[GH-1678] - Quickstart archetype: give slf4j-simple test scope</li>
+  <li>[GH-1688] - WebSocket: Request wrappers break the Servlet header contract (case-sensitive lookup, single-use enumerations)</li>
+  <li>[GH-1721] - Fix the failures in release.sh found while releasing 9.25.0</li>
+  <li>[GH-1739] - MigrateToWicket11 leaves the org.apache.wicket dependencies at their Wicket 10 version</li>
+  <li>[GH-1749] - release.sh generates a wrong staging repository ID and a duplicated changelog</li>
+</ul>
+
+<h5 id="new-feature">New Feature</h5>
+
+<ul>
+  <li>[WICKET-7169] - Make partHeaderSizeMax in AbstractFileUpload configurable</li>
+  <li>[WICKET-7190] - Unified cryptography API</li>
+  <li>[WICKET-7196] - Allow unescaped wicket:label tags</li>
+  <li>[GH-1492] - AjaxRequestHandler generation of PartialPageUpdate is not extensible</li>
+  <li>[GH-1583] - create a version of wicket ajax and all the other standard components that is jQuery independent.</li>
+  <li>[GH-1614] - Make LoadableDetachableModel#detach() final and add detach hooks that receive the attached object</li>
+  <li>[GH-1631] - Add Ajax veil behaviors that block the page, or a component, while a request runs</li>
+  <li>[GH-1669] - multiple file upload to resource + drag and drop files and upload to resource.</li>
+</ul>
+
+<h5 id="improvement">Improvement</h5>
+
+<ul>
+  <li>[WICKET-7135] - Work on deprecation warnings</li>
+  <li>[WICKET-7144] - Improve Ajax updates of form component panels</li>
+  <li>[WICKET-7172] - Support new CSP style, script directives</li>
+  <li>[WICKET-7176] - Bump up CDI API and Weld versions</li>
+  <li>[WICKET-7179] - add support for jQuery 4.0.0</li>
+  <li>[WICKET-7184] - Make <wicket:header-items></wicket:header-items> HTML spec compliant</li>
+  <li>[WICKET-7187] - JavaScript header items: <code class="language-plaintext highlighter-rouge">module</code> for content, and import maps</li>
+  <li>[WICKET-7188] - Sign file upload resource constraints</li>
+  <li>[WICKET-7191] - Deprecate HTML5Attributes and move its logic to FormComponet hierarchy</li>
+  <li>[WICKET-7192] - restrict SourcesPage to resources of the page’s own package</li>
+  <li>[WICKET-7195] - Add tag type=”search” to those supported by TextField</li>
+  <li>[WICKET-7200] - Align class-vs-package resolution across the wicket-auth-roles annotations</li>
+  <li>[WICKET-7204] - Don’t use INJECTION for ByteBuddy proxy creation</li>
+</ul>
+
+<h5 id="task">Task</h5>
+
+<ul>
+  <li>[WICKET-7193] - Deprecate and remove IAuthenticationStrategy</li>
+  <li>[WICKET-7194] - Deprecate and remove Include</li>
+  <li>[GH-1584] - Redundant japicmp exclusions need to removed</li>
+  <li>[GH-1699] - Include GitHub issues in the release notes built by build-changelog.sh</li>
+  <li>[GH-1708] - build-versions.py fails on Python 3 and misses the experimental modules</li>
+</ul>
+
+
+            </article>
+            <footer class="post-foot">
+                <nav class="post-pager" aria-label="Other posts">
+                    
+                    
+                    
+                    <a class="post-pager-older" href="/news/2026/10/31/wicket-10.12.0-released.html"><span>Older</span>Apache Wicket 10.12.0 (LTS) is released</a>
+                    
+                </nav>
+                <p class="post-follow">Follow the project on the <a href="/news/">blog</a>, in the <a href="/atom.xml">Atom feed</a> or on the <a href="/community/#announce">announce list</a>.</p>
+            </footer>
+        </div>
+    </div>
+</main>
+
+        <footer class="footer">
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+        
+        <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
+        <script src="/javascript/ribbon.js?v=1793565147" defer></script>
+    </body>
+</html>

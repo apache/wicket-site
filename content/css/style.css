@@ -1071,6 +1071,7 @@ nav.mainmenu.is-home .nav-sections {
 .page-sign {
   position: relative;
   isolation: isolate;
+  z-index: 3;
 }
 
 .page-sign-inner {
@@ -1429,6 +1430,18 @@ body > main {
   max-width: var(--measure);
 }
 
+.page-content div.highlight, .page-content figure.highlight, .page-content > pre, .page-content .guide-copy-bar,
+.section-body div.highlight,
+.section-body figure.highlight,
+.section-body > pre,
+.section-body .guide-copy-bar,
+.hub-body div.highlight,
+.hub-body figure.highlight,
+.hub-body > pre,
+.hub-body .guide-copy-bar {
+  max-width: var(--measure);
+}
+
 .page-content h1, .page-content h2,
 .section-body h1,
 .section-body h2,
@@ -1741,6 +1754,8 @@ figure.highlight pre {
 .section-body table:not([class]),
 .hub-body table:not([class]) {
   display: block;
+  width: max-content;
+  max-width: 100%;
   overflow-x: auto;
 }
 

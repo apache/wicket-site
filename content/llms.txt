@@ -4,7 +4,9 @@
 
 Supported release lines:
 
-- Wicket 10 (LTS): latest 10.12.0, Java 17+, Jakarta Servlet 5.0+. Supported until Jul 2027.
+- Wicket 10 (LTS): latest 10.12.0, Java 17+, Jakarta Servlet 5.0+. Supported until 14.0.0, Jul 2027.
+- Wicket 11 (Current): latest 11.0.0, Java 21+, Jakarta Servlet 6.1+. Supported until 12.0.0, Jan 2027.
+- Wicket 12: announced for Jan 2027, not yet released.
 
 Wicket 10 and later use the `jakarta.*` namespace; Wicket 9 and earlier use `javax.*`.
 
@@ -13,13 +15,16 @@ Wicket 10 and later use the `jakarta.*` namespace; Wicket 9 and earlier use `jav
 The complete user guide of each release line in one document.
 
 - [Wicket 10.x Reference Guide](https://nightlies.apache.org/wicket/guide/10.x/single.html): one HTML page
+- [Wicket 11.x Reference Guide](https://nightlies.apache.org/wicket/guide/11.x/single.html): one HTML page
 - [Wicket 9.x Reference Guide](https://nightlies.apache.org/wicket/guide/9.x/single.html): one HTML page
 - [Wicket 8.x Reference Guide](https://nightlies.apache.org/wicket/guide/8.x/single.html): one HTML page
 - [Wicket 7.x Reference Guide](https://nightlies.apache.org/wicket/guide/7.x/single.html): one HTML page
+- [Wicket 12.x Reference Guide](https://nightlies.apache.org/wicket/guide/12.x/single.html): one HTML page, for the upcoming release
 
 ## Javadoc
 
 - [Wicket 10.x Javadoc](https://nightlies.apache.org/wicket/apidocs/10.x/index.html)
+- [Wicket 11.x Javadoc](https://nightlies.apache.org/wicket/apidocs/11.x/index.html)
 - [Wicket 9.x Javadoc](https://nightlies.apache.org/wicket/apidocs/9.x/index.html)
 - [Wicket 8.x Javadoc](https://nightlies.apache.org/wicket/apidocs/8.x/index.html)
 - [Wicket 7.x Javadoc](https://nightlies.apache.org/wicket/apidocs/7.x/index.html)
@@ -55,6 +60,7 @@ Tutorials, how-to guides, reference and explanation for Wicket 10 and later, by 
 - [Releases](https://wicket.apache.org/versions/): release lines, support and the release policy
 - [Upgrade paths](https://wicket.apache.org/versions/#upgrade-paths): how to get from an older line to one that is supported, with the migration guides
 - [Wicket 10](https://wicket.apache.org/versions/wicket-10.x/): Maven dependency, downloads, what is new and migration
+- [Wicket 11](https://wicket.apache.org/versions/wicket-11.x/): Maven dependency, downloads, what is new and migration
 - [Wicket 9](https://wicket.apache.org/versions/wicket-9.x/): Maven dependency, downloads, what is new and migration
 - [Wicket 8](https://wicket.apache.org/versions/wicket-8.x/): Maven dependency, downloads, what is new and migration
 

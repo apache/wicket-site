@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+	
+	
+
+        <title>Encryption in Wicket | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The crypt API behind encrypted URLs, the encrypted page store and upload tokens; its schemes, key factories, settings and ciphertext format." />
+        <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="icon" href="/img/logo-apachewicket-mark.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/css/style.css?v=1793565147" type="text/css" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        
+<a class="brand" href="/"><img class="brand-mark" src="/img/logo-apachewicket-mark.svg" alt="" width="34" height="34"><span class="brand-name">Apache Wicket<span class="tm" aria-hidden="true">™</span></span></a>
+
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" aria-label="ASF, The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="" width="22" height="34"><span class="nav-asf-label">ASF</span></a>
+        <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="nav-github-label">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 14; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%); --night: 1;" aria-hidden="true">
+    <img src="/img/seasons/autumn-ink-cap-1600.jpg" srcset="/img/seasons/autumn-ink-cap-900.jpg 900w, /img/seasons/autumn-ink-cap-1600.jpg 1600w, /img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="">
+</div>
+<div class="photo-meta">
+    <p class="photo-credit">Photo: <a href="https://unsplash.com/photos/CCAoWVqolxM" rel="noreferrer noopener noreferrer" target="_blank">Veronika Biro on Unsplash</a></p>
+</div>
+
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/security.html">Security</a></p>
+            <h1>Encryption in Wicket</h1>
+            <p class="page-sign-sub">The crypt API behind encrypted URLs, the encrypted page store and upload tokens; its schemes, key factories, settings and ciphertext format.</p>
+            <p class="guide-plates"><span class="guide-kind">Reference</span><span class="guide-since">Wicket <span class="guide-since-figure">11</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,11,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint">
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+<option value="11">Wicket 11</option>
+            <option value="12">Wicket 12 (upcoming)</option>
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#where-wicket-encrypts"><span class="toc-number">1</span> <span class="toc-text">Where Wicket encrypts</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#settings"><span class="toc-number">2</span> <span class="toc-text">Settings</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#icrypt"><span class="toc-number">3</span> <span class="toc-text">ICrypt</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#icrypt-implementations"><span class="toc-number">4</span> <span class="toc-text">ICrypt implementations</span></a></li>
+<li class="toc--level-1 toc--section-5">
+<a href="#schemes"><span class="toc-number">5</span> <span class="toc-text">Schemes</span></a><ul>
+<li class="toc--level-2 toc--section-6"><a href="#use-aes-gcm-siv"><span class="toc-number">5.1</span> <span class="toc-text">Use AES-GCM-SIV</span></a></li>
+<li class="toc--level-2 toc--section-7"><a href="#change-the-scheme-without-losing-existing-data"><span class="toc-number">5.2</span> <span class="toc-text">Change the scheme without losing existing data</span></a></li>
+</ul>
+</li>
+<li class="toc--level-1 toc--section-8"><a href="#key-factories"><span class="toc-number">6</span> <span class="toc-text">Key factories</span></a></li>
+<li class="toc--level-1 toc--section-9"><a href="#ciphertext-format"><span class="toc-number">7</span> <span class="toc-text">Ciphertext format</span></a></li>
+<li class="toc--level-1 toc--section-10"><a href="#limits"><span class="toc-number">8</span> <span class="toc-text">Limits</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="11" hidden>
+                This page describes Wicket 11 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Wicket encrypts data with one API in <code class="language-plaintext highlighter-rouge">org.apache.wicket.core.util.crypt</code>. A scheme decides how data is encrypted, a factory decides which key is used, and <code class="language-plaintext highlighter-rouge">SchemeCrypt</code> ties them together. Every scheme Wicket ships is authenticated: altered ciphertext fails to decrypt instead of producing garbage.</p>
+
+<blockquote class="since">
+  <p>This page describes Wicket 11. In Wicket 10, <code class="language-plaintext highlighter-rouge">ICrypt</code> and <code class="language-plaintext highlighter-rouge">ICryptFactory</code> live in <code class="language-plaintext highlighter-rouge">org.apache.wicket.util.crypt</code> and work on strings. URLs are encrypted by default with <code class="language-plaintext highlighter-rouge">SunJceCrypt</code> (<code class="language-plaintext highlighter-rouge">PBEWithMD5AndDES</code>) from <code class="language-plaintext highlighter-rouge">KeyInSessionSunJceCryptFactory</code>; <code class="language-plaintext highlighter-rouge">AESCrypt</code> and <code class="language-plaintext highlighter-rouge">TrivialCrypt</code> are alternatives. Stored pages use an <code class="language-plaintext highlighter-rouge">ICrypter</code> (<code class="language-plaintext highlighter-rouge">DefaultCrypter</code>, AES-CBC, or <code class="language-plaintext highlighter-rouge">GCMSIVCrypter</code>) set with <code class="language-plaintext highlighter-rouge">StoreSettings.setCrypter</code>. Neither default is authenticated. Wicket 11 removes all of these in favour of the API below, and <code class="language-plaintext highlighter-rouge">KeyInSessionCryptFactory</code> and <code class="language-plaintext highlighter-rouge">ApplicationKeyCryptFactory</code> are new. See the <a href="https://nightlies.apache.org/wicket/guide/10.x/single.html#_urls_encryption_in_detail" target="_blank" rel="noopener noreferrer">Wicket 10 guide</a> and, for stored pages, <a href="/docs/configure-page-store.html">Configure the page store</a>.</p>
+</blockquote>
+
+<h2 id="where-wicket-encrypts">Where Wicket encrypts</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Use</th>
+      <th>Class</th>
+      <th>Key</th>
+      <th>Encryption</th>
+      <th>Turned on by</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Encrypted URLs</td>
+      <td><code class="language-plaintext highlighter-rouge">CryptoMapper</code></td>
+      <td>From the <code class="language-plaintext highlighter-rouge">ICryptFactory</code> in the security settings</td>
+      <td>Deterministic</td>
+      <td>Installing <code class="language-plaintext highlighter-rouge">CryptoMapper</code> as root mapper, see <a href="/docs/encrypt-urls.html">Encrypt URLs</a>
+</td>
+    </tr>
+    <tr>
+      <td>Stored pages</td>
+      <td><code class="language-plaintext highlighter-rouge">CryptingPageStore</code></td>
+      <td>Random key per session, generated by the scheme, kept in the session data</td>
+      <td>Randomized, bound to the page id</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">getStoreSettings().setEncrypted(true)</code>, see <a href="/docs/configure-page-store.html">Configure the page store</a>
+</td>
+    </tr>
+    <tr>
+      <td>Upload tokens</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">AbstractFileUploadResource</code>, used by <code class="language-plaintext highlighter-rouge">FileUploadToResourceField</code>
+</td>
+      <td>From the <code class="language-plaintext highlighter-rouge">ICryptFactory</code> in the security settings</td>
+      <td>Randomized</td>
+      <td>Always, when the resource is used</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>All three use the scheme and the accepted schemes from <code class="language-plaintext highlighter-rouge">SecuritySettings</code>. An upload token carries the upload limits (upload id, maximum sizes and file count) in encrypted form. The resource checks it by decrypting it and comparing the limits it contains with its own; a token that was altered fails authentication and the upload is refused. A page that cannot be decrypted, because the session key is gone or the bytes were altered, is treated as no longer stored. An encrypted URL that cannot be decrypted is treated as not mapped.</p>
+
+<h2 id="settings">Settings</h2>
+
+<p>All in <code class="language-plaintext highlighter-rouge">SecuritySettings</code>, reached with <code class="language-plaintext highlighter-rouge">getSecuritySettings()</code>, except where noted.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Default</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setCryptScheme(ICryptScheme)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">AesGcmCryptScheme</code></td>
+      <td>Scheme used for all encryption. Always accepted for decryption.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setWhitelistedCryptSchemes(Collection&lt;ICryptScheme&gt;)</code></td>
+      <td>only the encryption scheme</td>
+      <td>Schemes accepted for decryption. Ciphertext of any other scheme is refused.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setCryptFactory(ICryptFactory)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">KeyInSessionCryptFactory</code></td>
+      <td>Source of the key for URLs and upload tokens</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setRandomSupplier(ISecureRandomSupplier)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DefaultSecureRandomSupplier</code></td>
+      <td>Randomness for keys and nonces</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StoreSettings.setEncrypted(boolean)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+      <td>Wraps the page store in a <code class="language-plaintext highlighter-rouge">CryptingPageStore</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="icrypt">ICrypt</h2>
+
+<p>The interface every encrypting component uses. It works on bytes and adds a URL-safe Base64 layer for strings.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">byte[] encrypt(byte[] plain, byte[] associatedData)</code></td>
+      <td>Randomized: a fresh nonce per call, so the same input gives a different result every time</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">byte[] encryptDeterministic(byte[] plain, byte[] associatedData)</code></td>
+      <td>The same input gives the same result for as long as the key lives</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">byte[] decrypt(byte[] encrypted, byte[] associatedData)</code></td>
+      <td>Decrypts either kind; returns <code class="language-plaintext highlighter-rouge">null</code> on any failure</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">encrypt(byte[])</code>, <code class="language-plaintext highlighter-rouge">encryptDeterministic(byte[])</code>, <code class="language-plaintext highlighter-rouge">decrypt(byte[])</code>
+</td>
+      <td>The same without associated data</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">String encryptUrlSafe(String)</code></td>
+      <td>Randomized, as URL-safe Base64 without padding</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">String encryptUrlSafeDeterministic(String)</code></td>
+      <td>Deterministic, as URL-safe Base64; what <code class="language-plaintext highlighter-rouge">CryptoMapper</code> uses</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">String decryptUrlSafe(String)</code></td>
+      <td>Decrypts either; returns <code class="language-plaintext highlighter-rouge">null</code> on any failure, including invalid Base64</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Associated data is authenticated but not encrypted. Decryption fails unless the same associated data is supplied. <code class="language-plaintext highlighter-rouge">CryptingPageStore</code> passes the page id, so a stored page cannot be swapped for another one.</p>
+
+<p>Decryption never throws for bad input: an unknown or refused scheme, a failed authentication and malformed input all return <code class="language-plaintext highlighter-rouge">null</code>.</p>
+
+<h2 id="icrypt-implementations">ICrypt implementations</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SchemeCrypt</code></td>
+      <td>The default. Encrypts with one scheme, decrypts with that scheme or any accepted scheme, using one key. Constructor: <code class="language-plaintext highlighter-rouge">SchemeCrypt(SecretKey key, SecureRandom random, ICryptScheme encryptionScheme, Collection&lt;? extends ICryptScheme&gt; whitelistedSchemes)</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NoCrypt</code></td>
+      <td>Returns its input unchanged. Only for environments without a usable security provider; never in production.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="schemes">Schemes</h2>
+
+<p>An <code class="language-plaintext highlighter-rouge">ICryptScheme</code> is one authenticated cipher with a one-byte id. It generates the keys it uses, encrypts randomized and deterministically in the same format, and returns <code class="language-plaintext highlighter-rouge">null</code> from <code class="language-plaintext highlighter-rouge">decrypt</code> when authentication fails.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Id</th>
+      <th>Cipher</th>
+      <th>Needs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AesGcmCryptScheme</code></td>
+      <td>1</td>
+      <td>AES-256-GCM (<code class="language-plaintext highlighter-rouge">AES/GCM/NoPadding</code>)</td>
+      <td>Nothing beyond the JDK. The default.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AesGcmSivCryptScheme</code></td>
+      <td>2</td>
+      <td>AES-256-GCM-SIV (<code class="language-plaintext highlighter-rouge">AES/GCM-SIV/NoPadding</code>), resistant to nonce reuse</td>
+      <td>Bouncy Castle (<code class="language-plaintext highlighter-rouge">org.bouncycastle:bcprov-jdk18on</code>) on the classpath with its provider registered. Slower.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Both extend <code class="language-plaintext highlighter-rouge">AbstractAesGcmCryptScheme</code>: 256-bit AES keys, a 96-bit nonce and a 128-bit authentication tag. Deterministic encryption derives the nonce from the plaintext with HMAC-SHA-256 under a key derived from the encryption key.</p>
+
+<p>Wicket reserves ids 1 to 31. A custom scheme uses an id of 32 or higher, must be thread-safe, and must return <code class="language-plaintext highlighter-rouge">null</code> from <code class="language-plaintext highlighter-rouge">decrypt</code> on authentication failure; a scheme that returns unverified plaintext removes the tamper detection everything else relies on.</p>
+
+<h3 id="use-aes-gcm-siv">Use AES-GCM-SIV</h3>
+
+<p><em>WicketApplication.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="nc">Security</span><span class="o">.</span><span class="na">addProvider</span><span class="o">(</span><span class="k">new</span> <span class="nc">BouncyCastleProvider</span><span class="o">());</span>
+    <span class="n">getSecuritySettings</span><span class="o">().</span><span class="na">setCryptScheme</span><span class="o">(</span><span class="k">new</span> <span class="nc">AesGcmSivCryptScheme</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="change-the-scheme-without-losing-existing-data">Change the scheme without losing existing data</h3>
+
+<p>Encrypt with the new scheme and keep accepting the old one until all data has been written again. Then drop the old one.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getSecuritySettings</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setCryptScheme</span><span class="o">(</span><span class="k">new</span> <span class="nc">AesGcmSivCryptScheme</span><span class="o">())</span>
+    <span class="o">.</span><span class="na">setWhitelistedCryptSchemes</span><span class="o">(</span><span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="nc">AesGcmCryptScheme</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<p>All schemes accepted by one <code class="language-plaintext highlighter-rouge">SchemeCrypt</code> share its key, so they must use compatible keys. The two shipped schemes both use 256-bit AES keys.</p>
+
+<h2 id="key-factories">Key factories</h2>
+
+<p>An <code class="language-plaintext highlighter-rouge">ICryptFactory</code> returns an <code class="language-plaintext highlighter-rouge">ICrypt</code> bound to a key; <code class="language-plaintext highlighter-rouge">newCrypt()</code> is its only method. It decides where the key lives, the scheme decides what the key is.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Key</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">KeyInSessionCryptFactory</code></td>
+      <td>A new random key per session, kept in session metadata</td>
+      <td>The default. Binds the HTTP session on first use. Data encrypted in one session cannot be decrypted in another or after the session ends.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ApplicationKeyCryptFactory(SecretKey)</code></td>
+      <td>The given key, for the whole application</td>
+      <td>Data stays decryptable across sessions and restarts. Manage the key outside the application.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ApplicationKeyCryptFactory(SecureRandom)</code></td>
+      <td>A random key generated on first use, for the whole application</td>
+      <td>Data does not survive a restart.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NoCryptFactory</code></td>
+      <td>None</td>
+      <td>Returns a <code class="language-plaintext highlighter-rouge">NoCrypt</code>. Never in production.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AbstractCryptFactory</code></td>
+      <td>Implement <code class="language-plaintext highlighter-rouge">getKey()</code>
+</td>
+      <td>Base class: builds a <code class="language-plaintext highlighter-rouge">SchemeCrypt</code> from your key and the scheme settings.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">KeyInSessionCryptFactory</code> creates a session even for a stateless page. A stateless application that encrypts URLs needs a factory with an application-wide key:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">getSecuritySettings</span><span class="o">().</span><span class="na">setCryptFactory</span><span class="o">(</span><span class="k">new</span> <span class="nc">ApplicationKeyCryptFactory</span><span class="o">(</span><span class="n">loadKeyFromVault</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<p>With an application-wide key an encrypted URL is the same text for every user, so anyone who has the key can confirm which page a leaked URL points to.</p>
+
+<p><code class="language-plaintext highlighter-rouge">CryptoMapper(IRequestMapper, Application)</code> uses the factory from the settings. <code class="language-plaintext highlighter-rouge">CryptoMapper(IRequestMapper, Supplier&lt;ICrypt&gt;)</code> takes an <code class="language-plaintext highlighter-rouge">ICrypt</code> directly.</p>
+
+<h2 id="ciphertext-format">Ciphertext format</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>marker (1 byte) || nonce (12 bytes) || ciphertext || tag (16 bytes)
+</code></pre></div></div>
+
+<p>The marker is the id of the scheme that encrypted the data. It is authenticated as associated data together with any associated data of the caller, so changing it to force a weaker scheme makes decryption fail. On decryption <code class="language-plaintext highlighter-rouge">SchemeCrypt</code> looks the marker up among the accepted schemes and refuses the data when it is not there. Strings are this byte sequence in URL-safe Base64 without padding.</p>
+
+<h2 id="limits">Limits</h2>
+
+<ul>
+  <li>The page store key lives in the session. Encryption protects stored pages against someone who can read or write the store, not against someone who controls the session. Wicket deserializes what it reads back, so keep the store private.</li>
+  <li>Encrypted URLs are deterministic by design: equal URLs encrypt to equal text, and whoever has the key can confirm a guessed URL. They are not an authorization mechanism. <a href="/docs/security-model.html#encrypted-urls">How Wicket keeps applications secure</a> explains why.</li>
+</ul>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/security.html">Security</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/login.html">Log users in</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a sign-in page with wicket-auth-roles, send anonymous users there when a page needs a signed-in user, and sign them out again.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/roles.html">Restrict access by role</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Allow pages, components, actions and resources only for users with a given role, with annotations on classes and packages or in code.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/https.html">Require HTTPS</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Serve pages over HTTPS with HttpsMapper and @RequireHttps, and set up the container so redirects and absolute URLs use the right host.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/csrf.html">Protect against cross-site request forgery</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Refuse link clicks, form submits and Ajax calls that another site makes on behalf of your users, with ResourceIsolationRequestCycleListener.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/csp.html">Configure the Content Security Policy</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Work with the strict Content Security Policy Wicket sends by default, allow extra sources, report violations, and move inline scripts and styles out of the markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/cross-origin-isolation.html">Isolate the page with COOP and COEP</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set the Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy headers, which Wicket sends by default, to isolate your pages from other origins.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/package-resource-guard.html">Control which package resources are served</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Allow or block files on the classpath that browsers may request as package resources, with patterns on SecurePackageResourceGuard.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Encryption in Wicket</span>
+        
+        <span class="guide-list-meta"><span class="guide-list-since">Wicket 11+</span></span>
+        <span class="guide-list-summary">The crypt API behind encrypted URLs, the encrypted page store and upload tokens; its schemes, key factories, settings and ciphertext format.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/security-checks.html">Security headers and external checks</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The response headers that scanners such as Mozilla Observatory check, which of them Wicket sends by default, and the Wicket API or hook that sets each one.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/security-model.html">How Wicket keeps applications secure</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What Wicket defends against by default (escaping, a strict CSP, stateful URLs and encryption) and what it leaves to your application and your deployment.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/crypt-schemes.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1793565147" defer></script>
+
+        <footer class="footer">
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+        
+        <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
+        <script src="/javascript/ribbon.js?v=1793565147" defer></script>
+    </body>
+</html>

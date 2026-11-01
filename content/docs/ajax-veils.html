@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+	
+	
+
+        <title>Block the page while a request runs | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Cover the page or one component with a veil during Ajax requests, so a second click cannot send the same request twice." />
+        <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="icon" href="/img/logo-apachewicket-mark.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/css/style.css?v=1793565147" type="text/css" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        
+<a class="brand" href="/"><img class="brand-mark" src="/img/logo-apachewicket-mark.svg" alt="" width="34" height="34"><span class="brand-name">Apache Wicket<span class="tm" aria-hidden="true">™</span></span></a>
+
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" aria-label="ASF, The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="" width="22" height="34"><span class="nav-asf-label">ASF</span></a>
+        <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="nav-github-label">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+<div class="page-sign guide-sign">
+    <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 14; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%); --night: 1;" aria-hidden="true">
+    <img src="/img/seasons/autumn-ink-cap-1600.jpg" srcset="/img/seasons/autumn-ink-cap-900.jpg 900w, /img/seasons/autumn-ink-cap-1600.jpg 1600w, /img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="">
+</div>
+<div class="photo-meta">
+    <p class="photo-credit">Photo: <a href="https://unsplash.com/photos/CCAoWVqolxM" rel="noreferrer noopener noreferrer" target="_blank">Veronika Biro on Unsplash</a></p>
+</div>
+
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/docs/">Documentation</a><span aria-hidden="true"> / </span><a href="/docs/topics/ajax.html">Ajax and JavaScript</a></p>
+            <h1>Block the page while a request runs</h1>
+            <p class="page-sign-sub">Cover the page or one component with a veil during Ajax requests, so a second click cannot send the same request twice.</p>
+            <p class="guide-plates"><span class="guide-kind">How-to</span><span class="guide-since">Wicket <span class="guide-since-figure">11</span> and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,11,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint">
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+<option value="11">Wicket 11</option>
+            <option value="12">Wicket 12 (upcoming)</option>
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#veil-the-whole-page"><span class="toc-number">1</span> <span class="toc-text">Veil the whole page</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#veil-a-single-component"><span class="toc-number">2</span> <span class="toc-text">Veil a single component</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#leave-a-request-unveiled"><span class="toc-number">3</span> <span class="toc-text">Leave a request unveiled</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#change-the-timings"><span class="toc-number">4</span> <span class="toc-text">Change the timings</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#style-the-veil"><span class="toc-number">5</span> <span class="toc-text">Style the veil</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#veil-a-component-during-a-websocket-push"><span class="toc-number">6</span> <span class="toc-text">Veil a component during a WebSocket push</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            
+            
+            <p class="guide-version-note" data-since="11" hidden>
+                This page describes Wicket 11 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">reference guide for Wicket <span data-chosen></span></a>.
+            </p>
+            
+            <section class="page-content guide-content">
+                <p>Use this when a second click during a slow Ajax request does harm: it sends the same request twice, or acts on a part of the page that the pending response is about to replace. A veil covers the page, or one component, for as long as the request runs.</p>
+
+<p>The veil appears as soon as the request is sent. It is transparent and swallows mouse clicks, so a quick request does not make the page flash. When the request is still running after 300 ms, the veil dims its area and shows a spinner, which then stays for at least 500 ms so it does not flicker. The veil does not block the keyboard. Both behaviors are in wicket-extensions, package <code class="language-plaintext highlighter-rouge">org.apache.wicket.extensions.ajax.veil</code>, and work with the jQuery and the plain JavaScript Ajax implementation.</p>
+
+<h2 id="veil-the-whole-page">Veil the whole page</h2>
+
+<p>Add a <code class="language-plaintext highlighter-rouge">PageVeilBehavior</code> to the page, usually to the base page all your pages extend:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BasePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">BasePage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">PageVeilBehavior</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Every Ajax request fired from the page is now veiled. <code class="language-plaintext highlighter-rouge">PageVeilBehavior</code> only works on a page; adding it to another component throws an <code class="language-plaintext highlighter-rouge">IllegalArgumentException</code>.</p>
+
+<h2 id="veil-a-single-component">Veil a single component</h2>
+
+<p>When the rest of the page should stay usable, add a <code class="language-plaintext highlighter-rouge">LocalVeilBehavior</code> to the component that does the slow work:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WebMarkupContainer</span> <span class="n">search</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WebMarkupContainer</span><span class="o">(</span><span class="s">"search"</span><span class="o">);</span>
+<span class="n">search</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">LocalVeilBehavior</span><span class="o">());</span>
+<span class="n">add</span><span class="o">(</span><span class="n">search</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Requests fired by the component or by anything inside it veil only that component, even when the page has a <code class="language-plaintext highlighter-rouge">PageVeilBehavior</code>. When local veils are nested, the innermost one around the clicked element takes the request.</p>
+
+<p>The behavior gives the component a markup id and adds the veil as a <code class="language-plaintext highlighter-rouge">div</code> inside the component’s element, so the component must render an element that can contain a <code class="language-plaintext highlighter-rouge">div</code>, such as a <code class="language-plaintext highlighter-rouge">div</code> or a <code class="language-plaintext highlighter-rouge">section</code>, not an <code class="language-plaintext highlighter-rouge">input</code>. While veiled, the element gets <code class="language-plaintext highlighter-rouge">position: relative</code> if it is not positioned already. When the element is replaced by an Ajax update while veiled, the veil moves to the new element. A <code class="language-plaintext highlighter-rouge">LocalVeilBehavior</code> instance belongs to one component; create a new one for each.</p>
+
+<h2 id="leave-a-request-unveiled">Leave a request unveiled</h2>
+
+<p>All Ajax requests are veiled, also those the user did not start, such as an <code class="language-plaintext highlighter-rouge">AbstractAjaxTimerBehavior</code> or an <code class="language-plaintext highlighter-rouge">AjaxLazyLoadPanel</code> loading its content. Exempt such a request by calling <code class="language-plaintext highlighter-rouge">PageVeilBehavior.noVeil</code> from <code class="language-plaintext highlighter-rouge">updateAjaxAttributes</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">label</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxSelfUpdatingTimerBehavior</span><span class="o">(</span><span class="nc">Duration</span><span class="o">.</span><span class="na">ofSeconds</span><span class="o">(</span><span class="mi">10</span><span class="o">))</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">updateAjaxAttributes</span><span class="o">(</span><span class="nc">AjaxRequestAttributes</span> <span class="n">attributes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">updateAjaxAttributes</span><span class="o">(</span><span class="n">attributes</span><span class="o">);</span>
+        <span class="nc">PageVeilBehavior</span><span class="o">.</span><span class="na">noVeil</span><span class="o">(</span><span class="n">attributes</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">noVeil</code> adds the request parameter <code class="language-plaintext highlighter-rouge">wicket_nb</code> (<code class="language-plaintext highlighter-rouge">PageVeilBehavior.NO_VEIL_PARAMETER</code>). No veil, page or local, covers a request that carries it. The parameter also reaches the server.</p>
+
+<h2 id="change-the-timings">Change the timings</h2>
+
+<p>Set the spinner delay and the minimum spinner time on each behavior:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WebMarkupContainer</span> <span class="n">report</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WebMarkupContainer</span><span class="o">(</span><span class="s">"report"</span><span class="o">);</span>
+<span class="n">report</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">LocalVeilBehavior</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setSpinnerDelay</span><span class="o">(</span><span class="nc">Duration</span><span class="o">.</span><span class="na">ofMillis</span><span class="o">(</span><span class="mi">100</span><span class="o">))</span>
+    <span class="o">.</span><span class="na">setMinimumSpinnerTime</span><span class="o">(</span><span class="nc">Duration</span><span class="o">.</span><span class="na">ofSeconds</span><span class="o">(</span><span class="mi">1</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Duration.ZERO</code> as delay shows the spinner at once. Nested local veils keep their own timings, so a part of the page that is known to be slow can show its spinner sooner. Subclasses can override <code class="language-plaintext highlighter-rouge">getSpinnerDelay()</code> and <code class="language-plaintext highlighter-rouge">getMinimumSpinnerTime()</code> instead.</p>
+
+<h2 id="style-the-veil">Style the veil</h2>
+
+<p>The behaviors contribute <code class="language-plaintext highlighter-rouge">wicket-veil.css</code>. Override these classes in your own stylesheet:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>CSS class</th>
+      <th>Set on</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-veil</code></td>
+      <td>The veil <code class="language-plaintext highlighter-rouge">div</code>: <code class="language-plaintext highlighter-rouge">position: fixed</code> over the page, <code class="language-plaintext highlighter-rouge">position: absolute</code> over a component.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-veil-busy</code></td>
+      <td>The veil, once the spinner delay has passed. Gives the background; its <code class="language-plaintext highlighter-rouge">::after</code> pseudo-element draws the spinner.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-veil-host</code></td>
+      <td>The element of a component with a local veil, while veiled. Sets <code class="language-plaintext highlighter-rouge">isolation: isolate</code>, so the veil does not paint over a sticky header or a dialog in front of it.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-veil-host-static</code></td>
+      <td>Added with <code class="language-plaintext highlighter-rouge">wicket-veil-host</code> when the element was not positioned. Sets <code class="language-plaintext highlighter-rouge">position: relative</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="veil-a-component-during-a-websocket-push">Veil a component during a WebSocket push</h2>
+
+<p>An update pushed over a WebSocket has no Ajax request the browser could notice, so the server raises and lowers the veil itself. <code class="language-plaintext highlighter-rouge">getVeilMessage()</code> returns a text message that raises the local veil when you send it over the page’s WebSocket connection; <code class="language-plaintext highlighter-rouge">unveil(handler)</code> lowers it once the pushed update is applied:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">LocalVeilBehavior</span> <span class="n">veil</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LocalVeilBehavior</span><span class="o">();</span>
+<span class="n">counterPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">veil</span><span class="o">);</span>
+
+<span class="c1">// while handling a request, for example the click that starts the work</span>
+<span class="nc">String</span> <span class="n">veilMessage</span> <span class="o">=</span> <span class="n">veil</span><span class="o">.</span><span class="na">getVeilMessage</span><span class="o">();</span>
+
+<span class="c1">// in the background thread</span>
+<span class="n">connection</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">veilMessage</span><span class="o">);</span>
+<span class="c1">// ... compute, then push the result as an IWebSocketPushMessage</span>
+
+<span class="c1">// in onEvent(), for the WebSocketPushPayload with the result</span>
+<span class="n">handler</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">counterPanel</span><span class="o">);</span>
+<span class="n">veil</span><span class="o">.</span><span class="na">unveil</span><span class="o">(</span><span class="n">handler</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">getVeilMessage()</code> reads the component’s markup id, so call it during a request; the message is a plain string you can send from any thread. When the work fails and no update follows, send <code class="language-plaintext highlighter-rouge">getUnveilMessage()</code> instead. Pushing updates is covered in <a href="/docs/use-websockets.html">Push updates over a WebSocket</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/docs/topics/ajax.html">Ajax and JavaScript</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/update-components.html">Update components with Ajax</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Re-render components, show hidden ones, refresh lists and run JavaScript in response to an Ajax request.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/activity-indicator.html">Show that a request is running</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show a busy indicator while an Ajax request runs, with the indicating components, your own component or your own spinner element.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Block the page while a request runs</span>
+        
+        <span class="guide-list-meta"><span class="guide-list-since">Wicket 11+</span></span>
+        <span class="guide-list-summary">Cover the page or one component with a veil during Ajax requests, so a second click cannot send the same request twice.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-request-attributes.html">Change how an Ajax request is sent</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Override updateAjaxAttributes to throttle requests, send them as POST, pass extra parameters, drop outdated ones or stop the browser's default action.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-call-listeners.html">React to Ajax requests in JavaScript</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Run your own JavaScript before, during and after Ajax requests, for one component with a call listener or for the whole page with global events.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/stateless-ajax.html">Use Ajax on stateless pages</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Make Ajax components and behaviors stateless with getStatelessHint, so a page such as a login page keeps working without a stored page instance.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-lambdas.html">Write Ajax handlers as lambdas</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Create Ajax behaviors from lambdas with their static factory methods instead of anonymous subclasses, and do the same for Ajax links and buttons.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/integrate-javascript.html">Wrap a JavaScript widget in a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Package a JavaScript library with a component, initialize it with the component's markup id, keep it working after Ajax updates and call back to the server.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-without-jquery.html">Run Ajax without jQuery</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-since">Wicket 11+</span></span>
+        <span class="guide-list-summary">Switch the application to Wicket's plain JavaScript Ajax implementation, so pages no longer download jQuery.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-components.html">Ajax components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Ajax components in wicket-core and wicket-extensions, what each does and which callback you override.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-behaviors.html">Ajax behaviors</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The Ajax behaviors and call listeners in wicket-core and wicket-extensions, the callback each one calls and its lambda factory method.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/how-ajax-works.html">How Wicket Ajax works</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What happens between a click in the browser and the updated components on the page, and why components need a markup id.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/ajax-veils.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/javascript/guide.js?v=1793565147" defer></script>
+
+        <footer class="footer">
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+        
+        <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
+        <script src="/javascript/ribbon.js?v=1793565147" defer></script>
+    </body>
+</html>

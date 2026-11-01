@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1793462514" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1793565147" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/slick-1.5.5.css"/>
@@ -44,6 +44,14 @@
 
     
     
+    
+    
+
+    
+    
+    
+    
+    
 
 
 
@@ -52,10 +60,9 @@
         
         
         
-        
-        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.12 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
-            <span class="nav-plate-current">10.12</span><span class="nav-plate-lts">LTS</span>
-        </a>
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
         
     </div>
     <div class="nav-container nav-sections">
@@ -113,7 +120,10 @@
                 <h2 class="visually-hidden">Releases</h2>
                 <ul class="release-lines-home">
                     <li>
-<a class="release-v" href="/versions/wicket-10.x/">10.12.0</a> <span class="tag tag-lts" title="Long-term support">LTS</span> <span class="release-until">supported until Jul 2027</span>
+<a class="release-v" href="/versions/wicket-11.x/">11.0.0</a> <span class="tag tag-current">Current</span> <span class="release-until">supported until 12.0.0, Jan 2027</span><span class="release-brief">Java 21, Ajax without jQuery, one authenticated encryption API, and leaner components.</span>
+</li>
+                    <li>
+<a class="release-v" href="/versions/wicket-10.x/">10.12.0</a> <span class="tag tag-lts" title="Long-term support">LTS</span> <span class="release-until">supported until 14.0.0, Jul 2027</span>
 </li>
                 </ul>
                 <p class="release-note">With 9.25.0 and 8.20.0, both 9.x and 8.x reached end of life. <a href="/versions/#upgrade-paths">How to upgrade</a></p>
@@ -130,6 +140,13 @@
             <p class="home-links"><a href="/news/">All posts</a> <a type="application/atom+xml" href="/atom.xml">Atom feed</a></p>
         </header>
         <ul class="post-panels">
+<li class="post-panel is-major">
+        <a href="/news/2026/11/01/wicket-11.0.0-released.html">
+            <span class="post-meta"><time datetime="2026-11-01T11:00:00+00:00">1 Nov 2026</time> · Major release</span>
+            <h3 class="post-title">Apache Wicket 11.0.0 released</h3>
+            <span class="post-summary">Wicket 11 lets an application drop jQuery, makes components faster and leaner, moves to Java 21 and Jakarta EE 11 and rebuilds encryption on one authenticated API. It is the first release on the quarterly schedule.</span>
+        </a>
+    </li>
 <li class="post-panel is-article">
         <a href="/news/2026/10/21/wicket-8-and-9-end-of-life.html">
             <span class="post-meta"><time datetime="2026-10-21T00:00:00+00:00">21 Oct 2026</time></span>
@@ -142,13 +159,6 @@
             <span class="post-meta"><time datetime="2026-09-11T00:00:00+00:00">11 Sep 2026</time></span>
             <h3 class="post-title">A new release cadence for Apache Wicket</h3>
             <span class="post-summary">Starting with Apache Wicket 11.0, due in the first week of October 2026, Wicket moves to time-based releases: a new major release every three months, and an LTS...</span>
-        </a>
-    </li>
-<li class="post-panel is-article">
-        <a href="/news/2026/09/08/security-policy.html">
-            <span class="post-meta"><time datetime="2026-09-08T00:00:00+00:00">8 Sep 2026</time></span>
-            <h3 class="post-title">A security policy for Apache Wicket</h3>
-            <span class="post-summary">Wicket now documents how to report a vulnerability, what is in scope, and which inputs the framework trusts, in a SECURITY.md on every supported branch.</span>
         </a>
     </li>
 </ul>
@@ -486,6 +496,6 @@
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1793462514" defer></script>
+        <script src="/javascript/ribbon.js?v=1793565147" defer></script>
     </body>
 </html>

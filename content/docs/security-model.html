@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1793462514" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1793565147" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -39,6 +39,14 @@
 
     
     
+    
+    
+
+    
+    
+    
+    
+    
 
 
 
@@ -49,10 +57,9 @@
 
         
         
-        
-        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.12 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
-            <span class="nav-plate-current">10.12</span><span class="nav-plate-lts">LTS</span>
-        </a>
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
         
     </div>
     <div class="nav-container nav-sections">
@@ -105,18 +112,19 @@
             <p class="guide-plates"><span class="guide-kind">Explanation</span><span class="guide-since">Wicket <span class="guide-since-figure">10</span> and later</span></p>
         </div>
         
-<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,11,6,7,8,9,">
     <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
     <div class="guide-search-field">
         <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
         <kbd class="guide-search-key" aria-hidden="true">/</kbd>
     </div>
     
-    <p class="guide-search-hint" hidden>
+    <p class="guide-search-hint">
         <label>For <select name="v" data-guide-version>
             <option value="">every version</option>
             <option value="10">Wicket 10</option>
-            
+<option value="11">Wicket 11</option>
+            <option value="12">Wicket 12 (upcoming)</option>
         </select></label>
     </p>
 </form>
@@ -178,7 +186,9 @@
 
 <p>An encrypted URL hides which pages and components exist and makes listener URLs unguessable per session. It is not access control. A URL can leak through a log, a browser history or a <code class="language-plaintext highlighter-rouge">Referer</code> header, and whoever has it can replay it within the session. Encrypted URLs are deterministic by design: the same URL must encrypt to the same text so that a regenerated URL matches the requested one and resources stay cacheable. Equal URLs are therefore recognisable as equal, and anyone holding the key can confirm a guess. With the default per-session key that stays within one user’s session.</p>
 
-<p>By default, URLs are encrypted with <code class="language-plaintext highlighter-rouge">PBEWithMD5AndDES</code> and stored pages with AES-CBC, neither of which is authenticated.</p>
+<blockquote class="since">
+  <p>Since Wicket 11, URLs and stored pages are encrypted with authenticated AES-256-GCM, so altered ciphertext is refused instead of decrypted to garbage. Wicket 10 encrypts URLs with <code class="language-plaintext highlighter-rouge">PBEWithMD5AndDES</code> and stored pages with AES-CBC, neither of which is authenticated. <a href="/docs/crypt-schemes.html">Encryption in Wicket</a> describes the Wicket 11 API.</p>
+</blockquote>
 
 <h2 id="authorization-belongs-in-a-strategy">Authorization belongs in a strategy</h2>
 
@@ -190,7 +200,7 @@
 
 <p>Wicket takes its own identity, the scheme, host and port it is served on, from the servlet container. It does not check the <code class="language-plaintext highlighter-rouge">Host</code> header. Every absolute URL, every redirect to HTTPS, and the fallback Origin check of the resource isolation listener rely on it. The container or proxy has to reject unexpected host names; <a href="/docs/https.html#make-the-host-in-redirects-trustworthy">Require HTTPS</a> lists what to configure. <code class="language-plaintext highlighter-rouge">X-Forwarded-*</code> headers are ignored unless you install the wrapper that reads them.</p>
 
-<p>Pages and sessions are serialized to the page store, and Java deserialization of untrusted bytes is dangerous. Wicket treats the page store and the session store as trusted, private storage. <a href="/docs/configure-page-store.html">Encrypting the page store</a> keeps stored pages confidential, but the key lives in the session, so it protects against someone who can read or write the store, not against someone who holds the session.</p>
+<p>Pages and sessions are serialized to the page store, and Java deserialization of untrusted bytes is dangerous. Wicket treats the page store and the session store as trusted, private storage. <a href="/docs/configure-page-store.html">Encrypting the page store</a> keeps stored pages confidential, and since Wicket 11 also tamper-evident, but the key lives in the session, so it protects against someone who can read or write the store, not against someone who holds the session.</p>
 
 <p>Development mode adds debugging aids and detailed error pages. It is not hardened and must not run in production; see <a href="/docs/deployment-mode.html">Switch between development and deployment mode</a>.</p>
 
@@ -291,6 +301,15 @@
     
     <li>
         
+        <a class="guide-list-title" href="/docs/crypt-schemes.html">Encryption in Wicket</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-since">Wicket 11+</span></span>
+        <span class="guide-list-summary">The crypt API behind encrypted URLs, the encrypted page store and upload tokens; its schemes, key factories, settings and ciphertext format.</span>
+    </li>
+
+    
+    <li>
+        
         <a class="guide-list-title" href="/docs/security-checks.html">Security headers and external checks</a>
         
         <span class="guide-list-meta"></span>
@@ -329,7 +348,7 @@
         </div>
     </div>
 </main>
-<script src="/javascript/guide.js?v=1793462514" defer></script>
+<script src="/javascript/guide.js?v=1793565147" defer></script>
 
         <footer class="footer">
             
@@ -373,6 +392,6 @@
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1793462514" defer></script>
+        <script src="/javascript/ribbon.js?v=1793565147" defer></script>
     </body>
 </html>

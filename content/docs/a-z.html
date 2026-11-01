@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1793462514" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1793565147" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -39,6 +39,14 @@
 
     
     
+    
+    
+
+    
+    
+    
+    
+    
 
 
 
@@ -49,10 +57,9 @@
 
         
         
-        
-        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.12 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
-            <span class="nav-plate-current">10.12</span><span class="nav-plate-lts">LTS</span>
-        </a>
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
         
     </div>
     <div class="nav-container nav-sections">
@@ -103,18 +110,19 @@
             <p class="page-sign-sub">Every Wicket class the guide explains, and every page by title.</p>
         </div>
         
-<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+<form class="guide-search" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,11,6,7,8,9,">
     <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
     <div class="guide-search-field">
         <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
         <kbd class="guide-search-key" aria-hidden="true">/</kbd>
     </div>
     
-    <p class="guide-search-hint" hidden>
+    <p class="guide-search-hint">
         <label>For <select name="v" data-guide-version>
             <option value="">every version</option>
             <option value="10">Wicket 10</option>
-            
+<option value="11">Wicket 11</option>
+            <option value="12">Wicket 12 (upcoming)</option>
         </select></label>
     </p>
 </form>
@@ -139,13 +147,16 @@
                 <h2 id="classes">Classes</h2>
                 <p class="guide-group-intro">Interfaces are sorted without their leading I, so <code>IModel</code> is under M.</p>
                 <nav class="guide-letters" aria-label="Classes by letter">
-                <a href="#class-A">A</a><a href="#class-B">B</a><a href="#class-C">C</a><a href="#class-D">D</a><a href="#class-E">E</a><a href="#class-F">F</a><a href="#class-G">G</a><a href="#class-H">H</a><a href="#class-I">I</a><a href="#class-J">J</a><a href="#class-L">L</a><a href="#class-M">M</a><a href="#class-N">N</a><a href="#class-O">O</a><a href="#class-P">P</a><a href="#class-Q">Q</a><a href="#class-R">R</a><a href="#class-S">S</a><a href="#class-T">T</a><a href="#class-U">U</a><a href="#class-V">V</a><a href="#class-W">W</a><a href="#class-X">X</a><a href="#class-Z">Z</a>
+                <a href="#class-A">A</a><a href="#class-B">B</a><a href="#class-C">C</a><a href="#class-D">D</a><a href="#class-E">E</a><a href="#class-F">F</a><a href="#class-G">G</a><a href="#class-H">H</a><a href="#class-I">I</a><a href="#class-J">J</a><a href="#class-K">K</a><a href="#class-L">L</a><a href="#class-M">M</a><a href="#class-N">N</a><a href="#class-O">O</a><a href="#class-P">P</a><a href="#class-Q">Q</a><a href="#class-R">R</a><a href="#class-S">S</a><a href="#class-T">T</a><a href="#class-U">U</a><a href="#class-V">V</a><a href="#class-W">W</a><a href="#class-X">X</a><a href="#class-Z">Z</a>
                 </nav>
                 
                 
                 <h3 id="class-A" class="guide-letter">A</h3>
                 <dl class="guide-classes">
                     
+                    
+                    <dt><code>AbstractAesGcmCryptScheme</code></dt>
+                    <dd><a href="/docs/crypt-schemes.html">Encryption in Wicket</a></dd>
                     
                     <dt><code>AbstractAjaxTimerBehavior</code></dt>
                     <dd>
@@ -157,6 +168,9 @@
                     
                     <dt><code>AbstractChoice</code></dt>
                     <dd><a href="/docs/localize-choices.html">Translate the options of a choice</a></dd>
+                    
+                    <dt><code>AbstractCryptFactory</code></dt>
+                    <dd><a href="/docs/crypt-schemes.html">Encryption in Wicket</a></dd>
                     
                     <dt><code>AbstractCspHeaderItem</code></dt>
                     <dd><a href="/docs/header-items.html">Header items</a></dd>
@@ -189,8 +203,17 @@
                     <dt><code>AbstractSingleSelectChoice</code></dt>
                     <dd><a href="/docs/localize-choices.html">Translate the options of a choice</a></dd>
                     
+                    <dt><code>AbstractVeilBehavior</code></dt>
+                    <dd><a href="/docs/ajax-veils.html">Block the page while a request runs</a></dd>
+                    
                     <dt><code>AccessDeniedPage</code></dt>
                     <dd><a href="/docs/handle-exceptions.html">Handle exceptions and show error pages</a></dd>
+                    
+                    <dt><code>AesGcmCryptScheme</code></dt>
+                    <dd><a href="/docs/crypt-schemes.html">Encryption in Wicket</a></dd>
+                    
+                    <dt><code>AesGcmSivCryptScheme</code></dt>
+                    <dd><a href="/docs/crypt-schemes.html">Encryption in Wicket</a></dd>
                     
                     <dt><code>AjaxButton</code></dt>
                     <dd>
@@ -324,6 +347,11 @@
                     
                     <dt><code>ApplicationContextMock</code></dt>
                     <dd><a href="/docs/test-with-spring.html">Test with Spring</a></dd>
+                    
+                    <dt><code>ApplicationKeyCryptFactory</code></dt>
+                    <dd>
+<a href="/docs/encrypt-urls.html">Encrypt URLs</a><span aria-hidden="true"> · </span><a href="/docs/crypt-schemes.html">Encryption in Wicket</a>
+</dd>
                     
                     <dt><code>ApplicationMBean</code></dt>
                     <dd><a href="/docs/jmx.html">Inspect and change settings with JMX</a></dd>
@@ -625,12 +653,12 @@
                     
                     <dt><code>CryptingPageStore</code></dt>
                     <dd>
-<a href="/docs/configure-page-store.html">Configure the page store</a><span aria-hidden="true"> · </span><a href="/docs/page-storage.html">How pages are stored</a>
+<a href="/docs/configure-page-store.html">Configure the page store</a><span aria-hidden="true"> · </span><a href="/docs/crypt-schemes.html">Encryption in Wicket</a><span aria-hidden="true"> · </span><a href="/docs/page-storage.html">How pages are stored</a>
 </dd>
                     
                     <dt><code>CryptoMapper</code></dt>
                     <dd>
-<a href="/docs/csrf.html">Protect against cross-site request forgery</a><span aria-hidden="true"> · </span><a href="/docs/request-mappers.html">Request mappers</a><span aria-hidden="true"> · </span><a href="/docs/security-model.html">How Wicket keeps applications secure</a>
+<a href="/docs/csrf.html">Protect against cross-site request forgery</a><span aria-hidden="true"> · </span><a href="/docs/encrypt-urls.html">Encrypt URLs</a><span aria-hidden="true"> · </span><a href="/docs/crypt-schemes.html">Encryption in Wicket</a><span aria-hidden="true"> · </span><a href="/docs/request-mappers.html">Request mappers</a><span aria-hidden="true"> · </span><a href="/docs/security-model.html">How Wicket keeps applications secure</a>
 </dd>
                     
                     <dt><code>CSPDirective</code></dt>
@@ -708,6 +736,17 @@
                     
                     <dt><code>IConverterLocator</code></dt>
                     <dd><a href="/docs/convert-input.html">Convert input to your types</a></dd>
+                    
+                    <dt><code>ICrypt</code></dt>
+                    <dd><a href="/docs/crypt-schemes.html">Encryption in Wicket</a></dd>
+                    
+                    <dt><code>ICryptFactory</code></dt>
+                    <dd>
+<a href="/docs/encrypt-urls.html">Encrypt URLs</a><span aria-hidden="true"> · </span><a href="/docs/crypt-schemes.html">Encryption in Wicket</a>
+</dd>
+                    
+                    <dt><code>ICryptScheme</code></dt>
+                    <dd><a href="/docs/crypt-schemes.html">Encryption in Wicket</a></dd>
                     
                     <dt><code>ICssCompressor</code></dt>
                     <dd><a href="/docs/compress-resources.html">Minify and compress CSS and JavaScript</a></dd>
@@ -1142,7 +1181,7 @@
                     
                     <dt><code>JavaScriptLibrarySettings</code></dt>
                     <dd>
-<a href="/docs/integrate-javascript.html">Wrap a JavaScript widget in a component</a><span aria-hidden="true"> · </span><a href="/docs/resource-dependencies.html">Declare dependencies between resources</a><span aria-hidden="true"> · </span><a href="/docs/configuration.html">Application settings</a>
+<a href="/docs/ajax-without-jquery.html">Run Ajax without jQuery</a><span aria-hidden="true"> · </span><a href="/docs/integrate-javascript.html">Wrap a JavaScript widget in a component</a><span aria-hidden="true"> · </span><a href="/docs/resource-dependencies.html">Declare dependencies between resources</a><span aria-hidden="true"> · </span><a href="/docs/configuration.html">Application settings</a>
 </dd>
                     
                     <dt><code>JavaScriptReferenceHeaderItem</code></dt>
@@ -1169,6 +1208,17 @@
                     
                     <dt><code>JQueryResourceReference</code></dt>
                     <dd><a href="/docs/resource-dependencies.html">Declare dependencies between resources</a></dd>
+                    
+                </dl>
+                
+                <h3 id="class-K" class="guide-letter">K</h3>
+                <dl class="guide-classes">
+                    
+                    
+                    <dt><code>KeyInSessionCryptFactory</code></dt>
+                    <dd>
+<a href="/docs/encrypt-urls.html">Encrypt URLs</a><span aria-hidden="true"> · </span><a href="/docs/crypt-schemes.html">Encryption in Wicket</a>
+</dd>
                     
                 </dl>
                 
@@ -1243,6 +1293,9 @@
                     
                     <dt><code>LocalTimeTextField</code></dt>
                     <dd><a href="/docs/form-components.html">Form components</a></dd>
+                    
+                    <dt><code>LocalVeilBehavior</code></dt>
+                    <dd><a href="/docs/ajax-veils.html">Block the page while a request runs</a></dd>
                     
                     <dt><code>Loop</code></dt>
                     <dd>
@@ -1356,6 +1409,12 @@
                     <dd>
 <a href="/docs/ajax-components.html">Ajax components</a><span aria-hidden="true"> · </span><a href="/docs/repeaters.html">Repeaters</a>
 </dd>
+                    
+                    <dt><code>NoCrypt</code></dt>
+                    <dd><a href="/docs/crypt-schemes.html">Encryption in Wicket</a></dd>
+                    
+                    <dt><code>NoCryptFactory</code></dt>
+                    <dd><a href="/docs/crypt-schemes.html">Encryption in Wicket</a></dd>
                     
                     <dt><code>NonContextual</code></dt>
                     <dd><a href="/docs/cdi.html">Inject CDI beans</a></dd>
@@ -1492,6 +1551,9 @@
                     <dd>
 <a href="/docs/configuration.html">Application settings</a><span aria-hidden="true"> · </span><a href="/docs/auto-components.html">How markup becomes components</a><span aria-hidden="true"> · </span><a href="/docs/stateful-stateless.html">Stateful and stateless pages</a>
 </dd>
+                    
+                    <dt><code>PageVeilBehavior</code></dt>
+                    <dd><a href="/docs/ajax-veils.html">Block the page while a request runs</a></dd>
                     
                     <dt><code>PagingNavigator</code></dt>
                     <dd>
@@ -1766,12 +1828,15 @@
                     <dt><code>Scheme</code></dt>
                     <dd><a href="/docs/https.html">Require HTTPS</a></dd>
                     
+                    <dt><code>SchemeCrypt</code></dt>
+                    <dd><a href="/docs/crypt-schemes.html">Encryption in Wicket</a></dd>
+                    
                     <dt><code>SecurePackageResourceGuard</code></dt>
                     <dd><a href="/docs/package-resource-guard.html">Control which package resources are served</a></dd>
                     
                     <dt><code>SecuritySettings</code></dt>
                     <dd>
-<a href="/docs/configure-page-store.html">Configure the page store</a><span aria-hidden="true"> · </span><a href="/docs/cross-origin-isolation.html">Isolate the page with COOP and COEP</a><span aria-hidden="true"> · </span><a href="/docs/configuration.html">Application settings</a><span aria-hidden="true"> · </span><a href="/docs/security-checks.html">Security headers and external checks</a>
+<a href="/docs/configure-page-store.html">Configure the page store</a><span aria-hidden="true"> · </span><a href="/docs/cross-origin-isolation.html">Isolate the page with COOP and COEP</a><span aria-hidden="true"> · </span><a href="/docs/encrypt-urls.html">Encrypt URLs</a><span aria-hidden="true"> · </span><a href="/docs/configuration.html">Application settings</a><span aria-hidden="true"> · </span><a href="/docs/crypt-schemes.html">Encryption in Wicket</a><span aria-hidden="true"> · </span><a href="/docs/security-checks.html">Security headers and external checks</a>
 </dd>
                     
                     <dt><code>Select</code></dt>
@@ -2067,6 +2132,12 @@
                     <dt><code>WebSocketTester</code></dt>
                     <dd><a href="/docs/test-websockets.html">Test WebSocket behaviors</a></dd>
                     
+                    <dt><code>WicketAjaxJQueryResourceReference</code></dt>
+                    <dd><a href="/docs/ajax-without-jquery.html">Run Ajax without jQuery</a></dd>
+                    
+                    <dt><code>WicketAjaxResourceReference</code></dt>
+                    <dd><a href="/docs/ajax-without-jquery.html">Run Ajax without jQuery</a></dd>
+                    
                     <dt><code>WicketContainerResolver</code></dt>
                     <dd><a href="/docs/wicket-tags.html">Wicket tags and attributes</a></dd>
                     
@@ -2216,6 +2287,15 @@
         
         <span class="guide-list-meta"><span class="guide-list-kind">How-to</span></span>
         <span class="guide-list-summary">Read and write bean properties with PropertyModel, and let form fields find their property by id with CompoundPropertyModel.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/ajax-veils.html">Block the page while a request runs</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">How-to</span><span class="guide-list-since">Wicket 11+</span></span>
+        <span class="guide-list-summary">Cover the page or one component with a veil during Ajax requests, so a second click cannot send the same request twice.</span>
     </li>
 
     
@@ -2396,6 +2476,24 @@
         
         <span class="guide-list-meta"><span class="guide-list-kind">How-to</span></span>
         <span class="guide-list-summary">Make a script or stylesheet pull in the libraries it needs by overriding getDependencies, so Wicket always renders them first and only once.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/encrypt-urls.html">Encrypt URLs</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">How-to</span><span class="guide-list-since">Wicket 11+</span></span>
+        <span class="guide-list-summary">Hide class names and component paths behind encrypted URLs with CryptoMapper, and choose where the key lives so that stateless pages keep working.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/docs/crypt-schemes.html">Encryption in Wicket</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">Reference</span><span class="guide-list-since">Wicket 11+</span></span>
+        <span class="guide-list-summary">The crypt API behind encrypted URLs, the encrypted page store and upload tokens; its schemes, key factories, settings and ciphertext format.</span>
     </li>
 
     
@@ -2932,6 +3030,15 @@
     
     <li>
         
+        <a class="guide-list-title" href="/docs/ajax-without-jquery.html">Run Ajax without jQuery</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">How-to</span><span class="guide-list-since">Wicket 11+</span></span>
+        <span class="guide-list-summary">Switch the application to Wicket's plain JavaScript Ajax implementation, so pages no longer download jQuery.</span>
+    </li>
+
+    
+    <li>
+        
         <a class="guide-list-title" href="/docs/karaf.html">Run on Apache Karaf</a>
         
         <span class="guide-list-meta"><span class="guide-list-kind">How-to</span></span>
@@ -3349,7 +3456,7 @@
         </div>
     </div>
 </main>
-<script src="/javascript/guide.js?v=1793462514" defer></script>
+<script src="/javascript/guide.js?v=1793565147" defer></script>
 
         <footer class="footer">
             
@@ -3393,6 +3500,6 @@
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1793462514" defer></script>
+        <script src="/javascript/ribbon.js?v=1793565147" defer></script>
     </body>
 </html>

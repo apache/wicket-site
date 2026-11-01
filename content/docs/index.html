@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1793462514" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1793565147" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -39,6 +39,14 @@
 
     
     
+    
+    
+
+    
+    
+    
+    
+    
 
 
 
@@ -49,10 +57,9 @@
 
         
         
-        
-        <a class="nav-plate" href="/versions/wicket-10.x/" aria-label="10.12 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
-            <span class="nav-plate-current">10.12</span><span class="nav-plate-lts">LTS</span>
-        </a>
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
         
     </div>
     <div class="nav-container nav-sections">
@@ -97,20 +104,21 @@
 
     <div class="page-sign-inner">
         <h1>Documentation</h1>
-        <p class="page-sign-sub">Building web applications with Apache Wicket 10.</p>
+        <p class="page-sign-sub">Building web applications with Apache Wicket 10 and 11, and what the upcoming Wicket 12 brings.</p>
         
-<form class="guide-search guide-search--large" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,6,7,8,9,">
+<form class="guide-search guide-search--large" role="search" action="/docs/a-z.html" data-index="/docs/search.json" data-script="/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,11,6,7,8,9,">
     <label class="guide-search-label" for="guide-q-front">Search the documentation</label>
     <div class="guide-search-field">
         <input id="guide-q-front" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
         <kbd class="guide-search-key" aria-hidden="true">/</kbd>
     </div>
     
-    <p class="guide-search-hint" hidden>
+    <p class="guide-search-hint">
         <label>For <select name="v" data-guide-version>
             <option value="">every version</option>
             <option value="10">Wicket 10</option>
-            
+<option value="11">Wicket 11</option>
+            <option value="12">Wicket 12 (upcoming)</option>
         </select></label>
     </p>
 </form>
@@ -119,8 +127,8 @@
         
         
         <p class="guide-sign-refs"><span class="guide-sign-refs-label">The reference guide (formerly the User Guide), one page or PDF per release line:</span>
-            <a href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 10</a> <span class="tag tag-lts">LTS</span> (<a href="https://nightlies.apache.org/wicket/guide/10.x/single.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">, Wicket 10</span></a>) · <a href="https://nightlies.apache.org/wicket/guide/9.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 9</a> (<a href="https://nightlies.apache.org/wicket/guide/9.x/single.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">, Wicket 9</span></a>) · <a href="https://nightlies.apache.org/wicket/guide/8.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 8</a> (<a href="https://nightlies.apache.org/wicket/guide/8.x/single.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">, Wicket 8</span></a>) · <a href="https://nightlies.apache.org/wicket/guide/7.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 7</a> (<a href="https://nightlies.apache.org/wicket/guide/7.x/single.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">, Wicket 7</span></a>) · <a href="#reference-guide">Javadoc</a></p>
-        <p class="guide-sign-scope">These pages cover Wicket 10. On an older line, use its reference guide.</p>
+            <a href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 10</a> <span class="tag tag-lts">LTS</span> (<a href="https://nightlies.apache.org/wicket/guide/10.x/single.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">, Wicket 10</span></a>) · <a href="https://nightlies.apache.org/wicket/guide/11.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 11</a> <span class="tag tag-current">Current</span> (<a href="https://nightlies.apache.org/wicket/guide/11.x/single.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">, Wicket 11</span></a>) · <a href="https://nightlies.apache.org/wicket/guide/9.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 9</a> (<a href="https://nightlies.apache.org/wicket/guide/9.x/single.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">, Wicket 9</span></a>) · <a href="https://nightlies.apache.org/wicket/guide/8.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 8</a> (<a href="https://nightlies.apache.org/wicket/guide/8.x/single.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">, Wicket 8</span></a>) · <a href="https://nightlies.apache.org/wicket/guide/7.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 7</a> (<a href="https://nightlies.apache.org/wicket/guide/7.x/single.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">, Wicket 7</span></a>) · <a href="https://nightlies.apache.org/wicket/guide/12.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 12</a> (upcoming, <a href="https://nightlies.apache.org/wicket/guide/12.x/single.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">, Wicket 12</span></a>) · <a href="#reference-guide">Javadoc</a></p>
+        <p class="guide-sign-scope">These pages cover Wicket 10 and 11. On an older line, use its reference guide.</p>
     </div>
 </div>
 <main id="main" tabindex="-1">
@@ -321,6 +329,18 @@
                     
                     <tr>
                         <th scope="row">
+<a href="/versions/wicket-11.x/">Wicket 11</a> <span class="tag tag-current">Current</span>
+                            <span class="guide-refs-status">Supported</span>
+</th>
+                        <td>
+<a href="https://nightlies.apache.org/wicket/guide/11.x/single.html" target="_blank" rel="noopener noreferrer">One page<span class="visually-hidden">, Wicket 11</span></a> · <a href="https://nightlies.apache.org/wicket/guide/11.x/single.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">, Wicket 11</span></a>
+</td>
+                        <td><a href="https://nightlies.apache.org/wicket/apidocs/11.x/index.html" target="_blank" rel="noopener noreferrer">Javadoc<span class="visually-hidden"> for Wicket 11</span></a></td>
+                    </tr>
+                
+                    
+                    <tr>
+                        <th scope="row">
 <a href="/versions/wicket-9.x/">Wicket 9</a>
                             <span class="guide-refs-status">End of life</span>
 </th>
@@ -361,13 +381,13 @@
         <section class="guide-front-section" id="upgrading">
             <h2>Upgrading</h2>
             <p>Every major release has a migration guide on the wiki with the API changes and what to do about them, linked from its <a href="/versions/">release line page</a>. The <a href="/versions/#upgrade-paths">upgrade paths</a> show how to move from a line that is ending or has ended to one that is supported.</p>
-            
+            <p>Pages marked with a version, like <span class="guide-list-since">Wicket 11+</span>, need that version or later.</p>
             <p>Books, courses, talks and the libraries the community builds on Wicket are on <a href="/learn/">Learn Wicket</a>.</p>
         </section>
         </div>
     </div>
 </main>
-<script src="/javascript/guide.js?v=1793462514" defer></script>
+<script src="/javascript/guide.js?v=1793565147" defer></script>
 
         <footer class="footer">
             
@@ -411,6 +431,6 @@
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1793462514" defer></script>
+        <script src="/javascript/ribbon.js?v=1793565147" defer></script>
     </body>
 </html>
