@@ -3,7 +3,7 @@
 
 // ---------------------------------------------------------------- title band on the season's photograph
 
-.page-sign { position: relative; isolation: isolate; }
+.page-sign { position: relative; isolation: isolate; z-index: 3; }
 .page-sign-inner {
     position: relative;
     width: 100%; max-width: var(--max); margin: 0 auto; min-height: 220px;
@@ -149,6 +149,7 @@ body > main { flex: 1 0 auto; }
     > :first-child { margin-top: 0; }
 
     p, ul:not([class]), ol:not([class]), dl:not([class]), blockquote, h1, h2, h3, h4, h5, h6 { max-width: var(--measure); }
+    div.highlight, figure.highlight, > pre, .guide-copy-bar { max-width: var(--measure); }
 
     h1, h2 { margin: 3.25rem 0 .9rem; font: 700 clamp(1.75rem, 2.6vw, 2.25rem)/1.1 var(--serif); letter-spacing: -.015em; }
     h3 { margin: 2.25rem 0 .55rem; font: 700 1.45rem/1.2 var(--serif); }
@@ -245,7 +246,7 @@ figure.highlight pre { margin: 0; padding: 14px 16px; }
 // Markdown tables scroll inside their own box rather than squeezing their code or the page.
 .page-content table:not([class]),
 .section-body table:not([class]),
-.hub-body table:not([class]) { display: block; overflow-x: auto; }
+.hub-body table:not([class]) { display: block; width: max-content; max-width: 100%; overflow-x: auto; }
 
 // ---------------------------------------------------------------- buttons
 
