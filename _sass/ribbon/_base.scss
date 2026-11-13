@@ -30,10 +30,13 @@
     --chev-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239A430A' stroke-width='1.6'/%3E%3C/svg%3E");
     --chev-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='16' viewBox='0 0 10 16'%3E%3Cpath d='M8 1L2 8l6 7' fill='none' stroke='%239A430A' stroke-width='2'/%3E%3C/svg%3E");
 
-    --serif: "Alegreya", Georgia, serif;
-    --sc: "Alegreya SC", "Alegreya", Georgia, serif;
-    --sans: "Alegreya Sans", "Alegreya", sans-serif;
-    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    // Without the webfonts the stacks fall back to old-style serifs and humanist sans faces
+    // that the systems ship: Iowan and Seravek on Apple, Palatino Linotype and Calibri on
+    // Windows, URW Palladio/P052 and Ubuntu on Linux.
+    --serif: "Alegreya", "Iowan Old Style", "Palatino Linotype", Palatino, "URW Palladio L", P052, Georgia, serif;
+    --sc: "Alegreya SC", "Alegreya", "Iowan Old Style", "Palatino Linotype", Palatino, "URW Palladio L", P052, Georgia, serif;
+    --sans: "Alegreya Sans", Seravek, "Gill Sans Nova", Ubuntu, Calibri, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, "Cascadia Code", Consolas, monospace;
 
     --pad: 56px;
     --max: 1440px;

@@ -20,57 +20,57 @@ colors:
   code-tag: "#0F4A40"
 typography:
   display:
-    fontFamily: "Alegreya, Georgia, serif"
+    fontFamily: "Alegreya, Iowan Old Style, Palatino Linotype, Palatino, URW Palladio L, P052, Georgia, serif"
     fontSize: "clamp(3.4rem, 5.6vw, 5.1rem)"
     fontWeight: 700
     lineHeight: 0.9
     letterSpacing: "-0.022em"
   headline:
-    fontFamily: "Alegreya, Georgia, serif"
+    fontFamily: "Alegreya, Iowan Old Style, Palatino Linotype, Palatino, URW Palladio L, P052, Georgia, serif"
     fontSize: "clamp(2.4rem, 4.4vw, 3.8rem)"
     fontWeight: 700
     lineHeight: 1.02
     letterSpacing: "-0.02em"
   section:
-    fontFamily: "Alegreya, Georgia, serif"
+    fontFamily: "Alegreya, Iowan Old Style, Palatino Linotype, Palatino, URW Palladio L, P052, Georgia, serif"
     fontSize: "clamp(2rem, 3vw, 2.6rem)"
     fontWeight: 700
     lineHeight: 1.05
     letterSpacing: "-0.015em"
   title:
-    fontFamily: "Alegreya, Georgia, serif"
+    fontFamily: "Alegreya, Iowan Old Style, Palatino Linotype, Palatino, URW Palladio L, P052, Georgia, serif"
     fontSize: "clamp(1.75rem, 2.6vw, 2.25rem)"
     fontWeight: 700
     lineHeight: 1.1
     letterSpacing: "-0.015em"
   subtitle:
-    fontFamily: "Alegreya, Georgia, serif"
+    fontFamily: "Alegreya, Iowan Old Style, Palatino Linotype, Palatino, URW Palladio L, P052, Georgia, serif"
     fontSize: "1.45rem"
     fontWeight: 700
     lineHeight: 1.2
   lead:
-    fontFamily: "Alegreya, Georgia, serif"
+    fontFamily: "Alegreya, Iowan Old Style, Palatino Linotype, Palatino, URW Palladio L, P052, Georgia, serif"
     fontSize: "clamp(1.25rem, 1.7vw, 1.5rem)"
     fontWeight: 400
     lineHeight: 1.3
   body:
-    fontFamily: "Alegreya, Georgia, serif"
+    fontFamily: "Alegreya, Iowan Old Style, Palatino Linotype, Palatino, URW Palladio L, P052, Georgia, serif"
     fontSize: "1.1875rem"
     fontWeight: 400
     lineHeight: 1.55
   label:
-    fontFamily: "Alegreya SC, Alegreya, Georgia, serif"
+    fontFamily: "Alegreya SC, Alegreya, Iowan Old Style, Palatino Linotype, Palatino, URW Palladio L, P052, Georgia, serif"
     fontSize: "1rem"
     fontWeight: 500
     lineHeight: 1.2
     letterSpacing: "0.03em"
   ui:
-    fontFamily: "Alegreya Sans, Alegreya, sans-serif"
+    fontFamily: "Alegreya Sans, Seravek, Gill Sans Nova, Ubuntu, Calibri, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 500
     lineHeight: 1.2
   code:
-    fontFamily: "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
+    fontFamily: "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Cascadia Code, Consolas, monospace"
     fontSize: "0.8125rem"
     fontWeight: 400
     lineHeight: 1.65
@@ -189,12 +189,14 @@ The site follows the visitor's system setting (`prefers-color-scheme: dark`); th
 
 ## Typography
 
-**Display Font:** Alegreya (with Georgia, serif)
-**Body Font:** Alegreya (with Georgia, serif)
-**Label Font:** Alegreya SC for dates and small labels; Alegreya Sans for interface text
-**Mono Font:** JetBrains Mono (with ui-monospace), ligatures off
+**Display Font:** Alegreya (with an old-style serif: Iowan Old Style, Palatino Linotype, Palatino, URW Palladio L, P052, Georgia)
+**Body Font:** Alegreya (with the same old-style serifs)
+**Label Font:** Alegreya SC for dates and small labels; Alegreya Sans for interface text (with a humanist sans: Seravek, Gill Sans Nova, Ubuntu, Calibri)
+**Mono Font:** JetBrains Mono (with ui-monospace, SFMono-Regular, Menlo, Cascadia Code, Consolas), ligatures off
 
 **Character:** One humanist book family in three cuts: the serif reads and titles, the small caps date and label, the sans runs the menu, buttons, metadata and table cells. All four families are self-hosted under the SIL Open Font License.
+
+**Fallbacks:** Without the webfonts (before they load, or in a reference guide or example built without them) each role falls back to a face of the same kind that the system ships: Iowan Old Style and Seravek on Apple, Palatino Linotype and Calibri on Windows, URW Palladio or P052 and Ubuntu on Linux, Georgia as the last serif. Labels lose their small caps there. The fallbacks are not size-adjusted; Georgia sets about 9% wider than Alegreya and has a 6% taller x-height.
 
 ### Hierarchy
 - **Display** (700, `clamp(3.4rem, 5.6vw, 5.1rem)`, 0.9): the homepage lockup "Apache Wicket" beside the mark. The lockup carries no version: the release panel below it names the lines.
