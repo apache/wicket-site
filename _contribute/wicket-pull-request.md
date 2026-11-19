@@ -3,19 +3,19 @@ title: Send a pull request to Wicket
 type: howto
 topic: wicket
 summary: From an issue to a reviewed pull request against apache/wicket, for your first contribution or your fiftieth.
-order: 10
+order: 20
 ---
 {% assign next = site.data.releases.lines | where: "status", "boarding" | first %}
 {% assign current = site.data.releases.lines | where: "status", "current" | first %}
 {% assign lts = site.data.releases.lines | where: "status", "lts" | first %}
 
-Wicket's code lives in [apache/wicket](https://github.com/apache/wicket) on GitHub. You change it in your own copy, send the change as a pull request, and a committer, a member of the project who can merge, reviews it. This page takes you through it in order. You need a GitHub account, Git, JDK 21 and Maven 3.9; [Build and test Wicket]({{ site.baseurl }}/contribute/wicket-build.html) says how to check them.
+Wicket's code lives in [apache/wicket](https://github.com/apache/wicket) on GitHub. You change it in your own copy, send the change as a pull request, and a committer, a member of the project who can merge, reviews it. This page takes you through it in order; for a first time, the tutorial [Your first pull request]({{ site.baseurl }}/contribute/wicket-first-pull-request.html) goes through the same steps with a real issue. You need a GitHub account, Git, a JDK and Maven; [Build and test Wicket]({{ site.baseurl }}/contribute/wicket-build.html#what-you-need) says which versions. The rules a contribution follows are in [CONTRIBUTING.md](https://github.com/apache/wicket/blob/master/CONTRIBUTING.md) in the repository.
 
 ## 1. Pick or open an issue {#reportbug}
 
 Every change starts from an issue in the [issue tracker](https://github.com/apache/wicket/issues). Issues labelled [`good first issue`](https://github.com/apache/wicket/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) are small and need little knowledge of Wicket.
 
-Comment on the issue that you are working on it, so that nobody else starts the same change. Ask your questions there as well: what the expected behaviour is, where the code is, how to test it. The people who answer would rather spend five minutes on a question than review a pull request that went the wrong way.
+Comment on the issue that you are working on it, so that nobody else starts the same change. A claim without a pull request lapses after two weeks; if you need more time, say so on the issue. Ask your questions there as well: what the expected behaviour is, where the code is, how to test it. The people who answer would rather spend five minutes on a question than review a pull request that went the wrong way.
 
 For a bug you found yourself, [open an issue](https://github.com/apache/wicket/issues/new) first. Say which Wicket version you use, and add a [quickstart]({{ site.baseurl }}/start/quickstart.html), a small project that shows the bug. Issues from before 2026 are in the read-only [Jira archive](https://issues.apache.org/jira/browse/WICKET); search it too. A security problem never goes into an issue: report it [privately]({{ site.baseurl }}/community/#security).
 
@@ -40,7 +40,7 @@ Wicket has a branch for every release line, a major version that still gets rele
 {% endif %}{% if lts %}| `wicket-{{ lts.series }}.x` | Wicket {{ lts.series }}, long-term support (LTS) | Committers copy fixes here. |
 {% endif %}
 
-Start from `master`, also when you found the bug in an older version. After the merge, the committers copy the fix to the older branches where it applies; this is called cherry-picking. Say in the issue which versions the bug affects. Branches of versions that no longer get releases are under `archive/`.
+Start from `master`, also when you found the bug in an older version. After the merge, the committers copy the fix to the older branches where it applies; this is called cherry-picking. Say in the issue which versions the bug affects. [Why fixes go to master first]({{ site.baseurl }}/contribute/wicket-master-first.html) explains the reasons. Branches of versions that no longer get releases are under `archive/`.
 
 Give your branch a name that says what it does:
 
@@ -106,7 +106,7 @@ GitHub issue #<number>
 
 The first line says what the change does, in a normal sentence, without the issue number or a prefix like `fix:`. After an empty line, the body says what was wrong, why, and what is different now. The last line refers to the issue. For an issue that came from Jira, keep its key, such as `WICKET-7165`, in the body.
 
-If you used a generative AI tool to write the change, say so in a last line such as `Generated-by: <name of tool>`, as the [ASF asks](https://www.apache.org/legal/generative-tooling.html).
+If you used a generative AI tool to write the change, say so in a last line such as `Generated-by: <name of tool> <version>`, as the [ASF recommends](https://www.apache.org/legal/generative-tooling.html). You stay responsible for every line of it.
 
 Check which files you changed, add them, and commit:
 
@@ -131,13 +131,13 @@ GitHub does not accept your password here. Sign in with the [GitHub CLI or a per
 
 GitHub then shows a button to compare and open a pull request. Check that the base repository is `apache/wicket` and the base branch is `master`. Give the pull request the first line of your commit message as title, and in the description say what changed, how you tested it, and `Fixes #<number>` for the issue. If the work is not finished but you want early feedback, open it as a draft.
 
-GitHub runs the same full build on Java 21, 25 and 26; the result shows at the bottom of the pull request. On your first pull request, a committer may have to approve that run before it starts.
+GitHub runs the same full build on several JDKs; the result shows at the bottom of the pull request. On your first pull request, a committer may have to approve that run before it starts.
 
 ## 9. Work with the review
 
 A reviewer comments on the pull request. Committers are volunteers, so a review can take a few days. If nothing happens for a week, ask for a review in a comment or on the [developers list]({{ site.baseurl }}/community/#dev).
 
-To answer a review, commit on the same branch and push again; the pull request updates itself. Do not rebase, amend or force-push a branch that is already in review: the reviewers have read your earlier commits. To bring the branch up to date with `master`, merge it:
+To answer a review, commit on the same branch and push again; the pull request updates itself. Do not rebase, amend or force-push a branch that is already in review: the reviewers have read your earlier commits, and [history is not rewritten]({{ site.baseurl }}/contribute/wicket-master-first.html#history-that-is-not-rewritten). To bring the branch up to date with `master`, merge it:
 
 ```shell
 git fetch upstream
