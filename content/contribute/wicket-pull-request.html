@@ -7,7 +7,7 @@
 
         <title>Send a pull request to Wicket | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Fork apache/wicket, pick the branch of the line you change, and send your fix or feature as a pull request." />
+        <meta name="description" content="From an issue to a reviewed pull request against apache/wicket, for your first contribution or your fiftieth." />
         <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
         <meta name="color-scheme" content="light dark" />
@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1794566155" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1795098831" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -107,7 +107,7 @@
     <div class="page-sign-inner">
         <p class="guide-crumbs"><a href="/community/">Community</a><span aria-hidden="true"> / </span><a href="/contribute/">Contribute</a></p>
         <h1>Send a pull request to Wicket</h1>
-        <p class="page-sign-sub">Fork apache/wicket, pick the branch of the line you change, and send your fix or feature as a pull request.</p>
+        <p class="page-sign-sub">From an issue to a reviewed pull request against apache/wicket, for your first contribution or your fiftieth.</p>
         <p class="guide-plates"><span class="guide-kind">How-to</span></p>
     </div>
 </div>
@@ -117,73 +117,173 @@
         <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
 <div id="toc-title"><h2>On this page</h2></div>
 <ul>
-<li class="toc--level-1 toc--section-1"><a href="#fork-and-clone"><span class="toc-number">1</span> <span class="toc-text">Fork and clone</span></a></li>
-<li class="toc--level-1 toc--section-2"><a href="#pick-the-branch"><span class="toc-number">2</span> <span class="toc-text">Pick the branch</span></a></li>
-<li class="toc--level-1 toc--section-3"><a href="#build-and-test"><span class="toc-number">3</span> <span class="toc-text">Build and test</span></a></li>
-<li class="toc--level-1 toc--section-4"><a href="#send-the-pull-request"><span class="toc-number">4</span> <span class="toc-text">Send the pull request</span></a></li>
+<li class="toc--level-1 toc--section-1"><a href="#reportbug"><span class="toc-number">1</span> <span class="toc-text">1. Pick or open an issue</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#2-fork-and-clone"><span class="toc-number">2</span> <span class="toc-text">2. Fork and clone</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#3-create-a-branch-from-master"><span class="toc-number">3</span> <span class="toc-text">3. Create a branch from master</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#4-build-wicket"><span class="toc-number">4</span> <span class="toc-text">4. Build Wicket</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#change"><span class="toc-number">5</span> <span class="toc-text">5. Change the code and add a test</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#6-run-the-full-build"><span class="toc-number">6</span> <span class="toc-text">6. Run the full build</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#7-commit"><span class="toc-number">7</span> <span class="toc-text">7. Commit</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#github"><span class="toc-number">8</span> <span class="toc-text">8. Open the pull request</span></a></li>
+<li class="toc--level-1 toc--section-9"><a href="#9-work-with-the-review"><span class="toc-number">9</span> <span class="toc-text">9. Work with the review</span></a></li>
+<li class="toc--level-1 toc--section-10"><a href="#questions"><span class="toc-number">10</span> <span class="toc-text">Ask questions</span></a></li>
 </ul>
 </div></nav>
         
         <div class="reading-main">
             <section class="page-content guide-content">
-                <p>Wicket’s code lives in <a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">apache/wicket</a> on GitHub. Changes arrive as pull requests, and a committer reviews and merges them. For a bug, first <a href="https://github.com/apache/wicket/issues" target="_blank" rel="noopener noreferrer">open an issue</a> that describes it, ideally with a <a href="/start/quickstart.html">quickstart</a> that shows it, and refer to the issue from your pull request.</p>
+                
+<p>Wicket’s code lives in <a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">apache/wicket</a> on GitHub. You change it in your own copy, send the change as a pull request, and a committer, a member of the project who can merge, reviews it. This page takes you through it in order. You need a GitHub account, Git, JDK 21 and Maven 3.9; <a href="/contribute/wicket-build.html">Build and test Wicket</a> says how to check them.</p>
 
-<h2 id="fork-and-clone">Fork and clone</h2>
+<h2 id="reportbug">1. Pick or open an issue</h2>
 
-<p>Fork apache/wicket on GitHub, clone your fork, and add the Wicket repository as <code class="language-plaintext highlighter-rouge">upstream</code>:</p>
+<p>Every change starts from an issue in the <a href="https://github.com/apache/wicket/issues" target="_blank" rel="noopener noreferrer">issue tracker</a>. Issues labelled <a href="https://github.com/apache/wicket/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22" target="_blank" rel="noopener noreferrer"><code class="language-plaintext highlighter-rouge">good first issue</code></a> are small and need little knowledge of Wicket.</p>
+
+<p>Comment on the issue that you are working on it, so that nobody else starts the same change. Ask your questions there as well: what the expected behaviour is, where the code is, how to test it. The people who answer would rather spend five minutes on a question than review a pull request that went the wrong way.</p>
+
+<p>For a bug you found yourself, <a href="https://github.com/apache/wicket/issues/new" target="_blank" rel="noopener noreferrer">open an issue</a> first. Say which Wicket version you use, and add a <a href="/start/quickstart.html">quickstart</a>, a small project that shows the bug. Issues from before 2026 are in the read-only <a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Jira archive</a>; search it too. A security problem never goes into an issue: report it <a href="/community/#security">privately</a>.</p>
+
+<h2 id="2-fork-and-clone">2. Fork and clone</h2>
+
+<p>Fork apache/wicket on GitHub with the Fork button. Clone your fork and add the Wicket repository as <code class="language-plaintext highlighter-rouge">upstream</code>:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/&lt;your-account&gt;/wicket.git
 <span class="nb">cd </span>wicket
 git remote add upstream https://github.com/apache/wicket.git
 </code></pre></div></div>
 
-<h2 id="pick-the-branch">Pick the branch</h2>
+<h2 id="3-create-a-branch-from-master">3. Create a branch from master</h2>
 
-<p>Every release line has a branch. Start from the branch of the line your change is for:</p>
+<p>Wicket has a branch for every release line, a major version that still gets releases:</p>
 
 <table>
   <thead>
     <tr>
       <th>Branch</th>
-      <th>Line</th>
+      <th>Release line</th>
+      <th>Pull requests</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">master</code></td>
-      <td>The next major release, Wicket 12. New features go here.</td>
+      <td>Wicket 12, not released yet (Jan 2027)</td>
+      <td>Send them here.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wicket-11.x</code></td>
+      <td>Wicket 11, the current release</td>
+      <td>Committers copy fixes here.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">wicket-10.x</code></td>
-      <td>Wicket 10, the LTS. Fixes that the LTS needs.</td>
-    </tr>
-    <tr>
-      <td>
-<code class="language-plaintext highlighter-rouge">wicket-9.x</code>, <code class="language-plaintext highlighter-rouge">wicket-8.x</code>
-</td>
-      <td>Wicket 9 and 8, until their end of life.</td>
+      <td>Wicket 10, long-term support (LTS)</td>
+      <td>Committers copy fixes here.</td>
     </tr>
   </tbody>
 </table>
 
-<p>When a fix is needed on more than one line, say which lines the bug affects in the pull request; the committers decide where it is merged and backported.</p>
+<p>Start from <code class="language-plaintext highlighter-rouge">master</code>, also when you found the bug in an older version. After the merge, the committers copy the fix to the older branches where it applies; this is called cherry-picking. Say in the issue which versions the bug affects. Branches of versions that no longer get releases are under <code class="language-plaintext highlighter-rouge">archive/</code>.</p>
+
+<p>Give your branch a name that says what it does:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch upstream
-git checkout <span class="nt">-b</span> fix-dropdown-null upstream/master
+git checkout <span class="nt">-b</span> keep-url-fragment upstream/master
 </code></pre></div></div>
 
-<h2 id="build-and-test">Build and test</h2>
+<h2 id="4-build-wicket">4. Build Wicket</h2>
 
-<p>Build Wicket with Maven and run the tests before you send the change:</p>
+<p>Build everything once, without the tests. The first time, this downloads the libraries Wicket uses and takes a few minutes:</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn clean <span class="nb">install</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">install</span> <span class="nt">-DskipTests</span> <span class="nt">-Pfast</span>
 </code></pre></div></div>
 
-<p><a href="/contribute/build.html">Build from source</a> covers the build in more detail, and <a href="/contribute/ides.html">Set up your IDE</a> the code style.</p>
+<p>It ends with <code class="language-plaintext highlighter-rouge">BUILD SUCCESS</code>. <a href="/contribute/wicket-build.html">Build and test Wicket</a> explains the options and what to do when the build fails. To work in IntelliJ IDEA, Eclipse or NetBeans, see <a href="/contribute/wicket-ide.html">Set up your IDE</a>.</p>
 
-<h2 id="send-the-pull-request">Send the pull request</h2>
+<h2 id="change">5. Change the code and add a test</h2>
 
-<p>Push your branch to your fork and open a pull request against the branch you started from. Describe what changes and why, and link the issue. The project discusses larger changes on the <a href="/community/#dev">developers list</a>; a short mail there with a link to your pull request helps it get noticed.</p>
+<p>Make the change, and add a test that fails without it and passes with it. A bug fix without a test is rarely merged.</p>
+
+<p>The test is often in a different module than the code. The tests for <code class="language-plaintext highlighter-rouge">wicket-core</code>, for example, are in <code class="language-plaintext highlighter-rouge">wicket-core-tests</code>. Find the existing test of a class by its name plus <code class="language-plaintext highlighter-rouge">Test</code>:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git ls-files <span class="s2">"*/UrlRendererTest.java"</span>
+</code></pre></div></div>
+
+<p>Run the test with Maven. Because the test is in another module, Maven uses the module you changed from your local Maven repository, so install the changed module first:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">install</span> <span class="nt">-DskipTests</span> <span class="nt">-Pfast</span> <span class="nt">-pl</span> wicket-request
+mvn verify <span class="nt">-pl</span> wicket-core-tests <span class="nt">-Dtest</span><span class="o">=</span>UrlRendererTest
+</code></pre></div></div>
+
+<p>Repeat both commands after every change. Without the first one, the test runs against your previous build and passes or fails for the wrong reason. <a href="/contribute/wicket-build.html#run-one-test">Run one test</a> has the details, and <a href="/contribute/wicket-build.html#javascript-tests">Run the JavaScript tests</a> covers changes to <code class="language-plaintext highlighter-rouge">.js</code> files.</p>
+
+<p>Follow the <a href="/contribute/wicket-conventions.html">code conventions</a>: the code format of the file you edit, the license header on every new file, <code class="language-plaintext highlighter-rouge">@since</code> on new public methods and classes, and a test class name that ends in <code class="language-plaintext highlighter-rouge">Test</code>.</p>
+
+<h2 id="6-run-the-full-build">6. Run the full build</h2>
+
+<p>Before you send the pull request, build and test everything the way GitHub does it for every pull request:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn clean verify <span class="nt">-Pjs-test</span>
+</code></pre></div></div>
+
+<p>This runs all tests, the JavaScript tests and the license header check, and takes longer: on a laptop, count on a quarter of an hour or more. It has to end with <code class="language-plaintext highlighter-rouge">BUILD SUCCESS</code>.</p>
+
+<h2 id="7-commit">7. Commit</h2>
+
+<p>Commit your change with a message in this form:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Keep the fragment in UrlRenderer.renderFullUrl
+
+renderRelativeUrl kept the fragment of a URL, but renderFullUrl dropped
+it, so a full URL to a page section pointed to the top of the page.
+renderFullUrl now appends the fragment in the same way.
+
+GitHub issue #&lt;number&gt;
+</code></pre></div></div>
+
+<p>The first line says what the change does, in a normal sentence, without the issue number or a prefix like <code class="language-plaintext highlighter-rouge">fix:</code>. After an empty line, the body says what was wrong, why, and what is different now. The last line refers to the issue. For an issue that came from Jira, keep its key, such as <code class="language-plaintext highlighter-rouge">WICKET-7165</code>, in the body.</p>
+
+<p>If you used a generative AI tool to write the change, say so in a last line such as <code class="language-plaintext highlighter-rouge">Generated-by: &lt;name of tool&gt;</code>, as the <a href="https://www.apache.org/legal/generative-tooling.html" target="_blank" rel="noopener noreferrer">ASF asks</a>.</p>
+
+<p>Check which files you changed, add them, and commit:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status
+git add wicket-request/src/main/java/org/apache/wicket/request/UrlRenderer.java
+git add wicket-core-tests/src/test/java/org/apache/wicket/core/request/cycle/UrlRendererTest.java
+git commit
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">git commit</code> opens a text editor for the message. If it opens one you do not know, set your own with <code class="language-plaintext highlighter-rouge">git config --global core.editor</code>, or commit from the commit window of your IDE.</p>
+
+<h2 id="github">8. Open the pull request</h2>
+
+<p>Push the branch to your fork:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin keep-url-fragment
+</code></pre></div></div>
+
+<p>GitHub does not accept your password here. Sign in with the <a href="https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git" target="_blank" rel="noopener noreferrer">GitHub CLI or a personal access token</a>, or clone over SSH.</p>
+
+<p>GitHub then shows a button to compare and open a pull request. Check that the base repository is <code class="language-plaintext highlighter-rouge">apache/wicket</code> and the base branch is <code class="language-plaintext highlighter-rouge">master</code>. Give the pull request the first line of your commit message as title, and in the description say what changed, how you tested it, and <code class="language-plaintext highlighter-rouge">Fixes #&lt;number&gt;</code> for the issue. If the work is not finished but you want early feedback, open it as a draft.</p>
+
+<p>GitHub runs the same full build on Java 21, 25 and 26; the result shows at the bottom of the pull request. On your first pull request, a committer may have to approve that run before it starts.</p>
+
+<h2 id="9-work-with-the-review">9. Work with the review</h2>
+
+<p>A reviewer comments on the pull request. Committers are volunteers, so a review can take a few days. If nothing happens for a week, ask for a review in a comment or on the <a href="/community/#dev">developers list</a>.</p>
+
+<p>To answer a review, commit on the same branch and push again; the pull request updates itself. Do not rebase, amend or force-push a branch that is already in review: the reviewers have read your earlier commits. To bring the branch up to date with <code class="language-plaintext highlighter-rouge">master</code>, merge it:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch upstream
+git merge upstream/master
+git push
+</code></pre></div></div>
+
+<p>A committer merges the pull request when it is ready. The change goes out with the next Wicket 12 release, and with the next release of every older line it was copied to.</p>
+
+<h2 id="questions">Ask questions</h2>
+
+<p>Ask in the issue you work on, in <a href="https://github.com/apache/wicket/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>, or on the developers list, <a href="mailto:dev@wicket.apache.org">dev@wicket.apache.org</a>. Questions about building Wicket, finding code or writing a test are normal there. To write to the list, subscribe first by sending a mail to <a href="mailto:dev-subscribe@wicket.apache.org">dev-subscribe@wicket.apache.org</a>; the <a href="https://lists.apache.org/list.html?dev@wicket.apache.org" target="_blank" rel="noopener noreferrer">archive</a> shows earlier conversations.</p>
 
             </section>
             <footer class="guide-foot">
@@ -208,7 +308,25 @@ git checkout <span class="nt">-b</span> fix-dropdown-null upstream/master
         <span class="guide-list-title" aria-current="page">Send a pull request to Wicket</span>
         
         <span class="guide-list-meta"></span>
-        <span class="guide-list-summary">Fork apache/wicket, pick the branch of the line you change, and send your fix or feature as a pull request.</span>
+        <span class="guide-list-summary">From an issue to a reviewed pull request against apache/wicket, for your first contribution or your fiftieth.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-build.html">Build and test Wicket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build Wicket from source with Maven, run one test or all of them, run the JavaScript tests and the examples, and use your own build.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-ide.html">Set up your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE.</span>
     </li>
 
 </ul>
@@ -217,6 +335,24 @@ git checkout <span class="nt">-b</span> fix-dropdown-null upstream/master
                     
                 
                     
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-conventions.html">Code conventions</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The rules a change to Wicket's code follows, from the code format and license header to tests, Javadoc and commit messages.</span>
+    </li>
+
+</ul>
+
+                    </section>
                     
                 
                     
@@ -271,6 +407,6 @@ git checkout <span class="nt">-b</span> fix-dropdown-null upstream/master
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1794566155" defer></script>
+        <script src="/javascript/ribbon.js?v=1795098831" defer></script>
     </body>
 </html>

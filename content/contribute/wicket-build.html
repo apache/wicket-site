@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+	
+	
+
+        <title>Build and test Wicket | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Build Wicket from source with Maven, run one test or all of them, run the JavaScript tests and the examples, and use your own build." />
+        <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="icon" href="/img/logo-apachewicket-mark.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/css/style.css?v=1795098831" type="text/css" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        
+<a class="brand" href="/"><img class="brand-mark" src="/img/logo-apachewicket-mark.svg" alt="" width="34" height="34"><span class="brand-name">Apache Wicket<span class="tm" aria-hidden="true">™</span></span></a>
+
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items active" aria-current="true">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" aria-label="ASF, The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="" width="22" height="34"><span class="nav-asf-label">ASF</span></a>
+        <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="nav-github-label">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+<div class="page-sign guide-sign">
+    <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 14; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%); --night: 1;" aria-hidden="true">
+    <img src="/img/seasons/autumn-ink-cap-1600.jpg" srcset="/img/seasons/autumn-ink-cap-900.jpg 900w, /img/seasons/autumn-ink-cap-1600.jpg 1600w, /img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="">
+</div>
+<div class="photo-meta">
+    <p class="photo-credit">Photo: <a href="https://unsplash.com/photos/CCAoWVqolxM" rel="noreferrer noopener noreferrer" target="_blank">Veronika Biro on Unsplash</a></p>
+</div>
+
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="/community/">Community</a><span aria-hidden="true"> / </span><a href="/contribute/">Contribute</a></p>
+        <h1>Build and test Wicket</h1>
+        <p class="page-sign-sub">Build Wicket from source with Maven, run one test or all of them, run the JavaScript tests and the examples, and use your own build.</p>
+        <p class="guide-plates"><span class="guide-kind">How-to</span></p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#what-you-need"><span class="toc-number">1</span> <span class="toc-text">What you need</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#build-everything"><span class="toc-number">2</span> <span class="toc-text">Build everything</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#run-one-test"><span class="toc-number">3</span> <span class="toc-text">Run one test</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#javascript-tests"><span class="toc-number">4</span> <span class="toc-text">Run the JavaScript tests</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#run-the-examples"><span class="toc-number">5</span> <span class="toc-text">Run the examples</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#run-the-full-build"><span class="toc-number">6</span> <span class="toc-text">Run the full build</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#use-your-own-build-in-an-application"><span class="toc-number">7</span> <span class="toc-text">Use your own build in an application</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#when-the-build-fails"><span class="toc-number">8</span> <span class="toc-text">When the build fails</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            <section class="page-content guide-content">
+                
+<p>Wicket is a Maven project of about 35 modules, one folder each, built together from the <code class="language-plaintext highlighter-rouge">pom.xml</code> in the root of the repository. You run every command on this page in that root folder, the <code class="language-plaintext highlighter-rouge">wicket</code> folder of your clone.</p>
+
+<h2 id="what-you-need">What you need</h2>
+
+<ul>
+  <li>
+<strong>JDK 21 or newer.</strong> <code class="language-plaintext highlighter-rouge">master</code> and the current release line need Java 21; <code class="language-plaintext highlighter-rouge">wicket-10.x</code> needs Java 17. GitHub tests with Java 21, 25 and 26.</li>
+  <li>
+<strong>Maven 3.9.</strong> The Maven inside your IDE is not available on the command line, so <a href="https://maven.apache.org/install.html" target="_blank" rel="noopener noreferrer">install Maven</a> as well.</li>
+  <li>
+<strong>Git</strong>, and about 2 GB of free disk space for the clone, the build results and the downloaded libraries.</li>
+</ul>
+
+<p>Check that Maven runs with the right Java:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nt">-v</span>
+</code></pre></div></div>
+
+<p>The output names the Maven version and, on the line <code class="language-plaintext highlighter-rouge">Java version:</code>, the JDK. If that is older than 21, set the <code class="language-plaintext highlighter-rouge">JAVA_HOME</code> environment variable to the folder of your JDK 21.</p>
+
+<h2 id="build-everything">Build everything</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">install</span> <span class="nt">-DskipTests</span> <span class="nt">-Pfast</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">install</code> compiles every module, packages it as a jar and copies the jar to your local Maven repository, the folder <code class="language-plaintext highlighter-rouge">.m2/repository</code> in your home folder. <code class="language-plaintext highlighter-rouge">-DskipTests</code> skips the tests, and <code class="language-plaintext highlighter-rouge">-Pfast</code> skips the javadoc, the source jars and the license header check. The first build downloads about 450 MB of libraries and takes a few minutes; later builds take one to two minutes.</p>
+
+<p>The build ends with <code class="language-plaintext highlighter-rouge">BUILD SUCCESS</code> and a list of the modules with their times. The jars are now in your local repository, version <code class="language-plaintext highlighter-rouge">12.0.0-SNAPSHOT</code> on <code class="language-plaintext highlighter-rouge">master</code>. A snapshot is a version under development, not a release.</p>
+
+<h2 id="run-one-test">Run one test</h2>
+
+<p>The tests of <code class="language-plaintext highlighter-rouge">wicket-core</code> are in a separate module, <code class="language-plaintext highlighter-rouge">wicket-core-tests</code>, and so are some tests of classes in other modules: <code class="language-plaintext highlighter-rouge">UrlRendererTest</code>, for <code class="language-plaintext highlighter-rouge">UrlRenderer</code> in <code class="language-plaintext highlighter-rouge">wicket-request</code>, is one. The test can also be in another package than the class, so search for it by name, as in <a href="/contribute/wicket-pull-request.html#change">Send a pull request</a>. A test in another module uses the module you changed from your local Maven repository, not from your working folder. So install the changed module, then run the test:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">install</span> <span class="nt">-DskipTests</span> <span class="nt">-Pfast</span> <span class="nt">-pl</span> wicket-request
+mvn verify <span class="nt">-pl</span> wicket-core-tests <span class="nt">-Dtest</span><span class="o">=</span>UrlRendererTest
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">-pl</code> (for “projects”) limits the build to the modules you name, with their folder names. Install the changed module again after every change; otherwise the test runs against your previous build. When you changed more than one module, name them all, with quotes: <code class="language-plaintext highlighter-rouge">-pl "wicket-util,wicket-request"</code>.</p>
+
+<p>When the test is in the same module as the code, as for most of <code class="language-plaintext highlighter-rouge">wicket-util</code> and <code class="language-plaintext highlighter-rouge">wicket-extensions</code>, one command is enough:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn verify <span class="nt">-pl</span> wicket-extensions <span class="nt">-Dtest</span><span class="o">=</span>AutoCompleteTest
+</code></pre></div></div>
+
+<p>To run one method of a test class, add its name: <code class="language-plaintext highlighter-rouge">-Dtest=UrlRendererTest#test1</code>. The <a href="/contribute/wicket-conventions.html#tests">conventions</a> say where a new test goes and how to name it.</p>
+
+<p>Instead of installing first, <code class="language-plaintext highlighter-rouge">-am</code> (“also make”) builds the modules the test module depends on from your working folder. It then looks for the test in each of those modules too, so it needs a second option:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn verify <span class="nt">-pl</span> wicket-core-tests <span class="nt">-am</span> <span class="nt">-Dtest</span><span class="o">=</span>UrlRendererTest <span class="s2">"-Dsurefire.failIfNoSpecifiedTests=false"</span>
+</code></pre></div></div>
+
+<h2 id="javascript-tests">Run the JavaScript tests</h2>
+
+<p>The JavaScript tests run in a headless Chrome and are off unless you ask for them with <code class="language-plaintext highlighter-rouge">-Pjs-test</code>:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">test</span> <span class="nt">-pl</span> testing/wicket-js-tests <span class="nt">-Pjs-test</span>
+</code></pre></div></div>
+
+<p>The first run downloads Node.js into the <code class="language-plaintext highlighter-rouge">testing/wicket-js-tests</code> folder and Chrome into <code class="language-plaintext highlighter-rouge">.cache/puppeteer</code> in your home folder, which takes a while. On Linux, that Chrome needs the libraries of a normal Chrome installation; installing Google Chrome or Chromium is the easiest way to get them. The tests read the <code class="language-plaintext highlighter-rouge">.js</code> files from your working folder, so you do not need to install anything first.</p>
+
+<p>The tests for the scripts of <code class="language-plaintext highlighter-rouge">wicket-core</code> are in <code class="language-plaintext highlighter-rouge">wicket-core/src/test/js/</code>, those for <code class="language-plaintext highlighter-rouge">wicket-extensions</code> in <code class="language-plaintext highlighter-rouge">wicket-extensions/src/test/js/</code>. A script without its own tests, such as <code class="language-plaintext highlighter-rouge">wicket-autocomplete.js</code>, is only checked by JSHint for mistakes. To add tests for it, add a <code class="language-plaintext highlighter-rouge">&lt;name&gt;-test.js</code> and a <code class="language-plaintext highlighter-rouge">&lt;name&gt;.html</code> page next to the existing ones in <code class="language-plaintext highlighter-rouge">wicket-extensions/src/test/js/</code>, and list them in <code class="language-plaintext highlighter-rouge">testing/wicket-js-tests/Gruntfile.js</code>: the test file under <code class="language-plaintext highlighter-rouge">extensionsTestsJs</code>, and the page in both URL lists of <code class="language-plaintext highlighter-rouge">qunit</code>, <code class="language-plaintext highlighter-rouge">all</code> and <code class="language-plaintext highlighter-rouge">vanilla</code>, like <code class="language-plaintext highlighter-rouge">veil.html</code>. <a href="https://github.com/apache/wicket/blob/master/JAVASCRIPTTESTING.md" target="_blank" rel="noopener noreferrer">JAVASCRIPTTESTING.md</a> in the repository describes the test setup and how to run the tests faster without Maven.</p>
+
+<h2 id="run-the-examples">Run the examples</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">wicket-examples</code> module is a web application with an example of almost every component. To see your change in a browser, install the modules you changed and start the examples:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">install</span> <span class="nt">-DskipTests</span> <span class="nt">-Pfast</span>
+mvn jetty:run <span class="nt">-pl</span> wicket-examples
+</code></pre></div></div>
+
+<p>When the output shows a line with <code class="language-plaintext highlighter-rouge">Started oejs.Server</code>, open <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>. Stop the server with Ctrl+C. To run the examples from your IDE, see <a href="/contribute/wicket-ide.html#examples">Set up your IDE</a>.</p>
+
+<h2 id="run-the-full-build">Run the full build</h2>
+
+<p>Before you send a pull request, build and test everything the way GitHub does:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn clean verify <span class="nt">-Pjs-test</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">clean</code> removes all earlier build results, <code class="language-plaintext highlighter-rouge">verify</code> compiles and runs every test, and <code class="language-plaintext highlighter-rouge">-Pjs-test</code> adds the JavaScript tests. The full build also checks that every file has the ASF license header. It takes much longer than the fast build: on a laptop, count on a quarter of an hour or more.</p>
+
+<p>While you work, build as little as you need: <code class="language-plaintext highlighter-rouge">-Pfast</code> and <code class="language-plaintext highlighter-rouge">-DskipTests</code> to leave things out, <code class="language-plaintext highlighter-rouge">-pl</code> with the modules you need, and <code class="language-plaintext highlighter-rouge">-o</code> (offline) so that Maven does not check the internet for newer snapshots. Save the full build for the end.</p>
+
+<h2 id="use-your-own-build-in-an-application">Use your own build in an application</h2>
+
+<p>After <code class="language-plaintext highlighter-rouge">mvn install</code>, an application on the same computer can use your build. Set the Wicket version in its <code class="language-plaintext highlighter-rouge">pom.xml</code> to the snapshot version from the root <code class="language-plaintext highlighter-rouge">pom.xml</code> of your clone:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>12.0.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>This is a quick way to check a fix in a <a href="/start/quickstart.html">quickstart</a> or in your own application.</p>
+
+<h2 id="when-the-build-fails">When the build fails</h2>
+
+<ul>
+  <li>
+<strong><code class="language-plaintext highlighter-rouge">release version 21 not supported</code></strong>: Maven runs with an older Java. Check <code class="language-plaintext highlighter-rouge">mvn -v</code> and set <code class="language-plaintext highlighter-rouge">JAVA_HOME</code>.</li>
+  <li>
+<strong><code class="language-plaintext highlighter-rouge">Counter(s) UNAPPROVED exceeded minimum or maximum values</code></strong>: a file you added has no license header. In <code class="language-plaintext highlighter-rouge">target/rat.txt</code> in the root folder, the files without one start with a <code class="language-plaintext highlighter-rouge">!</code>. Copy the header from a file of the same type.</li>
+  <li>
+<strong>A test fails that has nothing to do with your change</strong>: check whether it also fails on <code class="language-plaintext highlighter-rouge">master</code>. The <a href="https://github.com/apache/wicket/actions?query=branch%3Amaster" target="_blank" rel="noopener noreferrer">build status of master</a> shows whether it is broken there. If it is not, mention the failing test in your issue.</li>
+  <li>
+<strong><code class="language-plaintext highlighter-rouge">No tests matching pattern</code></strong>: the test name after <code class="language-plaintext highlighter-rouge">-Dtest</code> does not exist in the modules you build. Check the module after <code class="language-plaintext highlighter-rouge">-pl</code> and the spelling of the class.</li>
+  <li>
+<strong>An error about the order of a <code class="language-plaintext highlighter-rouge">pom.xml</code></strong>: Wicket’s build checks the order of sections and dependencies in every <code class="language-plaintext highlighter-rouge">pom.xml</code>. See the <a href="/contribute/wicket-conventions.html#poms">conventions</a>.</li>
+</ul>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/contribute/">Contribute</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-pull-request.html">Send a pull request to Wicket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">From an issue to a reviewed pull request against apache/wicket, for your first contribution or your fiftieth.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Build and test Wicket</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build Wicket from source with Maven, run one test or all of them, run the JavaScript tests and the examples, and use your own build.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-ide.html">Set up your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-conventions.html">Code conventions</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The rules a change to Wicket's code follows, from the code format and license header to tests, Javadoc and commit messages.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_contribute/wicket-build.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+
+        <footer class="footer">
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+        
+        <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
+        <script src="/javascript/ribbon.js?v=1795098831" defer></script>
+    </body>
+</html>

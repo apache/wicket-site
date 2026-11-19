@@ -5,9 +5,9 @@
 	
 	
 
-        <title>Improve Wicket with fixes and new features! | Apache Wicket</title>
+        <title>Set up your IDE | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Apache Wicket, the open source component-oriented Java web framework." />
+        <meta name="description" content="Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE." />
         <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
         <meta name="color-scheme" content="light dark" />
@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1794566155" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1795098831" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -95,7 +95,8 @@
     </div>
 </div>
 
-<div class="page-sign">
+
+<div class="page-sign guide-sign">
     <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 14; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%); --night: 1;" aria-hidden="true">
     <img src="/img/seasons/autumn-ink-cap-1600.jpg" srcset="/img/seasons/autumn-ink-cap-900.jpg 900w, /img/seasons/autumn-ink-cap-1600.jpg 1600w, /img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="">
 </div>
@@ -104,9 +105,10 @@
 </div>
 
     <div class="page-sign-inner">
-        
-        <h1>Improve Wicket with fixes and new features!</h1>
-        
+        <p class="guide-crumbs"><a href="/community/">Community</a><span aria-hidden="true"> / </span><a href="/contribute/">Contribute</a></p>
+        <h1>Set up your IDE</h1>
+        <p class="page-sign-sub">Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE.</p>
+        <p class="guide-plates"><span class="guide-kind">How-to</span></p>
     </div>
 </div>
 <main id="main" tabindex="-1">
@@ -115,92 +117,143 @@
         <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
 <div id="toc-title"><h2>On this page</h2></div>
 <ul>
-<li class="toc--level-1 toc--section-1"><a href="#create-an-issue"><span class="toc-number">1</span> <span class="toc-text">Create an issue</span></a></li>
+<li class="toc--level-1 toc--section-1"><a href="#the-code-format"><span class="toc-number">1</span> <span class="toc-text">The code format</span></a></li>
 <li class="toc--level-1 toc--section-2">
-<a href="#time-for-some-coding"><span class="toc-number">2</span> <span class="toc-text">Time for some coding</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#github"><span class="toc-number">2.1</span> <span class="toc-text">Create a pull request</span></a></li></ul>
+<a href="#intellij-idea"><span class="toc-number">2</span> <span class="toc-text">IntelliJ IDEA</span></a><ul>
+<li class="toc--level-2 toc--section-3"><a href="#run-a-test"><span class="toc-number">2.1</span> <span class="toc-text">Run a test</span></a></li>
+<li class="toc--level-2 toc--section-4"><a href="#examples"><span class="toc-number">2.2</span> <span class="toc-text">Run the examples</span></a></li>
+</ul>
 </li>
+<li class="toc--level-1 toc--section-5"><a href="#eclipse"><span class="toc-number">3</span> <span class="toc-text">Eclipse</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#netbeans"><span class="toc-number">4</span> <span class="toc-text">NetBeans</span></a></li>
 </ul>
 </div></nav>
         
         <div class="reading-main">
-            
             <section class="page-content guide-content">
-                <h1 id="reportbug">So you have found a bug…</h1>
+                <p>This page sets up your IDE to work on Wicket itself. For IDE plugins that help you build applications with Wicket, see <a href="/docs/ide-plugins.html">Add Wicket support to your IDE</a> in the user guide.</p>
 
-<p>As developers we all strive to produce a flawless software. However, in
-the real world we might find that our code contains errors or bugs.
-Wicket tracks bugs and new features in <a href="https://github.com/apache/wicket/issues" target="_blank" rel="noopener noreferrer">GitHub
-Issues</a>. If you think you have
-found a bug follow these simple steps before opening a new issue:</p>
+<p>Wicket is a Maven project, and every Java IDE opens it as one. Build it once on the command line first, as in <a href="/contribute/wicket-build.html">Build and test Wicket</a>, so that the libraries are already downloaded.</p>
 
-<ul>
-  <li>
-    <p>Test the very last version of Wicket to see if the bug was already
-fixed</p>
-  </li>
-  <li>
-    <p>Search <a href="https://github.com/apache/wicket/issues?q=is%3Aissue" target="_blank" rel="noopener noreferrer">our issues</a>
-and the mailing list to see if it’s already been discussed. Issues
-reported before 2026 live in our read-only <a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">JIRA
-archive</a>, which is worth
-searching too.</p>
-  </li>
-  <li>
-    <p>Simply ask to the <a href="mailto:dev@wicket.apache.org">devs</a> mailing list
-if you are unsure.</p>
-  </li>
-</ul>
+<h2 id="the-code-format">The code format</h2>
 
-<h2 id="create-an-issue">Create an issue</h2>
+<p>Wicket’s code uses tabs for indentation, braces on their own line, and lines of at most 100 characters. The exact rules are an Eclipse formatter configuration in the repository, <code class="language-plaintext highlighter-rouge">wicket-eclipse-settings/files/org.eclipse.jdt.core.prefs</code>. The build does not check the format, so a reviewer will: format only the lines you change, and keep the rest of the file as it is. Reformatting a whole file makes your change hard to review.</p>
 
-<p>Either you have spotted a bug or you want to propose a new feature, the
-first thing to do is to create an issue with the following steps:</p>
+<h2 id="intellij-idea">IntelliJ IDEA</h2>
 
-<ul>
-  <li>
-    <p>Create a new <a href="https://github.com/apache/wicket/issues/new" target="_blank" rel="noopener noreferrer">issue</a>. The
-issue might already exist if you have found a regression.</p>
-  </li>
-  <li>
-    <p>Write a short description of the issue. If this one is a bug, report
-the affected version as well.</p>
-  </li>
-  <li>
-    <p><a href="../start/quickstart.html">Create a quickstart</a> that you can use for
-prototyping the feature or demonstrating the bug.</p>
-  </li>
-</ul>
+<p>IntelliJ IDEA Community Edition is enough.</p>
 
-<h2 id="time-for-some-coding">Time for some coding</h2>
+<ol>
+  <li>Choose <strong>File → Open</strong>, select the <code class="language-plaintext highlighter-rouge">wicket</code> folder of your clone and open it as a project. IntelliJ reads the Maven modules, which takes a few minutes the first time.</li>
+  <li>In <strong>File → Project Structure → Project</strong>, set the SDK to JDK 21.</li>
+  <li>For the code format, install the plugin <strong>Adapter for Eclipse Code Formatter</strong> from <strong>Settings → Plugins → Marketplace</strong>. In its settings, choose to use the Eclipse code formatter with the configuration file <code class="language-plaintext highlighter-rouge">wicket-eclipse-settings/files/org.eclipse.jdt.core.prefs</code> from your clone.</li>
+  <li>In <strong>Settings → Editor → Code Style → Java → Imports</strong>, set <strong>Class count to use import with ‘*‘</strong> to 99, so that IntelliJ writes one import per class, as Wicket’s code does.</li>
+</ol>
 
-<p>Wicket uses <a href="http://git-scm.com/" target="_blank" rel="noopener noreferrer">Git</a> as versioning system, so you
-need to have it properly installed and configured to start work on
-Wicket code base. The repository lives on
-<a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a>, and contributions reach us
-as pull requests against it.</p>
+<p>To format only your changes, use <strong>Code → Reformat Code</strong> with <strong>Only changes uncommitted to VCS</strong>.</p>
 
-<p><strong>NOTE:</strong> when you are working on Wicket code, please follow our code
-format rules. You can find them inside wicket-core module as Eclipse code formatter profile.</p>
+<h3 id="run-a-test">Run a test</h3>
 
-<p><strong>NOTE:</strong> when you are using Eclipse IDE, please ensure that you have
-installed “M2E Settings” from the Eclipse Marketplace in addition to
-the format rules.</p>
+<p>Open the test class and click the green arrow next to the class or a method. IntelliJ compiles the modules of the project from your working folder, so a change in <code class="language-plaintext highlighter-rouge">wicket-request</code> is used by a test in <code class="language-plaintext highlighter-rouge">wicket-core-tests</code> without installing it first. Run the test with Maven as well before you send the pull request, as in <a href="/contribute/wicket-build.html#run-one-test">Run one test</a>: that is how GitHub runs it.</p>
 
-<h3 id="github">Create a pull request</h3>
+<h3 id="examples">Run the examples</h3>
 
-<p>To create a pull request on GitHub follow the instructions you can find
-<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork" target="_blank" rel="noopener noreferrer">here</a>.
-Mention the issue your work addresses in the description, so that the
-pull request and the issue link up. Once you have finished to work on
-your pull request, send us an email using the
-<a href="mailto:dev@wicket.apache.org">devs</a> mailing list.</p>
+<p>Open <code class="language-plaintext highlighter-rouge">wicket-examples/src/test/java/org/apache/wicket/examples/StartExamples.java</code> and run its <code class="language-plaintext highlighter-rouge">main</code> method. It starts the examples on <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>, with your code from the working folder. The working directory of the run configuration must be the <code class="language-plaintext highlighter-rouge">wicket-examples</code> folder, which is the default; if the examples show only errors about missing files, check it under <strong>Run → Edit Configurations</strong>.</p>
 
-<p>All Pull Requests are automatically tested at 
-<a href="https://github.com/apache/wicket/actions" target="_blank" rel="noopener noreferrer">Github Actions</a> on AMD64 and
-at <a href="https://travis-ci.com/github/apache/wicket/" target="_blank" rel="noopener noreferrer">TravisCI</a> on ARM64 platform.</p>
+<h2 id="eclipse">Eclipse</h2>
 
+<p>Use the Eclipse IDE for Java Developers or for Enterprise Java, which include Maven support.</p>
+
+<ol>
+  <li>Before you import, install <strong>M2E Settings</strong> from the Eclipse Marketplace (<strong>Help → Eclipse Marketplace</strong>). It applies Wicket’s code format to every module while they are imported.</li>
+  <li>Choose <strong>File → Import → Maven → Existing Maven Projects</strong>, select the <code class="language-plaintext highlighter-rouge">wicket</code> folder of your clone, and import all projects.</li>
+  <li>Set a JDK 21 as installed JRE under <strong>Window → Preferences → Java → Installed JREs</strong>.</li>
+</ol>
+
+<p>To format only your changes, set <strong>Window → Preferences → Java → Editor → Save Actions</strong> to format edited lines.</p>
+
+<p>Run a test with <strong>Run As → JUnit Test</strong> on the test class, and the examples with <strong>Run As → Java Application</strong> on <code class="language-plaintext highlighter-rouge">StartExamples</code> in the <code class="language-plaintext highlighter-rouge">wicket-examples</code> project.</p>
+
+<h2 id="netbeans">NetBeans</h2>
+
+<p>NetBeans opens Maven projects directly: <strong>File → Open Project</strong> and select the <code class="language-plaintext highlighter-rouge">wicket</code> folder. NetBeans cannot read Eclipse formatter files, so set the format by hand under <strong>Tools → Options → Editor → Formatting</strong> for Java: tabs with a size of 4, braces on a new line, and a right margin of 100.</p>
 
             </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/contribute/">Contribute</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-pull-request.html">Send a pull request to Wicket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">From an issue to a reviewed pull request against apache/wicket, for your first contribution or your fiftieth.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-build.html">Build and test Wicket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build Wicket from source with Maven, run one test or all of them, run the JavaScript tests and the examples, and use your own build.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Set up your IDE</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-conventions.html">Code conventions</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The rules a change to Wicket's code follows, from the code format and license header to tests, Javadoc and commit messages.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_contribute/wicket-ide.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
         </div>
     </div>
 </main>
@@ -247,6 +300,6 @@ at <a href="https://travis-ci.com/github/apache/wicket/" target="_blank" rel="no
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1794566155" defer></script>
+        <script src="/javascript/ribbon.js?v=1795098831" defer></script>
     </body>
 </html>

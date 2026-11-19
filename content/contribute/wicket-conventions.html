@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+	
+	
+
+        <title>Code conventions | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The rules a change to Wicket's code follows, from the code format and license header to tests, Javadoc and commit messages." />
+        <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="icon" href="/img/logo-apachewicket-mark.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/css/style.css?v=1795098831" type="text/css" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        
+<a class="brand" href="/"><img class="brand-mark" src="/img/logo-apachewicket-mark.svg" alt="" width="34" height="34"><span class="brand-name">Apache Wicket<span class="tm" aria-hidden="true">™</span></span></a>
+
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items active" aria-current="true">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" aria-label="ASF, The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="" width="22" height="34"><span class="nav-asf-label">ASF</span></a>
+        <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="nav-github-label">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+<div class="page-sign guide-sign">
+    <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 14; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%); --night: 1;" aria-hidden="true">
+    <img src="/img/seasons/autumn-ink-cap-1600.jpg" srcset="/img/seasons/autumn-ink-cap-900.jpg 900w, /img/seasons/autumn-ink-cap-1600.jpg 1600w, /img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="">
+</div>
+<div class="photo-meta">
+    <p class="photo-credit">Photo: <a href="https://unsplash.com/photos/CCAoWVqolxM" rel="noreferrer noopener noreferrer" target="_blank">Veronika Biro on Unsplash</a></p>
+</div>
+
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="/community/">Community</a><span aria-hidden="true"> / </span><a href="/contribute/">Contribute</a></p>
+        <h1>Code conventions</h1>
+        <p class="page-sign-sub">The rules a change to Wicket's code follows, from the code format and license header to tests, Javadoc and commit messages.</p>
+        <p class="guide-plates"><span class="guide-kind">Reference</span></p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#code-format"><span class="toc-number">1</span> <span class="toc-text">Code format</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#license-header"><span class="toc-number">2</span> <span class="toc-text">License header</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#language"><span class="toc-number">3</span> <span class="toc-text">Language</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#tests"><span class="toc-number">4</span> <span class="toc-text">Tests</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#javadoc-and-comments"><span class="toc-number">5</span> <span class="toc-text">Javadoc and comments</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#changes-to-the-api"><span class="toc-number">6</span> <span class="toc-text">Changes to the API</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#poms"><span class="toc-number">7</span> <span class="toc-text">poms</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#commit-messages"><span class="toc-number">8</span> <span class="toc-text">Commit messages</span></a></li>
+<li class="toc--level-1 toc--section-9"><a href="#security"><span class="toc-number">9</span> <span class="toc-text">Security</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            <section class="page-content guide-content">
+                
+<p>These are the rules a reviewer checks a change to Wicket against. The repository has its own guide for contributors, <a href="https://github.com/apache/wicket/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a>.</p>
+
+<h2 id="code-format">Code format</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Indentation</td>
+      <td>Tabs, shown as 4 spaces</td>
+    </tr>
+    <tr>
+      <td>Braces</td>
+      <td>On a line of their own, for classes, methods and blocks</td>
+    </tr>
+    <tr>
+      <td>Line length</td>
+      <td>At most 100 characters</td>
+    </tr>
+    <tr>
+      <td>Imports</td>
+      <td>One per class, no <code class="language-plaintext highlighter-rouge">*</code>, except static imports in tests</td>
+    </tr>
+    <tr>
+      <td>Formatter</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">wicket-eclipse-settings/files/org.eclipse.jdt.core.prefs</code>; see <a href="/contribute/wicket-ide.html#the-code-format">Set up your IDE</a>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The build does not check the format. Match the file you edit, and do not reformat lines you did not change.</p>
+
+<h2 id="license-header">License header</h2>
+
+<p>Every new file starts with the Apache License header, as a comment in the syntax of the file: Java, JavaScript, CSS, HTML, <code class="language-plaintext highlighter-rouge">.properties</code>, <code class="language-plaintext highlighter-rouge">pom.xml</code>. Copy it from a file of the same type. The full build checks the headers with Apache RAT and fails on a file without one.</p>
+
+<h2 id="language">Language</h2>
+
+<p>Everything is in English: names, comments, Javadoc, messages, commit messages and branch names. A new message key goes into the default bundle, such as <code class="language-plaintext highlighter-rouge">Application.utf8.properties</code>; the translated bundles, such as <code class="language-plaintext highlighter-rouge">Application_nl.utf8.properties</code>, are written by native speakers.</p>
+
+<h2 id="tests">Tests</h2>
+
+<ul>
+  <li>A test class name ends in <code class="language-plaintext highlighter-rouge">Test</code>, such as <code class="language-plaintext highlighter-rouge">UrlRendererTest</code>. Maven runs only classes named <code class="language-plaintext highlighter-rouge">*Test.java</code>: a class named <code class="language-plaintext highlighter-rouge">UrlRendererTests</code> or <code class="language-plaintext highlighter-rouge">TestUrlRenderer</code> compiles but never runs.</li>
+  <li>A module with a <code class="language-plaintext highlighter-rouge">-tests</code> companion keeps its tests there: the tests of <code class="language-plaintext highlighter-rouge">wicket-core</code> are in <code class="language-plaintext highlighter-rouge">wicket-core-tests</code>, those of <code class="language-plaintext highlighter-rouge">wicket-cdi</code> in <code class="language-plaintext highlighter-rouge">wicket-cdi-tests</code>. Other modules, such as <code class="language-plaintext highlighter-rouge">wicket-util</code> and <code class="language-plaintext highlighter-rouge">wicket-extensions</code>, keep their tests in their own <code class="language-plaintext highlighter-rouge">src/test/java</code>. Follow the module you work in, and put a new test next to the existing test of the same class.</li>
+  <li>The HTML markup of a test page sits next to its Java class in <code class="language-plaintext highlighter-rouge">src/test/java</code>, not in <code class="language-plaintext highlighter-rouge">src/test/resources</code>.</li>
+  <li>Tests use JUnit 5. For pages and components, extend <code class="language-plaintext highlighter-rouge">WicketTestCase</code>, which gives you a <code class="language-plaintext highlighter-rouge">WicketTester</code> as <code class="language-plaintext highlighter-rouge">tester</code>.</li>
+  <li>JavaScript tests are QUnit tests in <code class="language-plaintext highlighter-rouge">src/test/js/</code> of <code class="language-plaintext highlighter-rouge">wicket-core</code> and <code class="language-plaintext highlighter-rouge">wicket-extensions</code>; see <a href="/contribute/wicket-build.html#javascript-tests">Run the JavaScript tests</a>.</li>
+</ul>
+
+<h2 id="javadoc-and-comments">Javadoc and comments</h2>
+
+<ul>
+  <li>Public classes and methods have Javadoc that says what they do with the values they get, not only what they return.</li>
+  <li>A new public class, method or field gets an <code class="language-plaintext highlighter-rouge">@since</code> tag with the first release it appears in: <code class="language-plaintext highlighter-rouge">@since 12.0.0</code> on <code class="language-plaintext highlighter-rouge">master</code>.</li>
+  <li>Comments explain why, not what. Most code needs none; the reasoning for a change goes into the commit message.</li>
+</ul>
+
+<h2 id="changes-to-the-api">Changes to the API</h2>
+
+<p>A change to a public class or method can break applications that use it. On <code class="language-plaintext highlighter-rouge">master</code>, it needs a reason in the commit message, and where the old method can stay next to the new one, deprecate the old one with <code class="language-plaintext highlighter-rouge">@Deprecated</code> instead of removing it. On the release branches, such as <code class="language-plaintext highlighter-rouge">wicket-11.x</code>, the build fails on a change that breaks compatibility. A change that applications must react to also gets a section in <code class="language-plaintext highlighter-rouge">migration-to-&lt;version&gt;.md</code> in the root of the repository.</p>
+
+<h2 id="poms">poms</h2>
+
+<p>The build checks the order in every <code class="language-plaintext highlighter-rouge">pom.xml</code>: sections in the standard Maven order, and dependencies sorted by scope, then group id, then artifact id. A module <code class="language-plaintext highlighter-rouge">pom.xml</code> names no versions; they are set as properties in the root <code class="language-plaintext highlighter-rouge">pom.xml</code>.</p>
+
+<h2 id="commit-messages">Commit messages</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Part</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>First line</td>
+      <td>What the change does, as a plain sentence. No issue number and no prefix like <code class="language-plaintext highlighter-rouge">fix:</code>.</td>
+    </tr>
+    <tr>
+      <td>Body</td>
+      <td>What the behaviour was, why that was wrong, what it is now, and what an application that relied on the old behaviour notices.</td>
+    </tr>
+    <tr>
+      <td>Issue</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">GitHub issue #&lt;number&gt;</code> on a line of its own; a Jira key such as <code class="language-plaintext highlighter-rouge">WICKET-7165</code> for an issue from Jira.</td>
+    </tr>
+    <tr>
+      <td>Tools</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">Generated-by: &lt;name of tool&gt;</code> when a generative AI tool wrote part of the change, as the <a href="https://www.apache.org/legal/generative-tooling.html" target="_blank" rel="noopener noreferrer">ASF asks</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A commit that is already pushed is not changed: no amend, rebase or force-push. Correct it with a new commit, and bring a branch up to date by merging <code class="language-plaintext highlighter-rouge">master</code> into it.</p>
+
+<h2 id="security">Security</h2>
+
+<p>A suspected vulnerability goes to security@apache.org, never into an issue, pull request, commit message or branch name. <a href="https://github.com/apache/wicket/blob/master/SECURITY.md" target="_blank" rel="noopener noreferrer">SECURITY.md</a> describes what counts as a vulnerability in Wicket.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/contribute/">Contribute</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-pull-request.html">Send a pull request to Wicket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">From an issue to a reviewed pull request against apache/wicket, for your first contribution or your fiftieth.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-build.html">Build and test Wicket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build Wicket from source with Maven, run one test or all of them, run the JavaScript tests and the examples, and use your own build.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-ide.html">Set up your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Code conventions</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The rules a change to Wicket's code follows, from the code format and license header to tests, Javadoc and commit messages.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_contribute/wicket-conventions.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+
+        <footer class="footer">
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+        
+        <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
+        <script src="/javascript/ribbon.js?v=1795098831" defer></script>
+    </body>
+</html>
