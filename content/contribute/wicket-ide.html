@@ -7,7 +7,7 @@
 
         <title>Set up your IDE | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE." />
+        <meta name="description" content="Open Wicket's source in IntelliJ IDEA, Eclipse, VS Code or NetBeans, keep its hand-made format, and run tests and the examples from the IDE." />
         <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
         <meta name="color-scheme" content="light dark" />
@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1795098831" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1795100781" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -107,7 +107,7 @@
     <div class="page-sign-inner">
         <p class="guide-crumbs"><a href="/community/">Community</a><span aria-hidden="true"> / </span><a href="/contribute/">Contribute</a></p>
         <h1>Set up your IDE</h1>
-        <p class="page-sign-sub">Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE.</p>
+        <p class="page-sign-sub">Open Wicket's source in IntelliJ IDEA, Eclipse, VS Code or NetBeans, keep its hand-made format, and run tests and the examples from the IDE.</p>
         <p class="guide-plates"><span class="guide-kind">How-to</span></p>
     </div>
 </div>
@@ -118,14 +118,11 @@
 <div id="toc-title"><h2>On this page</h2></div>
 <ul>
 <li class="toc--level-1 toc--section-1"><a href="#the-code-format"><span class="toc-number">1</span> <span class="toc-text">The code format</span></a></li>
-<li class="toc--level-1 toc--section-2">
-<a href="#intellij-idea"><span class="toc-number">2</span> <span class="toc-text">IntelliJ IDEA</span></a><ul>
-<li class="toc--level-2 toc--section-3"><a href="#run-a-test"><span class="toc-number">2.1</span> <span class="toc-text">Run a test</span></a></li>
-<li class="toc--level-2 toc--section-4"><a href="#examples"><span class="toc-number">2.2</span> <span class="toc-text">Run the examples</span></a></li>
-</ul>
-</li>
-<li class="toc--level-1 toc--section-5"><a href="#eclipse"><span class="toc-number">3</span> <span class="toc-text">Eclipse</span></a></li>
-<li class="toc--level-1 toc--section-6"><a href="#netbeans"><span class="toc-number">4</span> <span class="toc-text">NetBeans</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#do-tests-from-the-ide-need-an-install"><span class="toc-number">2</span> <span class="toc-text">Do tests from the IDE need an install?</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#intellij-idea"><span class="toc-number">3</span> <span class="toc-text">IntelliJ IDEA</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#eclipse"><span class="toc-number">4</span> <span class="toc-text">Eclipse</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#vs-code"><span class="toc-number">5</span> <span class="toc-text">VS Code</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#netbeans"><span class="toc-number">6</span> <span class="toc-text">NetBeans</span></a></li>
 </ul>
 </div></nav>
         
@@ -133,11 +130,53 @@
             <section class="page-content guide-content">
                 <p>This page sets up your IDE to work on Wicket itself. For IDE plugins that help you build applications with Wicket, see <a href="/docs/ide-plugins.html">Add Wicket support to your IDE</a> in the user guide.</p>
 
-<p>Wicket is a Maven project, and every Java IDE opens it as one. Build it once on the command line first, as in <a href="/contribute/wicket-build.html">Build and test Wicket</a>, so that the libraries are already downloaded.</p>
+<p>Wicket is a Maven project, and every Java IDE opens it as one. Open the root folder of your clone, so that the IDE sees all modules. Build once on the command line first, as in <a href="/contribute/wicket-build.html">Build and test Wicket</a>, so that the libraries are already downloaded.</p>
 
 <h2 id="the-code-format">The code format</h2>
 
-<p>Wicket’s code uses tabs for indentation, braces on their own line, and lines of at most 100 characters. The exact rules are an Eclipse formatter configuration in the repository, <code class="language-plaintext highlighter-rouge">wicket-eclipse-settings/files/org.eclipse.jdt.core.prefs</code>. The build does not check the format, so a reviewer will: format only the lines you change, and keep the rest of the file as it is. Reformatting a whole file makes your change hard to review.</p>
+<p>Wicket’s code uses tabs for indentation, braces on their own line, and lines of at most 100 characters. Set your IDE’s Java formatter to these three rules. The exact Eclipse formatter settings are in the repository, in <code class="language-plaintext highlighter-rouge">wicket-eclipse-settings/files/org.eclipse.jdt.core.prefs</code>, but no IDE picks them up by itself.</p>
+
+<p>The code is formatted by hand, and no formatter reproduces it exactly. So:</p>
+
+<ul>
+  <li>Turn off formatting on save.</li>
+  <li>Never reformat a whole file. Format only the lines you write, or match the code around them by hand.</li>
+</ul>
+
+<p>A reformatted file shows hundreds of changed lines in the pull request, and the reviewer cannot find your change between them. It also makes the commit hard to cherry-pick to the older branches, where the same lines look different.</p>
+
+<h2 id="do-tests-from-the-ide-need-an-install">Do tests from the IDE need an install?</h2>
+
+<p>Running a test with Maven needs an <code class="language-plaintext highlighter-rouge">mvn install</code> of the module you changed first, when the test is in another module; <a href="/contribute/wicket-test-modules.html">Why most tests live in another module</a> explains why. In the IDE it depends on how the IDE builds:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IDE</th>
+      <th>Install first?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IntelliJ IDEA</td>
+      <td>No. It compiles the other modules from your working folder.</td>
+    </tr>
+    <tr>
+      <td>Eclipse</td>
+      <td>No. Its Maven support resolves the other modules from the workspace.</td>
+    </tr>
+    <tr>
+      <td>VS Code</td>
+      <td>No. Its Java language server resolves the other modules from source.</td>
+    </tr>
+    <tr>
+      <td>NetBeans</td>
+      <td>Probably yes. NetBeans builds through Maven, so a test may use the installed jar of another module. Install the changed module to be sure.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Before you send a pull request, run the tests with Maven anyway, as in <a href="/contribute/wicket-build.html#run-one-test">Run one test</a>: that is how GitHub runs them.</p>
 
 <h2 id="intellij-idea">IntelliJ IDEA</h2>
 
@@ -145,38 +184,62 @@
 
 <ol>
   <li>Choose <strong>File → Open</strong>, select the <code class="language-plaintext highlighter-rouge">wicket</code> folder of your clone and open it as a project. IntelliJ reads the Maven modules, which takes a few minutes the first time.</li>
-  <li>In <strong>File → Project Structure → Project</strong>, set the SDK to JDK 21.</li>
-  <li>For the code format, install the plugin <strong>Adapter for Eclipse Code Formatter</strong> from <strong>Settings → Plugins → Marketplace</strong>. In its settings, choose to use the Eclipse code formatter with the configuration file <code class="language-plaintext highlighter-rouge">wicket-eclipse-settings/files/org.eclipse.jdt.core.prefs</code> from your clone.</li>
-  <li>In <strong>Settings → Editor → Code Style → Java → Imports</strong>, set <strong>Class count to use import with ‘*‘</strong> to 99, so that IntelliJ writes one import per class, as Wicket’s code does.</li>
+  <li>In <strong>File → Project Structure → Project</strong>, set the SDK to the JDK you build with.</li>
+  <li>In <strong>Settings → Editor → Code Style → Java</strong>, set <strong>Tabs and Indents</strong> to use the tab character with size 4, <strong>Wrapping and Braces</strong> to put braces on the next line and the hard wrap at 100, and in <strong>Imports</strong>, <strong>Class count to use import with ‘*‘</strong> to 99.</li>
+  <li>In <strong>Settings → Tools → Actions on Save</strong>, leave <strong>Reformat code</strong> off.</li>
 </ol>
 
-<p>To format only your changes, use <strong>Code → Reformat Code</strong> with <strong>Only changes uncommitted to VCS</strong>.</p>
+<p>The plugin <strong>Adapter for Eclipse Code Formatter</strong> can use <code class="language-plaintext highlighter-rouge">org.eclipse.jdt.core.prefs</code> instead of step 3. It still reformats whatever you ask it to, so the rules above apply.</p>
 
-<h3 id="run-a-test">Run a test</h3>
-
-<p>Open the test class and click the green arrow next to the class or a method. IntelliJ compiles the modules of the project from your working folder, so a change in <code class="language-plaintext highlighter-rouge">wicket-request</code> is used by a test in <code class="language-plaintext highlighter-rouge">wicket-core-tests</code> without installing it first. Run the test with Maven as well before you send the pull request, as in <a href="/contribute/wicket-build.html#run-one-test">Run one test</a>: that is how GitHub runs it.</p>
-
-<h3 id="examples">Run the examples</h3>
-
-<p>Open <code class="language-plaintext highlighter-rouge">wicket-examples/src/test/java/org/apache/wicket/examples/StartExamples.java</code> and run its <code class="language-plaintext highlighter-rouge">main</code> method. It starts the examples on <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>, with your code from the working folder. The working directory of the run configuration must be the <code class="language-plaintext highlighter-rouge">wicket-examples</code> folder, which is the default; if the examples show only errors about missing files, check it under <strong>Run → Edit Configurations</strong>.</p>
+<p>Run a test with the green arrow next to the class or a method. To run the examples, open <code class="language-plaintext highlighter-rouge">wicket-examples/src/test/java/org/apache/wicket/examples/StartExamples.java</code> and run its <code class="language-plaintext highlighter-rouge">main</code> method; it starts the examples on <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>. The working directory of the run configuration must be the <code class="language-plaintext highlighter-rouge">wicket-examples</code> folder, the default. If the examples show only errors about missing files, check it under <strong>Run → Edit Configurations</strong>.</p>
 
 <h2 id="eclipse">Eclipse</h2>
 
 <p>Use the Eclipse IDE for Java Developers or for Enterprise Java, which include Maven support.</p>
 
 <ol>
-  <li>Before you import, install <strong>M2E Settings</strong> from the Eclipse Marketplace (<strong>Help → Eclipse Marketplace</strong>). It applies Wicket’s code format to every module while they are imported.</li>
-  <li>Choose <strong>File → Import → Maven → Existing Maven Projects</strong>, select the <code class="language-plaintext highlighter-rouge">wicket</code> folder of your clone, and import all projects.</li>
-  <li>Set a JDK 21 as installed JRE under <strong>Window → Preferences → Java → Installed JREs</strong>.</li>
+  <li>Choose <strong>File → Import → Maven → Existing Maven Projects</strong>, select the <code class="language-plaintext highlighter-rouge">wicket</code> folder of your clone, and import all projects. Every module becomes a project.</li>
+  <li>Add the JDK you build with under <strong>Window → Preferences → Java → Installed JREs</strong>.</li>
+  <li>Under <strong>Window → Preferences → Java → Code Style → Formatter</strong>, create a profile with tab indentation of size 4, braces on the next line, and a maximum line width of 100.</li>
+  <li>Under <strong>Window → Preferences → Java → Editor → Save Actions</strong>, leave <strong>Perform the selected actions on save</strong> off.</li>
 </ol>
 
-<p>To format only your changes, set <strong>Window → Preferences → Java → Editor → Save Actions</strong> to format edited lines.</p>
+<p>Run a test with <strong>Run As → JUnit Test</strong> on the test class. <strong>Run As → Java Application</strong> on <code class="language-plaintext highlighter-rouge">StartExamples</code> in the <code class="language-plaintext highlighter-rouge">wicket-examples</code> project starts the examples; Eclipse uses the project folder as working directory.</p>
 
-<p>Run a test with <strong>Run As → JUnit Test</strong> on the test class, and the examples with <strong>Run As → Java Application</strong> on <code class="language-plaintext highlighter-rouge">StartExamples</code> in the <code class="language-plaintext highlighter-rouge">wicket-examples</code> project.</p>
+<h2 id="vs-code">VS Code</h2>
+
+<ol>
+  <li>Install the <strong>Extension Pack for Java</strong> from the Extensions view.</li>
+  <li>Choose <strong>File → Open Folder</strong> and open the <code class="language-plaintext highlighter-rouge">wicket</code> folder of your clone. The Java extension reads the Maven modules, which takes a few minutes the first time.</li>
+  <li>Make sure <strong>Editor: Format On Save</strong> is off in the settings.</li>
+</ol>
+
+<p>Run tests from the Testing view or with the run icon next to a test.</p>
+
+<p>A Java program in VS Code starts in the root folder, but <code class="language-plaintext highlighter-rouge">StartExamples</code> needs <code class="language-plaintext highlighter-rouge">wicket-examples</code> as working directory. Create <code class="language-plaintext highlighter-rouge">.vscode/launch.json</code> in the root folder of your clone with this content, and start <strong>StartExamples</strong> from the <strong>Run and Debug</strong> view:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+		</span><span class="p">{</span><span class="w">
+			</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"StartExamples"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"mainClass"</span><span class="p">:</span><span class="w"> </span><span class="s2">"org.apache.wicket.examples.StartExamples"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"projectName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wicket-examples"</span><span class="p">,</span><span class="w">
+			</span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/wicket-examples"</span><span class="w">
+		</span><span class="p">}</span><span class="w">
+	</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Git ignores the <code class="language-plaintext highlighter-rouge">.vscode</code> folder in the Wicket repository, so the file stays on your computer.</p>
 
 <h2 id="netbeans">NetBeans</h2>
 
-<p>NetBeans opens Maven projects directly: <strong>File → Open Project</strong> and select the <code class="language-plaintext highlighter-rouge">wicket</code> folder. NetBeans cannot read Eclipse formatter files, so set the format by hand under <strong>Tools → Options → Editor → Formatting</strong> for Java: tabs with a size of 4, braces on a new line, and a right margin of 100.</p>
+<p>Choose <strong>File → Open Project</strong>, select the <code class="language-plaintext highlighter-rouge">wicket</code> folder of your clone and check <strong>Open Required Projects</strong>. Set the format under <strong>Tools → Options → Editor → Formatting</strong> for Java: tabs with a size of 4, braces on a new line, and a right margin of 100.</p>
+
+<p>Run a test with <strong>Test File</strong> and the examples with <strong>Run File</strong> on <code class="language-plaintext highlighter-rouge">StartExamples</code>. Install the modules you changed first, as in the table above.</p>
 
             </section>
             <footer class="guide-foot">
@@ -186,6 +249,24 @@
                 <div class="guide-foot-kinds">
                 
                     
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-first-pull-request.html">Your first pull request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Fix a real bug in Wicket from start to end, with a failing test, the fix, the right way to run the tests, and the pull request.</span>
+    </li>
+
+</ul>
+
+                    </section>
                     
                 
                     
@@ -219,7 +300,7 @@
         <span class="guide-list-title" aria-current="page">Set up your IDE</span>
         
         <span class="guide-list-meta"></span>
-        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE.</span>
+        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse, VS Code or NetBeans, keep its hand-made format, and run tests and the examples from the IDE.</span>
     </li>
 
 </ul>
@@ -249,6 +330,51 @@
                     
                 
                     
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-test-modules.html">Why most tests live in another module</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why wicket-core's tests are in wicket-core-tests, and why a test run with Maven can use an old build of the code you changed.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-master-first.html">Why fixes go to master first</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why every pull request targets master, how a fix reaches the release lines afterwards, and who decides which lines get it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-api-compatibility.html">API compatibility</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Which changes to Wicket's public API are allowed where, why the build checks them only on the release branches, and what a breaking change owes its users.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-security-model.html">Wicket's security model</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What Wicket as a framework protects against, what it leaves to the deployment, and why a suspected vulnerability is reported privately.</span>
+    </li>
+
+</ul>
+
+                    </section>
                     
                 
                 </div>
@@ -300,6 +426,6 @@
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1795098831" defer></script>
+        <script src="/javascript/ribbon.js?v=1795100781" defer></script>
     </body>
 </html>

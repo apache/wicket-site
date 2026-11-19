@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1795098831" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1795100781" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -137,9 +137,9 @@
 
 <ul>
   <li>
-<strong>JDK 21 or newer.</strong> <code class="language-plaintext highlighter-rouge">master</code> and the current release line need Java 21; <code class="language-plaintext highlighter-rouge">wicket-10.x</code> needs Java 17. GitHub tests with Java 21, 25 and 26.</li>
+<strong>A JDK</strong> of at least the Java version that <a href="https://github.com/apache/wicket/blob/master/README.md#javaapplication-server-requirements" target="_blank" rel="noopener noreferrer">README.md</a> names under “Java/Application server requirements”; newer is fine. The build uses the version set in <code class="language-plaintext highlighter-rouge">maven.compiler.release</code> in the root <code class="language-plaintext highlighter-rouge">pom.xml</code>, and the GitHub workflow, <a href="https://github.com/apache/wicket/blob/master/.github/workflows/maven.yml" target="_blank" rel="noopener noreferrer"><code class="language-plaintext highlighter-rouge">.github/workflows/maven.yml</code></a>, lists the JDKs it tests with.</li>
   <li>
-<strong>Maven 3.9.</strong> The Maven inside your IDE is not available on the command line, so <a href="https://maven.apache.org/install.html" target="_blank" rel="noopener noreferrer">install Maven</a> as well.</li>
+<strong>Maven</strong> on the command line. The Maven inside your IDE is usually not available there, so <a href="https://maven.apache.org/install.html" target="_blank" rel="noopener noreferrer">install Maven</a> as well, a current release; the GitHub workflow names the version it uses.</li>
   <li>
 <strong>Git</strong>, and about 2 GB of free disk space for the clone, the build results and the downloaded libraries.</li>
 </ul>
@@ -149,20 +149,20 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nt">-v</span>
 </code></pre></div></div>
 
-<p>The output names the Maven version and, on the line <code class="language-plaintext highlighter-rouge">Java version:</code>, the JDK. If that is older than 21, set the <code class="language-plaintext highlighter-rouge">JAVA_HOME</code> environment variable to the folder of your JDK 21.</p>
+<p>The output names the Maven version and, on the line <code class="language-plaintext highlighter-rouge">Java version:</code>, the JDK. If that JDK is too old, set the <code class="language-plaintext highlighter-rouge">JAVA_HOME</code> environment variable to the folder of a newer one.</p>
 
 <h2 id="build-everything">Build everything</h2>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">install</span> <span class="nt">-DskipTests</span> <span class="nt">-Pfast</span>
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">install</code> compiles every module, packages it as a jar and copies the jar to your local Maven repository, the folder <code class="language-plaintext highlighter-rouge">.m2/repository</code> in your home folder. <code class="language-plaintext highlighter-rouge">-DskipTests</code> skips the tests, and <code class="language-plaintext highlighter-rouge">-Pfast</code> skips the javadoc, the source jars and the license header check. The first build downloads about 450 MB of libraries and takes a few minutes; later builds take one to two minutes.</p>
+<p><code class="language-plaintext highlighter-rouge">install</code> compiles every module, packages it as a jar and copies the jar to your local Maven repository, the folder <code class="language-plaintext highlighter-rouge">.m2/repository</code> in your home folder. <code class="language-plaintext highlighter-rouge">-DskipTests</code> skips the tests, and <code class="language-plaintext highlighter-rouge">-Pfast</code> skips the javadoc, the source jars and the license header check. The first build downloads several hundred MB of libraries and takes a few minutes; later builds are faster.</p>
 
 <p>The build ends with <code class="language-plaintext highlighter-rouge">BUILD SUCCESS</code> and a list of the modules with their times. The jars are now in your local repository, version <code class="language-plaintext highlighter-rouge">12.0.0-SNAPSHOT</code> on <code class="language-plaintext highlighter-rouge">master</code>. A snapshot is a version under development, not a release.</p>
 
 <h2 id="run-one-test">Run one test</h2>
 
-<p>The tests of <code class="language-plaintext highlighter-rouge">wicket-core</code> are in a separate module, <code class="language-plaintext highlighter-rouge">wicket-core-tests</code>, and so are some tests of classes in other modules: <code class="language-plaintext highlighter-rouge">UrlRendererTest</code>, for <code class="language-plaintext highlighter-rouge">UrlRenderer</code> in <code class="language-plaintext highlighter-rouge">wicket-request</code>, is one. The test can also be in another package than the class, so search for it by name, as in <a href="/contribute/wicket-pull-request.html#change">Send a pull request</a>. A test in another module uses the module you changed from your local Maven repository, not from your working folder. So install the changed module, then run the test:</p>
+<p>The tests of <code class="language-plaintext highlighter-rouge">wicket-core</code> are in a separate module, <code class="language-plaintext highlighter-rouge">wicket-core-tests</code>, and so are some tests of classes in other modules: <code class="language-plaintext highlighter-rouge">UrlRendererTest</code>, for <code class="language-plaintext highlighter-rouge">UrlRenderer</code> in <code class="language-plaintext highlighter-rouge">wicket-request</code>, is one. The test can also be in another package than the class, so search for it by name, as in <a href="/contribute/wicket-pull-request.html#change">Send a pull request</a>. A test in another module uses the module you changed from your local Maven repository, not from your working folder. So install the changed module, then run the test. <a href="/contribute/wicket-test-modules.html">Why most tests live in another module</a> explains this.</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">install</span> <span class="nt">-DskipTests</span> <span class="nt">-Pfast</span> <span class="nt">-pl</span> wicket-request
 mvn verify <span class="nt">-pl</span> wicket-core-tests <span class="nt">-Dtest</span><span class="o">=</span>UrlRendererTest
@@ -175,7 +175,7 @@ mvn verify <span class="nt">-pl</span> wicket-core-tests <span class="nt">-Dtest
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn verify <span class="nt">-pl</span> wicket-extensions <span class="nt">-Dtest</span><span class="o">=</span>AutoCompleteTest
 </code></pre></div></div>
 
-<p>To run one method of a test class, add its name: <code class="language-plaintext highlighter-rouge">-Dtest=UrlRendererTest#test1</code>. The <a href="/contribute/wicket-conventions.html#tests">conventions</a> say where a new test goes and how to name it.</p>
+<p>To run one method of a test class, add its name: <code class="language-plaintext highlighter-rouge">-Dtest=UrlRendererTest#renderFullUrlWithRelativeArgument</code>. The <a href="/contribute/wicket-conventions.html#tests">conventions</a> say where a new test goes and how to name it.</p>
 
 <p>Instead of installing first, <code class="language-plaintext highlighter-rouge">-am</code> (“also make”) builds the modules the test module depends on from your working folder. It then looks for the test in each of those modules too, so it needs a second option:</p>
 
@@ -189,9 +189,9 @@ mvn verify <span class="nt">-pl</span> wicket-core-tests <span class="nt">-Dtest
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">test</span> <span class="nt">-pl</span> testing/wicket-js-tests <span class="nt">-Pjs-test</span>
 </code></pre></div></div>
 
-<p>The first run downloads Node.js into the <code class="language-plaintext highlighter-rouge">testing/wicket-js-tests</code> folder and Chrome into <code class="language-plaintext highlighter-rouge">.cache/puppeteer</code> in your home folder, which takes a while. On Linux, that Chrome needs the libraries of a normal Chrome installation; installing Google Chrome or Chromium is the easiest way to get them. The tests read the <code class="language-plaintext highlighter-rouge">.js</code> files from your working folder, so you do not need to install anything first.</p>
+<p>The tests read the <code class="language-plaintext highlighter-rouge">.js</code> files from your working folder, so you do not need to install anything first. The first run downloads the tools the tests need and takes a while; on Linux, the browser needs some system libraries.</p>
 
-<p>The tests for the scripts of <code class="language-plaintext highlighter-rouge">wicket-core</code> are in <code class="language-plaintext highlighter-rouge">wicket-core/src/test/js/</code>, those for <code class="language-plaintext highlighter-rouge">wicket-extensions</code> in <code class="language-plaintext highlighter-rouge">wicket-extensions/src/test/js/</code>. A script without its own tests, such as <code class="language-plaintext highlighter-rouge">wicket-autocomplete.js</code>, is only checked by JSHint for mistakes. To add tests for it, add a <code class="language-plaintext highlighter-rouge">&lt;name&gt;-test.js</code> and a <code class="language-plaintext highlighter-rouge">&lt;name&gt;.html</code> page next to the existing ones in <code class="language-plaintext highlighter-rouge">wicket-extensions/src/test/js/</code>, and list them in <code class="language-plaintext highlighter-rouge">testing/wicket-js-tests/Gruntfile.js</code>: the test file under <code class="language-plaintext highlighter-rouge">extensionsTestsJs</code>, and the page in both URL lists of <code class="language-plaintext highlighter-rouge">qunit</code>, <code class="language-plaintext highlighter-rouge">all</code> and <code class="language-plaintext highlighter-rouge">vanilla</code>, like <code class="language-plaintext highlighter-rouge">veil.html</code>. <a href="https://github.com/apache/wicket/blob/master/JAVASCRIPTTESTING.md" target="_blank" rel="noopener noreferrer">JAVASCRIPTTESTING.md</a> in the repository describes the test setup and how to run the tests faster without Maven.</p>
+<p><a href="https://github.com/apache/wicket/blob/master/JAVASCRIPTTESTING.md" target="_blank" rel="noopener noreferrer">JAVASCRIPTTESTING.md</a> in the repository is the reference for these tests: what it downloads and which libraries it needs, where the tests are, how to add a test page, and how to run the tests faster without Maven. Every script is checked by JSHint, also the scripts without tests of their own, such as <code class="language-plaintext highlighter-rouge">wicket-autocomplete.js</code>. When you fix such a script, say in the pull request how you tested the fix.</p>
 
 <h2 id="run-the-examples">Run the examples</h2>
 
@@ -201,7 +201,7 @@ mvn verify <span class="nt">-pl</span> wicket-core-tests <span class="nt">-Dtest
 mvn jetty:run <span class="nt">-pl</span> wicket-examples
 </code></pre></div></div>
 
-<p>When the output shows a line with <code class="language-plaintext highlighter-rouge">Started oejs.Server</code>, open <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>. Stop the server with Ctrl+C. To run the examples from your IDE, see <a href="/contribute/wicket-ide.html#examples">Set up your IDE</a>.</p>
+<p>When Jetty reports that the server started, open <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>. Stop the server with Ctrl+C, and install again after each change. To run the examples from your IDE, without installing, see <a href="/contribute/wicket-ide.html">Set up your IDE</a>.</p>
 
 <h2 id="run-the-full-build">Run the full build</h2>
 
@@ -231,7 +231,7 @@ mvn jetty:run <span class="nt">-pl</span> wicket-examples
 
 <ul>
   <li>
-<strong><code class="language-plaintext highlighter-rouge">release version 21 not supported</code></strong>: Maven runs with an older Java. Check <code class="language-plaintext highlighter-rouge">mvn -v</code> and set <code class="language-plaintext highlighter-rouge">JAVA_HOME</code>.</li>
+<strong><code class="language-plaintext highlighter-rouge">release version … not supported</code></strong>: Maven runs with an older Java than the build needs. Check <code class="language-plaintext highlighter-rouge">mvn -v</code> and set <code class="language-plaintext highlighter-rouge">JAVA_HOME</code>.</li>
   <li>
 <strong><code class="language-plaintext highlighter-rouge">Counter(s) UNAPPROVED exceeded minimum or maximum values</code></strong>: a file you added has no license header. In <code class="language-plaintext highlighter-rouge">target/rat.txt</code> in the root folder, the files without one start with a <code class="language-plaintext highlighter-rouge">!</code>. Copy the header from a file of the same type.</li>
   <li>
@@ -250,6 +250,24 @@ mvn jetty:run <span class="nt">-pl</span> wicket-examples
                 <div class="guide-foot-kinds">
                 
                     
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-first-pull-request.html">Your first pull request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Fix a real bug in Wicket from start to end, with a failing test, the fix, the right way to run the tests, and the pull request.</span>
+    </li>
+
+</ul>
+
+                    </section>
                     
                 
                     
@@ -283,7 +301,7 @@ mvn jetty:run <span class="nt">-pl</span> wicket-examples
         <a class="guide-list-title" href="/contribute/wicket-ide.html">Set up your IDE</a>
         
         <span class="guide-list-meta"></span>
-        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE.</span>
+        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse, VS Code or NetBeans, keep its hand-made format, and run tests and the examples from the IDE.</span>
     </li>
 
 </ul>
@@ -313,6 +331,51 @@ mvn jetty:run <span class="nt">-pl</span> wicket-examples
                     
                 
                     
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-test-modules.html">Why most tests live in another module</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why wicket-core's tests are in wicket-core-tests, and why a test run with Maven can use an old build of the code you changed.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-master-first.html">Why fixes go to master first</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why every pull request targets master, how a fix reaches the release lines afterwards, and who decides which lines get it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-api-compatibility.html">API compatibility</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Which changes to Wicket's public API are allowed where, why the build checks them only on the release branches, and what a breaking change owes its users.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-security-model.html">Wicket's security model</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What Wicket as a framework protects against, what it leaves to the deployment, and why a suspected vulnerability is reported privately.</span>
+    </li>
+
+</ul>
+
+                    </section>
                     
                 
                 </div>
@@ -364,6 +427,6 @@ mvn jetty:run <span class="nt">-pl</span> wicket-examples
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1795098831" defer></script>
+        <script src="/javascript/ribbon.js?v=1795100781" defer></script>
     </body>
 </html>

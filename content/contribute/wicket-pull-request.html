@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1795098831" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1795100781" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -133,13 +133,13 @@
         <div class="reading-main">
             <section class="page-content guide-content">
                 
-<p>Wicket’s code lives in <a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">apache/wicket</a> on GitHub. You change it in your own copy, send the change as a pull request, and a committer, a member of the project who can merge, reviews it. This page takes you through it in order. You need a GitHub account, Git, JDK 21 and Maven 3.9; <a href="/contribute/wicket-build.html">Build and test Wicket</a> says how to check them.</p>
+<p>Wicket’s code lives in <a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">apache/wicket</a> on GitHub. You change it in your own copy, send the change as a pull request, and a committer, a member of the project who can merge, reviews it. This page takes you through it in order; for a first time, the tutorial <a href="/contribute/wicket-first-pull-request.html">Your first pull request</a> goes through the same steps with a real issue. You need a GitHub account, Git, a JDK and Maven; <a href="/contribute/wicket-build.html#what-you-need">Build and test Wicket</a> says which versions. The rules a contribution follows are in <a href="https://github.com/apache/wicket/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a> in the repository.</p>
 
 <h2 id="reportbug">1. Pick or open an issue</h2>
 
 <p>Every change starts from an issue in the <a href="https://github.com/apache/wicket/issues" target="_blank" rel="noopener noreferrer">issue tracker</a>. Issues labelled <a href="https://github.com/apache/wicket/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22" target="_blank" rel="noopener noreferrer"><code class="language-plaintext highlighter-rouge">good first issue</code></a> are small and need little knowledge of Wicket.</p>
 
-<p>Comment on the issue that you are working on it, so that nobody else starts the same change. Ask your questions there as well: what the expected behaviour is, where the code is, how to test it. The people who answer would rather spend five minutes on a question than review a pull request that went the wrong way.</p>
+<p>Comment on the issue that you are working on it, so that nobody else starts the same change. A claim without a pull request lapses after two weeks; if you need more time, say so on the issue. Ask your questions there as well: what the expected behaviour is, where the code is, how to test it. The people who answer would rather spend five minutes on a question than review a pull request that went the wrong way.</p>
 
 <p>For a bug you found yourself, <a href="https://github.com/apache/wicket/issues/new" target="_blank" rel="noopener noreferrer">open an issue</a> first. Say which Wicket version you use, and add a <a href="/start/quickstart.html">quickstart</a>, a small project that shows the bug. Issues from before 2026 are in the read-only <a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Jira archive</a>; search it too. A security problem never goes into an issue: report it <a href="/community/#security">privately</a>.</p>
 
@@ -183,7 +183,7 @@ git remote add upstream https://github.com/apache/wicket.git
   </tbody>
 </table>
 
-<p>Start from <code class="language-plaintext highlighter-rouge">master</code>, also when you found the bug in an older version. After the merge, the committers copy the fix to the older branches where it applies; this is called cherry-picking. Say in the issue which versions the bug affects. Branches of versions that no longer get releases are under <code class="language-plaintext highlighter-rouge">archive/</code>.</p>
+<p>Start from <code class="language-plaintext highlighter-rouge">master</code>, also when you found the bug in an older version. After the merge, the committers copy the fix to the older branches where it applies; this is called cherry-picking. Say in the issue which versions the bug affects. <a href="/contribute/wicket-master-first.html">Why fixes go to master first</a> explains the reasons. Branches of versions that no longer get releases are under <code class="language-plaintext highlighter-rouge">archive/</code>.</p>
 
 <p>Give your branch a name that says what it does:</p>
 
@@ -243,7 +243,7 @@ GitHub issue #&lt;number&gt;
 
 <p>The first line says what the change does, in a normal sentence, without the issue number or a prefix like <code class="language-plaintext highlighter-rouge">fix:</code>. After an empty line, the body says what was wrong, why, and what is different now. The last line refers to the issue. For an issue that came from Jira, keep its key, such as <code class="language-plaintext highlighter-rouge">WICKET-7165</code>, in the body.</p>
 
-<p>If you used a generative AI tool to write the change, say so in a last line such as <code class="language-plaintext highlighter-rouge">Generated-by: &lt;name of tool&gt;</code>, as the <a href="https://www.apache.org/legal/generative-tooling.html" target="_blank" rel="noopener noreferrer">ASF asks</a>.</p>
+<p>If you used a generative AI tool to write the change, say so in a last line such as <code class="language-plaintext highlighter-rouge">Generated-by: &lt;name of tool&gt; &lt;version&gt;</code>, as the <a href="https://www.apache.org/legal/generative-tooling.html" target="_blank" rel="noopener noreferrer">ASF recommends</a>. You stay responsible for every line of it.</p>
 
 <p>Check which files you changed, add them, and commit:</p>
 
@@ -266,13 +266,13 @@ git commit
 
 <p>GitHub then shows a button to compare and open a pull request. Check that the base repository is <code class="language-plaintext highlighter-rouge">apache/wicket</code> and the base branch is <code class="language-plaintext highlighter-rouge">master</code>. Give the pull request the first line of your commit message as title, and in the description say what changed, how you tested it, and <code class="language-plaintext highlighter-rouge">Fixes #&lt;number&gt;</code> for the issue. If the work is not finished but you want early feedback, open it as a draft.</p>
 
-<p>GitHub runs the same full build on Java 21, 25 and 26; the result shows at the bottom of the pull request. On your first pull request, a committer may have to approve that run before it starts.</p>
+<p>GitHub runs the same full build on several JDKs; the result shows at the bottom of the pull request. On your first pull request, a committer may have to approve that run before it starts.</p>
 
 <h2 id="9-work-with-the-review">9. Work with the review</h2>
 
 <p>A reviewer comments on the pull request. Committers are volunteers, so a review can take a few days. If nothing happens for a week, ask for a review in a comment or on the <a href="/community/#dev">developers list</a>.</p>
 
-<p>To answer a review, commit on the same branch and push again; the pull request updates itself. Do not rebase, amend or force-push a branch that is already in review: the reviewers have read your earlier commits. To bring the branch up to date with <code class="language-plaintext highlighter-rouge">master</code>, merge it:</p>
+<p>To answer a review, commit on the same branch and push again; the pull request updates itself. Do not rebase, amend or force-push a branch that is already in review: the reviewers have read your earlier commits, and <a href="/contribute/wicket-master-first.html#history-that-is-not-rewritten">history is not rewritten</a>. To bring the branch up to date with <code class="language-plaintext highlighter-rouge">master</code>, merge it:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch upstream
 git merge upstream/master
@@ -293,6 +293,24 @@ git push
                 <div class="guide-foot-kinds">
                 
                     
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-first-pull-request.html">Your first pull request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Fix a real bug in Wicket from start to end, with a failing test, the fix, the right way to run the tests, and the pull request.</span>
+    </li>
+
+</ul>
+
+                    </section>
                     
                 
                     
@@ -326,7 +344,7 @@ git push
         <a class="guide-list-title" href="/contribute/wicket-ide.html">Set up your IDE</a>
         
         <span class="guide-list-meta"></span>
-        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE.</span>
+        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse, VS Code or NetBeans, keep its hand-made format, and run tests and the examples from the IDE.</span>
     </li>
 
 </ul>
@@ -356,6 +374,51 @@ git push
                     
                 
                     
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-test-modules.html">Why most tests live in another module</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why wicket-core's tests are in wicket-core-tests, and why a test run with Maven can use an old build of the code you changed.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-master-first.html">Why fixes go to master first</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why every pull request targets master, how a fix reaches the release lines afterwards, and who decides which lines get it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-api-compatibility.html">API compatibility</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Which changes to Wicket's public API are allowed where, why the build checks them only on the release branches, and what a breaking change owes its users.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-security-model.html">Wicket's security model</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What Wicket as a framework protects against, what it leaves to the deployment, and why a suspected vulnerability is reported privately.</span>
+    </li>
+
+</ul>
+
+                    </section>
                     
                 
                 </div>
@@ -407,6 +470,6 @@ git push
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1795098831" defer></script>
+        <script src="/javascript/ribbon.js?v=1795100781" defer></script>
     </body>
 </html>

@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1795098831" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1795100781" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -132,7 +132,7 @@
         <div class="reading-main">
             <section class="page-content guide-content">
                 
-<p>These are the rules a reviewer checks a change to Wicket against. The repository has its own guide for contributors, <a href="https://github.com/apache/wicket/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a>.</p>
+<p>These are the rules a reviewer checks a change to Wicket against, in detail. <a href="https://github.com/apache/wicket/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a> in the repository has them in short, with the ASF’s rules on licensing and generative AI tools.</p>
 
 <h2 id="code-format">Code format</h2>
 
@@ -169,7 +169,7 @@
   </tbody>
 </table>
 
-<p>The build does not check the format. Match the file you edit, and do not reformat lines you did not change.</p>
+<p>The build does not check the format, and the code is formatted by hand. Match the file you edit, turn off formatting on save, and do not reformat lines you did not change.</p>
 
 <h2 id="license-header">License header</h2>
 
@@ -199,7 +199,7 @@
 
 <h2 id="changes-to-the-api">Changes to the API</h2>
 
-<p>A change to a public class or method can break applications that use it. On <code class="language-plaintext highlighter-rouge">master</code>, it needs a reason in the commit message, and where the old method can stay next to the new one, deprecate the old one with <code class="language-plaintext highlighter-rouge">@Deprecated</code> instead of removing it. On the release branches, such as <code class="language-plaintext highlighter-rouge">wicket-11.x</code>, the build fails on a change that breaks compatibility. A change that applications must react to also gets a section in <code class="language-plaintext highlighter-rouge">migration-to-&lt;version&gt;.md</code> in the root of the repository.</p>
+<p>A change to a public class or method can break applications that use it; <a href="/contribute/wicket-api-compatibility.html">API compatibility</a> explains the rules below. On <code class="language-plaintext highlighter-rouge">master</code>, it needs a reason in the commit message, and where the old method can stay next to the new one, deprecate the old one with <code class="language-plaintext highlighter-rouge">@Deprecated</code> instead of removing it. On the release branches, such as <code class="language-plaintext highlighter-rouge">wicket-11.x</code>, the build fails on a change that breaks compatibility. A change that applications must react to also gets a section in <code class="language-plaintext highlighter-rouge">migration-to-&lt;major&gt;.md</code> in the root of the repository and, where it is mechanical, an OpenRewrite recipe in <code class="language-plaintext highlighter-rouge">wicket-migration</code>. Ask on the issue before you change public API.</p>
 
 <h2 id="poms">poms</h2>
 
@@ -231,7 +231,7 @@
     <tr>
       <td>Tools</td>
       <td>
-<code class="language-plaintext highlighter-rouge">Generated-by: &lt;name of tool&gt;</code> when a generative AI tool wrote part of the change, as the <a href="https://www.apache.org/legal/generative-tooling.html" target="_blank" rel="noopener noreferrer">ASF asks</a>.</td>
+<code class="language-plaintext highlighter-rouge">Generated-by: &lt;name of tool&gt; &lt;version&gt;</code> when a generative AI tool wrote part of the change, as the <a href="https://www.apache.org/legal/generative-tooling.html" target="_blank" rel="noopener noreferrer">ASF asks</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -240,7 +240,7 @@
 
 <h2 id="security">Security</h2>
 
-<p>A suspected vulnerability goes to security@apache.org, never into an issue, pull request, commit message or branch name. <a href="https://github.com/apache/wicket/blob/master/SECURITY.md" target="_blank" rel="noopener noreferrer">SECURITY.md</a> describes what counts as a vulnerability in Wicket.</p>
+<p>A suspected vulnerability goes to security@apache.org, never into an issue, pull request, commit message or branch name. <a href="https://github.com/apache/wicket/blob/master/SECURITY.md" target="_blank" rel="noopener noreferrer">SECURITY.md</a> describes what counts as a vulnerability in Wicket, and <a href="/contribute/wicket-security-model.html">Wicket’s security model</a> the idea behind it.</p>
 
             </section>
             <footer class="guide-foot">
@@ -250,6 +250,24 @@
                 <div class="guide-foot-kinds">
                 
                     
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-first-pull-request.html">Your first pull request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Fix a real bug in Wicket from start to end, with a failing test, the fix, the right way to run the tests, and the pull request.</span>
+    </li>
+
+</ul>
+
+                    </section>
                     
                 
                     
@@ -283,7 +301,7 @@
         <a class="guide-list-title" href="/contribute/wicket-ide.html">Set up your IDE</a>
         
         <span class="guide-list-meta"></span>
-        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse or NetBeans, use Wicket's code format, and run tests and the examples from the IDE.</span>
+        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse, VS Code or NetBeans, keep its hand-made format, and run tests and the examples from the IDE.</span>
     </li>
 
 </ul>
@@ -313,6 +331,51 @@
                     
                 
                     
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-test-modules.html">Why most tests live in another module</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why wicket-core's tests are in wicket-core-tests, and why a test run with Maven can use an old build of the code you changed.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-master-first.html">Why fixes go to master first</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why every pull request targets master, how a fix reaches the release lines afterwards, and who decides which lines get it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-api-compatibility.html">API compatibility</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Which changes to Wicket's public API are allowed where, why the build checks them only on the release branches, and what a breaking change owes its users.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-security-model.html">Wicket's security model</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What Wicket as a framework protects against, what it leaves to the deployment, and why a suspected vulnerability is reported privately.</span>
+    </li>
+
+</ul>
+
+                    </section>
                     
                 
                 </div>
@@ -364,6 +427,6 @@
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1795098831" defer></script>
+        <script src="/javascript/ribbon.js?v=1795100781" defer></script>
     </body>
 </html>

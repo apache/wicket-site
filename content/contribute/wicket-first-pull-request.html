@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+	
+	
+
+        <title>Your first pull request | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Fix a real bug in Wicket from start to end, with a failing test, the fix, the right way to run the tests, and the pull request." />
+        <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/atom.xml" />
+
+        <link rel="icon" href="/img/logo-apachewicket-mark.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/css/style.css?v=1795100781" type="text/css" />
+
+		<script src="/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        
+<a class="brand" href="/"><img class="brand-mark" src="/img/logo-apachewicket-mark.svg" alt="" width="34" height="34"><span class="brand-name">Apache Wicket<span class="tm" aria-hidden="true">™</span></span></a>
+
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/community/" class="nav-items active" aria-current="true">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" aria-label="ASF, The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/img/asf_mark.svg" alt="" width="22" height="34"><span class="nav-asf-label">ASF</span></a>
+        <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="nav-github-label">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+<div class="page-sign guide-sign">
+    <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 14; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%); --night: 1;" aria-hidden="true">
+    <img src="/img/seasons/autumn-ink-cap-1600.jpg" srcset="/img/seasons/autumn-ink-cap-900.jpg 900w, /img/seasons/autumn-ink-cap-1600.jpg 1600w, /img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="">
+</div>
+<div class="photo-meta">
+    <p class="photo-credit">Photo: <a href="https://unsplash.com/photos/CCAoWVqolxM" rel="noreferrer noopener noreferrer" target="_blank">Veronika Biro on Unsplash</a></p>
+</div>
+
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="/community/">Community</a><span aria-hidden="true"> / </span><a href="/contribute/">Contribute</a></p>
+        <h1>Your first pull request</h1>
+        <p class="page-sign-sub">Fix a real bug in Wicket from start to end, with a failing test, the fix, the right way to run the tests, and the pull request.</p>
+        <p class="guide-plates"><span class="guide-kind">Tutorial</span></p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        
+        <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#1-claim-the-issue"><span class="toc-number">1</span> <span class="toc-text">1. Claim the issue</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#2-get-the-code"><span class="toc-number">2</span> <span class="toc-text">2. Get the code</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#3-build-wicket"><span class="toc-number">3</span> <span class="toc-text">3. Build Wicket</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#4-write-a-test-that-shows-the-bug"><span class="toc-number">4</span> <span class="toc-text">4. Write a test that shows the bug</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#5-fix-the-bug"><span class="toc-number">5</span> <span class="toc-text">5. Fix the bug</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#6-run-the-test-again"><span class="toc-number">6</span> <span class="toc-text">6. Run the test again</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#7-run-the-full-build"><span class="toc-number">7</span> <span class="toc-text">7. Run the full build</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#8-commit"><span class="toc-number">8</span> <span class="toc-text">8. Commit</span></a></li>
+<li class="toc--level-1 toc--section-9"><a href="#9-open-the-pull-request"><span class="toc-number">9</span> <span class="toc-text">9. Open the pull request</span></a></li>
+</ul>
+</div></nav>
+        
+        <div class="reading-main">
+            <section class="page-content guide-content">
+                <p>In this tutorial you fix <a href="https://github.com/apache/wicket/issues/1950" target="_blank" rel="noopener noreferrer">issue #1950</a>: <code class="language-plaintext highlighter-rouge">UrlRenderer#renderFullUrl</code> forgets the fragment of a URL, the part after <code class="language-plaintext highlighter-rouge">#</code>. You write a test that shows the bug, fix it with one line, and send the fix to the Wicket project as a pull request.</p>
+
+<p>You need a GitHub account, Git, a JDK and Maven on the command line. <a href="/contribute/wicket-build.html#what-you-need">Build and test Wicket</a> says which versions, and how to check them. You do not need to know Wicket.</p>
+
+<h2 id="1-claim-the-issue">1. Claim the issue</h2>
+
+<p>Open <a href="https://github.com/apache/wicket/issues/1950" target="_blank" rel="noopener noreferrer">issue #1950</a> and write a comment that you are working on it. If somebody else already claimed it less than two weeks ago, pick another <a href="https://github.com/apache/wicket/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22" target="_blank" rel="noopener noreferrer"><code class="language-plaintext highlighter-rouge">good first issue</code></a> and follow the same steps with that issue.</p>
+
+<h2 id="2-get-the-code">2. Get the code</h2>
+
+<p>Fork apache/wicket on GitHub with the Fork button. Then clone your fork, add the Wicket repository as <code class="language-plaintext highlighter-rouge">upstream</code>, and create a branch from Wicket’s <code class="language-plaintext highlighter-rouge">master</code>:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/&lt;your-account&gt;/wicket.git
+<span class="nb">cd </span>wicket
+git remote add upstream https://github.com/apache/wicket.git
+git fetch upstream
+git checkout <span class="nt">-b</span> keep-url-fragment upstream/master
+</code></pre></div></div>
+
+<h2 id="3-build-wicket">3. Build Wicket</h2>
+
+<p>Build every module once, without running the tests:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">install</span> <span class="nt">-DskipTests</span> <span class="nt">-Pfast</span>
+</code></pre></div></div>
+
+<p>The first time, Maven downloads the libraries Wicket uses, which takes a few minutes. The build ends with <code class="language-plaintext highlighter-rouge">BUILD SUCCESS</code>. It has put a jar of every module in your local Maven repository, the folder <code class="language-plaintext highlighter-rouge">.m2/repository</code> in your home folder.</p>
+
+<h2 id="4-write-a-test-that-shows-the-bug">4. Write a test that shows the bug</h2>
+
+<p><code class="language-plaintext highlighter-rouge">UrlRenderer</code> is in the module <code class="language-plaintext highlighter-rouge">wicket-request</code>, but its test is in another module, <code class="language-plaintext highlighter-rouge">wicket-core-tests</code>. Open <code class="language-plaintext highlighter-rouge">wicket-core-tests/src/test/java/org/apache/wicket/core/request/cycle/UrlRendererTest.java</code> and add this method inside the class, below the method <code class="language-plaintext highlighter-rouge">renderFullUrlWithRelativeArgument</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="nd">@Test</span>
+	<span class="kt">void</span> <span class="nf">renderFullUrlKeepsFragment</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="nc">Url</span> <span class="n">baseUrl</span> <span class="o">=</span> <span class="nc">Url</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"one/two/three"</span><span class="o">);</span>
+		<span class="n">baseUrl</span><span class="o">.</span><span class="na">setProtocol</span><span class="o">(</span><span class="s">"http"</span><span class="o">);</span>
+		<span class="n">baseUrl</span><span class="o">.</span><span class="na">setHost</span><span class="o">(</span><span class="s">"www.example.com"</span><span class="o">);</span>
+		<span class="n">baseUrl</span><span class="o">.</span><span class="na">setPort</span><span class="o">(</span><span class="mi">8888</span><span class="o">);</span>
+		<span class="nc">UrlRenderer</span> <span class="n">renderer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UrlRenderer</span><span class="o">(</span><span class="k">new</span> <span class="nc">MockWebRequest</span><span class="o">(</span><span class="n">baseUrl</span><span class="o">));</span>
+		<span class="n">renderer</span><span class="o">.</span><span class="na">setBaseUrl</span><span class="o">(</span><span class="n">baseUrl</span><span class="o">);</span>
+		<span class="nc">String</span> <span class="n">fullUrl</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="na">renderFullUrl</span><span class="o">(</span><span class="nc">Url</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"../four#section"</span><span class="o">));</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="s">"http://www.example.com:8888/one/four#section"</span><span class="o">,</span> <span class="n">fullUrl</span><span class="o">);</span>
+	<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Wicket’s code is indented with tabs, so use tabs here too. Run the new test:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn verify <span class="nt">-pl</span> wicket-core-tests <span class="nt">-Dtest</span><span class="o">=</span>UrlRendererTest#renderFullUrlKeepsFragment
+</code></pre></div></div>
+
+<p>The test fails, and Maven shows why:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>expected: &lt;http://www.example.com:8888/one/four#section&gt; but was: &lt;http://www.example.com:8888/one/four&gt;
+</code></pre></div></div>
+
+<p>This is the bug: the <code class="language-plaintext highlighter-rouge">#section</code> is gone.</p>
+
+<h2 id="5-fix-the-bug">5. Fix the bug</h2>
+
+<p>Open <code class="language-plaintext highlighter-rouge">wicket-request/src/main/java/org/apache/wicket/request/UrlRenderer.java</code> and find the method <code class="language-plaintext highlighter-rouge">renderFullUrl</code>. For a relative URL, it resolves the URL against the base URL:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>			<span class="nc">Url</span> <span class="n">base</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Url</span><span class="o">(</span><span class="n">baseUrl</span><span class="o">);</span>
+			<span class="n">base</span><span class="o">.</span><span class="na">resolveRelative</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">resolveRelative</code> takes over the path and the query parameters of <code class="language-plaintext highlighter-rouge">url</code>, but not its fragment. Add a line that copies the fragment as well:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>			<span class="nc">Url</span> <span class="n">base</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Url</span><span class="o">(</span><span class="n">baseUrl</span><span class="o">);</span>
+			<span class="n">base</span><span class="o">.</span><span class="na">resolveRelative</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+			<span class="n">base</span><span class="o">.</span><span class="na">setFragment</span><span class="o">(</span><span class="n">url</span><span class="o">.</span><span class="na">getFragment</span><span class="o">());</span>
+</code></pre></div></div>
+
+<h2 id="6-run-the-test-again">6. Run the test again</h2>
+
+<p>Run the same test:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn verify <span class="nt">-pl</span> wicket-core-tests <span class="nt">-Dtest</span><span class="o">=</span>UrlRendererTest#renderFullUrlKeepsFragment
+</code></pre></div></div>
+
+<p>It still fails. You changed <code class="language-plaintext highlighter-rouge">wicket-request</code>, but you only built <code class="language-plaintext highlighter-rouge">wicket-core-tests</code>, so Maven used the <code class="language-plaintext highlighter-rouge">wicket-request</code> jar from your local repository: the one you built in step 3, without your fix. Install <code class="language-plaintext highlighter-rouge">wicket-request</code> first, then run the test:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">install</span> <span class="nt">-DskipTests</span> <span class="nt">-Pfast</span> <span class="nt">-pl</span> wicket-request
+mvn verify <span class="nt">-pl</span> wicket-core-tests <span class="nt">-Dtest</span><span class="o">=</span>UrlRendererTest#renderFullUrlKeepsFragment
+</code></pre></div></div>
+
+<p>Now the test passes. Run all tests of the class, to see that the fix breaks nothing else in it:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn verify <span class="nt">-pl</span> wicket-core-tests <span class="nt">-Dtest</span><span class="o">=</span>UrlRendererTest
+</code></pre></div></div>
+
+<h2 id="7-run-the-full-build">7. Run the full build</h2>
+
+<p>Build and test everything, the way GitHub does it for every pull request:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn clean verify <span class="nt">-Pjs-test</span>
+</code></pre></div></div>
+
+<p>This takes a while: on a laptop, count on a quarter of an hour or more. It has to end with <code class="language-plaintext highlighter-rouge">BUILD SUCCESS</code>.</p>
+
+<h2 id="8-commit">8. Commit</h2>
+
+<p>Add the two files and commit:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add wicket-request/src/main/java/org/apache/wicket/request/UrlRenderer.java
+git add wicket-core-tests/src/test/java/org/apache/wicket/core/request/cycle/UrlRendererTest.java
+git commit
+</code></pre></div></div>
+
+<p>Git opens a text editor. Write this message, save and close the editor:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Keep the fragment in UrlRenderer.renderFullUrl
+
+renderFullUrl dropped the fragment of a relative URL, while
+renderRelativeUrl kept it, so a full URL to "page#section" pointed to
+"page". The fragment is now copied to the resolved URL as well.
+
+GitHub issue #1950
+</code></pre></div></div>
+
+<h2 id="9-open-the-pull-request">9. Open the pull request</h2>
+
+<p>Push your branch to your fork:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin keep-url-fragment
+</code></pre></div></div>
+
+<p>The output of <code class="language-plaintext highlighter-rouge">git push</code> shows a link to create a pull request; open it. Check that the base repository is <code class="language-plaintext highlighter-rouge">apache/wicket</code> and the base branch is <code class="language-plaintext highlighter-rouge">master</code>. Write <code class="language-plaintext highlighter-rouge">Fixes #1950</code> in the description, with a sentence on how you tested the fix, and create the pull request.</p>
+
+<p>GitHub now runs the full build for your pull request, and a committer reviews it. You have sent your first pull request to Wicket.</p>
+
+<p>For your next change, <a href="/contribute/wicket-pull-request.html">Send a pull request to Wicket</a> has the same steps in short, with what to do during the review. <a href="/contribute/wicket-test-modules.html">Why most tests live in another module</a> explains what happened in step 6.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/contribute/">Contribute</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Your first pull request</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Fix a real bug in Wicket from start to end, with a failing test, the fix, the right way to run the tests, and the pull request.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-pull-request.html">Send a pull request to Wicket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">From an issue to a reviewed pull request against apache/wicket, for your first contribution or your fiftieth.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-build.html">Build and test Wicket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build Wicket from source with Maven, run one test or all of them, run the JavaScript tests and the examples, and use your own build.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-ide.html">Set up your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse, VS Code or NetBeans, keep its hand-made format, and run tests and the examples from the IDE.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-conventions.html">Code conventions</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The rules a change to Wicket's code follows, from the code format and license header to tests, Javadoc and commit messages.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-test-modules.html">Why most tests live in another module</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why wicket-core's tests are in wicket-core-tests, and why a test run with Maven can use an old build of the code you changed.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-master-first.html">Why fixes go to master first</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why every pull request targets master, how a fix reaches the release lines afterwards, and who decides which lines get it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-api-compatibility.html">API compatibility</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Which changes to Wicket's public API are allowed where, why the build checks them only on the release branches, and what a breaking change owes its users.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-security-model.html">Wicket's security model</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What Wicket as a framework protects against, what it leaves to the deployment, and why a suspected vulnerability is reported privately.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_contribute/wicket-first-pull-request.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+
+        <footer class="footer">
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/versions/">Releases</a></li>
+            <li><a href="/start/quickstart.html">Quick start</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/news/">Blog</a></li>
+            <li><a href="/community/">Community and support</a></li>
+            <li><a href="/community/#security">Report a vulnerability</a></li>
+            <li><a href="/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+        
+        <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
+        <script src="/javascript/ribbon.js?v=1795100781" defer></script>
+    </body>
+</html>
