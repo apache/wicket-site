@@ -137,7 +137,27 @@ GitHub runs the same full build on several JDKs; the result shows at the bottom 
 
 A reviewer comments on the pull request. Committers are volunteers, so a review can take a few days. If nothing happens for a week, ask for a review in a comment or on the [developers list]({{ site.baseurl }}/community/#dev).
 
-To answer a review, commit on the same branch and push again; the pull request updates itself. Do not rebase, amend or force-push a branch that is already in review: the reviewers have read your earlier commits, and [history is not rewritten]({{ site.baseurl }}/contribute/wicket-master-first.html#history-that-is-not-rewritten). To bring the branch up to date with `master`, merge it:
+To answer a review, commit the changes on the same branch and push again; the pull request updates itself. Separate commits for review comments are fine while the review lasts, so that the reviewer sees what changed. They do not stay: before the merge, each is squashed into the commit it belongs to, so that `master` gets no "review comments" commits. The committer who merges tells you whether to do that yourself or whether they squash when merging.
+
+To squash yourself, start an interactive rebase, mark each review commit as `fixup` and move it below the commit it belongs to, and force-push your branch:
+
+```shell
+git fetch upstream
+git rebase -i upstream/master
+git push --force-with-lease --force-if-includes origin keep-url-fragment
+```
+
+Force-pushing is fine for your own pull request branch; only the branches of apache/wicket refuse it. `--force-with-lease --force-if-includes` refuses to overwrite commits on your fork that you have not seen, for example ones you pushed from another computer.
+
+When the committer asks you to bring the branch up to date with `master`, rebase it or merge `master` into it, whichever they ask for. To rebase:
+
+```shell
+git fetch upstream
+git rebase upstream/master
+git push --force-with-lease --force-if-includes origin keep-url-fragment
+```
+
+To merge:
 
 ```shell
 git fetch upstream

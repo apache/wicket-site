@@ -27,6 +27,8 @@ Whether a fix goes to the older lines is a decision, not a rule. A fix that chan
 
 So you send one pull request, against `master`, and say in the issue which versions have the bug. The committers decide which lines get the fix, and cherry-pick it after the merge.
 
-## History that is not rewritten
+## Wicket's branches are never rewritten
 
-Pull requests are merged with a merge commit, and commits that are pushed are never changed. A cherry-pick refers to a commit on `master`; reviewers refer to the commits they have read. A rebase or force-push changes those commits into new ones, and the references point to nothing. That is why a branch in review is brought up to date by merging `master` into it, and a mistake is corrected with a new commit on top. Wicket's own branches refuse force pushes.
+Once a commit is on `master` or a release branch, it does not change. A cherry-pick to an older branch is a new commit that often records the commit on `master` it came from, as `cherry picked from commit …` in its message, and issues and pull requests link to commits too. Rewriting `master` would turn those commits into new ones, and every reference would point to nothing. So the branches of apache/wicket refuse force pushes: `master`, the `wicket-*.x` release branches, and the `release/`, `rel/` and `archive/` branches.
+
+This holds for Wicket's own branches, not for the branch of a pull request in your fork. Until it is merged, you can clean that branch up and force-push it, as [Send a pull request to Wicket]({{ site.baseurl }}/contribute/wicket-pull-request.html#9-work-with-the-review) describes.

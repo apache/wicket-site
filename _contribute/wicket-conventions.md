@@ -61,7 +61,9 @@ The build checks the order in every `pom.xml`: sections in the standard Maven or
 | Issue | `GitHub issue #<number>` on a line of its own; a Jira key such as `WICKET-7165` for an issue from Jira. |
 | Tools | `Generated-by: <name of tool> <version>` when a generative AI tool wrote part of the change, as the [ASF asks](https://www.apache.org/legal/generative-tooling.html). |
 
-A commit that is already pushed is not changed: no amend, rebase or force-push. Correct it with a new commit, and bring a branch up to date by merging `master` into it.
+Keep commits focused: one logical change per commit, and never formatting mixed with a fix. No "WIP", "fix stuff" or "review comments" commit is left in a pull request when it is merged. During the review you may push fixes as separate commits; before the merge they are squashed into the commit they belong to. The committer who merges your pull request tells you whether to squash yourself or whether they squash when merging.
+
+Never force-push to a branch in apache/wicket itself; the repository refuses it. Force-pushing your own pull request branch to clean it up is fine.
 
 ## Security
 
