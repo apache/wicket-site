@@ -56,7 +56,7 @@ The build checks the order in every `pom.xml`: sections in the standard Maven or
 
 | Part | Content |
 |---|---|
-| First line | What the change does, as a plain sentence. No issue number and no prefix like `fix:`. |
+| First line | What the change does, in plain words, without the issue number. |
 | Body | What the behaviour was, why that was wrong, what it is now, and what an application that relied on the old behaviour notices. |
 | Issue | `GitHub issue #<number>` on a line of its own; a Jira key such as `WICKET-7165` for an issue from Jira. |
 | Tools | `Generated-by: <name of tool> <version>` when a generative AI tool wrote part of the change, as the [ASF asks](https://www.apache.org/legal/generative-tooling.html). |

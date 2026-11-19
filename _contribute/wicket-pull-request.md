@@ -104,7 +104,7 @@ renderFullUrl now appends the fragment in the same way.
 GitHub issue #<number>
 ```
 
-The first line says what the change does, in a normal sentence, without the issue number or a prefix like `fix:`. After an empty line, the body says what was wrong, why, and what is different now. The last line refers to the issue. For an issue that came from Jira, keep its key, such as `WICKET-7165`, in the body.
+The first line says what the change does, in plain words, without the issue number. After an empty line, the body says what was wrong, why, and what is different now. The last line refers to the issue. For an issue that came from Jira, keep its key, such as `WICKET-7165`, in the body.
 
 If you used a generative AI tool to write the change, say so in a last line such as `Generated-by: <name of tool> <version>`, as the [ASF recommends](https://www.apache.org/legal/generative-tooling.html). You stay responsible for every line of it.
 
