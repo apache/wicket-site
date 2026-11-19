@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1795100781" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1795104546" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -272,7 +272,25 @@ git commit
 
 <p>A reviewer comments on the pull request. Committers are volunteers, so a review can take a few days. If nothing happens for a week, ask for a review in a comment or on the <a href="/community/#dev">developers list</a>.</p>
 
-<p>To answer a review, commit on the same branch and push again; the pull request updates itself. Do not rebase, amend or force-push a branch that is already in review: the reviewers have read your earlier commits, and <a href="/contribute/wicket-master-first.html#history-that-is-not-rewritten">history is not rewritten</a>. To bring the branch up to date with <code class="language-plaintext highlighter-rouge">master</code>, merge it:</p>
+<p>To answer a review, commit the changes on the same branch and push again; the pull request updates itself. Separate commits for review comments are fine while the review lasts, so that the reviewer sees what changed. They do not stay: before the merge, each is squashed into the commit it belongs to, so that <code class="language-plaintext highlighter-rouge">master</code> gets no “review comments” commits. The committer who merges tells you whether to do that yourself or whether they squash when merging.</p>
+
+<p>To squash yourself, start an interactive rebase, mark each review commit as <code class="language-plaintext highlighter-rouge">fixup</code> and move it below the commit it belongs to, and force-push your branch:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch upstream
+git rebase <span class="nt">-i</span> upstream/master
+git push <span class="nt">--force-with-lease</span> <span class="nt">--force-if-includes</span> origin keep-url-fragment
+</code></pre></div></div>
+
+<p>Force-pushing is fine for your own pull request branch; only the branches of apache/wicket refuse it. <code class="language-plaintext highlighter-rouge">--force-with-lease --force-if-includes</code> refuses to overwrite commits on your fork that you have not seen, for example ones you pushed from another computer.</p>
+
+<p>When the committer asks you to bring the branch up to date with <code class="language-plaintext highlighter-rouge">master</code>, rebase it or merge <code class="language-plaintext highlighter-rouge">master</code> into it, whichever they ask for. To rebase:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch upstream
+git rebase upstream/master
+git push <span class="nt">--force-with-lease</span> <span class="nt">--force-if-includes</span> origin keep-url-fragment
+</code></pre></div></div>
+
+<p>To merge:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch upstream
 git merge upstream/master
@@ -470,6 +488,6 @@ git push
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1795100781" defer></script>
+        <script src="/javascript/ribbon.js?v=1795104546" defer></script>
     </body>
 </html>

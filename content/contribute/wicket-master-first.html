@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1795100781" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1795104546" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -120,7 +120,7 @@
 <li class="toc--level-1 toc--section-1"><a href="#several-lines-at-once"><span class="toc-number">1</span> <span class="toc-text">Several lines at once</span></a></li>
 <li class="toc--level-1 toc--section-2"><a href="#newest-first"><span class="toc-number">2</span> <span class="toc-text">Newest first</span></a></li>
 <li class="toc--level-1 toc--section-3"><a href="#committers-decide-which-lines-get-a-fix"><span class="toc-number">3</span> <span class="toc-text">Committers decide which lines get a fix</span></a></li>
-<li class="toc--level-1 toc--section-4"><a href="#history-that-is-not-rewritten"><span class="toc-number">4</span> <span class="toc-text">History that is not rewritten</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#wickets-branches-are-never-rewritten"><span class="toc-number">4</span> <span class="toc-text">Wicket’s branches are never rewritten</span></a></li>
 </ul>
 </div></nav>
         
@@ -145,9 +145,11 @@
 
 <p>So you send one pull request, against <code class="language-plaintext highlighter-rouge">master</code>, and say in the issue which versions have the bug. The committers decide which lines get the fix, and cherry-pick it after the merge.</p>
 
-<h2 id="history-that-is-not-rewritten">History that is not rewritten</h2>
+<h2 id="wickets-branches-are-never-rewritten">Wicket’s branches are never rewritten</h2>
 
-<p>Pull requests are merged with a merge commit, and commits that are pushed are never changed. A cherry-pick refers to a commit on <code class="language-plaintext highlighter-rouge">master</code>; reviewers refer to the commits they have read. A rebase or force-push changes those commits into new ones, and the references point to nothing. That is why a branch in review is brought up to date by merging <code class="language-plaintext highlighter-rouge">master</code> into it, and a mistake is corrected with a new commit on top. Wicket’s own branches refuse force pushes.</p>
+<p>Once a commit is on <code class="language-plaintext highlighter-rouge">master</code> or a release branch, it does not change. A cherry-pick to an older branch is a new commit that often records the commit on <code class="language-plaintext highlighter-rouge">master</code> it came from, as <code class="language-plaintext highlighter-rouge">cherry picked from commit …</code> in its message, and issues and pull requests link to commits too. Rewriting <code class="language-plaintext highlighter-rouge">master</code> would turn those commits into new ones, and every reference would point to nothing. So the branches of apache/wicket refuse force pushes: <code class="language-plaintext highlighter-rouge">master</code>, the <code class="language-plaintext highlighter-rouge">wicket-*.x</code> release branches, and the <code class="language-plaintext highlighter-rouge">release/</code>, <code class="language-plaintext highlighter-rouge">rel/</code> and <code class="language-plaintext highlighter-rouge">archive/</code> branches.</p>
+
+<p>This holds for Wicket’s own branches, not for the branch of a pull request in your fork. Until it is merged, you can clean that branch up and force-push it, as <a href="/contribute/wicket-pull-request.html#9-work-with-the-review">Send a pull request to Wicket</a> describes.</p>
 
             </section>
             <footer class="guide-foot">
@@ -334,6 +336,6 @@
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1795100781" defer></script>
+        <script src="/javascript/ribbon.js?v=1795104546" defer></script>
     </body>
 </html>
