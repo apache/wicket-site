@@ -14,6 +14,9 @@ RedirectMatch 301 ^/start/wicket-([0-9.]+)\.x\.html$ /versions/wicket-$1.x/
 RedirectMatch 301 ^/guide/(.*)$ /docs/$1
 Redirect 301 /contribute/write.html /contribute/site-first-change.html
 Redirect 301 /contribute/userguide.html /contribute/site-docs-page.html
+Redirect 301 /contribute/build.html /contribute/wicket-build.html
+Redirect 301 /contribute/ides.html /contribute/wicket-ide.html
+Redirect 301 /contribute/patch.html /contribute/wicket-pull-request.html
 
 # Getting help moved into the community page.
 RedirectMatch 301 ^/help/?$ /community/
