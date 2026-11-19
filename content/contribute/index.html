@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1794566155" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1795110449" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -123,9 +123,18 @@
 
 <h2 id="wicket">Wicket itself</h2>
 
-<p>Wicket’s code is in <a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">apache/wicket</a> on GitHub. Pick an <a href="https://github.com/apache/wicket/issues" target="_blank" rel="noopener noreferrer">open issue</a> or one you ran into yourself, and send the fix as a pull request: a committer reviews and merges it, and it goes out with the next release of its line. Since Wicket 11 a major release ships <a href="/versions/#release-policy">every three months</a>, so a change merged today reaches users within a quarter. New features go to <code class="language-plaintext highlighter-rouge">master</code>, the next major release. Fixes that the LTS needs also go to <code class="language-plaintext highlighter-rouge">wicket-10.x</code>.</p>
+<p>Wicket’s code is in <a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">apache/wicket</a> on GitHub. Pick an <a href="https://github.com/apache/wicket/issues" target="_blank" rel="noopener noreferrer">open issue</a>, such as one labelled <a href="https://github.com/apache/wicket/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22" target="_blank" rel="noopener noreferrer"><code class="language-plaintext highlighter-rouge">good first issue</code></a>, or one you ran into yourself, and send the fix as a pull request against <code class="language-plaintext highlighter-rouge">master</code>. A committer reviews and merges it and copies a fix to the release lines it applies to. Since Wicket 11 a major release ships <a href="/versions/#release-policy">every three months</a>, so a change merged today reaches users within a quarter. For a first contribution, start with the tutorial <a href="/contribute/wicket-first-pull-request.html">Your first pull request</a>. The rules every contribution follows are in <a href="https://github.com/apache/wicket/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a> in the repository.</p>
 
 <ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-first-pull-request.html">Your first pull request</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">Tutorial</span></span>
+        <span class="guide-list-summary">Fix a real bug in Wicket from start to end, with a failing test, the fix, the right way to run the tests, and the pull request.</span>
+    </li>
 
     
     <li>
@@ -133,20 +142,75 @@
         <a class="guide-list-title" href="/contribute/wicket-pull-request.html">Send a pull request to Wicket</a>
         
         <span class="guide-list-meta"><span class="guide-list-kind">How-to</span></span>
-        <span class="guide-list-summary">Fork apache/wicket, pick the branch of the line you change, and send your fix or feature as a pull request.</span>
+        <span class="guide-list-summary">From an issue to a reviewed pull request against apache/wicket, for your first contribution or your fiftieth.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-build.html">Build and test Wicket</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">How-to</span></span>
+        <span class="guide-list-summary">Build Wicket from source with Maven, run one test or all of them, run the JavaScript tests and the examples, and use your own build.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-ide.html">Set up your IDE</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">How-to</span></span>
+        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse, VS Code or NetBeans, keep its hand-made format, and run tests and the examples from the IDE.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-conventions.html">Code conventions</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">Reference</span></span>
+        <span class="guide-list-summary">The rules a change to Wicket's code follows, from the code format and license header to tests, Javadoc and commit messages.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-test-modules.html">Why most tests live in another module</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">Explanation</span></span>
+        <span class="guide-list-summary">Why wicket-core's tests are in wicket-core-tests, and why a test run with Maven can use an old build of the code you changed.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-master-first.html">Why fixes go to master first</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">Explanation</span></span>
+        <span class="guide-list-summary">Why every pull request targets master, how a fix reaches the release lines afterwards, and who decides which lines get it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-api-compatibility.html">API compatibility</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">Explanation</span></span>
+        <span class="guide-list-summary">Which changes to Wicket's public API are allowed where, why the build checks them only on the release branches, and what a breaking change owes its users.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-security-model.html">Wicket's security model</a>
+        
+        <span class="guide-list-meta"><span class="guide-list-kind">Explanation</span></span>
+        <span class="guide-list-summary">What Wicket as a framework protects against, what it leaves to the deployment, and why a suspected vulnerability is reported privately.</span>
     </li>
 
 </ul>
 
-<ul>
-  <li>
-<a href="/contribute/build.html">Build from source</a>: check out a branch, build it with Maven and use your own build.</li>
-  <li>
-<a href="/contribute/ides.html">Set up your IDE</a>: import the projects into Eclipse, IntelliJ IDEA or NetBeans, with the code format.</li>
-  <li>
-<a href="/contribute/patch.html">Fix a bug or add a feature</a>: from an issue to a pull request.</li>
-  <li>For committers, <a href="/contribute/release.html">Build a release</a> still describes the release process of Wicket 6 and older and needs an update.</li>
-</ul>
+<p>For committers, <a href="/contribute/release.html">Build a release</a> still describes the release process of Wicket 6 and older and needs an update.</p>
 
 <h2 id="without-code">Without writing code</h2>
 
@@ -287,6 +351,6 @@
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1794566155" defer></script>
+        <script src="/javascript/ribbon.js?v=1795110449" defer></script>
     </body>
 </html>

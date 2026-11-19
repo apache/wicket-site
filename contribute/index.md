@@ -17,14 +17,11 @@ summary: Wicket is built by the people who use it. Help with questions, bugs, th
 
 ## Wicket itself {#wicket}
 
-Wicket's code is in [apache/wicket](https://github.com/apache/wicket) on GitHub. Pick an [open issue](https://github.com/apache/wicket/issues) or one you ran into yourself, and send the fix as a pull request: a committer reviews and merges it, and it goes out with the next release of its line. Since Wicket 11 a major release ships [every three months]({{ site.baseurl }}/versions/#release-policy), so a change merged today reaches users within a quarter. New features go to `master`, the next major release. Fixes that the LTS needs also go to `wicket-10.x`.
+Wicket's code is in [apache/wicket](https://github.com/apache/wicket) on GitHub. Pick an [open issue](https://github.com/apache/wicket/issues), such as one labelled [`good first issue`](https://github.com/apache/wicket/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22), or one you ran into yourself, and send the fix as a pull request against `master`. A committer reviews and merges it and copies a fix to the release lines it applies to. Since Wicket 11 a major release ships [every three months]({{ site.baseurl }}/versions/#release-policy), so a change merged today reaches users within a quarter. For a first contribution, start with the tutorial [Your first pull request]({{ site.baseurl }}/contribute/wicket-first-pull-request.html). The rules every contribution follows are in [CONTRIBUTING.md](https://github.com/apache/wicket/blob/master/CONTRIBUTING.md) in the repository.
 
 {% include guide-list.html pages=wicket_pages kind=true %}
 
-- [Build from source]({{ site.baseurl }}/contribute/build.html): check out a branch, build it with Maven and use your own build.
-- [Set up your IDE]({{ site.baseurl }}/contribute/ides.html): import the projects into Eclipse, IntelliJ IDEA or NetBeans, with the code format.
-- [Fix a bug or add a feature]({{ site.baseurl }}/contribute/patch.html): from an issue to a pull request.
-- For committers, [Build a release]({{ site.baseurl }}/contribute/release.html) still describes the release process of Wicket 6 and older and needs an update.
+For committers, [Build a release]({{ site.baseurl }}/contribute/release.html) still describes the release process of Wicket 6 and older and needs an update.
 
 ## Without writing code {#without-code}
 

@@ -5,9 +5,9 @@
 	
 	
 
-        <title>Improve Wicket with fixes and new features! | Apache Wicket</title>
+        <title>Wicket's security model | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Apache Wicket, the open source component-oriented Java web framework." />
+        <meta name="description" content="What Wicket as a framework protects against, what it leaves to the deployment, and why a suspected vulnerability is reported privately." />
         <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
         <meta name="color-scheme" content="light dark" />
@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/css/style.css?v=1794566155" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css?v=1795110449" type="text/css" />
 
 		<script src="/javascript/jquery-3.7.1.min.js"></script>
 
@@ -95,7 +95,8 @@
     </div>
 </div>
 
-<div class="page-sign">
+
+<div class="page-sign guide-sign">
     <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 14; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%); --night: 1;" aria-hidden="true">
     <img src="/img/seasons/autumn-ink-cap-1600.jpg" srcset="/img/seasons/autumn-ink-cap-900.jpg 900w, /img/seasons/autumn-ink-cap-1600.jpg 1600w, /img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="">
 </div>
@@ -104,9 +105,10 @@
 </div>
 
     <div class="page-sign-inner">
-        
-        <h1>Improve Wicket with fixes and new features!</h1>
-        
+        <p class="guide-crumbs"><a href="/community/">Community</a><span aria-hidden="true"> / </span><a href="/contribute/">Contribute</a></p>
+        <h1>Wicket's security model</h1>
+        <p class="page-sign-sub">What Wicket as a framework protects against, what it leaves to the deployment, and why a suspected vulnerability is reported privately.</p>
+        <p class="guide-plates"><span class="guide-kind">Explanation</span></p>
     </div>
 </div>
 <main id="main" tabindex="-1">
@@ -115,92 +117,174 @@
         <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
 <div id="toc-title"><h2>On this page</h2></div>
 <ul>
-<li class="toc--level-1 toc--section-1"><a href="#create-an-issue"><span class="toc-number">1</span> <span class="toc-text">Create an issue</span></a></li>
-<li class="toc--level-1 toc--section-2">
-<a href="#time-for-some-coding"><span class="toc-number">2</span> <span class="toc-text">Time for some coding</span></a><ul><li class="toc--level-2 toc--section-3"><a href="#github"><span class="toc-number">2.1</span> <span class="toc-text">Create a pull request</span></a></li></ul>
-</li>
+<li class="toc--level-1 toc--section-1"><a href="#a-framework-not-an-application"><span class="toc-number">1</span> <span class="toc-text">A framework, not an application</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#what-wicket-protects"><span class="toc-number">2</span> <span class="toc-text">What Wicket protects</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#what-wicket-trusts"><span class="toc-number">3</span> <span class="toc-text">What Wicket trusts</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#why-reports-are-private"><span class="toc-number">4</span> <span class="toc-text">Why reports are private</span></a></li>
 </ul>
 </div></nav>
         
         <div class="reading-main">
-            
             <section class="page-content guide-content">
-                <h1 id="reportbug">So you have found a bug…</h1>
+                <p>The full policy is <a href="https://github.com/apache/wicket/blob/master/SECURITY.md" target="_blank" rel="noopener noreferrer">SECURITY.md</a> in the repository. It says which lines receive security fixes, what a report needs, and in detail what Wicket trusts. This page explains the idea behind it.</p>
 
-<p>As developers we all strive to produce a flawless software. However, in
-the real world we might find that our code contains errors or bugs.
-Wicket tracks bugs and new features in <a href="https://github.com/apache/wicket/issues" target="_blank" rel="noopener noreferrer">GitHub
-Issues</a>. If you think you have
-found a bug follow these simple steps before opening a new issue:</p>
+<h2 id="a-framework-not-an-application">A framework, not an application</h2>
 
-<ul>
-  <li>
-    <p>Test the very last version of Wicket to see if the bug was already
-fixed</p>
-  </li>
-  <li>
-    <p>Search <a href="https://github.com/apache/wicket/issues?q=is%3Aissue" target="_blank" rel="noopener noreferrer">our issues</a>
-and the mailing list to see if it’s already been discussed. Issues
-reported before 2026 live in our read-only <a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">JIRA
-archive</a>, which is worth
-searching too.</p>
-  </li>
-  <li>
-    <p>Simply ask to the <a href="mailto:dev@wicket.apache.org">devs</a> mailing list
-if you are unsure.</p>
-  </li>
-</ul>
+<p>Wicket runs inside a servlet container, usually behind a proxy, as part of an application that someone deployed. Some protection only the framework can give, because it happens inside Wicket’s own code. Other protection only the deployment can give, because only the deployment knows its host names, its proxies and its users. A security model draws the line between the two: what Wicket promises, and what it trusts the deployment to take care of.</p>
 
-<h2 id="create-an-issue">Create an issue</h2>
+<h2 id="what-wicket-protects">What Wicket protects</h2>
 
-<p>Either you have spotted a bug or you want to propose a new feature, the
-first thing to do is to create an issue with the following steps:</p>
+<p>Wicket promises the things that are in its own hands. Text that a component renders from its model is escaped, so data from users does not become markup in the page; a component that writes model data unescaped by default is a bug in Wicket. Wicket does not serve every file on the classpath as a resource, only those that pass its resource guard. Where an application registers the resource isolation listener, a request from another site cannot invoke a link, a form or an Ajax behaviour on a page. A way around one of these promises is a vulnerability.</p>
 
-<ul>
-  <li>
-    <p>Create a new <a href="https://github.com/apache/wicket/issues/new" target="_blank" rel="noopener noreferrer">issue</a>. The
-issue might already exist if you have found a regression.</p>
-  </li>
-  <li>
-    <p>Write a short description of the issue. If this one is a bug, report
-the affected version as well.</p>
-  </li>
-  <li>
-    <p><a href="../start/quickstart.html">Create a quickstart</a> that you can use for
-prototyping the feature or demonstrating the bug.</p>
-  </li>
-</ul>
+<h2 id="what-wicket-trusts">What Wicket trusts</h2>
 
-<h2 id="time-for-some-coding">Time for some coding</h2>
+<p>Other inputs Wicket takes as given. It trusts the host name and port the servlet container reports, because only the deployment knows its own names and can reject the wrong ones. It trusts the markup files of the application, because the developer wrote them, the same way a template engine trusts its templates. It trusts its own page store, because Java deserialization of data from an attacker is never safe. A report that only works when one of these trusted inputs is in an attacker’s hands is a matter of deployment, not of the framework. If you think the model itself is wrong, that is worth reporting too.</p>
 
-<p>Wicket uses <a href="http://git-scm.com/" target="_blank" rel="noopener noreferrer">Git</a> as versioning system, so you
-need to have it properly installed and configured to start work on
-Wicket code base. The repository lives on
-<a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a>, and contributions reach us
-as pull requests against it.</p>
+<p>Some code is outside the model entirely: deprecated code, which applications should stop using, and <code class="language-plaintext highlighter-rouge">wicket-examples</code>, which is teaching material and deliberately not hardened.</p>
 
-<p><strong>NOTE:</strong> when you are working on Wicket code, please follow our code
-format rules. You can find them inside wicket-core module as Eclipse code formatter profile.</p>
+<h2 id="why-reports-are-private">Why reports are private</h2>
 
-<p><strong>NOTE:</strong> when you are using Eclipse IDE, please ensure that you have
-installed “M2E Settings” from the Eclipse Marketplace in addition to
-the format rules.</p>
-
-<h3 id="github">Create a pull request</h3>
-
-<p>To create a pull request on GitHub follow the instructions you can find
-<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork" target="_blank" rel="noopener noreferrer">here</a>.
-Mention the issue your work addresses in the description, so that the
-pull request and the issue link up. Once you have finished to work on
-your pull request, send us an email using the
-<a href="mailto:dev@wicket.apache.org">devs</a> mailing list.</p>
-
-<p>All Pull Requests are automatically tested at 
-<a href="https://github.com/apache/wicket/actions" target="_blank" rel="noopener noreferrer">Github Actions</a> on AMD64 and
-at <a href="https://travis-ci.com/github/apache/wicket/" target="_blank" rel="noopener noreferrer">TravisCI</a> on ARM64 platform.</p>
-
+<p>A vulnerability reported in public is known to attackers before a fixed release exists. So a suspected vulnerability goes to security@apache.org, never into an issue, a pull request, a commit message or a branch name, and stays private until the fix is released and announced. Everything else, such as hardening ideas or a problem in the examples, is welcome in public. When you are not sure which it is, report it privately.</p>
 
             </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/contribute/">Contribute</a>
+</h2>
+                
+                <div class="guide-foot-kinds">
+                
+                    
+                    
+                    <section>
+                        <h3>Tutorials</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-first-pull-request.html">Your first pull request</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Fix a real bug in Wicket from start to end, with a failing test, the fix, the right way to run the tests, and the pull request.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-pull-request.html">Send a pull request to Wicket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">From an issue to a reviewed pull request against apache/wicket, for your first contribution or your fiftieth.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-build.html">Build and test Wicket</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build Wicket from source with Maven, run one test or all of them, run the JavaScript tests and the examples, and use your own build.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-ide.html">Set up your IDE</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Open Wicket's source in IntelliJ IDEA, Eclipse, VS Code or NetBeans, keep its hand-made format, and run tests and the examples from the IDE.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-conventions.html">Code conventions</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The rules a change to Wicket's code follows, from the code format and license header to tests, Javadoc and commit messages.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section>
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-test-modules.html">Why most tests live in another module</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why wicket-core's tests are in wicket-core-tests, and why a test run with Maven can use an old build of the code you changed.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-master-first.html">Why fixes go to master first</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Why every pull request targets master, how a fix reaches the release lines afterwards, and who decides which lines get it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/contribute/wicket-api-compatibility.html">API compatibility</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Which changes to Wicket's public API are allowed where, why the build checks them only on the release branches, and what a breaking change owes its users.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Wicket's security model</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">What Wicket as a framework protects against, what it leaves to the deployment, and why a suspected vulnerability is reported privately.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                </div>
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_contribute/wicket-security-model.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
         </div>
     </div>
 </main>
@@ -247,6 +331,6 @@ at <a href="https://travis-ci.com/github/apache/wicket/" target="_blank" rel="no
         </footer>
         
         <script type="application/json" id="seasons" data-base="/img/seasons/">{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/javascript/ribbon.js?v=1794566155" defer></script>
+        <script src="/javascript/ribbon.js?v=1795110449" defer></script>
     </body>
 </html>
