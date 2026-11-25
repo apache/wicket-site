@@ -18,20 +18,39 @@ layout: null
 		<name>Apache Wicket</name>
 		<homepage rdf:resource="https://wicket.apache.org"/>
 		<asfext:pmc rdf:resource="https://wicket.apache.org/"/>
-		<shortdesc>Apache Wicket is an open source Java component oriented web application framework.</shortdesc>
-		<description>Write maintainable, secure and scalable web applications using just Java and HTML. Invented in 2004, Wicket is one of the few survivors of the Java serverside web framework wars of the mid 2000's, and a proud member of the Apache Software Foundation.</description>
+		<shortdesc>Apache Wicket is an open source, component-oriented Java web framework.</shortdesc>
+		<description>Apache Wicket is a component-oriented Java web framework, open source since 2004 and a project of the Apache Software Foundation since 2007. Every component keeps its behaviour and state in Java and its markup in plain HTML, so there is no JavaScript build chain to maintain.</description>
 		<bug-database rdf:resource="https://github.com/apache/wicket/issues"/>
-		<mailing-list rdf:resource="https://wicket.apache.org"/>
-		<download-page rdf:resource="https://wicket.apache.org"/>
+		<mailing-list rdf:resource="https://wicket.apache.org/community/#lists"/>
+		<download-page rdf:resource="https://wicket.apache.org/versions/"/>
 		<programming-language>Java</programming-language>
 		<category rdf:resource="https://projects.apache.org/category/web-framework"/>
+{%- comment %}
+  One release element per final release, taken from the release announcements
+  (posts named wicket-<version>-released); milestones, betas and release
+  candidates have a suffix after the version and are left out. The newest
+  release comes first.
+{% endcomment %}
+{%- for post in site.posts %}
+{%- assign parts = post.slug | split: "-" %}
+{%- if parts.size == 3 and parts[0] == "wicket" and parts[2] == "released" %}
+{%- assign v = parts[1] %}
+{%- assign upper = v | upcase %}
+{%- assign lower = v | downcase %}
+{%- if upper == lower %}
+{%- comment %} The major releases' posts name 9, 8, 7.0 or 1.5: pad to 9.0.0. {% endcomment %}
+{%- assign digits = v | split: "." %}
+{%- if digits.size == 1 %}{% assign v = v | append: ".0.0" %}{% elsif digits.size == 2 %}{% assign v = v | append: ".0" %}{% endif %}
 		<release>
 			<Version>
-				<name>Latest Stable Release</name>
-				<created>{{ site.wicket.released }}</created>
-				<revision>{{ site.wicket.version }}</revision>
+				<name>Apache Wicket {{ v }}</name>
+				<created>{{ post.date | date: "%Y-%m-%d" }}</created>
+				<revision>{{ v }}</revision>
 			</Version>
 		</release>
+{%- endif %}
+{%- endif %}
+{%- endfor %}
 		<repository>
 			<GITRepository>
 				<location rdf:resource="https://github.com/apache/wicket"/>
